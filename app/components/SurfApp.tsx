@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
+import { useUser } from '@clerk/nextjs'
 import type { SurfReport, TideReport, TideUnavailable, GeoResult } from '@/app/lib/types'
 import SearchBar from './SearchBar'
 import HeroSection from './HeroSection'
@@ -10,18 +11,84 @@ import ForecastGrid from './ForecastGrid'
 import TideSection from './TideSection'
 import TideSetupCard from './TideSetupCard'
 import LandingHero from './LandingHero'
+import PaywallModal from './PaywallModal'
+import AuthButton from './AuthButton'
 
 type Units = { temp: 'c' | 'f'; height: 'ft' | 'm' }
 type TideResult = TideReport | TideUnavailable
 
+const FREE_LIMIT = 7
+const LS_KEY = 'gs_usage'
+
+function getLocalCount(): number {
+  try { return parseInt(localStorage.getItem(LS_KEY) ?? '0', 10) || 0 } catch { return 0 }
+}
+function incLocalCount() {
+  try { localStorage.setItem(LS_KEY, String(getLocalCount() + 1)) } catch {}
+}
+
 export default function SurfApp() {
+  const { isSignedIn } = useUser()
   const [report, setReport] = useState<SurfReport | null>(null)
   const [tideData, setTideData] = useState<TideResult | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [units, setUnits] = useState<Units>({ temp: 'f', height: 'ft' })
+  const [showPaywall, setShowPaywall] = useState(false)
+  const [subscribed, setSubscribed] = useState(false)
+  const [usageCount, setUsageCount] = useState(0)
+
+  // Load usage status on mount / auth change
+  useEffect(() => {
+    async function loadUsage() {
+      try {
+        const res = await fetch('/api/usage')
+        const data = await res.json()
+        if (data.authenticated) {
+          setSubscribed(data.subscribed)
+          setUsageCount(data.count)
+        } else {
+          setUsageCount(getLocalCount())
+        }
+      } catch {
+        setUsageCount(getLocalCount())
+      }
+    }
+    loadUsage()
+  }, [isSignedIn])
+
+  // Check for ?subscribed=true after Stripe redirect
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('subscribed') === 'true') {
+      setSubscribed(true)
+      window.history.replaceState({}, '', '/')
+    }
+    if (params.get('paywall') === '1') {
+      setShowPaywall(true)
+      window.history.replaceState({}, '', '/')
+    }
+  }, [])
+
+  async function incrementUsage() {
+    if (isSignedIn) {
+      const res = await fetch('/api/usage', { method: 'POST' })
+      const data = await res.json()
+      if (!data.subscribed) setUsageCount(data.count ?? 0)
+    } else {
+      incLocalCount()
+      setUsageCount(getLocalCount())
+    }
+  }
 
   const fetchReport = useCallback(async (result: GeoResult) => {
+    // Gate check
+    if (!subscribed && usageCount >= FREE_LIMIT) {
+      setShowPaywall(true)
+      return
+    }
+
     setLoading(true)
     setError(null)
     setTideData(null)
@@ -33,7 +100,6 @@ export default function SurfApp() {
         country: result.country,
       })
 
-      // Fetch surf + tides in parallel
       const [surfRes, tideRes] = await Promise.all([
         fetch(`/api/surf?${qs}`),
         fetch(`/api/tides?lat=${result.lat}&lon=${result.lon}`),
@@ -49,24 +115,43 @@ export default function SurfApp() {
       setReport(surfJson)
       setTideData(tideJson)
       window.scrollTo({ top: 0, behavior: 'smooth' })
+
+      // Count the successful search
+      await incrementUsage()
+
+      // Show paywall after this search if now at limit
+      const newCount = usageCount + 1
+      if (!subscribed && newCount >= FREE_LIMIT) {
+        setTimeout(() => setShowPaywall(true), 2000)
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Something went wrong')
     } finally {
       setLoading(false)
     }
-  }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [subscribed, usageCount])
 
-  const toggleTemp = () => setUnits(u => ({ ...u, temp: u.temp === 'f' ? 'c' : 'f' }))
+  async function openBillingPortal() {
+    const res = await fetch('/api/portal', { method: 'POST' })
+    const data = await res.json()
+    if (data.url) window.location.href = data.url
+  }
+
+  const toggleTemp   = () => setUnits(u => ({ ...u, temp:   u.temp   === 'f' ? 'c'  : 'f'  }))
   const toggleHeight = () => setUnits(u => ({ ...u, height: u.height === 'ft' ? 'm' : 'ft' }))
 
-  // Build aligned tide heights for the wave chart (first 48 hourly values)
   const tideHeights: number[] | undefined =
     tideData?.available
       ? (tideData as TideReport).hourly.slice(0, 48).map(h => h.height)
       : undefined
 
+  const usageLeft = Math.max(0, FREE_LIMIT - usageCount)
+
   return (
     <div className="min-h-screen bg-ocean-gradient">
+      {showPaywall && <PaywallModal onClose={() => setShowPaywall(false)} />}
+
       {/* Sticky header */}
       <header className="sticky top-0 z-50 border-b border-white/5 bg-ocean-950/80 backdrop-blur-xl">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
@@ -79,12 +164,24 @@ export default function SurfApp() {
           <div className="flex-1 max-w-xl">
             <SearchBar onSelect={fetchReport} loading={loading} compact />
           </div>
-          {report && (
-            <div className="flex items-center gap-1 shrink-0">
-              <UnitToggle label={units.height.toUpperCase()} onClick={toggleHeight} />
-              <UnitToggle label={`°${units.temp.toUpperCase()}`} onClick={toggleTemp} />
-            </div>
-          )}
+          <div className="flex items-center gap-1 shrink-0">
+            {report && (
+              <>
+                <UnitToggle label={units.height.toUpperCase()} onClick={toggleHeight} />
+                <UnitToggle label={`°${units.temp.toUpperCase()}`} onClick={toggleTemp} />
+              </>
+            )}
+            {/* Free usage pill — only shown when not subscribed and not full */}
+            {!subscribed && usageCount < FREE_LIMIT && usageCount > 0 && (
+              <button
+                onClick={() => setShowPaywall(true)}
+                className="hidden sm:flex items-center gap-1 px-2 py-1 rounded-md text-xs text-slate-500 hover:text-slate-300 transition-colors"
+              >
+                {usageLeft} free {usageLeft === 1 ? 'search' : 'searches'} left
+              </button>
+            )}
+            <AuthButton subscribed={subscribed} onManageBilling={openBillingPortal} />
+          </div>
         </div>
       </header>
 
@@ -122,7 +219,6 @@ export default function SurfApp() {
 
             {report.isCoastal && <ConditionCards report={report} units={units} />}
 
-            {/* 48-Hour Wave + Tide Overlay Chart */}
             {report.isCoastal && report.hourly.length > 0 && (
               <section className="glass-card rounded-2xl p-4 sm:p-6">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
@@ -137,7 +233,6 @@ export default function SurfApp() {
               </section>
             )}
 
-            {/* Dedicated Tides Section */}
             {report.isCoastal && (
               <section className="glass-card rounded-2xl p-4 sm:p-6">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
@@ -160,7 +255,6 @@ export default function SurfApp() {
               </section>
             )}
 
-            {/* 10-Day Forecast */}
             <section className="glass-card rounded-2xl p-4 sm:p-6">
               <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
                 10-Day Forecast

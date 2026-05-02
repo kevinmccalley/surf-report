@@ -1,0 +1,57 @@
+'use client'
+
+import { SignInButton, SignOutButton, useUser } from '@clerk/nextjs'
+
+interface Props {
+  subscribed: boolean
+  onManageBilling: () => void
+}
+
+export default function AuthButton({ subscribed, onManageBilling }: Props) {
+  const { isSignedIn, user } = useUser()
+
+  if (isSignedIn) {
+    return (
+      <div className="flex items-center gap-2">
+        {subscribed && (
+          <button
+            onClick={onManageBilling}
+            className="px-2 py-1 rounded-md text-[10px] font-semibold bg-teal-500/15 border border-teal-500/20 text-teal-400 hover:bg-teal-500/25 transition-colors hidden sm:block"
+          >
+            Pro
+          </button>
+        )}
+        <div className="relative group">
+          <button className="flex items-center gap-1.5 px-2 py-1 rounded-md text-xs text-slate-400 hover:text-white hover:bg-white/10 transition-colors">
+            <span className="w-6 h-6 rounded-full bg-sky-500/20 border border-sky-500/30 flex items-center justify-center text-[10px] font-bold text-sky-300 shrink-0">
+              {(user?.firstName?.[0] ?? user?.emailAddresses?.[0]?.emailAddress?.[0] ?? '?').toUpperCase()}
+            </span>
+          </button>
+          <div className="absolute right-0 top-full mt-1 w-40 glass-card rounded-xl border border-white/10 shadow-xl py-1 hidden group-hover:block z-50">
+            {subscribed && (
+              <button
+                onClick={onManageBilling}
+                className="w-full text-left px-3 py-2 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+              >
+                Manage billing
+              </button>
+            )}
+            <SignOutButton>
+              <button className="w-full text-left px-3 py-2 text-xs text-slate-400 hover:text-white hover:bg-white/5 transition-colors">
+                Sign out
+              </button>
+            </SignOutButton>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <SignInButton mode="modal">
+      <button className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500/20 border border-sky-500/30 text-sky-300 hover:bg-sky-500/30 transition-colors whitespace-nowrap">
+        Sign in
+      </button>
+    </SignInButton>
+  )
+}

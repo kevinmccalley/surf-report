@@ -9,13 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^7.3.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.21",
     "lucide-react": "^0.441.0",
     "next": "^16.2.4",
     "react": "^18",
     "react-dom": "^18",
-    "recharts": "^2.12.7"
+    "recharts": "^2.12.7",
+    "stripe": "^22.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",
