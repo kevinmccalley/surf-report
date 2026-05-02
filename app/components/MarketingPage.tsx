@@ -103,7 +103,7 @@ export default function MarketingPage() {
         <div className="relative z-10 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-500/20 bg-sky-500/8 text-sky-400 text-xs font-medium mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
-            Live data · Updated every hour
+            Live data · Fresh on every search
           </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight mb-6">
