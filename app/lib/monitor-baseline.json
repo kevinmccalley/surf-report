@@ -1,0 +1,27 @@
+{
+  "_note": "This file is the source of truth for the weekly monitor. Update it after Kevin approves a change.",
+  "lastChecked": "2026-05-02T00:00:00Z",
+  "openMeteo": {
+    "marineAlive": true,
+    "hasSealevelVariable": true,
+    "hasWaveHeight": true,
+    "hasSwellHeight": true,
+    "hasWindWaveHeight": true,
+    "maxForecastDays": 10
+  },
+  "noaa": {
+    "alive": true,
+    "stationCountBucket": 3000
+  },
+  "dfo": {
+    "alive": true,
+    "stationCountBucket": 900
+  },
+  "packages": {
+    "next": { "major": 16, "latest": "16.2.4" },
+    "recharts": { "major": 2, "latest": "2.12.7" },
+    "tailwindcss": { "major": 3, "latest": "3.4.1" },
+    "@clerk/nextjs": { "major": 6, "latest": "6.12.12" },
+    "stripe": { "major": 17, "latest": "17.7.0" }
+  }
+}
