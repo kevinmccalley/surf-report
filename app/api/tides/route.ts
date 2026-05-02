@@ -200,6 +200,67 @@ function inferHiLo(extremes: TideExtreme[]) {
   }
 }
 
+// ── WorldTides (global harmonic fallback) ─────────────────────────────────────
+
+async function tryWorldTides(lat: number, lon: number): Promise<TideResult | null> {
+  const key = process.env.WORLDTIDES_API_KEY
+  if (!key) return null
+  try {
+    const url =
+      `https://www.worldtides.info/api/v2?extremes&heights` +
+      `&lat=${lat}&lon=${lon}&days=5&step=3600&key=${key}`
+    const res = await fetch(url, { next: { revalidate: 21600 } })
+    if (!res.ok) return null
+    const data = await res.json() as {
+      status: number
+      station?: string
+      responseLat?: number
+      responseLon?: number
+      heights?: { date: string; height: number }[]
+      extremes?: { date: string; height: number; type: string }[]
+    }
+
+    // Non-200 status means rate-limited, invalid key, or no coverage
+    if (data.status !== 200) {
+      console.warn(`[WorldTides] status ${data.status} — falling back to Open-Meteo`)
+      return null
+    }
+
+    const hourly: TideHeight[] = (data.heights ?? [])
+      .map(h => ({ time: h.date, height: h.height }))
+      .filter(h => !isNaN(h.height))
+
+    const extremes: TideExtreme[] = (data.extremes ?? [])
+      .map((e): TideExtreme => ({
+        time:   e.date,
+        height: e.height,
+        type:   e.type === 'High' ? 'High' : 'Low',
+      }))
+      .filter(e => !isNaN(e.height))
+
+    if (!hourly.length) return null
+
+    const stationDistanceKm =
+      data.responseLat != null && data.responseLon != null
+        ? Math.round(haversineKm(lat, lon, data.responseLat, data.responseLon))
+        : undefined
+
+    return {
+      available: true,
+      source: 'worldtides',
+      estimated: false,
+      timeFormat: 'iso-utc',
+      extremes,
+      hourly,
+      datum: 'LAT',
+      stationName: data.station ?? undefined,
+      stationDistanceKm,
+    }
+  } catch {
+    return null
+  }
+}
+
 // ── Parabolic interpolation for peak/valley time + height ────────────────────
 // Fits a parabola through three equally-spaced hourly points to find the
 // sub-hour position of the true tide extreme.
@@ -292,7 +353,7 @@ async function tryOpenMeteo(lat: number, lon: number): Promise<TideResult | null
 type TideResult =
   | {
       available: true
-      source: 'noaa' | 'dfo' | 'open-meteo'
+      source: 'noaa' | 'dfo' | 'worldtides' | 'open-meteo'
       estimated: boolean
       timeFormat: 'noaa-local' | 'iso-utc' | 'iso-local'
       extremes: TideExtreme[]
@@ -327,11 +388,15 @@ export async function GET(request: NextRequest) {
       tryDFO(lat, lon),
     ])
 
-    // Prefer harmonic (non-estimated) sources, then DFO, then NOAA
+    // Prefer harmonic sources: NOAA → DFO → WorldTides → Open-Meteo (estimated)
     if (noaaResult?.available) return NextResponse.json(noaaResult)
     if (dfoResult?.available) return NextResponse.json(dfoResult)
 
-    // Global fallback: Open-Meteo sea level model
+    // Global harmonic: WorldTides (falls back automatically if rate-limited)
+    const wtResult = await tryWorldTides(lat, lon)
+    if (wtResult?.available) return NextResponse.json(wtResult)
+
+    // Last resort: Open-Meteo sea level model (estimated)
     const omResult = await tryOpenMeteo(lat, lon)
     if (omResult?.available) return NextResponse.json(omResult)
 

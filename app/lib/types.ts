@@ -119,7 +119,7 @@ export interface TideReport {
   extremes: TideExtreme[]
   hourly: TideHeight[]
   datum: string
-  source: 'noaa' | 'dfo' | 'open-meteo'
+  source: 'noaa' | 'dfo' | 'worldtides' | 'open-meteo'
   estimated: boolean
   timeFormat: 'noaa-local' | 'iso-utc' | 'iso-local'
   stationName?: string

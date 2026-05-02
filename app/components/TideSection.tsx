@@ -10,7 +10,7 @@ interface Props {
   extremes: TideExtreme[]
   hourly: TideHeight[]
   heightUnit: 'ft' | 'm'
-  source: 'noaa' | 'dfo' | 'open-meteo'
+  source: 'noaa' | 'dfo' | 'worldtides' | 'open-meteo'
   estimated: boolean
   timeFormat: 'noaa-local' | 'iso-utc' | 'iso-local'
   stationName?: string
@@ -153,6 +153,11 @@ export default function TideSection({
     if (source === 'dfo') return {
       label: `DFO station${stationName ? `: ${stationName}` : ''}${stationDistanceKm ? ` · ${stationDistanceKm} km away` : ''}`,
       note: 'times in UTC',
+      badge: null,
+    }
+    if (source === 'worldtides') return {
+      label: `WorldTides${stationName ? ` · ${stationName}` : ''}${stationDistanceKm ? ` · ${stationDistanceKm} km away` : ''}`,
+      note: 'harmonic prediction · times in UTC',
       badge: null,
     }
     return {
