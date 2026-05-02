@@ -148,9 +148,15 @@ export default function SurfApp() {
                     extremes={(tideData as TideReport).extremes}
                     hourly={(tideData as TideReport).hourly}
                     heightUnit={units.height}
+                    stationName={(tideData as TideReport).stationName}
+                    stationDistanceKm={(tideData as TideReport).stationDistanceKm}
                   />
                 ) : (
-                  <TideSetupCard />
+                  <TideSetupCard
+                    reason={(tideData as TideUnavailable | null)?.reason}
+                    nearestStationName={(tideData as TideUnavailable | null)?.nearestStationName}
+                    nearestStationDistanceKm={(tideData as TideUnavailable | null)?.nearestStationDistanceKm}
+                  />
                 )}
               </section>
             )}
@@ -164,8 +170,8 @@ export default function SurfApp() {
             </section>
 
             <footer className="text-center text-xs text-slate-600 pt-4">
-              Data: Open-Meteo Marine & Weather API
-              {tideData?.available && ' · WorldTides'}
+              Waves: Open-Meteo Marine & Weather API
+              {tideData?.available && ' · Tides: NOAA CO-OPS'}
               {' '}· Updated {new Date(report.updatedAt).toLocaleTimeString()}
             </footer>
           </div>

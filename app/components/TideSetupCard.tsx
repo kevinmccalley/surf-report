@@ -1,24 +1,54 @@
-export default function TideSetupCard() {
+interface Props {
+  reason?: string
+  nearestStationName?: string
+  nearestStationDistanceKm?: number
+}
+
+export default function TideSetupCard({ reason, nearestStationName, nearestStationDistanceKm }: Props) {
+  if (reason === 'out_of_range') {
+    return (
+      <div className="flex items-start gap-4 px-5 py-4 rounded-xl border border-slate-700/50 bg-white/3">
+        <span className="text-xl shrink-0 mt-0.5">🌐</span>
+        <div>
+          <p className="text-sm font-semibold text-slate-300">Tide data not available here</p>
+          <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+            Tidal predictions are sourced from{' '}
+            <a
+              href="https://tidesandcurrents.noaa.gov"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 underline underline-offset-2 hover:text-slate-300"
+            >
+              NOAA CO-OPS
+            </a>{' '}
+            at no cost. The nearest NOAA station
+            {nearestStationName ? ` (${nearestStationName})` : ''} is{' '}
+            {nearestStationDistanceKm ? `${nearestStationDistanceKm} km away` : 'too far'} — outside the
+            500 km range for reliable tidal predictions. US coasts, Hawaii, and US territories are
+            fully supported.
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 px-5 py-4 rounded-xl border border-teal-500/20 bg-teal-500/5">
-      <div className="text-2xl shrink-0">🌊</div>
-      <div className="flex-1 min-w-0">
-        <p className="text-sm font-semibold text-teal-300">Enable Tide Data</p>
-        <p className="text-xs text-slate-400 mt-0.5 leading-relaxed">
-          Add a free{' '}
+    <div className="flex items-start gap-4 px-5 py-4 rounded-xl border border-slate-700/50 bg-white/3">
+      <span className="text-xl shrink-0 mt-0.5">📡</span>
+      <div>
+        <p className="text-sm font-semibold text-slate-300">Tide data unavailable</p>
+        <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+          Could not retrieve tidal predictions for this location. Try refreshing,
+          or check back shortly. Tide data is sourced from{' '}
           <a
-            href="https://www.worldtides.info/developer"
+            href="https://tidesandcurrents.noaa.gov"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-teal-400 underline underline-offset-2 hover:text-teal-300"
+            className="text-slate-400 underline underline-offset-2 hover:text-slate-300"
           >
-            WorldTides API key
-          </a>
-          {' '}as{' '}
-          <code className="px-1 py-0.5 rounded bg-white/5 text-teal-300 font-mono text-xs">
-            WORLDTIDES_API_KEY
-          </code>
-          {' '}in your Vercel environment variables to unlock tidal predictions worldwide.
+            NOAA CO-OPS
+          </a>{' '}
+          (free, no API key required).
         </p>
       </div>
     </div>

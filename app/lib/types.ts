@@ -119,9 +119,14 @@ export interface TideReport {
   extremes: TideExtreme[]
   hourly: TideHeight[]
   datum: string
+  stationName?: string
+  stationId?: string
+  stationDistanceKm?: number
 }
 
 export interface TideUnavailable {
   available: false
-  reason: 'no_key' | 'fetch_error' | 'inland' | string
+  reason: 'out_of_range' | 'fetch_error' | 'no_stations' | string
+  nearestStationName?: string
+  nearestStationDistanceKm?: number
 }
