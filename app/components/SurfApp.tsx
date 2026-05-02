@@ -11,22 +11,11 @@ import ForecastGrid from './ForecastGrid'
 import TideSection from './TideSection'
 import TideSetupCard from './TideSetupCard'
 import LandingHero from './LandingHero'
-import PaywallModal from './PaywallModal'
 import AuthButton from './AuthButton'
 import ThemePicker from './ThemePicker'
 
 type Units = { temp: 'c' | 'f'; height: 'ft' | 'm' }
 type TideResult = TideReport | TideUnavailable
-
-const FREE_LIMIT = 7
-const LS_KEY = 'gs_usage'
-
-function getLocalCount(): number {
-  try { return parseInt(localStorage.getItem(LS_KEY) ?? '0', 10) || 0 } catch { return 0 }
-}
-function incLocalCount() {
-  try { localStorage.setItem(LS_KEY, String(getLocalCount() + 1)) } catch {}
-}
 
 export default function SurfApp() {
   const { isSignedIn } = useUser()
@@ -35,61 +24,18 @@ export default function SurfApp() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [units, setUnits] = useState<Units>({ temp: 'f', height: 'ft' })
-  const [showPaywall, setShowPaywall] = useState(false)
-  const [subscribed, setSubscribed] = useState(false)
-  const [usageCount, setUsageCount] = useState(0)
 
-  // Load usage status on mount / auth change
-  useEffect(() => {
-    async function loadUsage() {
-      try {
-        const res = await fetch('/api/usage')
-        const data = await res.json()
-        if (data.authenticated) {
-          setSubscribed(data.subscribed)
-          setUsageCount(data.count)
-        } else {
-          setUsageCount(getLocalCount())
-        }
-      } catch {
-        setUsageCount(getLocalCount())
-      }
-    }
-    loadUsage()
-  }, [isSignedIn])
-
-  // Check for ?subscribed=true after Stripe redirect
+  // Handle ?subscribed=true redirect from Stripe (page.tsx handles the real gate,
+  // this just clears the param after a successful round-trip)
   useEffect(() => {
     if (typeof window === 'undefined') return
     const params = new URLSearchParams(window.location.search)
     if (params.get('subscribed') === 'true') {
-      setSubscribed(true)
-      window.history.replaceState({}, '', '/')
-    }
-    if (params.get('paywall') === '1') {
-      setShowPaywall(true)
       window.history.replaceState({}, '', '/')
     }
   }, [])
 
-  async function incrementUsage() {
-    if (isSignedIn) {
-      const res = await fetch('/api/usage', { method: 'POST' })
-      const data = await res.json()
-      if (!data.subscribed) setUsageCount(data.count ?? 0)
-    } else {
-      incLocalCount()
-      setUsageCount(getLocalCount())
-    }
-  }
-
   const fetchReport = useCallback(async (result: GeoResult) => {
-    // Gate check
-    if (!subscribed && usageCount >= FREE_LIMIT) {
-      setShowPaywall(true)
-      return
-    }
-
     setLoading(true)
     setError(null)
     setTideData(null)
@@ -116,22 +62,12 @@ export default function SurfApp() {
       setReport(surfJson)
       setTideData(tideJson)
       window.scrollTo({ top: 0, behavior: 'smooth' })
-
-      // Count the successful search
-      await incrementUsage()
-
-      // Show paywall after this search if now at limit
-      const newCount = usageCount + 1
-      if (!subscribed && newCount >= FREE_LIMIT) {
-        setTimeout(() => setShowPaywall(true), 2000)
-      }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Something went wrong')
     } finally {
       setLoading(false)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subscribed, usageCount])
+  }, [])
 
   async function openBillingPortal() {
     const res = await fetch('/api/portal', { method: 'POST' })
@@ -147,12 +83,8 @@ export default function SurfApp() {
       ? (tideData as TideReport).hourly.slice(0, 48).map(h => h.height)
       : undefined
 
-  const usageLeft = Math.max(0, FREE_LIMIT - usageCount)
-
   return (
     <div className="theme-bg">
-      {showPaywall && <PaywallModal onClose={() => setShowPaywall(false)} />}
-
       {/* Sticky header */}
       <header className="sticky top-0 z-50 theme-header">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
@@ -172,17 +104,8 @@ export default function SurfApp() {
                 <UnitToggle label={`°${units.temp.toUpperCase()}`} onClick={toggleTemp} />
               </>
             )}
-            {/* Free usage pill — only shown when not subscribed and not full */}
-            {!subscribed && usageCount < FREE_LIMIT && usageCount > 0 && (
-              <button
-                onClick={() => setShowPaywall(true)}
-                className="hidden sm:flex items-center gap-1 px-2 py-1 rounded-md text-xs text-slate-500 hover:text-slate-300 transition-colors"
-              >
-                {usageLeft} free {usageLeft === 1 ? 'search' : 'searches'} left
-              </button>
-            )}
             <ThemePicker />
-            <AuthButton subscribed={subscribed} onManageBilling={openBillingPortal} />
+            <AuthButton subscribed={true} onManageBilling={openBillingPortal} />
           </div>
         </div>
       </header>
@@ -276,6 +199,8 @@ export default function SurfApp() {
   )
 }
 
+// ── Small helpers ─────────────────────────────────────────────────────────────
+
 function WaveLogo() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden>
@@ -319,3 +244,4 @@ function LoadingSkeleton() {
     </div>
   )
 }
+
