@@ -125,7 +125,7 @@ export default function MarketingPage() {
                 <button
                   onClick={() => startCheckout('annual')}
                   disabled={!!checkoutLoading}
-                  className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-[#020917] border-2 border-white hover:bg-white/10 active:scale-95 text-white font-bold text-base transition-all disabled:opacity-60"
+                  className="trial-cta-btn w-full sm:w-auto px-8 py-4 rounded-2xl active:scale-95 text-white font-bold text-base transition-all disabled:opacity-60"
                 >
                   {checkoutLoading === 'annual' ? 'Loading…' : 'Start 7-day free trial'}
                 </button>
@@ -141,7 +141,7 @@ export default function MarketingPage() {
               <>
                 <div onClick={() => localStorage.setItem('pendingCheckout', 'annual')}>
                   <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
-                    <button className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-[#020917] border-2 border-white hover:bg-white/10 active:scale-95 text-white font-bold text-base transition-all">
+                    <button className="trial-cta-btn w-full sm:w-auto px-8 py-4 rounded-2xl active:scale-95 text-white font-bold text-base transition-all">
                       Start 7-day free trial →
                     </button>
                   </SignInButton>
@@ -328,7 +328,7 @@ function PricingCTA({ plan, isSignedIn, loading, onCheckout, primary }: {
 }) {
   const isLoading = loading === plan
   const cls = primary
-    ? 'w-full py-3 rounded-xl bg-[#020917] border-2 border-white hover:bg-white/10 text-white font-bold text-sm transition-colors disabled:opacity-60'
+    ? 'trial-cta-btn w-full py-3 rounded-xl text-white font-bold text-sm transition-colors disabled:opacity-60'
     : 'w-full py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/8 text-slate-300 font-semibold text-sm transition-colors disabled:opacity-60'
 
   if (isSignedIn) {
