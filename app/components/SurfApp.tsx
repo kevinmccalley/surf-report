@@ -158,6 +158,13 @@ export default function SurfApp() {
               </section>
             )}
 
+            <section className="glass-card rounded-2xl p-4 sm:p-6">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
+                10-Day Forecast
+              </h2>
+              <ForecastGrid forecast={report.forecast} units={units} isCoastal={report.isCoastal} />
+            </section>
+
             {report.isCoastal && (
               <section className="glass-card rounded-2xl p-4 sm:p-6">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
@@ -179,13 +186,6 @@ export default function SurfApp() {
                 )}
               </section>
             )}
-
-            <section className="glass-card rounded-2xl p-4 sm:p-6">
-              <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
-                10-Day Forecast
-              </h2>
-              <ForecastGrid forecast={report.forecast} units={units} isCoastal={report.isCoastal} />
-            </section>
 
             <footer className="text-center text-xs text-slate-600 pt-4">
               Waves: Open-Meteo Marine & Weather API
