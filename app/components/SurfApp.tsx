@@ -13,6 +13,7 @@ import TideSetupCard from './TideSetupCard'
 import LandingHero from './LandingHero'
 import PaywallModal from './PaywallModal'
 import AuthButton from './AuthButton'
+import ThemePicker from './ThemePicker'
 
 type Units = { temp: 'c' | 'f'; height: 'ft' | 'm' }
 type TideResult = TideReport | TideUnavailable
@@ -149,11 +150,11 @@ export default function SurfApp() {
   const usageLeft = Math.max(0, FREE_LIMIT - usageCount)
 
   return (
-    <div className="min-h-screen bg-ocean-gradient">
+    <div className="theme-bg">
       {showPaywall && <PaywallModal onClose={() => setShowPaywall(false)} />}
 
       {/* Sticky header */}
-      <header className="sticky top-0 z-50 border-b border-white/5 bg-ocean-950/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 theme-header">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
           <div className="flex items-center gap-2 shrink-0">
             <WaveLogo />
@@ -180,6 +181,7 @@ export default function SurfApp() {
                 {usageLeft} free {usageLeft === 1 ? 'search' : 'searches'} left
               </button>
             )}
+            <ThemePicker />
             <AuthButton subscribed={subscribed} onManageBilling={openBillingPortal} />
           </div>
         </div>
