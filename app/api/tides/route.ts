@@ -200,6 +200,34 @@ function inferHiLo(extremes: TideExtreme[]) {
   }
 }
 
+// ── Parabolic interpolation for peak/valley time + height ────────────────────
+// Fits a parabola through three equally-spaced hourly points to find the
+// sub-hour position of the true tide extreme.
+
+function addMinutes(timeStr: string, minutes: number): string {
+  const norm = timeStr.replace('T', ' ').replace(/Z$/, '').slice(0, 16)
+  const [datePart, timePart] = norm.split(' ')
+  const [yr, mo, dy] = datePart.split('-').map(Number)
+  const [hr, mi] = timePart.split(':').map(Number)
+  const d = new Date(yr, mo - 1, dy, hr, mi + minutes)
+  const pad = (n: number) => String(n).padStart(2, '0')
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`
+}
+
+function interpolateExtreme(
+  times: string[], heights: number[], i: number
+): { time: string; height: number } {
+  const y0 = heights[i - 1], y1 = heights[i], y2 = heights[i + 1]
+  const denom = y0 - 2 * y1 + y2
+  if (Math.abs(denom) < 1e-6) return { time: times[i], height: y1 }
+  const offset = (y0 - y2) / (2 * denom)          // fractional hours from i, ±0.5
+  const peakH  = y1 - (y0 - y2) ** 2 / (8 * denom)
+  return {
+    time:   addMinutes(times[i], Math.round(offset * 60)),
+    height: peakH,
+  }
+}
+
 // ── Open-Meteo (global fallback) ──────────────────────────────────────────────
 
 async function tryOpenMeteo(lat: number, lon: number): Promise<TideResult | null> {
@@ -223,16 +251,18 @@ async function tryOpenMeteo(lat: number, lon: number): Promise<TideResult | null
       height: heights[i] ?? 0,
     })).filter(h => !isNaN(h.height))
 
-    // Detect local minima/maxima as tide extremes
+    // Detect local minima/maxima; use parabolic interpolation for sub-hour accuracy
+    // (reuse the raw `times` / `heights` arrays already in scope above)
+    const hts = hourly.map(h => h.height)
     const extremes: TideExtreme[] = []
     for (let i = 1; i < hourly.length - 1; i++) {
-      const prev = hourly[i - 1].height
-      const cur = hourly[i].height
-      const next = hourly[i + 1].height
+      const prev = hts[i - 1], cur = hts[i], next = hts[i + 1]
       if (cur >= prev && cur >= next && cur > prev + 0.05) {
-        extremes.push({ time: hourly[i].time, height: cur, type: 'High' })
+        const interp = interpolateExtreme(times, hts, i)
+        extremes.push({ time: interp.time, height: interp.height, type: 'High' })
       } else if (cur <= prev && cur <= next && cur < prev - 0.05) {
-        extremes.push({ time: hourly[i].time, height: cur, type: 'Low' })
+        const interp = interpolateExtreme(times, hts, i)
+        extremes.push({ time: interp.time, height: interp.height, type: 'Low' })
       }
     }
 
