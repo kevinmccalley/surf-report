@@ -189,11 +189,12 @@ export default function TideSection({
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-6">
 
-        {/* Upcoming hi/lo table — flex column so it matches the chart height,
-            items area scrolls vertically rather than pushing the layout taller */}
-        <div className="lg:col-span-2 flex flex-col min-h-0">
+        {/* Upcoming hi/lo table — on desktop the items area is capped to match
+            the chart height so the two columns stay balanced and items scroll.
+            On mobile/tablet the columns stack so no height cap is needed. */}
+        <div className="lg:col-span-2 flex flex-col">
           <p className="text-xs text-slate-500 uppercase tracking-widest mb-3 shrink-0">Upcoming</p>
-          <div className="flex-1 overflow-y-auto forecast-scroll space-y-1.5 max-h-56 lg:max-h-none pr-0.5">
+          <div className="overflow-y-auto forecast-scroll space-y-1.5 lg:max-h-[284px] pr-0.5">
           {upcomingExtremes.length === 0 && (
             <p className="text-xs text-slate-600 px-3">No upcoming tide extremes available.</p>
           )}
