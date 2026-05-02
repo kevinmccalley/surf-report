@@ -1,18 +1,22 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import type { SurfReport, GeoResult } from '@/app/lib/types'
+import type { SurfReport, TideReport, TideUnavailable, GeoResult } from '@/app/lib/types'
 import SearchBar from './SearchBar'
 import HeroSection from './HeroSection'
 import ConditionCards from './ConditionCards'
 import WaveChart from './WaveChart'
 import ForecastGrid from './ForecastGrid'
+import TideSection from './TideSection'
+import TideSetupCard from './TideSetupCard'
 import LandingHero from './LandingHero'
 
 type Units = { temp: 'c' | 'f'; height: 'ft' | 'm' }
+type TideResult = TideReport | TideUnavailable
 
 export default function SurfApp() {
   const [report, setReport] = useState<SurfReport | null>(null)
+  const [tideData, setTideData] = useState<TideResult | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [units, setUnits] = useState<Units>({ temp: 'f', height: 'ft' })
@@ -20,17 +24,30 @@ export default function SurfApp() {
   const fetchReport = useCallback(async (result: GeoResult) => {
     setLoading(true)
     setError(null)
+    setTideData(null)
     try {
-      const params = new URLSearchParams({
+      const qs = new URLSearchParams({
         lat: result.lat.toString(),
         lon: result.lon.toString(),
         name: result.name,
         country: result.country,
       })
-      const res = await fetch(`/api/surf?${params}`)
-      if (!res.ok) throw new Error('Failed to fetch surf data')
-      const data: SurfReport = await res.json()
-      setReport(data)
+
+      // Fetch surf + tides in parallel
+      const [surfRes, tideRes] = await Promise.all([
+        fetch(`/api/surf?${qs}`),
+        fetch(`/api/tides?lat=${result.lat}&lon=${result.lon}`),
+      ])
+
+      if (!surfRes.ok) throw new Error('Failed to fetch surf data')
+
+      const [surfJson, tideJson]: [SurfReport, TideResult] = await Promise.all([
+        surfRes.json(),
+        tideRes.json(),
+      ])
+
+      setReport(surfJson)
+      setTideData(tideJson)
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Something went wrong')
@@ -42,9 +59,15 @@ export default function SurfApp() {
   const toggleTemp = () => setUnits(u => ({ ...u, temp: u.temp === 'f' ? 'c' : 'f' }))
   const toggleHeight = () => setUnits(u => ({ ...u, height: u.height === 'ft' ? 'm' : 'ft' }))
 
+  // Build aligned tide heights for the wave chart (first 48 hourly values)
+  const tideHeights: number[] | undefined =
+    tideData?.available
+      ? (tideData as TideReport).hourly.slice(0, 48).map(h => h.height)
+      : undefined
+
   return (
     <div className="min-h-screen bg-ocean-gradient">
-      {/* Sticky top bar */}
+      {/* Sticky header */}
       <header className="sticky top-0 z-50 border-b border-white/5 bg-ocean-950/80 backdrop-blur-xl">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
           <div className="flex items-center gap-2 shrink-0">
@@ -90,28 +113,60 @@ export default function SurfApp() {
             {!report.isCoastal && (
               <div className="glass-card rounded-xl px-4 py-3 border border-amber-500/20 bg-amber-500/5">
                 <p className="text-amber-300 text-sm">
-                  <span className="font-semibold">Inland location</span> — showing weather data only. No wave or swell information available.
+                  <span className="font-semibold">Inland location</span> — showing weather data only.
                 </p>
               </div>
             )}
+
             <HeroSection report={report} units={units} />
+
             {report.isCoastal && <ConditionCards report={report} units={units} />}
+
+            {/* 48-Hour Wave + Tide Overlay Chart */}
             {report.isCoastal && report.hourly.length > 0 && (
               <section className="glass-card rounded-2xl p-4 sm:p-6">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
                   48-Hour Wave Outlook
+                  {tideHeights && <span className="ml-2 text-teal-400 normal-case font-normal">· with tides</span>}
                 </h2>
-                <WaveChart hourly={report.hourly} heightUnit={units.height} />
+                <WaveChart
+                  hourly={report.hourly}
+                  heightUnit={units.height}
+                  tideHeights={tideHeights}
+                />
               </section>
             )}
+
+            {/* Dedicated Tides Section */}
+            {report.isCoastal && (
+              <section className="glass-card rounded-2xl p-4 sm:p-6">
+                <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
+                  Tides
+                </h2>
+                {tideData?.available ? (
+                  <TideSection
+                    extremes={(tideData as TideReport).extremes}
+                    hourly={(tideData as TideReport).hourly}
+                    heightUnit={units.height}
+                  />
+                ) : (
+                  <TideSetupCard />
+                )}
+              </section>
+            )}
+
+            {/* 10-Day Forecast */}
             <section className="glass-card rounded-2xl p-4 sm:p-6">
               <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
                 10-Day Forecast
               </h2>
               <ForecastGrid forecast={report.forecast} units={units} isCoastal={report.isCoastal} />
             </section>
+
             <footer className="text-center text-xs text-slate-600 pt-4">
-              Data: Open-Meteo Marine & Weather API · Updated {new Date(report.updatedAt).toLocaleTimeString()}
+              Data: Open-Meteo Marine & Weather API
+              {tideData?.available && ' · WorldTides'}
+              {' '}· Updated {new Date(report.updatedAt).toLocaleTimeString()}
             </footer>
           </div>
         )}
@@ -124,14 +179,8 @@ function WaveLogo() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden>
       <circle cx="14" cy="14" r="14" fill="rgba(14,165,233,0.15)" />
-      <path
-        d="M4 17 C7 13, 10 20, 14 16 C18 12, 21 19, 24 15"
-        stroke="#38bdf8" strokeWidth="2.2" strokeLinecap="round" fill="none"
-      />
-      <path
-        d="M4 20 C7 16, 10 23, 14 19 C18 15, 21 22, 24 18"
-        stroke="#0ea5e9" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.5"
-      />
+      <path d="M4 17 C7 13, 10 20, 14 16 C18 12, 21 19, 24 15" stroke="#38bdf8" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+      <path d="M4 20 C7 16, 10 23, 14 19 C18 15, 21 22, 24 18" stroke="#0ea5e9" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.5" />
     </svg>
   )
 }
@@ -164,6 +213,7 @@ function LoadingSkeleton() {
         {[1,2,3,4].map(i => <div key={i} className="glass-card rounded-2xl h-36" />)}
       </div>
       <div className="glass-card rounded-2xl h-52" />
+      <div className="glass-card rounded-2xl h-72" />
       <div className="glass-card rounded-2xl h-64" />
     </div>
   )

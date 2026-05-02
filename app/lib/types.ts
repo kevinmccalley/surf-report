@@ -102,3 +102,26 @@ export interface GeoResult {
   lon: number
   displayName: string
 }
+
+export interface TideExtreme {
+  time: string     // ISO datetime string
+  height: number   // meters
+  type: 'High' | 'Low'
+}
+
+export interface TideHeight {
+  time: string
+  height: number   // meters
+}
+
+export interface TideReport {
+  available: true
+  extremes: TideExtreme[]
+  hourly: TideHeight[]
+  datum: string
+}
+
+export interface TideUnavailable {
+  available: false
+  reason: 'no_key' | 'fetch_error' | 'inland' | string
+}
