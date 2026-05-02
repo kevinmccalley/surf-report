@@ -11,12 +11,17 @@ export default function MarketingPage() {
   const [checkoutLoading, setCheckoutLoading] = useState<'monthly' | 'annual' | null>(null)
   const [activating, setActivating] = useState(false)
 
-  // Auto-trigger checkout if redirected back from Clerk sign-in with ?checkout=1
+  // Auto-trigger checkout after sign-in. Google OAuth doesn't reliably preserve
+  // ?checkout=1 through its redirect chain, so we also set a localStorage flag
+  // before opening the modal and check it here as a fallback.
   useEffect(() => {
     if (!isSignedIn) return
     const params = new URLSearchParams(window.location.search)
-    if (params.get('checkout') === '1') {
+    const fromUrl = params.get('checkout') === '1'
+    const fromStorage = localStorage.getItem('pendingCheckout') === 'annual'
+    if (fromUrl || fromStorage) {
       window.history.replaceState({}, '', '/')
+      localStorage.removeItem('pendingCheckout')
       startCheckout('annual')
     }
   }, [isSignedIn])
@@ -134,11 +139,13 @@ export default function MarketingPage() {
               </>
             ) : (
               <>
-                <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
-                  <button className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-[#020917] border-2 border-white hover:bg-white/10 active:scale-95 text-white font-bold text-base transition-all">
-                    Start 7-day free trial →
-                  </button>
-                </SignInButton>
+                <div onClick={() => localStorage.setItem('pendingCheckout', 'annual')}>
+                  <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
+                    <button className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-[#020917] border-2 border-white hover:bg-white/10 active:scale-95 text-white font-bold text-base transition-all">
+                      Start 7-day free trial →
+                    </button>
+                  </SignInButton>
+                </div>
                 <p className="text-sm text-slate-500">No credit card required to try</p>
               </>
             )}
@@ -333,11 +340,13 @@ function PricingCTA({ plan, isSignedIn, loading, onCheckout, primary }: {
   }
 
   return (
-    <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
-      <button disabled={!!loading} className={cls}>
-        Start 7-day free trial
-      </button>
-    </SignInButton>
+    <div onClick={() => localStorage.setItem('pendingCheckout', 'annual')}>
+      <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
+        <button disabled={!!loading} className={cls}>
+          Start 7-day free trial
+        </button>
+      </SignInButton>
+    </div>
   )
 }
 
