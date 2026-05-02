@@ -10,6 +10,9 @@ interface Props {
   extremes: TideExtreme[]
   hourly: TideHeight[]
   heightUnit: 'ft' | 'm'
+  source: 'noaa' | 'dfo' | 'open-meteo'
+  estimated: boolean
+  timeFormat: 'noaa-local' | 'iso-utc' | 'iso-local'
   stationName?: string
   stationDistanceKm?: number
 }
@@ -23,43 +26,57 @@ function formatHeight(meters: number, unit: 'ft' | 'm'): string {
   return `${toDisplay(meters, unit)}${unit}`
 }
 
-// NOAA time format: "YYYY-MM-DD HH:MM" (local station time, no tz info)
-// Parse without any Date constructor to avoid browser timezone ambiguity
-function parseNoaaTime(t: string): { year: number; month: number; day: number; hour: number; minute: number } {
-  const [datePart, timePart] = t.split(' ')
+// ── Unified time parser ───────────────────────────────────────────────────────
+// Returns { year, month, day, hour, minute } without any timezone conversion.
+// NOAA: "YYYY-MM-DD HH:MM"   (local station time, no TZ marker)
+// DFO:  "YYYY-MM-DDTHH:MM:SSZ" (UTC ISO)
+// OM:   "YYYY-MM-DDTHH:MM"   (local per timezone=auto, no TZ marker)
+
+interface Parsed { year: number; month: number; day: number; hour: number; minute: number }
+
+function parseTime(t: string): Parsed {
+  // Normalize: "2024-06-01T14:00:00Z" → "2024-06-01 14:00"
+  // and:       "2024-06-01T14:00"     → "2024-06-01 14:00"
+  const normalized = t.replace('T', ' ').replace(/Z$/, '').slice(0, 16)
+  const [datePart, timePart] = normalized.split(' ')
   const [year, month, day] = datePart.split('-').map(Number)
-  const [hour, minute] = timePart.split(':').map(Number)
+  const [hour, minute] = (timePart ?? '00:00').split(':').map(Number)
   return { year, month, day, hour, minute }
 }
 
 function formatTime(t: string): string {
-  const { hour, minute } = parseNoaaTime(t)
+  const { hour, minute } = parseTime(t)
   const period = hour >= 12 ? 'PM' : 'AM'
   const h = hour % 12 || 12
   return `${h}:${String(minute).padStart(2, '0')} ${period}`
 }
 
 function formatDate(t: string): string {
-  const { year, month, day } = parseNoaaTime(t)
-  // Compare date only against today/tomorrow (in wall-clock sense)
+  const { year, month, day } = parseTime(t)
   const now = new Date()
-  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
+  const pad = (n: number) => String(n).padStart(2, '0')
+  const todayStr = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`
   const tomorrowDate = new Date(now.getTime() + 86400000)
-  const tomorrowStr = `${tomorrowDate.getFullYear()}-${String(tomorrowDate.getMonth() + 1).padStart(2, '0')}-${String(tomorrowDate.getDate()).padStart(2, '0')}`
-  const dateStr = t.split(' ')[0]
+  const tomorrowStr = `${tomorrowDate.getFullYear()}-${pad(tomorrowDate.getMonth() + 1)}-${pad(tomorrowDate.getDate())}`
+  const dateStr = `${year}-${pad(month)}-${pad(day)}`
   if (dateStr === todayStr) return 'Today'
   if (dateStr === tomorrowStr) return 'Tomorrow'
-  // Build weekday name without timezone weirdness
   const d = new Date(year, month - 1, day)
   return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
 }
 
-export default function TideSection({ extremes, hourly, heightUnit, stationName, stationDistanceKm }: Props) {
+// ── Component ─────────────────────────────────────────────────────────────────
+
+export default function TideSection({
+  extremes, hourly, heightUnit,
+  source, estimated, timeFormat,
+  stationName, stationDistanceKm,
+}: Props) {
   const upcomingExtremes = extremes.slice(0, 10)
 
-  // 5-day chart: 120 hourly points
+  // 5-day chart: up to 120 hourly points
   const chartData = hourly.slice(0, 120).map((h, i) => {
-    const { hour } = parseNoaaTime(h.time)
+    const { hour } = parseTime(h.time)
     const isDay0 = i === 0
     const label = (hour === 0 || isDay0)
       ? (isDay0 ? 'Now' : formatDate(h.time))
@@ -79,28 +96,57 @@ export default function TideSection({ extremes, hourly, heightUnit, stationName,
   const yMin = Math.floor((minH - pad) * 10) / 10
   const yMax = Math.ceil((maxH + pad) * 10) / 10
 
+  // Source attribution config
+  const attribution = (() => {
+    if (source === 'noaa') return {
+      label: `NOAA station${stationName ? `: ${stationName}` : ''}${stationDistanceKm ? ` · ${stationDistanceKm} km away` : ''}`,
+      note: 'times in local station time',
+      badge: null,
+    }
+    if (source === 'dfo') return {
+      label: `DFO station${stationName ? `: ${stationName}` : ''}${stationDistanceKm ? ` · ${stationDistanceKm} km away` : ''}`,
+      note: 'times in UTC',
+      badge: null,
+    }
+    return {
+      label: 'Open-Meteo global tidal model (NEMO)',
+      note: 'estimated from sea-level model · less precise than harmonic stations',
+      badge: 'Estimated',
+    }
+  })()
+
+  const timeFormatNote = timeFormat === 'iso-utc' ? 'UTC' : timeFormat === 'noaa-local' ? 'station local time' : 'local time'
+  void timeFormatNote // used via attribution.note instead
+
   return (
     <div className="space-y-5">
-      {/* Station attribution */}
-      {stationName && (
-        <div className="flex items-center gap-1.5 text-xs text-slate-500">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
-            <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1" />
-            <circle cx="6" cy="6" r="1.5" fill="currentColor" />
-          </svg>
-          <span>
-            NOAA station: <span className="text-slate-400">{stationName}</span>
-            {stationDistanceKm ? ` · ${stationDistanceKm} km away` : ''}
+      {/* Attribution row */}
+      <div className="flex items-start sm:items-center gap-1.5 text-xs text-slate-500 flex-wrap">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden className="shrink-0 mt-0.5 sm:mt-0">
+          <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1" />
+          <circle cx="6" cy="6" r="1.5" fill="currentColor" />
+        </svg>
+        <span className="text-slate-400">{attribution.label}</span>
+        {attribution.badge && (
+          <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/20">
+            {attribution.badge}
           </span>
-          <span className="ml-auto text-slate-600">times shown in local station time</span>
-        </div>
+        )}
+        <span className="ml-auto text-slate-600 hidden sm:block">{attribution.note}</span>
+      </div>
+      {/* Show note on its own line on mobile */}
+      {attribution.note && (
+        <p className="text-xs text-slate-600 sm:hidden -mt-3">{attribution.note}</p>
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-6">
 
-        {/* Upcoming high/low table */}
+        {/* Upcoming hi/lo table */}
         <div className="lg:col-span-2 space-y-1.5">
           <p className="text-xs text-slate-500 uppercase tracking-widest mb-3">Upcoming</p>
+          {upcomingExtremes.length === 0 && (
+            <p className="text-xs text-slate-600 px-3">No upcoming tide extremes available.</p>
+          )}
           {upcomingExtremes.map((e, i) => {
             const isHigh = e.type === 'High'
             return (
@@ -149,7 +195,7 @@ export default function TideSection({ extremes, hourly, heightUnit, stationName,
               <AreaChart data={chartData} margin={{ top: 8, right: 8, left: -18, bottom: 0 }}>
                 <defs>
                   <linearGradient id="tideAreaGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#2dd4bf" stopOpacity={0.28} />
+                    <stop offset="5%" stopColor="#2dd4bf" stopOpacity={estimated ? 0.18 : 0.28} />
                     <stop offset="95%" stopColor="#2dd4bf" stopOpacity={0.02} />
                   </linearGradient>
                 </defs>
@@ -175,10 +221,15 @@ export default function TideSection({ extremes, hourly, heightUnit, stationName,
 
                 <Tooltip content={<TideTooltip heightUnit={heightUnit} />} />
 
-                {/* Subtle reference lines at each extreme */}
                 {upcomingExtremes.slice(0, 20).map((e, i) => {
-                  // Find the matching chart point by time string prefix
-                  const match = chartData.find(d => d.time.startsWith(e.time.slice(0, 13)))
+                  const eDate = parseTime(e.time)
+                  const match = chartData.find(d => {
+                    const dDate = parseTime(d.time)
+                    return dDate.year === eDate.year &&
+                      dDate.month === eDate.month &&
+                      dDate.day === eDate.day &&
+                      dDate.hour === eDate.hour
+                  })
                   if (!match?.label) return null
                   return (
                     <ReferenceLine
@@ -194,11 +245,12 @@ export default function TideSection({ extremes, hourly, heightUnit, stationName,
                 <Area
                   type="monotone"
                   dataKey="height"
-                  stroke="#2dd4bf"
-                  strokeWidth={2.2}
+                  stroke={estimated ? '#94a3b8' : '#2dd4bf'}
+                  strokeWidth={estimated ? 1.6 : 2.2}
+                  strokeDasharray={estimated ? '4 2' : undefined}
                   fill="url(#tideAreaGrad)"
                   dot={false}
-                  activeDot={{ r: 4, fill: '#2dd4bf', stroke: 'white', strokeWidth: 1.5 }}
+                  activeDot={{ r: 4, fill: estimated ? '#94a3b8' : '#2dd4bf', stroke: 'white', strokeWidth: 1.5 }}
                 />
               </AreaChart>
             </ResponsiveContainer>

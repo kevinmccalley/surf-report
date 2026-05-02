@@ -148,15 +148,14 @@ export default function SurfApp() {
                     extremes={(tideData as TideReport).extremes}
                     hourly={(tideData as TideReport).hourly}
                     heightUnit={units.height}
+                    source={(tideData as TideReport).source}
+                    estimated={(tideData as TideReport).estimated}
+                    timeFormat={(tideData as TideReport).timeFormat}
                     stationName={(tideData as TideReport).stationName}
                     stationDistanceKm={(tideData as TideReport).stationDistanceKm}
                   />
                 ) : (
-                  <TideSetupCard
-                    reason={(tideData as TideUnavailable | null)?.reason}
-                    nearestStationName={(tideData as TideUnavailable | null)?.nearestStationName}
-                    nearestStationDistanceKm={(tideData as TideUnavailable | null)?.nearestStationDistanceKm}
-                  />
+                  <TideSetupCard reason={(tideData as TideUnavailable | null)?.reason} />
                 )}
               </section>
             )}
