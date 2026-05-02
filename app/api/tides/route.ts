@@ -220,10 +220,16 @@ function interpolateExtreme(
   const y0 = heights[i - 1], y1 = heights[i], y2 = heights[i + 1]
   const denom = y0 - 2 * y1 + y2
   if (Math.abs(denom) < 1e-6) return { time: times[i], height: y1 }
-  const offset = (y0 - y2) / (2 * denom)          // fractional hours from i, ±0.5
+  // offset is fractional hours from point i (typically −0.5 to +0.5)
+  const offset = (y0 - y2) / (2 * denom)
   const peakH  = y1 - (y0 - y2) ** 2 / (8 * denom)
+  // Use floor/ceil instead of round so we never land on :00 when there is a
+  // genuine offset — if offset > 0 the peak is after the hour, if < 0 before.
+  const offsetMin = offset >= 0
+    ? Math.floor(offset * 60)
+    : Math.ceil(offset * 60)
   return {
-    time:   addMinutes(times[i], Math.round(offset * 60)),
+    time:   addMinutes(times[i], offsetMin),
     height: peakH,
   }
 }
@@ -251,17 +257,18 @@ async function tryOpenMeteo(lat: number, lon: number): Promise<TideResult | null
       height: heights[i] ?? 0,
     })).filter(h => !isNaN(h.height))
 
-    // Detect local minima/maxima; use parabolic interpolation for sub-hour accuracy
-    // (reuse the raw `times` / `heights` arrays already in scope above)
-    const hts = hourly.map(h => h.height)
+    // Detect local minima/maxima; use parabolic interpolation for sub-hour accuracy.
+    // Use htimes/hts from the filtered hourly array so indices stay aligned.
+    const htimes = hourly.map(h => h.time)
+    const hts    = hourly.map(h => h.height)
     const extremes: TideExtreme[] = []
     for (let i = 1; i < hourly.length - 1; i++) {
       const prev = hts[i - 1], cur = hts[i], next = hts[i + 1]
       if (cur >= prev && cur >= next && cur > prev + 0.05) {
-        const interp = interpolateExtreme(times, hts, i)
+        const interp = interpolateExtreme(htimes, hts, i)
         extremes.push({ time: interp.time, height: interp.height, type: 'High' })
       } else if (cur <= prev && cur <= next && cur < prev - 0.05) {
-        const interp = interpolateExtreme(times, hts, i)
+        const interp = interpolateExtreme(htimes, hts, i)
         extremes.push({ time: interp.time, height: interp.height, type: 'Low' })
       }
     }
