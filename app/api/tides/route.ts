@@ -395,8 +395,13 @@ async function tryOpenMeteo(lat: number, lon: number): Promise<TideResult | null
 
 function utcToLocal(utcStr: string, timezone: string): string {
   try {
-    const s = utcStr.replace(' ', 'T')
-    const d = new Date(s.endsWith('Z') ? s : s + 'Z')
+    // WorldTides returns "YYYY-MM-DD HH:MM:SS +0000" — strip the trailing UTC
+    // offset (space + sign + 4 digits) before normalising to ISO format.
+    const stripped = utcStr.trim().replace(/\s[+-]\d{4}$/, '')
+    const s = stripped.replace(' ', 'T')
+    const iso = s.endsWith('Z') || /[+-]\d{2}:\d{2}$/.test(s) ? s : s + 'Z'
+    const d = new Date(iso)
+    if (isNaN(d.getTime())) return utcStr
     const parts = new Intl.DateTimeFormat('en-CA', {
       timeZone: timezone,
       year: 'numeric',
