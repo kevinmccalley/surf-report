@@ -25,6 +25,12 @@ interface ClimatologyData {
   peakMonths: number[]
 }
 
+function formatHistDate(dateStr: string): string {
+  const [year, month, day] = dateStr.split('-').map(Number)
+  const d = new Date(year, month - 1, day)
+  return d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+}
+
 export default function SurfApp() {
   const { isSignedIn } = useUser()
   const [report, setReport] = useState<SurfReport | null>(null)
@@ -33,6 +39,8 @@ export default function SurfApp() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [units, setUnits] = useState<Units>({ temp: 'f', height: 'ft' })
+  const [lastGeoResult, setLastGeoResult] = useState<GeoResult | null>(null)
+  const [histDateInput, setHistDateInput] = useState('')
 
   // Handle ?subscribed=true redirect from Stripe (page.tsx handles the real gate,
   // this just clears the param after a successful round-trip)
@@ -49,6 +57,8 @@ export default function SurfApp() {
     setError(null)
     setTideData(null)
     setClimData(null)
+    setLastGeoResult(result)
+    setHistDateInput('')
     try {
       const qs = new URLSearchParams({
         lat: result.lat.toString(),
@@ -85,6 +95,30 @@ export default function SurfApp() {
       setLoading(false)
     }
   }, [])
+
+  const fetchHistorical = useCallback(async (date: string) => {
+    if (!lastGeoResult) return
+    setLoading(true)
+    setError(null)
+    try {
+      const qs = new URLSearchParams({
+        lat: lastGeoResult.lat.toString(),
+        lon: lastGeoResult.lon.toString(),
+        name: lastGeoResult.name,
+        country: lastGeoResult.country,
+        date,
+      })
+      const res = await fetch(`/api/surf-history?${qs}`)
+      const json = await res.json()
+      if (!res.ok) throw new Error(json.error ?? 'Failed to fetch historical data')
+      setReport(json as SurfReport)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Something went wrong')
+    } finally {
+      setLoading(false)
+    }
+  }, [lastGeoResult])
 
   async function openBillingPortal() {
     const res = await fetch('/api/portal', { method: 'POST' })
@@ -144,6 +178,33 @@ export default function SurfApp() {
 
         {report && !loading && (
           <div className="mx-auto max-w-6xl px-4 pb-16 space-y-5 pt-5">
+
+            {/* Historical mode banner */}
+            {report.historical && report.historicalDate && (
+              <div className="glass-card rounded-xl px-4 py-3 border border-violet-500/25 bg-violet-500/8 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2 min-w-0">
+                  <svg className="w-4 h-4 text-violet-400 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z" />
+                  </svg>
+                  <span className="text-sm text-violet-300 truncate">
+                    <span className="font-semibold">Historical conditions</span>
+                    <span className="text-violet-400/70 ml-1 hidden sm:inline">·</span>
+                    <span className="text-violet-400 ml-1 hidden sm:inline">{formatHistDate(report.historicalDate)}</span>
+                    <span className="text-violet-400 ml-1 sm:hidden">{report.historicalDate}</span>
+                  </span>
+                </div>
+                <button
+                  onClick={() => lastGeoResult && fetchReport(lastGeoResult)}
+                  className="shrink-0 flex items-center gap-1 text-xs text-violet-400 hover:text-violet-200 transition-colors border border-violet-500/30 hover:border-violet-400/50 rounded-lg px-2.5 py-1"
+                >
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                  Live forecast
+                </button>
+              </div>
+            )}
+
             {!report.isCoastal && (
               <div className="glass-card rounded-xl px-4 py-3 border border-amber-500/20 bg-amber-500/5">
                 <p className="text-amber-300 text-sm">
@@ -154,12 +215,22 @@ export default function SurfApp() {
 
             <HeroSection report={report} units={units} />
 
+            {/* Past conditions date picker (live mode only) */}
+            {!report.historical && lastGeoResult && (
+              <PastConditionsPicker
+                onSubmit={fetchHistorical}
+                value={histDateInput}
+                onChange={setHistDateInput}
+                loading={loading}
+              />
+            )}
+
             {report.isCoastal && <ConditionCards report={report} units={units} />}
 
             {report.isCoastal && report.hourly.length > 0 && (
               <section className="glass-card rounded-2xl p-4 sm:p-6">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
-                  48-Hour Wave Outlook
+                  {report.historical ? 'Hourly Wave Conditions' : '48-Hour Wave Outlook'}
                 </h2>
                 <WaveChart
                   hourly={report.hourly}
@@ -170,12 +241,13 @@ export default function SurfApp() {
 
             <section className="glass-card rounded-2xl p-4 sm:p-6">
               <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
-                10-Day Forecast
+                {report.historical ? 'Day Summary' : '10-Day Forecast'}
               </h2>
               <ForecastGrid forecast={report.forecast} units={units} isCoastal={report.isCoastal} />
             </section>
 
-            {report.isCoastal && (
+            {/* Tides: live mode only */}
+            {report.isCoastal && !report.historical && (
               <section className="glass-card rounded-2xl p-4 sm:p-6">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
                   Tides
@@ -213,9 +285,14 @@ export default function SurfApp() {
 
             <footer className="text-center text-xs text-slate-600 pt-4 space-y-1.5">
               <p>
-                Waves: Open-Meteo Marine &amp; Weather API
-                {tideData?.available && ' · Tides: NOAA CO-OPS'}
-                {' '}· Updated {new Date(report.updatedAt).toLocaleTimeString()}
+                {report.historical
+                  ? `Historical data: Open-Meteo Archive · ${report.historicalDate}`
+                  : <>
+                      Waves: Open-Meteo Marine &amp; Weather API
+                      {tideData?.available && ' · Tides: NOAA CO-OPS'}
+                      {' '}· Updated {new Date(report.updatedAt).toLocaleTimeString()}
+                    </>
+                }
               </p>
               <p>
                 <a href="/accuracy" className="hover:text-slate-400 transition-colors underline underline-offset-2">
@@ -250,6 +327,51 @@ function UnitToggle({ label, onClick }: { label: string; onClick: () => void }) 
     >
       {label}
     </button>
+  )
+}
+
+function PastConditionsPicker({
+  onSubmit, value, onChange, loading,
+}: {
+  onSubmit: (date: string) => void
+  value: string
+  onChange: (v: string) => void
+  loading: boolean
+}) {
+  const yesterday = new Date()
+  yesterday.setDate(yesterday.getDate() - 1)
+  const maxDate = yesterday.toISOString().slice(0, 10)
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (value) onSubmit(value)
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="glass-card rounded-xl px-4 py-3 flex items-center gap-3 flex-wrap border border-white/5"
+    >
+      <svg className="w-4 h-4 text-slate-500 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+      </svg>
+      <span className="text-xs text-slate-500 shrink-0">Past conditions</span>
+      <input
+        type="date"
+        value={value}
+        min="2022-01-01"
+        max={maxDate}
+        onChange={e => onChange(e.target.value)}
+        className="bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-slate-300 [color-scheme:dark] focus:outline-none focus:border-sky-500/50 transition-colors"
+      />
+      <button
+        type="submit"
+        disabled={!value || loading}
+        className="px-3 py-1.5 rounded-lg text-xs font-medium bg-violet-500/15 border border-violet-500/25 text-violet-300 hover:bg-violet-500/25 hover:text-violet-200 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+      >
+        Look up
+      </button>
+    </form>
   )
 }
 

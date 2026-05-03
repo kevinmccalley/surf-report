@@ -93,6 +93,8 @@ export interface SurfReport {
   updatedAt: string
   isCoastal: boolean
   timezone: string  // IANA name e.g. "America/Los_Angeles"
+  historical?: boolean
+  historicalDate?: string  // YYYY-MM-DD
 }
 
 export interface GeoResult {

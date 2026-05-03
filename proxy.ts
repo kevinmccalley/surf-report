@@ -6,6 +6,7 @@ const isPublicRoute = createRouteMatcher([
   '/api/tides(.*)',
   '/api/geocode(.*)',
   '/api/climatology(.*)',
+  '/api/surf-history(.*)',
   '/api/usage(.*)',
   '/api/webhook(.*)',
   '/api/monitor(.*)',
