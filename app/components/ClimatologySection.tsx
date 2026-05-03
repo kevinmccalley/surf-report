@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import type { ClimatologyMonth } from '@/app/api/climatology/route'
+import type { ClimatologyMonth } from '@/app/lib/climatology'
 
 export type { ClimatologyMonth }
 
@@ -12,12 +12,49 @@ interface Props {
 
 const SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
+function DirectionRose({ degrees, size = 26 }: { degrees: number; size?: number }) {
+  const c = size / 2
+  const r = size / 2 - 2
+  const rad = (degrees * Math.PI) / 180
+  const tx = c + Math.sin(rad) * r * 0.78
+  const ty = c - Math.cos(rad) * r * 0.78
+  const tailR = r * 0.32
+  const bx = c - Math.sin(rad) * tailR
+  const by = c + Math.cos(rad) * tailR
+
+  return (
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-hidden>
+      <circle cx={c} cy={c} r={r} fill="none" stroke="currentColor" strokeWidth={0.7} opacity={0.25} />
+      {[0, 90, 180, 270].map(d => {
+        const dr = (d * Math.PI) / 180
+        return (
+          <line key={d}
+            x1={c + Math.sin(dr) * (r - 2)} y1={c - Math.cos(dr) * (r - 2)}
+            x2={c + Math.sin(dr) * r}       y2={c - Math.cos(dr) * r}
+            stroke="currentColor" strokeWidth={0.8} opacity={0.35}
+          />
+        )
+      })}
+      <line x1={bx} y1={by} x2={tx} y2={ty} stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" opacity={0.9} />
+      <circle cx={tx} cy={ty} r={1.8} fill="currentColor" opacity={0.9} />
+    </svg>
+  )
+}
+
 export default function ClimatologySection({ months, peakMonths }: Props) {
   const [hovered, setHovered] = useState<number | null>(null)
 
   const maxHs       = Math.max(...months.map(m => m.avgHs), 0.1)
   const currentMo   = new Date().getMonth() + 1
   const hoveredData = hovered != null ? months.find(m => m.month === hovered) ?? null : null
+
+  // Position tooltip above the hovered column, clamping at edges
+  const hoveredIdx   = hovered != null ? hovered - 1 : 0
+  const tooltipLeft  = `${((hoveredIdx + 0.5) / 12) * 100}%`
+  const tooltipShift =
+    hoveredIdx <= 1  ? 'translateX(-15%)' :
+    hoveredIdx >= 10 ? 'translateX(-85%)' :
+    'translateX(-50%)'
 
   return (
     <div className="space-y-5">
@@ -50,19 +87,27 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
       {/* Bar chart */}
       <div className="relative select-none">
 
-        {/* Tooltip */}
+        {/* Tooltip — tracks hovered column */}
         {hoveredData && (
           <div
-            className="absolute -top-1 left-1/2 -translate-x-1/2 z-20 glass-card rounded-xl px-3 py-2.5 text-xs shadow-xl border border-white/10 pointer-events-none whitespace-nowrap"
+            className="absolute -top-1 z-20 glass-card rounded-xl px-3 py-2.5 text-xs shadow-xl border border-white/10 pointer-events-none whitespace-nowrap"
+            style={{ left: tooltipLeft, transform: tooltipShift }}
           >
-            <p className="text-white font-semibold mb-1.5">{hoveredData.name}</p>
+            <p className="text-white font-semibold mb-2">{hoveredData.name}</p>
+            <div className="flex items-center gap-2.5 mb-2">
+              <div className="text-teal-400">
+                <DirectionRose degrees={hoveredData.avgSwellDirection} size={32} />
+              </div>
+              <div className="text-slate-300">
+                <p className="font-semibold">{hoveredData.dominantDirectionLabel}</p>
+                <p className="text-slate-500 text-[10px]">{hoveredData.avgSwellDirection}°</p>
+              </div>
+            </div>
             <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-slate-400">
               <span>Avg Hs</span>
               <span className="text-teal-300 font-medium tabular-nums">{hoveredData.avgHs} m</span>
               <span>Avg period</span>
               <span className="text-slate-300 tabular-nums">{hoveredData.avgSwellPeriod} s</span>
-              <span>Swell direction</span>
-              <span className="text-slate-300">{hoveredData.dominantDirectionLabel}</span>
             </div>
           </div>
         )}
@@ -76,8 +121,8 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
             const heightPct = Math.max((m.avgHs / maxHs) * 100, 3)
 
             let barColor = 'bg-slate-700'
-            if (isPeak)    barColor = 'bg-teal-500'
-            if (isCurrent) barColor = 'bg-sky-500'
+            if (isPeak)             barColor = 'bg-teal-500'
+            if (isCurrent)          barColor = 'bg-sky-500'
             if (isPeak && isCurrent) barColor = 'bg-teal-400'
 
             return (
@@ -87,7 +132,6 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
                 onMouseEnter={() => setHovered(m.month)}
                 onMouseLeave={() => setHovered(null)}
               >
-                {/* Bar container — aligns all bars to bottom */}
                 <div className="w-full flex items-end" style={{ height: '96px' }}>
                   <div
                     className={`w-full rounded-t-sm transition-all duration-150 ${barColor} ${
@@ -96,7 +140,6 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
                     style={{ height: `${heightPct}%` }}
                   />
                 </div>
-                {/* Month label */}
                 <span className={`text-[9px] sm:text-[10px] font-medium ${
                   isPeak    ? 'text-teal-400' :
                   isCurrent ? 'text-sky-400'  : 'text-slate-600'
@@ -161,7 +204,11 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
                   {SHORT[m.month - 1]}
                 </span>
                 <span className="text-xs font-bold text-white tabular-nums">{m.avgHs}m</span>
-                <span className="text-[9px] text-slate-600">{m.avgSwellPeriod}s {m.dominantDirectionLabel}</span>
+                <span className="text-[9px] text-slate-600 tabular-nums">{m.avgSwellPeriod}s</span>
+                <div className={`${isPeak ? 'text-teal-500' : isCurrent ? 'text-sky-500' : 'text-slate-600'}`}>
+                  <DirectionRose degrees={m.avgSwellDirection} size={20} />
+                </div>
+                <span className="text-[9px] text-slate-600">{m.dominantDirectionLabel}</span>
               </div>
             )
           })}

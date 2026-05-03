@@ -1,9 +1,8 @@
 import type { GeoResult } from './types'
 
-interface SurfSpot {
+export interface SurfSpot {
   name: string
   aliases?: string[]
-  // country field is displayed as subtitle and passed to the surf API as location context
   country: string
   lat: number
   lon: number
@@ -246,4 +245,20 @@ export function searchSurfSpots(query: string): GeoResult[] {
     lon: s.lon,
     displayName: `${s.name}, ${s.country}`,
   }))
+}
+
+export function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/'/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
+export function findSpotBySlug(slug: string): SurfSpot | undefined {
+  return SURF_SPOTS.find(s => slugify(s.name) === slug)
+}
+
+export function getAllSpots(): SurfSpot[] {
+  return SURF_SPOTS
 }

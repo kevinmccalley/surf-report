@@ -12,6 +12,7 @@ const isPublicRoute = createRouteMatcher([
   '/api/monitor(.*)',
   '/api/accuracy-check(.*)',
   '/accuracy(.*)',
+  '/climatology(.*)',
   '/sign-in(.*)',
   '/sign-up(.*)',
 ])
