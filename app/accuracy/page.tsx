@@ -44,7 +44,7 @@ const STATIONS = [
   { name: 'Santa Monica', stateAbbr: 'CA', stationId: '9410660', lat:  34.01, lon: -118.50 },
   { name: 'Newport',       stateAbbr: 'RI', stationId: '8452660', lat:  41.50, lon:  -71.33 },
   { name: 'Bar Harbor',    stateAbbr: 'ME', stationId: '8413320', lat:  44.39, lon:  -68.20 },
-  { name: 'Astoria',       stateAbbr: 'OR', stationId: '9439040', lat:  46.20, lon: -123.83 },
+  { name: 'Crescent City', stateAbbr: 'CA', stationId: '9419750', lat:  41.74, lon: -124.18 },
 ]
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
