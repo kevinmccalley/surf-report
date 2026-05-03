@@ -2,7 +2,7 @@
 
 import {
   AreaChart, Area, XAxis, YAxis, Tooltip,
-  ResponsiveContainer, CartesianGrid,
+  ResponsiveContainer, CartesianGrid, Customized,
 } from 'recharts'
 import type { TideExtreme, TideHeight } from '@/app/lib/types'
 
@@ -93,56 +93,20 @@ export default function TideSection({
   const yMin = Math.floor((minH - pad) * 10) / 10
   const yMax = Math.ceil((maxH + pad) * 10) / 10
 
-  // Map each predicted extreme → nearest hourly chart index
-  const extremeAtIndex = new Map<number, TideExtreme>()
+  // Map each predicted extreme to its fractional hour offset from chart start.
+  // Using fractional (not rounded) time so the dot lands at the exact extreme
+  // time on the x-axis, not at the nearest hourly tick.
+  interface ExtremePoint { extreme: TideExtreme; fraction: number }
+  const extremePoints: ExtremePoint[] = []
   if (chartData.length > 0) {
     const startMs = parsedToDate(parseTime(chartData[0].time)).getTime()
     for (const extreme of extremes.slice(0, 20)) {
       const eMs = parsedToDate(parseTime(extreme.time)).getTime()
-      const idx = Math.round((eMs - startMs) / 3600000)
-      if (idx >= 0 && idx < chartData.length) {
-        extremeAtIndex.set(idx, extreme)
+      const fraction = (eMs - startMs) / 3600000
+      if (fraction >= 0 && fraction < chartData.length) {
+        extremePoints.push({ extreme, fraction })
       }
     }
-  }
-
-  // Custom dot: invisible for normal points, callout label at hi/lo extremes
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const renderDot = (dotProps: any) => {
-    const { cx, cy, index } = dotProps
-    const extreme = extremeAtIndex.get(index)
-    if (!extreme || typeof cx !== 'number' || typeof cy !== 'number') {
-      return <g key={`d${index}`} />
-    }
-
-    const isHigh = extreme.type === 'High'
-    const color = isHigh ? '#2dd4bf' : '#94a3b8'
-    const stroke = isHigh ? 'rgba(45,212,191,0.45)' : 'rgba(100,116,139,0.35)'
-    const boxW = 60
-    const boxH = 32
-    const boxX = cx - boxW / 2
-    const boxY = isHigh ? cy - 56 : cy + 14
-    const lineY1 = isHigh ? cy - 6 : cy + 6
-    const lineY2 = isHigh ? cy - 20 : cy + 14
-
-    return (
-      <g key={`x${index}`}>
-        <line x1={cx} y1={lineY1} x2={cx} y2={lineY2}
-          stroke={color} strokeWidth={1} strokeOpacity={0.55} />
-        <circle cx={cx} cy={cy} r={5} fill={color}
-          stroke="rgba(2,9,23,0.85)" strokeWidth={1.5} />
-        <rect x={boxX} y={boxY} width={boxW} height={boxH} rx={4}
-          fill="rgba(2,9,23,0.92)" stroke={stroke} strokeWidth={1} />
-        <text x={cx} y={boxY + 12} textAnchor="middle"
-          fill={color} fontSize={9} fontWeight="700" fontFamily="system-ui,sans-serif">
-          {formatTime(extreme.time)}
-        </text>
-        <text x={cx} y={boxY + 25} textAnchor="middle"
-          fill="#e2e8f0" fontSize={9} fontFamily="system-ui,sans-serif">
-          {formatHeight(extreme.height, heightUnit)}
-        </text>
-      </g>
-    )
   }
 
   const tzNote = timezoneLabel ? `times in ${timezoneLabel}` : 'times in UTC'
@@ -293,10 +257,58 @@ export default function TideSection({
                     strokeWidth={estimated ? 1.6 : 2.2}
                     strokeDasharray={estimated ? '4 2' : undefined}
                     fill="url(#tideAreaGrad)"
-                    dot={renderDot}
+                    dot={false}
                     activeDot={{ r: 4, fill: estimated ? '#94a3b8' : '#2dd4bf', stroke: 'white', strokeWidth: 1.5 }}
                     isAnimationActive={false}
                   />
+
+                  {/* Render extreme callouts at exact pixel positions via Recharts' coordinate system */}
+                  <Customized component={({ offset, yAxisMap }: Record<string, any>) => {
+                    if (!offset) return null
+                    const { left: plotLeft, width: plotW } = offset
+                    const yScale = Object.values(yAxisMap as Record<string, { scale: (v: number) => number }>)[0]?.scale
+                    const N = chartData.length
+                    if (N <= 1 || !yScale) return null
+
+                    return (
+                      <g>
+                        {extremePoints.map(({ extreme, fraction }, i) => {
+                          const displayH = toDisplay(extreme.height, heightUnit)
+                          const cx = plotLeft + (fraction / (N - 1)) * plotW
+                          const cy = yScale(displayH)
+                          if (!isFinite(cx) || !isFinite(cy)) return null
+
+                          const isHigh = extreme.type === 'High'
+                          const color = isHigh ? '#2dd4bf' : '#94a3b8'
+                          const stroke = isHigh ? 'rgba(45,212,191,0.45)' : 'rgba(100,116,139,0.35)'
+                          const boxW = 60, boxH = 32
+                          const boxX = cx - boxW / 2
+                          const boxY = isHigh ? cy - 56 : cy + 14
+                          const lineY1 = isHigh ? cy - 6 : cy + 6
+                          const lineY2 = isHigh ? cy - 20 : cy + 14
+
+                          return (
+                            <g key={i}>
+                              <line x1={cx} y1={lineY1} x2={cx} y2={lineY2}
+                                stroke={color} strokeWidth={1} strokeOpacity={0.55} />
+                              <circle cx={cx} cy={cy} r={5} fill={color}
+                                stroke="rgba(2,9,23,0.85)" strokeWidth={1.5} />
+                              <rect x={boxX} y={boxY} width={boxW} height={boxH} rx={4}
+                                fill="rgba(2,9,23,0.92)" stroke={stroke} strokeWidth={1} />
+                              <text x={cx} y={boxY + 12} textAnchor="middle"
+                                fill={color} fontSize={9} fontWeight="700" fontFamily="system-ui,sans-serif">
+                                {formatTime(extreme.time)}
+                              </text>
+                              <text x={cx} y={boxY + 25} textAnchor="middle"
+                                fill="#e2e8f0" fontSize={9} fontFamily="system-ui,sans-serif">
+                                {formatHeight(extreme.height, heightUnit)}
+                              </text>
+                            </g>
+                          )
+                        })}
+                      </g>
+                    )
+                  }} />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
