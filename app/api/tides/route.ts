@@ -299,10 +299,12 @@ function interpolateExtreme(
 
 async function tryOpenMeteo(lat: number, lon: number): Promise<TideResult | null> {
   try {
+    // No timezone=auto — sea_level_height_msl comes back in UTC regardless;
+    // the route handler converts UTC→local via localizeUtcTimes.
     const url =
       `https://marine-api.open-meteo.com/v1/marine` +
       `?latitude=${lat}&longitude=${lon}` +
-      `&hourly=sea_level_height_msl&forecast_days=10&timezone=auto`
+      `&hourly=sea_level_height_msl&forecast_days=10`
 
     const res = await fetch(url, { next: { revalidate: 21600 } })
     if (!res.ok) return null
@@ -338,7 +340,7 @@ async function tryOpenMeteo(lat: number, lon: number): Promise<TideResult | null
       available: true,
       source: 'open-meteo',
       estimated: true,
-      timeFormat: 'iso-local',
+      timeFormat: 'iso-utc',
       extremes,
       hourly,
       datum: 'MSL',
@@ -450,9 +452,9 @@ export async function GET(request: NextRequest) {
     const wtResult = await tryWorldTides(lat, lon)
     if (wtResult?.available) return NextResponse.json(localizeUtcTimes(wtResult, tz))
 
-    // Open-Meteo uses timezone=auto so times are already local
+    // Open-Meteo sea_level_height_msl is in UTC — convert to spot's local timezone
     const omResult = await tryOpenMeteo(lat, lon)
-    if (omResult?.available) return NextResponse.json(omResult)
+    if (omResult?.available) return NextResponse.json(localizeUtcTimes(omResult, tz))
 
     return NextResponse.json({ available: false, reason: 'fetch_error' })
   } catch (e) {

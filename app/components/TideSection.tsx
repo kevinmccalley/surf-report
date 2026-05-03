@@ -166,7 +166,7 @@ export default function TideSection({
     }
     return {
       label: 'Open-Meteo global tidal model (NEMO)',
-      note: 'estimated from sea-level model · less precise than harmonic stations',
+      note: `estimated sea-level model · ${tzNote}`,
       badge: 'Estimated',
     }
   })()
