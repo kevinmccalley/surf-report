@@ -73,8 +73,8 @@ export default function TideSection({
 }: Props) {
   const upcomingExtremes = extremes.slice(0, 10)
 
-  // 5-day chart: up to 120 hourly points
-  const chartData = hourly.slice(0, 120).map((h, i) => {
+  // 5-day chart: up to 120 hourly points (base — no exactTime yet)
+  const chartDataBase = hourly.slice(0, 120).map((h, i) => {
     const { hour } = parseTime(h.time)
     const isDay0 = i === 0
     const label = (hour === 0 || isDay0) ? (isDay0 ? 'Now' : formatDate(h.time)) : ''
@@ -86,7 +86,7 @@ export default function TideSection({
     }
   })
 
-  const heights = chartData.map(d => d.height)
+  const heights = chartDataBase.map(d => d.height)
   const minH = Math.min(...heights)
   const maxH = Math.max(...heights)
   const pad = Math.max((maxH - minH) * 0.12, 0.2)
@@ -97,20 +97,26 @@ export default function TideSection({
   // Using the actual chart data index lets the dot renderer place the circle
   // at Recharts' own cx/cy — guaranteed to sit on the rendered curve.
   const extremeAtIndex = new Map<number, TideExtreme>()
-  if (chartData.length > 0) {
-    const chartMs = chartData.map(d => parsedToDate(parseTime(d.time)).getTime())
+  if (chartDataBase.length > 0) {
+    const chartMs = chartDataBase.map(d => parsedToDate(parseTime(d.time)).getTime())
     for (const extreme of extremes.slice(0, 20)) {
       const eMs = parsedToDate(parseTime(extreme.time)).getTime()
       let bestI = -1
       let bestH = extreme.type === 'High' ? -Infinity : Infinity
-      for (let i = 0; i < chartData.length; i++) {
+      for (let i = 0; i < chartDataBase.length; i++) {
         if (Math.abs(chartMs[i] - eMs) > 2 * 3600000) continue
-        const h = chartData[i].height
+        const h = chartDataBase[i].height
         if (extreme.type === 'High' ? h > bestH : h < bestH) { bestH = h; bestI = i }
       }
       if (bestI >= 0) extremeAtIndex.set(bestI, extreme)
     }
   }
+
+  // Inject exact extreme time into chart data so the tooltip can show it.
+  const chartData = chartDataBase.map((d, i) => {
+    const extreme = extremeAtIndex.get(i)
+    return extreme ? { ...d, exactTime: extreme.time } : d
+  })
 
   const tzNote = timezoneLabel ? `times in ${timezoneLabel}` : 'times in UTC'
 
@@ -306,15 +312,16 @@ export default function TideSection({
 
 function TideTooltip({ active, payload, heightUnit }: {
   active?: boolean
-  payload?: { payload: { time: string; height: number; heightRaw: number } }[]
+  payload?: { payload: { time: string; height: number; heightRaw: number; exactTime?: string } }[]
   heightUnit: 'ft' | 'm'
 }) {
   if (!active || !payload?.length) return null
   const d = payload[0].payload
+  const displayTime = d.exactTime ?? d.time
   return (
     <div className="glass-card rounded-xl px-3 py-2.5 shadow-xl border border-white/10 text-xs">
       <p className="text-slate-300 font-medium mb-1.5">
-        {formatDate(d.time)} · {formatTime(d.time)}
+        {formatDate(displayTime)} · {formatTime(displayTime)}
       </p>
       <div className="flex items-center gap-2">
         <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0" />
