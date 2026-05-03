@@ -127,6 +127,7 @@ export interface TideReport {
   stationId?: string
   stationDistanceKm?: number
   timezoneLabel?: string  // e.g. "PST", "AWST" — set when UTC times have been converted to local
+  qualityWarning?: string // set when model coverage or station distance is poor
 }
 
 export interface TideUnavailable {

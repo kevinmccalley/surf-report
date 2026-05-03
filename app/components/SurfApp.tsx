@@ -10,17 +10,26 @@ import WaveChart from './WaveChart'
 import ForecastGrid from './ForecastGrid'
 import TideSection from './TideSection'
 import TideSetupCard from './TideSetupCard'
+import ClimatologySection from './ClimatologySection'
 import LandingHero from './LandingHero'
 import AuthButton from './AuthButton'
 import ThemePicker from './ThemePicker'
+import type { ClimatologyMonth } from './ClimatologySection'
 
 type Units = { temp: 'c' | 'f'; height: 'ft' | 'm' }
 type TideResult = TideReport | TideUnavailable
+
+interface ClimatologyData {
+  available: boolean
+  months: ClimatologyMonth[]
+  peakMonths: number[]
+}
 
 export default function SurfApp() {
   const { isSignedIn } = useUser()
   const [report, setReport] = useState<SurfReport | null>(null)
   const [tideData, setTideData] = useState<TideResult | null>(null)
+  const [climData, setClimData] = useState<ClimatologyData | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [units, setUnits] = useState<Units>({ temp: 'f', height: 'ft' })
@@ -39,6 +48,7 @@ export default function SurfApp() {
     setLoading(true)
     setError(null)
     setTideData(null)
+    setClimData(null)
     try {
       const qs = new URLSearchParams({
         lat: result.lat.toString(),
@@ -53,11 +63,21 @@ export default function SurfApp() {
 
       const tideParams = `lat=${result.lat}&lon=${result.lon}` +
         (surfJson.timezone ? `&tz=${encodeURIComponent(surfJson.timezone)}` : '')
-      const tideRes = await fetch(`/api/tides?${tideParams}`)
+
+      // Fetch tides and climatology in parallel — neither blocks the other
+      const [tideRes, climRes] = await Promise.all([
+        fetch(`/api/tides?${tideParams}`),
+        surfJson.isCoastal
+          ? fetch(`/api/climatology?lat=${result.lat}&lon=${result.lon}`)
+          : Promise.resolve(null),
+      ])
+
       const tideJson: TideResult = await tideRes.json()
+      const climJson: ClimatologyData | null = climRes ? await climRes.json() : null
 
       setReport(surfJson)
       setTideData(tideJson)
+      setClimData(climJson)
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Something went wrong')
@@ -171,10 +191,23 @@ export default function SurfApp() {
                     stationName={(tideData as TideReport).stationName}
                     stationDistanceKm={(tideData as TideReport).stationDistanceKm}
                     timezoneLabel={(tideData as TideReport).timezoneLabel}
+                    qualityWarning={(tideData as TideReport).qualityWarning}
                   />
                 ) : (
                   <TideSetupCard reason={(tideData as TideUnavailable | null)?.reason} />
                 )}
+              </section>
+            )}
+
+            {report.isCoastal && climData?.available && (
+              <section className="glass-card rounded-2xl p-4 sm:p-6">
+                <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
+                  Surf Climatology
+                </h2>
+                <ClimatologySection
+                  months={climData.months}
+                  peakMonths={climData.peakMonths}
+                />
               </section>
             )}
 

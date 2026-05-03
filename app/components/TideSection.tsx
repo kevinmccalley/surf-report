@@ -16,6 +16,7 @@ interface Props {
   stationName?: string
   stationDistanceKm?: number
   timezoneLabel?: string
+  qualityWarning?: string
 }
 
 function toDisplay(meters: number, unit: 'ft' | 'm'): number {
@@ -69,7 +70,7 @@ export default function TideSection({
   extremes, hourly, heightUnit,
   source, estimated,
   stationName, stationDistanceKm,
-  timezoneLabel,
+  timezoneLabel, qualityWarning,
 }: Props) {
   const upcomingExtremes = extremes.slice(0, 10)
 
@@ -162,6 +163,16 @@ export default function TideSection({
       </div>
       {attribution.note && (
         <p className="text-xs text-slate-600 sm:hidden -mt-3">{attribution.note}</p>
+      )}
+      {qualityWarning && (
+        <div className="flex items-center gap-1.5 text-xs text-amber-400/80 bg-amber-500/8 border border-amber-500/15 rounded-lg px-3 py-2 -mt-1">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden className="shrink-0">
+            <path d="M6 1L11 10H1L6 1Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+            <line x1="6" y1="4.5" x2="6" y2="7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+            <circle cx="6" cy="8.5" r="0.6" fill="currentColor" />
+          </svg>
+          <span>{qualityWarning}</span>
+        </div>
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-6">

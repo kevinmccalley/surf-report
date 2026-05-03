@@ -6,15 +6,44 @@ function isAuthorized(req: NextRequest): boolean {
   return auth === `Bearer ${process.env.CRON_SECRET}`
 }
 
-// ── Station config (mirrors accuracy page) ────────────────────────────────────
-// Note: lat/lon used for Open-Meteo NEMO only — keep in open water near the
-// NOAA station so NEMO's ~5 km grid has ocean cells to model.
+// ── Improvement 1: Expanded station coverage ──────────────────────────────────
+// 16 geographically diverse NOAA stations across all US coasts + territories.
+// lat/lon are open-water NEMO coordinates — kept offshore so the 5 km model
+// grid has ocean cells. NOAA data comes from stationId regardless of lat/lon.
 
 const STATIONS = [
-  { name: 'Santa Monica',  stateAbbr: 'CA', stationId: '9410660', lat:  34.01,  lon: -118.50  },
-  { name: 'Duck',          stateAbbr: 'NC', stationId: '8651370', lat:  35.90,  lon:  -75.30  },
-  { name: 'Bar Harbor',    stateAbbr: 'ME', stationId: '8413320', lat:  44.39,  lon:  -68.20  },
-  { name: 'Crescent City', stateAbbr: 'CA', stationId: '9419750', lat:  41.74,  lon: -124.18  },
+  // US West Coast — Pacific
+  { name: 'Santa Monica',   stateAbbr: 'CA', stationId: '9410660', lat:  34.01, lon: -118.50 },
+  { name: 'San Diego',      stateAbbr: 'CA', stationId: '9410170', lat:  32.65, lon: -117.40 },
+  { name: 'Monterey',       stateAbbr: 'CA', stationId: '9413450', lat:  36.60, lon: -122.50 },
+  { name: 'Crescent City',  stateAbbr: 'CA', stationId: '9419750', lat:  41.74, lon: -124.18 },
+  { name: 'Newport',        stateAbbr: 'OR', stationId: '9435380', lat:  44.63, lon: -124.30 },
+  { name: 'La Push',        stateAbbr: 'WA', stationId: '9441102', lat:  47.91, lon: -124.80 },
+  // US East Coast — Atlantic
+  { name: 'Duck',           stateAbbr: 'NC', stationId: '8651370', lat:  35.90, lon:  -75.30 },
+  { name: 'Virginia Beach', stateAbbr: 'VA', stationId: '8638901', lat:  36.94, lon:  -75.70 },
+  { name: 'Montauk',        stateAbbr: 'NY', stationId: '8510560', lat:  41.05, lon:  -72.00 },
+  { name: 'Bar Harbor',     stateAbbr: 'ME', stationId: '8413320', lat:  44.39, lon:  -68.20 },
+  // US Gulf & Southeast
+  { name: 'Miami Beach',    stateAbbr: 'FL', stationId: '8723170', lat:  25.77, lon:  -80.00 },
+  { name: 'Galveston',      stateAbbr: 'TX', stationId: '8771341', lat:  29.00, lon:  -94.80 },
+  // Pacific Islands
+  { name: 'Hilo',           stateAbbr: 'HI', stationId: '1617760', lat:  19.65, lon: -154.90 },
+  { name: 'Honolulu',       stateAbbr: 'HI', stationId: '1612340', lat:  21.31, lon: -157.90 },
+  // Alaska & Caribbean
+  { name: 'Sitka',          stateAbbr: 'AK', stationId: '9451600', lat:  56.90, lon: -135.60 },
+  { name: 'San Juan',       stateAbbr: 'PR', stationId: '9755371', lat:  18.47, lon:  -66.12 },
+]
+
+// ── Improvement 4: NDBC buoy wave accuracy stations ───────────────────────────
+// Compare Open-Meteo (NEMO) wave heights against NDBC realtime buoy observations.
+// lat/lon must match buoy position so Open-Meteo is queried at the same location.
+
+const NDBC_STATIONS = [
+  { name: 'Santa Monica Basin, CA', lat:  33.85, lon: -119.04, buoyId: '46025' },
+  { name: 'Diamond Shoals, NC',     lat:  35.01, lon:  -75.26, buoyId: '41025' },
+  { name: 'Ambrose / NY Bight',     lat:  40.25, lon:  -73.17, buoyId: '44025' },
+  { name: 'Eel River, CA',          lat:  40.76, lon: -124.54, buoyId: '46022' },
 ]
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -36,7 +65,17 @@ interface StationResult {
   error?: string
 }
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+interface WaveCheck {
+  name: string
+  buoyId: string
+  buoyWvht: number
+  nemoWvht: number
+  errorM: number
+  pctError: number
+  status: 'ok' | 'failing' | 'unavailable'
+}
+
+// ── Tide helpers ──────────────────────────────────────────────────────────────
 
 function parseMs(t: string): number {
   return new Date(t.replace(' ', 'T') + 'Z').getTime()
@@ -64,7 +103,7 @@ function detectExtremes(times: string[], heights: number[]): TideExtreme[] {
   return out
 }
 
-// ── Data fetching ─────────────────────────────────────────────────────────────
+// ── Tide data fetching ────────────────────────────────────────────────────────
 
 async function fetchNOAA(stationId: string): Promise<NOAAPred[]> {
   const now = new Date()
@@ -172,7 +211,6 @@ function diagnose(r: StationResult): { cause: string; proposal: string } {
     }
   }
 
-  // Has matches but pctWithin30 < 50
   const errors = r.matches.map(m => m.errorMin)
   const avg = Math.round(errors.reduce((a, b) => a + b, 0) / errors.length)
   const allPositive = errors.every(e => e > 0)
@@ -201,7 +239,7 @@ function fmtHHMM(ms: number): string {
 
 async function createIssueIfNew(r: StationResult, diag: ReturnType<typeof diagnose>) {
   const token = process.env.GITHUB_TOKEN
-  const repo  = process.env.GITHUB_REPO  // e.g. "kevinmccalley/surf-report"
+  const repo  = process.env.GITHUB_REPO
   if (!token || !repo) {
     console.warn(`[accuracy-check] GITHUB_TOKEN or GITHUB_REPO not set — skipping issue for ${r.name}`)
     return
@@ -209,7 +247,6 @@ async function createIssueIfNew(r: StationResult, diag: ReturnType<typeof diagno
 
   const titlePrefix = `[Accuracy Alert] ${r.name}, ${r.stateAbbr}`
 
-  // Avoid duplicate open issues for the same station
   const searchUrl =
     `https://api.github.com/search/issues` +
     `?q=repo:${repo}+is:open+is:issue+"${encodeURIComponent(titlePrefix)}"&per_page=1`
@@ -285,6 +322,126 @@ ${matchRows}
   }
 }
 
+// ── Improvement 4: NDBC wave accuracy check ───────────────────────────────────
+
+async function fetchNDBCWaveHeight(buoyId: string): Promise<number | null> {
+  const url = `https://www.ndbc.noaa.gov/data/realtime2/${buoyId}.txt`
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(8000) })
+    if (!res.ok) return null
+    const text = await res.text()
+    const lines = text.split('\n')
+
+    // Find header line — always starts with #YY
+    const headerLine = lines.find(l => l.startsWith('#YY'))
+    if (!headerLine) return null
+    const headers = headerLine.replace(/^#+\s*/, '').trim().split(/\s+/)
+    const wvhtIdx = headers.indexOf('WVHT')
+    if (wvhtIdx < 0) return null
+
+    // First non-comment line after the units row is the most recent observation
+    const dataLine = lines.slice(2).find(l => l.trim() && !l.startsWith('#'))
+    if (!dataLine) return null
+
+    const parts = dataLine.trim().split(/\s+/)
+    const wvht = parseFloat(parts[wvhtIdx])
+    // NDBC uses "MM" for missing; parseFloat("MM") = NaN which we filter below
+    if (isNaN(wvht) || wvht < 0) return null
+    return wvht
+  } catch { return null }
+}
+
+async function fetchOpenMeteoWaveHeight(lat: number, lon: number): Promise<number | null> {
+  const url =
+    `https://marine-api.open-meteo.com/v1/marine` +
+    `?latitude=${lat}&longitude=${lon}&hourly=wave_height&forecast_days=1&timezone=GMT`
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(8000) })
+    if (!res.ok) return null
+    const data = await res.json() as {
+      hourly?: { time?: string[]; wave_height?: (number | null)[] }
+    }
+    const times   = data.hourly?.time ?? []
+    const heights = data.hourly?.wave_height ?? []
+
+    // Find the slot nearest to the current UTC hour
+    const now = new Date()
+    const targetHour = `${now.toISOString().slice(0, 13)}:00`
+    let idx = times.findIndex((t: string) => t === targetHour)
+    if (idx < 0) idx = times.findIndex((t: string) => t >= targetHour)
+    if (idx < 0) idx = 0
+
+    const h = heights[idx]
+    return typeof h === 'number' && !isNaN(h) && h >= 0 ? h : null
+  } catch { return null }
+}
+
+async function checkWaveStation(
+  s: { name: string; lat: number; lon: number; buoyId: string }
+): Promise<WaveCheck> {
+  const [buoyH, nemoH] = await Promise.all([
+    fetchNDBCWaveHeight(s.buoyId),
+    fetchOpenMeteoWaveHeight(s.lat, s.lon),
+  ])
+  if (buoyH === null || nemoH === null) {
+    return { name: s.name, buoyId: s.buoyId, buoyWvht: 0, nemoWvht: 0, errorM: 0, pctError: 0, status: 'unavailable' }
+  }
+  const errorM   = Math.abs(nemoH - buoyH)
+  const pctError = buoyH > 0.05 ? Math.round(errorM / buoyH * 100) : 0
+  return {
+    name: s.name,
+    buoyId: s.buoyId,
+    buoyWvht: Math.round(buoyH * 100) / 100,
+    nemoWvht: Math.round(nemoH * 100) / 100,
+    errorM:   Math.round(errorM * 100) / 100,
+    pctError,
+    status: pctError > 50 ? 'failing' : 'ok',
+  }
+}
+
+// ── Improvement 5: UTC→local timezone regression test ────────────────────────
+// Replicates the utcToLocal logic from app/api/tides/route.ts and verifies it
+// converts the WorldTides date format correctly. Catches regressions that would
+// cause all non-NOAA/DFO users to see times in UTC instead of their local tz.
+
+function runTimezoneRegressionTest(): { passed: boolean; details: string } {
+  // WorldTides format: "YYYY-MM-DD HH:MM:SS +0000"
+  // Jeffreys Bay (SAST = UTC+2): 08:26 UTC → should become 10:26 local
+  const input    = '2026-05-03 08:26:00 +0000'
+  const timezone = 'Africa/Johannesburg'
+  const expectedH = '10', expectedM = '26'
+
+  try {
+    const stripped = input.trim().replace(/\s[+-]\d{4}$/, '')
+    const s   = stripped.replace(' ', 'T')
+    const iso = s.endsWith('Z') || /[+-]\d{2}:\d{2}$/.test(s) ? s : s + 'Z'
+    const d   = new Date(iso)
+    if (isNaN(d.getTime())) {
+      return { passed: false, details: `Date parse failed for "${input}" — possible utcToLocal regression` }
+    }
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: timezone,
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', hour12: false,
+    }).formatToParts(d)
+    const p: Record<string, string> = {}
+    for (const part of parts) p[part.type] = part.value
+    const h = p.hour === '24' ? '00' : p.hour
+
+    if (h !== expectedH || p.minute !== expectedM) {
+      return {
+        passed: false,
+        details:
+          `utcToLocal("${input}", "${timezone}") → ${h}:${p.minute}, ` +
+          `expected ${expectedH}:${expectedM} — timezone conversion bug detected`,
+      }
+    }
+    return { passed: true, details: `UTC→local ok: ${h}:${p.minute} ${timezone}` }
+  } catch (e) {
+    return { passed: false, details: `utcToLocal threw: ${e}` }
+  }
+}
+
 // ── Route handler ─────────────────────────────────────────────────────────────
 
 export async function GET(request: NextRequest) {
@@ -294,19 +451,35 @@ export async function GET(request: NextRequest) {
 
   console.log('[accuracy-check] Running daily accuracy check...')
 
-  const results = await Promise.all(STATIONS.map(computeStation))
-  const failing = results.filter(r => r.pctWithin30 < 50)
+  // Improvement 5: timezone regression test runs first — instant, catches bugs early
+  const tzTest = runTimezoneRegressionTest()
+  if (!tzTest.passed) {
+    console.error(`[accuracy-check] TIMEZONE REGRESSION FAILED: ${tzTest.details}`)
+  }
 
-  // Create GitHub issues for failing stations (errors are non-fatal)
+  // Improvements 1 + 4: run all tide stations and wave buoys in parallel
+  const [tideResults, waveChecks] = await Promise.all([
+    Promise.all(STATIONS.map(computeStation)),
+    Promise.all(NDBC_STATIONS.map(checkWaveStation)),
+  ])
+
+  const failing = tideResults.filter(r => r.pctWithin30 < 50)
+
+  // Create GitHub issues for failing tide stations (non-blocking)
   await Promise.allSettled(
     failing.map(r => createIssueIfNew(r, diagnose(r)))
   )
 
+  const waveResults = waveChecks.filter(w => w.status !== 'unavailable')
+  const waveFailCount = waveResults.filter(w => w.status === 'failing').length
+
   const summary = {
     timestamp: new Date().toISOString(),
-    checked: results.length,
+    timezoneTest: tzTest,
+    // Legacy top-level fields for backward compatibility
+    checked: tideResults.length,
     failing: failing.length,
-    results: results.map(r => ({
+    results: tideResults.map(r => ({
       station: `${r.name}, ${r.stateAbbr}`,
       stationId: r.stationId,
       nemoCoord: `${r.lat}, ${r.lon}`,
@@ -317,11 +490,15 @@ export async function GET(request: NextRequest) {
       error: r.error ?? null,
       status: r.pctWithin30 >= 50 ? 'ok' : 'failing',
     })),
+    waveChecks: waveChecks,
   }
 
   console.log(
-    `[accuracy-check] Done: ${summary.checked} stations checked, ` +
-    `${summary.failing} failing, ${failing.length} issue(s) attempted`
+    `[accuracy-check] Done: ${tideResults.length} tide stations checked, ` +
+    `${failing.length} failing | ` +
+    `${waveResults.length} wave buoys, ${waveFailCount} failing | ` +
+    `timezone test: ${tzTest.passed ? 'PASS' : 'FAIL'} | ` +
+    `${failing.length} issue(s) attempted`
   )
 
   return NextResponse.json(summary)

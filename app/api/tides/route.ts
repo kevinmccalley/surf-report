@@ -292,6 +292,14 @@ async function tryWorldTides(lat: number, lon: number): Promise<TideResult | nul
         ? Math.round(haversineKm(lat, lon, data.responseLat, data.responseLon))
         : undefined
 
+    const farStation = stationDistanceKm !== undefined && stationDistanceKm > 50
+    if (farStation) {
+      console.warn(
+        `[tides] WorldTides: nearest station is ${stationDistanceKm}km from (${lat},${lon}) ` +
+        `— harmonic data may not represent local tidal conditions`
+      )
+    }
+
     return {
       available: true,
       source: 'worldtides',
@@ -302,6 +310,9 @@ async function tryWorldTides(lat: number, lon: number): Promise<TideResult | nul
       datum: 'LAT',
       stationName: data.station ?? undefined,
       stationDistanceKm,
+      ...(farStation && {
+        qualityWarning: `Nearest harmonic station is ${stationDistanceKm} km away — local timing may differ`,
+      }),
     }
   } catch {
     return null
@@ -383,6 +394,20 @@ async function tryOpenMeteo(lat: number, lon: number): Promise<TideResult | null
       }
     }
 
+    // Quality scoring: detect locations where NEMO's tidal signal is too weak
+    // to be useful (shallow shelf, enclosed bay, or model gap).
+    const allHeights = hourly.map(h => h.height)
+    const tidalRange = allHeights.length
+      ? Math.max(...allHeights) - Math.min(...allHeights)
+      : 0
+    const lowCoverage = tidalRange < 0.10 || extremes.length < 4
+    if (lowCoverage) {
+      console.warn(
+        `[tides] Open-Meteo low quality at (${lat},${lon}): ` +
+        `range=${tidalRange.toFixed(3)}m extremes=${extremes.length}`
+      )
+    }
+
     return {
       available: true,
       source: 'open-meteo',
@@ -391,6 +416,11 @@ async function tryOpenMeteo(lat: number, lon: number): Promise<TideResult | null
       extremes,
       hourly,
       datum: 'MSL',
+      ...(lowCoverage && {
+        qualityWarning:
+          `Low-confidence model: tidal range ${tidalRange.toFixed(2)} m at this location` +
+          (extremes.length < 4 ? ` (${extremes.length} extremes in 10 days)` : ''),
+      }),
     }
   } catch {
     return null
@@ -453,6 +483,7 @@ type TideResult =
       stationId?: string
       stationDistanceKm?: number
       timezoneLabel?: string
+      qualityWarning?: string
     }
   | {
       available: false
