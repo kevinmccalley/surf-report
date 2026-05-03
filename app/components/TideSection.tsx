@@ -15,6 +15,7 @@ interface Props {
   timeFormat: 'noaa-local' | 'iso-utc' | 'iso-local'
   stationName?: string
   stationDistanceKm?: number
+  timezoneLabel?: string
 }
 
 function toDisplay(meters: number, unit: 'ft' | 'm'): number {
@@ -68,6 +69,7 @@ export default function TideSection({
   extremes, hourly, heightUnit,
   source, estimated,
   stationName, stationDistanceKm,
+  timezoneLabel,
 }: Props) {
   const upcomingExtremes = extremes.slice(0, 10)
 
@@ -143,6 +145,8 @@ export default function TideSection({
     )
   }
 
+  const tzNote = timezoneLabel ? `times in ${timezoneLabel}` : 'times in UTC'
+
   // Source attribution config
   const attribution = (() => {
     if (source === 'noaa') return {
@@ -152,12 +156,12 @@ export default function TideSection({
     }
     if (source === 'dfo') return {
       label: `DFO station${stationName ? `: ${stationName}` : ''}${stationDistanceKm ? ` · ${stationDistanceKm} km away` : ''}`,
-      note: 'times in UTC',
+      note: tzNote,
       badge: null,
     }
     if (source === 'worldtides') return {
       label: `WorldTides${stationName ? ` · ${stationName}` : ''}${stationDistanceKm ? ` · ${stationDistanceKm} km away` : ''}`,
-      note: 'harmonic prediction · times in UTC',
+      note: `harmonic prediction · ${tzNote}`,
       badge: null,
     }
     return {

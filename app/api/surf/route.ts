@@ -43,12 +43,13 @@ export async function GET(request: NextRequest) {
 
     const isCoastal = !marine.error
     const utcOffset = (marine.utc_offset_seconds ?? weather.utc_offset_seconds) ?? 0
+    const timezone = (weather.timezone as string | undefined) ?? (marine.timezone as string | undefined) ?? 'UTC'
     const currentIdx = findCurrentHourIndex(weather.hourly.time, utcOffset)
 
     const report = buildReport(
       marine, weather, name, country,
       parseFloat(lat), parseFloat(lon),
-      currentIdx, utcOffset, isCoastal
+      currentIdx, utcOffset, isCoastal, timezone
     )
 
     return NextResponse.json(report)
@@ -72,7 +73,8 @@ function buildReport(
   lon: number,
   currentIdx: number,
   utcOffset: number,
-  isCoastal: boolean
+  isCoastal: boolean,
+  timezone: string
 ): SurfReport {
   const mh = (marine.hourly ?? {}) as Record<string, unknown[]>
   const md = (marine.daily ?? {}) as Record<string, unknown[]>
@@ -193,5 +195,6 @@ function buildReport(
     forecast,
     updatedAt: new Date().toISOString(),
     isCoastal,
+    timezone,
   }
 }

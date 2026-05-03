@@ -47,17 +47,14 @@ export default function SurfApp() {
         country: result.country,
       })
 
-      const [surfRes, tideRes] = await Promise.all([
-        fetch(`/api/surf?${qs}`),
-        fetch(`/api/tides?lat=${result.lat}&lon=${result.lon}`),
-      ])
-
+      const surfRes = await fetch(`/api/surf?${qs}`)
       if (!surfRes.ok) throw new Error('Failed to fetch surf data')
+      const surfJson: SurfReport = await surfRes.json()
 
-      const [surfJson, tideJson]: [SurfReport, TideResult] = await Promise.all([
-        surfRes.json(),
-        tideRes.json(),
-      ])
+      const tideParams = `lat=${result.lat}&lon=${result.lon}` +
+        (surfJson.timezone ? `&tz=${encodeURIComponent(surfJson.timezone)}` : '')
+      const tideRes = await fetch(`/api/tides?${tideParams}`)
+      const tideJson: TideResult = await tideRes.json()
 
       setReport(surfJson)
       setTideData(tideJson)
@@ -173,6 +170,7 @@ export default function SurfApp() {
                     timeFormat={(tideData as TideReport).timeFormat}
                     stationName={(tideData as TideReport).stationName}
                     stationDistanceKm={(tideData as TideReport).stationDistanceKm}
+                    timezoneLabel={(tideData as TideReport).timezoneLabel}
                   />
                 ) : (
                   <TideSetupCard reason={(tideData as TideUnavailable | null)?.reason} />

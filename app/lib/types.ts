@@ -92,6 +92,7 @@ export interface SurfReport {
   forecast: DayForecast[]
   updatedAt: string
   isCoastal: boolean
+  timezone: string  // IANA name e.g. "America/Los_Angeles"
 }
 
 export interface GeoResult {
@@ -125,6 +126,7 @@ export interface TideReport {
   stationName?: string
   stationId?: string
   stationDistanceKm?: number
+  timezoneLabel?: string  // e.g. "PST", "AWST" — set when UTC times have been converted to local
 }
 
 export interface TideUnavailable {

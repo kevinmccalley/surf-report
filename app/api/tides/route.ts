@@ -348,6 +348,42 @@ async function tryOpenMeteo(lat: number, lon: number): Promise<TideResult | null
   }
 }
 
+// ── Timezone helpers ──────────────────────────────────────────────────────────
+
+function utcToLocal(utcStr: string, timezone: string): string {
+  try {
+    const s = utcStr.replace(' ', 'T')
+    const d = new Date(s.endsWith('Z') ? s : s + 'Z')
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: timezone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    }).formatToParts(d)
+    const p: Record<string, string> = {}
+    for (const part of parts) p[part.type] = part.value
+    const h = p.hour === '24' ? '00' : p.hour
+    return `${p.year}-${p.month}-${p.day}T${h}:${p.minute}`
+  } catch {
+    return utcStr
+  }
+}
+
+function getTimezoneLabel(timezone: string): string {
+  try {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: timezone,
+      timeZoneName: 'short',
+    }).formatToParts(new Date())
+    return parts.find(p => p.type === 'timeZoneName')?.value ?? 'local'
+  } catch {
+    return 'local'
+  }
+}
+
 // ── Response type union ───────────────────────────────────────────────────────
 
 type TideResult =
@@ -362,6 +398,7 @@ type TideResult =
       stationName?: string
       stationId?: string
       stationDistanceKm?: number
+      timezoneLabel?: string
     }
   | {
       available: false
@@ -372,10 +409,25 @@ type TideResult =
 
 // ── Route handler ─────────────────────────────────────────────────────────────
 
+type AvailableResult = Extract<TideResult, { available: true }>
+
+function localizeUtcTimes(result: AvailableResult, timezone: string): AvailableResult {
+  if (!timezone || timezone === 'UTC') return result
+  const timezoneLabel = getTimezoneLabel(timezone)
+  return {
+    ...result,
+    timeFormat: 'iso-local',
+    timezoneLabel,
+    extremes: result.extremes.map(e => ({ ...e, time: utcToLocal(e.time, timezone) })),
+    hourly:   result.hourly.map(h => ({ ...h, time: utcToLocal(h.time, timezone) })),
+  }
+}
+
 export async function GET(request: NextRequest) {
   const sp = request.nextUrl.searchParams
   const lat = parseFloat(sp.get('lat') ?? '')
   const lon = parseFloat(sp.get('lon') ?? '')
+  const tz  = sp.get('tz') ?? ''
 
   if (isNaN(lat) || isNaN(lon)) {
     return NextResponse.json({ available: false, reason: 'no_coords' })
@@ -388,19 +440,20 @@ export async function GET(request: NextRequest) {
       tryDFO(lat, lon),
     ])
 
-    // Prefer harmonic sources: NOAA → DFO → WorldTides → Open-Meteo (estimated)
+    // NOAA times are already in local station time — no conversion needed
     if (noaaResult?.available) return NextResponse.json(noaaResult)
-    if (dfoResult?.available) return NextResponse.json(dfoResult)
 
-    // Global harmonic: WorldTides (falls back automatically if rate-limited)
+    // DFO returns UTC — convert to spot's local timezone
+    if (dfoResult?.available) return NextResponse.json(localizeUtcTimes(dfoResult, tz))
+
+    // WorldTides returns UTC — convert to spot's local timezone
     const wtResult = await tryWorldTides(lat, lon)
-    if (wtResult?.available) return NextResponse.json(wtResult)
+    if (wtResult?.available) return NextResponse.json(localizeUtcTimes(wtResult, tz))
 
-    // Last resort: Open-Meteo sea level model (estimated)
+    // Open-Meteo uses timezone=auto so times are already local
     const omResult = await tryOpenMeteo(lat, lon)
     if (omResult?.available) return NextResponse.json(omResult)
 
-    // All sources failed — return a useful error
     return NextResponse.json({ available: false, reason: 'fetch_error' })
   } catch (e) {
     console.error('Tide API error:', e)
