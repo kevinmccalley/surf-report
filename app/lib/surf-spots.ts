@@ -226,15 +226,22 @@ export function searchSurfSpots(query: string): GeoResult[] {
   const q = query.toLowerCase().trim()
   if (q.length < 2) return []
 
+  // Normalise separators (em-dash, en-dash, commas) to spaces then split into tokens
+  const tokens = q
+    .replace(/[—–,]/g, ' ')
+    .split(/\s+/)
+    .filter(t => t.length > 1)
+
   const matches = SURF_SPOTS.filter(s => {
-    const searchFields = [s.name, ...(s.aliases ?? []), s.country]
-    return searchFields.some(f => f.toLowerCase().includes(q))
+    const haystack = [s.name, ...(s.aliases ?? []), s.country].join(' ').toLowerCase()
+    return tokens.every(token => haystack.includes(token))
   })
 
-  // Prefer name-starts-with matches first
+  // Prefer name-starts-with the first token
+  const firstToken = tokens[0] ?? q
   matches.sort((a, b) => {
-    const aStarts = a.name.toLowerCase().startsWith(q) ? 0 : 1
-    const bStarts = b.name.toLowerCase().startsWith(q) ? 0 : 1
+    const aStarts = a.name.toLowerCase().startsWith(firstToken) ? 0 : 1
+    const bStarts = b.name.toLowerCase().startsWith(firstToken) ? 0 : 1
     return aStarts - bStarts
   })
 
