@@ -102,7 +102,7 @@ export default function MarketingPage() {
 
         <div className="relative z-10 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-500/20 bg-sky-500/8 text-sky-300 text-xs font-medium mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" aria-hidden="true" />
             Live data · Fresh on every search
           </div>
 
@@ -139,13 +139,14 @@ export default function MarketingPage() {
               </>
             ) : (
               <>
-                <div onClick={() => localStorage.setItem('pendingCheckout', 'annual')}>
-                  <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
-                    <button className="trial-cta-btn w-full sm:w-auto px-8 py-4 rounded-2xl active:scale-95 text-white font-bold text-base transition-all">
-                      Start 7-day free trial →
-                    </button>
-                  </SignInButton>
-                </div>
+                <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
+                  <button
+                    onClick={() => localStorage.setItem('pendingCheckout', 'annual')}
+                    className="trial-cta-btn w-full sm:w-auto px-8 py-4 rounded-2xl active:scale-95 text-white font-bold text-base transition-all"
+                  >
+                    Start 7-day free trial →
+                  </button>
+                </SignInButton>
                 <p className="text-sm text-slate-400">No credit card required to try</p>
               </>
             )}
@@ -170,7 +171,7 @@ export default function MarketingPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {FEATURES.map(f => (
               <div key={f.title} className="glass-card rounded-2xl p-6">
-                <div className="text-3xl mb-4">{f.icon}</div>
+                <div className="text-3xl mb-4" aria-hidden="true">{f.icon}</div>
                 <h3 className="text-base font-bold text-white mb-2">{f.title}</h3>
                 <p className="text-sm text-slate-300 leading-relaxed">{f.desc}</p>
               </div>
@@ -184,9 +185,9 @@ export default function MarketingPage() {
         <div className="mx-auto max-w-5xl">
           <div className="glass-card rounded-3xl p-6 sm:p-10 border border-white/10">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-              <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-              <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+              <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" aria-hidden="true" />
+              <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" aria-hidden="true" />
+              <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" aria-hidden="true" />
               <span className="ml-3 text-xs text-slate-400 font-mono">Pipeline, North Shore, Hawaii</span>
             </div>
 
@@ -225,7 +226,7 @@ export default function MarketingPage() {
               {/* Fake wave chart bars */}
               <div>
                 <p className="text-xs text-slate-400 uppercase tracking-widest mb-3">48-Hour Outlook</p>
-                <div className="flex items-end gap-1 h-16">
+                <div className="flex items-end gap-1 h-16" aria-hidden="true">
                   {FAKE_WAVE_BARS.map((h, i) => (
                     <div
                       key={i}
@@ -237,7 +238,7 @@ export default function MarketingPage() {
                     />
                   ))}
                 </div>
-                <div className="flex justify-between mt-1">
+                <div className="flex justify-between mt-1" aria-hidden="true">
                   <span className="text-[10px] text-slate-400">Now</span>
                   <span className="text-[10px] text-slate-400">+24h</span>
                   <span className="text-[10px] text-slate-400">+48h</span>
@@ -284,7 +285,7 @@ export default function MarketingPage() {
 
             {/* Annual */}
             <div className="glass-card rounded-2xl p-6 border border-teal-500/25 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-bold bg-teal-600 text-white">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-bold bg-teal-700 text-white">
                 Best value · save 17%
               </div>
               <p className="text-xs text-teal-300 uppercase tracking-widest mb-3">Annual</p>
@@ -300,7 +301,7 @@ export default function MarketingPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-slate-400">
             {['7-day free trial', 'Cancel anytime', 'Secure payments via Stripe', 'No surprise fees'].map(item => (
               <div key={item} className="flex items-center gap-1.5">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <circle cx="6" cy="6" r="5" stroke="#22c55e" strokeWidth="1.2" />
                   <path d="M3.5 6L5.5 8L8.5 4" stroke="#22c55e" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -340,13 +341,15 @@ function PricingCTA({ plan, isSignedIn, loading, onCheckout, primary }: {
   }
 
   return (
-    <div onClick={() => localStorage.setItem('pendingCheckout', 'annual')}>
-      <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
-        <button disabled={!!loading} className={cls}>
-          Start 7-day free trial
-        </button>
-      </SignInButton>
-    </div>
+    <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
+      <button
+        disabled={!!loading}
+        className={cls}
+        onClick={() => localStorage.setItem('pendingCheckout', 'annual')}
+      >
+        Start 7-day free trial
+      </button>
+    </SignInButton>
   )
 }
 
@@ -393,7 +396,7 @@ const FEATURES = [
     desc: 'Wave height, dominant period, and primary swell — updated every hour from marine buoy networks.',
   },
   {
-    icon: '🧭',
+    icon: '🦭',
     title: 'Swell direction & wind',
     desc: 'Know if the wind is offshore. See exactly where your swell is coming from with compass bearings.',
   },
