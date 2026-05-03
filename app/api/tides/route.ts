@@ -368,10 +368,10 @@ async function tryOpenMeteo(lat: number, lon: number): Promise<TideResult | null
     const extremes: TideExtreme[] = []
     for (let i = 1; i < hourly.length - 1; i++) {
       const prev = hts[i - 1], cur = hts[i], next = hts[i + 1]
-      if (cur > prev && cur > next) {
+      if (cur > prev && cur >= next) {
         const interp = interpolateExtreme(htimes, hts, i)
         extremes.push({ time: interp.time, height: interp.height, type: 'High' })
-      } else if (cur < prev && cur < next) {
+      } else if (cur < prev && cur <= next) {
         const interp = interpolateExtreme(htimes, hts, i)
         extremes.push({ time: interp.time, height: interp.height, type: 'Low' })
       }
