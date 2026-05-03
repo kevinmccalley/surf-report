@@ -91,7 +91,11 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
     if (!open) return
     if (e.key === 'ArrowDown') { e.preventDefault(); setActiveIdx(i => Math.min(i + 1, results.length - 1)) }
     if (e.key === 'ArrowUp') { e.preventDefault(); setActiveIdx(i => Math.max(i - 1, -1)) }
-    if (e.key === 'Enter' && activeIdx >= 0) { e.preventDefault(); handleSelect(results[activeIdx]) }
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      const target = activeIdx >= 0 ? results[activeIdx] : results[0]
+      if (target) handleSelect(target)
+    }
     if (e.key === 'Escape') { setOpen(false) }
   }
 
