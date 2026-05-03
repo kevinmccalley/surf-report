@@ -249,7 +249,7 @@ async function tryWorldTides(lat: number, lon: number): Promise<TideResult | nul
   try {
     const url =
       `https://www.worldtides.info/api/v2?extremes&heights` +
-      `&lat=${lat}&lon=${lon}&days=5&step=3600&key=${key}`
+      `&lat=${lat}&lon=${lon}&days=5&step=3600&datum=LAT&key=${key}`
     const res = await fetch(url, { next: { revalidate: 21600 } })
     if (!res.ok) return null
     const data = await res.json() as {
