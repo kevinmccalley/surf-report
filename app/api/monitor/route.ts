@@ -304,7 +304,7 @@ const TIDE_TEST_LOCATIONS = [
   { name: 'San Juan del Sur, Nicaragua', lat:  11.25, lon:  -85.88, tz: 'America/Managua',     noaaStation: null      },
   { name: 'Apia, Samoa',                 lat: -13.85, lon: -171.75, tz: 'Pacific/Apia',        noaaStation: null      },
   { name: 'Colombo, Sri Lanka',          lat:   6.93, lon:   79.85, tz: 'Asia/Colombo',        noaaStation: null      },
-  { name: 'Chiba, Japan',                lat:  35.62, lon:  140.02, tz: 'Asia/Tokyo',          noaaStation: null      },
+  { name: 'Kushimoto, Japan',             lat:  33.47, lon:  135.78, tz: 'Asia/Tokyo',          noaaStation: null      },
   { name: 'Port Elizabeth, S. Africa',   lat: -33.97, lon:   25.60, tz: 'Africa/Johannesburg', noaaStation: null      },
 ]
 
