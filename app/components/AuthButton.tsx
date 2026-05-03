@@ -44,7 +44,7 @@ export default function AuthButton({ subscribed, onManageBilling }: Props) {
             </span>
           </button>
           {open && (
-            <div className="absolute right-0 top-full mt-1 w-44 glass-card rounded-xl border border-white/10 shadow-xl py-1 z-50">
+            <div className="absolute right-0 top-full mt-1 w-44 rounded-xl border border-white/10 shadow-xl py-1 z-50" style={{ background: 'rgba(15,23,42,0.97)', backdropFilter: 'blur(12px)' }}>
               {subscribed && (
                 <button
                   onClick={() => { setOpen(false); onManageBilling() }}
