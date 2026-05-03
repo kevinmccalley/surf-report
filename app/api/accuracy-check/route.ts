@@ -12,7 +12,7 @@ function isAuthorized(req: NextRequest): boolean {
 
 const STATIONS = [
   { name: 'Santa Monica',  stateAbbr: 'CA', stationId: '9410660', lat:  34.01,  lon: -118.50  },
-  { name: 'Nantucket',     stateAbbr: 'MA', stationId: '8449130', lat:  41.17,  lon:  -70.00  },
+  { name: 'Duck',          stateAbbr: 'NC', stationId: '8651370', lat:  35.90,  lon:  -75.30  },
   { name: 'Bar Harbor',    stateAbbr: 'ME', stationId: '8413320', lat:  44.39,  lon:  -68.20  },
   { name: 'Crescent City', stateAbbr: 'CA', stationId: '9419750', lat:  41.74,  lon: -124.18  },
 ]
