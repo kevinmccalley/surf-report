@@ -78,11 +78,6 @@ export default function SurfApp() {
   const toggleTemp   = () => setUnits(u => ({ ...u, temp:   u.temp   === 'f' ? 'c'  : 'f'  }))
   const toggleHeight = () => setUnits(u => ({ ...u, height: u.height === 'ft' ? 'm' : 'ft' }))
 
-  const tideHeights: number[] | undefined =
-    tideData?.available
-      ? (tideData as TideReport).hourly.slice(0, 48).map(h => h.height)
-      : undefined
-
   return (
     <div className="theme-bg">
       {/* Sticky header */}
@@ -148,12 +143,10 @@ export default function SurfApp() {
               <section className="glass-card rounded-2xl p-4 sm:p-6">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
                   48-Hour Wave Outlook
-                  {tideHeights && <span className="ml-2 text-teal-400 normal-case font-normal">· with tides</span>}
                 </h2>
                 <WaveChart
                   hourly={report.hourly}
                   heightUnit={units.height}
-                  tideHeights={tideHeights}
                 />
               </section>
             )}
