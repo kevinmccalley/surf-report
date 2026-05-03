@@ -293,6 +293,238 @@ async function checkPackages(): Promise<Finding[]> {
   return results.filter(Boolean) as Finding[]
 }
 
+// ── Global tide accuracy ──────────────────────────────────────────────────────
+
+interface TideExtremeSample { time: string; height: number; type: 'High' | 'Low' }
+
+const TIDE_TEST_LOCATIONS = [
+  { name: 'Santa Monica, CA',           lat:  34.01, lon: -118.50, tz: 'America/Los_Angeles', noaaStation: '9410660' },
+  { name: 'Galway, Ireland',             lat:  53.27, lon:   -9.07, tz: 'Europe/Dublin',       noaaStation: null      },
+  { name: 'Dakar, Senegal',              lat:  14.69, lon:  -17.45, tz: 'Africa/Dakar',        noaaStation: null      },
+  { name: 'San Juan del Sur, Nicaragua', lat:  11.25, lon:  -85.88, tz: 'America/Managua',     noaaStation: null      },
+  { name: 'Apia, Samoa',                 lat: -13.85, lon: -171.75, tz: 'Pacific/Apia',        noaaStation: null      },
+  { name: 'Colombo, Sri Lanka',          lat:   6.93, lon:   79.85, tz: 'Asia/Colombo',        noaaStation: null      },
+  { name: 'Chiba, Japan',                lat:  35.62, lon:  140.02, tz: 'Asia/Tokyo',          noaaStation: null      },
+  { name: 'Port Elizabeth, S. Africa',   lat: -33.97, lon:   25.60, tz: 'Africa/Johannesburg', noaaStation: null      },
+]
+
+function detectMonitorExtremes(times: string[], heights: number[]): TideExtremeSample[] {
+  const out: TideExtremeSample[] = []
+  for (let i = 1; i < heights.length - 1; i++) {
+    const prev = heights[i - 1], cur = heights[i], next = heights[i + 1]
+    if (cur > prev && cur >= next) out.push({ time: times[i], height: cur, type: 'High' })
+    else if (cur < prev && cur <= next) out.push({ time: times[i], height: cur, type: 'Low' })
+  }
+  return out
+}
+
+async function checkTideAccuracy(): Promise<Finding[]> {
+  const findings: Finding[] = []
+
+  // Fetch Open-Meteo tide heights for all test locations in parallel
+  const results = await Promise.all(
+    TIDE_TEST_LOCATIONS.map(async loc => {
+      try {
+        const url =
+          `https://marine-api.open-meteo.com/v1/marine` +
+          `?latitude=${loc.lat}&longitude=${loc.lon}` +
+          `&hourly=sea_level_height_msl&forecast_days=5`
+        const res = await fetch(url, { signal: AbortSignal.timeout(12000) })
+        if (!res.ok) return { loc, extremes: null as TideExtremeSample[] | null }
+        const data = await res.json() as { hourly?: { time?: string[]; sea_level_height_msl?: (number | null)[] } }
+        const times   = data.hourly?.time ?? []
+        const rawH    = data.hourly?.sea_level_height_msl ?? []
+        const validT  = times.filter((_, i) => rawH[i] !== null && rawH[i] !== undefined && !isNaN(rawH[i] as number))
+        const validH  = rawH.filter((h): h is number => h !== null && !isNaN(h))
+        if (!validT.length) return { loc, extremes: null as TideExtremeSample[] | null }
+        return { loc, extremes: detectMonitorExtremes(validT, validH), validH }
+      } catch {
+        return { loc, extremes: null as TideExtremeSample[] | null }
+      }
+    })
+  )
+
+  for (const r of results) {
+    if (!r.extremes) continue // Open-Meteo reachability already reported by checkOpenMeteo
+
+    const { loc, extremes } = r
+    const source = `Tide Accuracy · ${loc.name}`
+
+    // 1. Enough extremes in 5 days? (semi-diurnal ≈ 20; expect at least 6)
+    if (extremes.length < 4) {
+      findings.push({
+        source,
+        severity: 'critical',
+        title: `Only ${extremes.length} tide extreme(s) detected in 5 days at ${loc.name}`,
+        detail: `Expected ≥ 8 hi/lo extremes over 5 days. Getting ${extremes.length} means the extreme detection algorithm is failing or NEMO has no meaningful tidal signal here.`,
+        proposal: 'Inspect raw Open-Meteo sea_level_height_msl for this coordinate. Check tryOpenMeteo() extreme detection in app/api/tides/route.ts.',
+        effort: '1–3 hours',
+      })
+      continue
+    }
+
+    // 2. Alternating H/L pattern?
+    let dupIdx = -1
+    for (let i = 0; i < Math.min(extremes.length - 1, 10); i++) {
+      if (extremes[i].type === extremes[i + 1].type) { dupIdx = i; break }
+    }
+    if (dupIdx >= 0) {
+      findings.push({
+        source,
+        severity: 'critical',
+        title: `Consecutive ${extremes[dupIdx].type} tides at ${loc.name} — H/L pattern broken`,
+        detail: `Extremes at index ${dupIdx} and ${dupIdx + 1} are both "${extremes[dupIdx].type}". A plateau wider than 2 hours may be creating duplicate detections.`,
+        proposal: 'Review the plateau detection fix (cur > prev && cur >= next) in tryOpenMeteo. A 3+-point flat top may still produce duplicates.',
+        effort: '1–2 hours',
+      })
+    }
+
+    // 3. Any gap > 18h between consecutive extremes? (missed extreme)
+    for (let i = 0; i < extremes.length - 1; i++) {
+      const ms1 = new Date(extremes[i].time + 'Z').getTime()
+      const ms2 = new Date(extremes[i + 1].time + 'Z').getTime()
+      const hrs = (ms2 - ms1) / 3_600_000
+      if (hrs > 18) {
+        findings.push({
+          source,
+          severity: 'notable',
+          title: `${hrs.toFixed(1)}-hour gap between tide extremes at ${loc.name} — likely missed extreme`,
+          detail: `From ${extremes[i].time} (${extremes[i].type}) to ${extremes[i + 1].time} (${extremes[i + 1].type}) is ${hrs.toFixed(1)}h. Even diurnal locations should not exceed 16h. A wide gap usually means a plateau peak was skipped.`,
+          proposal: 'Fetch 3 days of raw Open-Meteo hourly data for this location and inspect the gap period. The plateau fix handles 2-point ties; check for wider flat spots.',
+          effort: '1–2 hours',
+        })
+        break
+      }
+    }
+
+    // 4. Tidal range sanity (open-ocean coastal should be > 0.15m)
+    const highs = extremes.filter(e => e.type === 'High').map(e => e.height)
+    const lows  = extremes.filter(e => e.type === 'Low').map(e => e.height)
+    if (highs.length && lows.length) {
+      const range = Math.max(...highs) - Math.min(...lows)
+      if (range < 0.15) {
+        findings.push({
+          source,
+          severity: 'notable',
+          title: `Near-zero tidal range at ${loc.name} (${range.toFixed(2)}m)`,
+          detail: `Detected range is only ${range.toFixed(2)}m. This is below the minimum expected for an open-ocean coastal location and may indicate poor NEMO coverage or an off-shore coordinate placement.`,
+          proposal: 'Verify coordinates are on the coastline. If the location is in an enclosed sea (Mediterranean, Persian Gulf), near-zero range is normal. Otherwise investigate NEMO data quality for this region.',
+          effort: '< 1 hour',
+        })
+      }
+    }
+  }
+
+  // NOAA timing accuracy: cross-check Santa Monica hilo predictions
+  try {
+    const now = new Date()
+    const end = new Date(now.getTime() + 2 * 86400000)
+    const yyyymmdd = (d: Date) =>
+      `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`
+    const noaaUrl =
+      `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter` +
+      `?begin_date=${yyyymmdd(now)}&end_date=${yyyymmdd(end)}` +
+      `&station=9410660&product=predictions&datum=MLLW&time_zone=lst_ldt` +
+      `&units=metric&interval=hilo&application=groundswell&format=json`
+    const nr = await fetch(noaaUrl, { signal: AbortSignal.timeout(10000) })
+    if (nr.ok) {
+      const nd = await nr.json() as { error?: unknown; predictions?: { t: string; v: string; type: string }[] }
+      if (!nd.error && nd.predictions) {
+        const preds = nd.predictions
+        let patternOk = true
+        for (let i = 0; i < Math.min(preds.length - 1, 8); i++) {
+          if (preds[i].type === preds[i + 1].type) { patternOk = false; break }
+        }
+        if (preds.length < 4 || !patternOk) {
+          findings.push({
+            source: 'Tide Accuracy · NOAA Station 9410660 (Santa Monica)',
+            severity: 'notable',
+            title: 'NOAA hilo predictions for Santa Monica look malformed',
+            detail: `Got ${preds.length} predictions${!patternOk ? ' with broken H/L alternation' : ''}. Expected ≥ 4 alternating entries.`,
+            proposal: 'Check NOAA API directly for station 9410660. May be a temporary data gap.',
+            effort: '< 1 hour',
+          })
+        }
+      }
+    }
+  } catch { /* NOAA reachability covered by checkNOAA */ }
+
+  // Quarterly manual spot-check reminder (Jan, Apr, Jul, Oct)
+  if ([0, 3, 6, 9].includes(new Date().getMonth())) {
+    findings.push({
+      source: 'Tide Accuracy · Quarterly Reminder',
+      severity: 'info',
+      title: 'Quarterly manual tide & surf accuracy spot-check due',
+      detail: 'Time to verify Groundswell\'s tide times and wave data against Surfline and surf-forecast.com for a global sample. Previous spot-checks have caught: timezone display errors (Hossegor, France), NOAA cooperative station fallback failures (San Clemente, CA), and plateau detection bugs (Madeira, Samoa, Barbados, Sardinia).',
+      proposal: 'Ask Claude to run a worldwide accuracy analysis covering ~10 locations: West Coast US, East Coast US, Hawaii, Atlantic Europe, Mediterranean, West Africa, Indian Ocean, East Asia, South Pacific, Caribbean, Central America Pacific. For each, compare tide times against tide-forecast.com (< 90 min = good, > 2 hours = investigate). Also compare wave height direction against Surfline or surf-forecast.com for 4–5 known surf spots. Reply GO to trigger this.',
+      effort: '2–3 hours',
+    })
+  }
+
+  return findings
+}
+
+// ── Global wave data accuracy ─────────────────────────────────────────────────
+
+const WAVE_TEST_LOCATIONS = [
+  { name: 'Pipeline, Hawaii',         lat:  21.66, lon: -158.05 },
+  { name: 'Hossegor, France',         lat:  43.69, lon:    1.42 },
+  { name: 'Snapper Rocks, Australia', lat: -28.17, lon:  153.55 },
+  { name: 'Jeffreys Bay, S. Africa',  lat: -34.05, lon:   24.92 },
+]
+
+async function checkWaveAccuracy(): Promise<Finding[]> {
+  const findings: Finding[] = []
+
+  const results = await Promise.all(
+    WAVE_TEST_LOCATIONS.map(async loc => {
+      try {
+        const url =
+          `https://marine-api.open-meteo.com/v1/marine` +
+          `?latitude=${loc.lat}&longitude=${loc.lon}` +
+          `&hourly=wave_height,swell_wave_height&forecast_days=3`
+        const res = await fetch(url, { signal: AbortSignal.timeout(10000) })
+        if (!res.ok) return { loc, ok: false, allZero: false, allNull: false, maxH: 0 }
+        const data = await res.json() as { hourly?: { wave_height?: (number | null)[] } }
+        const wh = (data.hourly?.wave_height ?? []).filter((h): h is number => h !== null && !isNaN(h))
+        return {
+          loc, ok: true,
+          allNull: wh.length === 0,
+          allZero: wh.length > 0 && wh.every(h => h === 0),
+          maxH:    wh.length ? Math.max(...wh) : 0,
+        }
+      } catch {
+        return { loc, ok: false, allZero: false, allNull: false, maxH: 0 }
+      }
+    })
+  )
+
+  for (const r of results) {
+    if (!r.ok) continue
+    if (r.allNull || r.allZero) {
+      findings.push({
+        source: `Wave Data · ${r.loc.name}`,
+        severity: 'critical',
+        title: `Wave height is ${r.allNull ? 'null/missing' : 'zero'} for 72 hours at ${r.loc.name}`,
+        detail: `All wave_height values are ${r.allNull ? 'absent' : '0.0 m'} for the next 72 hours at this known open-ocean surf spot. This strongly suggests the Open-Meteo marine model has lost coverage for this coordinate or the location is resolving as inland.`,
+        proposal: 'Fetch Open-Meteo marine API directly for this coordinate and inspect the raw response. Verify the coordinate is in the ocean. If a model outage, check status.open-meteo.com.',
+        effort: '1–2 hours',
+      })
+    } else if (r.maxH > 15) {
+      findings.push({
+        source: `Wave Data · ${r.loc.name}`,
+        severity: 'notable',
+        title: `Extreme wave forecast at ${r.loc.name}: ${r.maxH.toFixed(1)} m in next 72 hours`,
+        detail: `Open-Meteo is forecasting ${r.maxH.toFixed(1)} m waves. Values above 15 m are rare and may indicate a model data spike rather than a genuine event.`,
+        proposal: 'Cross-check against Surfline or Windguru for this location and date range. If it matches a real storm, no action needed. If spurious, note it for the next Open-Meteo data quality report.',
+        effort: '< 30 min to verify',
+      })
+    }
+  }
+
+  return findings
+}
+
 // ── Email ─────────────────────────────────────────────────────────────────────
 
 function severityEmoji(s: Finding['severity']): string {
@@ -381,11 +613,13 @@ export async function GET(request: NextRequest) {
 
   console.log('[monitor] Starting weekly check...')
 
-  const [openMeteoFindings, noaaFindings, dfoFindings, packageFindings] = await Promise.all([
+  const [openMeteoFindings, noaaFindings, dfoFindings, packageFindings, tideAccuracyFindings, waveAccuracyFindings] = await Promise.all([
     checkOpenMeteo(),
     checkNOAA(),
     checkDFO(),
     checkPackages(),
+    checkTideAccuracy(),
+    checkWaveAccuracy(),
   ])
 
   const allFindings = [
@@ -393,6 +627,8 @@ export async function GET(request: NextRequest) {
     ...noaaFindings,
     ...dfoFindings,
     ...packageFindings,
+    ...tideAccuracyFindings,
+    ...waveAccuracyFindings,
   ]
 
   const summary = {
