@@ -7,6 +7,9 @@ const isPublicRoute = createRouteMatcher([
   '/api/geocode(.*)',
   '/api/usage(.*)',
   '/api/webhook(.*)',
+  '/api/monitor(.*)',
+  '/api/accuracy-check(.*)',
+  '/accuracy(.*)',
   '/sign-in(.*)',
   '/sign-up(.*)',
 ])
