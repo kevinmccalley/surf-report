@@ -26,6 +26,36 @@ function toISOLocal(d: Date): string {
   return d.toISOString()
 }
 
+// ── Cosine interpolation for stations without hourly predictions ──────────────
+// Generates one point per hour between each pair of adjacent extremes.
+// NOAA times are in local station time ("YYYY-MM-DD HH:MM"). Appending 'Z'
+// lets us use Date arithmetic; we read back UTC components which match the
+// original local time digits (since we only need relative offsets).
+
+function cosineHourlyFromExtremes(extremes: TideExtreme[]): TideHeight[] {
+  if (extremes.length < 2) return []
+  const toMs  = (t: string) => new Date(t.replace(' ', 'T') + 'Z').getTime()
+  const toStr = (ms: number) => {
+    const d = new Date(ms)
+    const p = (n: number) => String(n).padStart(2, '0')
+    return `${d.getUTCFullYear()}-${p(d.getUTCMonth()+1)}-${p(d.getUTCDate())} ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}`
+  }
+  const result: TideHeight[] = []
+  for (let i = 0; i < extremes.length - 1; i++) {
+    const ms1 = toMs(extremes[i].time), ms2 = toMs(extremes[i+1].time)
+    const h1  = extremes[i].height,     h2  = extremes[i+1].height
+    for (let ms = ms1; ms < ms2; ms += 3_600_000) {
+      const frac   = (ms - ms1) / (ms2 - ms1)
+      const height = (h1 + h2) / 2 + (h1 - h2) / 2 * Math.cos(Math.PI * frac)
+      result.push({ time: toStr(ms), height })
+    }
+  }
+  // include the final extreme itself
+  const last = extremes[extremes.length - 1]
+  result.push({ time: last.time, height: last.height })
+  return result
+}
+
 // ── NOAA ─────────────────────────────────────────────────────────────────────
 
 interface NOAAStation { id: string; name: string; lat: number; lon: number }
@@ -77,16 +107,27 @@ async function tryNOAA(lat: number, lon: number): Promise<TideResult | null> {
     ])
     const [hourlyJson, hiloJson] = await Promise.all([hourlyRes.json(), hiloRes.json()])
 
-    if (hourlyJson.error || hiloJson.error) return null
+    // hilo (extremes) is required — if it fails there's nothing to show
+    if (hiloJson.error) return null
 
-    const hourly: TideHeight[] = (hourlyJson.predictions ?? []).map(
-      (p: { t: string; v: string }) => ({ time: p.t, height: parseFloat(p.v) })
-    )
     const extremes: TideExtreme[] = (hiloJson.predictions ?? []).map(
       (p: { t: string; v: string; type: string }) => ({
         time: p.t, height: parseFloat(p.v), type: p.type === 'H' ? 'High' : 'Low',
       })
     )
+    if (!extremes.length) return null
+
+    // Some NOAA stations (e.g. TWC-prefixed cooperative stations) only publish
+    // hilo data; the hourly interval=h endpoint returns an error for them.
+    // In that case we synthesise smooth hourly values via cosine interpolation.
+    let hourly: TideHeight[]
+    if (!hourlyJson.error && hourlyJson.predictions?.length) {
+      hourly = hourlyJson.predictions.map(
+        (p: { t: string; v: string }) => ({ time: p.t, height: parseFloat(p.v) })
+      )
+    } else {
+      hourly = cosineHourlyFromExtremes(extremes)
+    }
 
     return {
       available: true,
