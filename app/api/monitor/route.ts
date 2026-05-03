@@ -415,16 +415,16 @@ async function checkTideAccuracy(): Promise<Finding[]> {
     }
   }
 
-  // NOAA timing accuracy: cross-check Santa Monica hilo predictions
+  // NOAA timing accuracy: cross-check Santa Monica hilo predictions (in GMT for direct UTC comparison)
   try {
     const now = new Date()
-    const end = new Date(now.getTime() + 2 * 86400000)
+    const end = new Date(now.getTime() + 3 * 86400000)
     const yyyymmdd = (d: Date) =>
       `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`
     const noaaUrl =
       `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter` +
       `?begin_date=${yyyymmdd(now)}&end_date=${yyyymmdd(end)}` +
-      `&station=9410660&product=predictions&datum=MLLW&time_zone=lst_ldt` +
+      `&station=9410660&product=predictions&datum=MLLW&time_zone=gmt` +
       `&units=metric&interval=hilo&application=groundswell&format=json`
     const nr = await fetch(noaaUrl, { signal: AbortSignal.timeout(10000) })
     if (nr.ok) {
@@ -444,6 +444,46 @@ async function checkTideAccuracy(): Promise<Finding[]> {
             proposal: 'Check NOAA API directly for station 9410660. May be a temporary data gap.',
             effort: '< 1 hour',
           })
+        }
+
+        // Quantitative NEMO vs NOAA timing comparison
+        const toMs = (t: string) => new Date(t.replace(' ', 'T') + 'Z').getTime()
+        const smNemo = results.find(r => r.loc.name === 'Santa Monica, CA')
+        if (smNemo?.extremes && smNemo.extremes.length >= 4) {
+          const absErrors: number[] = []
+          for (const pred of preds) {
+            const predMs = toMs(pred.t)
+            const predType = pred.type === 'H' ? 'High' : 'Low'
+            const candidates = smNemo.extremes.filter(e => e.type === predType)
+            if (!candidates.length) continue
+            const nearest = candidates.reduce((a, b) =>
+              Math.abs(toMs(a.time) - predMs) < Math.abs(toMs(b.time) - predMs) ? a : b
+            )
+            const diff = Math.abs(toMs(nearest.time) - predMs)
+            if (diff <= 6 * 3600000) absErrors.push(diff / 60000)
+          }
+          if (absErrors.length >= 4) {
+            const avgErr = Math.round(absErrors.reduce((a, b) => a + b, 0) / absErrors.length)
+            if (avgErr > 150) {
+              findings.push({
+                source: 'Tide Accuracy · NOAA vs NEMO (Santa Monica)',
+                severity: 'critical',
+                title: `NEMO tide timing severely off at Santa Monica — avg ${avgErr} min error`,
+                detail: `Compared ${absErrors.length} NEMO extremes against NOAA hilo predictions: average absolute error is ${avgErr} min. Normal range is 10–40 min. Values above 150 min indicate a model failure or algorithm regression.`,
+                proposal: 'Visit /accuracy to see the full breakdown. Check Open-Meteo NEMO data directly for this coordinate. Review whether a recent code change affected extreme detection.',
+                effort: '1–2 hours',
+              })
+            } else if (avgErr > 90) {
+              findings.push({
+                source: 'Tide Accuracy · NOAA vs NEMO (Santa Monica)',
+                severity: 'notable',
+                title: `NEMO tide timing elevated at Santa Monica — avg ${avgErr} min error`,
+                detail: `Average absolute timing error vs NOAA: ${avgErr} min across ${absErrors.length} extremes. Normal range is 10–40 min. Values above 90 min warrant investigation.`,
+                proposal: 'Visit /accuracy to see per-extreme breakdown. Cross-check Santa Monica predictions against tide-forecast.com. If timing has shifted, check whether Open-Meteo updated their NEMO model.',
+                effort: '< 1 hour',
+              })
+            }
+          }
         }
       }
     }

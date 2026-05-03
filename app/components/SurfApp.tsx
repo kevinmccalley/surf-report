@@ -178,10 +178,17 @@ export default function SurfApp() {
               </section>
             )}
 
-            <footer className="text-center text-xs text-slate-600 pt-4">
-              Waves: Open-Meteo Marine & Weather API
-              {tideData?.available && ' · Tides: NOAA CO-OPS'}
-              {' '}· Updated {new Date(report.updatedAt).toLocaleTimeString()}
+            <footer className="text-center text-xs text-slate-600 pt-4 space-y-1.5">
+              <p>
+                Waves: Open-Meteo Marine &amp; Weather API
+                {tideData?.available && ' · Tides: NOAA CO-OPS'}
+                {' '}· Updated {new Date(report.updatedAt).toLocaleTimeString()}
+              </p>
+              <p>
+                <a href="/accuracy" className="hover:text-slate-400 transition-colors underline underline-offset-2">
+                  Forecast accuracy &amp; verification →
+                </a>
+              </p>
             </footer>
           </div>
         )}

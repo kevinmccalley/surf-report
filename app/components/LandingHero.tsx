@@ -67,6 +67,12 @@ export default function LandingHero({ onSelect }: { onSelect: (r: GeoResult) => 
             ))}
           </div>
         </div>
+
+        <p className="mt-8 text-xs text-slate-700">
+          <a href="/accuracy" className="hover:text-slate-500 transition-colors underline underline-offset-2">
+            Forecast accuracy verified against NOAA reference data — see live numbers →
+          </a>
+        </p>
       </div>
     </div>
   )
