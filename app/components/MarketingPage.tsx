@@ -285,7 +285,7 @@ export default function MarketingPage() {
 
             {/* Annual */}
             <div className="glass-card rounded-2xl p-6 border border-teal-500/25 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-bold bg-teal-700 text-white">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-bold bg-teal-900 text-white">
                 Best value · save 17%
               </div>
               <p className="text-xs text-teal-300 uppercase tracking-widest mb-3">Annual</p>
