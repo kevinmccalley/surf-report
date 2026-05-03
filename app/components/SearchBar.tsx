@@ -134,7 +134,7 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
       </div>
 
       {open && results.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-1 z-50 glass-card rounded-xl overflow-hidden shadow-2xl border border-white/10">
+        <div className="absolute top-full left-0 right-0 mt-1 z-50 rounded-xl overflow-hidden shadow-2xl border border-white/10" style={{ background: 'rgba(15,23,42,0.97)', backdropFilter: 'blur(12px)' }}>
           {results.map((r, i) => {
             const isSurfSpot = surfSpotKeys.has(`${r.lat},${r.lon}`)
             return (

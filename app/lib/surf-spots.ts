@@ -148,8 +148,8 @@ const SURF_SPOTS: SurfSpot[] = [
   { name: 'Safi',                aliases: ['Safi Right'],                    country: 'Safi, Morocco',           lat:  32.2833, lon:   -9.2333 },
 
   // ── South Africa ─────────────────────────────────────────────────────────────
-  { name: 'Supertubes',          aliases: ['J-Bay', 'Jeffrey\'s Bay', 'Jeffreys Bay'], country: 'Jeffrey\'s Bay, South Africa', lat: -34.0481, lon: 24.9313 },
-  { name: 'Boneyards',           aliases: ['Boneyard J-Bay'],                country: 'Jeffrey\'s Bay, South Africa', lat: -34.0439, lon: 24.9394 },
+  { name: 'Supertubes',          aliases: ['J-Bay', 'J Bay', 'Jeffrey\'s Bay', 'Jeffreys Bay', 'Jeffery\'s Bay', 'Jefferys Bay'], country: 'Jeffrey\'s Bay, South Africa', lat: -34.0481, lon: 24.9313 },
+  { name: 'Boneyards',           aliases: ['Boneyard J-Bay', 'Jeffery\'s Bay'],        country: 'Jeffrey\'s Bay, South Africa', lat: -34.0439, lon: 24.9394 },
   { name: 'Dungeons',                                                          country: 'Hout Bay, South Africa', lat: -34.0333, lon:  18.3500 },
   { name: 'Cave Rock',           aliases: ['Bluff'],                         country: 'Durban, South Africa',   lat: -29.9700, lon:  31.0300 },
   { name: 'New Pier',                                                          country: 'Durban, South Africa',   lat: -29.8600, lon:  31.0490 },
