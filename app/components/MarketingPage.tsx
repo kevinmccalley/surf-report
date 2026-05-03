@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { SignInButton, useUser } from '@clerk/nextjs'
 
 const MONTHLY_PRICE_ID = process.env.NEXT_PUBLIC_STRIPE_PRICE_MONTHLY!
@@ -75,7 +75,7 @@ export default function MarketingPage() {
               </button>
             ) : (
               <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/10 border border-white/15 text-slate-300 hover:bg-white/15 transition-colors">
+                <button className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/10 border border-white/15 text-white hover:bg-white/15 transition-colors">
                   Sign in
                 </button>
               </SignInButton>
@@ -101,7 +101,7 @@ export default function MarketingPage() {
         </div>
 
         <div className="relative z-10 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-500/20 bg-sky-500/8 text-sky-400 text-xs font-medium mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-500/20 bg-sky-500/8 text-sky-300 text-xs font-medium mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
             Live data · Fresh on every search
           </div>
@@ -113,7 +113,7 @@ export default function MarketingPage() {
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-400 max-w-xl mx-auto leading-relaxed mb-10">
+          <p className="text-lg sm:text-xl text-slate-300 max-w-xl mx-auto leading-relaxed mb-10">
             Real-time surf reports and 10-day forecasts for every break on earth.
             From Pipeline to your local beach — wave height, swell, wind, tides, and more.
           </p>
@@ -146,12 +146,12 @@ export default function MarketingPage() {
                     </button>
                   </SignInButton>
                 </div>
-                <p className="text-sm text-slate-500">No credit card required to try</p>
+                <p className="text-sm text-slate-400">No credit card required to try</p>
               </>
             )}
           </div>
 
-          <p className="text-xs text-slate-600 mt-4">
+          <p className="text-xs text-slate-400 mt-4">
             $40/year or $4/month after trial · Cancel anytime
           </p>
         </div>
@@ -163,7 +163,7 @@ export default function MarketingPage() {
           <h2 className="text-center text-3xl font-bold text-white mb-3">
             Everything you need to read the ocean
           </h2>
-          <p className="text-center text-slate-400 mb-14 max-w-md mx-auto">
+          <p className="text-center text-slate-300 mb-14 max-w-md mx-auto">
             One search. Every condition that matters. Updated hourly from the best free data sources on the planet.
           </p>
 
@@ -172,7 +172,7 @@ export default function MarketingPage() {
               <div key={f.title} className="glass-card rounded-2xl p-6">
                 <div className="text-3xl mb-4">{f.icon}</div>
                 <h3 className="text-base font-bold text-white mb-2">{f.title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">{f.desc}</p>
+                <p className="text-sm text-slate-300 leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -187,7 +187,7 @@ export default function MarketingPage() {
               <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
               <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
               <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-              <span className="ml-3 text-xs text-slate-500 font-mono">Pipeline, North Shore, Hawaii</span>
+              <span className="ml-3 text-xs text-slate-400 font-mono">Pipeline, North Shore, Hawaii</span>
             </div>
 
             {/* Simulated report preview */}
@@ -198,11 +198,11 @@ export default function MarketingPage() {
                   <div className="px-3 py-1 rounded-full bg-green-500/20 border border-green-500/30 text-green-300 text-xs font-bold uppercase tracking-widest">
                     Good
                   </div>
-                  <span className="text-4xl font-black text-white">8–12<span className="text-2xl font-normal text-slate-400">ft</span></span>
+                  <span className="text-4xl font-black text-white">8–12<span className="text-2xl font-normal text-slate-300">ft</span></span>
                 </div>
-                <div className="text-slate-500 text-sm leading-relaxed">
+                <div className="text-slate-400 text-sm leading-relaxed">
                   Long-period NW groundswell<br />
-                  <span className="text-slate-400">16s · Offshore NE winds</span>
+                  <span className="text-slate-300">16s · Offshore NE winds</span>
                 </div>
               </div>
 
@@ -216,15 +216,15 @@ export default function MarketingPage() {
                   { label: 'UV', value: 'High · 8', color: 'amber' },
                 ].map(pill => (
                   <div key={pill.label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/8">
-                    <span className="text-xs text-slate-500">{pill.label}</span>
-                    <span className="text-xs font-semibold text-slate-200">{pill.value}</span>
+                    <span className="text-xs text-slate-400">{pill.label}</span>
+                    <span className="text-xs font-semibold text-white">{pill.value}</span>
                   </div>
                 ))}
               </div>
 
               {/* Fake wave chart bars */}
               <div>
-                <p className="text-xs text-slate-500 uppercase tracking-widest mb-3">48-Hour Outlook</p>
+                <p className="text-xs text-slate-400 uppercase tracking-widest mb-3">48-Hour Outlook</p>
                 <div className="flex items-end gap-1 h-16">
                   {FAKE_WAVE_BARS.map((h, i) => (
                     <div
@@ -238,9 +238,9 @@ export default function MarketingPage() {
                   ))}
                 </div>
                 <div className="flex justify-between mt-1">
-                  <span className="text-[10px] text-slate-600">Now</span>
-                  <span className="text-[10px] text-slate-600">+24h</span>
-                  <span className="text-[10px] text-slate-600">+48h</span>
+                  <span className="text-[10px] text-slate-400">Now</span>
+                  <span className="text-[10px] text-slate-400">+24h</span>
+                  <span className="text-[10px] text-slate-400">+48h</span>
                 </div>
               </div>
 
@@ -248,9 +248,9 @@ export default function MarketingPage() {
               <div className="grid grid-cols-3 gap-2">
                 {FAKE_FORECAST.map(d => (
                   <div key={d.day} className="glass-card rounded-xl p-3 text-center">
-                    <p className="text-[10px] text-slate-500 mb-1">{d.day}</p>
+                    <p className="text-[10px] text-slate-400 mb-1">{d.day}</p>
                     <p className="text-sm font-bold text-white">{d.height}</p>
-                    <p className="text-[10px] text-slate-500">{d.period}</p>
+                    <p className="text-[10px] text-slate-400">{d.period}</p>
                     <div className={`mt-1.5 inline-block px-1.5 py-0.5 rounded text-[9px] font-bold uppercase ${d.ratingClass}`}>
                       {d.rating}
                     </div>
@@ -266,38 +266,38 @@ export default function MarketingPage() {
       <section className="py-24 px-4" id="pricing">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-center text-3xl font-bold text-white mb-3">Simple pricing</h2>
-          <p className="text-center text-slate-400 mb-12">
+          <p className="text-center text-slate-300 mb-12">
             Start free. Cancel anytime. No surprise fees.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Monthly */}
             <div className="glass-card rounded-2xl p-6 border border-white/10">
-              <p className="text-xs text-slate-500 uppercase tracking-widest mb-3">Monthly</p>
+              <p className="text-xs text-slate-400 uppercase tracking-widest mb-3">Monthly</p>
               <div className="flex items-end gap-1 mb-1">
                 <span className="text-4xl font-black text-white">$4</span>
-                <span className="text-slate-400 mb-1">/month</span>
+                <span className="text-slate-300 mb-1">/month</span>
               </div>
-              <p className="text-xs text-slate-500 mb-6">Billed monthly · cancel anytime</p>
+              <p className="text-xs text-slate-400 mb-6">Billed monthly · cancel anytime</p>
               <PricingCTA plan="monthly" isSignedIn={!!isSignedIn} loading={checkoutLoading} onCheckout={startCheckout} />
             </div>
 
             {/* Annual */}
             <div className="glass-card rounded-2xl p-6 border border-teal-500/25 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-bold bg-teal-500 text-white">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-bold bg-teal-600 text-white">
                 Best value · save 17%
               </div>
-              <p className="text-xs text-teal-400 uppercase tracking-widest mb-3">Annual</p>
+              <p className="text-xs text-teal-300 uppercase tracking-widest mb-3">Annual</p>
               <div className="flex items-end gap-1 mb-1">
                 <span className="text-4xl font-black text-white">$40</span>
-                <span className="text-slate-400 mb-1">/year</span>
+                <span className="text-slate-300 mb-1">/year</span>
               </div>
-              <p className="text-xs text-slate-500 mb-6">That&apos;s $3.33/month · best rate</p>
+              <p className="text-xs text-slate-400 mb-6">That&apos;s $3.33/month · best rate</p>
               <PricingCTA plan="annual" isSignedIn={!!isSignedIn} loading={checkoutLoading} onCheckout={startCheckout} primary />
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-slate-500">
+          <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-slate-400">
             {['7-day free trial', 'Cancel anytime', 'Secure payments via Stripe', 'No surprise fees'].map(item => (
               <div key={item} className="flex items-center gap-1.5">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -312,7 +312,7 @@ export default function MarketingPage() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="pb-16 text-center text-xs text-slate-700">
+      <footer className="pb-16 text-center text-xs text-slate-400">
         Data from Open-Meteo · NOAA CO-OPS · DFO · All free, open sources
       </footer>
     </div>
@@ -329,7 +329,7 @@ function PricingCTA({ plan, isSignedIn, loading, onCheckout, primary }: {
   const isLoading = loading === plan
   const cls = primary
     ? 'trial-cta-btn w-full py-3 rounded-xl text-white font-bold text-sm transition-colors disabled:opacity-60'
-    : 'w-full py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/8 text-slate-300 font-semibold text-sm transition-colors disabled:opacity-60'
+    : 'w-full py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/8 text-white font-semibold text-sm transition-colors disabled:opacity-60'
 
   if (isSignedIn) {
     return (
@@ -419,5 +419,5 @@ const FAKE_WAVE_BARS = [72, 78, 82, 88, 92, 88, 84, 80, 76, 78, 82, 86, 90, 86, 
 const FAKE_FORECAST = [
   { day: 'Today',    height: '8–12ft', period: '16s · NW',  rating: 'Good',  ratingClass: 'bg-green-500/20 text-green-300' },
   { day: 'Tomorrow', height: '6–9ft',  period: '14s · NW',  rating: 'Fair',  ratingClass: 'bg-yellow-500/20 text-yellow-300' },
-  { day: 'Wed',      height: '4–6ft',  period: '12s · W',   rating: 'Poor',  ratingClass: 'bg-slate-500/20 text-slate-400' },
+  { day: 'Wed',      height: '4–6ft',  period: '12s · W',   rating: 'Poor',  ratingClass: 'bg-slate-500/20 text-slate-300' },
 ]

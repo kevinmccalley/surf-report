@@ -156,7 +156,7 @@ export default function SurfApp() {
         </div>
       </header>
 
-      <main>
+      <main id="main-content">
         {!report && !loading && !error && (
           <LandingHero onSelect={fetchReport} />
         )}
@@ -283,7 +283,7 @@ export default function SurfApp() {
               </section>
             )}
 
-            <footer className="text-center text-xs text-slate-600 pt-4 space-y-1.5">
+            <footer className="text-center text-xs text-slate-400 pt-4 space-y-1.5">
               <p>
                 {report.historical
                   ? `Historical data: Open-Meteo Archive · ${report.historicalDate}`
@@ -295,7 +295,7 @@ export default function SurfApp() {
                 }
               </p>
               <p>
-                <a href="/accuracy" className="hover:text-slate-400 transition-colors underline underline-offset-2">
+                <a href="/accuracy" className="hover:text-slate-300 transition-colors underline underline-offset-2">
                   Forecast accuracy &amp; verification →
                 </a>
               </p>
@@ -355,7 +355,7 @@ function PastConditionsPicker({
       <svg className="w-4 h-4 text-slate-500 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
       </svg>
-      <span className="text-xs text-slate-500 shrink-0">Past conditions</span>
+      <span className="text-xs text-slate-400 shrink-0">Past conditions</span>
       <input
         type="date"
         value={value}
@@ -397,4 +397,3 @@ function LoadingSkeleton() {
     </div>
   )
 }
-

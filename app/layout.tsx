@@ -32,6 +32,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <ClerkProvider>
       <html lang="en" className={inter.variable}>
         <body className="font-sans antialiased">
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-semibold"
+          >
+            Skip to main content
+          </a>
           <ThemeProvider>
             {children}
           </ThemeProvider>
