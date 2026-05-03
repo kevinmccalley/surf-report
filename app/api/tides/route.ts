@@ -257,8 +257,8 @@ async function tryWorldTides(lat: number, lon: number): Promise<TideResult | nul
       station?: string
       responseLat?: number
       responseLon?: number
-      heights?: { date: string; height: number }[]
-      extremes?: { date: string; height: number; type: string }[]
+      heights?: { dt: number; date: string; height: number }[]
+      extremes?: { dt: number; date: string; height: number; type: string }[]
     }
 
     // Non-200 status means rate-limited, invalid key, or no coverage
@@ -267,13 +267,19 @@ async function tryWorldTides(lat: number, lon: number): Promise<TideResult | nul
       return null
     }
 
+    // Use the Unix timestamp (dt) field rather than the date string — the date
+    // string format varies across API versions and includes a trailing " +0000"
+    // that breaks naive ISO parsing. dt*1000 → toISOString() is always valid UTC.
+    const toUtcIso = (item: { dt: number; date: string }) =>
+      item.dt ? new Date(item.dt * 1000).toISOString() : item.date
+
     const hourly: TideHeight[] = (data.heights ?? [])
-      .map(h => ({ time: h.date, height: h.height }))
+      .map(h => ({ time: toUtcIso(h), height: h.height }))
       .filter(h => !isNaN(h.height))
 
     const extremes: TideExtreme[] = (data.extremes ?? [])
       .map((e): TideExtreme => ({
-        time:   e.date,
+        time:   toUtcIso(e),
         height: e.height,
         type:   e.type === 'High' ? 'High' : 'Low',
       }))
@@ -496,7 +502,10 @@ export async function GET(request: NextRequest) {
 
     // WorldTides returns UTC — convert to spot's local timezone
     const wtResult = await tryWorldTides(lat, lon)
-    if (wtResult?.available) return NextResponse.json(localizeUtcTimes(wtResult, tz))
+    if (wtResult?.available) {
+      console.log(`[tides] WorldTides hit · tz="${tz}" · first extreme raw: ${wtResult.extremes[0]?.time}`)
+      return NextResponse.json(localizeUtcTimes(wtResult, tz))
+    }
 
     // Open-Meteo sea_level_height_msl is in UTC — convert to spot's local timezone
     const omResult = await tryOpenMeteo(lat, lon)
