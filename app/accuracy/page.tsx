@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Forecast Accuracy | Groundswell',
-  description: 'Real-time verification: Groundswell tide predictions vs NOAA official harmonic predictions at US tide stations.',
+  description: 'Surfline doesn\'t publish their accuracy numbers. We do — verified live against NOAA official harmonic predictions, updated every page load.',
 }
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -212,8 +212,8 @@ export default async function AccuracyPage() {
 
         {/* Headline */}
         <div className="py-2">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-600 mb-3">
-            Live verification · NOAA harmonic reference · fetched now
+          <p className="text-sm font-medium text-slate-400 mb-4">
+            Surfline doesn&apos;t publish their accuracy numbers. We do.
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
             <span className="text-teal-400">{overallPct}%</span>
@@ -222,11 +222,11 @@ export default async function AccuracyPage() {
             <span className="text-slate-300">within 30 minutes</span>
           </h1>
           <p className="text-slate-500 mt-4 text-sm max-w-lg leading-relaxed">
-            Average error: <span className="text-slate-300 font-medium">{avgError} minutes</span>
-            {' '}across{' '}
+            30 minutes is the difference between catching the right session and missing it.
+            Verified live against NOAA&apos;s official harmonic predictions —{' '}
             <span className="text-slate-300 font-medium">{totalExtremes} tide extremes</span>
-            {' '}at {results.filter(r => !r.error).length} NOAA-verified US stations.
-            Numbers update each page load — no stored results, no cherry-picking.
+            {' '}across {results.filter(r => !r.error).length} open-coast US stations.
+            Updated each page load. No stored results, no cherry-picking.
           </p>
         </div>
 
