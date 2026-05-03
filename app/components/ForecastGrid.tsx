@@ -52,14 +52,11 @@ function ForecastCard({ day, units, isCoastal }: {
         <WeatherIcon code={day.weatherCode} size={22} />
       </div>
 
-      {/* Surf rating dot */}
+      {/* Surf rating */}
       {isCoastal && (
         <div
           className="text-center text-xs font-bold py-0.5 rounded-md"
-          style={{
-            backgroundColor: rating.bgColor,
-            color: rating.textColor,
-          }}
+          style={{ backgroundColor: rating.bgColor, color: rating.textColor }}
           title={rating.label}
         >
           {rating.label === 'FLAT' ? '–' :
@@ -80,6 +77,14 @@ function ForecastCard({ day, units, isCoastal }: {
         </p>
       )}
 
+      {/* Swell direction */}
+      {isCoastal && (
+        <div className="flex items-center gap-1 text-xs text-sky-400/80">
+          <SwellIcon />
+          <span className="font-medium">{day.swellDirectionLabel}</span>
+        </div>
+      )}
+
       {/* Temp */}
       <div className="flex justify-between text-xs">
         <span className="text-white font-medium">{formatTemp(day.tempMax, units.temp)}</span>
@@ -88,6 +93,7 @@ function ForecastCard({ day, units, isCoastal }: {
 
       {/* Wind */}
       <div className="flex items-center gap-1 text-xs text-slate-400">
+        <WindIcon />
         <WindArrow direction={day.windDirectionDominant} />
         <span>{Math.round(day.windSpeedMax)}</span>
       </div>
@@ -100,6 +106,30 @@ function ForecastCard({ day, units, isCoastal }: {
         </div>
       )}
     </div>
+  )
+}
+
+function WindIcon() {
+  return (
+    <svg width="11" height="10" viewBox="0 0 11 10" fill="none" aria-hidden>
+      <path d="M1 2.5h6.5a1.25 1.25 0 0 1 0 2.5H1" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+      <path d="M1 6.5h4a1 1 0 0 1 0 2H1" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function SwellIcon() {
+  return (
+    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden>
+      <path
+        d="M0.5 5.5 C1.5 3.5, 2.5 3.5, 3.5 5.5 C4.5 7.5, 5.5 7.5, 6.5 5.5 C7.5 3.5, 8.5 3.5, 9.5 5.5 C10 6.5, 10.5 6.5, 11.5 5.5"
+        stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" fill="none"
+      />
+      <path
+        d="M0.5 2 C1.5 0.5, 2.5 0.5, 3.5 2 C4.5 3.5, 5.5 3.5, 6.5 2"
+        stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" fill="none" opacity="0.5"
+      />
+    </svg>
   )
 }
 
