@@ -11,6 +11,7 @@ const isPublicRoute = createRouteMatcher([
   '/api/webhook(.*)',
   '/api/monitor(.*)',
   '/api/accuracy-check(.*)',
+  '/api/accuracy-history(.*)',
   '/accuracy(.*)',
   '/climatology(.*)',
   '/sign-in(.*)',

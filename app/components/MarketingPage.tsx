@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { SignInButton, useUser } from '@clerk/nextjs'
+import Link from 'next/link'
 
 const MONTHLY_PRICE_ID = process.env.NEXT_PUBLIC_STRIPE_PRICE_MONTHLY!
 const ANNUAL_PRICE_ID  = process.env.NEXT_PUBLIC_STRIPE_PRICE_ANNUAL!
@@ -179,6 +180,9 @@ export default function MarketingPage() {
         </div>
       </section>
 
+      {/* ── Accuracy trust signal ── */}
+      <AccuracyBadge />
+
       {/* ── App preview ── */}
       <section className="py-16 px-4">
         <div className="mx-auto max-w-5xl">
@@ -316,6 +320,56 @@ export default function MarketingPage() {
         Data from Open-Meteo · NOAA CO-OPS · DFO · All free, open sources
       </footer>
     </div>
+  )
+}
+
+function AccuracyBadge() {
+  const [data, setData] = useState<{ overallPct: number; totalMatches: number; days: number } | null>(null)
+
+  useEffect(() => {
+    fetch('/api/accuracy-history?days=90')
+      .then(r => r.json())
+      .then((d: { records?: Array<{ overallPct: number; totalMatches: number }> }) => {
+        const records = d.records ?? []
+        if (!records.length) return
+        const avgPct = Math.round(records.reduce((a, r) => a + r.overallPct, 0) / records.length)
+        const totalMatches = records.reduce((a, r) => a + r.totalMatches, 0)
+        setData({ overallPct: avgPct, totalMatches, days: records.length })
+      })
+      .catch(() => {})
+  }, [])
+
+  if (!data) return null
+
+  return (
+    <section className="py-12 px-4">
+      <div className="mx-auto max-w-3xl">
+        <Link href="/accuracy" className="block group">
+          <div className="glass-card rounded-2xl p-6 sm:p-8 border border-teal-500/15 hover:border-teal-500/30 transition-colors">
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <div className="shrink-0 text-center sm:text-left">
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-teal-500 mb-1">Verified accuracy</p>
+                <p className="text-5xl font-black text-teal-400 leading-none">{data.overallPct}%</p>
+                <p className="text-sm text-slate-400 mt-1">within 30 minutes</p>
+              </div>
+              <div className="w-px h-12 bg-white/10 hidden sm:block" />
+              <div className="flex-1 text-center sm:text-left">
+                <p className="text-white font-semibold mb-1">
+                  Surfline doesn&apos;t publish their accuracy. We do.
+                </p>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  {data.totalMatches.toLocaleString()} tide extremes verified against NOAA official predictions
+                  over {data.days} days. Live, transparent, and independently verifiable.
+                </p>
+              </div>
+              <div className="shrink-0 text-teal-500 group-hover:translate-x-1 transition-transform text-lg">
+                →
+              </div>
+            </div>
+          </div>
+        </Link>
+      </div>
+    </section>
   )
 }
 
