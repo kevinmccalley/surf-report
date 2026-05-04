@@ -1,16 +1,14 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { SignInButton, useUser } from '@clerk/nextjs'
 import Link from 'next/link'
-
-const MONTHLY_PRICE_ID = process.env.NEXT_PUBLIC_STRIPE_PRICE_MONTHLY!
-const ANNUAL_PRICE_ID  = process.env.NEXT_PUBLIC_STRIPE_PRICE_ANNUAL!
 
 export default function MarketingPage() {
   const { isSignedIn } = useUser()
   const [checkoutLoading, setCheckoutLoading] = useState<'monthly' | 'annual' | null>(null)
   const [activating, setActivating]           = useState(false)
+  const [checkoutError, setCheckoutError]     = useState<string | null>(null)
   // True once we've resolved auth state and there's no auto-checkout to fire.
   // Signed-in users with no pending checkout intent are shown an explicit setup screen.
   const [setupReady, setSetupReady] = useState(false)
@@ -47,14 +45,21 @@ export default function MarketingPage() {
 
   async function startCheckout(plan: 'monthly' | 'annual') {
     setCheckoutLoading(plan)
+    setCheckoutError(null)
     try {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId: plan === 'annual' ? ANNUAL_PRICE_ID : MONTHLY_PRICE_ID }),
+        body: JSON.stringify({ plan }),
       })
-      const data = await res.json()
-      if (data.url) window.location.href = data.url
+      const data = await res.json() as { url?: string; error?: string }
+      if (data.url) {
+        window.location.href = data.url
+        return // keep loading spinner until navigation completes
+      }
+      setCheckoutError(data.error ?? `Checkout failed (status ${res.status}). Please try again.`)
+    } catch (err) {
+      setCheckoutError(err instanceof Error ? err.message : 'Network error — please try again.')
     } finally {
       setCheckoutLoading(null)
     }
@@ -65,7 +70,7 @@ export default function MarketingPage() {
   // Signed in but not subscribed and no auto-checkout fired — show a focused
   // setup screen so it's obvious what to do next.
   if (isSignedIn && setupReady && !checkoutLoading) {
-    return <TrialSetupScreen onCheckout={startCheckout} loading={checkoutLoading} />
+    return <TrialSetupScreen onCheckout={startCheckout} loading={checkoutLoading} error={checkoutError} />
   }
 
   return (
@@ -423,9 +428,10 @@ function PricingCTA({ plan, isSignedIn, loading, onCheckout, primary }: {
   )
 }
 
-function TrialSetupScreen({ onCheckout, loading }: {
+function TrialSetupScreen({ onCheckout, loading, error }: {
   onCheckout: (plan: 'monthly' | 'annual') => void
   loading: 'monthly' | 'annual' | null
+  error: string | null
 }) {
   return (
     <div className="theme-bg min-h-screen flex flex-col items-center justify-center gap-8 text-center px-4">
@@ -437,6 +443,13 @@ function TrialSetupScreen({ onCheckout, loading }: {
           live surf reports for every break on earth.
         </p>
       </div>
+
+      {error && (
+        <div className="w-full max-w-sm rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300 text-left">
+          {error}
+        </div>
+      )}
+
       <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-sm">
         <button
           onClick={() => onCheckout('annual')}
