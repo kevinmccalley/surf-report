@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Analytics } from '@vercel/analytics/next'
 import ThemeProvider from './components/ThemeProvider'
+import { LanguageProvider } from './i18n/LanguageContext'
 import './globals.css'
 
 const inter = Inter({
@@ -39,9 +40,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           >
             Skip to main content
           </a>
-          <ThemeProvider>
-            {children}
-          </ThemeProvider>
+          <LanguageProvider>
+            <ThemeProvider>
+              {children}
+            </ThemeProvider>
+          </LanguageProvider>
           <Analytics />
         </body>
       </html>

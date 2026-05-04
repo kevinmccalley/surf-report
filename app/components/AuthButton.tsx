@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { SignInButton, SignOutButton, useUser } from '@clerk/nextjs'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Props {
   subscribed: boolean
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export default function AuthButton({ subscribed, onManageBilling }: Props) {
+  const { t } = useLanguage()
   const { isSignedIn, user } = useUser()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -31,7 +33,7 @@ export default function AuthButton({ subscribed, onManageBilling }: Props) {
             onClick={onManageBilling}
             className="px-2 py-1 rounded-md text-[10px] font-semibold bg-teal-500/15 border border-teal-500/20 text-teal-400 hover:bg-teal-500/25 transition-colors hidden sm:block"
           >
-            Pro
+            {t('auth.pro')}
           </button>
         )}
         <div className="relative" ref={ref}>
@@ -50,7 +52,7 @@ export default function AuthButton({ subscribed, onManageBilling }: Props) {
                   onClick={() => { setOpen(false); onManageBilling() }}
                   className="w-full text-left px-3 py-2 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
                 >
-                  Manage billing
+                  {t('auth.manageBilling')}
                 </button>
               )}
               <SignOutButton>
@@ -58,7 +60,7 @@ export default function AuthButton({ subscribed, onManageBilling }: Props) {
                   onClick={() => setOpen(false)}
                   className="w-full text-left px-3 py-2 text-xs text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
                 >
-                  Sign out
+                  {t('auth.signOut')}
                 </button>
               </SignOutButton>
             </div>
@@ -71,7 +73,7 @@ export default function AuthButton({ subscribed, onManageBilling }: Props) {
   return (
     <SignInButton mode="modal">
       <button className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500/20 border border-sky-500/30 text-sky-300 hover:bg-sky-500/30 transition-colors whitespace-nowrap">
-        Sign in
+        {t('auth.signIn')}
       </button>
     </SignInButton>
   )

@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import type { ClimatologyMonth } from '@/app/lib/climatology'
+import { useLanguage } from '@/app/i18n/LanguageContext'
+import type { TFn } from '@/app/i18n/LanguageContext'
 
 export type { ClimatologyMonth }
 
@@ -10,7 +12,7 @@ interface Props {
   peakMonths: number[]
 }
 
-const SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+const MONTH_KEYS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
 
 function DirectionRose({ degrees, size = 26 }: { degrees: number; size?: number }) {
   const c = size / 2
@@ -41,21 +43,19 @@ function DirectionRose({ degrees, size = 26 }: { degrees: number; size?: number 
   )
 }
 
-function generateMonthSummary(m: ClimatologyMonth, peakMonths: number[], maxHs: number): string {
+function generateMonthSummary(m: ClimatologyMonth, peakMonths: number[], maxHs: number, t: TFn, monthAbbr: string): string {
   const isPeak     = peakMonths.includes(m.month)
   const isFlat     = m.avgHs < 0.5
   const isShoulder = !isPeak && m.avgHs >= maxHs * 0.55
 
-  if (isFlat)
-    return `${m.name} is typically flat — expect small windswell with little surfable energy.`
-  if (isPeak)
-    return `${m.name} is peak season — expect powerful ${m.dominantDirectionLabel} groundswell averaging ${m.avgHs} m at ${m.avgSwellPeriod}s.`
-  if (isShoulder)
-    return `${m.name} is a solid shoulder month — consistent ${m.dominantDirectionLabel} swell at ${m.avgHs} m, ${m.avgSwellPeriod}s period.`
-  return `${m.name} sees moderate swell — ${m.avgHs} m ${m.dominantDirectionLabel} at ${m.avgSwellPeriod}s. Worth checking but not prime season.`
+  if (isFlat)     return t('clim.summary.flat',     { month: monthAbbr })
+  if (isPeak)     return t('clim.summary.peak',     { month: monthAbbr, dir: m.dominantDirectionLabel, avgHs: m.avgHs, period: m.avgSwellPeriod })
+  if (isShoulder) return t('clim.summary.shoulder', { month: monthAbbr, dir: m.dominantDirectionLabel, avgHs: m.avgHs, period: m.avgSwellPeriod })
+  return t('clim.summary.moderate', { month: monthAbbr, dir: m.dominantDirectionLabel, avgHs: m.avgHs, period: m.avgSwellPeriod })
 }
 
 export default function ClimatologySection({ months, peakMonths }: Props) {
+  const { t } = useLanguage()
   const [hovered, setHovered]         = useState<number | null>(null)
   const [tappedMonth, setTappedMonth] = useState<number | null>(null)
 
@@ -71,38 +71,37 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
     hoveredIdx >= 10 ? 'translateX(-85%)' :
     'translateX(-50%)'
 
+  const monthAbbrFn = (m: ClimatologyMonth) => t(`months.${MONTH_KEYS[m.month - 1]}`)
+
   return (
     <div className="space-y-5">
 
-      {/* Header row */}
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">
-            Best time to visit
+            {t('clim.bestTime')}
           </p>
           <p className="text-xs text-slate-600">
-            3-year monthly avg · offshore significant wave height · 2022–2024
+            {t('clim.avgDesc')}
           </p>
         </div>
         {peakMonths.length > 0 && (
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs text-slate-600">Peak surf season:</span>
+            <span className="text-xs text-slate-600">{t('clim.peakSeason')}</span>
             {peakMonths.map(m => (
               <span
                 key={m}
                 className="px-2 py-0.5 rounded-md text-xs font-semibold bg-teal-500/15 text-teal-400 border border-teal-500/20"
               >
-                {SHORT[m - 1]}
+                {t(`months.${MONTH_KEYS[m - 1]}`)}
               </span>
             ))}
           </div>
         )}
       </div>
 
-      {/* Bar chart */}
       <div className="relative select-none">
 
-        {/* Tooltip — desktop hover */}
         {hoveredData && (
           <div
             className="absolute bottom-full mb-2 z-20 rounded-xl px-3 py-2.5 text-xs shadow-xl border border-white/12 pointer-events-none"
@@ -119,18 +118,17 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-slate-400 mb-2">
-              <span>Avg Hs</span>
+              <span>{t('clim.avgHs')}</span>
               <span className="text-teal-300 font-medium tabular-nums">{hoveredData.avgHs} m</span>
-              <span>Avg period</span>
+              <span>{t('clim.avgPeriod')}</span>
               <span className="text-slate-300 tabular-nums">{hoveredData.avgSwellPeriod} s</span>
             </div>
             <p className="border-t border-white/10 pt-2 text-slate-400 leading-relaxed whitespace-normal">
-              {generateMonthSummary(hoveredData, peakMonths, maxHs)}
+              {generateMonthSummary(hoveredData, peakMonths, maxHs, t, monthAbbrFn(hoveredData))}
             </p>
           </div>
         )}
 
-        {/* Bars */}
         <div className="flex items-end gap-0.5 sm:gap-1" style={{ height: '120px' }}>
           {months.map((m) => {
             const isPeak    = peakMonths.includes(m.month)
@@ -165,14 +163,13 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
                   isPeak    ? 'text-teal-400' :
                   isCurrent ? 'text-sky-400'  : 'text-slate-600'
                 }`}>
-                  {SHORT[m.month - 1]}
+                  {t(`months.${MONTH_KEYS[m.month - 1]}`)}
                 </span>
               </div>
             )
           })}
         </div>
 
-        {/* Y-axis reference lines */}
         <div className="absolute inset-x-0 top-0 h-24 flex flex-col justify-between pointer-events-none">
           {[maxHs, maxHs * 0.5, 0].map((v, i) => (
             <div key={i} className="flex items-center gap-1">
@@ -185,7 +182,6 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
         </div>
       </div>
 
-      {/* Tap-to-expand detail card (mobile-primary, works on desktop too) */}
       {tappedData && (
         <div className="glass-card rounded-xl p-3.5 border border-white/8">
           <div className="flex items-start justify-between gap-3 mb-2">
@@ -204,30 +200,28 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
             </div>
           </div>
           <p className="text-xs text-slate-400 leading-relaxed">
-            {generateMonthSummary(tappedData, peakMonths, maxHs)}
+            {generateMonthSummary(tappedData, peakMonths, maxHs, t, monthAbbrFn(tappedData))}
           </p>
         </div>
       )}
 
-      {/* Legend */}
       <div className="flex items-center gap-x-5 gap-y-1.5 flex-wrap text-[10px] text-slate-600">
         <span className="flex items-center gap-1.5">
           <span className="inline-block w-2.5 h-2.5 rounded-sm bg-teal-500 opacity-70" />
-          Peak months
+          {t('clim.peakMonths')}
         </span>
         <span className="flex items-center gap-1.5">
           <span className="inline-block w-2.5 h-2.5 rounded-sm bg-sky-500 opacity-70" />
-          This month
+          {t('clim.thisMonth')}
         </span>
         <span className="flex items-center gap-1.5">
           <span className="inline-block w-2.5 h-2.5 rounded-sm bg-slate-700 opacity-70" />
-          Off-peak
+          {t('clim.offPeak')}
         </span>
-        <span className="ml-auto sm:hidden">Tap a bar for details</span>
-        <span className="ml-auto hidden sm:inline">Hover or tap a bar for details</span>
+        <span className="ml-auto sm:hidden">{t('clim.tapDetails')}</span>
+        <span className="ml-auto hidden sm:inline">{t('clim.hoverDetails')}</span>
       </div>
 
-      {/* Monthly detail strip */}
       <div className="overflow-x-auto forecast-scroll -mx-1 px-1">
         <div className="flex gap-1 min-w-max">
           {months.map((m) => {
@@ -247,7 +241,7 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
                 <span className={`text-[10px] font-semibold ${
                   isPeak ? 'text-teal-400' : isCurrent ? 'text-sky-400' : 'text-slate-500'
                 }`}>
-                  {SHORT[m.month - 1]}
+                  {t(`months.${MONTH_KEYS[m.month - 1]}`)}
                 </span>
                 <span className="text-xs font-bold text-white tabular-nums">{m.avgHs}m</span>
                 <span className="text-[9px] text-slate-600 tabular-nums">{m.avgSwellPeriod}s</span>

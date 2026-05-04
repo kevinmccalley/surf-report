@@ -3,8 +3,11 @@
 import { useState, useEffect } from 'react'
 import { SignInButton, useUser, useClerk, useAuth } from '@clerk/nextjs'
 import Link from 'next/link'
+import { useLanguage } from '@/app/i18n/LanguageContext'
+import LanguageSwitcher from './LanguageSwitcher'
 
 export default function MarketingPage() {
+  const { t } = useLanguage()
   const { isLoaded, isSignedIn } = useUser()
   const { signOut } = useClerk()
   const { getToken } = useAuth()
@@ -27,13 +30,11 @@ export default function MarketingPage() {
     }
   }, [isSignedIn])
 
-  // Show "activating" screen if redirected back from Stripe success
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     if (params.get('subscribed') === 'true') {
       setActivating(true)
       window.history.replaceState({}, '', '/')
-      // Reload after 3s to pick up webhook-updated subscription status
       setTimeout(() => window.location.reload(), 3000)
     }
   }, [])
@@ -59,7 +60,7 @@ export default function MarketingPage() {
       const data = await res.json() as { url?: string; error?: string }
       if (data.url) {
         window.location.href = data.url
-        return // keep loading spinner until navigation completes
+        return
       }
       setCheckoutError(data.error ?? `Checkout failed (status ${res.status}). Please try again.`)
     } catch (err) {
@@ -69,12 +70,8 @@ export default function MarketingPage() {
     }
   }
 
-  // Don't render anything until Clerk has resolved auth state — prevents a
-  // one-frame flash of the marketing page before TrialSetupScreen appears.
   if (!isLoaded) return null
-
   if (activating) return <ActivatingScreen />
-
   if (isSignedIn) {
     return (
       <TrialSetupScreen
@@ -89,7 +86,7 @@ export default function MarketingPage() {
   return (
     <div className="theme-bg min-h-screen">
 
-      {/* ── Minimal nav ── */}
+      {/* Nav */}
       <nav className="sticky top-0 z-50 theme-header">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -97,13 +94,14 @@ export default function MarketingPage() {
             <span className="text-sm font-bold tracking-wide text-white">Groundswell</span>
           </div>
           <div className="flex items-center gap-2">
+            <LanguageSwitcher />
             {isSignedIn ? (
               <button
                 onClick={() => startCheckout('annual')}
                 disabled={!!checkoutLoading}
                 className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-sky-500 hover:bg-sky-400 text-white transition-colors disabled:opacity-60"
               >
-                {checkoutLoading ? 'Loading…' : 'Start free trial'}
+                {checkoutLoading ? t('mkt.loading') : t('mkt.startTrialAnnual')}
               </button>
             ) : (
               <SignInButton mode="modal" forceRedirectUrl="/?checkout=1" signUpForceRedirectUrl="/?checkout=1">
@@ -111,7 +109,7 @@ export default function MarketingPage() {
                   className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/10 border border-white/15 text-white hover:bg-white/15 transition-colors"
                   onClick={() => localStorage.setItem('pendingCheckout', 'annual')}
                 >
-                  Sign in
+                  {t('mkt.navSignIn')}
                 </button>
               </SignInButton>
             )}
@@ -119,9 +117,8 @@ export default function MarketingPage() {
         </div>
       </nav>
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <section className="relative min-h-[92vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
-        {/* Animated wave background */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden>
           <div className="wave-container" style={{ bottom: 0, height: '280px' }}>
             <svg viewBox="0 0 1440 280" preserveAspectRatio="none" className="wave-path-1 w-full h-full" style={{ opacity: 0.06 }}>
@@ -138,22 +135,20 @@ export default function MarketingPage() {
         <div className="relative z-10 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-500/20 bg-sky-500/8 text-sky-200 text-xs font-medium mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" aria-hidden="true" />
-            Live data · Fresh on every search
+            {t('mkt.liveBadge')}
           </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight mb-6">
-            Know Before<br />
+            {t('mkt.headline1')}<br />
             <span className="bg-gradient-to-r from-sky-400 to-teal-400 bg-clip-text text-transparent">
-              You Go.
+              {t('mkt.headline2')}
             </span>
           </h1>
 
           <p className="text-lg sm:text-xl text-slate-200 max-w-xl mx-auto leading-relaxed mb-10">
-            Real-time surf reports and 10-day forecasts for every break on earth.
-            From Pipeline to your local beach — wave height, swell, wind, tides, and more.
+            {t('mkt.subtitle')}
           </p>
 
-          {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             {isSignedIn ? (
               <>
@@ -162,14 +157,14 @@ export default function MarketingPage() {
                   disabled={!!checkoutLoading}
                   className="trial-cta-btn w-full sm:w-auto px-8 py-4 rounded-2xl active:scale-95 text-white font-bold text-base transition-all disabled:opacity-60"
                 >
-                  {checkoutLoading === 'annual' ? 'Loading…' : 'Start 7-day free trial'}
+                  {checkoutLoading === 'annual' ? t('mkt.loading') : t('mkt.startTrialAnnual')}
                 </button>
                 <button
                   onClick={() => startCheckout('monthly')}
                   disabled={!!checkoutLoading}
                   className="w-full sm:w-auto px-8 py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/8 text-slate-200 font-semibold text-base transition-all disabled:opacity-60"
                 >
-                  {checkoutLoading === 'monthly' ? 'Loading…' : 'Monthly · $4/mo'}
+                  {checkoutLoading === 'monthly' ? t('mkt.loading') : t('mkt.monthlyBtn')}
                 </button>
               </>
             ) : (
@@ -179,46 +174,40 @@ export default function MarketingPage() {
                     onClick={() => localStorage.setItem('pendingCheckout', 'annual')}
                     className="trial-cta-btn w-full sm:w-auto px-8 py-4 rounded-2xl active:scale-95 text-white font-bold text-base transition-all"
                   >
-                    Start 7-day free trial →
+                    {t('mkt.startTrialAnnualArrow')}
                   </button>
                 </SignInButton>
-                <p className="text-sm text-slate-300">No credit card required to try</p>
+                <p className="text-sm text-slate-300">{t('mkt.noCard')}</p>
               </>
             )}
           </div>
 
-          <p className="text-xs text-slate-300 mt-4">
-            $40/year or $4/month after trial · Cancel anytime
-          </p>
+          <p className="text-xs text-slate-300 mt-4">{t('mkt.pricingNote')}</p>
         </div>
       </section>
 
-      {/* ── Feature grid ── */}
+      {/* Features */}
       <section className="py-24 px-4">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-center text-3xl font-bold text-white mb-3">
-            Everything you need to read the ocean
-          </h2>
-          <p className="text-center text-slate-200 mb-14 max-w-md mx-auto">
-            One search. Every condition that matters. Updated hourly from the best free data sources on the planet.
-          </p>
+          <h2 className="text-center text-3xl font-bold text-white mb-3">{t('mkt.featuresTitle')}</h2>
+          <p className="text-center text-slate-200 mb-14 max-w-md mx-auto">{t('mkt.featuresSubtitle')}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {FEATURES.map(f => (
-              <div key={f.title} className="glass-card rounded-2xl p-6">
+            {FEATURE_IDS.map(f => (
+              <div key={f.icon} className="glass-card rounded-2xl p-6">
                 <div className="text-3xl mb-4" aria-hidden="true">{f.icon}</div>
-                <h3 className="text-base font-bold text-white mb-2">{f.title}</h3>
-                <p className="text-sm text-slate-200 leading-relaxed">{f.desc}</p>
+                <h3 className="text-base font-bold text-white mb-2">{t(f.titleKey)}</h3>
+                <p className="text-sm text-slate-200 leading-relaxed">{t(f.descKey)}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Accuracy trust signal ── */}
+      {/* Accuracy trust signal */}
       <AccuracyBadge />
 
-      {/* ── App preview ── */}
+      {/* App preview */}
       <section className="py-16 px-4">
         <div className="mx-auto max-w-5xl">
           <div className="glass-card rounded-3xl p-6 sm:p-10 border border-white/10">
@@ -229,9 +218,7 @@ export default function MarketingPage() {
               <span className="ml-3 text-xs text-slate-300 font-mono">Pipeline, North Shore, Hawaii</span>
             </div>
 
-            {/* Simulated report preview */}
             <div className="space-y-4">
-              {/* Rating badge */}
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <div className="px-3 py-1 rounded-full bg-green-500/20 border border-green-500/30 text-green-200 text-xs font-bold uppercase tracking-widest">
@@ -245,7 +232,6 @@ export default function MarketingPage() {
                 </div>
               </div>
 
-              {/* Condition pills */}
               <div className="flex flex-wrap gap-2">
                 {[
                   { label: 'Swell', value: 'NW 285°', color: 'sky' },
@@ -261,19 +247,11 @@ export default function MarketingPage() {
                 ))}
               </div>
 
-              {/* Fake wave chart bars */}
               <div>
                 <p className="text-xs text-slate-300 uppercase tracking-widest mb-3">48-Hour Outlook</p>
                 <div className="flex items-end gap-1 h-16" aria-hidden="true">
                   {FAKE_WAVE_BARS.map((h, i) => (
-                    <div
-                      key={i}
-                      className="flex-1 rounded-sm opacity-70"
-                      style={{
-                        height: `${h}%`,
-                        background: `rgba(56,189,248,${0.3 + h / 200})`,
-                      }}
-                    />
+                    <div key={i} className="flex-1 rounded-sm opacity-70" style={{ height: `${h}%`, background: `rgba(56,189,248,${0.3 + h / 200})` }} />
                   ))}
                 </div>
                 <div className="flex justify-between mt-1" aria-hidden="true">
@@ -283,7 +261,6 @@ export default function MarketingPage() {
                 </div>
               </div>
 
-              {/* 3-day forecast pills */}
               <div className="grid grid-cols-3 gap-2">
                 {FAKE_FORECAST.map(d => (
                   <div key={d.day} className="glass-card rounded-xl p-3 text-center">
@@ -301,64 +278,60 @@ export default function MarketingPage() {
         </div>
       </section>
 
-      {/* ── Pricing ── */}
+      {/* Pricing */}
       <section className="py-24 px-4" id="pricing">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-center text-3xl font-bold text-white mb-3">Simple pricing</h2>
-          <p className="text-center text-slate-200 mb-12">
-            Start free. Cancel anytime. No surprise fees.
-          </p>
+          <h2 className="text-center text-3xl font-bold text-white mb-3">{t('mkt.pricingTitle')}</h2>
+          <p className="text-center text-slate-200 mb-12">{t('mkt.pricingSubtitle')}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Monthly */}
             <div className="glass-card rounded-2xl p-6 border border-white/10">
-              <p className="text-xs text-slate-300 uppercase tracking-widest mb-3">Monthly</p>
+              <p className="text-xs text-slate-300 uppercase tracking-widest mb-3">{t('mkt.planMonthly')}</p>
               <div className="flex items-end gap-1 mb-1">
                 <span className="text-4xl font-black text-white">$4</span>
-                <span className="text-slate-200 mb-1">/month</span>
+                <span className="text-slate-200 mb-1">{t('mkt.perMonth')}</span>
               </div>
-              <p className="text-xs text-slate-300 mb-6">Billed monthly · cancel anytime</p>
+              <p className="text-xs text-slate-300 mb-6">{t('mkt.billedMonthly')}</p>
               <PricingCTA plan="monthly" isSignedIn={!!isSignedIn} loading={checkoutLoading} onCheckout={startCheckout} />
             </div>
 
-            {/* Annual */}
             <div className="glass-card rounded-2xl p-6 border border-teal-500/25 relative">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-bold bg-teal-900 text-white">
-                Best value · save 17%
+                {t('mkt.bestValue')}
               </div>
-              <p className="text-xs text-teal-300 uppercase tracking-widest mb-3">Annual</p>
+              <p className="text-xs text-teal-300 uppercase tracking-widest mb-3">{t('mkt.planAnnual')}</p>
               <div className="flex items-end gap-1 mb-1">
                 <span className="text-4xl font-black text-white">$40</span>
-                <span className="text-slate-200 mb-1">/year</span>
+                <span className="text-slate-200 mb-1">{t('mkt.perYear')}</span>
               </div>
-              <p className="text-xs text-slate-300 mb-6">That&apos;s $3.33/month · best rate</p>
+              <p className="text-xs text-slate-300 mb-6">{t('mkt.bestRate')}</p>
               <PricingCTA plan="annual" isSignedIn={!!isSignedIn} loading={checkoutLoading} onCheckout={startCheckout} primary />
             </div>
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-slate-300">
-            {['7-day free trial', 'Cancel anytime', 'Secure payments via Stripe', 'No surprise fees'].map(item => (
-              <div key={item} className="flex items-center gap-1.5">
+            {(['mkt.guarantee1','mkt.guarantee2','mkt.guarantee3','mkt.guarantee4'] as const).map(key => (
+              <div key={key} className="flex items-center gap-1.5">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <circle cx="6" cy="6" r="5" stroke="#22c55e" strokeWidth="1.2" />
                   <path d="M3.5 6L5.5 8L8.5 4" stroke="#22c55e" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                {item}
+                {t(key)}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Footer ── */}
       <footer className="pb-16 text-center text-xs text-slate-300">
-        Data from Open-Meteo · NOAA CO-OPS · DFO · All free, open sources
+        {t('mkt.footer')}
       </footer>
     </div>
   )
 }
 
 function AccuracyBadge() {
+  const { t } = useLanguage()
   const [data, setData] = useState<{ overallPct: number; totalMatches: number; days: number } | null>(null)
 
   useEffect(() => {
@@ -383,23 +356,18 @@ function AccuracyBadge() {
           <div className="glass-card rounded-2xl p-6 sm:p-8 border border-teal-500/15 hover:border-teal-500/30 transition-colors">
             <div className="flex flex-col sm:flex-row items-center gap-6">
               <div className="shrink-0 text-center sm:text-left">
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-teal-500 mb-1">Verified accuracy</p>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-teal-500 mb-1">{t('mkt.accuracy.verified')}</p>
                 <p className="text-5xl font-black text-teal-400 leading-none">{data.overallPct}%</p>
-                <p className="text-sm text-slate-400 mt-1">within 30 minutes</p>
+                <p className="text-sm text-slate-400 mt-1">{t('mkt.accuracy.within')}</p>
               </div>
               <div className="w-px h-12 bg-white/10 hidden sm:block" />
               <div className="flex-1 text-center sm:text-left">
-                <p className="text-white font-semibold mb-1">
-                  Surfline doesn&apos;t publish their accuracy. We do.
-                </p>
+                <p className="text-white font-semibold mb-1">{t('mkt.accuracy.noPublish')}</p>
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  {data.totalMatches.toLocaleString()} tide extremes verified against NOAA official predictions
-                  over {data.days} days. Live, transparent, and independently verifiable.
+                  {t('mkt.accuracy.verified2', { count: data.totalMatches.toLocaleString(), days: data.days })}
                 </p>
               </div>
-              <div className="shrink-0 text-teal-500 group-hover:translate-x-1 transition-transform text-lg">
-                →
-              </div>
+              <div className="shrink-0 text-teal-500 group-hover:translate-x-1 transition-transform text-lg">→</div>
             </div>
           </div>
         </Link>
@@ -415,6 +383,7 @@ function PricingCTA({ plan, isSignedIn, loading, onCheckout, primary }: {
   onCheckout: (p: 'monthly' | 'annual') => void
   primary?: boolean
 }) {
+  const { t } = useLanguage()
   const isLoading = loading === plan
   const cls = primary
     ? 'trial-cta-btn w-full py-3 rounded-xl text-white font-bold text-sm transition-colors disabled:opacity-60'
@@ -423,19 +392,15 @@ function PricingCTA({ plan, isSignedIn, loading, onCheckout, primary }: {
   if (isSignedIn) {
     return (
       <button onClick={() => onCheckout(plan)} disabled={!!loading} className={cls}>
-        {isLoading ? 'Loading…' : 'Start 7-day free trial'}
+        {isLoading ? t('mkt.loading') : t('mkt.startTrial')}
       </button>
     )
   }
 
   return (
     <SignInButton mode="modal" forceRedirectUrl="/?checkout=1" signUpForceRedirectUrl="/?checkout=1">
-      <button
-        disabled={!!loading}
-        className={cls}
-        onClick={() => localStorage.setItem('pendingCheckout', plan)}
-      >
-        Start 7-day free trial
+      <button disabled={!!loading} className={cls} onClick={() => localStorage.setItem('pendingCheckout', plan)}>
+        {t('mkt.startTrial')}
       </button>
     </SignInButton>
   )
@@ -447,15 +412,13 @@ function TrialSetupScreen({ onCheckout, loading, error, onSignOut }: {
   error: string | null
   onSignOut: () => void
 }) {
+  const { t } = useLanguage()
   return (
     <div className="theme-bg min-h-screen flex flex-col items-center justify-center gap-8 text-center px-4">
       <WaveLogo size={48} />
       <div className="max-w-md">
-        <h2 className="text-3xl font-bold text-white mb-3">You&apos;re almost in.</h2>
-        <p className="text-slate-300 leading-relaxed">
-          Your Groundswell account is ready. Start your 7-day free trial to access
-          live surf reports for every break on earth.
-        </p>
+        <h2 className="text-3xl font-bold text-white mb-3">{t('mkt.almostIn')}</h2>
+        <p className="text-slate-300 leading-relaxed">{t('mkt.almostInDesc')}</p>
       </div>
 
       {error && (
@@ -470,44 +433,38 @@ function TrialSetupScreen({ onCheckout, loading, error, onSignOut }: {
           disabled={!!loading}
           className="trial-cta-btn w-full py-4 rounded-2xl text-white font-bold text-base transition-all disabled:opacity-60"
         >
-          {loading === 'annual' ? 'Loading…' : 'Start free trial · $40/yr'}
+          {loading === 'annual' ? t('mkt.loading') : t('mkt.startFreeAnnual')}
         </button>
         <button
           onClick={() => onCheckout('monthly')}
           disabled={!!loading}
           className="w-full py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/8 text-slate-200 font-semibold text-base transition-all disabled:opacity-60"
         >
-          {loading === 'monthly' ? 'Loading…' : 'Monthly · $4/mo'}
+          {loading === 'monthly' ? t('mkt.loading') : t('mkt.monthlyPrice')}
         </button>
       </div>
 
-      <p className="text-xs text-slate-500">No charge during your 7-day trial · Cancel anytime</p>
+      <p className="text-xs text-slate-500">{t('mkt.noCharge')}</p>
 
-      <button
-        onClick={onSignOut}
-        className="text-xs text-slate-600 hover:text-slate-400 transition-colors underline underline-offset-2"
-      >
-        Use a different account
+      <button onClick={onSignOut} className="text-xs text-slate-600 hover:text-slate-400 transition-colors underline underline-offset-2">
+        {t('mkt.differentAccount')}
       </button>
     </div>
   )
 }
 
 function ActivatingScreen() {
+  const { t } = useLanguage()
   return (
     <div className="theme-bg min-h-screen flex flex-col items-center justify-center gap-6 text-center px-4">
       <WaveLogo size={48} />
       <div>
-        <h2 className="text-2xl font-bold text-white mb-2">Activating your account…</h2>
-        <p className="text-slate-300 text-sm">Confirming your subscription. This takes just a moment.</p>
+        <h2 className="text-2xl font-bold text-white mb-2">{t('mkt.activating')}</h2>
+        <p className="text-slate-300 text-sm">{t('mkt.activatingDesc')}</p>
       </div>
       <div className="flex gap-1.5" aria-label="Loading" role="status">
         {[0,1,2].map(i => (
-          <div
-            key={i}
-            className="w-2 h-2 rounded-full bg-sky-400 animate-bounce"
-            style={{ animationDelay: `${i * 0.15}s` }}
-          />
+          <div key={i} className="w-2 h-2 rounded-full bg-sky-400 animate-bounce" style={{ animationDelay: `${i * 0.15}s` }} />
         ))}
       </div>
     </div>
@@ -524,37 +481,13 @@ function WaveLogo({ size = 28 }: { size?: number }) {
   )
 }
 
-const FEATURES = [
-  {
-    icon: '🌍',
-    title: 'Every spot on earth',
-    desc: 'Search any beach, reef, or point break worldwide. If it has waves, we have data for it.',
-  },
-  {
-    icon: '🌊',
-    title: 'Live wave conditions',
-    desc: 'Wave height, dominant period, and primary swell — updated every hour from marine buoy networks.',
-  },
-  {
-    icon: '🧭',
-    title: 'Swell direction & wind',
-    desc: 'Know if the wind is offshore. See exactly where your swell is coming from with compass bearings.',
-  },
-  {
-    icon: '🌙',
-    title: 'Tide predictions',
-    desc: 'Harmonic tide predictions from NOAA and DFO for US and Canada, plus a global tidal model for everywhere else.',
-  },
-  {
-    icon: '📅',
-    title: '10-day forecast',
-    desc: 'Plan your sessions ahead. Daily surf ratings, swell summaries, wind outlook, and UV index.',
-  },
-  {
-    icon: '🌡️',
-    title: 'Water temperature',
-    desc: 'Know what wetsuit to grab before you leave. Sea surface temperature for every location.',
-  },
+const FEATURE_IDS = [
+  { icon: '🌍', titleKey: 'mkt.feature1.title', descKey: 'mkt.feature1.desc' },
+  { icon: '🌊', titleKey: 'mkt.feature2.title', descKey: 'mkt.feature2.desc' },
+  { icon: '🧭', titleKey: 'mkt.feature3.title', descKey: 'mkt.feature3.desc' },
+  { icon: '🌙', titleKey: 'mkt.feature4.title', descKey: 'mkt.feature4.desc' },
+  { icon: '📅', titleKey: 'mkt.feature5.title', descKey: 'mkt.feature5.desc' },
+  { icon: '🌡️', titleKey: 'mkt.feature6.title', descKey: 'mkt.feature6.desc' },
 ]
 
 const FAKE_WAVE_BARS = [72, 78, 82, 88, 92, 88, 84, 80, 76, 78, 82, 86, 90, 86, 80, 74, 68, 65, 62, 64, 68, 72, 75, 78]

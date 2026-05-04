@@ -4,6 +4,7 @@ import type { SurfReport } from '@/app/lib/types'
 import { formatWaveHeight, formatTemp } from '@/app/lib/utils'
 import { MapPin, Clock, Wind, Droplets, Thermometer } from 'lucide-react'
 import WeatherIcon from './WeatherIcon'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Props {
   report: SurfReport
@@ -11,21 +12,20 @@ interface Props {
 }
 
 export default function HeroSection({ report, units }: Props) {
+  const { t, bcp47 } = useLanguage()
   const { current, location } = report
   const { rating } = current
-  const updatedTime = new Date(report.updatedAt).toLocaleTimeString('en-US', {
+  const updatedTime = new Date(report.updatedAt).toLocaleTimeString(bcp47, {
     hour: 'numeric', minute: '2-digit'
   })
 
   return (
     <section className="glass-card rounded-2xl p-5 sm:p-8 relative overflow-hidden">
-      {/* Background glow behind wave number */}
       <div
         className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none"
         style={{ background: `radial-gradient(circle, ${rating.color} 0%, transparent 70%)` }}
       />
 
-      {/* Location + time */}
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-5">
         <div className="flex items-center gap-1.5">
           <MapPin size={13} className="text-sky-400" />
@@ -36,13 +36,11 @@ export default function HeroSection({ report, units }: Props) {
         </div>
         <div className="flex items-center gap-1 text-xs text-slate-500">
           <Clock size={11} />
-          <span>Updated {updatedTime}</span>
+          <span>{t('hero.updatedAt', { time: updatedTime })}</span>
         </div>
       </div>
 
-      {/* Main content grid */}
       <div className="flex flex-col sm:flex-row sm:items-end gap-5">
-        {/* Wave height */}
         <div className="flex items-end gap-4">
           {report.isCoastal ? (
             <div className="relative">
@@ -52,32 +50,29 @@ export default function HeroSection({ report, units }: Props) {
               >
                 {formatWaveHeight(current.waveHeight, units.height)}
               </div>
-              <div className="text-xs text-slate-500 mt-1">wave height</div>
+              <div className="text-xs text-slate-500 mt-1">{t('hero.waveHeight')}</div>
             </div>
           ) : (
-            <div className="text-4xl font-bold text-slate-400">No Wave Data</div>
+            <div className="text-4xl font-bold text-slate-400">{t('hero.noWaveData')}</div>
           )}
 
           {report.isCoastal && (
             <div className="pb-1 flex flex-col gap-1.5">
-              {/* Rating badge */}
               <div
                 className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase"
                 style={{ backgroundColor: rating.bgColor, color: rating.textColor, border: `1px solid ${rating.color}30` }}
               >
                 {rating.label}
               </div>
-              {/* Period */}
               {current.wavePeriod > 0 && (
                 <div className="text-xs text-slate-400">
-                  {current.wavePeriod.toFixed(0)}s period
+                  {t('hero.periodSuffix', { period: current.wavePeriod.toFixed(0) })}
                 </div>
               )}
             </div>
           )}
         </div>
 
-        {/* Right: weather summary */}
         <div className="sm:ml-auto flex flex-wrap gap-3 sm:gap-4">
           <StatPill
             icon={<WeatherIcon code={current.weatherCode} size={16} />}
@@ -86,13 +81,13 @@ export default function HeroSection({ report, units }: Props) {
           <StatPill
             icon={<Thermometer size={14} className="text-orange-400" />}
             value={formatTemp(current.airTemp, units.temp)}
-            label="air"
+            label={t('hero.air')}
           />
           {current.waterTemp !== null && (
             <StatPill
               icon={<Droplets size={14} className="text-sky-400" />}
               value={formatTemp(current.waterTemp, units.temp)}
-              label="water"
+              label={t('hero.water')}
             />
           )}
           <StatPill
@@ -103,15 +98,14 @@ export default function HeroSection({ report, units }: Props) {
         </div>
       </div>
 
-      {/* Bottom divider row: key numbers */}
       {report.isCoastal && (
         <div className="mt-5 pt-4 border-t border-white/5 grid grid-cols-3 gap-3 sm:grid-cols-6">
-          <MiniStat label="Primary Swell" value={formatWaveHeight(current.primarySwell.height, units.height)} />
-          <MiniStat label="Swell Period" value={`${current.primarySwell.period.toFixed(0)}s`} />
-          <MiniStat label="Swell Dir" value={current.primarySwell.directionLabel} />
-          <MiniStat label="Wind" value={`${Math.round(current.wind.speed)} km/h`} />
-          <MiniStat label="Wind Gust" value={`${Math.round(current.wind.gust)} km/h`} />
-          <MiniStat label="UV Index" value={current.uvIndex > 0 ? current.uvIndex.toFixed(0) : '—'} uvVal={current.uvIndex} />
+          <MiniStat label={t('hero.primarySwell')} value={formatWaveHeight(current.primarySwell.height, units.height)} />
+          <MiniStat label={t('hero.swellPeriod')} value={`${current.primarySwell.period.toFixed(0)}s`} />
+          <MiniStat label={t('hero.swellDir')} value={current.primarySwell.directionLabel} />
+          <MiniStat label={t('hero.wind')} value={`${Math.round(current.wind.speed)} km/h`} />
+          <MiniStat label={t('hero.windGust')} value={`${Math.round(current.wind.gust)} km/h`} />
+          <MiniStat label={t('hero.uvIndex')} value={current.uvIndex > 0 ? current.uvIndex.toFixed(0) : '—'} uvVal={current.uvIndex} />
         </div>
       )}
     </section>

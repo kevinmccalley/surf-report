@@ -5,6 +5,7 @@ import {
   ResponsiveContainer, CartesianGrid,
 } from 'recharts'
 import type { TideExtreme, TideHeight } from '@/app/lib/types'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Props {
   extremes: TideExtreme[]
@@ -28,7 +29,6 @@ function formatHeight(meters: number, unit: 'ft' | 'm'): string {
   return `${toDisplay(meters, unit)}${unit}`
 }
 
-// ── Unified time parser ───────────────────────────────────────────────────────
 interface Parsed { year: number; month: number; day: number; hour: number; minute: number }
 
 function parseTime(t: string): Parsed {
@@ -50,21 +50,22 @@ function formatTime(t: string): string {
   return `${h}:${String(minute).padStart(2, '0')} ${period}`
 }
 
-function formatDate(t: string): string {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type TFn = (key: string, vars?: Record<string, any>) => string
+
+function formatDate(t: string, todayStr: TFn): string {
   const { year, month, day } = parseTime(t)
   const now = new Date()
   const pad = (n: number) => String(n).padStart(2, '0')
-  const todayStr = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`
+  const todayKey = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`
   const tomorrowDate = new Date(now.getTime() + 86400000)
-  const tomorrowStr = `${tomorrowDate.getFullYear()}-${pad(tomorrowDate.getMonth() + 1)}-${pad(tomorrowDate.getDate())}`
-  const dateStr = `${year}-${pad(month)}-${pad(day)}`
-  if (dateStr === todayStr) return 'Today'
-  if (dateStr === tomorrowStr) return 'Tomorrow'
+  const tomorrowKey = `${tomorrowDate.getFullYear()}-${pad(tomorrowDate.getMonth() + 1)}-${pad(tomorrowDate.getDate())}`
+  const dateKey = `${year}-${pad(month)}-${pad(day)}`
+  if (dateKey === todayKey) return todayStr('tides.today')
+  if (dateKey === tomorrowKey) return todayStr('tides.tomorrow')
   const d = new Date(year, month - 1, day)
   return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
 }
-
-// ── Component ─────────────────────────────────────────────────────────────────
 
 export default function TideSection({
   extremes, hourly, heightUnit,
@@ -72,13 +73,13 @@ export default function TideSection({
   stationName, stationDistanceKm,
   timezoneLabel, qualityWarning,
 }: Props) {
+  const { t } = useLanguage()
   const upcomingExtremes = extremes.slice(0, 10)
 
-  // 5-day chart: up to 120 hourly points (base — no exactTime yet)
   const chartDataBase = hourly.slice(0, 120).map((h, i) => {
     const { hour } = parseTime(h.time)
     const isDay0 = i === 0
-    const label = (hour === 0 || isDay0) ? (isDay0 ? 'Now' : formatDate(h.time)) : ''
+    const label = (hour === 0 || isDay0) ? (isDay0 ? 'Now' : formatDate(h.time, t)) : ''
     return {
       time: h.time,
       height: toDisplay(h.height, heightUnit),
@@ -94,9 +95,6 @@ export default function TideSection({
   const yMin = Math.floor((minH - pad) * 10) / 10
   const yMax = Math.ceil((maxH + pad) * 10) / 10
 
-  // For each predicted extreme, find the local max/min data point within 2 h.
-  // Using the actual chart data index lets the dot renderer place the circle
-  // at Recharts' own cx/cy — guaranteed to sit on the rendered curve.
   const extremeAtIndex = new Map<number, TideExtreme>()
   if (chartDataBase.length > 0) {
     const chartMs = chartDataBase.map(d => parsedToDate(parseTime(d.time)).getTime())
@@ -113,19 +111,17 @@ export default function TideSection({
     }
   }
 
-  // Inject exact extreme time into chart data so the tooltip can show it.
   const chartData = chartDataBase.map((d, i) => {
     const extreme = extremeAtIndex.get(i)
     return extreme ? { ...d, exactTime: extreme.time } : d
   })
 
-  const tzNote = timezoneLabel ? `times in ${timezoneLabel}` : 'times in UTC'
+  const tzNote = timezoneLabel ? t('tides.timesIn', { tz: timezoneLabel }) : t('tides.timesIn', { tz: 'UTC' })
 
-  // Source attribution config
   const attribution = (() => {
     if (source === 'noaa') return {
       label: `NOAA station${stationName ? `: ${stationName}` : ''}${stationDistanceKm ? ` · ${stationDistanceKm} km away` : ''}`,
-      note: 'times in local station time',
+      note: t('tides.localStation'),
       badge: null,
     }
     if (source === 'dfo') return {
@@ -135,19 +131,18 @@ export default function TideSection({
     }
     if (source === 'worldtides') return {
       label: `WorldTides${stationName ? ` · ${stationName}` : ''}${stationDistanceKm ? ` · ${stationDistanceKm} km away` : ''}`,
-      note: `harmonic prediction · ${tzNote}`,
+      note: t('tides.harmonic', { tzNote }),
       badge: null,
     }
     return {
       label: 'Open-Meteo global tidal model (NEMO)',
-      note: `estimated sea-level model · ${tzNote}`,
-      badge: 'Estimated',
+      note: t('tides.estimatedModel', { tzNote }),
+      badge: t('tides.estimated'),
     }
   })()
 
   return (
     <div className="space-y-5">
-      {/* Attribution row */}
       <div className="flex items-start sm:items-center gap-1.5 text-xs text-slate-500 flex-wrap">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden className="shrink-0 mt-0.5 sm:mt-0">
           <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1" />
@@ -176,15 +171,11 @@ export default function TideSection({
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-6">
-
-        {/* Upcoming hi/lo table — on desktop the items area is capped to match
-            the chart height so the two columns stay balanced and items scroll.
-            On mobile/tablet the columns stack so no height cap is needed. */}
         <div className="lg:col-span-2 flex flex-col">
-          <p className="text-xs text-slate-500 uppercase tracking-widest mb-3 shrink-0">Upcoming</p>
+          <p className="text-xs text-slate-500 uppercase tracking-widest mb-3 shrink-0">{t('tides.upcoming')}</p>
           <div className="overflow-y-auto forecast-scroll space-y-1.5 lg:max-h-[284px] pr-0.5">
           {upcomingExtremes.length === 0 && (
-            <p className="text-xs text-slate-600 px-3">No upcoming tide extremes available.</p>
+            <p className="text-xs text-slate-600 px-3">{t('tides.noExtremes')}</p>
           )}
           {upcomingExtremes.map((e, i) => {
             const isHigh = e.type === 'High'
@@ -192,14 +183,10 @@ export default function TideSection({
               <div
                 key={i}
                 className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl border ${
-                  isHigh
-                    ? 'bg-teal-500/8 border-teal-500/15'
-                    : 'bg-white/3 border-white/5'
+                  isHigh ? 'bg-teal-500/8 border-teal-500/15' : 'bg-white/3 border-white/5'
                 }`}
               >
-                <div className={`flex items-center justify-center w-7 h-7 rounded-full shrink-0 ${
-                  isHigh ? 'bg-teal-500/15' : 'bg-white/5'
-                }`}>
+                <div className={`flex items-center justify-center w-7 h-7 rounded-full shrink-0 ${isHigh ? 'bg-teal-500/15' : 'bg-white/5'}`}>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     {isHigh ? (
                       <path d="M7 11V3M4 6L7 3L10 6" stroke="#2dd4bf" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -208,16 +195,14 @@ export default function TideSection({
                     )}
                   </svg>
                 </div>
-
                 <div className="flex-1 min-w-0">
                   <p className={`text-xs font-semibold ${isHigh ? 'text-teal-300' : 'text-slate-400'}`}>
-                    {isHigh ? 'High Tide' : 'Low Tide'}
+                    {isHigh ? t('tides.highTide') : t('tides.lowTide')}
                   </p>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    {formatDate(e.time)} · {formatTime(e.time)}
+                    {formatDate(e.time, t)} · {formatTime(e.time)}
                   </p>
                 </div>
-
                 <span className={`text-sm font-bold tabular-nums ${isHigh ? 'text-teal-200' : 'text-slate-400'}`}>
                   {formatHeight(e.height, heightUnit)}
                 </span>
@@ -227,49 +212,26 @@ export default function TideSection({
           </div>
         </div>
 
-        {/* 5-day scrollable tide chart */}
         <div className="lg:col-span-3">
           <div className="flex items-center justify-between mb-3">
             <p className="text-xs text-slate-500 uppercase tracking-widest">5-Day Tide Curve</p>
             <p className="text-[10px] text-slate-600">scroll for 5 days →</p>
           </div>
 
-          {/* Outer: clips to card width. Inner: 5/3 wide so 3 days fill the view. */}
           <div className="overflow-x-auto forecast-scroll rounded-lg" style={{ cursor: 'grab' }}>
             <div style={{ width: '167%', height: 284 }}>
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart
-                  data={chartData}
-                  margin={{ top: 56, right: 20, left: -18, bottom: 44 }}
-                >
+                <AreaChart data={chartData} margin={{ top: 56, right: 20, left: -18, bottom: 44 }}>
                   <defs>
                     <linearGradient id="tideAreaGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#2dd4bf" stopOpacity={estimated ? 0.18 : 0.28} />
                       <stop offset="95%" stopColor="#2dd4bf" stopOpacity={0.02} />
                     </linearGradient>
                   </defs>
-
                   <CartesianGrid strokeDasharray="4 4" stroke="rgba(255,255,255,0.04)" vertical={false} />
-
-                  <XAxis
-                    dataKey="label"
-                    tick={{ fill: '#64748b', fontSize: 11 }}
-                    axisLine={false}
-                    tickLine={false}
-                    interval={0}
-                  />
-
-                  <YAxis
-                    tick={{ fill: '#64748b', fontSize: 11 }}
-                    axisLine={false}
-                    tickLine={false}
-                    domain={[yMin, yMax]}
-                    tickFormatter={(v: number) => `${v}${heightUnit}`}
-                    width={40}
-                  />
-
+                  <XAxis dataKey="label" tick={{ fill: '#64748b', fontSize: 11 }} axisLine={false} tickLine={false} interval={0} />
+                  <YAxis tick={{ fill: '#64748b', fontSize: 11 }} axisLine={false} tickLine={false} domain={[yMin, yMax]} tickFormatter={(v: number) => `${v}${heightUnit}`} width={40} />
                   <Tooltip content={<TideTooltip heightUnit={heightUnit} />} />
-
                   <Area
                     type="monotone"
                     dataKey="height"
@@ -279,6 +241,7 @@ export default function TideSection({
                     fill="url(#tideAreaGrad)"
                     activeDot={{ r: 4, fill: estimated ? '#94a3b8' : '#2dd4bf', stroke: 'white', strokeWidth: 1.5 }}
                     isAnimationActive={false}
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     dot={(dotProps: any) => {
                       const { cx, cy, index } = dotProps
                       const extreme = extremeAtIndex.get(index)
@@ -293,18 +256,13 @@ export default function TideSection({
                       const lineY2 = isHigh ? cy - 20 : cy + 14
                       return (
                         <g key={index}>
-                          <line x1={cx} y1={lineY1} x2={cx} y2={lineY2}
-                            stroke={color} strokeWidth={1} strokeOpacity={0.55} />
-                          <circle cx={cx} cy={cy} r={5} fill={color}
-                            stroke="rgba(2,9,23,0.85)" strokeWidth={1.5} />
-                          <rect x={boxX} y={boxY} width={boxW} height={boxH} rx={4}
-                            fill="rgba(2,9,23,0.92)" stroke={stroke} strokeWidth={1} />
-                          <text x={cx} y={boxY + 12} textAnchor="middle"
-                            fill={color} fontSize={9} fontWeight="700" fontFamily="system-ui,sans-serif">
+                          <line x1={cx} y1={lineY1} x2={cx} y2={lineY2} stroke={color} strokeWidth={1} strokeOpacity={0.55} />
+                          <circle cx={cx} cy={cy} r={5} fill={color} stroke="rgba(2,9,23,0.85)" strokeWidth={1.5} />
+                          <rect x={boxX} y={boxY} width={boxW} height={boxH} rx={4} fill="rgba(2,9,23,0.92)" stroke={stroke} strokeWidth={1} />
+                          <text x={cx} y={boxY + 12} textAnchor="middle" fill={color} fontSize={9} fontWeight="700" fontFamily="system-ui,sans-serif">
                             {formatTime(extreme.time)}
                           </text>
-                          <text x={cx} y={boxY + 25} textAnchor="middle"
-                            fill="#e2e8f0" fontSize={9} fontFamily="system-ui,sans-serif">
+                          <text x={cx} y={boxY + 25} textAnchor="middle" fill="#e2e8f0" fontSize={9} fontFamily="system-ui,sans-serif">
                             {formatHeight(extreme.height, heightUnit)}
                           </text>
                         </g>
@@ -332,15 +290,13 @@ function TideTooltip({ active, payload, heightUnit }: {
   return (
     <div className="glass-card rounded-xl px-3 py-2.5 shadow-xl border border-white/10 text-xs">
       <p className="text-slate-300 font-medium mb-1.5">
-        {formatDate(displayTime)} · {formatTime(displayTime)}
+        {formatDate(displayTime, (k) => k === 'tides.today' ? 'Today' : 'Tomorrow')} · {formatTime(displayTime)}
       </p>
       <div className="flex items-center gap-2">
         <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0" />
         <span className="text-slate-400">Tide height</span>
         <span className="text-teal-200 font-semibold ml-auto pl-4">
-          {heightUnit === 'ft'
-            ? `${toDisplay(d.heightRaw, 'ft')}ft`
-            : `${d.heightRaw.toFixed(2)}m`}
+          {heightUnit === 'ft' ? `${toDisplay(d.heightRaw, 'ft')}ft` : `${d.heightRaw.toFixed(2)}m`}
         </span>
       </div>
     </div>

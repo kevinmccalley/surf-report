@@ -4,6 +4,7 @@ import type { SurfReport } from '@/app/lib/types'
 import { formatWaveHeight, formatTemp } from '@/app/lib/utils'
 import { Wind, Droplets, Sun, Eye } from 'lucide-react'
 import SwellCompass from './SwellCompass'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Props {
   report: SurfReport
@@ -11,28 +12,41 @@ interface Props {
 }
 
 export default function ConditionCards({ report, units }: Props) {
+  const { t } = useLanguage()
   const { current } = report
+
+  const windCategory =
+    current.wind.speed < 8  ? t('cards.wind.glassy')   :
+    current.wind.speed < 15 ? t('cards.wind.light')    :
+    current.wind.speed < 25 ? t('cards.wind.moderate') :
+    current.wind.speed < 40 ? t('cards.wind.strong')   : t('cards.wind.storm')
+
+  const windCategoryColor =
+    current.wind.speed < 8  ? '#22c55e' :
+    current.wind.speed < 15 ? '#84cc16' :
+    current.wind.speed < 25 ? '#eab308' :
+    current.wind.speed < 40 ? '#f97316' : '#ef4444'
 
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
       {/* Swell Card */}
       <div className="glass-card glass-card-hover rounded-2xl p-4 col-span-2 sm:col-span-1 lg:col-span-1">
-        <CardLabel>Swell</CardLabel>
+        <CardLabel>{t('cards.swell')}</CardLabel>
         <div className="flex items-center justify-between">
           <div className="space-y-3 flex-1">
             <SwellRow
-              label="Primary"
+              label={t('cards.primary')}
               height={formatWaveHeight(current.primarySwell.height, units.height)}
               period={`${current.primarySwell.period.toFixed(0)}s`}
-              from={current.primarySwell.directionLabel}
+              from={`${t('cards.from')} ${current.primarySwell.directionLabel}`}
               color="#0ea5e9"
             />
             {current.secondarySwell && (
               <SwellRow
-                label="Wind Swell"
+                label={t('cards.windSwell')}
                 height={formatWaveHeight(current.secondarySwell.height, units.height)}
                 period={`${current.secondarySwell.period.toFixed(0)}s`}
-                from={current.secondarySwell.directionLabel}
+                from={`${t('cards.from')} ${current.secondarySwell.directionLabel}`}
                 color="#64748b"
               />
             )}
@@ -49,42 +63,46 @@ export default function ConditionCards({ report, units }: Props) {
 
       {/* Wind Card */}
       <div className="glass-card glass-card-hover rounded-2xl p-4">
-        <CardLabel>Wind</CardLabel>
+        <CardLabel>{t('cards.wind')}</CardLabel>
         <WindDisplay
           speed={current.wind.speed}
           gust={current.wind.gust}
-          direction={current.wind.direction}
           directionLabel={current.wind.directionLabel}
+          direction={current.wind.direction}
+          gustLabel={t('cards.gusts')}
+          conditionsLabel={t('cards.conditions')}
+          windCategory={windCategory}
+          windCategoryColor={windCategoryColor}
         />
       </div>
 
       {/* Water + Air Temp */}
       <div className="glass-card glass-card-hover rounded-2xl p-4">
-        <CardLabel>Conditions</CardLabel>
+        <CardLabel>{t('cards.conditions')}</CardLabel>
         <div className="space-y-3 mt-1">
           {current.waterTemp !== null && (
             <CondRow
               icon={<Droplets size={14} className="text-sky-400" />}
-              label="Water"
+              label={t('cards.water')}
               value={formatTemp(current.waterTemp, units.temp)}
             />
           )}
           <CondRow
             icon={<span className="text-base leading-none">🌡</span>}
-            label="Air"
+            label={t('cards.air')}
             value={formatTemp(current.airTemp, units.temp)}
           />
           {current.uvIndex > 0 && (
             <CondRow
               icon={<Sun size={14} style={{ color: uvColor(current.uvIndex) }} />}
-              label="UV Index"
-              value={`${current.uvIndex.toFixed(0)} ${uvLabel(current.uvIndex)}`}
+              label={t('cards.uvIndex')}
+              value={`${current.uvIndex.toFixed(0)} ${uvLabel(current.uvIndex, t)}`}
             />
           )}
           {current.visibility > 0 && (
             <CondRow
               icon={<Eye size={14} className="text-slate-400" />}
-              label="Visibility"
+              label={t('cards.visibility')}
               value={`${current.visibility.toFixed(0)} km`}
             />
           )}
@@ -93,7 +111,7 @@ export default function ConditionCards({ report, units }: Props) {
 
       {/* Sky / Weather */}
       <div className="glass-card glass-card-hover rounded-2xl p-4">
-        <CardLabel>Sky</CardLabel>
+        <CardLabel>{t('cards.sky')}</CardLabel>
         <div className="mt-1 space-y-3">
           <div>
             <p className="text-xl mt-1">{weatherEmoji(current.weatherCode)}</p>
@@ -102,13 +120,13 @@ export default function ConditionCards({ report, units }: Props) {
           {current.precipProbability > 0 && (
             <CondRow
               icon={<Droplets size={13} className="text-blue-400" />}
-              label="Rain chance"
+              label={t('cards.rainChance')}
               value={`${current.precipProbability}%`}
             />
           )}
           <CondRow
             icon={<Wind size={13} className="text-slate-400" />}
-            label="Gusts"
+            label={t('cards.gusts')}
             value={`${Math.round(current.wind.gust)} km/h`}
           />
         </div>
@@ -130,22 +148,19 @@ function SwellRow({ label, height, period, from, color }: {
       <div className="flex items-baseline gap-1.5">
         <span className="text-base font-bold" style={{ color }}>{height}</span>
         <span className="text-xs text-slate-400">{period}</span>
-        <span className="text-xs text-slate-500">from {from}</span>
+        <span className="text-xs text-slate-500">{from}</span>
       </div>
     </div>
   )
 }
 
-function WindDisplay({ speed, gust, direction, directionLabel }: {
+function WindDisplay({ speed, gust, direction, directionLabel, gustLabel, conditionsLabel, windCategory, windCategoryColor }: {
   speed: number; gust: number; direction: number; directionLabel: string
+  gustLabel: string; conditionsLabel: string; windCategory: string; windCategoryColor: string
 }) {
-  const windCategory = speed < 8 ? 'Glassy' : speed < 15 ? 'Light' : speed < 25 ? 'Moderate' : speed < 40 ? 'Strong' : 'Storm'
-  const windCategoryColor = speed < 8 ? '#22c55e' : speed < 15 ? '#84cc16' : speed < 25 ? '#eab308' : speed < 40 ? '#f97316' : '#ef4444'
-
   return (
     <div className="space-y-2">
       <div className="flex items-center gap-2">
-        {/* Wind arrow */}
         <div
           className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0"
           style={{ transform: `rotate(${direction}deg)` }}
@@ -163,11 +178,11 @@ function WindDisplay({ speed, gust, direction, directionLabel }: {
         </div>
       </div>
       <div className="flex justify-between text-xs">
-        <span className="text-slate-500">Gusts</span>
+        <span className="text-slate-500">{gustLabel}</span>
         <span className="text-slate-300 font-medium">{Math.round(gust)} km/h</span>
       </div>
       <div className="flex justify-between text-xs">
-        <span className="text-slate-500">Conditions</span>
+        <span className="text-slate-500">{conditionsLabel}</span>
         <span className="font-medium" style={{ color: windCategoryColor }}>{windCategory}</span>
       </div>
     </div>
@@ -194,12 +209,12 @@ function uvColor(uv: number): string {
   return '#a855f7'
 }
 
-function uvLabel(uv: number): string {
-  if (uv <= 2) return 'Low'
-  if (uv <= 5) return 'Moderate'
-  if (uv <= 7) return 'High'
-  if (uv <= 10) return 'Very High'
-  return 'Extreme'
+function uvLabel(uv: number, t: (k: string) => string): string {
+  if (uv <= 2) return t('cards.uv.low')
+  if (uv <= 5) return t('cards.uv.moderate')
+  if (uv <= 7) return t('cards.uv.high')
+  if (uv <= 10) return t('cards.uv.veryHigh')
+  return t('cards.uv.extreme')
 }
 
 function weatherEmoji(code: number): string {

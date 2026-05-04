@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { Search, MapPin, X, Loader2 } from 'lucide-react'
 import type { GeoResult } from '@/app/lib/types'
 import { searchSurfSpots } from '@/app/lib/surf-spots'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Props {
   onSelect: (result: GeoResult) => void
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export default function SearchBar({ onSelect, loading, compact, autoFocus }: Props) {
+  const { t } = useLanguage()
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<GeoResult[]>([])
   const [open, setOpen] = useState(false)
@@ -22,7 +24,6 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Recompute which results are known surf spots whenever query or results change
   const surfSpotKeys = useMemo(() => {
     const spots = searchSurfSpots(query)
     return new Set(spots.map(s => `${s.lat},${s.lon}`))
@@ -44,7 +45,6 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
     if (q.length < 2) { setResults([]); setOpen(false); return }
     setSearching(true)
 
-    // Surf spots are local — show instantly before geocoding returns
     const spotResults = searchSurfSpots(q)
     if (spotResults.length > 0) {
       setResults(spotResults)
@@ -57,7 +57,6 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
       const data = await res.json()
       const geoResults: GeoResult[] = data.results ?? []
 
-      // Merge: surf spots first, then geo results not already covered by a spot
       const combined = [
         ...spotResults,
         ...geoResults.filter(g =>
@@ -121,11 +120,11 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           onFocus={() => results.length > 0 && setOpen(true)}
-          placeholder={compact ? 'Search any beach or surf spot…' : 'Search any beach, surf spot, or city…'}
+          placeholder={compact ? t('search.placeholderCompact') : t('search.placeholderFull')}
           className={`w-full bg-transparent text-white placeholder-slate-500 pl-9 pr-9 focus:outline-none ${
             compact ? 'py-2 text-sm' : 'py-3.5 text-base'
           }`}
-          aria-label="Search surf location"
+          aria-label={t('search.ariaLabel')}
           aria-expanded={open}
           aria-autocomplete="list"
           role="combobox"
@@ -160,7 +159,7 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
                     className="shrink-0 text-[9px] font-semibold uppercase tracking-wide rounded px-1 py-0.5 border"
                     style={{ color: 'var(--accent)', borderColor: 'var(--accent)', opacity: 0.75 }}
                   >
-                    surf
+                    {t('search.surfBadge')}
                   </span>
                 )}
               </button>

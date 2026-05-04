@@ -4,6 +4,8 @@ import { useState } from 'react'
 import type { DayForecast } from '@/app/lib/types'
 import { formatWaveRange, formatTemp } from '@/app/lib/utils'
 import WeatherIcon from './WeatherIcon'
+import { useLanguage } from '@/app/i18n/LanguageContext'
+import type { TFn } from '@/app/i18n/LanguageContext'
 
 interface Props {
   forecast: DayForecast[]
@@ -11,35 +13,38 @@ interface Props {
   isCoastal: boolean
 }
 
-function generateDaySummary(day: DayForecast, isCoastal: boolean, units: Props['units']): string {
+const RATING_KEY_MAP: Record<string, string> = {
+  'EPIC':         'forecast.summaries.EPIC',
+  'VERY GOOD':    'forecast.summaries.VERY_GOOD',
+  'GOOD':         'forecast.summaries.GOOD',
+  'FAIR TO GOOD': 'forecast.summaries.FAIR_TO_GOOD',
+  'FAIR':         'forecast.summaries.FAIR',
+  'POOR TO FAIR': 'forecast.summaries.POOR_TO_FAIR',
+  'POOR':         'forecast.summaries.POOR',
+  'FLAT':         'forecast.summaries.FLAT',
+}
+
+function generateDaySummary(day: DayForecast, isCoastal: boolean, units: Props['units'], t: TFn): string {
   if (!isCoastal) {
     const hi     = formatTemp(day.tempMax, units.temp)
     const lo     = formatTemp(day.tempMin, units.temp)
     const wind   = Math.round(day.windSpeedMax)
-    const precip = day.precipProbabilityMax > 30 ? ` with ${day.precipProbabilityMax}% chance of rain` : ''
-    return `${hi} high, ${lo} low. ${wind} km/h ${day.windDirectionLabel} winds${precip}.`
+    const precip = day.precipProbabilityMax > 30
+      ? t('forecast.precipChance', { pct: day.precipProbabilityMax })
+      : ''
+    return t('forecast.nonCoastal', { hi, lo, wind, dir: day.windDirectionLabel, precip })
   }
 
   const waves  = formatWaveRange(day.waveHeightMin, day.waveHeightMax, units.height)
   const dir    = day.swellDirectionLabel
   const period = day.wavePeriodMax
   const label  = day.rating.label
-
-  const summaries: Record<string, string> = {
-    'EPIC':         `Block your calendar — ${waves} of ${dir} groundswell at ${period}s. A session you'll remember for years.`,
-    'VERY GOOD':    `Outstanding conditions. ${waves} ${dir} swell at ${period}s — paddle out early and stay all day.`,
-    'GOOD':         `Solid day with ${waves} ${dir} swell at ${period}s. Definitely worth suiting up.`,
-    'FAIR TO GOOD': `Decent ${waves} ${dir} swell at ${period}s. A rewarding session if you time it right.`,
-    'FAIR':         `Workable ${waves} ${dir} waves — not epic, but worth a paddle if you're keen.`,
-    'POOR TO FAIR': `Marginal ${waves} ${dir} conditions. Go if there's nothing else on.`,
-    'POOR':         `Small, messy ${waves} ${dir} swell. Stick to sheltered spots or stay on land.`,
-    'FLAT':         `Cross-train, wax your board, and watch the forecasts. Nothing surfable today.`,
-  }
-
-  return summaries[label] ?? `${waves} ${dir} swell — check conditions on arrival.`
+  const key    = RATING_KEY_MAP[label] ?? 'forecast.summaries.fallback'
+  return t(key, { waves, dir, period })
 }
 
 export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
+  const { t } = useLanguage()
   const [hoveredDay, setHoveredDay]   = useState<DayForecast | null>(null)
   const [selectedDay, setSelectedDay] = useState<DayForecast | null>(null)
 
@@ -78,12 +83,12 @@ export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
               )}
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              {generateDaySummary(activeDay, isCoastal, units)}
+              {generateDaySummary(activeDay, isCoastal, units, t)}
             </p>
           </>
         ) : (
           <p className="text-xs text-slate-600 text-center">
-            Hover or tap any day for a full forecast breakdown
+            {t('forecast.hoverPrompt')}
           </p>
         )}
       </div>

@@ -15,7 +15,9 @@ import LandingHero from './LandingHero'
 import AuthButton from './AuthButton'
 import ThemePicker from './ThemePicker'
 import LastYearCard from './LastYearCard'
+import LanguageSwitcher from './LanguageSwitcher'
 import type { ClimatologyMonth } from './ClimatologySection'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 type Units = { temp: 'c' | 'f'; height: 'ft' | 'm' }
 type TideResult = TideReport | TideUnavailable
@@ -26,13 +28,8 @@ interface ClimatologyData {
   peakMonths: number[]
 }
 
-function formatHistDate(dateStr: string): string {
-  const [year, month, day] = dateStr.split('-').map(Number)
-  const d = new Date(year, month - 1, day)
-  return d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
-}
-
 export default function SurfApp() {
+  const { t, bcp47 } = useLanguage()
   const { isSignedIn } = useUser()
   const [report, setReport] = useState<SurfReport | null>(null)
   const [tideData, setTideData] = useState<TideResult | null>(null)
@@ -44,7 +41,6 @@ export default function SurfApp() {
   const [histDateInput, setHistDateInput] = useState('')
   const [lastYearReport, setLastYearReport] = useState<SurfReport | null>(null)
 
-  // Handle ?subscribed=true redirect from Stripe, and deep-link auto-load
   useEffect(() => {
     if (typeof window === 'undefined') return
     const params = new URLSearchParams(window.location.search)
@@ -96,7 +92,6 @@ export default function SurfApp() {
       const tideParams = `lat=${result.lat}&lon=${result.lon}` +
         (surfJson.timezone ? `&tz=${encodeURIComponent(surfJson.timezone)}` : '')
 
-      // Fetch tides and climatology in parallel — neither blocks the other
       const [tideRes, climRes] = await Promise.all([
         fetch(`/api/tides?${tideParams}`),
         surfJson.isCoastal
@@ -146,7 +141,6 @@ export default function SurfApp() {
     }
   }, [lastGeoResult])
 
-  // Fetch "this day last year" after the main report loads — non-blocking
   useEffect(() => {
     if (!report || report.historical || !report.isCoastal || !lastGeoResult) {
       setLastYearReport(null)
@@ -179,9 +173,14 @@ export default function SurfApp() {
   const toggleTemp   = () => setUnits(u => ({ ...u, temp:   u.temp   === 'f' ? 'c'  : 'f'  }))
   const toggleHeight = () => setUnits(u => ({ ...u, height: u.height === 'ft' ? 'm' : 'ft' }))
 
+  const formatHistDate = (dateStr: string) => {
+    const [year, month, day] = dateStr.split('-').map(Number)
+    const d = new Date(year, month - 1, day)
+    return d.toLocaleDateString(bcp47, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+  }
+
   return (
     <div className="theme-bg">
-      {/* Sticky header */}
       <header className="sticky top-0 z-50 theme-header">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
           <div className="flex items-center gap-2 shrink-0">
@@ -200,6 +199,7 @@ export default function SurfApp() {
                 <UnitToggle label={`°${units.temp.toUpperCase()}`} onClick={toggleTemp} />
               </>
             )}
+            <LanguageSwitcher />
             <ThemePicker />
             <AuthButton subscribed={true} onManageBilling={openBillingPortal} />
           </div>
@@ -221,7 +221,7 @@ export default function SurfApp() {
               onClick={() => setError(null)}
               className="px-4 py-2 rounded-lg bg-sky-500/20 border border-sky-500/30 text-sky-300 text-sm hover:bg-sky-500/30 transition-colors"
             >
-              Try Again
+              {t('app.tryAgain')}
             </button>
           </div>
         )}
@@ -229,7 +229,6 @@ export default function SurfApp() {
         {report && !loading && (
           <div className="mx-auto max-w-6xl px-4 pb-16 space-y-5 pt-5">
 
-            {/* Historical mode banner */}
             {report.historical && report.historicalDate && (
               <div className="glass-card rounded-xl px-4 py-3 border border-violet-500/25 bg-violet-500/8 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2 min-w-0">
@@ -237,7 +236,7 @@ export default function SurfApp() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z" />
                   </svg>
                   <span className="text-sm text-violet-300 truncate">
-                    <span className="font-semibold">Historical conditions</span>
+                    <span className="font-semibold">{t('app.historicalBanner')}</span>
                     <span className="text-violet-400/70 ml-1 hidden sm:inline">·</span>
                     <span className="text-violet-400 ml-1 hidden sm:inline">{formatHistDate(report.historicalDate)}</span>
                     <span className="text-violet-400 ml-1 sm:hidden">{report.historicalDate}</span>
@@ -250,7 +249,7 @@ export default function SurfApp() {
                   <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                   </svg>
-                  Live forecast
+                  {t('app.liveForecast')}
                 </button>
               </div>
             )}
@@ -258,20 +257,21 @@ export default function SurfApp() {
             {!report.isCoastal && (
               <div className="glass-card rounded-xl px-4 py-3 border border-amber-500/20 bg-amber-500/5">
                 <p className="text-amber-300 text-sm">
-                  <span className="font-semibold">Inland location</span> — showing weather data only.
+                  <span className="font-semibold">{t('app.inlandLocation')}</span> — {t('app.inlandDesc')}
                 </p>
               </div>
             )}
 
             <HeroSection report={report} units={units} />
 
-            {/* Past conditions date picker (live mode only) */}
             {!report.historical && lastGeoResult && (
               <PastConditionsPicker
                 onSubmit={fetchHistorical}
                 value={histDateInput}
                 onChange={setHistDateInput}
                 loading={loading}
+                label={t('app.pastConditions')}
+                lookUpLabel={t('app.lookUp')}
               />
             )}
 
@@ -288,27 +288,23 @@ export default function SurfApp() {
             {report.isCoastal && report.hourly.length > 0 && (
               <section className="glass-card rounded-2xl p-4 sm:p-6">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
-                  {report.historical ? 'Hourly Wave Conditions' : '48-Hour Wave Outlook'}
+                  {report.historical ? t('app.hourlyWave') : t('app.48hOutlook')}
                 </h2>
-                <WaveChart
-                  hourly={report.hourly}
-                  heightUnit={units.height}
-                />
+                <WaveChart hourly={report.hourly} heightUnit={units.height} />
               </section>
             )}
 
             <section className="glass-card rounded-2xl p-4 sm:p-6">
               <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
-                {report.historical ? 'Day Summary' : '10-Day Forecast'}
+                {report.historical ? t('app.daySummary') : t('app.10dayForecast')}
               </h2>
               <ForecastGrid forecast={report.forecast} units={units} isCoastal={report.isCoastal} />
             </section>
 
-            {/* Tides: live mode only */}
             {report.isCoastal && !report.historical && (
               <section className="glass-card rounded-2xl p-4 sm:p-6">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
-                  Tides
+                  {t('app.tides')}
                 </h2>
                 {tideData?.available ? (
                   <TideSection
@@ -332,7 +328,7 @@ export default function SurfApp() {
             {report.isCoastal && climData?.available && (
               <section className="glass-card rounded-2xl p-4 sm:p-6">
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
-                  Surf Climatology
+                  {t('app.climatology')}
                 </h2>
                 <ClimatologySection
                   months={climData.months}
@@ -344,17 +340,17 @@ export default function SurfApp() {
             <footer className="text-center text-xs text-slate-400 pt-4 space-y-1.5">
               <p>
                 {report.historical
-                  ? `Historical data: Open-Meteo Archive · ${report.historicalDate}`
+                  ? t('app.historicalSource', { date: report.historicalDate ?? '' })
                   : <>
-                      Waves: Open-Meteo Marine &amp; Weather API
-                      {tideData?.available && ' · Tides: NOAA CO-OPS'}
-                      {' '}· Updated {new Date(report.updatedAt).toLocaleTimeString()}
+                      {t('app.waveSource')}
+                      {tideData?.available && t('app.tidesSource')}
+                      {t('app.updatedAt', { time: new Date(report.updatedAt).toLocaleTimeString(bcp47) })}
                     </>
                 }
               </p>
               <p>
                 <a href="/accuracy" className="hover:text-slate-300 transition-colors underline underline-offset-2">
-                  Forecast accuracy &amp; verification →
+                  {t('app.forecastAccuracy')}
                 </a>
               </p>
             </footer>
@@ -364,8 +360,6 @@ export default function SurfApp() {
     </div>
   )
 }
-
-// ── Small helpers ─────────────────────────────────────────────────────────────
 
 function WaveLogo() {
   return (
@@ -389,12 +383,14 @@ function UnitToggle({ label, onClick }: { label: string; onClick: () => void }) 
 }
 
 function PastConditionsPicker({
-  onSubmit, value, onChange, loading,
+  onSubmit, value, onChange, loading, label, lookUpLabel,
 }: {
   onSubmit: (date: string) => void
   value: string
   onChange: (v: string) => void
   loading: boolean
+  label: string
+  lookUpLabel: string
 }) {
   const yesterday = new Date()
   yesterday.setDate(yesterday.getDate() - 1)
@@ -413,7 +409,7 @@ function PastConditionsPicker({
       <svg className="w-4 h-4 text-slate-500 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
       </svg>
-      <span className="text-xs text-slate-400 shrink-0">Past conditions</span>
+      <span className="text-xs text-slate-400 shrink-0">{label}</span>
       <input
         type="date"
         value={value}
@@ -427,7 +423,7 @@ function PastConditionsPicker({
         disabled={!value || loading}
         className="px-3 py-1.5 rounded-lg text-xs font-medium bg-violet-500/15 border border-violet-500/25 text-violet-300 hover:bg-violet-500/25 hover:text-violet-200 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
       >
-        Look up
+        {lookUpLabel}
       </button>
     </form>
   )

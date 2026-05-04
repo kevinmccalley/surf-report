@@ -1,6 +1,7 @@
 'use client'
 
 import type { SurfReport } from '@/app/lib/types'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 type Units = { temp: 'c' | 'f'; height: 'ft' | 'm' }
 
@@ -15,11 +16,6 @@ const RATING_COLORS: Record<string, string> = {
   'FLAT':         'text-slate-400  bg-slate-500/10  border-slate-500/20',
 }
 
-function formatDate(dateStr: string): string {
-  const [y, m, d] = dateStr.split('-').map(Number)
-  return new Date(y, m - 1, d).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-}
-
 interface Props {
   report: SurfReport
   units: Units
@@ -27,6 +23,7 @@ interface Props {
 }
 
 export default function LastYearCard({ report, units, onViewFull }: Props) {
+  const { t, bcp47 } = useLanguage()
   const date = report.historicalDate!
   const c = report.current
   const waveDisplay = units.height === 'ft'
@@ -34,18 +31,21 @@ export default function LastYearCard({ report, units, onViewFull }: Props) {
     : `${c.waveHeight.toFixed(1)} m`
   const ratingCls = RATING_COLORS[c.rating.label] ?? RATING_COLORS['FLAT']
 
+  const [y, m, d] = date.split('-').map(Number)
+  const formattedDate = new Date(y, m - 1, d).toLocaleDateString(bcp47, { month: 'long', day: 'numeric', year: 'numeric' })
+
   return (
     <div className="glass-card rounded-2xl p-4 sm:p-5" style={{ opacity: 0.88 }}>
       <div className="flex items-start justify-between gap-3 mb-3">
         <div>
           <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-500 mb-0.5">
-            This day last year
+            {t('lastYear.title')}
           </p>
           <button
             onClick={() => onViewFull(date)}
             className="text-xs text-slate-400 hover:text-sky-300 transition-colors hover:underline underline-offset-2"
           >
-            {formatDate(date)}
+            {formattedDate}
           </button>
         </div>
         <span className={`shrink-0 text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded border ${ratingCls}`}>
@@ -55,17 +55,17 @@ export default function LastYearCard({ report, units, onViewFull }: Props) {
 
       <div className="grid grid-cols-3 gap-3">
         <div>
-          <p className="text-[9px] uppercase tracking-widest text-slate-600 mb-0.5">Waves</p>
+          <p className="text-[9px] uppercase tracking-widest text-slate-600 mb-0.5">{t('lastYear.waves')}</p>
           <p className="text-sm font-bold text-slate-200">{waveDisplay}</p>
-          <p className="text-[10px] text-slate-500">{c.primarySwell.period}s period</p>
+          <p className="text-[10px] text-slate-500">{t('lastYear.period', { period: c.primarySwell.period })}</p>
         </div>
         <div>
-          <p className="text-[9px] uppercase tracking-widest text-slate-600 mb-0.5">Swell</p>
+          <p className="text-[9px] uppercase tracking-widest text-slate-600 mb-0.5">{t('lastYear.swell')}</p>
           <p className="text-sm font-bold text-slate-200">{c.primarySwell.directionLabel}</p>
           <p className="text-[10px] text-slate-500">{c.primarySwell.height.toFixed(1)} m Hs</p>
         </div>
         <div>
-          <p className="text-[9px] uppercase tracking-widest text-slate-600 mb-0.5">Wind</p>
+          <p className="text-[9px] uppercase tracking-widest text-slate-600 mb-0.5">{t('lastYear.wind')}</p>
           <p className="text-sm font-bold text-slate-200">{Math.round(c.wind.speed)} km/h</p>
           <p className="text-[10px] text-slate-500">{c.wind.directionLabel}</p>
         </div>
@@ -75,7 +75,7 @@ export default function LastYearCard({ report, units, onViewFull }: Props) {
         onClick={() => onViewFull(date)}
         className="mt-3 text-[10px] text-slate-600 hover:text-slate-400 transition-colors"
       >
-        View full conditions →
+        {t('lastYear.viewFull')}
       </button>
     </div>
   )

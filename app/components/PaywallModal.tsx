@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useUser, SignInButton } from '@clerk/nextjs'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Props {
   onClose: () => void
@@ -9,6 +10,7 @@ interface Props {
 
 export default function PaywallModal({ onClose }: Props) {
   const { isSignedIn } = useUser()
+  const { t } = useLanguage()
   const [loadingPlan, setLoadingPlan] = useState<'monthly' | 'annual' | null>(null)
   const [, setCoupon] = useState('')
 
@@ -51,9 +53,9 @@ export default function PaywallModal({ onClose }: Props) {
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-sky-500/10 border border-sky-500/20 mb-4">
               <WaveIcon />
             </div>
-            <h2 className="text-2xl font-bold text-white">Try free for a week</h2>
+            <h2 className="text-2xl font-bold text-white">{t('paywall.title')}</h2>
             <p className="text-slate-400 text-sm mt-2">
-              You&apos;ve used your 7 free reports. Start a free 7-day trial — no charge until next week.
+              {t('paywall.subtitle')}
             </p>
           </div>
 
@@ -64,9 +66,9 @@ export default function PaywallModal({ onClose }: Props) {
               disabled={!!loadingPlan}
               className="relative flex flex-col items-center gap-1 p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/8 hover:border-sky-500/30 transition-all text-left group disabled:opacity-60"
             >
-              <span className="text-xs text-slate-500 uppercase tracking-widest">Monthly</span>
+              <span className="text-xs text-slate-500 uppercase tracking-widest">{t('paywall.monthly')}</span>
               <span className="text-2xl font-bold text-white">$4</span>
-              <span className="text-xs text-slate-500">per month</span>
+              <span className="text-xs text-slate-500">{t('paywall.perMonth')}</span>
               {loadingPlan === 'monthly' && <Spinner />}
             </button>
 
@@ -76,18 +78,18 @@ export default function PaywallModal({ onClose }: Props) {
               className="relative flex flex-col items-center gap-1 p-4 rounded-xl border border-teal-500/30 bg-teal-500/8 hover:bg-teal-500/12 transition-all group disabled:opacity-60"
             >
               <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-500 text-white whitespace-nowrap">
-                Best value
+                {t('paywall.bestValue')}
               </span>
-              <span className="text-xs text-teal-400 uppercase tracking-widest">Annual</span>
+              <span className="text-xs text-teal-400 uppercase tracking-widest">{t('paywall.annual')}</span>
               <span className="text-2xl font-bold text-white">$40</span>
-              <span className="text-xs text-slate-500">per year · save 17%</span>
+              <span className="text-xs text-slate-500">{t('paywall.perYear')}</span>
               {loadingPlan === 'annual' && <Spinner />}
             </button>
           </div>
 
           {/* Coupon note */}
           <p className="text-center text-xs text-slate-600 mb-5">
-            Have a code? You&apos;ll enter it on the next screen.
+            {t('paywall.couponNote')}
           </p>
 
           {/* CTA */}
@@ -98,27 +100,27 @@ export default function PaywallModal({ onClose }: Props) {
                 disabled={!!loadingPlan}
                 className="w-full py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-semibold text-sm transition-colors disabled:opacity-60"
               >
-                {loadingPlan ? 'Loading…' : 'Start free trial'}
+                {loadingPlan ? t('paywall.loading') : t('paywall.startTrial')}
               </button>
               <button
                 onClick={onClose}
                 className="w-full py-2 text-xs text-slate-600 hover:text-slate-400 transition-colors"
               >
-                Maybe later
+                {t('paywall.maybeLater')}
               </button>
             </div>
           ) : (
             <div className="space-y-2">
               <SignInButton mode="modal" forceRedirectUrl="/?paywall=1">
                 <button className="w-full py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-semibold text-sm transition-colors">
-                  Sign in to start free trial
+                  {t('paywall.signInToStart')}
                 </button>
               </SignInButton>
               <button
                 onClick={onClose}
                 className="w-full py-2 text-xs text-slate-600 hover:text-slate-400 transition-colors"
               >
-                Maybe later
+                {t('paywall.maybeLater')}
               </button>
             </div>
           )}
@@ -126,13 +128,13 @@ export default function PaywallModal({ onClose }: Props) {
           {/* Perks */}
           <div className="mt-6 pt-5 border-t border-white/5 grid grid-cols-3 gap-2 text-center">
             {[
-              { icon: '🌍', label: 'Every spot on earth' },
-              { icon: '🌊', label: 'Live & 10-day forecasts' },
-              { icon: '🔒', label: 'Cancel anytime' },
-            ].map(({ icon, label }) => (
-              <div key={label} className="flex flex-col items-center gap-1">
+              { icon: '🌍', labelKey: 'paywall.perk1' },
+              { icon: '🌊', labelKey: 'paywall.perk2' },
+              { icon: '🔒', labelKey: 'paywall.perk3' },
+            ].map(({ icon, labelKey }) => (
+              <div key={labelKey} className="flex flex-col items-center gap-1">
                 <span className="text-lg">{icon}</span>
-                <span className="text-[10px] text-slate-500 leading-tight">{label}</span>
+                <span className="text-[10px] text-slate-500 leading-tight">{t(labelKey)}</span>
               </div>
             ))}
           </div>
