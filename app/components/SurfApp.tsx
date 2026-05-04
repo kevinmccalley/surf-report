@@ -14,6 +14,7 @@ import ClimatologySection from './ClimatologySection'
 import LandingHero from './LandingHero'
 import AuthButton from './AuthButton'
 import ThemePicker from './ThemePicker'
+import LastYearCard from './LastYearCard'
 import type { ClimatologyMonth } from './ClimatologySection'
 
 type Units = { temp: 'c' | 'f'; height: 'ft' | 'm' }
@@ -41,6 +42,7 @@ export default function SurfApp() {
   const [units, setUnits] = useState<Units>({ temp: 'f', height: 'ft' })
   const [lastGeoResult, setLastGeoResult] = useState<GeoResult | null>(null)
   const [histDateInput, setHistDateInput] = useState('')
+  const [lastYearReport, setLastYearReport] = useState<SurfReport | null>(null)
 
   // Handle ?subscribed=true redirect from Stripe, and deep-link auto-load
   useEffect(() => {
@@ -72,6 +74,7 @@ export default function SurfApp() {
     setError(null)
     setTideData(null)
     setClimData(null)
+    setLastYearReport(null)
     setLastGeoResult(result)
     setHistDateInput('')
     if (updateUrl) {
@@ -142,6 +145,30 @@ export default function SurfApp() {
       setLoading(false)
     }
   }, [lastGeoResult])
+
+  // Fetch "this day last year" after the main report loads — non-blocking
+  useEffect(() => {
+    if (!report || report.historical || !report.isCoastal || !lastGeoResult) {
+      setLastYearReport(null)
+      return
+    }
+    const d = new Date()
+    d.setFullYear(d.getFullYear() - 1)
+    const date = d.toISOString().slice(0, 10)
+    const qs = new URLSearchParams({
+      lat: lastGeoResult.lat.toString(),
+      lon: lastGeoResult.lon.toString(),
+      name: lastGeoResult.name,
+      country: lastGeoResult.country,
+      date,
+    })
+    fetch(`/api/surf-history?${qs}`)
+      .then(r => r.ok ? r.json() : null)
+      .then((json: SurfReport | null) => {
+        if (json?.isCoastal) setLastYearReport(json)
+      })
+      .catch(() => {})
+  }, [report, lastGeoResult])
 
   async function openBillingPortal() {
     const res = await fetch('/api/portal', { method: 'POST' })
@@ -249,6 +276,14 @@ export default function SurfApp() {
             )}
 
             {report.isCoastal && <ConditionCards report={report} units={units} />}
+
+            {report.isCoastal && !report.historical && lastYearReport && (
+              <LastYearCard
+                report={lastYearReport}
+                units={units}
+                onViewFull={fetchHistorical}
+              />
+            )}
 
             {report.isCoastal && report.hourly.length > 0 && (
               <section className="glass-card rounded-2xl p-4 sm:p-6">
