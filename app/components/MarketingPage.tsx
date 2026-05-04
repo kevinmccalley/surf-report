@@ -10,20 +10,27 @@ const ANNUAL_PRICE_ID  = process.env.NEXT_PUBLIC_STRIPE_PRICE_ANNUAL!
 export default function MarketingPage() {
   const { isSignedIn } = useUser()
   const [checkoutLoading, setCheckoutLoading] = useState<'monthly' | 'annual' | null>(null)
-  const [activating, setActivating] = useState(false)
+  const [activating, setActivating]           = useState(false)
+  // True once we've resolved auth state and there's no auto-checkout to fire.
+  // Signed-in users with no pending checkout intent are shown an explicit setup screen.
+  const [setupReady, setSetupReady] = useState(false)
 
-  // Auto-trigger checkout after sign-in. Google OAuth doesn't reliably preserve
-  // ?checkout=1 through its redirect chain, so we also set a localStorage flag
-  // before opening the modal and check it here as a fallback.
+  // Auto-trigger checkout after sign-in or sign-up. Google OAuth and email
+  // verification don't reliably preserve ?checkout=1 through every redirect
+  // hop, so we also persist the intent to localStorage before opening the modal.
   useEffect(() => {
     if (!isSignedIn) return
-    const params = new URLSearchParams(window.location.search)
-    const fromUrl = params.get('checkout') === '1'
-    const fromStorage = localStorage.getItem('pendingCheckout') === 'annual'
-    if (fromUrl || fromStorage) {
-      window.history.replaceState({}, '', '/')
+    const params    = new URLSearchParams(window.location.search)
+    const fromUrl   = params.get('checkout') === '1'
+    const storedPlan = localStorage.getItem('pendingCheckout') as 'monthly' | 'annual' | null
+    if (fromUrl || storedPlan) {
+      if (fromUrl) window.history.replaceState({}, '', '/')
       localStorage.removeItem('pendingCheckout')
-      startCheckout('annual')
+      startCheckout(storedPlan === 'monthly' ? 'monthly' : 'annual')
+    } else {
+      // Signed in but no checkout intent detected (e.g. signed up then navigated
+      // back manually). Show a clear CTA rather than the full marketing page.
+      setSetupReady(true)
     }
   }, [isSignedIn])
 
@@ -55,6 +62,12 @@ export default function MarketingPage() {
 
   if (activating) return <ActivatingScreen />
 
+  // Signed in but not subscribed and no auto-checkout fired — show a focused
+  // setup screen so it's obvious what to do next.
+  if (isSignedIn && setupReady && !checkoutLoading) {
+    return <TrialSetupScreen onCheckout={startCheckout} loading={checkoutLoading} />
+  }
+
   return (
     <div className="theme-bg min-h-screen">
 
@@ -75,8 +88,11 @@ export default function MarketingPage() {
                 {checkoutLoading ? 'Loading…' : 'Start free trial'}
               </button>
             ) : (
-              <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/10 border border-white/15 text-white hover:bg-white/15 transition-colors">
+              <SignInButton mode="modal" forceRedirectUrl="/?checkout=1" signUpForceRedirectUrl="/?checkout=1">
+                <button
+                  className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/10 border border-white/15 text-white hover:bg-white/15 transition-colors"
+                  onClick={() => localStorage.setItem('pendingCheckout', 'annual')}
+                >
                   Sign in
                 </button>
               </SignInButton>
@@ -140,7 +156,7 @@ export default function MarketingPage() {
               </>
             ) : (
               <>
-                <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
+                <SignInButton mode="modal" forceRedirectUrl="/?checkout=1" signUpForceRedirectUrl="/?checkout=1">
                   <button
                     onClick={() => localStorage.setItem('pendingCheckout', 'annual')}
                     className="trial-cta-btn w-full sm:w-auto px-8 py-4 rounded-2xl active:scale-95 text-white font-bold text-base transition-all"
@@ -395,15 +411,50 @@ function PricingCTA({ plan, isSignedIn, loading, onCheckout, primary }: {
   }
 
   return (
-    <SignInButton mode="modal" forceRedirectUrl="/?checkout=1">
+    <SignInButton mode="modal" forceRedirectUrl="/?checkout=1" signUpForceRedirectUrl="/?checkout=1">
       <button
         disabled={!!loading}
         className={cls}
-        onClick={() => localStorage.setItem('pendingCheckout', 'annual')}
+        onClick={() => localStorage.setItem('pendingCheckout', plan)}
       >
         Start 7-day free trial
       </button>
     </SignInButton>
+  )
+}
+
+function TrialSetupScreen({ onCheckout, loading }: {
+  onCheckout: (plan: 'monthly' | 'annual') => void
+  loading: 'monthly' | 'annual' | null
+}) {
+  return (
+    <div className="theme-bg min-h-screen flex flex-col items-center justify-center gap-8 text-center px-4">
+      <WaveLogo size={48} />
+      <div className="max-w-md">
+        <h2 className="text-3xl font-bold text-white mb-3">You&apos;re almost in.</h2>
+        <p className="text-slate-300 leading-relaxed">
+          Your Groundswell account is ready. Start your 7-day free trial to access
+          live surf reports for every break on earth.
+        </p>
+      </div>
+      <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-sm">
+        <button
+          onClick={() => onCheckout('annual')}
+          disabled={!!loading}
+          className="trial-cta-btn w-full py-4 rounded-2xl text-white font-bold text-base transition-all disabled:opacity-60"
+        >
+          {loading === 'annual' ? 'Loading…' : 'Start free trial · $40/yr'}
+        </button>
+        <button
+          onClick={() => onCheckout('monthly')}
+          disabled={!!loading}
+          className="w-full py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/8 text-slate-200 font-semibold text-base transition-all disabled:opacity-60"
+        >
+          {loading === 'monthly' ? 'Loading…' : 'Monthly · $4/mo'}
+        </button>
+      </div>
+      <p className="text-xs text-slate-500">No charge during your 7-day trial · Cancel anytime</p>
+    </div>
   )
 }
 
