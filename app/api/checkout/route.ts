@@ -95,13 +95,15 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ url: session.url })
   } catch (err) {
-    console.error('[checkout] error:', err)
+    console.error('[checkout] error:', JSON.stringify(err, Object.getOwnPropertyNames(err)))
     let message = 'Unknown error'
-    if (err && typeof err === 'object') {
-      const e = err as Record<string, unknown>
-      message = String(e.message || e.type || e.code || e.constructor?.toString() || 'no details')
+    if (err instanceof Stripe.errors.StripeError) {
+      const details = [err.type, err.code, err.message].filter(Boolean).join(' / ')
+      message = details || `StripeError(statusCode=${err.statusCode})`
     } else if (err instanceof Error) {
       message = err.message || err.constructor.name
+    } else if (err && typeof err === 'object') {
+      message = JSON.stringify(err)
     }
     return NextResponse.json({ error: `Stripe error: ${message}` }, { status: 500 })
   }
