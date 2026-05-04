@@ -58,6 +58,17 @@ export async function POST(req: NextRequest) {
     const meta   = user.privateMetadata as { stripeCustomerId?: string }
 
     let customerId = meta.stripeCustomerId
+
+    // Verify the stored customer exists in the current Stripe mode (live vs test).
+    // IDs created in live mode don't exist in test mode and vice versa.
+    if (customerId) {
+      try {
+        await stripe.customers.retrieve(customerId)
+      } catch {
+        customerId = undefined
+      }
+    }
+
     if (!customerId) {
       const customer = await stripe.customers.create({
         email,
