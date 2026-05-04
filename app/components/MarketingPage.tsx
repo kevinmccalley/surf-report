@@ -46,6 +46,11 @@ export default function MarketingPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ plan }),
       })
+      const contentType = res.headers.get('content-type') ?? ''
+      if (!contentType.includes('application/json')) {
+        setCheckoutError(`Server error (HTTP ${res.status}). Please reload the page and try again.`)
+        return
+      }
       const data = await res.json() as { url?: string; error?: string }
       if (data.url) {
         window.location.href = data.url
