@@ -18,17 +18,17 @@ export default function MarketingPage() {
   // hop, so we also persist the intent to localStorage before opening the modal.
   useEffect(() => {
     if (!isSignedIn) return
-    const params    = new URLSearchParams(window.location.search)
-    const fromUrl   = params.get('checkout') === '1'
+    // Always show the setup screen for signed-in non-subscribers. If auto-checkout
+    // fires and succeeds, the user navigates away before ever seeing it. If it
+    // fails, the error is visible on the setup screen rather than being swallowed.
+    setSetupReady(true)
+    const params     = new URLSearchParams(window.location.search)
+    const fromUrl    = params.get('checkout') === '1'
     const storedPlan = localStorage.getItem('pendingCheckout') as 'monthly' | 'annual' | null
     if (fromUrl || storedPlan) {
       if (fromUrl) window.history.replaceState({}, '', '/')
       localStorage.removeItem('pendingCheckout')
       startCheckout(storedPlan === 'monthly' ? 'monthly' : 'annual')
-    } else {
-      // Signed in but no checkout intent detected (e.g. signed up then navigated
-      // back manually). Show a clear CTA rather than the full marketing page.
-      setSetupReady(true)
     }
   }, [isSignedIn])
 
@@ -69,7 +69,9 @@ export default function MarketingPage() {
 
   // Signed in but not subscribed and no auto-checkout fired — show a focused
   // setup screen so it's obvious what to do next.
-  if (isSignedIn && setupReady && !checkoutLoading) {
+  // Any signed-in non-subscriber gets the setup screen (not the full marketing page).
+  // It stays visible during loading so there's no flash back to the marketing page.
+  if (isSignedIn && setupReady) {
     return <TrialSetupScreen onCheckout={startCheckout} loading={checkoutLoading} error={checkoutError} />
   }
 
