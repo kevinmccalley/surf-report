@@ -10,19 +10,12 @@ export default function MarketingPage() {
   const [checkoutLoading, setCheckoutLoading] = useState<'monthly' | 'annual' | null>(null)
   const [activating, setActivating]           = useState(false)
   const [checkoutError, setCheckoutError]     = useState<string | null>(null)
-  const [setupReady, setSetupReady]           = useState(false)
 
   useEffect(() => {
-    // Reset when signed out so the full marketing page is visible again.
     if (!isSignedIn) {
-      setSetupReady(false)
       setCheckoutError(null)
       return
     }
-    // Show the setup screen immediately. If auto-checkout fires and succeeds,
-    // the user navigates away before they ever see it. If it fails, the error
-    // is displayed here rather than swallowed.
-    setSetupReady(true)
     const params     = new URLSearchParams(window.location.search)
     const fromUrl    = params.get('checkout') === '1'
     const storedPlan = localStorage.getItem('pendingCheckout') as 'monthly' | 'annual' | null
@@ -72,7 +65,7 @@ export default function MarketingPage() {
 
   if (activating) return <ActivatingScreen />
 
-  if (isSignedIn && setupReady) {
+  if (isSignedIn) {
     return (
       <TrialSetupScreen
         onCheckout={startCheckout}
