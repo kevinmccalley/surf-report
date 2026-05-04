@@ -2,14 +2,17 @@ import { NextRequest, NextResponse } from 'next/server'
 import { clerkClient } from '@clerk/nextjs/server'
 import Stripe from 'stripe'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-
 export async function POST(req: NextRequest) {
+  if (!process.env.STRIPE_SECRET_KEY || !process.env.STRIPE_WEBHOOK_SECRET) {
+    return NextResponse.json({ error: 'Stripe is not configured' }, { status: 503 })
+  }
+
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
   const body = await req.text()
   const sig = req.headers.get('stripe-signature')
 
-  if (!sig || !process.env.STRIPE_WEBHOOK_SECRET) {
-    return NextResponse.json({ error: 'Missing signature or secret' }, { status: 400 })
+  if (!sig) {
+    return NextResponse.json({ error: 'Missing signature' }, { status: 400 })
   }
 
   let event: Stripe.Event
