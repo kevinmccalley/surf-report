@@ -59,11 +59,12 @@ export async function POST(req: NextRequest) {
 
     let customerId = meta.stripeCustomerId
 
-    // Verify the stored customer exists in the current Stripe mode (live vs test).
-    // IDs created in live mode don't exist in test mode and vice versa.
+    // Verify the stored customer exists and is not deleted.
+    // retrieve() doesn't throw for deleted customers — it returns { deleted: true }.
     if (customerId) {
       try {
-        await stripe.customers.retrieve(customerId)
+        const existing = await stripe.customers.retrieve(customerId)
+        if ((existing as { deleted?: boolean }).deleted) customerId = undefined
       } catch {
         customerId = undefined
       }
