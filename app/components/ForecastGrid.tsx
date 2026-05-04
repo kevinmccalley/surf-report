@@ -63,24 +63,30 @@ export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
         </div>
       </div>
 
-      {activeDay && (
-        <div className="glass-card rounded-xl px-4 py-3 border border-white/8">
-          <div className="flex items-center justify-between gap-3 mb-1.5">
-            <p className="text-sm font-semibold text-slate-200">{activeDay.dayName}</p>
-            {isCoastal && (
-              <span
-                className="text-[10px] font-bold px-2 py-0.5 rounded"
-                style={{ backgroundColor: activeDay.rating.bgColor, color: activeDay.rating.textColor }}
-              >
-                {activeDay.rating.label}
-              </span>
-            )}
-          </div>
-          <p className="text-xs text-slate-400 leading-relaxed">
-            {generateDaySummary(activeDay, isCoastal, units)}
+      <div className="glass-card rounded-xl px-4 py-3 border border-white/8 min-h-[64px] flex flex-col justify-center">
+        {activeDay ? (
+          <>
+            <div className="flex items-center justify-between gap-3 mb-1.5">
+              <p className="text-sm font-semibold text-slate-200">{activeDay.dayName}</p>
+              {isCoastal && (
+                <span
+                  className="text-[10px] font-bold px-2 py-0.5 rounded"
+                  style={{ backgroundColor: activeDay.rating.bgColor, color: activeDay.rating.textColor }}
+                >
+                  {activeDay.rating.label}
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              {generateDaySummary(activeDay, isCoastal, units)}
+            </p>
+          </>
+        ) : (
+          <p className="text-xs text-slate-600 text-center">
+            Hover or tap any day for a full forecast breakdown
           </p>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }
