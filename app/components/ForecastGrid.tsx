@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import type { DayForecast } from '@/app/lib/types'
 import { formatWaveRange, formatTemp } from '@/app/lib/utils'
 import WeatherIcon from './WeatherIcon'
@@ -10,74 +11,137 @@ interface Props {
   isCoastal: boolean
 }
 
+function generateDaySummary(day: DayForecast, isCoastal: boolean, units: Props['units']): string {
+  if (!isCoastal) {
+    const hi     = formatTemp(day.tempMax, units.temp)
+    const lo     = formatTemp(day.tempMin, units.temp)
+    const wind   = Math.round(day.windSpeedMax)
+    const precip = day.precipProbabilityMax > 30 ? ` with ${day.precipProbabilityMax}% chance of rain` : ''
+    return `${hi} high, ${lo} low. ${wind} km/h ${day.windDirectionLabel} winds${precip}.`
+  }
+
+  const waves  = formatWaveRange(day.waveHeightMin, day.waveHeightMax, units.height)
+  const dir    = day.swellDirectionLabel
+  const period = day.wavePeriodMax
+  const label  = day.rating.label
+
+  const summaries: Record<string, string> = {
+    'EPIC':         `Block your calendar — ${waves} of ${dir} groundswell at ${period}s. A session you'll remember for years.`,
+    'VERY GOOD':    `Outstanding conditions. ${waves} ${dir} swell at ${period}s — paddle out early and stay all day.`,
+    'GOOD':         `Solid day with ${waves} ${dir} swell at ${period}s. Definitely worth suiting up.`,
+    'FAIR TO GOOD': `Decent ${waves} ${dir} swell at ${period}s. A rewarding session if you time it right.`,
+    'FAIR':         `Workable ${waves} ${dir} waves — not epic, but worth a paddle if you're keen.`,
+    'POOR TO FAIR': `Marginal ${waves} ${dir} conditions. Go if there's nothing else on.`,
+    'POOR':         `Small, messy ${waves} ${dir} swell. Stick to sheltered spots or stay on land.`,
+    'FLAT':         `Cross-train, wax your board, and watch the forecasts. Nothing surfable today.`,
+  }
+
+  return summaries[label] ?? `${waves} ${dir} swell — check conditions on arrival.`
+}
+
 export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
+  const [hoveredDay, setHoveredDay]   = useState<DayForecast | null>(null)
+  const [selectedDay, setSelectedDay] = useState<DayForecast | null>(null)
+
+  const activeDay = hoveredDay ?? selectedDay
+
   return (
-    <div className="overflow-x-auto forecast-scroll -mx-1 px-1">
-      <div className="flex gap-2 sm:gap-3 min-w-max sm:min-w-0 sm:grid sm:grid-cols-5 lg:grid-cols-10 pb-1">
-        {forecast.map(day => (
-          <ForecastCard key={day.date} day={day} units={units} isCoastal={isCoastal} />
-        ))}
+    <div className="space-y-2">
+      <div className="overflow-x-auto forecast-scroll -mx-1 px-1">
+        <div className="flex gap-2 sm:gap-3 min-w-max sm:min-w-0 sm:grid sm:grid-cols-5 lg:grid-cols-10 pb-1">
+          {forecast.map(day => (
+            <ForecastCard
+              key={day.date}
+              day={day}
+              units={units}
+              isCoastal={isCoastal}
+              isSelected={selectedDay?.date === day.date}
+              onHover={setHoveredDay}
+              onSelect={() => setSelectedDay(prev => prev?.date === day.date ? null : day)}
+            />
+          ))}
+        </div>
       </div>
+
+      {activeDay && (
+        <div className="glass-card rounded-xl px-4 py-3 border border-white/8">
+          <div className="flex items-center justify-between gap-3 mb-1.5">
+            <p className="text-sm font-semibold text-slate-200">{activeDay.dayName}</p>
+            {isCoastal && (
+              <span
+                className="text-[10px] font-bold px-2 py-0.5 rounded"
+                style={{ backgroundColor: activeDay.rating.bgColor, color: activeDay.rating.textColor }}
+              >
+                {activeDay.rating.label}
+              </span>
+            )}
+          </div>
+          <p className="text-xs text-slate-400 leading-relaxed">
+            {generateDaySummary(activeDay, isCoastal, units)}
+          </p>
+        </div>
+      )}
     </div>
   )
 }
 
-function ForecastCard({ day, units, isCoastal }: {
+function ForecastCard({ day, units, isCoastal, isSelected, onHover, onSelect }: {
   day: DayForecast
-  units: { temp: 'c' | 'f'; height: 'ft' | 'm' }
+  units: Props['units']
   isCoastal: boolean
+  isSelected: boolean
+  onHover: (day: DayForecast | null) => void
+  onSelect: () => void
 }) {
   const { rating } = day
   const isToday = day.dayName === 'Today'
+  const highlighted = isToday || isSelected
 
   return (
     <div
       className={`
-        flex flex-col gap-2 p-3 rounded-xl border transition-all duration-200 cursor-default
-        hover:border-sky-500/30 hover:bg-sky-500/5
+        flex flex-col gap-2 p-3 rounded-xl border transition-all duration-200 cursor-pointer
         w-[88px] sm:w-auto shrink-0 sm:shrink
-        ${isToday
+        ${highlighted
           ? 'border-sky-500/30 bg-sky-500/5'
-          : 'glass-card'
+          : 'glass-card hover:border-sky-500/30 hover:bg-sky-500/5'
         }
       `}
+      onMouseEnter={() => onHover(day)}
+      onMouseLeave={() => onHover(null)}
+      onClick={onSelect}
     >
-      {/* Day name */}
       <p className={`text-xs font-semibold truncate ${isToday ? 'text-sky-300' : 'text-slate-400'}`}>
         {day.dayName}
       </p>
 
-      {/* Weather icon */}
       <div className="text-center">
         <WeatherIcon code={day.weatherCode} size={22} />
       </div>
 
-      {/* Surf rating */}
       {isCoastal && (
         <div
           className="text-center text-xs font-bold py-0.5 rounded-md"
           style={{ backgroundColor: rating.bgColor, color: rating.textColor }}
           title={rating.label}
         >
-          {rating.label === 'FLAT' ? '–' :
-           rating.label === 'POOR' ? '★' :
-           rating.label === 'POOR TO FAIR' ? '★★' :
-           rating.label === 'FAIR' ? '★★★' :
-           rating.label === 'FAIR TO GOOD' ? '★★★' :
-           rating.label === 'GOOD' ? '★★★★' :
-           rating.label === 'VERY GOOD' ? '★★★★' : '★★★★★'
+          {rating.label === 'FLAT'         ? '–'      :
+           rating.label === 'POOR'         ? '★'      :
+           rating.label === 'POOR TO FAIR' ? '★★'     :
+           rating.label === 'FAIR'         ? '★★★'    :
+           rating.label === 'FAIR TO GOOD' ? '★★★'    :
+           rating.label === 'GOOD'         ? '★★★★'   :
+           rating.label === 'VERY GOOD'    ? '★★★★'   : '★★★★★'
           }
         </div>
       )}
 
-      {/* Wave height */}
       {isCoastal && (
         <p className="text-xs font-semibold text-white text-center">
           {formatWaveRange(day.waveHeightMin, day.waveHeightMax, units.height)}
         </p>
       )}
 
-      {/* Swell direction */}
       {isCoastal && (
         <div className="flex items-center gap-1 text-xs text-sky-400/80">
           <SwellIcon />
@@ -85,20 +149,17 @@ function ForecastCard({ day, units, isCoastal }: {
         </div>
       )}
 
-      {/* Temp */}
       <div className="flex justify-between text-xs">
         <span className="text-white font-medium">{formatTemp(day.tempMax, units.temp)}</span>
         <span className="text-slate-500">{formatTemp(day.tempMin, units.temp)}</span>
       </div>
 
-      {/* Wind */}
       <div className="flex items-center gap-1 text-xs text-slate-400">
         <WindIcon />
         <WindArrow direction={day.windDirectionDominant} />
         <span>{Math.round(day.windSpeedMax)}</span>
       </div>
 
-      {/* Precip probability */}
       {day.precipProbabilityMax > 15 && (
         <div className="flex items-center gap-1 text-xs text-blue-400">
           <span>💧</span>

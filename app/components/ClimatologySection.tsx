@@ -41,14 +41,29 @@ function DirectionRose({ degrees, size = 26 }: { degrees: number; size?: number 
   )
 }
 
+function generateMonthSummary(m: ClimatologyMonth, peakMonths: number[], maxHs: number): string {
+  const isPeak     = peakMonths.includes(m.month)
+  const isFlat     = m.avgHs < 0.5
+  const isShoulder = !isPeak && m.avgHs >= maxHs * 0.55
+
+  if (isFlat)
+    return `${m.name} is typically flat — expect small windswell with little surfable energy.`
+  if (isPeak)
+    return `${m.name} is peak season — expect powerful ${m.dominantDirectionLabel} groundswell averaging ${m.avgHs} m at ${m.avgSwellPeriod}s.`
+  if (isShoulder)
+    return `${m.name} is a solid shoulder month — consistent ${m.dominantDirectionLabel} swell at ${m.avgHs} m, ${m.avgSwellPeriod}s period.`
+  return `${m.name} sees moderate swell — ${m.avgHs} m ${m.dominantDirectionLabel} at ${m.avgSwellPeriod}s. Worth checking but not prime season.`
+}
+
 export default function ClimatologySection({ months, peakMonths }: Props) {
-  const [hovered, setHovered] = useState<number | null>(null)
+  const [hovered, setHovered]         = useState<number | null>(null)
+  const [tappedMonth, setTappedMonth] = useState<number | null>(null)
 
   const maxHs       = Math.max(...months.map(m => m.avgHs), 0.1)
   const currentMo   = new Date().getMonth() + 1
   const hoveredData = hovered != null ? months.find(m => m.month === hovered) ?? null : null
+  const tappedData  = tappedMonth != null ? months.find(m => m.month === tappedMonth) ?? null : null
 
-  // Position tooltip above the hovered column, clamping at edges
   const hoveredIdx   = hovered != null ? hovered - 1 : 0
   const tooltipLeft  = `${((hoveredIdx + 0.5) / 12) * 100}%`
   const tooltipShift =
@@ -87,15 +102,15 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
       {/* Bar chart */}
       <div className="relative select-none">
 
-        {/* Tooltip — tracks hovered column */}
+        {/* Tooltip — desktop hover */}
         {hoveredData && (
           <div
-            className="absolute bottom-full mb-2 z-20 rounded-xl px-3 py-2.5 text-xs shadow-xl border border-white/12 pointer-events-none whitespace-nowrap"
-            style={{ left: tooltipLeft, transform: tooltipShift, background: 'rgba(8,14,28,0.96)', backdropFilter: 'blur(8px)' }}
+            className="absolute bottom-full mb-2 z-20 rounded-xl px-3 py-2.5 text-xs shadow-xl border border-white/12 pointer-events-none"
+            style={{ left: tooltipLeft, transform: tooltipShift, background: 'rgba(8,14,28,0.96)', backdropFilter: 'blur(8px)', maxWidth: '240px' }}
           >
             <p className="text-white font-semibold mb-2">{hoveredData.name}</p>
             <div className="flex items-center gap-2.5 mb-2">
-              <div className="text-teal-400">
+              <div className="text-teal-400 shrink-0">
                 <DirectionRose degrees={hoveredData.avgSwellDirection} size={32} />
               </div>
               <div className="text-slate-300">
@@ -103,12 +118,15 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
                 <p className="text-slate-500 text-[10px]">{hoveredData.avgSwellDirection}°</p>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-slate-400">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-slate-400 mb-2">
               <span>Avg Hs</span>
               <span className="text-teal-300 font-medium tabular-nums">{hoveredData.avgHs} m</span>
               <span>Avg period</span>
               <span className="text-slate-300 tabular-nums">{hoveredData.avgSwellPeriod} s</span>
             </div>
+            <p className="border-t border-white/10 pt-2 text-slate-400 leading-relaxed whitespace-normal">
+              {generateMonthSummary(hoveredData, peakMonths, maxHs)}
+            </p>
           </div>
         )}
 
@@ -118,29 +136,32 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
             const isPeak    = peakMonths.includes(m.month)
             const isCurrent = m.month === currentMo
             const isHovered = hovered === m.month
+            const isTapped  = tappedMonth === m.month
             const heightPct = Math.max((m.avgHs / maxHs) * 100, 3)
 
             let barColor = 'bg-slate-700'
-            if (isPeak)             barColor = 'bg-teal-500'
-            if (isCurrent)          barColor = 'bg-sky-500'
+            if (isPeak)              barColor = 'bg-teal-500'
+            if (isCurrent)           barColor = 'bg-sky-500'
             if (isPeak && isCurrent) barColor = 'bg-teal-400'
 
             return (
               <div
                 key={m.month}
-                className="flex-1 flex flex-col items-center gap-1 cursor-default"
+                className="flex-1 flex flex-col items-center gap-1 cursor-pointer"
                 onMouseEnter={() => setHovered(m.month)}
                 onMouseLeave={() => setHovered(null)}
+                onClick={() => setTappedMonth(prev => prev === m.month ? null : m.month)}
               >
                 <div className="w-full flex items-end" style={{ height: '96px' }}>
                   <div
                     className={`w-full rounded-t-sm transition-all duration-150 ${barColor} ${
-                      isHovered ? 'opacity-100 brightness-125' : 'opacity-60 hover:opacity-80'
+                      isHovered || isTapped ? 'opacity-100 brightness-125' : 'opacity-60 hover:opacity-80'
                     }`}
                     style={{ height: `${heightPct}%` }}
                   />
                 </div>
                 <span className={`text-[9px] sm:text-[10px] font-medium ${
+                  isTapped  ? 'text-white' :
                   isPeak    ? 'text-teal-400' :
                   isCurrent ? 'text-sky-400'  : 'text-slate-600'
                 }`}>
@@ -164,6 +185,30 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
         </div>
       </div>
 
+      {/* Tap-to-expand detail card (mobile-primary, works on desktop too) */}
+      {tappedData && (
+        <div className="glass-card rounded-xl p-3.5 border border-white/8">
+          <div className="flex items-start justify-between gap-3 mb-2">
+            <div className="flex items-center gap-2.5">
+              <div className="text-teal-400 shrink-0">
+                <DirectionRose degrees={tappedData.avgSwellDirection} size={28} />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-white">{tappedData.name}</p>
+                <p className="text-[10px] text-slate-500">{tappedData.dominantDirectionLabel} · {tappedData.avgSwellDirection}°</p>
+              </div>
+            </div>
+            <div className="text-right shrink-0">
+              <p className="text-sm font-bold text-teal-300 tabular-nums">{tappedData.avgHs} m</p>
+              <p className="text-[10px] text-slate-500 tabular-nums">{tappedData.avgSwellPeriod}s period</p>
+            </div>
+          </div>
+          <p className="text-xs text-slate-400 leading-relaxed">
+            {generateMonthSummary(tappedData, peakMonths, maxHs)}
+          </p>
+        </div>
+      )}
+
       {/* Legend */}
       <div className="flex items-center gap-x-5 gap-y-1.5 flex-wrap text-[10px] text-slate-600">
         <span className="flex items-center gap-1.5">
@@ -178,7 +223,8 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
           <span className="inline-block w-2.5 h-2.5 rounded-sm bg-slate-700 opacity-70" />
           Off-peak
         </span>
-        <span className="ml-auto">Hover a bar for details</span>
+        <span className="ml-auto sm:hidden">Tap a bar for details</span>
+        <span className="ml-auto hidden sm:inline">Hover or tap a bar for details</span>
       </div>
 
       {/* Monthly detail strip */}
