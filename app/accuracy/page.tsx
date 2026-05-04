@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { kv } from '@vercel/kv'
+import AccuracyTrendChart from '@/app/components/AccuracyTrendChart'
+import type { DailyAccuracyRecord } from '@/app/api/accuracy-history/route'
 
 export const dynamic = 'force-dynamic'
 
@@ -10,24 +13,9 @@ export const metadata: Metadata = {
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
-interface NOAAPred {
-  t: string   // "YYYY-MM-DD HH:MM" in UTC/GMT
-  v: string   // height in meters
-  type: 'H' | 'L'
-}
-
-interface TideExtreme {
-  ms: number  // UTC milliseconds (parabolic interpolated)
-  height: number
-  type: 'High' | 'Low'
-}
-
-interface Match {
-  noaaMs: number
-  nemoMs: number
-  type: 'High' | 'Low'
-  errorMin: number
-}
+interface NOAAPred { t: string; v: string; type: 'H' | 'L' }
+interface TideExtreme { ms: number; height: number; type: 'High' | 'Low' }
+interface Match { noaaMs: number; nemoMs: number; type: 'High' | 'Low'; errorMin: number }
 
 interface StationResult {
   name: string
@@ -64,7 +52,6 @@ function fmtHHMM(ms: number): string {
   return `${h12}:${String(m).padStart(2, '0')} ${period}`
 }
 
-// Parabolic interpolation — same algorithm as app/api/tides/route.ts
 function interpolateMs(times: string[], heights: number[], i: number): number {
   const t1 = parseMs(times[i])
   const dt = t1 - parseMs(times[i - 1])
@@ -115,10 +102,10 @@ async function fetchNEMO(lat: number, lon: number): Promise<TideExtreme[]> {
     const res = await fetch(url, { signal: AbortSignal.timeout(12000) })
     if (!res.ok) return []
     const data = await res.json() as { hourly?: { time?: string[]; sea_level_height_msl?: (number | null)[] } }
-    const times   = data.hourly?.time ?? []
-    const rawH    = data.hourly?.sea_level_height_msl ?? []
-    const validT  = times.filter((_, i) => rawH[i] !== null && rawH[i] !== undefined && !isNaN(rawH[i] as number))
-    const validH  = rawH.filter((h): h is number => h !== null && !isNaN(h))
+    const times  = data.hourly?.time ?? []
+    const rawH   = data.hourly?.sea_level_height_msl ?? []
+    const validT = times.filter((_, i) => rawH[i] !== null && rawH[i] !== undefined && !isNaN(rawH[i] as number))
+    const validH = rawH.filter((h): h is number => h !== null && !isNaN(h))
     return detectExtremes(validT, validH)
   } catch { return [] }
 }
@@ -156,6 +143,63 @@ async function computeStation(s: typeof STATIONS[0]): Promise<StationResult> {
   }
 }
 
+// ── Historical data from KV ───────────────────────────────────────────────────
+
+async function fetchHistoricalRecords(days: number): Promise<DailyAccuracyRecord[]> {
+  if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) return []
+  try {
+    const today = new Date()
+    const keys = Array.from({ length: days }, (_, i) => {
+      const d = new Date(today)
+      d.setUTCDate(d.getUTCDate() - i)
+      return `accuracy:${d.toISOString().slice(0, 10)}`
+    })
+    const raw = await kv.mget<DailyAccuracyRecord[]>(...keys)
+    return raw
+      .filter((r): r is DailyAccuracyRecord => r !== null && r !== undefined)
+      .sort((a, b) => a.date.localeCompare(b.date))
+  } catch { return [] }
+}
+
+function computeHistoricalAggregate(records: DailyAccuracyRecord[]) {
+  if (!records.length) return null
+  const avgPct = Math.round(records.reduce((a, r) => a + r.overallPct, 0) / records.length)
+  const totalMatches = records.reduce((a, r) => a + r.totalMatches, 0)
+  const avgError = Math.round(records.reduce((a, r) => a + r.avgError, 0) / records.length)
+  const earliest = records[0].date
+  const latest   = records[records.length - 1].date
+
+  // Per-station aggregates
+  const stationMap: Record<string, { name: string; stateAbbr: string; pcts: number[] }> = {}
+  for (const rec of records) {
+    for (const s of rec.stations) {
+      if (s.error) continue
+      const key = `${s.name},${s.stateAbbr}`
+      if (!stationMap[key]) stationMap[key] = { name: s.name, stateAbbr: s.stateAbbr, pcts: [] }
+      stationMap[key].pcts.push(s.pctWithin30)
+    }
+  }
+  const stationAverages = Object.values(stationMap)
+    .filter(s => s.pcts.length >= 3)
+    .map(s => ({
+      name: s.name, stateAbbr: s.stateAbbr,
+      avgPct: Math.round(s.pcts.reduce((a, b) => a + b, 0) / s.pcts.length),
+      samples: s.pcts.length,
+    }))
+    .sort((a, b) => b.avgPct - a.avgPct)
+
+  const best  = stationAverages[0] ?? null
+  const worst = stationAverages[stationAverages.length - 1] ?? null
+
+  const fmtDate = (d: string) => {
+    const [y, m, day] = d.split('-')
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    return `${months[parseInt(m) - 1]} ${parseInt(day)}, ${y}`
+  }
+
+  return { avgPct, totalMatches, avgError, earliest, latest, fmtEarliest: fmtDate(earliest), fmtLatest: fmtDate(latest), best, worst, days: records.length }
+}
+
 // ── Sub-components ────────────────────────────────────────────────────────────
 
 function ErrorDot({ min }: { min: number }) {
@@ -184,16 +228,22 @@ function WaveLogo() {
 export default async function AccuracyPage() {
   const updatedAt = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' }) + ' UTC'
 
-  const results = await Promise.all(STATIONS.map(computeStation))
+  const [results, historicalRecords] = await Promise.all([
+    Promise.all(STATIONS.map(computeStation)),
+    fetchHistoricalRecords(365),
+  ])
 
   const allMatches = results.flatMap(r => r.matches)
-  const overallPct = allMatches.length
+  const liveOverallPct = allMatches.length
     ? Math.round(allMatches.filter(m => Math.abs(m.errorMin) <= 30).length / allMatches.length * 100)
     : 0
-  const avgError = allMatches.length
+  const liveAvgError = allMatches.length
     ? Math.round(allMatches.reduce((a, m) => a + Math.abs(m.errorMin), 0) / allMatches.length)
     : 0
-  const totalExtremes = allMatches.length
+  const liveTotalExtremes = allMatches.length
+
+  const hist = computeHistoricalAggregate(historicalRecords)
+  const displayPct = hist ? hist.avgPct : liveOverallPct
 
   return (
     <div className="theme-bg min-h-screen">
@@ -218,18 +268,103 @@ export default async function AccuracyPage() {
             Surfline doesn&apos;t publish their accuracy numbers. We do.
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
-            <span className="text-teal-400">{overallPct}%</span>
+            <span className="text-teal-400">{displayPct}%</span>
             <span className="text-slate-300"> of tide predictions</span>
             <br />
             <span className="text-slate-300">within 30 minutes</span>
           </h1>
           <p className="text-slate-500 mt-4 text-sm max-w-lg leading-relaxed">
             30 minutes is the difference between catching the right session and missing it.
-            Verified live against NOAA&apos;s official harmonic predictions —{' '}
-            <span className="text-slate-300 font-medium">{totalExtremes} tide extremes</span>
-            {' '}across {results.filter(r => !r.error).length} open-coast US stations.
-            Updated each page load. No stored results, no cherry-picking.
+            {hist ? (
+              <>
+                {' '}Verified against NOAA&apos;s official harmonic predictions —{' '}
+                <span className="text-slate-300 font-medium">{hist.totalMatches.toLocaleString()} tide extremes</span>
+                {' '}over {hist.days} days ({hist.fmtEarliest} – {hist.fmtLatest}).
+              </>
+            ) : (
+              <>
+                {' '}Verified live against NOAA&apos;s official harmonic predictions —{' '}
+                <span className="text-slate-300 font-medium">{liveTotalExtremes} tide extremes</span>
+                {' '}across {results.filter(r => !r.error).length} open-coast US stations.
+              </>
+            )}
           </p>
+        </div>
+
+        {/* Historical trend chart */}
+        {historicalRecords.length > 0 && (
+          <section className="glass-card rounded-2xl p-4 sm:p-5">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-0.5">
+                  12-Month Accuracy Trend
+                </p>
+                <p className="text-xs text-slate-600">
+                  % of tide predictions within 30 minutes · {historicalRecords.length} day{historicalRecords.length !== 1 ? 's' : ''} recorded
+                </p>
+              </div>
+              {hist && (
+                <div className="text-right shrink-0">
+                  <span className="text-2xl font-bold text-teal-400">{hist.avgPct}%</span>
+                  <p className="text-[10px] text-slate-500 mt-0.5">avg · {hist.avgError} min err</p>
+                </div>
+              )}
+            </div>
+            <AccuracyTrendChart records={historicalRecords} />
+            <div className="flex items-center gap-6 mt-3 text-[10px] text-slate-700">
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block w-3 border-t border-dashed" style={{ borderColor: 'rgba(248,113,113,0.4)' }} />
+                60% threshold
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block w-3 border-t border-dashed" style={{ borderColor: 'rgba(45,212,191,0.3)' }} />
+                80% target
+              </span>
+            </div>
+          </section>
+        )}
+
+        {/* Aggregate headline stats */}
+        {hist && (
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { label: 'Avg accuracy', value: `${hist.avgPct}%`, sub: 'within 30 min', color: '#2dd4bf' },
+              { label: 'Avg error', value: `${hist.avgError} min`, sub: 'mean abs error', color: '#7dd3fc' },
+              { label: 'Extremes verified', value: hist.totalMatches.toLocaleString(), sub: 'total tide events', color: '#a78bfa' },
+              { label: 'Days tracked', value: String(hist.days), sub: `since ${hist.fmtEarliest}`, color: '#94a3b8' },
+            ].map(stat => (
+              <div key={stat.label} className="glass-card rounded-xl p-3.5">
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-600 mb-1">{stat.label}</p>
+                <p className="text-2xl font-bold tabular-nums" style={{ color: stat.color }}>{stat.value}</p>
+                <p className="text-[10px] text-slate-600 mt-0.5">{stat.sub}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Best / worst station callouts */}
+        {hist && hist.best && hist.worst && hist.best.name !== hist.worst.name && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="glass-card rounded-xl p-4" style={{ borderColor: 'rgba(45,212,191,0.2)' }}>
+              <p className="text-[10px] font-semibold uppercase tracking-widest text-teal-500 mb-1">Most accurate station</p>
+              <p className="text-base font-semibold text-white">{hist.best.name}, {hist.best.stateAbbr}</p>
+              <p className="text-2xl font-bold text-teal-400 mt-0.5">{hist.best.avgPct}%</p>
+              <p className="text-[10px] text-slate-600 mt-0.5">avg over {hist.best.samples} checks</p>
+            </div>
+            <div className="glass-card rounded-xl p-4" style={{ borderColor: 'rgba(251,191,36,0.15)' }}>
+              <p className="text-[10px] font-semibold uppercase tracking-widest text-amber-500 mb-1">Needs attention</p>
+              <p className="text-base font-semibold text-white">{hist.worst.name}, {hist.worst.stateAbbr}</p>
+              <p className="text-2xl font-bold text-amber-400 mt-0.5">{hist.worst.avgPct}%</p>
+              <p className="text-[10px] text-slate-600 mt-0.5">avg over {hist.worst.samples} checks</p>
+            </div>
+          </div>
+        )}
+
+        {/* Divider between historical and live */}
+        <div className="flex items-center gap-3 pt-1">
+          <div className="flex-1 border-t border-white/5" />
+          <span className="text-[10px] text-slate-700 uppercase tracking-widest">Live check · {updatedAt}</span>
+          <div className="flex-1 border-t border-white/5" />
         </div>
 
         {/* Station cards */}
@@ -260,7 +395,6 @@ export default async function AccuracyPage() {
               <p className="text-sm text-slate-600 italic">{station.error}</p>
             ) : (
               <div className="space-y-1">
-                {/* Column headers */}
                 <div className="grid gap-2 px-3 pb-1" style={{ gridTemplateColumns: '3rem 1fr 1fr auto' }}>
                   <span className="text-[10px] uppercase tracking-widest text-slate-700">Type</span>
                   <span className="text-[10px] uppercase tracking-widest text-slate-700">NOAA reference</span>
@@ -331,9 +465,11 @@ export default async function AccuracyPage() {
               threshold — the difference between catching the right window and missing it.
             </p>
             <p>
-              <span className="text-slate-200 font-medium">Weekly monitoring:</span>{' '}
-              An automated check runs every Monday comparing predictions against 8 global locations
-              across 4 ocean basins. Any anomaly triggers an immediate alert.
+              <span className="text-slate-200 font-medium">Daily monitoring:</span>{' '}
+              An automated check runs every day, comparing predictions against NOAA reference data
+              across 6 open-coast US stations. Results are stored and used to build the 12-month
+              trend above. Any station falling below 50%, or the overall score below 60%, triggers
+              an automatic alert.
             </p>
           </div>
         </section>
