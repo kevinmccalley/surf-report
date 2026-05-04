@@ -1,26 +1,27 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { SignInButton, useUser } from '@clerk/nextjs'
+import { SignInButton, useUser, useClerk } from '@clerk/nextjs'
 import Link from 'next/link'
 
 export default function MarketingPage() {
-  const { isSignedIn } = useUser()
+  const { isLoaded, isSignedIn } = useUser()
+  const { signOut } = useClerk()
   const [checkoutLoading, setCheckoutLoading] = useState<'monthly' | 'annual' | null>(null)
   const [activating, setActivating]           = useState(false)
   const [checkoutError, setCheckoutError]     = useState<string | null>(null)
-  // True once we've resolved auth state and there's no auto-checkout to fire.
-  // Signed-in users with no pending checkout intent are shown an explicit setup screen.
-  const [setupReady, setSetupReady] = useState(false)
+  const [setupReady, setSetupReady]           = useState(false)
 
-  // Auto-trigger checkout after sign-in or sign-up. Google OAuth and email
-  // verification don't reliably preserve ?checkout=1 through every redirect
-  // hop, so we also persist the intent to localStorage before opening the modal.
   useEffect(() => {
-    if (!isSignedIn) return
-    // Always show the setup screen for signed-in non-subscribers. If auto-checkout
-    // fires and succeeds, the user navigates away before ever seeing it. If it
-    // fails, the error is visible on the setup screen rather than being swallowed.
+    // Reset when signed out so the full marketing page is visible again.
+    if (!isSignedIn) {
+      setSetupReady(false)
+      setCheckoutError(null)
+      return
+    }
+    // Show the setup screen immediately. If auto-checkout fires and succeeds,
+    // the user navigates away before they ever see it. If it fails, the error
+    // is displayed here rather than swallowed.
     setSetupReady(true)
     const params     = new URLSearchParams(window.location.search)
     const fromUrl    = params.get('checkout') === '1'
@@ -65,14 +66,21 @@ export default function MarketingPage() {
     }
   }
 
+  // Don't render anything until Clerk has resolved auth state — prevents a
+  // one-frame flash of the marketing page before TrialSetupScreen appears.
+  if (!isLoaded) return null
+
   if (activating) return <ActivatingScreen />
 
-  // Signed in but not subscribed and no auto-checkout fired — show a focused
-  // setup screen so it's obvious what to do next.
-  // Any signed-in non-subscriber gets the setup screen (not the full marketing page).
-  // It stays visible during loading so there's no flash back to the marketing page.
   if (isSignedIn && setupReady) {
-    return <TrialSetupScreen onCheckout={startCheckout} loading={checkoutLoading} error={checkoutError} />
+    return (
+      <TrialSetupScreen
+        onCheckout={startCheckout}
+        loading={checkoutLoading}
+        error={checkoutError}
+        onSignOut={() => signOut()}
+      />
+    )
   }
 
   return (
@@ -430,10 +438,11 @@ function PricingCTA({ plan, isSignedIn, loading, onCheckout, primary }: {
   )
 }
 
-function TrialSetupScreen({ onCheckout, loading, error }: {
+function TrialSetupScreen({ onCheckout, loading, error, onSignOut }: {
   onCheckout: (plan: 'monthly' | 'annual') => void
   loading: 'monthly' | 'annual' | null
   error: string | null
+  onSignOut: () => void
 }) {
   return (
     <div className="theme-bg min-h-screen flex flex-col items-center justify-center gap-8 text-center px-4">
@@ -468,7 +477,15 @@ function TrialSetupScreen({ onCheckout, loading, error }: {
           {loading === 'monthly' ? 'Loading…' : 'Monthly · $4/mo'}
         </button>
       </div>
+
       <p className="text-xs text-slate-500">No charge during your 7-day trial · Cancel anytime</p>
+
+      <button
+        onClick={onSignOut}
+        className="text-xs text-slate-600 hover:text-slate-400 transition-colors underline underline-offset-2"
+      >
+        Use a different account
+      </button>
     </div>
   )
 }
