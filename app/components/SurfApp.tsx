@@ -42,23 +42,42 @@ export default function SurfApp() {
   const [lastGeoResult, setLastGeoResult] = useState<GeoResult | null>(null)
   const [histDateInput, setHistDateInput] = useState('')
 
-  // Handle ?subscribed=true redirect from Stripe (page.tsx handles the real gate,
-  // this just clears the param after a successful round-trip)
+  // Handle ?subscribed=true redirect from Stripe, and deep-link auto-load
   useEffect(() => {
     if (typeof window === 'undefined') return
     const params = new URLSearchParams(window.location.search)
+
     if (params.get('subscribed') === 'true') {
       window.history.replaceState({}, '', '/')
+      return
     }
-  }, [])
 
-  const fetchReport = useCallback(async (result: GeoResult) => {
+    const lat = parseFloat(params.get('lat') ?? '')
+    const lon = parseFloat(params.get('lon') ?? '')
+    if (isNaN(lat) || isNaN(lon)) return
+
+    const name = params.get('name') ?? 'Location'
+    const country = params.get('country') ?? ''
+    const geo: GeoResult = { lat, lon, name, country, displayName: `${name}, ${country}` }
+    const date = params.get('date') ?? ''
+    if (date && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+      fetchHistorical(date, geo)
+    } else {
+      fetchReport(geo, false)
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const fetchReport = useCallback(async (result: GeoResult, updateUrl = true) => {
     setLoading(true)
     setError(null)
     setTideData(null)
     setClimData(null)
     setLastGeoResult(result)
     setHistDateInput('')
+    if (updateUrl) {
+      const url = `/?lat=${result.lat}&lon=${result.lon}&name=${encodeURIComponent(result.name)}&country=${encodeURIComponent(result.country)}`
+      window.history.replaceState({}, '', url)
+    }
     try {
       const qs = new URLSearchParams({
         lat: result.lat.toString(),
@@ -96,16 +115,20 @@ export default function SurfApp() {
     }
   }, [])
 
-  const fetchHistorical = useCallback(async (date: string) => {
-    if (!lastGeoResult) return
+  const fetchHistorical = useCallback(async (date: string, geoOverride?: GeoResult) => {
+    const geo = geoOverride ?? lastGeoResult
+    if (!geo) return
+    if (geoOverride) setLastGeoResult(geoOverride)
     setLoading(true)
     setError(null)
+    const url = `/?lat=${geo.lat}&lon=${geo.lon}&name=${encodeURIComponent(geo.name)}&country=${encodeURIComponent(geo.country)}&date=${date}`
+    window.history.replaceState({}, '', url)
     try {
       const qs = new URLSearchParams({
-        lat: lastGeoResult.lat.toString(),
-        lon: lastGeoResult.lon.toString(),
-        name: lastGeoResult.name,
-        country: lastGeoResult.country,
+        lat: geo.lat.toString(),
+        lon: geo.lon.toString(),
+        name: geo.name,
+        country: geo.country,
         date,
       })
       const res = await fetch(`/api/surf-history?${qs}`)
