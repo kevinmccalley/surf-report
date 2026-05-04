@@ -1,12 +1,13 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { SignInButton, useUser, useClerk } from '@clerk/nextjs'
+import { SignInButton, useUser, useClerk, useAuth } from '@clerk/nextjs'
 import Link from 'next/link'
 
 export default function MarketingPage() {
   const { isLoaded, isSignedIn } = useUser()
   const { signOut } = useClerk()
+  const { getToken } = useAuth()
   const [checkoutLoading, setCheckoutLoading] = useState<'monthly' | 'annual' | null>(null)
   const [activating, setActivating]           = useState(false)
   const [checkoutError, setCheckoutError]     = useState<string | null>(null)
@@ -41,9 +42,13 @@ export default function MarketingPage() {
     setCheckoutLoading(plan)
     setCheckoutError(null)
     try {
+      const token = await getToken()
       const res = await fetch('/api/checkout', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify({ plan }),
       })
       const contentType = res.headers.get('content-type') ?? ''
