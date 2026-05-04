@@ -138,7 +138,7 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
       </div>
 
       {open && results.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-1 z-50 rounded-xl overflow-hidden shadow-2xl border border-white/10" style={{ background: 'rgba(15,23,42,0.97)', backdropFilter: 'blur(12px)' }}>
+        <div className="absolute top-full left-0 right-0 mt-1 z-50 rounded-xl overflow-hidden shadow-2xl theme-panel">
           {results.map((r, i) => {
             const isSurfSpot = surfSpotKeys.has(`${r.lat},${r.lon}`)
             return (
@@ -146,16 +146,20 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
                 key={`${r.lat}-${r.lon}`}
                 onMouseDown={() => handleSelect(r)}
                 className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors ${
-                  i === activeIdx ? 'bg-sky-500/15' : 'hover:bg-white/5'
-                } ${i < results.length - 1 ? 'border-b border-white/5' : ''}`}
+                  i === activeIdx ? 'theme-row-active' : 'theme-row-hover'
+                } ${i < results.length - 1 ? 'border-b' : ''}`}
+                style={i < results.length - 1 ? { borderColor: 'var(--card-border)' } : undefined}
               >
-                <MapPin size={14} className="text-sky-400 shrink-0" />
+                <MapPin size={14} className="shrink-0" style={{ color: 'var(--accent)' }} />
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium text-white truncate">{r.name}</p>
-                  <p className="text-xs text-slate-400 truncate">{r.state ? `${r.state}, ` : ''}{r.country}</p>
+                  <p className="text-sm font-medium truncate" style={{ color: 'var(--text-base)' }}>{r.name}</p>
+                  <p className="text-xs truncate theme-label">{r.state ? `${r.state}, ` : ''}{r.country}</p>
                 </div>
                 {isSurfSpot && (
-                  <span className="shrink-0 text-[9px] font-semibold uppercase tracking-wide text-sky-400 border border-sky-500/30 rounded px-1 py-0.5">
+                  <span
+                    className="shrink-0 text-[9px] font-semibold uppercase tracking-wide rounded px-1 py-0.5 border"
+                    style={{ color: 'var(--accent)', borderColor: 'var(--accent)', opacity: 0.75 }}
+                  >
                     surf
                   </span>
                 )}
