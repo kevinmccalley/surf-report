@@ -132,6 +132,9 @@ const es: Record<string, string> = {
   'tides.timesIn': 'horarios en {tz}',
   'tides.harmonic': 'predicción armónica · {tzNote}',
   'tides.estimatedModel': 'modelo estimado de nivel del mar · {tzNote}',
+  'tides.liveVerified': '±{cm}cm · verificado en vivo',
+  'tides.surgeAbove': 'Marea {cm}cm sobre lo previsto',
+  'tides.surgeBelow': 'Nivel {cm}cm bajo lo previsto',
 
   // TideSetupCard
   'tideSetup.unavailable': 'Datos de mareas temporalmente no disponibles',

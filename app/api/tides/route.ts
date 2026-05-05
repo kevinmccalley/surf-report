@@ -56,6 +56,65 @@ function cosineHourlyFromExtremes(extremes: TideExtreme[]): TideHeight[] {
   return result
 }
 
+// ── NOAA live observations (for surge/offset verification) ───────────────────
+// Fetches the last ~2h of 6-minute observed water levels from the same NOAA
+// station used for predictions, computes the mean offset vs. our hourly
+// predictions, and returns it as a signed value in meters.
+// Positive = water higher than predicted (storm surge / high pressure setup).
+// Negative = water lower than predicted (offshore winds / high pressure drain).
+
+async function fetchNOAAObserved(
+  stationId: string,
+  predictions: TideHeight[],
+): Promise<{ offset: number; at: string } | null> {
+  try {
+    const now = new Date()
+    const yesterday = new Date(now.getTime() - 86400 * 1000)
+    const url =
+      `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter` +
+      `?begin_date=${yyyymmdd(yesterday)}&end_date=${yyyymmdd(now)}` +
+      `&station=${stationId}` +
+      `&product=water_level&datum=MLLW&time_zone=lst_ldt&units=metric` +
+      `&application=groundswell&format=json`
+
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), 5000)
+    const res = await fetch(url, { signal: controller.signal, next: { revalidate: 600 } })
+    clearTimeout(timer)
+    if (!res.ok) return null
+
+    const data = await res.json()
+    if (!Array.isArray(data.data) || data.data.length === 0) return null
+
+    // Use last 20 readings (~2h) for a representative current offset
+    const recent: { t: string; v: string }[] = (data.data as { t: string; v: string }[]).slice(-20)
+
+    // Build prediction lookup: "YYYY-MM-DD HH:00" → height
+    const predMap = new Map<string, number>()
+    for (const p of predictions) {
+      // Prediction times are "YYYY-MM-DD HH:MM" (NOAA local); normalise to the hour
+      const key = p.time.slice(0, 13).replace('T', ' ') + ':00'
+      predMap.set(key, p.height)
+    }
+
+    const offsets: number[] = []
+    for (const obs of recent) {
+      const v = parseFloat(obs.v)
+      if (isNaN(v)) continue
+      // obs.t like "2024-01-15 12:36" → match to "2024-01-15 12:00"
+      const key = obs.t.slice(0, 14) + '00'
+      const pred = predMap.get(key)
+      if (pred !== undefined) offsets.push(v - pred)
+    }
+
+    if (offsets.length === 0) return null
+    const offset = offsets.reduce((a, b) => a + b, 0) / offsets.length
+    return { offset, at: recent[recent.length - 1].t }
+  } catch {
+    return null
+  }
+}
+
 // ── NOAA ─────────────────────────────────────────────────────────────────────
 
 interface NOAAStation { id: string; name: string; lat: number; lon: number }
@@ -129,6 +188,8 @@ async function tryNOAA(lat: number, lon: number): Promise<TideResult | null> {
       hourly = cosineHourlyFromExtremes(extremes)
     }
 
+    const observed = await fetchNOAAObserved(best.station.id, hourly).catch(() => null)
+
     return {
       available: true,
       source: 'noaa',
@@ -140,6 +201,8 @@ async function tryNOAA(lat: number, lon: number): Promise<TideResult | null> {
       stationName: best.station.name,
       stationId: best.station.id,
       stationDistanceKm: Math.round(best.distanceKm),
+      observedOffset: observed?.offset ?? null,
+      observedAt: observed?.at,
     }
   } catch {
     return null
@@ -484,6 +547,8 @@ type TideResult =
       stationDistanceKm?: number
       timezoneLabel?: string
       qualityWarning?: string
+      observedOffset?: number | null
+      observedAt?: string
     }
   | {
       available: false

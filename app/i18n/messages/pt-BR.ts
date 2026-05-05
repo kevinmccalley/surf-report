@@ -132,6 +132,9 @@ const ptBR: Record<string, string> = {
   'tides.timesIn': 'horários em {tz}',
   'tides.harmonic': 'previsão harmônica · {tzNote}',
   'tides.estimatedModel': 'modelo estimado do nível do mar · {tzNote}',
+  'tides.liveVerified': '±{cm}cm · verificado ao vivo',
+  'tides.surgeAbove': 'Maré {cm}cm acima do previsto',
+  'tides.surgeBelow': 'Nível {cm}cm abaixo do previsto',
 
   // TideSetupCard
   'tideSetup.unavailable': 'Dados de maré temporariamente indisponíveis',

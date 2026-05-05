@@ -140,6 +140,8 @@ export interface TideReport {
   stationDistanceKm?: number
   timezoneLabel?: string  // e.g. "PST", "AWST" — set when UTC times have been converted to local
   qualityWarning?: string // set when model coverage or station distance is poor
+  observedOffset?: number | null  // meters; positive = above predicted (storm surge); NOAA only
+  observedAt?: string             // time of most recent observation used for offset
 }
 
 export interface TideUnavailable {

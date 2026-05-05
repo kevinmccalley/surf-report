@@ -132,6 +132,9 @@ const en: Record<string, string> = {
   'tides.timesIn': 'times in {tz}',
   'tides.harmonic': 'harmonic prediction · {tzNote}',
   'tides.estimatedModel': 'estimated sea-level model · {tzNote}',
+  'tides.liveVerified': '±{cm}cm · live verified',
+  'tides.surgeAbove': 'Surge {cm}cm above predicted',
+  'tides.surgeBelow': 'Water {cm}cm below predicted',
 
   // TideSetupCard
   'tideSetup.unavailable': 'Tide data temporarily unavailable',

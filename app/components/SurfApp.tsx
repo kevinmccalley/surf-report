@@ -315,6 +315,8 @@ export default function SurfApp() {
                     stationDistanceKm={(tideData as TideReport).stationDistanceKm}
                     timezoneLabel={(tideData as TideReport).timezoneLabel}
                     qualityWarning={(tideData as TideReport).qualityWarning}
+                    observedOffset={(tideData as TideReport).observedOffset}
+                    observedAt={(tideData as TideReport).observedAt}
                   />
                 ) : (
                   <TideSetupCard reason={(tideData as TideUnavailable | null)?.reason} />

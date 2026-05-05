@@ -18,6 +18,8 @@ interface Props {
   stationDistanceKm?: number
   timezoneLabel?: string
   qualityWarning?: string
+  observedOffset?: number | null
+  observedAt?: string
 }
 
 function toDisplay(meters: number, unit: 'ft' | 'm'): number {
@@ -72,6 +74,7 @@ export default function TideSection({
   source, estimated,
   stationName, stationDistanceKm,
   timezoneLabel, qualityWarning,
+  observedOffset, observedAt,
 }: Props) {
   const { t } = useLanguage()
   const upcomingExtremes = extremes.slice(0, 10)
@@ -153,6 +156,9 @@ export default function TideSection({
           <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/20">
             {attribution.badge}
           </span>
+        )}
+        {source === 'noaa' && observedOffset != null && (
+          <ObservationBadge offset={observedOffset} t={t} />
         )}
         <span className="ml-auto text-slate-600 hidden sm:block">{attribution.note}</span>
       </div>
@@ -276,6 +282,26 @@ export default function TideSection({
         </div>
       </div>
     </div>
+  )
+}
+
+function ObservationBadge({ offset, t }: { offset: number; t: TFn }) {
+  const cm = Math.round(Math.abs(offset) * 100)
+  // ≤8cm: normal scatter — green "live verified"
+  if (cm <= 8) {
+    return (
+      <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/12 text-emerald-400 border border-emerald-500/20">
+        {t('tides.liveVerified', { cm: cm.toString() })}
+      </span>
+    )
+  }
+  // >8cm: meteorological offset (storm surge or setup) — amber
+  const sign = offset > 0 ? '+' : '−'
+  const key = offset > 0 ? 'tides.surgeAbove' : 'tides.surgeBelow'
+  return (
+    <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/20">
+      {t(key, { cm: `${sign}${cm}` })}
+    </span>
   )
 }
 
