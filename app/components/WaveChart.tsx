@@ -8,6 +8,7 @@ import {
 import type { HourlyForecast } from '@/app/lib/types'
 import { formatHour, getDirectionLabel } from '@/app/lib/utils'
 import { useLanguage } from '@/app/i18n/LanguageContext'
+import type { TFn } from '@/app/i18n/LanguageContext'
 
 interface Props {
   hourly: HourlyForecast[]
@@ -218,7 +219,7 @@ function CustomTooltip({ active, payload, heightUnit, hasTide, showSwells, hasWi
   hasWindWave: boolean
   hasSwell2: boolean
   hasSwell3: boolean
-  t: (k: string, vars?: Record<string, unknown>) => string
+  t: TFn
 }) {
   if (!active || !payload?.length) return null
   const d = payload[0].payload
