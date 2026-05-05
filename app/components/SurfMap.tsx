@@ -12,7 +12,7 @@ import { useLanguage } from '@/app/i18n/LanguageContext'
 interface Props {
   report: SurfReport
   units: { height: 'ft' | 'm' }
-  highlightLayer?: string | null
+  highlightLayers?: Set<string>
 }
 
 // ── Geodesy ────────────────────────────────────────────────────────────────────
@@ -28,11 +28,11 @@ function offset(lat: number, lon: number, bearingDeg: number, distKm: number) {
 }
 
 // ── Directional arc pulses ─────────────────────────────────────────────────────
-// Draws numArcs concentric partial-circle arcs centred on the spot itself,
-// fanning outward in the FROM direction (e.g. SSW for an SSW swell).
-// i=0 is the outermost arc (farthest into the FROM quadrant), i=3 is nearest.
-// CSS animation pulses i=0 first → i=3 last, so the visual rolls inward from
-// the source direction — matching the meteorological "arriving from" convention.
+// Places a virtual swell source far offshore in the FROM direction. Draws
+// numArcs concentric partial-circle arcs centred on that source. Each arc has a
+// CSS class (classPrefix-0…3) that the <style> block animates with staggered
+// delays — farthest arc pulses first, nearest last — creating a wave-train
+// marching toward shore. Weight increases near-shore for depth-of-field feel.
 function addDirectionalArcs(
   map: L.Map,
   lat: number,
@@ -42,37 +42,39 @@ function addDirectionalArcs(
   classPrefix: string,
   opts: {
     numArcs?: number
-    maxArcRadiusKm?: number
+    sourceDistKm?: number
     halfAngleDeg?: number
     heightM?: number
   } = {},
 ) {
   const {
-    numArcs        = 4,
-    maxArcRadiusKm = 200,
-    halfAngleDeg   = 44,
-    heightM        = 1,
+    numArcs     = 4,
+    sourceDistKm = 260,
+    halfAngleDeg = 44,
+    heightM     = 1,
   } = opts
 
-  const steps = 26
+  const src           = offset(lat, lon, fromDeg, sourceDistKm)
+  const towardBearing = (fromDeg + 180) % 360
+  const steps         = 26
 
   for (let i = 0; i < numArcs; i++) {
-    const fraction = numArcs > 1 ? i / (numArcs - 1) : 1    // 0=far → 1=near spot
-    const radiusKm = maxArcRadiusKm * (1 - fraction * 0.75) // outer→inner: 100%→25%
-    const weight   = 4 + fraction * (8 + heightM * 1.5)     // heavier near spot
+    const fraction = numArcs > 1 ? i / (numArcs - 1) : 1   // 0=far → 1=near shore
+    const radiusKm = sourceDistKm * (0.28 + fraction * 0.62)
+    const weight   = 8 + fraction * (14 + heightM * 2)     // thick soft glow, heavier near shore
 
     const pts: [number, number][] = []
     for (let s = 0; s <= steps; s++) {
       const angle = -halfAngleDeg + (halfAngleDeg * 2 * s / steps)
-      const b     = (fromDeg + angle + 360) % 360
-      const p     = offset(lat, lon, b, radiusKm)
+      const b     = (towardBearing + angle + 360) % 360
+      const p     = offset(src.lat, src.lon, b, radiusKm)
       pts.push([p.lat, p.lon])
     }
 
     L.polyline(pts, {
       color,
       weight,
-      opacity: 1,
+      opacity: 1,          // CSS animation owns opacity
       className: `${classPrefix}-${i}`,
       interactive: false,
     }).addTo(map)
@@ -95,7 +97,7 @@ function makeSpotIcon(color: string): L.DivIcon {
 }
 
 // ── Component ──────────────────────────────────────────────────────────────────
-export default function SurfMap({ report, units, highlightLayer }: Props) {
+export default function SurfMap({ report, units, highlightLayers }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef       = useRef<L.Map | null>(null)
   const { themeId }  = useTheme()
@@ -128,21 +130,21 @@ export default function SurfMap({ report, units, highlightLayer }: Props) {
     // Primary swell — accent colour, full presence
     if (report.isCoastal && current.primarySwell.height > 0.05) {
       addDirectionalArcs(map, lat, lon, current.primarySwell.direction, accentColor, 'swell-p', {
-        maxArcRadiusKm: 200, halfAngleDeg: 52, heightM: current.primarySwell.height,
+        sourceDistKm: 270, halfAngleDeg: 52, heightM: current.primarySwell.height,
       })
     }
 
     // Secondary swell — muted slate, slower pulse
     if (report.isCoastal && current.secondarySwell && current.secondarySwell.height > 0.1) {
       addDirectionalArcs(map, lat, lon, current.secondarySwell.direction, '#94a3b8', 'swell-s', {
-        maxArcRadiusKm: 175, halfAngleDeg: 40, heightM: current.secondarySwell.height,
+        sourceDistKm: 220, halfAngleDeg: 40, heightM: current.secondarySwell.height,
       })
     }
 
     // Wind — narrow arcs (wind is directional), slow & soft
     if (current.wind.speed > 2) {
       addDirectionalArcs(map, lat, lon, current.wind.direction, '#64748b', 'wind-a', {
-        numArcs: 3, maxArcRadiusKm: 90, halfAngleDeg: 24, heightM: current.wind.speed / 30,
+        numArcs: 3, sourceDistKm: 110, halfAngleDeg: 24, heightM: current.wind.speed / 30,
       })
     }
 
@@ -171,85 +173,75 @@ export default function SurfMap({ report, units, highlightLayer }: Props) {
     return () => { map.remove(); mapRef.current = null }
   }, [themeId, bcp47]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Update highlight attribute without rebuilding the map
+  // Update dim attributes without rebuilding the map
   useEffect(() => {
-    if (!containerRef.current) return
-    if (highlightLayer) {
-      containerRef.current.setAttribute('data-highlight', highlightLayer)
-    } else {
-      containerRef.current.removeAttribute('data-highlight')
-    }
-  }, [highlightLayer])
+    const el = containerRef.current
+    if (!el) return
+    const hasSome = !!highlightLayers && highlightLayers.size > 0
+    el.toggleAttribute('data-dim-primary',   hasSome && !highlightLayers!.has('primary'))
+    el.toggleAttribute('data-dim-secondary', hasSome && !highlightLayers!.has('secondary'))
+    el.toggleAttribute('data-dim-wind',      hasSome && !highlightLayers!.has('wind'))
+  }, [highlightLayers])
 
   return (
     <>
       <style>{`
-        /* ── Per-arc: blur gets heavier farther from shore (diffuse → crisp)  */
-        /* opacity peak also lower overall — these are faint ocean pulses     */
-        .swell-p-0 { --arc-peak:0.38; filter:blur(9px);  }
-        .swell-p-1 { --arc-peak:0.42; filter:blur(7px);  }
-        .swell-p-2 { --arc-peak:0.46; filter:blur(5px);  }
-        .swell-p-3 { --arc-peak:0.50; filter:blur(3px);  }
+        /* ── Per-arc: blur heavier far from shore, lighter near ─────────── */
+        .swell-p-0 { --arc-peak:0.35; filter:blur(12px); }
+        .swell-p-1 { --arc-peak:0.40; filter:blur(9px);  }
+        .swell-p-2 { --arc-peak:0.44; filter:blur(6px);  }
+        .swell-p-3 { --arc-peak:0.48; filter:blur(4px);  }
 
-        .swell-s-0 { --arc-peak:0.24; filter:blur(11px); }
-        .swell-s-1 { --arc-peak:0.27; filter:blur(9px);  }
-        .swell-s-2 { --arc-peak:0.30; filter:blur(7px);  }
-        .swell-s-3 { --arc-peak:0.33; filter:blur(5px);  }
+        .swell-s-0 { --arc-peak:0.22; filter:blur(14px); }
+        .swell-s-1 { --arc-peak:0.25; filter:blur(11px); }
+        .swell-s-2 { --arc-peak:0.28; filter:blur(8px);  }
+        .swell-s-3 { --arc-peak:0.31; filter:blur(6px);  }
 
-        .wind-a-0  { --arc-peak:0.14; filter:blur(8px);  }
-        .wind-a-1  { --arc-peak:0.17; filter:blur(6px);  }
-        .wind-a-2  { --arc-peak:0.20; filter:blur(4px);  }
+        .wind-a-0  { --arc-peak:0.12; filter:blur(10px); }
+        .wind-a-1  { --arc-peak:0.15; filter:blur(7px);  }
+        .wind-a-2  { --arc-peak:0.18; filter:blur(5px);  }
 
-        /* Single keyframe — peak opacity resolves per-element via CSS var */
+        /* Smooth rise-hold-fall; peak opacity resolves per-element via CSS var */
         @keyframes arc-pulse {
-          0%,100% { opacity: 0; }
-          20%,55% { opacity: var(--arc-peak, 0.4); }
+          0%   { opacity: 0; }
+          35%  { opacity: var(--arc-peak, 0.4); }
+          65%  { opacity: var(--arc-peak, 0.4); }
+          100% { opacity: 0; }
         }
 
-        /* Primary swell — 2.2 s period, delay steps 0.55 s */
-        .swell-p-0 { animation: arc-pulse 2.2s ease-in-out 0.00s infinite backwards; }
-        .swell-p-1 { animation: arc-pulse 2.2s ease-in-out 0.55s infinite backwards; }
-        .swell-p-2 { animation: arc-pulse 2.2s ease-in-out 1.10s infinite backwards; }
-        .swell-p-3 { animation: arc-pulse 2.2s ease-in-out 1.65s infinite backwards; }
+        /* Primary swell — 3.2 s period, delay 0.8 s */
+        .swell-p-0 { animation: arc-pulse 3.2s ease-in-out 0.00s infinite backwards; }
+        .swell-p-1 { animation: arc-pulse 3.2s ease-in-out 0.80s infinite backwards; }
+        .swell-p-2 { animation: arc-pulse 3.2s ease-in-out 1.60s infinite backwards; }
+        .swell-p-3 { animation: arc-pulse 3.2s ease-in-out 2.40s infinite backwards; }
 
-        /* Secondary swell — 3.0 s, delay 0.75 s */
-        .swell-s-0 { animation: arc-pulse 3.0s ease-in-out 0.00s infinite backwards; }
-        .swell-s-1 { animation: arc-pulse 3.0s ease-in-out 0.75s infinite backwards; }
-        .swell-s-2 { animation: arc-pulse 3.0s ease-in-out 1.50s infinite backwards; }
-        .swell-s-3 { animation: arc-pulse 3.0s ease-in-out 2.25s infinite backwards; }
+        /* Secondary swell — 4.5 s, delay 1.1 s */
+        .swell-s-0 { animation: arc-pulse 4.5s ease-in-out 0.00s infinite backwards; }
+        .swell-s-1 { animation: arc-pulse 4.5s ease-in-out 1.10s infinite backwards; }
+        .swell-s-2 { animation: arc-pulse 4.5s ease-in-out 2.20s infinite backwards; }
+        .swell-s-3 { animation: arc-pulse 4.5s ease-in-out 3.30s infinite backwards; }
 
-        /* Wind — 4.0 s, delay 1.33 s (3 arcs) */
-        .wind-a-0 { animation: arc-pulse 4.0s ease-in-out 0.00s infinite backwards; }
-        .wind-a-1 { animation: arc-pulse 4.0s ease-in-out 1.33s infinite backwards; }
-        .wind-a-2 { animation: arc-pulse 4.0s ease-in-out 2.66s infinite backwards; }
+        /* Wind — 6.0 s, delay 2.0 s (3 arcs) */
+        .wind-a-0 { animation: arc-pulse 6.0s ease-in-out 0.00s infinite backwards; }
+        .wind-a-1 { animation: arc-pulse 6.0s ease-in-out 2.00s infinite backwards; }
+        .wind-a-2 { animation: arc-pulse 6.0s ease-in-out 4.00s infinite backwards; }
 
-        /* ── Legend-click highlight: dim the inactive layers ─────────────── */
-        .surf-map-container[data-highlight="primary"]
-          .swell-s-0,.surf-map-container[data-highlight="primary"] .swell-s-1,
-          .surf-map-container[data-highlight="primary"] .swell-s-2,
-          .surf-map-container[data-highlight="primary"] .swell-s-3,
-          .surf-map-container[data-highlight="primary"] .wind-a-0,
-          .surf-map-container[data-highlight="primary"] .wind-a-1,
-          .surf-map-container[data-highlight="primary"] .wind-a-2 {
+        /* ── Legend multi-select: each layer dims independently ──────────── */
+        .surf-map-container[data-dim-primary] .swell-p-0,
+        .surf-map-container[data-dim-primary] .swell-p-1,
+        .surf-map-container[data-dim-primary] .swell-p-2,
+        .surf-map-container[data-dim-primary] .swell-p-3 {
           animation: none !important; opacity: 0.05 !important;
         }
-        .surf-map-container[data-highlight="secondary"]
-          .swell-p-0,.surf-map-container[data-highlight="secondary"] .swell-p-1,
-          .surf-map-container[data-highlight="secondary"] .swell-p-2,
-          .surf-map-container[data-highlight="secondary"] .swell-p-3,
-          .surf-map-container[data-highlight="secondary"] .wind-a-0,
-          .surf-map-container[data-highlight="secondary"] .wind-a-1,
-          .surf-map-container[data-highlight="secondary"] .wind-a-2 {
+        .surf-map-container[data-dim-secondary] .swell-s-0,
+        .surf-map-container[data-dim-secondary] .swell-s-1,
+        .surf-map-container[data-dim-secondary] .swell-s-2,
+        .surf-map-container[data-dim-secondary] .swell-s-3 {
           animation: none !important; opacity: 0.05 !important;
         }
-        .surf-map-container[data-highlight="wind"]
-          .swell-p-0,.surf-map-container[data-highlight="wind"] .swell-p-1,
-          .surf-map-container[data-highlight="wind"] .swell-p-2,
-          .surf-map-container[data-highlight="wind"] .swell-p-3,
-          .surf-map-container[data-highlight="wind"] .swell-s-0,
-          .surf-map-container[data-highlight="wind"] .swell-s-1,
-          .surf-map-container[data-highlight="wind"] .swell-s-2,
-          .surf-map-container[data-highlight="wind"] .swell-s-3 {
+        .surf-map-container[data-dim-wind] .wind-a-0,
+        .surf-map-container[data-dim-wind] .wind-a-1,
+        .surf-map-container[data-dim-wind] .wind-a-2 {
           animation: none !important; opacity: 0.05 !important;
         }
 

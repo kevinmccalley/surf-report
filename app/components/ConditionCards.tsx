@@ -163,7 +163,7 @@ function WindDisplay({ speed, gust, direction, directionLabel, gustLabel, condit
       <div className="flex items-center gap-2">
         <div
           className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0"
-          style={{ transform: `rotate(${direction}deg)` }}
+          style={{ transform: `rotate(${(direction + 180) % 360}deg)` }}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M8 14 L8 2 M5 5 L8 2 L11 5" stroke="#0ea5e9" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>

@@ -19,10 +19,14 @@ interface Props {
 export default function MapPanel({ report, units, onClose }: Props) {
   const { t } = useLanguage()
   const { current, location } = report
-  const [activeLayer, setActiveLayer] = useState<string | null>(null)
+  const [activeLayers, setActiveLayers] = useState<Set<string>>(new Set())
 
   const toggleLayer = (key: string) =>
-    setActiveLayer(prev => (prev === key ? null : key))
+    setActiveLayers(prev => {
+      const next = new Set(prev)
+      if (next.has(key)) next.delete(key); else next.add(key)
+      return next
+    })
 
   return (
     <AnimatePresence>
@@ -76,7 +80,7 @@ export default function MapPanel({ report, units, onClose }: Props) {
 
         {/* Map — fills remaining space */}
         <div className="flex-1 min-h-0 relative">
-          <SurfMap report={report} units={{ height: units.height }} highlightLayer={activeLayer} />
+          <SurfMap report={report} units={{ height: units.height }} highlightLayers={activeLayers} />
 
           {/* Clickable legend — click to isolate a layer */}
           {report.isCoastal && (
@@ -85,8 +89,8 @@ export default function MapPanel({ report, units, onClose }: Props) {
                 <LegendItem
                   color="var(--accent)"
                   label={`${t('map.swell')}: ${t('dir.' + current.primarySwell.directionLabel)}`}
-                  active={activeLayer === 'primary'}
-                  dimmed={activeLayer !== null && activeLayer !== 'primary'}
+                  active={activeLayers.has('primary')}
+                  dimmed={activeLayers.size > 0 && !activeLayers.has('primary')}
                   onClick={() => toggleLayer('primary')}
                 />
               )}
@@ -95,8 +99,8 @@ export default function MapPanel({ report, units, onClose }: Props) {
                   color="#94a3b8"
                   label={`${t('map.windWave')}: ${t('dir.' + current.secondarySwell.directionLabel)}`}
                   dashed
-                  active={activeLayer === 'secondary'}
-                  dimmed={activeLayer !== null && activeLayer !== 'secondary'}
+                  active={activeLayers.has('secondary')}
+                  dimmed={activeLayers.size > 0 && !activeLayers.has('secondary')}
                   onClick={() => toggleLayer('secondary')}
                 />
               )}
@@ -105,8 +109,8 @@ export default function MapPanel({ report, units, onClose }: Props) {
                   color="#64748b"
                   label={`${t('map.wind')}: ${t('dir.' + current.wind.directionLabel)}`}
                   thin
-                  active={activeLayer === 'wind'}
-                  dimmed={activeLayer !== null && activeLayer !== 'wind'}
+                  active={activeLayers.has('wind')}
+                  dimmed={activeLayers.size > 0 && !activeLayers.has('wind')}
                   onClick={() => toggleLayer('wind')}
                 />
               )}

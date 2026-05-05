@@ -42,8 +42,8 @@ export default function SwellCompass({ primaryDirection, secondaryDirection, siz
     return { tipX, tipY, tailX, tailY, h1x, h1y, h2x, h2y }
   }
 
-  const primary = arrowPoints(primaryDirection)
-  const secondary = secondaryDirection !== undefined ? arrowPoints(secondaryDirection) : null
+  const primary = arrowPoints((primaryDirection + 180) % 360)
+  const secondary = secondaryDirection !== undefined ? arrowPoints((secondaryDirection + 180) % 360) : null
 
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-label="Swell direction compass">
