@@ -139,6 +139,16 @@ const ptPT: Record<string, string> = {
   'lastYear.period': 'período {period}s',
   'lastYear.viewFull': 'Ver condições completas →',
 
+  // Weather descriptions (WMO codes)
+  'weather.0': 'Céu limpo', 'weather.1': 'Principalmente limpo', 'weather.2': 'Parcialmente nublado', 'weather.3': 'Nublado',
+  'weather.45': 'Nevoeiro', 'weather.48': 'Nevoeiro gelado',
+  'weather.51': 'Chuvisco fraco', 'weather.53': 'Chuvisco', 'weather.55': 'Chuvisco forte',
+  'weather.61': 'Chuva fraca', 'weather.63': 'Chuva', 'weather.65': 'Chuva forte',
+  'weather.71': 'Neve fraca', 'weather.73': 'Neve', 'weather.75': 'Neve forte',
+  'weather.77': 'Granizo fino', 'weather.80': 'Aguaceiros fracos', 'weather.81': 'Aguaceiros', 'weather.82': 'Aguaceiros fortes',
+  'weather.85': 'Aguaceiros de neve', 'weather.86': 'Aguaceiros de neve fortes',
+  'weather.95': 'Trovoada', 'weather.96': 'Trovoada com granizo', 'weather.99': 'Trovoada severa',
+
   // Surf rating labels
   'rating.EPIC':         'ÉPICO',
   'rating.VERY_GOOD':    'MUITO BOM',

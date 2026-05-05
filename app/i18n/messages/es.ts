@@ -139,6 +139,16 @@ const es: Record<string, string> = {
   'lastYear.period': 'período {period}s',
   'lastYear.viewFull': 'Ver condiciones completas →',
 
+  // Weather descriptions (WMO codes)
+  'weather.0': 'Cielo despejado', 'weather.1': 'Mayormente despejado', 'weather.2': 'Parcialmente nublado', 'weather.3': 'Nublado',
+  'weather.45': 'Niebla', 'weather.48': 'Niebla helada',
+  'weather.51': 'Llovizna ligera', 'weather.53': 'Llovizna', 'weather.55': 'Llovizna intensa',
+  'weather.61': 'Lluvia ligera', 'weather.63': 'Lluvia', 'weather.65': 'Lluvia intensa',
+  'weather.71': 'Nieve ligera', 'weather.73': 'Nieve', 'weather.75': 'Nevada intensa',
+  'weather.77': 'Granizo fino', 'weather.80': 'Chubascos ligeros', 'weather.81': 'Chubascos', 'weather.82': 'Chubascos fuertes',
+  'weather.85': 'Chubascos de nieve', 'weather.86': 'Chubascos de nieve intensos',
+  'weather.95': 'Tormenta', 'weather.96': 'Tormenta con granizo', 'weather.99': 'Tormenta severa',
+
   // Surf rating labels
   'rating.EPIC':         'ÉPICO',
   'rating.VERY_GOOD':    'MUY BUENO',

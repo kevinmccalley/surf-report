@@ -76,7 +76,7 @@ export default function HeroSection({ report, units }: Props) {
         <div className="sm:ml-auto flex flex-wrap gap-3 sm:gap-4">
           <StatPill
             icon={<WeatherIcon code={current.weatherCode} size={16} />}
-            value={current.weatherDescription}
+            value={t('weather.' + current.weatherCode)}
           />
           <StatPill
             icon={<Thermometer size={14} className="text-orange-400" />}

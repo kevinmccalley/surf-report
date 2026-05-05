@@ -139,6 +139,16 @@ const en: Record<string, string> = {
   'lastYear.period': '{period}s period',
   'lastYear.viewFull': 'View full conditions →',
 
+  // Weather descriptions (WMO codes)
+  'weather.0': 'Clear Sky', 'weather.1': 'Mainly Clear', 'weather.2': 'Partly Cloudy', 'weather.3': 'Overcast',
+  'weather.45': 'Foggy', 'weather.48': 'Icy Fog',
+  'weather.51': 'Light Drizzle', 'weather.53': 'Drizzle', 'weather.55': 'Heavy Drizzle',
+  'weather.61': 'Light Rain', 'weather.63': 'Rain', 'weather.65': 'Heavy Rain',
+  'weather.71': 'Light Snow', 'weather.73': 'Snow', 'weather.75': 'Heavy Snow',
+  'weather.77': 'Snow Grains', 'weather.80': 'Light Showers', 'weather.81': 'Showers', 'weather.82': 'Heavy Showers',
+  'weather.85': 'Snow Showers', 'weather.86': 'Heavy Snow Showers',
+  'weather.95': 'Thunderstorm', 'weather.96': 'Thunderstorm w/ Hail', 'weather.99': 'Severe Thunderstorm',
+
   // Surf rating labels
   'rating.EPIC':         'EPIC',
   'rating.VERY_GOOD':    'VERY GOOD',

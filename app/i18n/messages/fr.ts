@@ -139,6 +139,16 @@ const fr: Record<string, string> = {
   'lastYear.period': 'période {period}s',
   'lastYear.viewFull': 'Voir les conditions complètes →',
 
+  // Weather descriptions (WMO codes)
+  'weather.0': 'Ciel dégagé', 'weather.1': 'Principalement dégagé', 'weather.2': 'Partiellement nuageux', 'weather.3': 'Couvert',
+  'weather.45': 'Brouillard', 'weather.48': 'Brouillard givrant',
+  'weather.51': 'Bruine légère', 'weather.53': 'Bruine', 'weather.55': 'Bruine forte',
+  'weather.61': 'Pluie légère', 'weather.63': 'Pluie', 'weather.65': 'Pluie forte',
+  'weather.71': 'Neige légère', 'weather.73': 'Neige', 'weather.75': 'Neige forte',
+  'weather.77': 'Grésil', 'weather.80': 'Averses légères', 'weather.81': 'Averses', 'weather.82': 'Averses fortes',
+  'weather.85': 'Averses de neige', 'weather.86': 'Averses de neige fortes',
+  'weather.95': 'Orage', 'weather.96': 'Orage avec grêle', 'weather.99': 'Orage violent',
+
   // Surf rating labels
   'rating.EPIC':         'ÉPIQUE',
   'rating.VERY_GOOD':    'TRÈS BON',

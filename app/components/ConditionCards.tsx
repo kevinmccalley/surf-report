@@ -115,7 +115,7 @@ export default function ConditionCards({ report, units }: Props) {
         <div className="mt-1 space-y-3">
           <div>
             <p className="text-xl mt-1">{weatherEmoji(current.weatherCode)}</p>
-            <p className="text-sm font-medium text-white mt-1">{current.weatherDescription}</p>
+            <p className="text-sm font-medium text-white mt-1">{t('weather.' + current.weatherCode)}</p>
           </div>
           {current.precipProbability > 0 && (
             <CondRow
