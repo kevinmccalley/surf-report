@@ -18,6 +18,13 @@ export default async function Page({
       const user   = await client.users.getUser(userId)
       const meta   = user.privateMetadata as { subscriptionStatus?: string; stripeCustomerId?: string }
 
+      // Bypass whitelist — specific emails skip the paywall entirely
+      const bypassEmails = (process.env.BYPASS_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean)
+      const userEmail = user.emailAddresses[0]?.emailAddress?.toLowerCase() ?? ''
+      if (bypassEmails.length > 0 && bypassEmails.includes(userEmail)) {
+        return <SurfApp />
+      }
+
       // Already marked active from a previous webhook
       if (meta.subscriptionStatus === 'active') {
         return <SurfApp />
