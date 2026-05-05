@@ -38,7 +38,7 @@ export default function ConditionCards({ report, units }: Props) {
               label={t('cards.primary')}
               height={formatWaveHeight(current.primarySwell.height, units.height)}
               period={`${current.primarySwell.period.toFixed(0)}s`}
-              from={`${t('cards.from')} ${current.primarySwell.directionLabel}`}
+              from={`${t('cards.from')} ${t('dir.' + current.primarySwell.directionLabel)}`}
               color="#0ea5e9"
             />
             {current.secondarySwell && (
@@ -46,7 +46,7 @@ export default function ConditionCards({ report, units }: Props) {
                 label={t('cards.windSwell')}
                 height={formatWaveHeight(current.secondarySwell.height, units.height)}
                 period={`${current.secondarySwell.period.toFixed(0)}s`}
-                from={`${t('cards.from')} ${current.secondarySwell.directionLabel}`}
+                from={`${t('cards.from')} ${t('dir.' + current.secondarySwell.directionLabel)}`}
                 color="#64748b"
               />
             )}
@@ -67,7 +67,7 @@ export default function ConditionCards({ report, units }: Props) {
         <WindDisplay
           speed={current.wind.speed}
           gust={current.wind.gust}
-          directionLabel={current.wind.directionLabel}
+          directionLabel={t('dir.' + current.wind.directionLabel)}
           direction={current.wind.direction}
           gustLabel={t('cards.gusts')}
           conditionsLabel={t('cards.conditions')}

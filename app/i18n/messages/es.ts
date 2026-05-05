@@ -304,6 +304,16 @@ const es: Record<string, string> = {
   'paywall.perk1': 'Cada spot del mundo',
   'paywall.perk2': 'Pronósticos en vivo y de 10 días',
   'paywall.perk3': 'Cancela cuando quieras',
+
+  // Puntos cardinales (Oeste = O, no W)
+  'dir.N': 'N', 'dir.NNE': 'NNE', 'dir.NE': 'NE', 'dir.ENE': 'ENE',
+  'dir.E': 'E', 'dir.ESE': 'ESE', 'dir.SE': 'SE', 'dir.SSE': 'SSE',
+  'dir.S': 'S', 'dir.SSW': 'SSO', 'dir.SW': 'SO', 'dir.WSW': 'OSO',
+  'dir.W': 'O', 'dir.WNW': 'ONO', 'dir.NW': 'NO', 'dir.NNW': 'NNO',
+
+  // Nombres de días
+  'day.today': 'Hoy',
+  'day.tomorrow': 'Mañana',
 }
 
 export default es

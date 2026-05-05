@@ -304,6 +304,16 @@ const en: Record<string, string> = {
   'paywall.perk1': 'Every spot on earth',
   'paywall.perk2': 'Live & 10-day forecasts',
   'paywall.perk3': 'Cancel anytime',
+
+  // Compass directions
+  'dir.N': 'N', 'dir.NNE': 'NNE', 'dir.NE': 'NE', 'dir.ENE': 'ENE',
+  'dir.E': 'E', 'dir.ESE': 'ESE', 'dir.SE': 'SE', 'dir.SSE': 'SSE',
+  'dir.S': 'S', 'dir.SSW': 'SSW', 'dir.SW': 'SW', 'dir.WSW': 'WSW',
+  'dir.W': 'W', 'dir.WNW': 'WNW', 'dir.NW': 'NW', 'dir.NNW': 'NNW',
+
+  // Forecast day names
+  'day.today': 'Today',
+  'day.tomorrow': 'Tomorrow',
 }
 
 export default en

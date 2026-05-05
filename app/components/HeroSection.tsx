@@ -94,7 +94,7 @@ export default function HeroSection({ report, units }: Props) {
           <StatPill
             icon={<Wind size={14} className="text-slate-400" />}
             value={`${Math.round(current.wind.speed)} km/h`}
-            label={`${current.wind.directionLabel}`}
+            label={t('dir.' + current.wind.directionLabel)}
           />
         </div>
       </div>
@@ -103,7 +103,7 @@ export default function HeroSection({ report, units }: Props) {
         <div className="mt-5 pt-4 border-t border-white/5 grid grid-cols-3 gap-3 sm:grid-cols-6">
           <MiniStat label={t('hero.primarySwell')} value={formatWaveHeight(current.primarySwell.height, units.height)} />
           <MiniStat label={t('hero.swellPeriod')} value={`${current.primarySwell.period.toFixed(0)}s`} />
-          <MiniStat label={t('hero.swellDir')} value={current.primarySwell.directionLabel} />
+          <MiniStat label={t('hero.swellDir')} value={t('dir.' + current.primarySwell.directionLabel)} />
           <MiniStat label={t('hero.wind')} value={`${Math.round(current.wind.speed)} km/h`} />
           <MiniStat label={t('hero.windGust')} value={`${Math.round(current.wind.gust)} km/h`} />
           <MiniStat label={t('hero.uvIndex')} value={current.uvIndex > 0 ? current.uvIndex.toFixed(0) : '—'} uvVal={current.uvIndex} />

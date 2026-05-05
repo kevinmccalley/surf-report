@@ -304,6 +304,16 @@ const ptBR: Record<string, string> = {
   'paywall.perk1': 'Cada pico no mundo',
   'paywall.perk2': 'Previsões ao vivo e de 10 dias',
   'paywall.perk3': 'Cancele quando quiser',
+
+  // Pontos cardinais (Leste = L, Oeste = O)
+  'dir.N': 'N', 'dir.NNE': 'NNE', 'dir.NE': 'NE', 'dir.ENE': 'LNE',
+  'dir.E': 'L', 'dir.ESE': 'LSE', 'dir.SE': 'SE', 'dir.SSE': 'SSE',
+  'dir.S': 'S', 'dir.SSW': 'SSO', 'dir.SW': 'SO', 'dir.WSW': 'OSO',
+  'dir.W': 'O', 'dir.WNW': 'ONO', 'dir.NW': 'NO', 'dir.NNW': 'NNO',
+
+  // Nomes dos dias
+  'day.today': 'Hoje',
+  'day.tomorrow': 'Amanhã',
 }
 
 export default ptBR

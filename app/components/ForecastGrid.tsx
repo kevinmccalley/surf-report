@@ -24,6 +24,13 @@ const RATING_KEY_MAP: Record<string, string> = {
   'FLAT':         'forecast.summaries.FLAT',
 }
 
+function localDayName(day: DayForecast, locale: string, t: TFn): string {
+  if (day.dayName === 'Today') return t('day.today')
+  if (day.dayName === 'Tomorrow') return t('day.tomorrow')
+  const [year, month, d] = day.date.split('-').map(Number)
+  return new Date(year, month - 1, d).toLocaleDateString(locale, { weekday: 'short' })
+}
+
 function generateDaySummary(day: DayForecast, isCoastal: boolean, units: Props['units'], t: TFn): string {
   if (!isCoastal) {
     const hi     = formatTemp(day.tempMax, units.temp)
@@ -32,11 +39,11 @@ function generateDaySummary(day: DayForecast, isCoastal: boolean, units: Props['
     const precip = day.precipProbabilityMax > 30
       ? t('forecast.precipChance', { pct: day.precipProbabilityMax })
       : ''
-    return t('forecast.nonCoastal', { hi, lo, wind, dir: day.windDirectionLabel, precip })
+    return t('forecast.nonCoastal', { hi, lo, wind, dir: t('dir.' + day.windDirectionLabel), precip })
   }
 
   const waves  = formatWaveRange(day.waveHeightMin, day.waveHeightMax, units.height)
-  const dir    = day.swellDirectionLabel
+  const dir    = t('dir.' + day.swellDirectionLabel)
   const period = day.wavePeriodMax
   const label  = day.rating.label
   const key    = RATING_KEY_MAP[label] ?? 'forecast.summaries.fallback'
@@ -44,7 +51,7 @@ function generateDaySummary(day: DayForecast, isCoastal: boolean, units: Props['
 }
 
 export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
-  const { t } = useLanguage()
+  const { t, locale } = useLanguage()
   const [hoveredDay, setHoveredDay]   = useState<DayForecast | null>(null)
   const [selectedDay, setSelectedDay] = useState<DayForecast | null>(null)
 
@@ -89,7 +96,7 @@ export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
             {activeDay ? (
               <>
                 <div className="flex items-center justify-between gap-3 mb-1.5">
-                  <p className="text-sm font-semibold text-slate-200">{activeDay.dayName}</p>
+                  <p className="text-sm font-semibold text-slate-200">{localDayName(activeDay, locale, t)}</p>
                   {isCoastal && (
                     <span
                       className="rating-chip text-[10px] font-bold px-2 py-0.5 rounded"
@@ -124,7 +131,7 @@ function ForecastCard({ day, units, isCoastal, isSelected, onHover, onSelect }: 
   onHover: (day: DayForecast | null) => void
   onSelect: () => void
 }) {
-  const { t } = useLanguage()
+  const { t, locale } = useLanguage()
   const { rating } = day
   const isToday = day.dayName === 'Today'
   const highlighted = isToday || isSelected
@@ -144,7 +151,7 @@ function ForecastCard({ day, units, isCoastal, isSelected, onHover, onSelect }: 
       onClick={onSelect}
     >
       <p className={`text-xs font-semibold truncate ${isToday ? 'text-sky-300' : 'text-slate-400'}`}>
-        {day.dayName}
+        {localDayName(day, locale, t)}
       </p>
 
       <div className="text-center">
@@ -177,7 +184,7 @@ function ForecastCard({ day, units, isCoastal, isSelected, onHover, onSelect }: 
       {isCoastal && (
         <div className="flex items-center gap-1 text-xs text-sky-400/80">
           <SwellIcon />
-          <span className="font-medium">{day.swellDirectionLabel}</span>
+          <span className="font-medium">{t('dir.' + day.swellDirectionLabel)}</span>
         </div>
       )}
 

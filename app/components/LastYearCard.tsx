@@ -61,13 +61,13 @@ export default function LastYearCard({ report, units, onViewFull }: Props) {
         </div>
         <div>
           <p className="text-[9px] uppercase tracking-widest text-slate-600 mb-0.5">{t('lastYear.swell')}</p>
-          <p className="text-sm font-bold text-slate-200">{c.primarySwell.directionLabel}</p>
+          <p className="text-sm font-bold text-slate-200">{t('dir.' + c.primarySwell.directionLabel)}</p>
           <p className="text-[10px] text-slate-500">{c.primarySwell.height.toFixed(1)} m Hs</p>
         </div>
         <div>
           <p className="text-[9px] uppercase tracking-widest text-slate-600 mb-0.5">{t('lastYear.wind')}</p>
           <p className="text-sm font-bold text-slate-200">{Math.round(c.wind.speed)} km/h</p>
-          <p className="text-[10px] text-slate-500">{c.wind.directionLabel}</p>
+          <p className="text-[10px] text-slate-500">{t('dir.' + c.wind.directionLabel)}</p>
         </div>
       </div>
 

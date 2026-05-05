@@ -304,6 +304,16 @@ const ptPT: Record<string, string> = {
   'paywall.perk1': 'Cada spot no mundo',
   'paywall.perk2': 'Previsões em direto e de 10 dias',
   'paywall.perk3': 'Cancele quando quiser',
+
+  // Pontos cardinais (Oeste = O, não W)
+  'dir.N': 'N', 'dir.NNE': 'NNE', 'dir.NE': 'NE', 'dir.ENE': 'ENE',
+  'dir.E': 'E', 'dir.ESE': 'ESE', 'dir.SE': 'SE', 'dir.SSE': 'SSE',
+  'dir.S': 'S', 'dir.SSW': 'SSO', 'dir.SW': 'SO', 'dir.WSW': 'OSO',
+  'dir.W': 'O', 'dir.WNW': 'ONO', 'dir.NW': 'NO', 'dir.NNW': 'NNO',
+
+  // Nomes dos dias
+  'day.today': 'Hoje',
+  'day.tomorrow': 'Amanhã',
 }
 
 export default ptPT

@@ -48,10 +48,11 @@ function generateMonthSummary(m: ClimatologyMonth, peakMonths: number[], maxHs: 
   const isFlat     = m.avgHs < 0.5
   const isShoulder = !isPeak && m.avgHs >= maxHs * 0.55
 
+  const dir = t('dir.' + m.dominantDirectionLabel)
   if (isFlat)     return t('clim.summary.flat',     { month: monthAbbr })
-  if (isPeak)     return t('clim.summary.peak',     { month: monthAbbr, dir: m.dominantDirectionLabel, avgHs: m.avgHs, period: m.avgSwellPeriod })
-  if (isShoulder) return t('clim.summary.shoulder', { month: monthAbbr, dir: m.dominantDirectionLabel, avgHs: m.avgHs, period: m.avgSwellPeriod })
-  return t('clim.summary.moderate', { month: monthAbbr, dir: m.dominantDirectionLabel, avgHs: m.avgHs, period: m.avgSwellPeriod })
+  if (isPeak)     return t('clim.summary.peak',     { month: monthAbbr, dir, avgHs: m.avgHs, period: m.avgSwellPeriod })
+  if (isShoulder) return t('clim.summary.shoulder', { month: monthAbbr, dir, avgHs: m.avgHs, period: m.avgSwellPeriod })
+  return t('clim.summary.moderate', { month: monthAbbr, dir, avgHs: m.avgHs, period: m.avgSwellPeriod })
 }
 
 export default function ClimatologySection({ months, peakMonths }: Props) {
@@ -113,7 +114,7 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
                 <DirectionRose degrees={hoveredData.avgSwellDirection} size={32} />
               </div>
               <div className="text-slate-300">
-                <p className="font-semibold">{hoveredData.dominantDirectionLabel}</p>
+                <p className="font-semibold">{t('dir.' + hoveredData.dominantDirectionLabel)}</p>
                 <p className="text-slate-500 text-[10px]">{hoveredData.avgSwellDirection}°</p>
               </div>
             </div>
@@ -191,7 +192,7 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">{tappedData.name}</p>
-                <p className="text-[10px] text-slate-500">{tappedData.dominantDirectionLabel} · {tappedData.avgSwellDirection}°</p>
+                <p className="text-[10px] text-slate-500">{t('dir.' + tappedData.dominantDirectionLabel)} · {tappedData.avgSwellDirection}°</p>
               </div>
             </div>
             <div className="text-right shrink-0">
@@ -248,7 +249,7 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
                 <div className={`${isPeak ? 'text-teal-500' : isCurrent ? 'text-sky-500' : 'text-slate-600'}`}>
                   <DirectionRose degrees={m.avgSwellDirection} size={20} />
                 </div>
-                <span className="text-[9px] text-slate-600">{m.dominantDirectionLabel}</span>
+                <span className="text-[9px] text-slate-600">{t('dir.' + m.dominantDirectionLabel)}</span>
               </div>
             )
           })}
