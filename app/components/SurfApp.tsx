@@ -444,12 +444,23 @@ function PastConditionsPicker({
         min="2022-01-01"
         max={maxDate}
         onChange={e => onChange(e.target.value)}
-        className="bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-slate-300 [color-scheme:dark] focus:outline-none focus:border-sky-500/50 transition-colors"
+        className="rounded-lg px-3 py-1.5 text-sm focus:outline-none transition-colors"
+        style={{
+          background: 'var(--search-bg)',
+          border: '1px solid var(--search-border)',
+          color: 'var(--text-base)',
+          colorScheme: 'inherit',
+        }}
       />
       <button
         type="submit"
         disabled={!value || loading}
-        className="px-3 py-1.5 rounded-lg text-xs font-medium bg-violet-500/15 border border-violet-500/25 text-violet-300 hover:bg-violet-500/25 hover:text-violet-200 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        className="px-3 py-1.5 rounded-lg text-xs font-medium disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        style={{
+          background: `rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.14)`,
+          border: `1px solid rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.35)`,
+          color: 'var(--accent-bright)',
+        }}
       >
         {lookUpLabel}
       </button>
