@@ -14,6 +14,7 @@ const en: Record<string, string> = {
   'landing.badge': 'Live data · Any beach on earth',
   'landing.subtitle': 'Real-time surf reports and 10-day forecasts for any spot in the world.',
   'landing.popularSpots': 'Popular spots',
+  'landing.localSpotsLabel': 'Regional favorites',
   'landing.accuracyNote': 'Forecast accuracy verified against NOAA reference data — see live numbers →',
 
   // HeroSection

@@ -14,6 +14,7 @@ const ptPT: Record<string, string> = {
   'landing.badge': 'Dados em direto · Qualquer praia no mundo',
   'landing.subtitle': 'Relatórios de surf em tempo real e previsões de 10 dias para qualquer spot do mundo.',
   'landing.popularSpots': 'Spots populares',
+  'landing.localSpotsLabel': 'Portugal & ilhas',
   'landing.accuracyNote': 'Precisão da previsão verificada com dados de referência NOAA — ver números →',
 
   // HeroSection

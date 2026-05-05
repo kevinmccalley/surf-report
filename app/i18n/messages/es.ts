@@ -14,6 +14,7 @@ const es: Record<string, string> = {
   'landing.badge': 'Datos en vivo · Cualquier playa del mundo',
   'landing.subtitle': 'Informes de surf en tiempo real y pronósticos de 10 días para cualquier lugar del mundo.',
   'landing.popularSpots': 'Spots populares',
+  'landing.localSpotsLabel': 'Mundo hispano',
   'landing.accuracyNote': 'Precisión del pronóstico verificada con datos de referencia NOAA — ver números →',
 
   // HeroSection
