@@ -7,6 +7,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'content': '1152px',
+      },
       colors: {
         ocean: {
           950: '#020917',

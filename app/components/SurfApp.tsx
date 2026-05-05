@@ -192,7 +192,7 @@ export default function SurfApp() {
           <div className="flex-1 max-w-xl">
             <SearchBar onSelect={fetchReport} loading={loading} compact />
           </div>
-          <div className="flex items-center gap-1 shrink-0">
+          <div className="flex items-center gap-1 shrink-0 content:ml-auto">
             {report && (
               <>
                 <UnitToggle label={units.height.toUpperCase()} onClick={toggleHeight} />
