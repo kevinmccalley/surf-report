@@ -46,11 +46,11 @@ export default function AuthButton({ subscribed, onManageBilling }: Props) {
             </span>
           </button>
           {open && (
-            <div className="absolute right-0 top-full mt-1 w-44 rounded-xl border border-white/10 shadow-xl py-1 z-50" style={{ background: 'rgba(15,23,42,0.97)', backdropFilter: 'blur(12px)' }}>
+            <div className="absolute right-0 top-full mt-1 w-44 rounded-xl shadow-xl py-1 z-50 theme-panel">
               {subscribed && (
                 <button
                   onClick={() => { setOpen(false); onManageBilling() }}
-                  className="w-full text-left px-3 py-2 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+                  className="w-full text-left px-3 py-2 text-xs theme-row-hover theme-label transition-colors"
                 >
                   {t('auth.manageBilling')}
                 </button>
@@ -58,7 +58,7 @@ export default function AuthButton({ subscribed, onManageBilling }: Props) {
               <SignOutButton>
                 <button
                   onClick={() => setOpen(false)}
-                  className="w-full text-left px-3 py-2 text-xs text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+                  className="w-full text-left px-3 py-2 text-xs theme-row-hover theme-label transition-colors"
                 >
                   {t('auth.signOut')}
                 </button>
