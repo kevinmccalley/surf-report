@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import { AnimatePresence, motion } from 'framer-motion'
 import { X, Wind, Waves } from 'lucide-react'
 import type { SurfReport } from '@/app/lib/types'
-import { formatWaveHeight, formatTemp, getDirectionLabel } from '@/app/lib/utils'
+import { formatWaveHeight, formatTemp } from '@/app/lib/utils'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 
 // Leaflet must not render server-side
@@ -92,13 +92,13 @@ export default function MapPanel({ report, units, onClose }: Props) {
           {report.isCoastal && (
             <div className="absolute bottom-10 left-3 z-[1000] flex flex-col gap-1.5 pointer-events-none">
               {current.primarySwell.height > 0.05 && (
-                <LegendItem color="#22d3ee" label={`${t('map.swell')}: ${getDirectionLabel(current.primarySwell.direction)}`} />
+                <LegendItem color="#22d3ee" label={`${t('map.swell')}: ${t('dir.' + current.primarySwell.directionLabel)}`} />
               )}
               {current.secondarySwell && current.secondarySwell.height > 0.1 && (
-                <LegendItem color="#94a3b8" label={`${t('map.windWave')}: ${getDirectionLabel(current.secondarySwell.direction)}`} dashed />
+                <LegendItem color="#94a3b8" label={`${t('map.windWave')}: ${t('dir.' + current.secondarySwell.directionLabel)}`} dashed />
               )}
               {current.wind.speed > 2 && (
-                <LegendItem color="#475569" label={`${t('map.wind')}: ${getDirectionLabel(current.wind.direction)}`} thin />
+                <LegendItem color="#475569" label={`${t('map.wind')}: ${t('dir.' + current.wind.directionLabel)}`} thin />
               )}
             </div>
           )}
@@ -110,13 +110,13 @@ export default function MapPanel({ report, units, onClose }: Props) {
             icon={<Waves size={13} className="text-sky-400" />}
             label={t('map.primary')}
             value={formatWaveHeight(current.primarySwell.height, units.height)}
-            sub={`${current.primarySwell.period.toFixed(0)}s · ${getDirectionLabel(current.primarySwell.direction)}`}
+            sub={`${current.primarySwell.period.toFixed(0)}s · ${t('dir.' + current.primarySwell.directionLabel)}`}
           />
           <FooterStat
             icon={<Wind size={13} className="text-slate-400" />}
             label={t('map.windLabel')}
             value={`${Math.round(current.wind.speed)} km/h`}
-            sub={getDirectionLabel(current.wind.direction)}
+            sub={t('dir.' + current.wind.directionLabel)}
           />
           <FooterStat
             label={t('map.water')}

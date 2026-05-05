@@ -5,9 +5,10 @@ import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import { useEffect, useRef } from 'react'
 import type { SurfReport } from '@/app/lib/types'
-import { formatWaveHeight, getDirectionLabel } from '@/app/lib/utils'
+import { formatWaveHeight } from '@/app/lib/utils'
 import { useTheme } from '@/app/components/ThemeProvider'
 import { THEMES } from '@/app/lib/themes'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Props {
   report: SurfReport
@@ -158,9 +159,10 @@ function makeSpotIcon(color: string): L.DivIcon {
 
 // ── Component ──────────────────────────────────────────────────────────────────
 export default function SurfMap({ report, units }: Props) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const mapRef       = useRef<L.Map | null>(null)
-  const { themeId }  = useTheme()
+  const containerRef  = useRef<HTMLDivElement>(null)
+  const mapRef        = useRef<L.Map | null>(null)
+  const { themeId }   = useTheme()
+  const { t, bcp47 }  = useLanguage()
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
@@ -210,11 +212,11 @@ export default function SurfMap({ report, units }: Props) {
     }
 
     // Spot marker + popup
-    const waveStr      = formatWaveHeight(current.waveHeight, units.height)
-    const periodStr    = current.wavePeriod > 0 ? `${current.wavePeriod.toFixed(0)}s` : '—'
-    const swellDirLabel = getDirectionLabel(current.primarySwell.direction)
-    const swellFromStr = formatWaveHeight(current.primarySwell.height, units.height) + ` · ${swellDirLabel} · ${periodStr}`
-    const windStr      = `${Math.round(current.wind.speed)} km/h ${getDirectionLabel(current.wind.direction)}`
+    const waveStr     = formatWaveHeight(current.waveHeight, units.height)
+    const periodStr   = current.wavePeriod > 0 ? `${current.wavePeriod.toFixed(0)}s` : '—'
+    const swellDir    = t('dir.' + current.primarySwell.directionLabel)
+    const swellFromStr = formatWaveHeight(current.primarySwell.height, units.height) + ` · ${swellDir} · ${periodStr}`
+    const windStr     = `${Math.round(current.wind.speed)} km/h ${t('dir.' + current.wind.directionLabel)}`
 
     const popupHtml = `
       <div style="
@@ -247,7 +249,7 @@ export default function SurfMap({ report, units }: Props) {
       map.remove()
       mapRef.current = null
     }
-  }, [themeId]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [themeId, bcp47]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
