@@ -104,6 +104,7 @@ function ForecastCard({ day, units, isCoastal, isSelected, onHover, onSelect }: 
   onHover: (day: DayForecast | null) => void
   onSelect: () => void
 }) {
+  const { t } = useLanguage()
   const { rating } = day
   const isToday = day.dayName === 'Today'
   const highlighted = isToday || isSelected
