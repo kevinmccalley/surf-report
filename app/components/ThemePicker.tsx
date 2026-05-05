@@ -5,7 +5,7 @@ import { THEMES } from '@/app/lib/themes'
 import { useTheme } from './ThemeProvider'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 
-export default function ThemePicker() {
+export default function ThemePicker({ align = 'right' }: { align?: 'left' | 'right' }) {
   const { themeId, setTheme } = useTheme()
   const { t } = useLanguage()
   const [open, setOpen] = useState(false)
@@ -34,7 +34,7 @@ export default function ThemePicker() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-52 rounded-2xl border border-white/10 shadow-2xl z-50 overflow-hidden theme-panel">
+        <div className={`absolute ${align === 'left' ? 'left-0' : 'right-0'} top-full mt-2 w-52 rounded-2xl border border-white/10 shadow-2xl z-50 overflow-hidden theme-panel`}>
           <div className="px-3 pt-3 pb-2">
             <p className="text-[10px] uppercase tracking-widest theme-label-muted mb-2.5">{t('theme.label')}</p>
             <div className="space-y-1">

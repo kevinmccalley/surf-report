@@ -249,8 +249,8 @@ export default function SurfApp() {
                 <UnitToggle label={`°${units.temp.toUpperCase()}`} onClick={toggleTemp} />
               </>
             )}
-            <LanguageSwitcher />
-            <ThemePicker />
+            <LanguageSwitcher align="left" />
+            <ThemePicker align="left" />
             <AuthButton subscribed={true} onManageBilling={openBillingPortal} />
           </div>
         )}

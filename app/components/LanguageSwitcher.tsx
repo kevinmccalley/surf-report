@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useLanguage, LOCALES } from '@/app/i18n/LanguageContext'
 import type { Locale } from '@/app/i18n/LanguageContext'
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ align = 'right' }: { align?: 'left' | 'right' }) {
   const { locale, setLocale } = useLanguage()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -41,7 +41,7 @@ export default function LanguageSwitcher() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-1 w-48 rounded-xl shadow-xl py-1 z-50 theme-panel">
+        <div className={`absolute ${align === 'left' ? 'left-0' : 'right-0'} top-full mt-1 w-48 rounded-xl shadow-xl py-1 z-50 theme-panel`}>
           {LOCALES.map(l => (
             <button
               key={l.code}
