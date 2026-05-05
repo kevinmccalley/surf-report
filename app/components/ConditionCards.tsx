@@ -39,6 +39,7 @@ export default function ConditionCards({ report, units }: Props) {
               height={formatWaveHeight(current.primarySwell.height, units.height)}
               period={`${current.primarySwell.period.toFixed(0)}s`}
               from={`${t('cards.from')} ${t('dir.' + current.primarySwell.directionLabel)}`}
+              degrees={current.primarySwell.direction}
               color="#0ea5e9"
             />
             {current.secondarySwell && (
@@ -47,6 +48,7 @@ export default function ConditionCards({ report, units }: Props) {
                 height={formatWaveHeight(current.secondarySwell.height, units.height)}
                 period={`${current.secondarySwell.period.toFixed(0)}s`}
                 from={`${t('cards.from')} ${t('dir.' + current.secondarySwell.directionLabel)}`}
+                degrees={current.secondarySwell.direction}
                 color="#64748b"
               />
             )}
@@ -139,8 +141,8 @@ function CardLabel({ children }: { children: React.ReactNode }) {
   return <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">{children}</p>
 }
 
-function SwellRow({ label, height, period, from, color }: {
-  label: string; height: string; period: string; from: string; color: string
+function SwellRow({ label, height, period, from, degrees, color }: {
+  label: string; height: string; period: string; from: string; degrees?: number; color: string
 }) {
   return (
     <div>
@@ -149,6 +151,9 @@ function SwellRow({ label, height, period, from, color }: {
         <span className="text-base font-bold" style={{ color }}>{height}</span>
         <span className="text-xs text-slate-400">{period}</span>
         <span className="text-xs text-slate-500">{from}</span>
+        {degrees !== undefined && (
+          <span className="text-[10px] text-slate-600 tabular-nums">{Math.round(degrees)}°</span>
+        )}
       </div>
     </div>
   )
@@ -174,7 +179,10 @@ function WindDisplay({ speed, gust, direction, directionLabel, gustLabel, condit
             <span className="text-xl font-bold text-white">{Math.round(speed)}</span>
             <span className="text-xs text-slate-400">km/h</span>
           </div>
-          <p className="text-xs text-slate-400">{directionLabel}</p>
+          <p className="text-xs text-slate-400">
+            {directionLabel}
+            <span className="text-[10px] text-slate-600 tabular-nums ml-1">{Math.round(direction)}°</span>
+          </p>
         </div>
       </div>
       <div className="flex justify-between text-xs">
