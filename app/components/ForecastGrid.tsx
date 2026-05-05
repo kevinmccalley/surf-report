@@ -68,7 +68,7 @@ export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
         </div>
       </div>
 
-      <div className="glass-card rounded-xl px-4 py-3 border border-white/8 min-h-[64px] flex flex-col justify-center">
+      <div className="glass-card rounded-xl px-4 py-3 border border-white/8 flex flex-col">
         {activeDay ? (
           <>
             <div className="flex items-center justify-between gap-3 mb-1.5">
@@ -88,9 +88,14 @@ export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
             </p>
           </>
         ) : (
-          <p className="text-xs text-slate-600 text-center">
-            {t('forecast.hoverPrompt')}
-          </p>
+          <>
+            <div className="invisible mb-1.5" aria-hidden="true">
+              <p className="text-sm font-semibold">&nbsp;</p>
+            </div>
+            <p className="text-xs text-slate-600 text-center leading-relaxed min-h-[2.5rem] flex items-center justify-center">
+              {t('forecast.hoverPrompt')}
+            </p>
+          </>
         )}
       </div>
     </div>
