@@ -21,11 +21,14 @@ export default function HeroSection({ report, units, onMapOpen }: Props) {
   })
 
   return (
-    <section className="glass-card rounded-2xl p-5 sm:p-8 relative overflow-hidden">
-      <div
-        className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none"
-        style={{ background: `radial-gradient(circle, ${rating.color} 0%, transparent 70%)` }}
-      />
+    <section className="glass-card rounded-2xl p-5 sm:p-8 relative">
+      {/* Glow blob — overflow-hidden scoped here so it doesn't clip the tooltip */}
+      <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+        <div
+          className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-20"
+          style={{ background: `radial-gradient(circle, ${rating.color} 0%, transparent 70%)` }}
+        />
+      </div>
 
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-5">
         <div className="flex items-center gap-1.5">
