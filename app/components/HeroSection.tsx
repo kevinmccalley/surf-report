@@ -29,15 +29,22 @@ export default function HeroSection({ report, units, onMapOpen }: Props) {
 
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-5">
         <div className="flex items-center gap-1.5">
-          <button
-            onClick={onMapOpen}
-            aria-label={t('map.openTip')}
-            title={t('map.openTip')}
-            className="p-1 rounded text-sky-400 hover:text-sky-300 hover:bg-sky-400/10 transition-colors disabled:pointer-events-none"
-            disabled={!onMapOpen}
-          >
-            <MapPin size={26} />
-          </button>
+          <div className="relative group">
+            <button
+              onClick={onMapOpen}
+              aria-label={t('map.openTip')}
+              className="p-1 rounded text-sky-400 hover:text-sky-300 hover:bg-sky-400/10 transition-colors disabled:pointer-events-none"
+              disabled={!onMapOpen}
+            >
+              <MapPin size={26} />
+            </button>
+            <div
+              className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-3.5 py-2 rounded-xl text-sm font-medium text-white shadow-xl pointer-events-none whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 z-50"
+              style={{ background: 'var(--panel-bg)', border: '1px solid var(--card-border)', backdropFilter: 'blur(8px)' }}
+            >
+              {t('map.openTip')}
+            </div>
+          </div>
           <h1 className="text-base sm:text-lg font-semibold text-white">
             {location.name}
             {location.country && <span className="text-slate-400 font-normal">, {location.country}</span>}
