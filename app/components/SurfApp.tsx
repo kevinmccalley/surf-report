@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
+import { Menu, X } from 'lucide-react'
 import { useUser } from '@clerk/nextjs'
 import type { SurfReport, TideReport, TideUnavailable, GeoResult, BuoyReading } from '@/app/lib/types'
 import SearchBar from './SearchBar'
@@ -44,6 +45,19 @@ export default function SurfApp() {
   const [lastYearReport, setLastYearReport] = useState<SurfReport | null>(null)
   const [buoyData, setBuoyData] = useState<(BuoyReading & { waveDirectionLabel?: string | null; windDirectionLabel?: string | null }) | null>(null)
   const [showMap, setShowMap] = useState(false)
+  const [showMenu, setShowMenu] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!showMenu) return
+    function handleClick(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setShowMenu(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [showMenu])
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -191,7 +205,7 @@ export default function SurfApp() {
 
   return (
     <div className="theme-bg">
-      <header className="sticky top-0 z-50 theme-header">
+      <header className="sticky top-0 z-50 theme-header" ref={menuRef}>
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
           <a href="/" className="flex items-center gap-2 shrink-0 hover:opacity-80 transition-opacity">
             <WaveLogo />
@@ -199,10 +213,12 @@ export default function SurfApp() {
               Groundswell
             </span>
           </a>
-          <div className="flex-1 max-w-xl">
+          <div className="flex-1 sm:max-w-xl">
             <SearchBar onSelect={fetchReport} loading={loading} compact />
           </div>
-          <div className="flex items-center gap-1 shrink-0 content:ml-auto">
+
+          {/* Desktop controls */}
+          <div className="hidden sm:flex items-center gap-1 shrink-0">
             {report && (
               <>
                 <UnitToggle label={units.height.toUpperCase()} onClick={toggleHeight} />
@@ -213,7 +229,31 @@ export default function SurfApp() {
             <ThemePicker />
             <AuthButton subscribed={true} onManageBilling={openBillingPortal} />
           </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="sm:hidden p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-white/10 transition-colors shrink-0"
+            onClick={() => setShowMenu(m => !m)}
+            aria-label="Menu"
+          >
+            {showMenu ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
+
+        {/* Mobile dropdown */}
+        {showMenu && (
+          <div className="sm:hidden border-t border-white/5 px-4 py-2.5 flex items-center gap-1 flex-wrap">
+            {report && (
+              <>
+                <UnitToggle label={units.height.toUpperCase()} onClick={toggleHeight} />
+                <UnitToggle label={`°${units.temp.toUpperCase()}`} onClick={toggleTemp} />
+              </>
+            )}
+            <LanguageSwitcher />
+            <ThemePicker />
+            <AuthButton subscribed={true} onManageBilling={openBillingPortal} />
+          </div>
+        )}
       </header>
 
       <main id="main-content">
