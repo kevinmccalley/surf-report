@@ -149,6 +149,7 @@ const ptBR: Record<string, string> = {
   'lastYear.viewFull': 'Ver condições completas →',
 
   // MapPanel
+  'map.openTip': 'Mapa de surf ao vivo',
   'map.panelLabel': 'Mapa da localização',
   'map.close': 'Fechar mapa',
   'map.swell': 'Ondulação',

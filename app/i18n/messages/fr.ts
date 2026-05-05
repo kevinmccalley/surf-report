@@ -149,6 +149,7 @@ const fr: Record<string, string> = {
   'lastYear.viewFull': 'Voir les conditions complètes →',
 
   // MapPanel
+  'map.openTip': 'Carte surf en direct',
   'map.panelLabel': 'Carte de localisation',
   'map.close': 'Fermer la carte',
   'map.swell': 'Houle',

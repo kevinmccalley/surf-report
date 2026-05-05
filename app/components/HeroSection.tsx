@@ -31,11 +31,12 @@ export default function HeroSection({ report, units, onMapOpen }: Props) {
         <div className="flex items-center gap-1.5">
           <button
             onClick={onMapOpen}
-            aria-label="Open map"
-            className="p-0.5 rounded text-sky-400 hover:text-sky-300 hover:bg-sky-400/10 transition-colors disabled:pointer-events-none"
+            aria-label={t('map.openTip')}
+            title={t('map.openTip')}
+            className="p-1 rounded text-sky-400 hover:text-sky-300 hover:bg-sky-400/10 transition-colors disabled:pointer-events-none"
             disabled={!onMapOpen}
           >
-            <MapPin size={13} />
+            <MapPin size={26} />
           </button>
           <h1 className="text-base sm:text-lg font-semibold text-white">
             {location.name}
