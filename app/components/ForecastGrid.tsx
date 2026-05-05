@@ -78,7 +78,7 @@ export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
                   className="text-[10px] font-bold px-2 py-0.5 rounded"
                   style={{ backgroundColor: activeDay.rating.bgColor, color: activeDay.rating.textColor }}
                 >
-                  {activeDay.rating.label}
+                  {t('rating.' + activeDay.rating.label.replace(/ /g, '_'))}
                 </span>
               )}
             </div>
@@ -134,7 +134,7 @@ function ForecastCard({ day, units, isCoastal, isSelected, onHover, onSelect }: 
         <div
           className="text-center text-xs font-bold py-0.5 rounded-md"
           style={{ backgroundColor: rating.bgColor, color: rating.textColor }}
-          title={rating.label}
+          title={t('rating.' + rating.label.replace(/ /g, '_'))}
         >
           {rating.label === 'FLAT'         ? '–'      :
            rating.label === 'POOR'         ? '★'      :

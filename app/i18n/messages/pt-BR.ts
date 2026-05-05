@@ -139,6 +139,16 @@ const ptBR: Record<string, string> = {
   'lastYear.period': 'período {period}s',
   'lastYear.viewFull': 'Ver condições completas →',
 
+  // Surf rating labels
+  'rating.EPIC':         'ÉPICO',
+  'rating.VERY_GOOD':    'MUITO BOM',
+  'rating.GOOD':         'BOM',
+  'rating.FAIR_TO_GOOD': 'RAZOÁVEL A BOM',
+  'rating.FAIR':         'RAZOÁVEL',
+  'rating.POOR_TO_FAIR': 'RUIM A RAZOÁVEL',
+  'rating.POOR':         'RUIM',
+  'rating.FLAT':         'PLANO',
+
   // AuthButton
   'auth.signIn': 'Entrar',
   'auth.manageBilling': 'Gerenciar assinatura',

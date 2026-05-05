@@ -62,7 +62,7 @@ export default function HeroSection({ report, units }: Props) {
                 className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase"
                 style={{ backgroundColor: rating.bgColor, color: rating.textColor, border: `1px solid ${rating.color}30` }}
               >
-                {rating.label}
+                {t('rating.' + rating.label.replace(/ /g, '_'))}
               </div>
               {current.wavePeriod > 0 && (
                 <div className="text-xs text-slate-400">

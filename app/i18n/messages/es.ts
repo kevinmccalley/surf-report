@@ -139,6 +139,16 @@ const es: Record<string, string> = {
   'lastYear.period': 'período {period}s',
   'lastYear.viewFull': 'Ver condiciones completas →',
 
+  // Surf rating labels
+  'rating.EPIC':         'ÉPICO',
+  'rating.VERY_GOOD':    'MUY BUENO',
+  'rating.GOOD':         'BUENO',
+  'rating.FAIR_TO_GOOD': 'REGULAR A BUENO',
+  'rating.FAIR':         'REGULAR',
+  'rating.POOR_TO_FAIR': 'MALO A REGULAR',
+  'rating.POOR':         'MALO',
+  'rating.FLAT':         'PLANO',
+
   // AuthButton
   'auth.signIn': 'Iniciar sesión',
   'auth.manageBilling': 'Gestionar suscripción',

@@ -49,7 +49,7 @@ export default function LastYearCard({ report, units, onViewFull }: Props) {
           </button>
         </div>
         <span className={`shrink-0 text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded border ${ratingCls}`}>
-          {c.rating.label}
+          {t('rating.' + c.rating.label.replace(/ /g, '_'))}
         </span>
       </div>
 
