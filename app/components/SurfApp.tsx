@@ -264,26 +264,7 @@ export default function SurfApp() {
 
             <HeroSection report={report} units={units} />
 
-            {!report.historical && lastGeoResult && (
-              <PastConditionsPicker
-                onSubmit={fetchHistorical}
-                value={histDateInput}
-                onChange={setHistDateInput}
-                loading={loading}
-                label={t('app.pastConditions')}
-                lookUpLabel={t('app.lookUp')}
-              />
-            )}
-
             {report.isCoastal && <ConditionCards report={report} units={units} />}
-
-            {report.isCoastal && !report.historical && lastYearReport && (
-              <LastYearCard
-                report={lastYearReport}
-                units={units}
-                onViewFull={fetchHistorical}
-              />
-            )}
 
             {report.isCoastal && report.hourly.length > 0 && (
               <section className="glass-card rounded-2xl p-4 sm:p-6">
@@ -335,6 +316,25 @@ export default function SurfApp() {
                   peakMonths={climData.peakMonths}
                 />
               </section>
+            )}
+
+            {!report.historical && lastGeoResult && (
+              <PastConditionsPicker
+                onSubmit={fetchHistorical}
+                value={histDateInput}
+                onChange={setHistDateInput}
+                loading={loading}
+                label={t('app.pastConditions')}
+                lookUpLabel={t('app.lookUp')}
+              />
+            )}
+
+            {report.isCoastal && !report.historical && lastYearReport && (
+              <LastYearCard
+                report={lastYearReport}
+                units={units}
+                onViewFull={fetchHistorical}
+              />
             )}
 
             <footer className="text-center text-xs text-slate-400 pt-4 space-y-1.5">

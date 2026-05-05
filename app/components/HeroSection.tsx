@@ -131,7 +131,7 @@ function MiniStat({ label, value, uvVal }: { label: string; value: string; uvVal
   return (
     <div className="flex flex-col gap-0.5">
       <span className="text-xs text-slate-500">{label}</span>
-      <span className="text-sm font-semibold" style={{ color: uvColor ?? 'white' }}>{value}</span>
+      <span className="text-sm font-semibold text-white" style={uvColor ? { color: uvColor } : undefined}>{value}</span>
     </div>
   )
 }
