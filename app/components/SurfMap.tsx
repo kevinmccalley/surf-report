@@ -28,11 +28,11 @@ function offset(lat: number, lon: number, bearingDeg: number, distKm: number) {
 }
 
 // ── Directional arc pulses ─────────────────────────────────────────────────────
-// Places a virtual swell source far offshore in the FROM direction. Draws
-// numArcs concentric partial-circle arcs centred on that source. Each arc has a
-// CSS class (classPrefix-0…3) that the <style> block animates with staggered
-// delays — farthest arc pulses first, nearest last — creating a wave-train
-// marching toward shore. Weight increases near-shore for depth-of-field feel.
+// Draws numArcs concentric partial-circle arcs centred on the spot itself,
+// fanning outward in the FROM direction (e.g. SSW for an SSW swell).
+// i=0 is the outermost arc (farthest into the FROM quadrant), i=3 is nearest.
+// CSS animation pulses i=0 first → i=3 last, so the visual rolls inward from
+// the source direction — matching the meteorological "arriving from" convention.
 function addDirectionalArcs(
   map: L.Map,
   lat: number,
@@ -42,40 +42,37 @@ function addDirectionalArcs(
   classPrefix: string,
   opts: {
     numArcs?: number
-    sourceDistKm?: number
+    maxArcRadiusKm?: number
     halfAngleDeg?: number
     heightM?: number
   } = {},
 ) {
   const {
-    numArcs     = 4,
-    sourceDistKm = 260,
-    halfAngleDeg = 44,
-    heightM     = 1,
+    numArcs        = 4,
+    maxArcRadiusKm = 200,
+    halfAngleDeg   = 44,
+    heightM        = 1,
   } = opts
 
-  // Virtual source point — centre of all concentric arcs
-  const src           = offset(lat, lon, fromDeg, sourceDistKm)
-  const towardBearing = (fromDeg + 180) % 360
-  const steps         = 26
+  const steps = 26
 
   for (let i = 0; i < numArcs; i++) {
-    const fraction = numArcs > 1 ? i / (numArcs - 1) : 1   // 0=far → 1=near shore
-    const radiusKm = sourceDistKm * (0.28 + fraction * 0.62) // 28%→90% of source dist
-    const weight   = 4 + fraction * (8 + heightM * 1.5)     // thick soft glow, heavier near shore
+    const fraction = numArcs > 1 ? i / (numArcs - 1) : 1    // 0=far → 1=near spot
+    const radiusKm = maxArcRadiusKm * (1 - fraction * 0.75) // outer→inner: 100%→25%
+    const weight   = 4 + fraction * (8 + heightM * 1.5)     // heavier near spot
 
     const pts: [number, number][] = []
     for (let s = 0; s <= steps; s++) {
       const angle = -halfAngleDeg + (halfAngleDeg * 2 * s / steps)
-      const b     = (towardBearing + angle + 360) % 360
-      const p     = offset(src.lat, src.lon, b, radiusKm)
+      const b     = (fromDeg + angle + 360) % 360
+      const p     = offset(lat, lon, b, radiusKm)
       pts.push([p.lat, p.lon])
     }
 
     L.polyline(pts, {
       color,
       weight,
-      opacity: 1,          // CSS animation owns opacity
+      opacity: 1,
       className: `${classPrefix}-${i}`,
       interactive: false,
     }).addTo(map)
@@ -131,21 +128,21 @@ export default function SurfMap({ report, units, highlightLayer }: Props) {
     // Primary swell — accent colour, full presence
     if (report.isCoastal && current.primarySwell.height > 0.05) {
       addDirectionalArcs(map, lat, lon, current.primarySwell.direction, accentColor, 'swell-p', {
-        sourceDistKm: 270, halfAngleDeg: 52, heightM: current.primarySwell.height,
+        maxArcRadiusKm: 200, halfAngleDeg: 52, heightM: current.primarySwell.height,
       })
     }
 
     // Secondary swell — muted slate, slower pulse
     if (report.isCoastal && current.secondarySwell && current.secondarySwell.height > 0.1) {
       addDirectionalArcs(map, lat, lon, current.secondarySwell.direction, '#94a3b8', 'swell-s', {
-        sourceDistKm: 220, halfAngleDeg: 40, heightM: current.secondarySwell.height,
+        maxArcRadiusKm: 175, halfAngleDeg: 40, heightM: current.secondarySwell.height,
       })
     }
 
     // Wind — narrow arcs (wind is directional), slow & soft
     if (current.wind.speed > 2) {
       addDirectionalArcs(map, lat, lon, current.wind.direction, '#64748b', 'wind-a', {
-        numArcs: 3, sourceDistKm: 110, halfAngleDeg: 24, heightM: current.wind.speed / 30,
+        numArcs: 3, maxArcRadiusKm: 90, halfAngleDeg: 24, heightM: current.wind.speed / 30,
       })
     }
 
