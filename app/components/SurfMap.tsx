@@ -26,29 +26,66 @@ function offset(lat: number, lon: number, bearingDeg: number, distKm: number) {
   return { lat: (φ2 * 180) / Math.PI, lon: (λ2 * 180) / Math.PI }
 }
 
+// ── Swell beam — directional arrow from source to spot ─────────────────────────
+// A long dashed arrow drawn FROM the swell's origin direction TOWARD the surf
+// spot. The CSS-animated dashOffset makes the dashes march toward shore,
+// making the arrival direction immediately obvious.
+function addSwellBeam(
+  map: L.Map,
+  lat: number,
+  lon: number,
+  fromDeg: number,
+  color: string,
+  baseOpacity: number,
+  cssClass: string,
+) {
+  const source = offset(lat, lon, fromDeg, 250)   // 250 km offshore in FROM direction
+  const near   = offset(lat, lon, fromDeg, 18)    // stop 18 km short of the pin
+
+  // Animated dashed shaft — flows from source toward shore
+  L.polyline([[source.lat, source.lon], [near.lat, near.lon]], {
+    color,
+    weight: 1,
+    opacity: baseOpacity * 0.4,
+    dashArray: '10 6',
+    className: cssClass,
+    interactive: false,
+  }).addTo(map)
+
+  // Solid arrowhead at the near-shore end, pointing toward the spot
+  const left  = offset(near.lat, near.lon, (fromDeg + 155) % 360, 20)
+  const right = offset(near.lat, near.lon, (fromDeg + 205) % 360, 20)
+  L.polyline([[left.lat, left.lon], [near.lat, near.lon], [right.lat, right.lon]], {
+    color,
+    weight: 1.8,
+    opacity: baseOpacity * 0.65,
+    interactive: false,
+  }).addTo(map)
+}
+
 // ── Swell wave-front lines ─────────────────────────────────────────────────────
-// Draws N parallel lines perpendicular to the swell travel direction, spaced
-// evenly offshore.  Lines grow more opaque and thicker as they approach the
-// spot — the visual "waves marching in" effect.
+// Parallel lines perpendicular to travel direction, spaced evenly offshore.
+// All use the same dashArray so the CSS animation runs uniformly.
 function addSwellLines(
   map: L.Map,
   lat: number,
   lon: number,
-  fromDeg: number,   // direction the swell is coming FROM
+  fromDeg: number,
   heightM: number,
   color: string,
   baseOpacity: number,
+  cssClass: string,
 ) {
-  const numLines = 4
+  const numLines  = 4
   const spacingKm = 55
   const halfLenKm = 85
-  const perpDeg = (fromDeg + 90) % 360
+  const perpDeg   = (fromDeg + 90) % 360
 
   for (let i = numLines; i >= 1; i--) {
-    const distKm = i * spacingKm
-    const fraction = (numLines - i + 1) / numLines   // 0.25 → 1.0 as we approach shore
-    const opacity = baseOpacity * (0.2 + fraction * 0.65)
-    const weight = 0.8 + fraction * (0.6 + heightM * 0.3)
+    const distKm   = i * spacingKm
+    const fraction = (numLines - i + 1) / numLines   // 0.25 → 1.0 near shore
+    const opacity  = baseOpacity * (0.2 + fraction * 0.65)
+    const weight   = 0.8 + fraction * (0.6 + heightM * 0.3)
 
     const center = offset(lat, lon, fromDeg, distKm)
     const p1 = offset(center.lat, center.lon, perpDeg, halfLenKm)
@@ -58,28 +95,31 @@ function addSwellLines(
       color,
       weight,
       opacity,
-      // closest line is solid; farther ones are dashed
-      dashArray: i <= 2 ? undefined : '7 5',
+      dashArray: '10 6',
+      className: cssClass,
       interactive: false,
     }).addTo(map)
   }
 }
 
 // ── Wind direction needle ──────────────────────────────────────────────────────
-// A short arrow-head line showing the wind direction at the spot.
+// Animated dashed shaft + solid arrowhead pointing FROM wind origin direction.
 function addWindArrow(map: L.Map, lat: number, lon: number, windDeg: number, speedKmh: number) {
-  const len = 18 + Math.min(speedKmh * 0.25, 20)  // 18–38km based on speed
-  const tip = offset(lat, lon, windDeg, len)
-  const base = offset(lat, lon, (windDeg + 180) % 360, len * 0.3)
+  const len  = 18 + Math.min(speedKmh * 0.25, 20)
+  const tip  = offset(lat, lon, windDeg, len)
+  const base = offset(lat, lon, (windDeg + 180) % 360, len * 0.5)
 
+  // Animated dashed shaft
   L.polyline([[base.lat, base.lon], [tip.lat, tip.lon]], {
     color: '#64748b',
     weight: 1.5,
-    opacity: 0.55,
+    opacity: 0.5,
+    dashArray: '6 5',
+    className: 'wind-shaft',
     interactive: false,
   }).addTo(map)
 
-  // arrowhead
+  // Solid arrowhead at tip
   const left  = offset(tip.lat, tip.lon, (windDeg + 150) % 360, len * 0.22)
   const right = offset(tip.lat, tip.lon, (windDeg + 210) % 360, len * 0.22)
   L.polyline([[left.lat, left.lon], [tip.lat, tip.lon], [right.lat, right.lon]], {
@@ -119,16 +159,16 @@ function makeSpotIcon(color: string): L.DivIcon {
 // ── Component ──────────────────────────────────────────────────────────────────
 export default function SurfMap({ report, units }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const mapRef = useRef<L.Map | null>(null)
-  const { themeId } = useTheme()
+  const mapRef       = useRef<L.Map | null>(null)
+  const { themeId }  = useTheme()
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
 
     const { lat, lon } = report.location
-    const { current } = report
+    const { current }  = report
 
-    const isDark = THEMES.find(t => t.id === themeId)?.dark ?? true
+    const isDark     = THEMES.find(t => t.id === themeId)?.dark ?? true
     const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#22d3ee'
 
     const map = L.map(containerRef.current, {
@@ -140,7 +180,6 @@ export default function SurfMap({ report, units }: Props) {
 
     L.control.zoom({ position: 'bottomright' }).addTo(map)
 
-    // CartoDB tiles — Dark Matter for dark themes, Positron for light
     const tileUrl = isDark
       ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
       : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
@@ -153,27 +192,29 @@ export default function SurfMap({ report, units }: Props) {
       maxZoom: 19,
     }).addTo(map)
 
-    // Primary swell wave fronts — use theme accent color
+    // Primary swell — beam shows direction, fronts show breadth
     if (report.isCoastal && current.primarySwell.height > 0.05) {
-      addSwellLines(map, lat, lon, current.primarySwell.direction, current.primarySwell.height, accentColor, 1.0)
+      addSwellBeam(map, lat, lon, current.primarySwell.direction, accentColor, 1.0, 'swell-beam-primary')
+      addSwellLines(map, lat, lon, current.primarySwell.direction, current.primarySwell.height, accentColor, 1.0, 'swell-front-primary')
     }
 
-    // Secondary swell (wind wave) if present
+    // Secondary swell (wind wave)
     if (report.isCoastal && current.secondarySwell && current.secondarySwell.height > 0.1) {
-      addSwellLines(map, lat, lon, current.secondarySwell.direction, current.secondarySwell.height, '#94a3b8', 0.55)
+      addSwellBeam(map, lat, lon, current.secondarySwell.direction, '#94a3b8', 0.55, 'swell-beam-secondary')
+      addSwellLines(map, lat, lon, current.secondarySwell.direction, current.secondarySwell.height, '#94a3b8', 0.55, 'swell-front-secondary')
     }
 
-    // Wind direction needle
+    // Wind
     if (current.wind.speed > 2) {
       addWindArrow(map, lat, lon, current.wind.direction, current.wind.speed)
     }
 
     // Spot marker + popup
-    const waveStr = formatWaveHeight(current.waveHeight, units.height)
-    const periodStr = current.wavePeriod > 0 ? `${current.wavePeriod.toFixed(0)}s` : '—'
+    const waveStr      = formatWaveHeight(current.waveHeight, units.height)
+    const periodStr    = current.wavePeriod > 0 ? `${current.wavePeriod.toFixed(0)}s` : '—'
     const swellDirLabel = getDirectionLabel(current.primarySwell.direction)
     const swellFromStr = formatWaveHeight(current.primarySwell.height, units.height) + ` · ${swellDirLabel} · ${periodStr}`
-    const windStr = `${Math.round(current.wind.speed)} km/h ${getDirectionLabel(current.wind.direction)}`
+    const windStr      = `${Math.round(current.wind.speed)} km/h ${getDirectionLabel(current.wind.direction)}`
 
     const popupHtml = `
       <div style="
@@ -200,7 +241,6 @@ export default function SurfMap({ report, units }: Props) {
       closeButton: false,
     })
     marker.addTo(map)
-    // Open popup after a short delay so the map settles
     setTimeout(() => marker.openPopup(), 600)
 
     return () => {
@@ -212,6 +252,23 @@ export default function SurfMap({ report, units }: Props) {
   return (
     <>
       <style>{`
+        /* ── Directional flow animations ───────────────────────────────────── */
+        /* dashArray total = 16 (10+6); offset goes 0→-16 = one seamless cycle  */
+        @keyframes swell-march { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -16; } }
+        @keyframes wind-march  { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -11; } }
+
+        /* Beam: fast march toward shore — makes arrival direction obvious */
+        .swell-beam-primary   { animation: swell-march 1.1s linear infinite; }
+        .swell-beam-secondary { animation: swell-march 1.6s linear infinite; }
+
+        /* Fronts: slightly slower — suggests wave period rhythm */
+        .swell-front-primary   { animation: swell-march 1.7s linear infinite; }
+        .swell-front-secondary { animation: swell-march 2.4s linear infinite; }
+
+        /* Wind: slow, subtle — less prominent than swell */
+        .wind-shaft { animation: wind-march 2.8s linear infinite; }
+
+        /* ── Popup ─────────────────────────────────────────────────────────── */
         .surf-map-popup .leaflet-popup-content-wrapper {
           background: transparent !important;
           box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important;
@@ -219,12 +276,10 @@ export default function SurfMap({ report, units }: Props) {
           padding: 0 !important;
           border: none !important;
         }
-        .surf-map-popup .leaflet-popup-content {
-          margin: 0 !important;
-        }
-        .surf-map-popup .leaflet-popup-tip-container {
-          display: none;
-        }
+        .surf-map-popup .leaflet-popup-content { margin: 0 !important; }
+        .surf-map-popup .leaflet-popup-tip-container { display: none; }
+
+        /* ── Leaflet controls ──────────────────────────────────────────────── */
         .leaflet-control-zoom a {
           background: var(--panel-bg) !important;
           color: var(--panel-label) !important;
