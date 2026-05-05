@@ -154,20 +154,10 @@ export default function WaveChart({ hourly, heightUnit, tideHeights }: Props) {
             {showWave && (
               <Area yAxisId="wave" type="monotone" dataKey="waveHeightDisplay" stroke="#0ea5e9" strokeWidth={2.5} fill="url(#waveGrad2)" dot={false} activeDot={{ r: 4, fill: '#0ea5e9', stroke: 'white', strokeWidth: 1.5 }} />
             )}
-            {showSwells && (
-              <>
-                <Line yAxisId="wave" type="monotone" dataKey="primarySwellDisplay" stroke="#22d3ee" strokeWidth={1.5} dot={false} activeDot={{ r: 3, fill: '#22d3ee', stroke: 'white', strokeWidth: 1 }} />
-                {hasWindWave && (
-                  <Line yAxisId="wave" type="monotone" dataKey="windWaveDisplay" stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="2 3" dot={false} activeDot={{ r: 3, fill: '#94a3b8', stroke: 'white', strokeWidth: 1 }} />
-                )}
-                {hasSwell2 && (
-                  <Line yAxisId="wave" type="monotone" dataKey="swell2Display" stroke="#f59e0b" strokeWidth={1.5} dot={false} activeDot={{ r: 3, fill: '#f59e0b', stroke: 'white', strokeWidth: 1 }} />
-                )}
-                {hasSwell3 && (
-                  <Line yAxisId="wave" type="monotone" dataKey="swell3Display" stroke="#a78bfa" strokeWidth={1.5} dot={false} activeDot={{ r: 3, fill: '#a78bfa', stroke: 'white', strokeWidth: 1 }} />
-                )}
-              </>
-            )}
+            <Line hide={!showSwells} yAxisId="wave" type="monotone" dataKey="primarySwellDisplay" stroke="#22d3ee" strokeWidth={1.5} dot={false} activeDot={{ r: 3, fill: '#22d3ee', stroke: 'white', strokeWidth: 1 }} />
+            <Line hide={!showSwells || !hasWindWave} yAxisId="wave" type="monotone" dataKey="windWaveDisplay" stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="2 3" dot={false} activeDot={{ r: 3, fill: '#94a3b8', stroke: 'white', strokeWidth: 1 }} />
+            <Line hide={!showSwells || !hasSwell2} yAxisId="wave" type="monotone" dataKey="swell2Display" stroke="#f59e0b" strokeWidth={1.5} dot={false} activeDot={{ r: 3, fill: '#f59e0b', stroke: 'white', strokeWidth: 1 }} />
+            <Line hide={!showSwells || !hasSwell3} yAxisId="wave" type="monotone" dataKey="swell3Display" stroke="#a78bfa" strokeWidth={1.5} dot={false} activeDot={{ r: 3, fill: '#a78bfa', stroke: 'white', strokeWidth: 1 }} />
             {hasTide && (
               <Line yAxisId="tide" type="monotone" dataKey="tideDisplay" stroke="#2dd4bf" strokeWidth={2} dot={false} activeDot={{ r: 3.5, fill: '#2dd4bf', stroke: 'white', strokeWidth: 1.5 }} strokeDasharray="none" />
             )}
