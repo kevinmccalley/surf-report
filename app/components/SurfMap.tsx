@@ -6,6 +6,8 @@ import L from 'leaflet'
 import { useEffect, useRef } from 'react'
 import type { SurfReport } from '@/app/lib/types'
 import { formatWaveHeight, getDirectionLabel } from '@/app/lib/utils'
+import { useTheme } from '@/app/components/ThemeProvider'
+import { THEMES } from '@/app/lib/themes'
 
 interface Props {
   report: SurfReport
@@ -118,12 +120,16 @@ function makeSpotIcon(color: string): L.DivIcon {
 export default function SurfMap({ report, units }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
+  const { themeId } = useTheme()
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
 
     const { lat, lon } = report.location
     const { current } = report
+
+    const isDark = THEMES.find(t => t.id === themeId)?.dark ?? true
+    const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#22d3ee'
 
     const map = L.map(containerRef.current, {
       center: [lat, lon],
@@ -134,8 +140,12 @@ export default function SurfMap({ report, units }: Props) {
 
     L.control.zoom({ position: 'bottomright' }).addTo(map)
 
-    // CartoDB Dark Matter — free, attribution required, no API key
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    // CartoDB tiles — Dark Matter for dark themes, Positron for light
+    const tileUrl = isDark
+      ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+      : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+
+    L.tileLayer(tileUrl, {
       attribution:
         '© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors ' +
         '© <a href="https://carto.com" target="_blank">CARTO</a>',
@@ -143,9 +153,9 @@ export default function SurfMap({ report, units }: Props) {
       maxZoom: 19,
     }).addTo(map)
 
-    // Primary swell wave fronts
+    // Primary swell wave fronts — use theme accent color
     if (report.isCoastal && current.primarySwell.height > 0.05) {
-      addSwellLines(map, lat, lon, current.primarySwell.direction, current.primarySwell.height, '#22d3ee', 1.0)
+      addSwellLines(map, lat, lon, current.primarySwell.direction, current.primarySwell.height, accentColor, 1.0)
     }
 
     // Secondary swell (wind wave) if present
@@ -168,17 +178,18 @@ export default function SurfMap({ report, units }: Props) {
     const popupHtml = `
       <div style="
         font-family:system-ui,-apple-system,sans-serif;
-        background:#0f172a;color:#e2e8f0;
+        background:var(--panel-bg);color:var(--text-base);
         padding:12px 14px;border-radius:10px;
         min-width:170px;line-height:1.5;
+        border:1px solid var(--card-border);
       ">
         <div style="font-size:15px;font-weight:700;color:${current.rating.color};margin-bottom:8px;">
           ${waveStr} waves
         </div>
-        <div style="font-size:11px;color:#94a3b8;margin-bottom:3px;">Primary swell</div>
-        <div style="font-size:13px;font-weight:600;color:#e2e8f0;margin-bottom:8px;">${swellFromStr}</div>
-        <div style="font-size:11px;color:#94a3b8;margin-bottom:3px;">Wind</div>
-        <div style="font-size:13px;font-weight:600;color:#e2e8f0;">${windStr}</div>
+        <div style="font-size:11px;color:var(--panel-muted);margin-bottom:3px;">Primary swell</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text-base);margin-bottom:8px;">${swellFromStr}</div>
+        <div style="font-size:11px;color:var(--panel-muted);margin-bottom:3px;">Wind</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text-base);">${windStr}</div>
       </div>
     `
 
@@ -196,17 +207,17 @@ export default function SurfMap({ report, units }: Props) {
       map.remove()
       mapRef.current = null
     }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [themeId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
       <style>{`
         .surf-map-popup .leaflet-popup-content-wrapper {
           background: transparent !important;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.7) !important;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important;
           border-radius: 10px !important;
           padding: 0 !important;
-          border: 1px solid rgba(255,255,255,0.08) !important;
+          border: none !important;
         }
         .surf-map-popup .leaflet-popup-content {
           margin: 0 !important;
@@ -215,22 +226,22 @@ export default function SurfMap({ report, units }: Props) {
           display: none;
         }
         .leaflet-control-zoom a {
-          background: rgba(15,23,42,0.9) !important;
-          color: #94a3b8 !important;
-          border-color: rgba(255,255,255,0.1) !important;
+          background: var(--panel-bg) !important;
+          color: var(--panel-label) !important;
+          border-color: var(--card-border) !important;
         }
         .leaflet-control-zoom a:hover {
-          background: rgba(30,41,59,0.95) !important;
-          color: #e2e8f0 !important;
+          background: var(--panel-hover) !important;
+          color: var(--text-base) !important;
         }
         .leaflet-control-attribution {
-          background: rgba(15,23,42,0.7) !important;
-          color: #475569 !important;
+          background: var(--panel-bg) !important;
+          color: var(--panel-muted) !important;
           font-size: 9px !important;
         }
-        .leaflet-control-attribution a { color: #64748b !important; }
+        .leaflet-control-attribution a { color: var(--panel-label) !important; }
       `}</style>
-      <div ref={containerRef} className="w-full h-full" />
+      <div ref={containerRef} className="w-full h-full" style={{ background: 'var(--bg-start)' }} />
     </>
   )
 }

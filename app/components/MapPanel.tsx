@@ -42,11 +42,11 @@ export default function MapPanel({ report, units, onClose }: Props) {
         exit={{ x: '100%' }}
         transition={{ type: 'spring', damping: 32, stiffness: 320 }}
         className="fixed right-0 top-0 bottom-0 w-full sm:w-[440px] z-50 flex flex-col"
-        style={{ background: 'rgba(2, 9, 23, 0.97)', borderLeft: '1px solid rgba(255,255,255,0.08)' }}
+        style={{ background: 'var(--panel-bg)', borderLeft: '1px solid var(--card-border)' }}
         aria-label={t('map.panelLabel')}
       >
         {/* Header */}
-        <div className="flex items-start justify-between gap-3 px-5 pt-5 pb-4 border-b border-white/5 shrink-0">
+        <div className="flex items-start justify-between gap-3 px-5 pt-5 pb-4 border-b border-white/5 shrink-0" style={{ borderBottomColor: 'var(--card-border)' }}>
           <div className="min-w-0">
             <h2 className="text-base font-semibold text-white truncate">{location.name}</h2>
             {location.country && (
@@ -64,7 +64,7 @@ export default function MapPanel({ report, units, onClose }: Props) {
 
         {/* Rating + wave stats strip */}
         {report.isCoastal && (
-          <div className="flex items-center gap-3 px-5 py-3 border-b border-white/5 shrink-0">
+          <div className="flex items-center gap-3 px-5 py-3 border-b border-white/5 shrink-0" style={{ borderBottomColor: 'var(--card-border)' }}>
             <span
               className="px-2.5 py-0.5 rounded-full text-xs font-bold tracking-wider uppercase"
               style={{
@@ -105,7 +105,7 @@ export default function MapPanel({ report, units, onClose }: Props) {
         </div>
 
         {/* Footer quick-stats */}
-        <div className="shrink-0 grid grid-cols-3 divide-x divide-white/5 border-t border-white/5">
+        <div className="shrink-0 grid grid-cols-3 divide-x divide-white/5 border-t border-white/5" style={{ borderTopColor: 'var(--card-border)' }}>
           <FooterStat
             icon={<Waves size={13} className="text-sky-400" />}
             label={t('map.primary')}
@@ -131,7 +131,7 @@ export default function MapPanel({ report, units, onClose }: Props) {
 
 function LegendItem({ color, label, dashed, thin }: { color: string; label: string; dashed?: boolean; thin?: boolean }) {
   return (
-    <div className="flex items-center gap-1.5 bg-black/50 rounded-md px-2 py-1 backdrop-blur-sm">
+    <div className="flex items-center gap-1.5 rounded-md px-2 py-1 backdrop-blur-sm" style={{ background: 'var(--panel-bg)' }}>
       <svg width="14" height="6">
         <line
           x1="0" y1="3" x2="14" y2="3"
