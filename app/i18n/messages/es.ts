@@ -319,6 +319,20 @@ const es: Record<string, string> = {
   // Nombres de días
   'day.today': 'Hoy',
   'day.tomorrow': 'Mañana',
+
+  // BuoyCard
+  'buoy.title': 'Boya NDBC más cercana',
+  'buoy.measured': 'Medido por boya',
+  'buoy.modelForecast': 'Pronóstico del modelo',
+  'buoy.period': 'Periodo',
+  'buoy.direction': 'Dirección',
+  'buoy.waterTemp': 'Temp. agua',
+  'buoy.wind': 'Viento en boya',
+  'buoy.offshore': '{dist} km costa afuera',
+  'buoy.source': 'NOAA NDBC',
+  'buoy.agreement': 'Buen acuerdo',
+  'buoy.diffHigher': 'Boya {pct}% más alta que el modelo',
+  'buoy.diffLower': 'Boya {pct}% más baja que el modelo',
 }
 
 export default es

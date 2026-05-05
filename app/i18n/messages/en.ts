@@ -319,6 +319,20 @@ const en: Record<string, string> = {
   // Forecast day names
   'day.today': 'Today',
   'day.tomorrow': 'Tomorrow',
+
+  // BuoyCard
+  'buoy.title': 'Nearest NDBC Buoy',
+  'buoy.measured': 'Buoy Measured',
+  'buoy.modelForecast': 'Model Forecast',
+  'buoy.period': 'Period',
+  'buoy.direction': 'Direction',
+  'buoy.waterTemp': 'Water Temp',
+  'buoy.wind': 'Wind at Buoy',
+  'buoy.offshore': '{dist} km offshore',
+  'buoy.source': 'NOAA NDBC',
+  'buoy.agreement': 'Good agreement',
+  'buoy.diffHigher': 'Buoy {pct}% higher than model',
+  'buoy.diffLower': 'Buoy {pct}% lower than model',
 }
 
 export default en

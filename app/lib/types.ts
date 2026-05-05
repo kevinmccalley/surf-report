@@ -148,3 +148,19 @@ export interface TideUnavailable {
   nearestStationName?: string
   nearestStationDistanceKm?: number
 }
+
+export interface BuoyReading {
+  stationId: string
+  stationName: string
+  lat: number
+  lon: number
+  distanceKm: number
+  waveHeight: number        // meters
+  wavePeriod: number | null // seconds (dominant)
+  waveDirection: number | null  // degrees
+  waterTemp: number | null  // °C
+  windSpeed: number | null  // km/h
+  windDirection: number | null  // degrees
+  airTemp: number | null    // °C
+  observedAt: string        // ISO UTC
+}

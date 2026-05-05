@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useEffect } from 'react'
 import { useUser } from '@clerk/nextjs'
-import type { SurfReport, TideReport, TideUnavailable, GeoResult } from '@/app/lib/types'
+import type { SurfReport, TideReport, TideUnavailable, GeoResult, BuoyReading } from '@/app/lib/types'
 import SearchBar from './SearchBar'
 import HeroSection from './HeroSection'
 import ConditionCards from './ConditionCards'
@@ -15,6 +15,7 @@ import LandingHero from './LandingHero'
 import AuthButton from './AuthButton'
 import ThemePicker from './ThemePicker'
 import LastYearCard from './LastYearCard'
+import BuoyCard from './BuoyCard'
 import LanguageSwitcher from './LanguageSwitcher'
 import type { ClimatologyMonth } from './ClimatologySection'
 import { useLanguage } from '@/app/i18n/LanguageContext'
@@ -40,6 +41,7 @@ export default function SurfApp() {
   const [lastGeoResult, setLastGeoResult] = useState<GeoResult | null>(null)
   const [histDateInput, setHistDateInput] = useState('')
   const [lastYearReport, setLastYearReport] = useState<SurfReport | null>(null)
+  const [buoyData, setBuoyData] = useState<(BuoyReading & { waveDirectionLabel?: string | null; windDirectionLabel?: string | null }) | null>(null)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -71,6 +73,7 @@ export default function SurfApp() {
     setTideData(null)
     setClimData(null)
     setLastYearReport(null)
+    setBuoyData(null)
     setLastGeoResult(result)
     setHistDateInput('')
     if (updateUrl) {
@@ -92,19 +95,24 @@ export default function SurfApp() {
       const tideParams = `lat=${result.lat}&lon=${result.lon}` +
         (surfJson.timezone ? `&tz=${encodeURIComponent(surfJson.timezone)}` : '')
 
-      const [tideRes, climRes] = await Promise.all([
+      const [tideRes, climRes, buoyRes] = await Promise.all([
         fetch(`/api/tides?${tideParams}`),
         surfJson.isCoastal
           ? fetch(`/api/climatology?lat=${result.lat}&lon=${result.lon}`)
+          : Promise.resolve(null),
+        surfJson.isCoastal
+          ? fetch(`/api/buoy?lat=${result.lat}&lon=${result.lon}`)
           : Promise.resolve(null),
       ])
 
       const tideJson: TideResult = await tideRes.json()
       const climJson: ClimatologyData | null = climRes ? await climRes.json() : null
+      const buoyJson = buoyRes?.ok ? await buoyRes.json() : null
 
       setReport(surfJson)
       setTideData(tideJson)
       setClimData(climJson)
+      setBuoyData(buoyJson?.waveHeight !== undefined ? buoyJson : null)
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Something went wrong')
@@ -265,6 +273,14 @@ export default function SurfApp() {
             <HeroSection report={report} units={units} />
 
             {report.isCoastal && <ConditionCards report={report} units={units} />}
+
+            {report.isCoastal && !report.historical && buoyData && (
+              <BuoyCard
+                buoy={buoyData}
+                modelWaveHeight={report.current.waveHeight}
+                units={units}
+              />
+            )}
 
             {report.isCoastal && report.hourly.length > 0 && (
               <section className="glass-card rounded-2xl p-4 sm:p-6">

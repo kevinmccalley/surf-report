@@ -319,6 +319,20 @@ const ptBR: Record<string, string> = {
   // Nomes dos dias
   'day.today': 'Hoje',
   'day.tomorrow': 'Amanhã',
+
+  // BuoyCard
+  'buoy.title': 'Boia NDBC mais próxima',
+  'buoy.measured': 'Medido pela boia',
+  'buoy.modelForecast': 'Previsão do modelo',
+  'buoy.period': 'Período',
+  'buoy.direction': 'Direção',
+  'buoy.waterTemp': 'Temp. água',
+  'buoy.wind': 'Vento na boia',
+  'buoy.offshore': '{dist} km da costa',
+  'buoy.source': 'NOAA NDBC',
+  'buoy.agreement': 'Boa concordância',
+  'buoy.diffHigher': 'Boia {pct}% acima do modelo',
+  'buoy.diffLower': 'Boia {pct}% abaixo do modelo',
 }
 
 export default ptBR
