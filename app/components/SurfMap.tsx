@@ -27,12 +27,69 @@ function offset(lat: number, lon: number, bearingDeg: number, distKm: number) {
   return { lat: (φ2 * 180) / Math.PI, lon: (λ2 * 180) / Math.PI }
 }
 
+// ── Land clipping ──────────────────────────────────────────────────────────────
+interface LandRing {
+  coords: [number, number][]                    // GeoJSON order: [lon, lat]
+  bbox:   [number, number, number, number]      // [minLon, minLat, maxLon, maxLat]
+}
+
+function extractLandRings(geojson: { features: { geometry: { type: string; coordinates: any } }[] }): LandRing[] {
+  const rings: LandRing[] = []
+  const addRing = (coords: [number, number][]) => {
+    let minLon = Infinity, minLat = Infinity, maxLon = -Infinity, maxLat = -Infinity
+    for (const [lon, lat] of coords) {
+      if (lon < minLon) minLon = lon; if (lat < minLat) minLat = lat
+      if (lon > maxLon) maxLon = lon; if (lat > maxLat) maxLat = lat
+    }
+    rings.push({ coords, bbox: [minLon, minLat, maxLon, maxLat] })
+  }
+  for (const f of geojson.features ?? []) {
+    const { type, coordinates } = f.geometry
+    if (type === 'Polygon')      for (const r of coordinates)       addRing(r)
+    if (type === 'MultiPolygon') for (const p of coordinates) for (const r of p) addRing(r)
+  }
+  return rings
+}
+
+function pointOnLand(lon: number, lat: number, rings: LandRing[]): boolean {
+  for (const { coords, bbox } of rings) {
+    if (lon < bbox[0] || lon > bbox[2] || lat < bbox[1] || lat > bbox[3]) continue
+    let inside = false
+    const n = coords.length
+    for (let i = 0, j = n - 1; i < n; j = i++) {
+      const [xi, yi] = coords[i], [xj, yj] = coords[j]
+      if ((yi > lat) !== (yj > lat) && lon < ((xj - xi) * (lat - yi)) / (yj - yi) + xi)
+        inside = !inside
+    }
+    if (inside) return true
+  }
+  return false
+}
+
+// Module-level cache — fetched once per browser session, shared across map rebuilds
+let _landRings: LandRing[] | null = null
+let _landFetch: Promise<LandRing[]> | null = null
+
+function getLandRings(): Promise<LandRing[]> {
+  if (_landRings) return Promise.resolve(_landRings)
+  if (!_landFetch) {
+    _landFetch = fetch(
+      'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_land.geojson',
+    )
+      .then(r => r.json())
+      .then((gj) => { _landRings = extractLandRings(gj); return _landRings })
+      .catch(() => [])
+  }
+  return _landFetch
+}
+
 // ── Directional arc pulses ─────────────────────────────────────────────────────
 // Places a virtual swell source far offshore in the FROM direction. Draws
 // numArcs concentric partial-circle arcs centred on that source. Each arc has a
 // CSS class (classPrefix-0…3) that the <style> block animates with staggered
 // delays — farthest arc pulses first, nearest last — creating a wave-train
 // marching toward shore. Weight increases near-shore for depth-of-field feel.
+// If landRings is provided, arcs are clipped to ocean-only segments.
 function addDirectionalArcs(
   map: L.Map,
   lat: number,
@@ -45,13 +102,15 @@ function addDirectionalArcs(
     sourceDistKm?: number
     halfAngleDeg?: number
     heightM?: number
+    landRings?: LandRing[]
   } = {},
 ) {
   const {
-    numArcs     = 4,
+    numArcs      = 4,
     sourceDistKm = 260,
     halfAngleDeg = 44,
-    heightM     = 1,
+    heightM      = 1,
+    landRings,
   } = opts
 
   const src           = offset(lat, lon, fromDeg, sourceDistKm)
@@ -59,9 +118,10 @@ function addDirectionalArcs(
   const steps         = 26
 
   for (let i = 0; i < numArcs; i++) {
-    const fraction = numArcs > 1 ? i / (numArcs - 1) : 1   // 0=far → 1=near shore
+    const fraction = numArcs > 1 ? i / (numArcs - 1) : 1
     const radiusKm = sourceDistKm * (0.28 + fraction * 0.62)
-    const weight   = 8 + fraction * (14 + heightM * 2)     // thick soft glow, heavier near shore
+    // 3× the previous weight formula
+    const weight   = (8 + fraction * (14 + heightM * 2)) * 3
 
     const pts: [number, number][] = []
     for (let s = 0; s <= steps; s++) {
@@ -71,13 +131,27 @@ function addDirectionalArcs(
       pts.push([p.lat, p.lon])
     }
 
-    L.polyline(pts, {
-      color,
-      weight,
-      opacity: 1,          // CSS animation owns opacity
-      className: `${classPrefix}-${i}`,
-      interactive: false,
-    }).addTo(map)
+    const lineOpts: L.PolylineOptions = {
+      color, weight, opacity: 1, className: `${classPrefix}-${i}`, interactive: false,
+    }
+
+    if (!landRings?.length) {
+      L.polyline(pts, lineOpts).addTo(map)
+    } else {
+      // Split arc at land/ocean boundaries; draw only ocean segments
+      const segments: [number, number][][] = []
+      let cur: [number, number][] = []
+      for (const pt of pts) {
+        if (!pointOnLand(pt[1], pt[0], landRings)) {
+          cur.push(pt)
+        } else {
+          if (cur.length >= 2) segments.push(cur)
+          cur = []
+        }
+      }
+      if (cur.length >= 2) segments.push(cur)
+      for (const seg of segments) L.polyline(seg, lineOpts).addTo(map)
+    }
   }
 }
 
@@ -103,7 +177,6 @@ export default function SurfMap({ report, units, highlightLayers }: Props) {
   const { themeId }  = useTheme()
   const { t, bcp47 } = useLanguage()
 
-  // Rebuild map when theme or locale changes
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
 
@@ -127,21 +200,7 @@ export default function SurfMap({ report, units, highlightLayers }: Props) {
       },
     ).addTo(map)
 
-    // Primary swell — accent colour, full presence
-    if (report.isCoastal && current.primarySwell.height > 0.05) {
-      addDirectionalArcs(map, lat, lon, current.primarySwell.direction, accentColor, 'swell-p', {
-        sourceDistKm: 270, halfAngleDeg: 52, heightM: current.primarySwell.height,
-      })
-    }
-
-    // Secondary swell — muted slate, slower pulse
-    if (report.isCoastal && current.secondarySwell && current.secondarySwell.height > 0.1) {
-      addDirectionalArcs(map, lat, lon, current.secondarySwell.direction, '#94a3b8', 'swell-s', {
-        sourceDistKm: 220, halfAngleDeg: 40, heightM: current.secondarySwell.height,
-      })
-    }
-
-    // Wind — narrow arcs (wind is directional), slow & soft
+    // Wind arcs — no land clipping needed, added immediately
     if (current.wind.speed > 2) {
       addDirectionalArcs(map, lat, lon, current.wind.direction, '#64748b', 'wind-a', {
         numArcs: 3, sourceDistKm: 110, halfAngleDeg: 24, heightM: current.wind.speed / 30,
@@ -149,11 +208,11 @@ export default function SurfMap({ report, units, highlightLayers }: Props) {
     }
 
     // Spot marker + popup
-    const waveStr     = formatWaveHeight(current.waveHeight, units.height)
-    const periodStr   = current.wavePeriod > 0 ? `${current.wavePeriod.toFixed(0)}s` : '—'
-    const swellDir    = t('dir.' + current.primarySwell.directionLabel)
-    const swellStr    = formatWaveHeight(current.primarySwell.height, units.height) + ` · ${swellDir} · ${periodStr}`
-    const windStr     = `${Math.round(current.wind.speed)} km/h ${t('dir.' + current.wind.directionLabel)}`
+    const waveStr   = formatWaveHeight(current.waveHeight, units.height)
+    const periodStr = current.wavePeriod > 0 ? `${current.wavePeriod.toFixed(0)}s` : '—'
+    const swellDir  = t('dir.' + current.primarySwell.directionLabel)
+    const swellStr  = formatWaveHeight(current.primarySwell.height, units.height) + ` · ${swellDir} · ${periodStr}`
+    const windStr   = `${Math.round(current.wind.speed)} km/h ${t('dir.' + current.wind.directionLabel)}`
 
     const popupHtml = `
       <div style="font-family:system-ui,-apple-system,sans-serif;background:var(--panel-bg);color:var(--text-base);
@@ -169,6 +228,24 @@ export default function SurfMap({ report, units, highlightLayers }: Props) {
     marker.bindPopup(popupHtml, { className: 'surf-map-popup', offset: [0, -16], closeButton: false })
     marker.addTo(map)
     setTimeout(() => marker.openPopup(), 600)
+
+    // Swell arcs — added after land data loads (cached after first fetch)
+    if (report.isCoastal) {
+      getLandRings().then(landRings => {
+        if (mapRef.current !== map) return  // map was torn down before fetch completed
+
+        if (current.primarySwell.height > 0.05) {
+          addDirectionalArcs(map, lat, lon, current.primarySwell.direction, accentColor, 'swell-p', {
+            sourceDistKm: 270, halfAngleDeg: 52, heightM: current.primarySwell.height, landRings,
+          })
+        }
+        if (current.secondarySwell && current.secondarySwell.height > 0.1) {
+          addDirectionalArcs(map, lat, lon, current.secondarySwell.direction, '#94a3b8', 'swell-s', {
+            sourceDistKm: 220, halfAngleDeg: 40, heightM: current.secondarySwell.height, landRings,
+          })
+        }
+      })
+    }
 
     return () => { map.remove(); mapRef.current = null }
   }, [themeId, bcp47]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -186,45 +263,45 @@ export default function SurfMap({ report, units, highlightLayers }: Props) {
   return (
     <>
       <style>{`
-        /* ── Per-arc: blur heavier far from shore, lighter near ─────────── */
-        .swell-p-0 { --arc-peak:0.35; filter:blur(12px); }
-        .swell-p-1 { --arc-peak:0.40; filter:blur(9px);  }
-        .swell-p-2 { --arc-peak:0.44; filter:blur(6px);  }
-        .swell-p-3 { --arc-peak:0.48; filter:blur(4px);  }
+        /* ── Per-arc: heavy blur far from shore, lighter near ───────────── */
+        .swell-p-0 { --arc-peak:0.18; filter:blur(22px); }
+        .swell-p-1 { --arc-peak:0.22; filter:blur(16px); }
+        .swell-p-2 { --arc-peak:0.26; filter:blur(10px); }
+        .swell-p-3 { --arc-peak:0.30; filter:blur(6px);  }
 
-        .swell-s-0 { --arc-peak:0.22; filter:blur(14px); }
-        .swell-s-1 { --arc-peak:0.25; filter:blur(11px); }
-        .swell-s-2 { --arc-peak:0.28; filter:blur(8px);  }
-        .swell-s-3 { --arc-peak:0.31; filter:blur(6px);  }
+        .swell-s-0 { --arc-peak:0.12; filter:blur(26px); }
+        .swell-s-1 { --arc-peak:0.15; filter:blur(19px); }
+        .swell-s-2 { --arc-peak:0.18; filter:blur(12px); }
+        .swell-s-3 { --arc-peak:0.21; filter:blur(7px);  }
 
-        .wind-a-0  { --arc-peak:0.12; filter:blur(10px); }
-        .wind-a-1  { --arc-peak:0.15; filter:blur(7px);  }
-        .wind-a-2  { --arc-peak:0.18; filter:blur(5px);  }
+        .wind-a-0  { --arc-peak:0.08; filter:blur(14px); }
+        .wind-a-1  { --arc-peak:0.10; filter:blur(10px); }
+        .wind-a-2  { --arc-peak:0.12; filter:blur(6px);  }
 
-        /* Smooth rise-hold-fall; peak opacity resolves per-element via CSS var */
+        /* Quick rise, slower fade — clear wave-train direction */
         @keyframes arc-pulse {
           0%   { opacity: 0; }
-          35%  { opacity: var(--arc-peak, 0.4); }
-          65%  { opacity: var(--arc-peak, 0.4); }
+          25%  { opacity: var(--arc-peak, 0.3); }
+          55%  { opacity: 0; }
           100% { opacity: 0; }
         }
 
-        /* Primary swell — 3.2 s period, delay 0.8 s */
-        .swell-p-0 { animation: arc-pulse 3.2s ease-in-out 0.00s infinite backwards; }
-        .swell-p-1 { animation: arc-pulse 3.2s ease-in-out 0.80s infinite backwards; }
-        .swell-p-2 { animation: arc-pulse 3.2s ease-in-out 1.60s infinite backwards; }
-        .swell-p-3 { animation: arc-pulse 3.2s ease-in-out 2.40s infinite backwards; }
+        /* Primary swell — 3.5 s period, 0.875 s delay (4 arcs fill one cycle) */
+        .swell-p-0 { animation: arc-pulse 3.5s ease-in-out 0.000s infinite backwards; }
+        .swell-p-1 { animation: arc-pulse 3.5s ease-in-out 0.875s infinite backwards; }
+        .swell-p-2 { animation: arc-pulse 3.5s ease-in-out 1.750s infinite backwards; }
+        .swell-p-3 { animation: arc-pulse 3.5s ease-in-out 2.625s infinite backwards; }
 
-        /* Secondary swell — 4.5 s, delay 1.1 s */
-        .swell-s-0 { animation: arc-pulse 4.5s ease-in-out 0.00s infinite backwards; }
-        .swell-s-1 { animation: arc-pulse 4.5s ease-in-out 1.10s infinite backwards; }
-        .swell-s-2 { animation: arc-pulse 4.5s ease-in-out 2.20s infinite backwards; }
-        .swell-s-3 { animation: arc-pulse 4.5s ease-in-out 3.30s infinite backwards; }
+        /* Secondary swell — 5.0 s, 1.25 s delay */
+        .swell-s-0 { animation: arc-pulse 5.0s ease-in-out 0.000s infinite backwards; }
+        .swell-s-1 { animation: arc-pulse 5.0s ease-in-out 1.250s infinite backwards; }
+        .swell-s-2 { animation: arc-pulse 5.0s ease-in-out 2.500s infinite backwards; }
+        .swell-s-3 { animation: arc-pulse 5.0s ease-in-out 3.750s infinite backwards; }
 
-        /* Wind — 6.0 s, delay 2.0 s (3 arcs) */
-        .wind-a-0 { animation: arc-pulse 6.0s ease-in-out 0.00s infinite backwards; }
-        .wind-a-1 { animation: arc-pulse 6.0s ease-in-out 2.00s infinite backwards; }
-        .wind-a-2 { animation: arc-pulse 6.0s ease-in-out 4.00s infinite backwards; }
+        /* Wind — 7.0 s, 2.33 s delay (3 arcs fill one cycle) */
+        .wind-a-0 { animation: arc-pulse 7.0s ease-in-out 0.000s infinite backwards; }
+        .wind-a-1 { animation: arc-pulse 7.0s ease-in-out 2.333s infinite backwards; }
+        .wind-a-2 { animation: arc-pulse 7.0s ease-in-out 4.666s infinite backwards; }
 
         /* ── Legend multi-select: each layer dims independently ──────────── */
         .surf-map-container[data-dim-primary] .swell-p-0,
