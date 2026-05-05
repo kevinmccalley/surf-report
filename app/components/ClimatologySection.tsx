@@ -105,8 +105,8 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
 
         {hoveredData && (
           <div
-            className="absolute bottom-full mb-2 z-20 rounded-xl px-3 py-2.5 text-xs shadow-xl border border-white/12 pointer-events-none"
-            style={{ left: tooltipLeft, transform: tooltipShift, background: 'rgba(8,14,28,0.96)', backdropFilter: 'blur(8px)', maxWidth: '240px' }}
+            className="absolute bottom-full mb-2 z-20 rounded-xl px-3 py-2.5 text-xs shadow-xl pointer-events-none"
+            style={{ left: tooltipLeft, transform: tooltipShift, background: 'var(--panel-bg)', border: '1px solid var(--card-border)', backdropFilter: 'blur(8px)', maxWidth: '240px' }}
           >
             <p className="text-white font-semibold mb-2">{hoveredData.name}</p>
             <div className="flex items-center gap-2.5 mb-2">
@@ -124,7 +124,7 @@ export default function ClimatologySection({ months, peakMonths }: Props) {
               <span>{t('clim.avgPeriod')}</span>
               <span className="text-slate-300 tabular-nums">{hoveredData.avgSwellPeriod} s</span>
             </div>
-            <p className="border-t border-white/10 pt-2 text-slate-400 leading-relaxed whitespace-normal">
+            <p className="pt-2 text-slate-400 leading-relaxed whitespace-normal" style={{ borderTop: '1px solid var(--card-border)' }}>
               {generateMonthSummary(hoveredData, peakMonths, maxHs, t, monthAbbrFn(hoveredData))}
             </p>
           </div>
