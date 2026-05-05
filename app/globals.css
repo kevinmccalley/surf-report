@@ -274,3 +274,40 @@ body {
 
 @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .count-up { animation: countUp 0.5s ease-out forwards; }
+
+/* ── Dark-theme muted-text lift ──────────────────────────────────────────── */
+/* slate-500/600 is too dark against coloured dark backgrounds — lift per theme */
+:root .text-slate-500, :root .text-slate-600,
+[data-theme="ocean"] .text-slate-500, [data-theme="ocean"] .text-slate-600 { color: #94a3b8; }
+[data-theme="sunset"] .text-slate-500, [data-theme="sunset"] .text-slate-600 { color: #c4a882; }
+[data-theme="forest"] .text-slate-500, [data-theme="forest"] .text-slate-600 { color: #86b896; }
+[data-theme="sand"] .text-slate-500, [data-theme="sand"] .text-slate-600 { color: #c4a85a; }
+
+/* ── Rating chip colours ─────────────────────────────────────────────────── */
+/* Default (dark themes) — matches surf-rating.ts textColor values */
+.rating-chip[data-rating="EPIC"]         { color: #d8b4fe; }
+.rating-chip[data-rating="VERY_GOOD"]    { color: #7dd3fc; }
+.rating-chip[data-rating="GOOD"]         { color: #86efac; }
+.rating-chip[data-rating="FAIR_TO_GOOD"] { color: #bef264; }
+.rating-chip[data-rating="FAIR"]         { color: #fde047; }
+.rating-chip[data-rating="POOR_TO_FAIR"] { color: #fdba74; }
+.rating-chip[data-rating="POOR"]         { color: #fca5a5; }
+.rating-chip[data-rating="FLAT"]         { color: #9ca3af; }
+
+/* Light themes — darken chip text for legibility */
+[data-theme*="light"] .rating-chip[data-rating="EPIC"]         { color: #6b21a8; }
+[data-theme*="light"] .rating-chip[data-rating="VERY_GOOD"]    { color: #075985; }
+[data-theme*="light"] .rating-chip[data-rating="GOOD"]         { color: #166534; }
+[data-theme*="light"] .rating-chip[data-rating="FAIR_TO_GOOD"] { color: #3f6212; }
+[data-theme*="light"] .rating-chip[data-rating="FAIR"]         { color: #854d0e; }
+[data-theme*="light"] .rating-chip[data-rating="POOR_TO_FAIR"] { color: #9a3412; }
+[data-theme*="light"] .rating-chip[data-rating="POOR"]         { color: #991b1b; }
+[data-theme*="light"] .rating-chip[data-rating="FLAT"]         { color: #4b5563; }
+
+/* Light themes — darken LastYearCard Tailwind-based chip colours */
+[data-theme*="light"] .text-purple-300 { color: #6b21a8 !important; }
+[data-theme*="light"] .text-green-300  { color: #166534 !important; }
+[data-theme*="light"] .text-lime-300   { color: #3f6212 !important; }
+[data-theme*="light"] .text-yellow-300 { color: #854d0e !important; }
+[data-theme*="light"] .text-orange-300 { color: #9a3412 !important; }
+[data-theme*="light"] .text-red-300    { color: #991b1b !important; }

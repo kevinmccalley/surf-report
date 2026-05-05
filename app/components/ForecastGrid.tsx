@@ -75,8 +75,9 @@ export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
               <p className="text-sm font-semibold text-slate-200">{activeDay.dayName}</p>
               {isCoastal && (
                 <span
-                  className="text-[10px] font-bold px-2 py-0.5 rounded"
-                  style={{ backgroundColor: activeDay.rating.bgColor, color: activeDay.rating.textColor }}
+                  className="rating-chip text-[10px] font-bold px-2 py-0.5 rounded"
+                  data-rating={activeDay.rating.label.replace(/ /g, '_')}
+                  style={{ backgroundColor: activeDay.rating.bgColor }}
                 >
                   {t('rating.' + activeDay.rating.label.replace(/ /g, '_'))}
                 </span>

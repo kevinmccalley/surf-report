@@ -41,25 +41,20 @@ export default function LanguageSwitcher() {
       </button>
 
       {open && (
-        <div
-          className="absolute right-0 top-full mt-1 w-48 rounded-xl border border-white/10 shadow-xl py-1 z-50"
-          style={{ background: 'rgba(15,23,42,0.97)', backdropFilter: 'blur(12px)' }}
-        >
+        <div className="absolute right-0 top-full mt-1 w-48 rounded-xl shadow-xl py-1 z-50 theme-panel">
           {LOCALES.map(l => (
             <button
               key={l.code}
               onClick={() => select(l.code)}
               className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs transition-colors text-left ${
-                l.code === locale
-                  ? 'text-sky-300 bg-sky-500/10'
-                  : 'text-slate-300 hover:text-white hover:bg-white/5'
+                l.code === locale ? 'theme-row-active' : 'theme-row-hover'
               }`}
             >
               <span className="text-base leading-none">{l.flag}</span>
-              <span>{l.label}</span>
+              <span className="theme-label">{l.label}</span>
               {l.code === locale && (
-                <svg className="ml-auto w-3 h-3 text-sky-400" viewBox="0 0 12 12" fill="currentColor">
-                  <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                <svg className="ml-auto w-3 h-3 shrink-0" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="theme-check" />
                 </svg>
               )}
             </button>

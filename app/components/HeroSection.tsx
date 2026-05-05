@@ -59,8 +59,9 @@ export default function HeroSection({ report, units }: Props) {
           {report.isCoastal && (
             <div className="pb-1 flex flex-col gap-1.5">
               <div
-                className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase"
-                style={{ backgroundColor: rating.bgColor, color: rating.textColor, border: `1px solid ${rating.color}30` }}
+                className="rating-chip inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase"
+                data-rating={rating.label.replace(/ /g, '_')}
+                style={{ backgroundColor: rating.bgColor, border: `1px solid ${rating.color}30` }}
               >
                 {t('rating.' + rating.label.replace(/ /g, '_'))}
               </div>
