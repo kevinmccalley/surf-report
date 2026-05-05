@@ -148,6 +148,17 @@ const ptPT: Record<string, string> = {
   'lastYear.period': 'período {period}s',
   'lastYear.viewFull': 'Ver condições completas →',
 
+  // MapPanel
+  'map.panelLabel': 'Mapa da localização',
+  'map.close': 'Fechar mapa',
+  'map.swell': 'Ondulação',
+  'map.windWave': 'Onda de vento',
+  'map.wind': 'Vento',
+  'map.primary': 'Ondulação principal',
+  'map.windLabel': 'Vento',
+  'map.water': 'Água',
+  'map.air': 'ar',
+
   // Weather descriptions (WMO codes)
   'weather.0': 'Céu limpo', 'weather.1': 'Principalmente limpo', 'weather.2': 'Parcialmente nublado', 'weather.3': 'Nublado',
   'weather.45': 'Nevoeiro', 'weather.48': 'Nevoeiro gelado',

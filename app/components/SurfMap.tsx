@@ -1,0 +1,236 @@
+'use client'
+
+// Leaflet CSS — loaded client-only via dynamic import with ssr:false in MapPanel
+import 'leaflet/dist/leaflet.css'
+import L from 'leaflet'
+import { useEffect, useRef } from 'react'
+import type { SurfReport } from '@/app/lib/types'
+import { formatWaveHeight, getDirectionLabel } from '@/app/lib/utils'
+
+interface Props {
+  report: SurfReport
+  units: { height: 'ft' | 'm' }
+}
+
+// ── Geodesy ────────────────────────────────────────────────────────────────────
+function offset(lat: number, lon: number, bearingDeg: number, distKm: number) {
+  const R = 6371
+  const b = (bearingDeg * Math.PI) / 180
+  const φ1 = (lat * Math.PI) / 180
+  const λ1 = (lon * Math.PI) / 180
+  const d = distKm / R
+  const φ2 = Math.asin(Math.sin(φ1) * Math.cos(d) + Math.cos(φ1) * Math.sin(d) * Math.cos(b))
+  const λ2 = λ1 + Math.atan2(Math.sin(b) * Math.sin(d) * Math.cos(φ1), Math.cos(d) - Math.sin(φ1) * Math.sin(φ2))
+  return { lat: (φ2 * 180) / Math.PI, lon: (λ2 * 180) / Math.PI }
+}
+
+// ── Swell wave-front lines ─────────────────────────────────────────────────────
+// Draws N parallel lines perpendicular to the swell travel direction, spaced
+// evenly offshore.  Lines grow more opaque and thicker as they approach the
+// spot — the visual "waves marching in" effect.
+function addSwellLines(
+  map: L.Map,
+  lat: number,
+  lon: number,
+  fromDeg: number,   // direction the swell is coming FROM
+  heightM: number,
+  color: string,
+  baseOpacity: number,
+) {
+  const numLines = 4
+  const spacingKm = 55
+  const halfLenKm = 85
+  const perpDeg = (fromDeg + 90) % 360
+
+  for (let i = numLines; i >= 1; i--) {
+    const distKm = i * spacingKm
+    const fraction = (numLines - i + 1) / numLines   // 0.25 → 1.0 as we approach shore
+    const opacity = baseOpacity * (0.2 + fraction * 0.65)
+    const weight = 0.8 + fraction * (0.6 + heightM * 0.3)
+
+    const center = offset(lat, lon, fromDeg, distKm)
+    const p1 = offset(center.lat, center.lon, perpDeg, halfLenKm)
+    const p2 = offset(center.lat, center.lon, (perpDeg + 180) % 360, halfLenKm)
+
+    L.polyline([[p1.lat, p1.lon], [center.lat, center.lon], [p2.lat, p2.lon]], {
+      color,
+      weight,
+      opacity,
+      // closest line is solid; farther ones are dashed
+      dashArray: i <= 2 ? undefined : '7 5',
+      interactive: false,
+    }).addTo(map)
+  }
+}
+
+// ── Wind direction needle ──────────────────────────────────────────────────────
+// A short arrow-head line showing the wind direction at the spot.
+function addWindArrow(map: L.Map, lat: number, lon: number, windDeg: number, speedKmh: number) {
+  const len = 18 + Math.min(speedKmh * 0.25, 20)  // 18–38km based on speed
+  const tip = offset(lat, lon, windDeg, len)
+  const base = offset(lat, lon, (windDeg + 180) % 360, len * 0.3)
+
+  L.polyline([[base.lat, base.lon], [tip.lat, tip.lon]], {
+    color: '#64748b',
+    weight: 1.5,
+    opacity: 0.55,
+    interactive: false,
+  }).addTo(map)
+
+  // arrowhead
+  const left  = offset(tip.lat, tip.lon, (windDeg + 150) % 360, len * 0.22)
+  const right = offset(tip.lat, tip.lon, (windDeg + 210) % 360, len * 0.22)
+  L.polyline([[left.lat, left.lon], [tip.lat, tip.lon], [right.lat, right.lon]], {
+    color: '#64748b',
+    weight: 1.5,
+    opacity: 0.55,
+    interactive: false,
+  }).addTo(map)
+}
+
+// ── Spot marker ────────────────────────────────────────────────────────────────
+function makeSpotIcon(color: string): L.DivIcon {
+  const html = `
+    <div style="position:relative;width:28px;height:28px;">
+      <div style="
+        position:absolute;inset:0;border-radius:50%;
+        border:2px solid ${color};opacity:0;
+        animation:surfPulse 2.2s ease-out infinite;
+      "></div>
+      <div style="
+        width:28px;height:28px;border-radius:50%;
+        background:${color};border:3px solid white;
+        box-shadow:0 2px 12px rgba(0,0,0,0.6);
+      "></div>
+    </div>
+    <style>
+      @keyframes surfPulse {
+        0%  { transform:scale(1);   opacity:0.7; }
+        70% { transform:scale(2.4); opacity:0;   }
+        100%{ transform:scale(2.4); opacity:0;   }
+      }
+    </style>
+  `
+  return L.divIcon({ html, className: '', iconAnchor: [14, 14], iconSize: [28, 28] })
+}
+
+// ── Component ──────────────────────────────────────────────────────────────────
+export default function SurfMap({ report, units }: Props) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const mapRef = useRef<L.Map | null>(null)
+
+  useEffect(() => {
+    if (!containerRef.current || mapRef.current) return
+
+    const { lat, lon } = report.location
+    const { current } = report
+
+    const map = L.map(containerRef.current, {
+      center: [lat, lon],
+      zoom: 9,
+      zoomControl: false,
+    })
+    mapRef.current = map
+
+    L.control.zoom({ position: 'bottomright' }).addTo(map)
+
+    // CartoDB Dark Matter — free, attribution required, no API key
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution:
+        '© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors ' +
+        '© <a href="https://carto.com" target="_blank">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19,
+    }).addTo(map)
+
+    // Primary swell wave fronts
+    if (report.isCoastal && current.primarySwell.height > 0.05) {
+      addSwellLines(map, lat, lon, current.primarySwell.direction, current.primarySwell.height, '#22d3ee', 1.0)
+    }
+
+    // Secondary swell (wind wave) if present
+    if (report.isCoastal && current.secondarySwell && current.secondarySwell.height > 0.1) {
+      addSwellLines(map, lat, lon, current.secondarySwell.direction, current.secondarySwell.height, '#94a3b8', 0.55)
+    }
+
+    // Wind direction needle
+    if (current.wind.speed > 2) {
+      addWindArrow(map, lat, lon, current.wind.direction, current.wind.speed)
+    }
+
+    // Spot marker + popup
+    const waveStr = formatWaveHeight(current.waveHeight, units.height)
+    const periodStr = current.wavePeriod > 0 ? `${current.wavePeriod.toFixed(0)}s` : '—'
+    const swellDirLabel = getDirectionLabel(current.primarySwell.direction)
+    const swellFromStr = formatWaveHeight(current.primarySwell.height, units.height) + ` · ${swellDirLabel} · ${periodStr}`
+    const windStr = `${Math.round(current.wind.speed)} km/h ${getDirectionLabel(current.wind.direction)}`
+
+    const popupHtml = `
+      <div style="
+        font-family:system-ui,-apple-system,sans-serif;
+        background:#0f172a;color:#e2e8f0;
+        padding:12px 14px;border-radius:10px;
+        min-width:170px;line-height:1.5;
+      ">
+        <div style="font-size:15px;font-weight:700;color:${current.rating.color};margin-bottom:8px;">
+          ${waveStr} waves
+        </div>
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:3px;">Primary swell</div>
+        <div style="font-size:13px;font-weight:600;color:#e2e8f0;margin-bottom:8px;">${swellFromStr}</div>
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:3px;">Wind</div>
+        <div style="font-size:13px;font-weight:600;color:#e2e8f0;">${windStr}</div>
+      </div>
+    `
+
+    const marker = L.marker([lat, lon], { icon: makeSpotIcon(current.rating.color) })
+    marker.bindPopup(popupHtml, {
+      className: 'surf-map-popup',
+      offset: [0, -16],
+      closeButton: false,
+    })
+    marker.addTo(map)
+    // Open popup after a short delay so the map settles
+    setTimeout(() => marker.openPopup(), 600)
+
+    return () => {
+      map.remove()
+      mapRef.current = null
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <>
+      <style>{`
+        .surf-map-popup .leaflet-popup-content-wrapper {
+          background: transparent !important;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.7) !important;
+          border-radius: 10px !important;
+          padding: 0 !important;
+          border: 1px solid rgba(255,255,255,0.08) !important;
+        }
+        .surf-map-popup .leaflet-popup-content {
+          margin: 0 !important;
+        }
+        .surf-map-popup .leaflet-popup-tip-container {
+          display: none;
+        }
+        .leaflet-control-zoom a {
+          background: rgba(15,23,42,0.9) !important;
+          color: #94a3b8 !important;
+          border-color: rgba(255,255,255,0.1) !important;
+        }
+        .leaflet-control-zoom a:hover {
+          background: rgba(30,41,59,0.95) !important;
+          color: #e2e8f0 !important;
+        }
+        .leaflet-control-attribution {
+          background: rgba(15,23,42,0.7) !important;
+          color: #475569 !important;
+          font-size: 9px !important;
+        }
+        .leaflet-control-attribution a { color: #64748b !important; }
+      `}</style>
+      <div ref={containerRef} className="w-full h-full" />
+    </>
+  )
+}

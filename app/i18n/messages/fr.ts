@@ -148,6 +148,17 @@ const fr: Record<string, string> = {
   'lastYear.period': 'période {period}s',
   'lastYear.viewFull': 'Voir les conditions complètes →',
 
+  // MapPanel
+  'map.panelLabel': 'Carte de localisation',
+  'map.close': 'Fermer la carte',
+  'map.swell': 'Houle',
+  'map.windWave': 'Vague de vent',
+  'map.wind': 'Vent',
+  'map.primary': 'Houle principale',
+  'map.windLabel': 'Vent',
+  'map.water': 'Eau',
+  'map.air': 'air',
+
   // Weather descriptions (WMO codes)
   'weather.0': 'Ciel dégagé', 'weather.1': 'Principalement dégagé', 'weather.2': 'Partiellement nuageux', 'weather.3': 'Couvert',
   'weather.45': 'Brouillard', 'weather.48': 'Brouillard givrant',

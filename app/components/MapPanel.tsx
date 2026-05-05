@@ -1,0 +1,171 @@
+'use client'
+
+import dynamic from 'next/dynamic'
+import { AnimatePresence, motion } from 'framer-motion'
+import { X, Wind, Waves } from 'lucide-react'
+import type { SurfReport } from '@/app/lib/types'
+import { formatWaveHeight, formatTemp, getDirectionLabel } from '@/app/lib/utils'
+import { useLanguage } from '@/app/i18n/LanguageContext'
+
+// Leaflet must not render server-side
+const SurfMap = dynamic(() => import('./SurfMap'), { ssr: false, loading: () => <MapSkeleton /> })
+
+interface Props {
+  report: SurfReport
+  units: { temp: 'c' | 'f'; height: 'ft' | 'm' }
+  onClose: () => void
+}
+
+export default function MapPanel({ report, units, onClose }: Props) {
+  const { t } = useLanguage()
+  const { current, location } = report
+
+  return (
+    <AnimatePresence>
+      {/* Backdrop */}
+      <motion.div
+        key="backdrop"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+        onClick={onClose}
+        aria-hidden
+      />
+
+      {/* Sliding panel */}
+      <motion.aside
+        key="panel"
+        initial={{ x: '100%' }}
+        animate={{ x: 0 }}
+        exit={{ x: '100%' }}
+        transition={{ type: 'spring', damping: 32, stiffness: 320 }}
+        className="fixed right-0 top-0 bottom-0 w-full sm:w-[440px] z-50 flex flex-col"
+        style={{ background: 'rgba(2, 9, 23, 0.97)', borderLeft: '1px solid rgba(255,255,255,0.08)' }}
+        aria-label={t('map.panelLabel')}
+      >
+        {/* Header */}
+        <div className="flex items-start justify-between gap-3 px-5 pt-5 pb-4 border-b border-white/5 shrink-0">
+          <div className="min-w-0">
+            <h2 className="text-base font-semibold text-white truncate">{location.name}</h2>
+            {location.country && (
+              <p className="text-xs text-slate-500 truncate">{location.country}</p>
+            )}
+          </div>
+          <button
+            onClick={onClose}
+            aria-label={t('map.close')}
+            className="shrink-0 p-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-white/10 transition-colors"
+          >
+            <X size={16} />
+          </button>
+        </div>
+
+        {/* Rating + wave stats strip */}
+        {report.isCoastal && (
+          <div className="flex items-center gap-3 px-5 py-3 border-b border-white/5 shrink-0">
+            <span
+              className="px-2.5 py-0.5 rounded-full text-xs font-bold tracking-wider uppercase"
+              style={{
+                backgroundColor: current.rating.bgColor,
+                border: `1px solid ${current.rating.color}30`,
+                color: current.rating.color,
+              }}
+            >
+              {t('rating.' + current.rating.label.replace(/ /g, '_'))}
+            </span>
+            <span className="text-white font-semibold tabular-nums">
+              {formatWaveHeight(current.waveHeight, units.height)}
+            </span>
+            {current.wavePeriod > 0 && (
+              <span className="text-slate-500 text-sm">{current.wavePeriod.toFixed(0)}s period</span>
+            )}
+          </div>
+        )}
+
+        {/* Map — fills remaining space */}
+        <div className="flex-1 min-h-0 relative">
+          <SurfMap report={report} units={{ height: units.height }} />
+
+          {/* Legend overlay */}
+          {report.isCoastal && (
+            <div className="absolute bottom-10 left-3 z-[1000] flex flex-col gap-1.5 pointer-events-none">
+              {current.primarySwell.height > 0.05 && (
+                <LegendItem color="#22d3ee" label={`${t('map.swell')}: ${getDirectionLabel(current.primarySwell.direction)}`} />
+              )}
+              {current.secondarySwell && current.secondarySwell.height > 0.1 && (
+                <LegendItem color="#94a3b8" label={`${t('map.windWave')}: ${getDirectionLabel(current.secondarySwell.direction)}`} dashed />
+              )}
+              {current.wind.speed > 2 && (
+                <LegendItem color="#475569" label={`${t('map.wind')}: ${getDirectionLabel(current.wind.direction)}`} thin />
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Footer quick-stats */}
+        <div className="shrink-0 grid grid-cols-3 divide-x divide-white/5 border-t border-white/5">
+          <FooterStat
+            icon={<Waves size={13} className="text-sky-400" />}
+            label={t('map.primary')}
+            value={formatWaveHeight(current.primarySwell.height, units.height)}
+            sub={`${current.primarySwell.period.toFixed(0)}s · ${getDirectionLabel(current.primarySwell.direction)}`}
+          />
+          <FooterStat
+            icon={<Wind size={13} className="text-slate-400" />}
+            label={t('map.windLabel')}
+            value={`${Math.round(current.wind.speed)} km/h`}
+            sub={getDirectionLabel(current.wind.direction)}
+          />
+          <FooterStat
+            label={t('map.water')}
+            value={current.waterTemp !== null ? formatTemp(current.waterTemp, units.temp) : '—'}
+            sub={`${formatTemp(current.airTemp, units.temp)} ${t('map.air')}`}
+          />
+        </div>
+      </motion.aside>
+    </AnimatePresence>
+  )
+}
+
+function LegendItem({ color, label, dashed, thin }: { color: string; label: string; dashed?: boolean; thin?: boolean }) {
+  return (
+    <div className="flex items-center gap-1.5 bg-black/50 rounded-md px-2 py-1 backdrop-blur-sm">
+      <svg width="14" height="6">
+        <line
+          x1="0" y1="3" x2="14" y2="3"
+          stroke={color}
+          strokeWidth={thin ? 1 : 1.5}
+          strokeDasharray={dashed ? '3 2' : undefined}
+          strokeOpacity={thin ? 0.6 : 0.9}
+        />
+      </svg>
+      <span className="text-[10px] text-slate-400">{label}</span>
+    </div>
+  )
+}
+
+function FooterStat({ icon, label, value, sub }: { icon?: React.ReactNode; label: string; value: string; sub: string }) {
+  return (
+    <div className="flex flex-col gap-0.5 px-4 py-3">
+      <div className="flex items-center gap-1 text-[10px] text-slate-500 uppercase tracking-wider">
+        {icon}
+        <span>{label}</span>
+      </div>
+      <span className="text-sm font-semibold text-white">{value}</span>
+      <span className="text-[11px] text-slate-500">{sub}</span>
+    </div>
+  )
+}
+
+function MapSkeleton() {
+  return (
+    <div className="w-full h-full flex items-center justify-center bg-slate-900/50 animate-pulse">
+      <svg width="32" height="32" viewBox="0 0 32 32" className="text-slate-700">
+        <circle cx="16" cy="16" r="14" stroke="currentColor" strokeWidth="2" fill="none" />
+        <path d="M8 20 C10 16, 13 22, 16 18 C19 14, 22 20, 24 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+      </svg>
+    </div>
+  )
+}

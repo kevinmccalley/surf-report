@@ -9,9 +9,10 @@ import { useLanguage } from '@/app/i18n/LanguageContext'
 interface Props {
   report: SurfReport
   units: { temp: 'c' | 'f'; height: 'ft' | 'm' }
+  onMapOpen?: () => void
 }
 
-export default function HeroSection({ report, units }: Props) {
+export default function HeroSection({ report, units, onMapOpen }: Props) {
   const { t, bcp47 } = useLanguage()
   const { current, location } = report
   const { rating } = current
@@ -28,7 +29,14 @@ export default function HeroSection({ report, units }: Props) {
 
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-5">
         <div className="flex items-center gap-1.5">
-          <MapPin size={13} className="text-sky-400" />
+          <button
+            onClick={onMapOpen}
+            aria-label="Open map"
+            className="p-0.5 rounded text-sky-400 hover:text-sky-300 hover:bg-sky-400/10 transition-colors disabled:pointer-events-none"
+            disabled={!onMapOpen}
+          >
+            <MapPin size={13} />
+          </button>
           <h1 className="text-base sm:text-lg font-semibold text-white">
             {location.name}
             {location.country && <span className="text-slate-400 font-normal">, {location.country}</span>}

@@ -16,6 +16,7 @@ import AuthButton from './AuthButton'
 import ThemePicker from './ThemePicker'
 import LastYearCard from './LastYearCard'
 import BuoyCard from './BuoyCard'
+import MapPanel from './MapPanel'
 import LanguageSwitcher from './LanguageSwitcher'
 import type { ClimatologyMonth } from './ClimatologySection'
 import { useLanguage } from '@/app/i18n/LanguageContext'
@@ -42,6 +43,7 @@ export default function SurfApp() {
   const [histDateInput, setHistDateInput] = useState('')
   const [lastYearReport, setLastYearReport] = useState<SurfReport | null>(null)
   const [buoyData, setBuoyData] = useState<(BuoyReading & { waveDirectionLabel?: string | null; windDirectionLabel?: string | null }) | null>(null)
+  const [showMap, setShowMap] = useState(false)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -270,7 +272,7 @@ export default function SurfApp() {
               </div>
             )}
 
-            <HeroSection report={report} units={units} />
+            <HeroSection report={report} units={units} onMapOpen={() => setShowMap(true)} />
 
             {report.isCoastal && <ConditionCards report={report} units={units} />}
 
@@ -375,6 +377,14 @@ export default function SurfApp() {
           </div>
         )}
       </main>
+
+      {report && showMap && (
+        <MapPanel
+          report={report}
+          units={units}
+          onClose={() => setShowMap(false)}
+        />
+      )}
     </div>
   )
 }

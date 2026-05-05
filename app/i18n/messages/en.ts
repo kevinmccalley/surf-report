@@ -148,6 +148,17 @@ const en: Record<string, string> = {
   'lastYear.period': '{period}s period',
   'lastYear.viewFull': 'View full conditions →',
 
+  // MapPanel
+  'map.panelLabel': 'Location map',
+  'map.close': 'Close map',
+  'map.swell': 'Swell',
+  'map.windWave': 'Wind wave',
+  'map.wind': 'Wind',
+  'map.primary': 'Primary swell',
+  'map.windLabel': 'Wind',
+  'map.water': 'Water',
+  'map.air': 'air',
+
   // Weather descriptions (WMO codes)
   'weather.0': 'Clear Sky', 'weather.1': 'Mainly Clear', 'weather.2': 'Partly Cloudy', 'weather.3': 'Overcast',
   'weather.45': 'Foggy', 'weather.48': 'Icy Fog',
