@@ -68,35 +68,49 @@ export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
         </div>
       </div>
 
-      <div className="glass-card rounded-xl px-4 py-3 border border-white/8 flex flex-col">
-        {activeDay ? (
-          <>
-            <div className="flex items-center justify-between gap-3 mb-1.5">
-              <p className="text-sm font-semibold text-slate-200">{activeDay.dayName}</p>
-              {isCoastal && (
-                <span
-                  className="rating-chip text-[10px] font-bold px-2 py-0.5 rounded"
-                  data-rating={activeDay.rating.label.replace(/ /g, '_')}
-                  style={{ backgroundColor: activeDay.rating.bgColor }}
-                >
-                  {t('rating.' + activeDay.rating.label.replace(/ /g, '_'))}
-                </span>
-              )}
+      <div className="glass-card rounded-xl px-4 py-3 border border-white/8">
+        <div className="grid">
+          {/* Invisible sizing ghosts — one per day, all stacked in the same grid cell.
+              The tallest summary determines the container height; it never changes. */}
+          {forecast.map(day => (
+            <div key={day.date} className="col-start-1 row-start-1 invisible pointer-events-none" aria-hidden="true">
+              <div className="flex items-center justify-between gap-3 mb-1.5">
+                <p className="text-sm font-semibold">&nbsp;</p>
+                {isCoastal && <span className="text-[10px]">&nbsp;</span>}
+              </div>
+              <p className="text-xs leading-relaxed">
+                {generateDaySummary(day, isCoastal, units, t)}
+              </p>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              {generateDaySummary(activeDay, isCoastal, units, t)}
-            </p>
-          </>
-        ) : (
-          <>
-            <div className="invisible mb-1.5" aria-hidden="true">
-              <p className="text-sm font-semibold">&nbsp;</p>
-            </div>
-            <p className="text-xs text-slate-600 text-center leading-relaxed min-h-[2.5rem] flex items-center justify-center">
-              {t('forecast.hoverPrompt')}
-            </p>
-          </>
-        )}
+          ))}
+
+          {/* Visible content — same grid cell, rendered on top */}
+          <div className="col-start-1 row-start-1 flex flex-col">
+            {activeDay ? (
+              <>
+                <div className="flex items-center justify-between gap-3 mb-1.5">
+                  <p className="text-sm font-semibold text-slate-200">{activeDay.dayName}</p>
+                  {isCoastal && (
+                    <span
+                      className="rating-chip text-[10px] font-bold px-2 py-0.5 rounded"
+                      data-rating={activeDay.rating.label.replace(/ /g, '_')}
+                      style={{ backgroundColor: activeDay.rating.bgColor }}
+                    >
+                      {t('rating.' + activeDay.rating.label.replace(/ /g, '_'))}
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  {generateDaySummary(activeDay, isCoastal, units, t)}
+                </p>
+              </>
+            ) : (
+              <p className="text-xs text-slate-600 text-center leading-relaxed my-auto">
+                {t('forecast.hoverPrompt')}
+              </p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )
