@@ -62,7 +62,7 @@ function addDirectionalArcs(
   for (let i = 0; i < numArcs; i++) {
     const fraction = numArcs > 1 ? i / (numArcs - 1) : 1   // 0=far → 1=near shore
     const radiusKm = sourceDistKm * (0.28 + fraction * 0.62) // 28%→90% of source dist
-    const weight   = 0.6 + fraction * (1.1 + heightM * 0.25)
+    const weight   = 4 + fraction * (8 + heightM * 1.5)     // thick soft glow, heavier near shore
 
     const pts: [number, number][] = []
     for (let s = 0; s <= steps; s++) {
@@ -131,7 +131,7 @@ export default function SurfMap({ report, units, highlightLayer }: Props) {
     // Primary swell — accent colour, full presence
     if (report.isCoastal && current.primarySwell.height > 0.05) {
       addDirectionalArcs(map, lat, lon, current.primarySwell.direction, accentColor, 'swell-p', {
-        sourceDistKm: 270, halfAngleDeg: 46, heightM: current.primarySwell.height,
+        sourceDistKm: 270, halfAngleDeg: 52, heightM: current.primarySwell.height,
       })
     }
 
@@ -187,15 +187,26 @@ export default function SurfMap({ report, units, highlightLayer }: Props) {
   return (
     <>
       <style>{`
-        /* ── Per-layer peak opacity ───────────────────────────────────────── */
-        .swell-p-0,.swell-p-1,.swell-p-2,.swell-p-3 { --arc-peak: 0.88; }
-        .swell-s-0,.swell-s-1,.swell-s-2,.swell-s-3 { --arc-peak: 0.62; }
-        .wind-a-0,.wind-a-1,.wind-a-2,.wind-a-3     { --arc-peak: 0.40; }
+        /* ── Per-arc: blur gets heavier farther from shore (diffuse → crisp)  */
+        /* opacity peak also lower overall — these are faint ocean pulses     */
+        .swell-p-0 { --arc-peak:0.38; filter:blur(9px);  }
+        .swell-p-1 { --arc-peak:0.42; filter:blur(7px);  }
+        .swell-p-2 { --arc-peak:0.46; filter:blur(5px);  }
+        .swell-p-3 { --arc-peak:0.50; filter:blur(3px);  }
 
-        /* Single keyframe — peak resolves per-element via CSS var */
+        .swell-s-0 { --arc-peak:0.24; filter:blur(11px); }
+        .swell-s-1 { --arc-peak:0.27; filter:blur(9px);  }
+        .swell-s-2 { --arc-peak:0.30; filter:blur(7px);  }
+        .swell-s-3 { --arc-peak:0.33; filter:blur(5px);  }
+
+        .wind-a-0  { --arc-peak:0.14; filter:blur(8px);  }
+        .wind-a-1  { --arc-peak:0.17; filter:blur(6px);  }
+        .wind-a-2  { --arc-peak:0.20; filter:blur(4px);  }
+
+        /* Single keyframe — peak opacity resolves per-element via CSS var */
         @keyframes arc-pulse {
           0%,100% { opacity: 0; }
-          20%,55% { opacity: var(--arc-peak, 0.7); }
+          20%,55% { opacity: var(--arc-peak, 0.4); }
         }
 
         /* Primary swell — 2.2 s period, delay steps 0.55 s */
