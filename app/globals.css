@@ -276,12 +276,18 @@ body {
 .count-up { animation: countUp 0.5s ease-out forwards; }
 
 /* ── Dark-theme muted-text lift ──────────────────────────────────────────── */
-/* slate-500/600 is too dark against coloured dark backgrounds — lift per theme */
+/* slate-500/600/700 are too dark against coloured dark backgrounds — lift per theme */
 :root .text-slate-500, :root .text-slate-600,
 [data-theme="ocean"] .text-slate-500, [data-theme="ocean"] .text-slate-600 { color: #94a3b8; }
 [data-theme="sunset"] .text-slate-500, [data-theme="sunset"] .text-slate-600 { color: #c4a882; }
 [data-theme="forest"] .text-slate-500, [data-theme="forest"] .text-slate-600 { color: #86b896; }
 [data-theme="sand"] .text-slate-500, [data-theme="sand"] .text-slate-600 { color: #c4a85a; }
+
+:root .text-slate-700,
+[data-theme="ocean"] .text-slate-700  { color: #708090; }
+[data-theme="sunset"] .text-slate-700 { color: #9a7d62; }
+[data-theme="forest"] .text-slate-700 { color: #6a8875; }
+[data-theme="sand"] .text-slate-700   { color: #9a8358; }
 
 /* ── Rating chip colours ─────────────────────────────────────────────────── */
 /* Default (dark themes) — matches surf-rating.ts textColor values */
