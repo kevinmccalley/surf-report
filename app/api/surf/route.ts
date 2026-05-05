@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
   const marineUrl =
     `https://marine-api.open-meteo.com/v1/marine` +
     `?latitude=${lat}&longitude=${lon}` +
-    `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,swell_wave_height_2,swell_wave_direction_2,swell_wave_period_2,swell_wave_height_3,swell_wave_direction_3,swell_wave_period_3,sea_surface_temperature` +
+    `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,sea_surface_temperature` +
     `&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max` +
     `&timezone=auto&forecast_days=10`
 
@@ -151,12 +151,12 @@ function buildReport(
       windWaveHeight: isCoastal ? val(mh.wind_wave_height, mi) : 0,
       windWavePeriod: isCoastal ? val(mh.wind_wave_period, mi) : 0,
       windWaveDirection: isCoastal ? val(mh.wind_wave_direction, mi) : 0,
-      swell2Height: isCoastal ? val(mh.swell_wave_height_2, mi) : 0,
-      swell2Period: isCoastal ? val(mh.swell_wave_period_2, mi) : 0,
-      swell2Direction: isCoastal ? val(mh.swell_wave_direction_2, mi) : 0,
-      swell3Height: isCoastal ? val(mh.swell_wave_height_3, mi) : 0,
-      swell3Period: isCoastal ? val(mh.swell_wave_period_3, mi) : 0,
-      swell3Direction: isCoastal ? val(mh.swell_wave_direction_3, mi) : 0,
+      swell2Height: 0,
+      swell2Period: 0,
+      swell2Direction: 0,
+      swell3Height: 0,
+      swell3Period: 0,
+      swell3Direction: 0,
       windSpeed: val(wh.wind_speed_10m, i),
       windDirection: val(wh.wind_direction_10m, i),
       weatherCode: val(wh.weather_code, i),
