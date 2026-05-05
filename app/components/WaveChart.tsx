@@ -6,7 +6,7 @@ import {
   ResponsiveContainer, ReferenceLine, CartesianGrid,
 } from 'recharts'
 import type { HourlyForecast } from '@/app/lib/types'
-import { formatHour } from '@/app/lib/utils'
+import { formatHour, getDirectionLabel } from '@/app/lib/utils'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Props {
@@ -24,6 +24,18 @@ interface ChartPoint {
   windSpeedScaled: number
   period: number
   tideDisplay?: number
+  primarySwellDisplay: number
+  swellPeriod: number
+  swellDirKey: string
+  windWaveDisplay: number
+  windWavePeriod: number
+  windWaveDirKey: string
+  swell2Display: number
+  swell2Period: number
+  swell2DirKey: string
+  swell3Display: number
+  swell3Period: number
+  swell3DirKey: string
 }
 
 function toDisplay(meters: number, unit: 'ft' | 'm'): number {
@@ -34,12 +46,17 @@ function toDisplay(meters: number, unit: 'ft' | 'm'): number {
 export default function WaveChart({ hourly, heightUnit, tideHeights }: Props) {
   const { t } = useLanguage()
   const hasTide = tideHeights && tideHeights.length > 0
-  const [showWave, setShowWave] = useState(true)
-  const [showWind, setShowWind] = useState(true)
+  const [showWave, setShowWave]   = useState(true)
+  const [showWind, setShowWind]   = useState(true)
+  const [showSwells, setShowSwells] = useState(false)
 
   const maxWave = Math.max(...hourly.map(h => toDisplay(h.waveHeight, heightUnit)), 1)
   const maxWind = Math.max(...hourly.map(h => Math.round(h.windSpeed)), 1)
   const waveYMax = Math.max(Math.ceil((maxWave + 2) / 2) * 2, 4)
+
+  const hasWindWave = hourly.some(h => h.windWaveHeight > 0.1)
+  const hasSwell2   = hourly.some(h => h.swell2Height > 0.1)
+  const hasSwell3   = hourly.some(h => h.swell3Height > 0.1)
 
   const data: ChartPoint[] = hourly.map((h, i) => {
     const windSpeed = Math.round(h.windSpeed)
@@ -54,6 +71,18 @@ export default function WaveChart({ hourly, heightUnit, tideHeights }: Props) {
       tideDisplay: hasTide && tideHeights[i] !== undefined
         ? toDisplay(tideHeights[i], heightUnit)
         : undefined,
+      primarySwellDisplay: toDisplay(h.swellHeight, heightUnit),
+      swellPeriod: Math.round(h.swellPeriod),
+      swellDirKey: getDirectionLabel(h.swellDirection),
+      windWaveDisplay: toDisplay(h.windWaveHeight, heightUnit),
+      windWavePeriod: Math.round(h.windWavePeriod),
+      windWaveDirKey: getDirectionLabel(h.windWaveDirection),
+      swell2Display: toDisplay(h.swell2Height, heightUnit),
+      swell2Period: Math.round(h.swell2Period),
+      swell2DirKey: getDirectionLabel(h.swell2Direction),
+      swell3Display: toDisplay(h.swell3Height, heightUnit),
+      swell3Period: Math.round(h.swell3Period),
+      swell3DirKey: getDirectionLabel(h.swell3Direction),
     }
   })
 
@@ -66,7 +95,7 @@ export default function WaveChart({ hourly, heightUnit, tideHeights }: Props) {
 
   return (
     <div className="space-y-2">
-      <div className="flex flex-wrap items-center gap-4 text-xs px-1">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs px-1">
         <ToggleItem
           color="#0ea5e9" label={t('chart.waveHeight')}
           checked={showWave} onChange={() => setShowWave(v => !v)}
@@ -74,6 +103,16 @@ export default function WaveChart({ hourly, heightUnit, tideHeights }: Props) {
         <ToggleItem
           color="rgba(100,116,139,0.7)" label={t('chart.windSpeed')} dashed
           checked={showWind} onChange={() => setShowWind(v => !v)}
+        />
+        <ToggleItem
+          color="#22d3ee" label={t('chart.swellComponents')}
+          checked={showSwells} onChange={() => setShowSwells(v => !v)}
+          multiColor={showSwells ? [
+            '#22d3ee',
+            ...(hasWindWave ? ['#94a3b8'] : []),
+            ...(hasSwell2   ? ['#f59e0b'] : []),
+            ...(hasSwell3   ? ['#a78bfa'] : []),
+          ] : undefined}
         />
         {hasTide && <LegendDot color="#2dd4bf" label={t('chart.tideHeight')} />}
       </div>
@@ -99,13 +138,34 @@ export default function WaveChart({ hourly, heightUnit, tideHeights }: Props) {
               <YAxis yAxisId="tide" orientation="right" tick={{ fill: '#2dd4bf', fontSize: 10 }} axisLine={false} tickLine={false} domain={[tideYMin, tideYMax]} tickFormatter={(v: number) => heightUnit === 'ft' ? `${v}ft` : `${v}m`} width={40} />
             )}
 
-            <Tooltip content={<CustomTooltip heightUnit={heightUnit} hasTide={hasTide ?? false} t={t} />} />
+            <Tooltip content={
+              <CustomTooltip
+                heightUnit={heightUnit} hasTide={hasTide ?? false}
+                showSwells={showSwells}
+                hasWindWave={hasWindWave} hasSwell2={hasSwell2} hasSwell3={hasSwell3}
+                t={t}
+              />
+            } />
 
             {showWind && (
               <Area yAxisId="wave" type="monotone" dataKey="windSpeedScaled" stroke="rgba(100,116,139,0.45)" strokeWidth={1} fill="url(#windGrad2)" strokeDasharray="3 2" dot={false} activeDot={false} />
             )}
             {showWave && (
               <Area yAxisId="wave" type="monotone" dataKey="waveHeightDisplay" stroke="#0ea5e9" strokeWidth={2.5} fill="url(#waveGrad2)" dot={false} activeDot={{ r: 4, fill: '#0ea5e9', stroke: 'white', strokeWidth: 1.5 }} />
+            )}
+            {showSwells && (
+              <>
+                <Line yAxisId="wave" type="monotone" dataKey="primarySwellDisplay" stroke="#22d3ee" strokeWidth={1.5} dot={false} activeDot={{ r: 3, fill: '#22d3ee', stroke: 'white', strokeWidth: 1 }} />
+                {hasWindWave && (
+                  <Line yAxisId="wave" type="monotone" dataKey="windWaveDisplay" stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="2 3" dot={false} activeDot={{ r: 3, fill: '#94a3b8', stroke: 'white', strokeWidth: 1 }} />
+                )}
+                {hasSwell2 && (
+                  <Line yAxisId="wave" type="monotone" dataKey="swell2Display" stroke="#f59e0b" strokeWidth={1.5} dot={false} activeDot={{ r: 3, fill: '#f59e0b', stroke: 'white', strokeWidth: 1 }} />
+                )}
+                {hasSwell3 && (
+                  <Line yAxisId="wave" type="monotone" dataKey="swell3Display" stroke="#a78bfa" strokeWidth={1.5} dot={false} activeDot={{ r: 3, fill: '#a78bfa', stroke: 'white', strokeWidth: 1 }} />
+                )}
+              </>
             )}
             {hasTide && (
               <Line yAxisId="tide" type="monotone" dataKey="tideDisplay" stroke="#2dd4bf" strokeWidth={2} dot={false} activeDot={{ r: 3.5, fill: '#2dd4bf', stroke: 'white', strokeWidth: 1.5 }} strokeDasharray="none" />
@@ -118,15 +178,23 @@ export default function WaveChart({ hourly, heightUnit, tideHeights }: Props) {
   )
 }
 
-function ToggleItem({ color, label, dashed, checked, onChange }: {
+function ToggleItem({ color, label, dashed, checked, onChange, multiColor }: {
   color: string; label: string; dashed?: boolean; checked: boolean; onChange: () => void
+  multiColor?: string[]
 }) {
   return (
     <button onClick={onChange} className="flex items-center gap-1.5 transition-opacity" style={{ opacity: checked ? 1 : 0.35 }}>
-      {dashed
-        ? <svg width="18" height="8"><line x1="0" y1="4" x2="18" y2="4" stroke={color} strokeWidth="1.5" strokeDasharray="3 2" /></svg>
-        : <span className="w-3 h-0.5 rounded-full inline-block" style={{ backgroundColor: color }} />
-      }
+      {multiColor && checked ? (
+        <span className="flex gap-0.5">
+          {multiColor.map((c, i) => (
+            <span key={i} className="w-2 h-0.5 rounded-full inline-block" style={{ backgroundColor: c }} />
+          ))}
+        </span>
+      ) : dashed ? (
+        <svg width="18" height="8"><line x1="0" y1="4" x2="18" y2="4" stroke={color} strokeWidth="1.5" strokeDasharray="3 2" /></svg>
+      ) : (
+        <span className="w-3 h-0.5 rounded-full inline-block" style={{ backgroundColor: color }} />
+      )}
       <span className="text-slate-500">{label}</span>
     </button>
   )
@@ -141,15 +209,21 @@ function LegendDot({ color, label }: { color: string; label: string }) {
   )
 }
 
-function CustomTooltip({ active, payload, heightUnit, hasTide, t }: {
+function CustomTooltip({ active, payload, heightUnit, hasTide, showSwells, hasWindWave, hasSwell2, hasSwell3, t }: {
   active?: boolean
   payload?: { payload: ChartPoint }[]
   heightUnit: 'ft' | 'm'
   hasTide: boolean
-  t: (k: string) => string
+  showSwells: boolean
+  hasWindWave: boolean
+  hasSwell2: boolean
+  hasSwell3: boolean
+  t: (k: string, vars?: Record<string, unknown>) => string
 }) {
   if (!active || !payload?.length) return null
   const d = payload[0].payload
+
+  const fmt = (m: number) => heightUnit === 'ft' ? `${m}ft` : `${m}m`
 
   return (
     <div className="glass-card rounded-xl px-3 py-2.5 shadow-xl border border-white/10 text-xs">
@@ -157,6 +231,22 @@ function CustomTooltip({ active, payload, heightUnit, hasTide, t }: {
       <div className="space-y-1">
         <Row color="#0ea5e9" label={t('chart.waves')} value={heightUnit === 'ft' ? `${d.waveHeightDisplay}ft` : `${d.waveHeightM.toFixed(1)}m`} />
         {d.period > 0 && <Row color="#7dd3fc" label={t('chart.period')} value={`${d.period}s`} />}
+        {showSwells && d.primarySwellDisplay > 0 && (
+          <Row color="#22d3ee" label={t('chart.primarySwell')}
+            value={`${fmt(d.primarySwellDisplay)}${d.swellPeriod > 0 ? ` · ${d.swellPeriod}s` : ''} · ${t('dir.' + d.swellDirKey)}`} />
+        )}
+        {showSwells && hasWindWave && d.windWaveDisplay > 0 && (
+          <Row color="#94a3b8" label={t('chart.windWave')}
+            value={`${fmt(d.windWaveDisplay)}${d.windWavePeriod > 0 ? ` · ${d.windWavePeriod}s` : ''}`} />
+        )}
+        {showSwells && hasSwell2 && d.swell2Display > 0 && (
+          <Row color="#f59e0b" label={t('chart.swell2')}
+            value={`${fmt(d.swell2Display)}${d.swell2Period > 0 ? ` · ${d.swell2Period}s` : ''} · ${t('dir.' + d.swell2DirKey)}`} />
+        )}
+        {showSwells && hasSwell3 && d.swell3Display > 0 && (
+          <Row color="#a78bfa" label={t('chart.swell3')}
+            value={`${fmt(d.swell3Display)}${d.swell3Period > 0 ? ` · ${d.swell3Period}s` : ''} · ${t('dir.' + d.swell3DirKey)}`} />
+        )}
         <Row color="rgba(100,116,139,0.7)" label={t('chart.wind')} value={`${d.windSpeed} km/h`} />
         {hasTide && d.tideDisplay !== undefined && (
           <Row color="#2dd4bf" label={t('chart.tide')} value={heightUnit === 'ft' ? `${d.tideDisplay}ft` : `${d.tideDisplay}m`} />

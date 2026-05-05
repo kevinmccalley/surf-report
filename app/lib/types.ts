@@ -51,7 +51,17 @@ export interface HourlyForecast {
   waveHeight: number
   wavePeriod: number
   swellHeight: number
+  swellPeriod: number
   swellDirection: number
+  windWaveHeight: number
+  windWavePeriod: number
+  windWaveDirection: number
+  swell2Height: number
+  swell2Period: number
+  swell2Direction: number
+  swell3Height: number
+  swell3Period: number
+  swell3Direction: number
   windSpeed: number
   windDirection: number
   weatherCode: number
