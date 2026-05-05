@@ -159,6 +159,16 @@ const fr: Record<string, string> = {
   'rating.POOR':         'MAUVAIS',
   'rating.FLAT':         'PLAT',
 
+  // ThemePicker
+  'theme.label': 'Thème',
+  'theme.light': 'Clair',
+  'theme.ocean': 'Océan',
+  'theme.sunset': 'Coucher de soleil',
+  'theme.forest': 'Forêt',
+  'theme.sand': 'Sable',
+  'theme.light_ocean': 'Océan Clair',
+  'theme.light_sand': 'Sable Clair',
+
   // AuthButton
   'auth.signIn': 'Se connecter',
   'auth.manageBilling': 'Gérer l\'abonnement',

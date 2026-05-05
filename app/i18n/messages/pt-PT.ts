@@ -159,6 +159,16 @@ const ptPT: Record<string, string> = {
   'rating.POOR':         'MAU',
   'rating.FLAT':         'PLANO',
 
+  // ThemePicker
+  'theme.label': 'Tema',
+  'theme.light': 'Claro',
+  'theme.ocean': 'Oceano',
+  'theme.sunset': 'Pôr do Sol',
+  'theme.forest': 'Floresta',
+  'theme.sand': 'Areia',
+  'theme.light_ocean': 'Oceano Claro',
+  'theme.light_sand': 'Areia Clara',
+
   // AuthButton
   'auth.signIn': 'Entrar',
   'auth.manageBilling': 'Gerir subscrição',

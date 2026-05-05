@@ -3,9 +3,11 @@
 import { useState, useRef, useEffect } from 'react'
 import { THEMES } from '@/app/lib/themes'
 import { useTheme } from './ThemeProvider'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 export default function ThemePicker() {
   const { themeId, setTheme } = useTheme()
+  const { t } = useLanguage()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -28,13 +30,13 @@ export default function ThemePicker() {
         className="flex items-center gap-1.5 px-2 py-1 rounded-md text-xs text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
       >
         <PaletteIcon />
-        <span className="hidden lg:block text-[11px] font-medium">{current.name}</span>
+        <span className="hidden lg:block text-[11px] font-medium">{t('theme.' + current.id.replace(/-/g, '_'))}</span>
       </button>
 
       {open && (
         <div className="absolute right-0 top-full mt-2 w-52 rounded-2xl border border-white/10 shadow-2xl z-50 overflow-hidden theme-panel">
           <div className="px-3 pt-3 pb-2">
-            <p className="text-[10px] uppercase tracking-widest theme-label-muted mb-2.5">Theme</p>
+            <p className="text-[10px] uppercase tracking-widest theme-label-muted mb-2.5">{t('theme.label')}</p>
             <div className="space-y-1">
               {THEMES.map(theme => (
                 <button
@@ -54,11 +56,11 @@ export default function ThemePicker() {
                     }}
                   />
                   <span className="text-xs font-medium theme-label flex-1 text-left">
-                    {theme.name}
+                    {t('theme.' + theme.id.replace(/-/g, '_'))}
                   </span>
                   {!theme.dark && (
                     <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-400/15 text-amber-500 font-semibold">
-                      Light
+                      {t('theme.light')}
                     </span>
                   )}
                   {themeId === theme.id && (
