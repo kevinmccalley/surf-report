@@ -5,6 +5,17 @@ import SearchBar from './SearchBar'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 import type { Locale } from '@/app/i18n/LanguageContext'
 
+// ── Per-locale hero slogans ───────────────────────────────────────────────────
+// Each tuple is [pre, gradient-highlight, post] matching the visual treatment.
+
+const SLOGANS: Record<Locale, [string, string, string]> = {
+  'en':    ['Know',  'before', 'you go.'],
+  'es':    ['Sabe',  'antes',  'de entrar.'],
+  'fr':    ['Sache', 'avant',  'de plonger.'],
+  'pt-BR': ['Saiba', 'antes',  'de pegar a onda.'],
+  'pt-PT': ['Saiba', 'antes',  'de partir.'],
+}
+
 // ── Global classics ───────────────────────────────────────────────────────────
 
 const FEATURED = [
@@ -68,6 +79,7 @@ const LOCALE_SPOTS: Record<Locale, Spot[]> = {
 export default function LandingHero({ onSelect }: { onSelect: (r: GeoResult) => void }) {
   const { t, locale } = useLanguage()
   const localSpots = LOCALE_SPOTS[locale]
+  const [sloganPre, sloganHighlight, sloganPost] = SLOGANS[locale]
 
   function toGeoResult(spot: Spot): GeoResult {
     return { name: spot.name, country: spot.country, lat: spot.lat, lon: spot.lon, displayName: `${spot.name}, ${spot.country}` }
@@ -89,11 +101,11 @@ export default function LandingHero({ onSelect }: { onSelect: (r: GeoResult) => 
         </div>
 
         <h1 className="text-4xl sm:text-6xl font-bold tracking-tight mb-3">
-          <span className="text-white">Know</span>{' '}
+          <span className="text-white">{sloganPre}</span>{' '}
           <span className="bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">
-            before
+            {sloganHighlight}
           </span>{' '}
-          <span className="text-white">you go.</span>
+          <span className="text-white">{sloganPost}</span>
         </h1>
 
         <p className="text-slate-400 text-base sm:text-lg mb-8 max-w-md mx-auto leading-relaxed">
