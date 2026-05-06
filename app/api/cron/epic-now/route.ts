@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { kv } from '@vercel/kv'
+import { rset } from '@/app/lib/redis'
 import { computeSurfRating } from '@/app/lib/surf-rating'
 import { getDirectionLabel, findCurrentHourIndex } from '@/app/lib/utils'
 import NOTABLE_SPOTS from '@/app/lib/notable-spots.json'
@@ -24,8 +24,8 @@ export interface EpicNowData {
   checkedCount: number
 }
 
-const KV_KEY = 'epic-now'
-const KV_TTL = 6 * 3600  // 6 hours
+const REDIS_KEY = 'epic-now'
+const REDIS_TTL = 6 * 3600  // 6 hours
 
 function isAuthorized(req: NextRequest): boolean {
   if (process.env.NODE_ENV !== 'production') return true
@@ -122,11 +122,7 @@ export async function GET(request: NextRequest) {
     checkedCount: spots.length,
   }
 
-  try {
-    await kv.set(KV_KEY, data, { ex: KV_TTL })
-  } catch {
-    // KV not available in dev — still return results
-  }
+  await rset(REDIS_KEY, data, REDIS_TTL)
 
   return NextResponse.json({ ok: true, epicCount: epicSpots.length, checkedCount: spots.length })
 }
