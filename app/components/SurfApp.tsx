@@ -47,6 +47,7 @@ export default function SurfApp() {
   const [buoyData, setBuoyData] = useState<(BuoyReading & { waveDirectionLabel?: string | null; windDirectionLabel?: string | null }) | null>(null)
   const [showMap, setShowMap] = useState(false)
   const [nearbySpots, setNearbySpots] = useState<NearbySpot[]>([])
+  const [nearbyLoading, setNearbyLoading] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
 
@@ -93,6 +94,7 @@ export default function SurfApp() {
     setLastYearReport(null)
     setBuoyData(null)
     setNearbySpots([])
+    setNearbyLoading(false)
     setLastGeoResult(result)
     setHistDateInput('')
     if (updateUrl) {
@@ -136,10 +138,11 @@ export default function SurfApp() {
 
       // Non-blocking: fetch nearby surf spots after main data is shown
       if (surfJson.isCoastal) {
+        setNearbyLoading(true)
         fetch(`/api/nearby?lat=${result.lat}&lon=${result.lon}`)
           .then(r => r.ok ? r.json() : [])
-          .then((spots: NearbySpot[]) => setNearbySpots(spots))
-          .catch(() => {})
+          .then((spots: NearbySpot[]) => { setNearbySpots(spots); setNearbyLoading(false) })
+          .catch(() => setNearbyLoading(false))
       }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Something went wrong')
@@ -327,9 +330,10 @@ export default function SurfApp() {
 
             {report.isCoastal && <ConditionCards report={report} units={units} />}
 
-            {report.isCoastal && nearbySpots.length > 0 && (
+            {report.isCoastal && (nearbyLoading || nearbySpots.length > 0) && (
               <NearbySpots
                 spots={nearbySpots}
+                loading={nearbyLoading}
                 units={units}
                 onSelect={(spot) => fetchReport({
                   lat: spot.lat, lon: spot.lon,

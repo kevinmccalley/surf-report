@@ -352,6 +352,7 @@ const ptPT: Record<string, string> = {
   // NearbySpots
   'nearby.title': 'Spots Próximos',
   'nearby.away': 'a {dist} km',
+  'nearby.noSpots': 'Nenhum spot de surf encontrado nas proximidades.',
 
   // AccuracyPage — Data Sources section
   'accuracy.sourcesTitle': 'Fontes de dados',

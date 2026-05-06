@@ -352,6 +352,7 @@ const ptBR: Record<string, string> = {
   // NearbySpots
   'nearby.title': 'Picos Próximos',
   'nearby.away': 'a {dist} km',
+  'nearby.noSpots': 'Nenhum pico de surf encontrado nas proximidades.',
 
   // AccuracyPage — Data Sources section
   'accuracy.sourcesTitle': 'Fontes de dados',

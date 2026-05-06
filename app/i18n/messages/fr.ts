@@ -352,6 +352,7 @@ const fr: Record<string, string> = {
   // NearbySpots
   'nearby.title': 'Spots à proximité',
   'nearby.away': 'à {dist} km',
+  'nearby.noSpots': 'Aucun spot de surf trouvé à proximité.',
 
   // AccuracyPage — Data Sources section
   'accuracy.sourcesTitle': 'Sources de données',
