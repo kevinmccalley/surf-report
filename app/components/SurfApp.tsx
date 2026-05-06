@@ -273,11 +273,11 @@ export default function SurfApp() {
 
       <main id="main-content">
         {!report && !loading && !error && (
-          <LandingHero onSelect={fetchReport} />
+          <EpicNowSection units={units} onSelect={fetchReport} />
         )}
 
         {!report && !loading && !error && (
-          <EpicNowSection units={units} onSelect={fetchReport} />
+          <LandingHero onSelect={fetchReport} />
         )}
 
         {loading && <LoadingSkeleton />}
