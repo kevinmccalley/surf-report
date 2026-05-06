@@ -352,6 +352,14 @@ const ptPT: Record<string, string> = {
   // NearbySpots
   'nearby.title': 'Spots Próximos',
   'nearby.away': 'a {dist} km',
+
+  // AccuracyPage — Data Sources section
+  'accuracy.sourcesTitle': 'Fontes de dados',
+  'accuracy.sourcesIntro': 'Cada número neste site vem de uma fonte aberta e gratuita. Sem feeds proprietários, sem modelos pagos. Aqui está exatamente de onde vem cada dado.',
+  'accuracy.sourcesColSource': 'Fonte',
+  'accuracy.sourcesColUse': 'Utilização',
+  'accuracy.sourcesColCoverage': 'Cobertura',
+  'accuracy.sourcesColLicense': 'Licença',
 }
 
 export default ptPT

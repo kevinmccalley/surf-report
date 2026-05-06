@@ -282,6 +282,9 @@ export default function AccuracyPageContent({ data }: { data: AccuracyData }) {
           </div>
         </section>
 
+        {/* Data Sources */}
+        <DataSourcesSection t={t} />
+
         {/* CTA */}
         <div className="text-center pt-4">
           <Link
@@ -298,5 +301,236 @@ export default function AccuracyPageContent({ data }: { data: AccuracyData }) {
 
       </main>
     </div>
+  )
+}
+
+// ── Data Sources table ────────────────────────────────────────────────────────
+
+interface DataSource {
+  name: string
+  url: string
+  use: string
+  coverage: string
+  license: string
+  tag: 'waves' | 'weather' | 'tides' | 'buoy' | 'geo' | 'map'
+}
+
+const DATA_SOURCES: DataSource[] = [
+  {
+    name: 'Open-Meteo Marine API',
+    url: 'https://open-meteo.com/en/docs/marine-weather-api',
+    use: 'Wave height, swell direction & period, sea surface temperature',
+    coverage: 'Global oceans',
+    license: 'Free · CC BY 4.0',
+    tag: 'waves',
+  },
+  {
+    name: 'Open-Meteo Forecast API',
+    url: 'https://open-meteo.com/en/docs',
+    use: 'Wind speed & direction, air temperature, UV index, precipitation probability, weather codes',
+    coverage: 'Global',
+    license: 'Free · CC BY 4.0',
+    tag: 'weather',
+  },
+  {
+    name: 'Open-Meteo Archive API',
+    url: 'https://open-meteo.com/en/docs/historical-weather-api',
+    use: 'Historical surf conditions (back to Jan 2022) and 3-year surf climatology averages',
+    coverage: 'Global',
+    license: 'Free · CC BY 4.0',
+    tag: 'waves',
+  },
+  {
+    name: 'NOAA CO-OPS',
+    url: 'https://tidesandcurrents.noaa.gov/',
+    use: 'Harmonic tide predictions for US coastal stations; ground-truth reference for our accuracy verification',
+    coverage: 'United States',
+    license: 'Free · public domain',
+    tag: 'tides',
+  },
+  {
+    name: 'Fisheries & Oceans Canada (DFO)',
+    url: 'https://www.tides.gc.ca/',
+    use: 'Harmonic tide predictions for Canadian coastal stations',
+    coverage: 'Canada',
+    license: 'Free · open govt licence',
+    tag: 'tides',
+  },
+  {
+    name: 'Open-Meteo Global Tidal Model',
+    url: 'https://open-meteo.com/en/docs/tide-api',
+    use: 'Tide predictions for all locations outside NOAA / DFO coverage — the rest of the world',
+    coverage: 'Global (fallback)',
+    license: 'Free · CC BY 4.0',
+    tag: 'tides',
+  },
+  {
+    name: 'NOAA NDBC',
+    url: 'https://www.ndbc.noaa.gov/',
+    use: 'Live ocean buoy readings — wave height, dominant period, swell direction, water temperature, wind',
+    coverage: 'Global (US-operated)',
+    license: 'Free · public domain',
+    tag: 'buoy',
+  },
+  {
+    name: 'OpenStreetMap Nominatim',
+    url: 'https://nominatim.openstreetmap.org/',
+    use: 'Location search and geocoding — converts place names to coordinates',
+    coverage: 'Global',
+    license: 'Free · ODbL',
+    tag: 'geo',
+  },
+  {
+    name: 'OpenStreetMap Overpass API',
+    url: 'https://overpass-api.de/',
+    use: 'Nearby surf spot discovery — queries nodes tagged sport=surfing',
+    coverage: 'Global',
+    license: 'Free · ODbL',
+    tag: 'geo',
+  },
+  {
+    name: 'Wikidata',
+    url: 'https://www.wikidata.org/',
+    use: 'Supplementary surf break data (Q693906) for regions with sparse OSM coverage',
+    coverage: 'Global',
+    license: 'Free · CC0',
+    tag: 'geo',
+  },
+  {
+    name: 'CartoDB Basemaps',
+    url: 'https://carto.com/basemaps/',
+    use: 'Interactive map tile backgrounds (light and dark themes)',
+    coverage: 'Global',
+    license: 'Free · attribution required',
+    tag: 'map',
+  },
+  {
+    name: 'Natural Earth 110m',
+    url: 'https://www.naturalearthdata.com/',
+    use: 'Land polygon masking — ensures animated swell arcs stop at coastlines on the live map',
+    coverage: 'Global',
+    license: 'Free · public domain',
+    tag: 'map',
+  },
+]
+
+const TAG_STYLES: Record<DataSource['tag'], { bg: string; text: string; label: string }> = {
+  waves:   { bg: 'rgba(14,165,233,0.14)',  text: '#38bdf8', label: 'Waves'    },
+  weather: { bg: 'rgba(234,179,8,0.14)',   text: '#fbbf24', label: 'Weather'  },
+  tides:   { bg: 'rgba(45,212,191,0.14)',  text: '#2dd4bf', label: 'Tides'    },
+  buoy:    { bg: 'rgba(168,85,247,0.14)',  text: '#c084fc', label: 'Buoy'     },
+  geo:     { bg: 'rgba(132,204,22,0.14)',  text: '#a3e635', label: 'Location' },
+  map:     { bg: 'rgba(148,163,184,0.14)', text: '#94a3b8', label: 'Map'      },
+}
+
+function Tag({ tag }: { tag: DataSource['tag'] }) {
+  const s = TAG_STYLES[tag]
+  return (
+    <span
+      className="inline-block text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full leading-none shrink-0"
+      style={{ background: s.bg, color: s.text }}
+    >
+      {s.label}
+    </span>
+  )
+}
+
+function DataSourcesSection({ t }: { t: (k: string) => string }) {
+  return (
+    <section className="glass-card rounded-2xl p-4 sm:p-6">
+      <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1.5">
+        {t('accuracy.sourcesTitle')}
+      </h2>
+      <p className="text-sm text-slate-500 leading-relaxed mb-5 max-w-2xl">
+        {t('accuracy.sourcesIntro')}
+      </p>
+
+      {/* Mobile: stacked cards */}
+      <div className="sm:hidden space-y-2">
+        {DATA_SOURCES.map(src => (
+          <div
+            key={src.name}
+            className="rounded-xl p-3.5"
+            style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
+          >
+            <div className="flex items-center gap-2 mb-1.5">
+              <Tag tag={src.tag} />
+              <a
+                href={src.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-sky-400 hover:text-sky-300 transition-colors"
+              >
+                {src.name} ↗
+              </a>
+            </div>
+            <p className="text-xs text-slate-400 leading-relaxed mb-1.5">{src.use}</p>
+            <div className="flex gap-3 text-[11px] text-slate-600">
+              <span>{src.coverage}</span>
+              <span>·</span>
+              <span>{src.license}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop: table */}
+      <div className="hidden sm:block overflow-x-auto -mx-1 px-1">
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr>
+              {(
+                ['accuracy.sourcesColSource', 'accuracy.sourcesColUse', 'accuracy.sourcesColCoverage', 'accuracy.sourcesColLicense'] as const
+              ).map(k => (
+                <th
+                  key={k}
+                  className="text-left text-[10px] font-semibold uppercase tracking-widest text-slate-600 pb-3 pr-5 last:pr-0"
+                >
+                  {t(k)}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {DATA_SOURCES.map((src, i) => (
+              <tr
+                key={src.name}
+                style={{
+                  borderTop: i === 0 ? undefined : '1px solid rgba(255,255,255,0.045)',
+                }}
+              >
+                <td className="py-3 pr-5 align-top">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <Tag tag={src.tag} />
+                    <a
+                      href={src.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sky-400 hover:text-sky-300 transition-colors font-medium whitespace-nowrap"
+                    >
+                      {src.name} ↗
+                    </a>
+                  </div>
+                </td>
+                <td className="py-3 pr-5 align-top text-slate-400 leading-relaxed" style={{ maxWidth: '22rem' }}>
+                  {src.use}
+                </td>
+                <td className="py-3 pr-5 align-top text-slate-500 whitespace-nowrap">
+                  {src.coverage}
+                </td>
+                <td className="py-3 align-top text-slate-600 whitespace-nowrap">
+                  {src.license}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p className="text-xs text-slate-700 mt-5 pt-4 border-t border-white/5 leading-relaxed">
+        All sources above are accessed without API keys, without usage-based billing, and under terms
+        that permit publishing data to end users. No proprietary data, no hidden fees.
+      </p>
+    </section>
   )
 }

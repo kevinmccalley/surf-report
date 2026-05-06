@@ -352,6 +352,14 @@ const fr: Record<string, string> = {
   // NearbySpots
   'nearby.title': 'Spots à proximité',
   'nearby.away': 'à {dist} km',
+
+  // AccuracyPage — Data Sources section
+  'accuracy.sourcesTitle': 'Sources de données',
+  'accuracy.sourcesIntro': 'Chaque chiffre de ce site provient d\'une source ouverte et gratuite. Aucun flux propriétaire, aucun modèle payant. Voici exactement l\'origine de chaque donnée.',
+  'accuracy.sourcesColSource': 'Source',
+  'accuracy.sourcesColUse': 'Utilisation',
+  'accuracy.sourcesColCoverage': 'Couverture',
+  'accuracy.sourcesColLicense': 'Licence',
 }
 
 export default fr
