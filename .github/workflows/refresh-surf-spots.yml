@@ -1,0 +1,36 @@
+name: Refresh surf spots
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'   # every Monday at 00:00 UTC
+  workflow_dispatch:        # allow manual trigger from GitHub UI
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate surf-spots.json
+        run: python3 scripts/generate-surf-spots.py
+
+      - name: Commit updated spots if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add app/lib/surf-spots.json
+          if git diff --cached --quiet; then
+            echo "No changes to surf-spots.json — skipping commit"
+          else
+            COUNT=$(python3 -c "import json; d=json.load(open('app/lib/surf-spots.json')); print(len(d))")
+            git commit -m "chore: refresh surf spots dataset ($COUNT spots)"
+            git push origin HEAD:master
+          fi
