@@ -97,9 +97,6 @@ export default function AccuracyPageContent({ data }: { data: AccuracyData }) {
 
         {/* Headline */}
         <div className="py-2">
-          <p className="text-sm font-medium text-slate-400 mb-4">
-            {t('accuracy.surflineNote')}
-          </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
             <span className="text-teal-400">{displayPct}%</span>
             <span className="text-slate-300"> {t('accuracy.headlinePredictions')}</span>

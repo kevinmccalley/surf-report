@@ -247,13 +247,11 @@ const en: Record<string, string> = {
   'mkt.activatingDesc': 'Confirming your subscription. This takes just a moment.',
   'mkt.accuracy.verified': 'Verified accuracy',
   'mkt.accuracy.within': 'within 30 minutes',
-  'mkt.accuracy.noPublish': "Surfline doesn't publish their accuracy. We do.",
   'mkt.accuracy.verified2': '{count} tide extremes verified against NOAA official predictions over {days} days. Live, transparent, and independently verifiable.',
 
   // AccuracyPage
   'accuracy.breadcrumb': 'Forecast Accuracy',
   'accuracy.updatedAt': 'Updated {time}',
-  'accuracy.surflineNote': "Surfline doesn't publish their accuracy numbers. We do.",
   'accuracy.headlinePredictions': 'of tide predictions',
   'accuracy.headlineWithin': 'within 30 minutes',
   'accuracy.subheadline1': '30 minutes is the difference between catching the right session and missing it.',

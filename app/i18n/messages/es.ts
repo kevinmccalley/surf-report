@@ -247,13 +247,11 @@ const es: Record<string, string> = {
   'mkt.activatingDesc': 'Confirmando tu suscripción. Esto toma solo un momento.',
   'mkt.accuracy.verified': 'Precisión verificada',
   'mkt.accuracy.within': 'dentro de 30 minutos',
-  'mkt.accuracy.noPublish': 'Surfline no publica su precisión. Nosotros sí.',
   'mkt.accuracy.verified2': '{count} extremos de marea verificados contra predicciones oficiales de NOAA en {days} días. En vivo, transparente e independientemente verificable.',
 
   // AccuracyPage
   'accuracy.breadcrumb': 'Precisión del Pronóstico',
   'accuracy.updatedAt': 'Actualizado {time}',
-  'accuracy.surflineNote': 'Surfline no publica sus números de precisión. Nosotros sí.',
   'accuracy.headlinePredictions': 'de las predicciones de marea',
   'accuracy.headlineWithin': 'dentro de 30 minutos',
   'accuracy.subheadline1': '30 minutos es la diferencia entre atrapar la sesión correcta y perdérsela.',

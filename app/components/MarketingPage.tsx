@@ -362,7 +362,6 @@ function AccuracyBadge() {
               </div>
               <div className="w-px h-12 bg-white/10 hidden sm:block" />
               <div className="flex-1 text-center sm:text-left">
-                <p className="text-white font-semibold mb-1">{t('mkt.accuracy.noPublish')}</p>
                 <p className="text-sm text-slate-400 leading-relaxed">
                   {t('mkt.accuracy.verified2', { count: data.totalMatches.toLocaleString(), days: data.days })}
                 </p>
