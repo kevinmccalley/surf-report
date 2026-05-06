@@ -101,10 +101,18 @@ async function fetchWikidataSpots(lat: number, lon: number): Promise<RawSpot[]> 
 }
 
 // ── Dedup by proximity (prefer higher-priority source names) ───────────────────
+// Same-source spots are already distinct entries (Surfline wouldn't list Coxos
+// and Ribeira D'Ilhas twice for the same wave), so only remove coordinate-
+// identical duplicates within the same source (< 50m). Cross-source dedup
+// uses 2km so a Wikidata or OSM entry for "Lower Trestles" doesn't double up
+// with the Surfline entry.
 function deduplicate(spots: RawSpot[]): RawSpot[] {
   const kept: RawSpot[] = []
   for (const s of spots) {
-    const idx = kept.findIndex(k => haversineKm(s.lat, s.lon, k.lat, k.lon) < 2.0)
+    const idx = kept.findIndex(k => {
+      const dist = haversineKm(s.lat, s.lon, k.lat, k.lon)
+      return s.source === k.source ? dist < 0.05 : dist < 2.0
+    })
     if (idx === -1) {
       kept.push(s)
     } else if (SOURCE_PRIORITY[s.source] > SOURCE_PRIORITY[kept[idx].source]) {
