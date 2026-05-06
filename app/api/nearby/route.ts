@@ -3,7 +3,9 @@ import type { NearbySpot } from '@/app/lib/types'
 import { computeSurfRating } from '@/app/lib/surf-rating'
 import { getDirectionLabel, findCurrentHourIndex, estimateWaterTemp } from '@/app/lib/utils'
 
-interface RawSpot { name: string; lat: number; lon: number; source: 'osm' | 'wikidata' }
+interface RawSpot { name: string; lat: number; lon: number; source: 'surfline' | 'osm' | 'wikidata' }
+
+const SOURCE_PRIORITY: Record<RawSpot['source'], number> = { surfline: 3, osm: 2, wikidata: 1 }
 
 function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
   const R = 6371
@@ -15,7 +17,36 @@ function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): nu
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 }
 
-// ── Primary source: OpenStreetMap Overpass ─────────────────────────────────────
+// ── Primary source: Surfline spot directory ────────────────────────────────────
+// Spot names and coordinates only — all forecast data comes from Open-Meteo.
+async function fetchSurflineSpots(lat: number, lon: number): Promise<RawSpot[]> {
+  const pad = 1.0  // ~110 km bounding box
+  const url =
+    `https://services.surfline.com/kbyg/mapview` +
+    `?south=${lat - pad}&north=${lat + pad}&west=${lon - pad}&east=${lon + pad}`
+  try {
+    const res = await fetch(url, {
+      headers: { 'User-Agent': 'Mozilla/5.0' },
+      signal: AbortSignal.timeout(8000),
+      next: { revalidate: 86400 },
+    })
+    if (!res.ok) return []
+    const data = await res.json()
+    return (data?.data?.spots ?? [])
+      .filter((s: Record<string, unknown>) =>
+        s.name && typeof s.lat === 'number' && typeof s.lon === 'number')
+      .map((s: Record<string, unknown>) => ({
+        name:   s.name as string,
+        lat:    s.lat  as number,
+        lon:    s.lon  as number,
+        source: 'surfline' as const,
+      }))
+  } catch {
+    return []
+  }
+}
+
+// ── Fallback: OpenStreetMap Overpass ───────────────────────────────────────────
 async function fetchOverpassSpots(lat: number, lon: number, radiusM: number): Promise<RawSpot[]> {
   const query =
     `[out:json][timeout:20];` +
@@ -36,6 +67,7 @@ async function fetchOverpassSpots(lat: number, lon: number, radiusM: number): Pr
     for (const el of (data.elements ?? [])) {
       const name: string = el.tags?.name ?? el.tags?.['name:en'] ?? ''
       if (!name) continue
+      if (el.tags?.shop || el.tags?.amenity) continue  // skip surf shops / businesses
       const elLat: number | undefined = el.type === 'node' ? el.lat : el.center?.lat
       const elLon: number | undefined = el.type === 'node' ? el.lon : el.center?.lon
       if (elLat == null || elLon == null) continue
@@ -47,14 +79,14 @@ async function fetchOverpassSpots(lat: number, lon: number, radiusM: number): Pr
   }
 }
 
-// ── Supplementary source: Wikidata surf breaks (Q693906) ──────────────────────
-// Covers many globally-known spots not yet mapped in OSM, particularly in
-// Central America, West Africa, Indonesia and lesser-mapped coastlines.
+// ── Fallback: Wikidata surf breaks ─────────────────────────────────────────────
+// Q693906 = surfing break · Q2368508 = surf spot
 async function fetchWikidataSpots(lat: number, lon: number): Promise<RawSpot[]> {
   const pad = 0.9  // ~100 km
   const sparql = `
     SELECT ?item ?itemLabel ?lat ?lon WHERE {
-      ?item wdt:P31 wd:Q693906.
+      VALUES ?type { wd:Q693906 wd:Q2368508 }
+      ?item wdt:P31 ?type.
       ?item p:P625/psv:P625 [wikibase:geoLatitude ?lat; wikibase:geoLongitude ?lon].
       FILTER(?lat > ${lat - pad} && ?lat < ${lat + pad} && ?lon > ${lon - pad} && ?lon < ${lon + pad})
       SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
@@ -77,9 +109,9 @@ async function fetchWikidataSpots(lat: number, lon: number): Promise<RawSpot[]> 
       .filter((b: Record<string, { value: string }>) =>
         b.itemLabel?.value && !b.itemLabel.value.startsWith('Q'))
       .map((b: Record<string, { value: string }>) => ({
-        name: b.itemLabel.value,
-        lat: parseFloat(b.lat.value),
-        lon: parseFloat(b.lon.value),
+        name:   b.itemLabel.value,
+        lat:    parseFloat(b.lat.value),
+        lon:    parseFloat(b.lon.value),
         source: 'wikidata' as const,
       }))
   } catch {
@@ -87,14 +119,14 @@ async function fetchWikidataSpots(lat: number, lon: number): Promise<RawSpot[]> 
   }
 }
 
-// ── Dedup by proximity (prefer OSM names) ─────────────────────────────────────
+// ── Dedup by proximity (prefer higher-priority source names) ───────────────────
 function deduplicate(spots: RawSpot[]): RawSpot[] {
   const kept: RawSpot[] = []
   for (const s of spots) {
     const idx = kept.findIndex(k => haversineKm(s.lat, s.lon, k.lat, k.lon) < 2.0)
     if (idx === -1) {
       kept.push(s)
-    } else if (s.source === 'osm' && kept[idx].source !== 'osm') {
+    } else if (SOURCE_PRIORITY[s.source] > SOURCE_PRIORITY[kept[idx].source]) {
       kept[idx] = s
     }
   }
@@ -179,12 +211,14 @@ export async function GET(request: NextRequest) {
   if (isNaN(lat) || isNaN(lon))
     return NextResponse.json({ error: 'lat and lon required' }, { status: 400 })
 
-  const [osmResult, wdResult] = await Promise.allSettled([
+  const [slResult, osmResult, wdResult] = await Promise.allSettled([
+    fetchSurflineSpots(lat, lon),
     fetchOverpassSpots(lat, lon, 80000),
     fetchWikidataSpots(lat, lon),
   ])
 
   const raw: RawSpot[] = [
+    ...(slResult.status  === 'fulfilled' ? slResult.value  : []),
     ...(osmResult.status === 'fulfilled' ? osmResult.value : []),
     ...(wdResult.status  === 'fulfilled' ? wdResult.value  : []),
   ]

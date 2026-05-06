@@ -381,9 +381,17 @@ const DATA_SOURCES: DataSource[] = [
     tag: 'geo',
   },
   {
+    name: 'Surfline',
+    url: 'https://www.surfline.com/',
+    use: 'Nearby surf spot discovery — spot names and coordinates only; all forecast data is sourced independently from Open-Meteo',
+    coverage: 'Global',
+    license: 'Public web endpoint',
+    tag: 'geo',
+  },
+  {
     name: 'OpenStreetMap Overpass API',
     url: 'https://overpass-api.de/',
-    use: 'Nearby surf spot discovery — queries nodes tagged sport=surfing',
+    use: 'Supplementary nearby spot discovery — fallback for regions not covered by Surfline',
     coverage: 'Global',
     license: 'Free · ODbL',
     tag: 'geo',
@@ -391,7 +399,7 @@ const DATA_SOURCES: DataSource[] = [
   {
     name: 'Wikidata',
     url: 'https://www.wikidata.org/',
-    use: 'Supplementary surf break data (Q693906) for regions with sparse OSM coverage',
+    use: 'Supplementary surf break data (Q693906 surfing break · Q2368508 surf spot) for sparse coverage areas',
     coverage: 'Global',
     license: 'Free · CC0',
     tag: 'geo',
@@ -414,23 +422,23 @@ const DATA_SOURCES: DataSource[] = [
   },
 ]
 
-const TAG_STYLES: Record<DataSource['tag'], { bg: string; text: string; label: string }> = {
-  waves:   { bg: 'rgba(14,165,233,0.14)',  text: '#38bdf8', label: 'Waves'    },
-  weather: { bg: 'rgba(234,179,8,0.14)',   text: '#fbbf24', label: 'Weather'  },
-  tides:   { bg: 'rgba(45,212,191,0.14)',  text: '#2dd4bf', label: 'Tides'    },
-  buoy:    { bg: 'rgba(168,85,247,0.14)',  text: '#c084fc', label: 'Buoy'     },
-  geo:     { bg: 'rgba(132,204,22,0.14)',  text: '#a3e635', label: 'Location' },
-  map:     { bg: 'rgba(148,163,184,0.14)', text: '#94a3b8', label: 'Map'      },
+const TAG_STYLES: Record<DataSource['tag'], { bg: string; text: string; labelKey: string }> = {
+  waves:   { bg: 'rgba(14,165,233,0.14)',  text: '#38bdf8', labelKey: 'accuracy.sourceTag.waves'   },
+  weather: { bg: 'rgba(234,179,8,0.14)',   text: '#fbbf24', labelKey: 'accuracy.sourceTag.weather' },
+  tides:   { bg: 'rgba(45,212,191,0.14)',  text: '#2dd4bf', labelKey: 'accuracy.sourceTag.tides'   },
+  buoy:    { bg: 'rgba(168,85,247,0.14)',  text: '#c084fc', labelKey: 'accuracy.sourceTag.buoy'    },
+  geo:     { bg: 'rgba(132,204,22,0.14)',  text: '#a3e635', labelKey: 'accuracy.sourceTag.geo'     },
+  map:     { bg: 'rgba(148,163,184,0.14)', text: '#94a3b8', labelKey: 'accuracy.sourceTag.map'     },
 }
 
-function Tag({ tag }: { tag: DataSource['tag'] }) {
+function Tag({ tag, t }: { tag: DataSource['tag']; t: (k: string) => string }) {
   const s = TAG_STYLES[tag]
   return (
     <span
       className="inline-block text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full leading-none shrink-0"
       style={{ background: s.bg, color: s.text }}
     >
-      {s.label}
+      {t(s.labelKey)}
     </span>
   )
 }
@@ -454,7 +462,7 @@ function DataSourcesSection({ t }: { t: (k: string) => string }) {
             style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
           >
             <div className="flex items-center gap-2 mb-1.5">
-              <Tag tag={src.tag} />
+              <Tag tag={src.tag} t={t} />
               <a
                 href={src.url}
                 target="_blank"
@@ -501,7 +509,7 @@ function DataSourcesSection({ t }: { t: (k: string) => string }) {
               >
                 <td className="py-3 pr-5 align-top">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <Tag tag={src.tag} />
+                    <Tag tag={src.tag} t={t} />
                     <a
                       href={src.url}
                       target="_blank"
@@ -528,8 +536,7 @@ function DataSourcesSection({ t }: { t: (k: string) => string }) {
       </div>
 
       <p className="text-xs text-slate-700 mt-5 pt-4 border-t border-white/5 leading-relaxed">
-        All sources above are accessed without API keys, without usage-based billing, and under terms
-        that permit publishing data to end users. No proprietary data, no hidden fees.
+        {t('accuracy.sourcesFooter')}
       </p>
     </section>
   )

@@ -361,6 +361,13 @@ const es: Record<string, string> = {
   'accuracy.sourcesColUse': 'Uso',
   'accuracy.sourcesColCoverage': 'Cobertura',
   'accuracy.sourcesColLicense': 'Licencia',
+  'accuracy.sourcesFooter': 'Open-Meteo, NOAA, DFO, CartoDB, OSM y Natural Earth se usan bajo sus respectivas licencias abiertas. El endpoint web público de Surfline se usa únicamente para el descubrimiento de spots cercanos (nombres y coordenadas); todos los datos de pronóstico provienen de forma independiente de Open-Meteo.',
+  'accuracy.sourceTag.waves':   'Olas',
+  'accuracy.sourceTag.weather': 'Clima',
+  'accuracy.sourceTag.tides':   'Mareas',
+  'accuracy.sourceTag.buoy':    'Boya',
+  'accuracy.sourceTag.geo':     'Ubicación',
+  'accuracy.sourceTag.map':     'Mapa',
 }
 
 export default es
