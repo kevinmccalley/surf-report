@@ -2,10 +2,11 @@ import { NextRequest, NextResponse } from 'next/server'
 import type { NearbySpot } from '@/app/lib/types'
 import { computeSurfRating } from '@/app/lib/surf-rating'
 import { getDirectionLabel, findCurrentHourIndex, estimateWaterTemp } from '@/app/lib/utils'
+import STATIC_SPOTS from '@/app/lib/surf-spots.json'
 
-interface RawSpot { name: string; lat: number; lon: number; source: 'surfline' | 'osm' | 'wikidata' }
+interface RawSpot { name: string; lat: number; lon: number; source: 'static' | 'osm' | 'wikidata' }
 
-const SOURCE_PRIORITY: Record<RawSpot['source'], number> = { surfline: 3, osm: 2, wikidata: 1 }
+const SOURCE_PRIORITY: Record<RawSpot['source'], number> = { static: 3, osm: 2, wikidata: 1 }
 
 function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
   const R = 6371
@@ -17,33 +18,13 @@ function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): nu
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 }
 
-// ── Primary source: Surfline spot directory ────────────────────────────────────
+// ── Primary source: bundled Surfline spot directory ────────────────────────────
+// Static JSON generated at build time from Surfline's public web endpoint.
 // Spot names and coordinates only — all forecast data comes from Open-Meteo.
-async function fetchSurflineSpots(lat: number, lon: number): Promise<RawSpot[]> {
-  const pad = 1.0  // ~110 km bounding box
-  const url =
-    `https://services.surfline.com/kbyg/mapview` +
-    `?south=${lat - pad}&north=${lat + pad}&west=${lon - pad}&east=${lon + pad}`
-  try {
-    const res = await fetch(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0' },
-      signal: AbortSignal.timeout(8000),
-      next: { revalidate: 86400 },
-    })
-    if (!res.ok) return []
-    const data = await res.json()
-    return (data?.data?.spots ?? [])
-      .filter((s: Record<string, unknown>) =>
-        s.name && typeof s.lat === 'number' && typeof s.lon === 'number')
-      .map((s: Record<string, unknown>) => ({
-        name:   s.name as string,
-        lat:    s.lat  as number,
-        lon:    s.lon  as number,
-        source: 'surfline' as const,
-      }))
-  } catch {
-    return []
-  }
+function fetchStaticSpots(lat: number, lon: number, radiusKm: number): RawSpot[] {
+  return (STATIC_SPOTS as Array<{ name: string; lat: number; lon: number }>)
+    .filter(s => haversineKm(lat, lon, s.lat, s.lon) < radiusKm)
+    .map(s => ({ name: s.name, lat: s.lat, lon: s.lon, source: 'static' as const }))
 }
 
 // ── Fallback: OpenStreetMap Overpass ───────────────────────────────────────────
@@ -67,7 +48,7 @@ async function fetchOverpassSpots(lat: number, lon: number, radiusM: number): Pr
     for (const el of (data.elements ?? [])) {
       const name: string = el.tags?.name ?? el.tags?.['name:en'] ?? ''
       if (!name) continue
-      if (el.tags?.shop || el.tags?.amenity) continue  // skip surf shops / businesses
+      if (el.tags?.shop || el.tags?.amenity) continue
       const elLat: number | undefined = el.type === 'node' ? el.lat : el.center?.lat
       const elLon: number | undefined = el.type === 'node' ? el.lon : el.center?.lon
       if (elLat == null || elLon == null) continue
@@ -82,7 +63,7 @@ async function fetchOverpassSpots(lat: number, lon: number, radiusM: number): Pr
 // ── Fallback: Wikidata surf breaks ─────────────────────────────────────────────
 // Q693906 = surfing break · Q2368508 = surf spot
 async function fetchWikidataSpots(lat: number, lon: number): Promise<RawSpot[]> {
-  const pad = 0.9  // ~100 km
+  const pad = 0.9
   const sparql = `
     SELECT ?item ?itemLabel ?lat ?lon WHERE {
       VALUES ?type { wd:Q693906 wd:Q2368508 }
@@ -159,7 +140,7 @@ async function fetchSpotConditions(
       fetch(weatherUrl, { next: { revalidate: 1800 } }),
     ])
     const [marine, weather] = await Promise.all([marineRes.json(), weatherRes.json()])
-    if (marine.error) return null  // inland coordinate — skip
+    if (marine.error) return null
 
     const utcOffset = (marine.utc_offset_seconds ?? weather.utc_offset_seconds) ?? 0
     const idx = findCurrentHourIndex(weather.hourly.time as string[], utcOffset)
@@ -211,14 +192,15 @@ export async function GET(request: NextRequest) {
   if (isNaN(lat) || isNaN(lon))
     return NextResponse.json({ error: 'lat and lon required' }, { status: 400 })
 
-  const [slResult, osmResult, wdResult] = await Promise.allSettled([
-    fetchSurflineSpots(lat, lon),
+  // Static spots are instant; remote fallbacks run in parallel
+  const staticSpots = fetchStaticSpots(lat, lon, 80)
+  const [osmResult, wdResult] = await Promise.allSettled([
     fetchOverpassSpots(lat, lon, 80000),
     fetchWikidataSpots(lat, lon),
   ])
 
   const raw: RawSpot[] = [
-    ...(slResult.status  === 'fulfilled' ? slResult.value  : []),
+    ...staticSpots,
     ...(osmResult.status === 'fulfilled' ? osmResult.value : []),
     ...(wdResult.status  === 'fulfilled' ? wdResult.value  : []),
   ]

@@ -361,7 +361,7 @@ const en: Record<string, string> = {
   'accuracy.sourcesColUse': 'Used for',
   'accuracy.sourcesColCoverage': 'Coverage',
   'accuracy.sourcesColLicense': 'License',
-  'accuracy.sourcesFooter': 'Open-Meteo, NOAA, DFO, CartoDB, OSM, and Natural Earth are used under their respective open licenses. Surfline\'s public web endpoint is used for nearby spot discovery only (spot names and coordinates); all forecast data is sourced independently from Open-Meteo.',
+  'accuracy.sourcesFooter': 'Open-Meteo, NOAA, DFO, CartoDB, OSM, and Natural Earth are used under their respective open licenses. Surfline spot names and coordinates are bundled at build time from Surfline\'s public web endpoint for nearby spot discovery only; all forecast data is sourced independently from Open-Meteo.',
   'accuracy.sourceTag.waves':   'Waves',
   'accuracy.sourceTag.weather': 'Weather',
   'accuracy.sourceTag.tides':   'Tides',

@@ -383,9 +383,9 @@ const DATA_SOURCES: DataSource[] = [
   {
     name: 'Surfline',
     url: 'https://www.surfline.com/',
-    use: 'Nearby surf spot discovery — spot names and coordinates only; all forecast data is sourced independently from Open-Meteo',
+    use: 'Nearby surf spot names and coordinates — bundled at build time from Surfline\'s public web endpoint; all forecast data is sourced independently from Open-Meteo',
     coverage: 'Global',
-    license: 'Public web endpoint',
+    license: 'Public web data',
     tag: 'geo',
   },
   {

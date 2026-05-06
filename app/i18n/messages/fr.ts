@@ -361,7 +361,7 @@ const fr: Record<string, string> = {
   'accuracy.sourcesColUse': 'Utilisation',
   'accuracy.sourcesColCoverage': 'Couverture',
   'accuracy.sourcesColLicense': 'Licence',
-  'accuracy.sourcesFooter': 'Open-Meteo, NOAA, DFO, CartoDB, OSM et Natural Earth sont utilisés sous leurs licences ouvertes respectives. Le point d\'accès web public de Surfline est utilisé uniquement pour la découverte des spots proches (noms et coordonnées) ; toutes les prévisions sont obtenues de manière indépendante depuis Open-Meteo.',
+  'accuracy.sourcesFooter': 'Open-Meteo, NOAA, DFO, CartoDB, OSM et Natural Earth sont utilisés sous leurs licences ouvertes respectives. Les noms et coordonnées de spots Surfline sont intégrés au moment de la compilation depuis le point d\'accès web public de Surfline, uniquement pour la découverte des spots proches ; toutes les prévisions sont obtenues de manière indépendante depuis Open-Meteo.',
   'accuracy.sourceTag.waves':   'Vagues',
   'accuracy.sourceTag.weather': 'Météo',
   'accuracy.sourceTag.tides':   'Marées',

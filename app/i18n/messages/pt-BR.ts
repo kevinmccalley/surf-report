@@ -361,7 +361,7 @@ const ptBR: Record<string, string> = {
   'accuracy.sourcesColUse': 'Utilização',
   'accuracy.sourcesColCoverage': 'Cobertura',
   'accuracy.sourcesColLicense': 'Licença',
-  'accuracy.sourcesFooter': 'Open-Meteo, NOAA, DFO, CartoDB, OSM e Natural Earth são usados sob suas respectivas licenças abertas. O endpoint web público do Surfline é usado apenas para descoberta de picos próximos (nomes e coordenadas); todos os dados de previsão são obtidos de forma independente do Open-Meteo.',
+  'accuracy.sourcesFooter': 'Open-Meteo, NOAA, DFO, CartoDB, OSM e Natural Earth são usados sob suas respectivas licenças abertas. Os nomes e coordenadas de picos do Surfline são incluídos no momento da compilação a partir do endpoint web público do Surfline, apenas para descoberta de picos próximos; todos os dados de previsão são obtidos de forma independente do Open-Meteo.',
   'accuracy.sourceTag.waves':   'Ondas',
   'accuracy.sourceTag.weather': 'Clima',
   'accuracy.sourceTag.tides':   'Marés',
