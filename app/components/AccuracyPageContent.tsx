@@ -535,6 +535,13 @@ function DataSourcesSection({ t }: { t: (k: string) => string }) {
       <p className="text-xs text-slate-700 mt-5 pt-4 border-t border-white/5 leading-relaxed">
         {t('accuracy.sourcesFooter')}
       </p>
+
+      <nav className="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-xs text-slate-600">
+        <a href="/terms"   className="hover:text-slate-400 transition-colors">Terms</a>
+        <a href="/privacy" className="hover:text-slate-400 transition-colors">Privacy</a>
+        <a href="/refund"  className="hover:text-slate-400 transition-colors">Refund Policy</a>
+        <a href="/support" className="hover:text-slate-400 transition-colors">Support</a>
+      </nav>
     </section>
   )
 }

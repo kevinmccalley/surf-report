@@ -195,6 +195,7 @@ export interface EpicSpot {
   swellDirLabel: string
   windSpeed: number
   score: number
+  ratingLabel: string
 }
 
 export interface EpicNowData {

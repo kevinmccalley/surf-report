@@ -280,6 +280,12 @@ export default function SurfApp() {
           <LandingHero onSelect={fetchReport} />
         )}
 
+        {!report && !loading && !error && (
+          <footer className="text-center text-xs text-slate-600 pb-8 pt-4">
+            <SiteFooterLinks />
+          </footer>
+        )}
+
         {loading && <LoadingSkeleton />}
 
         {error && (
@@ -445,6 +451,7 @@ export default function SurfApp() {
                   {t('app.forecastAccuracy')}
                 </a>
               </p>
+              <SiteFooterLinks />
             </footer>
           </div>
         )}
@@ -546,6 +553,18 @@ function PastConditionsPicker({
         {lookUpLabel}
       </button>
     </form>
+  )
+}
+
+function SiteFooterLinks() {
+  return (
+    <nav className="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-1">
+      <a href="/terms"    className="hover:text-slate-300 transition-colors">Terms</a>
+      <a href="/privacy"  className="hover:text-slate-300 transition-colors">Privacy</a>
+      <a href="/refund"   className="hover:text-slate-300 transition-colors">Refund Policy</a>
+      <a href="/support"  className="hover:text-slate-300 transition-colors">Support</a>
+      <a href="/accuracy" className="hover:text-slate-300 transition-colors">Accuracy</a>
+    </nav>
   )
 }
 

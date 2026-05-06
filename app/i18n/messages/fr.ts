@@ -349,6 +349,7 @@ const fr: Record<string, string> = {
 
   // EpicNowSection
   'epicNow.title': 'Où est-ce épique en ce moment ?',
+  'epicNow.titleBest': 'Meilleur surf en ce moment',
   'epicNow.updated': 'Mis à jour à {time}',
   'epicNow.wind': 'Vent {speed} km/h',
 

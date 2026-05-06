@@ -349,6 +349,7 @@ const ptPT: Record<string, string> = {
 
   // EpicNowSection
   'epicNow.title': 'Onde está épico agora?',
+  'epicNow.titleBest': 'Melhor surf agora',
   'epicNow.updated': 'Atualizado às {time}',
   'epicNow.wind': 'Vento de {speed} km/h',
 

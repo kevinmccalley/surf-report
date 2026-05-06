@@ -52,7 +52,7 @@ async function checkSpot(spot: { name: string; lat: number; lon: number }): Prom
     const windSpeed   = val(wh.wind_speed_10m, idx)
 
     const rating = computeSurfRating(waveHeight, wavePeriod, swellHeight, swellPeriod, windSpeed)
-    if (rating.label !== 'EPIC') return null
+    if (rating.label === 'FLAT' || rating.label === 'POOR') return null
 
     return {
       name:         spot.name,
@@ -64,6 +64,7 @@ async function checkSpot(spot: { name: string; lat: number; lon: number }): Prom
       swellDirLabel: getDirectionLabel(swellDir),
       windSpeed,
       score:        rating.score,
+      ratingLabel:  rating.label,
     }
   } catch {
     return null
@@ -95,17 +96,18 @@ export async function GET(request: NextRequest) {
   const tasks = spots.map(s => () => checkSpot(s))
   const results = await runWithConcurrency(tasks, 20)
 
-  const epicSpots = results
+  const topSpots = results
     .filter((s): s is EpicSpot => s !== null)
     .sort((a, b) => b.score - a.score)
+    .slice(0, 12)
 
   const data: EpicNowData = {
-    spots: epicSpots,
+    spots: topSpots,
     updatedAt: new Date().toISOString(),
     checkedCount: spots.length,
   }
 
   await rset(REDIS_KEY, data, REDIS_TTL)
 
-  return NextResponse.json({ ok: true, epicCount: epicSpots.length, checkedCount: spots.length })
+  return NextResponse.json({ ok: true, spotCount: topSpots.length, checkedCount: spots.length })
 }
