@@ -14,13 +14,14 @@
     "@vercel/kv": "^3.0.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.21",
+    "ioredis": "^5.10.1",
+    "leaflet": "^1.9.4",
     "lucide-react": "^0.441.0",
     "next": "^16.2.4",
     "nodemailer": "^8.0.7",
     "react": "^18",
     "react-dom": "^18",
     "recharts": "^2.12.7",
-    "leaflet": "^1.9.4",
     "stripe": "^22.1.0"
   },
   "devDependencies": {
