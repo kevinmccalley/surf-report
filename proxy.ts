@@ -14,6 +14,8 @@ const isPublicRoute = createRouteMatcher([
   '/api/accuracy-check(.*)',
   '/api/accuracy-backfill(.*)',
   '/api/accuracy-history(.*)',
+  '/api/epic-now(.*)',
+  '/api/cron/epic-now(.*)',
   '/accuracy(.*)',
   '/climatology(.*)',
   '/sign-in(.*)',

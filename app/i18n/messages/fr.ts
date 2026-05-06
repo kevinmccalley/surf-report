@@ -347,6 +347,11 @@ const fr: Record<string, string> = {
   'buoy.diffHigher': 'Bouée {pct}% plus haute que le modèle',
   'buoy.diffLower': 'Bouée {pct}% plus basse que le modèle',
 
+  // EpicNowSection
+  'epicNow.title': 'Où est-ce épique en ce moment ?',
+  'epicNow.updated': 'Mis à jour à {time}',
+  'epicNow.wind': 'Vent {speed} km/h',
+
   // NearbySpots
   'nearby.title': 'Spots à proximité',
   'nearby.away': 'à {dist} km',

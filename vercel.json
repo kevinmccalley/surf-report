@@ -7,6 +7,10 @@
     {
       "path": "/api/accuracy-check",
       "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/cron/epic-now",
+      "schedule": "0 */3 * * *"
     }
   ]
 }

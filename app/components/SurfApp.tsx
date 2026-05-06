@@ -19,6 +19,7 @@ import LastYearCard from './LastYearCard'
 import BuoyCard from './BuoyCard'
 import MapPanel from './MapPanel'
 import NearbySpots from './NearbySpots'
+import EpicNowSection from './EpicNowSection'
 import LanguageSwitcher from './LanguageSwitcher'
 import type { ClimatologyMonth } from './ClimatologySection'
 import { useLanguage } from '@/app/i18n/LanguageContext'
@@ -273,6 +274,10 @@ export default function SurfApp() {
       <main id="main-content">
         {!report && !loading && !error && (
           <LandingHero onSelect={fetchReport} />
+        )}
+
+        {!report && !loading && isSignedIn && (
+          <EpicNowSection units={units} onSelect={fetchReport} />
         )}
 
         {loading && <LoadingSkeleton />}

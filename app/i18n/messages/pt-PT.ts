@@ -347,6 +347,11 @@ const ptPT: Record<string, string> = {
   'buoy.diffHigher': 'Boia {pct}% acima do modelo',
   'buoy.diffLower': 'Boia {pct}% abaixo do modelo',
 
+  // EpicNowSection
+  'epicNow.title': 'Onde está épico agora?',
+  'epicNow.updated': 'Atualizado às {time}',
+  'epicNow.wind': 'Vento de {speed} km/h',
+
   // NearbySpots
   'nearby.title': 'Spots Próximos',
   'nearby.away': 'a {dist} km',
