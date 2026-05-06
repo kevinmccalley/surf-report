@@ -330,7 +330,7 @@ export default function SurfApp() {
 
             {report.isCoastal && <ConditionCards report={report} units={units} />}
 
-            {report.isCoastal && (nearbyLoading || nearbySpots.length > 0) && (
+            {report.isCoastal && (
               <NearbySpots
                 spots={nearbySpots}
                 loading={nearbyLoading}
