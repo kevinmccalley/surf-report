@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Section {
   heading: string
@@ -13,6 +16,7 @@ interface Props {
 }
 
 export default function LegalPage({ title, subtitle, lastUpdated, sections }: Props) {
+  const { t } = useLanguage()
   return (
     <div className="min-h-screen theme-bg">
       <header className="sticky top-0 z-50 theme-header">
@@ -30,7 +34,7 @@ export default function LegalPage({ title, subtitle, lastUpdated, sections }: Pr
         <div className="mb-10">
           <h1 className="text-3xl font-bold text-white mb-2">{title}</h1>
           <p className="text-slate-400 text-sm">{subtitle}</p>
-          <p className="text-slate-600 text-xs mt-1">Last updated: {lastUpdated}</p>
+          <p className="text-slate-600 text-xs mt-1">{t('nav.lastUpdated')}: {lastUpdated}</p>
         </div>
 
         <div className="space-y-8">
@@ -43,11 +47,11 @@ export default function LegalPage({ title, subtitle, lastUpdated, sections }: Pr
         </div>
 
         <footer className="mt-16 pt-8 border-t border-white/5 flex flex-wrap gap-4 text-xs text-slate-500">
-          <Link href="/terms"  className="hover:text-slate-300 transition-colors">Terms of Service</Link>
-          <Link href="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
-          <Link href="/refund"  className="hover:text-slate-300 transition-colors">Refund Policy</Link>
-          <Link href="/support" className="hover:text-slate-300 transition-colors">Support</Link>
-          <Link href="/"        className="hover:text-slate-300 transition-colors ml-auto">Back to Groundswell</Link>
+          <Link href="/terms"  className="hover:text-slate-300 transition-colors">{t('nav.terms')}</Link>
+          <Link href="/privacy" className="hover:text-slate-300 transition-colors">{t('nav.privacy')}</Link>
+          <Link href="/refund"  className="hover:text-slate-300 transition-colors">{t('nav.refund')}</Link>
+          <Link href="/support" className="hover:text-slate-300 transition-colors">{t('nav.support')}</Link>
+          <Link href="/"        className="hover:text-slate-300 transition-colors ml-auto">{t('nav.backToGroundswell')}</Link>
         </footer>
       </main>
     </div>

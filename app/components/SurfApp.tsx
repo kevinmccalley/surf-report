@@ -557,13 +557,14 @@ function PastConditionsPicker({
 }
 
 function SiteFooterLinks() {
+  const { t } = useLanguage()
   return (
     <nav className="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-1">
-      <a href="/terms"    className="hover:text-slate-300 transition-colors">Terms</a>
-      <a href="/privacy"  className="hover:text-slate-300 transition-colors">Privacy</a>
-      <a href="/refund"   className="hover:text-slate-300 transition-colors">Refund Policy</a>
-      <a href="/support"  className="hover:text-slate-300 transition-colors">Support</a>
-      <a href="/accuracy" className="hover:text-slate-300 transition-colors">Accuracy</a>
+      <a href="/terms"    className="hover:text-slate-300 transition-colors">{t('nav.terms')}</a>
+      <a href="/privacy"  className="hover:text-slate-300 transition-colors">{t('nav.privacy')}</a>
+      <a href="/refund"   className="hover:text-slate-300 transition-colors">{t('nav.refund')}</a>
+      <a href="/support"  className="hover:text-slate-300 transition-colors">{t('nav.support')}</a>
+      <a href="/accuracy" className="hover:text-slate-300 transition-colors">{t('nav.accuracy')}</a>
     </nav>
   )
 }

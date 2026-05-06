@@ -347,6 +347,15 @@ const fr: Record<string, string> = {
   'buoy.diffHigher': 'Bouée {pct}% plus haute que le modèle',
   'buoy.diffLower': 'Bouée {pct}% plus basse que le modèle',
 
+  // Footer nav links
+  'nav.terms': 'Conditions d\'utilisation',
+  'nav.privacy': 'Politique de confidentialité',
+  'nav.refund': 'Politique de remboursement',
+  'nav.support': 'Assistance',
+  'nav.accuracy': 'Précision',
+  'nav.lastUpdated': 'Dernière mise à jour',
+  'nav.backToGroundswell': 'Retour à Groundswell',
+
   // EpicNowSection
   'epicNow.title': 'Où est-ce épique en ce moment ?',
   'epicNow.titleBest': 'Meilleur surf en ce moment',

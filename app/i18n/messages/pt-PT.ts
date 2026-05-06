@@ -347,6 +347,15 @@ const ptPT: Record<string, string> = {
   'buoy.diffHigher': 'Boia {pct}% acima do modelo',
   'buoy.diffLower': 'Boia {pct}% abaixo do modelo',
 
+  // Footer nav links
+  'nav.terms': 'Termos de Serviço',
+  'nav.privacy': 'Política de Privacidade',
+  'nav.refund': 'Política de Reembolso',
+  'nav.support': 'Suporte',
+  'nav.accuracy': 'Precisão',
+  'nav.lastUpdated': 'Última atualização',
+  'nav.backToGroundswell': 'Voltar ao Groundswell',
+
   // EpicNowSection
   'epicNow.title': 'Onde está épico agora?',
   'epicNow.titleBest': 'Melhor surf agora',

@@ -347,6 +347,15 @@ const en: Record<string, string> = {
   'buoy.diffHigher': 'Buoy {pct}% higher than model',
   'buoy.diffLower': 'Buoy {pct}% lower than model',
 
+  // Footer nav links
+  'nav.terms': 'Terms of Service',
+  'nav.privacy': 'Privacy Policy',
+  'nav.refund': 'Refund Policy',
+  'nav.support': 'Support',
+  'nav.accuracy': 'Accuracy',
+  'nav.lastUpdated': 'Last updated',
+  'nav.backToGroundswell': 'Back to Groundswell',
+
   // EpicNowSection
   'epicNow.title': 'Where is it Epic Now?',
   'epicNow.titleBest': 'Best Surf Right Now',

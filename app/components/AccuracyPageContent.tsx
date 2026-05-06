@@ -537,10 +537,10 @@ function DataSourcesSection({ t }: { t: (k: string) => string }) {
       </p>
 
       <nav className="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-xs text-slate-600">
-        <a href="/terms"   className="hover:text-slate-400 transition-colors">Terms</a>
-        <a href="/privacy" className="hover:text-slate-400 transition-colors">Privacy</a>
-        <a href="/refund"  className="hover:text-slate-400 transition-colors">Refund Policy</a>
-        <a href="/support" className="hover:text-slate-400 transition-colors">Support</a>
+        <a href="/terms"   className="hover:text-slate-400 transition-colors">{t('nav.terms')}</a>
+        <a href="/privacy" className="hover:text-slate-400 transition-colors">{t('nav.privacy')}</a>
+        <a href="/refund"  className="hover:text-slate-400 transition-colors">{t('nav.refund')}</a>
+        <a href="/support" className="hover:text-slate-400 transition-colors">{t('nav.support')}</a>
       </nav>
     </section>
   )
