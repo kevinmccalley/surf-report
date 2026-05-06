@@ -25,18 +25,17 @@ function ratingBadge(label: string): { text: string; cls: string } {
 export default function EpicNowSection({ units, onSelect }: Props) {
   const { t } = useLanguage()
   const [data, setData] = useState<EpicNowData | null>(null)
-  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch('/api/epic-now')
       .then(r => r.json())
-      .then((d: EpicNowData) => { setData(d); setLoading(false) })
-      .catch(() => setLoading(false))
+      .then((d: EpicNowData) => setData(d))
+      .catch(() => {})
   }, [])
 
-  if (!loading && (!data || data.spots.length === 0)) return null
+  if (!data || data.spots.length === 0) return null
 
-  const hasEpic = data?.spots.some(s => s.ratingLabel === 'EPIC')
+  const hasEpic = data.spots.some(s => s.ratingLabel === 'EPIC')
   const Icon = hasEpic ? Zap : TrendingUp
   const accentClass = hasEpic
     ? 'border-purple-500/20 bg-purple-500/5'
@@ -53,38 +52,22 @@ export default function EpicNowSection({ units, onSelect }: Props) {
           <h2 className={`text-xs font-semibold uppercase tracking-widest ${headerClass}`}>
             {title}
           </h2>
-          {data && (
-            <span className="ml-auto text-xs text-slate-600">
-              {t('epicNow.updated').replace('{time}', new Date(data.updatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }))}
-            </span>
-          )}
+          <span className="ml-auto text-xs text-slate-600">
+            {t('epicNow.updated').replace('{time}', new Date(data.updatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }))}
+          </span>
         </div>
 
-        {loading && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 animate-pulse">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="rounded-xl p-3 bg-white/5 space-y-2">
-                <div className="h-3 bg-white/10 rounded w-24" />
-                <div className="h-5 bg-white/10 rounded w-14" />
-                <div className="h-2.5 bg-white/10 rounded w-20" />
-              </div>
-            ))}
-          </div>
-        )}
-
-        {data && data.spots.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-            {data.spots.map((spot) => (
-              <SpotCard
-                key={`${spot.lat}-${spot.lon}`}
-                spot={spot}
-                units={units}
-                onSelect={onSelect}
-                t={t}
-              />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+          {data.spots.map((spot) => (
+            <SpotCard
+              key={`${spot.lat}-${spot.lon}`}
+              spot={spot}
+              units={units}
+              onSelect={onSelect}
+              t={t}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )
