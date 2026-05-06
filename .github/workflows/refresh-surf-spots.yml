@@ -33,4 +33,5 @@ jobs:
             COUNT=$(python3 -c "import json; d=json.load(open('app/lib/surf-spots.json')); print(len(d))")
             git commit -m "chore: refresh surf spots dataset ($COUNT spots)"
             git push origin HEAD:master
+            git push origin HEAD:dev
           fi
