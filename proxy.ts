@@ -18,6 +18,10 @@ const isPublicRoute = createRouteMatcher([
   '/api/cron/epic-now(.*)',
   '/accuracy(.*)',
   '/climatology(.*)',
+  '/terms(.*)',
+  '/privacy(.*)',
+  '/refund(.*)',
+  '/support(.*)',
   '/sign-in(.*)',
   '/sign-up(.*)',
 ])

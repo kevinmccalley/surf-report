@@ -323,8 +323,16 @@ export default function MarketingPage() {
         </div>
       </section>
 
-      <footer className="pb-16 text-center text-xs text-slate-300">
-        {t('mkt.footer')}
+      <footer className="pb-16 text-center space-y-3">
+        <p className="text-xs text-slate-300">{t('mkt.footer')}</p>
+        <nav className="flex flex-wrap justify-center gap-x-5 gap-y-1 text-xs text-slate-500">
+          <a href="/terms"   className="hover:text-slate-300 transition-colors">Terms of Service</a>
+          <a href="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
+          <a href="/refund"  className="hover:text-slate-300 transition-colors">Refund Policy</a>
+          <a href="/support" className="hover:text-slate-300 transition-colors">Support</a>
+          <a href="/accuracy" className="hover:text-slate-300 transition-colors">Accuracy</a>
+        </nav>
+        <p className="text-xs text-slate-600">© {new Date().getFullYear()} Groundswell · Kevin McCalley · Portugal</p>
       </footer>
     </div>
   )
