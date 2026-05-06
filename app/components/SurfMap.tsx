@@ -3,7 +3,7 @@
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import { useEffect, useRef } from 'react'
-import type { SurfReport } from '@/app/lib/types'
+import type { SurfReport, NearbySpot } from '@/app/lib/types'
 import { formatWaveHeight } from '@/app/lib/utils'
 import { useTheme } from '@/app/components/ThemeProvider'
 import { THEMES } from '@/app/lib/themes'
@@ -13,6 +13,8 @@ interface Props {
   report: SurfReport
   units: { height: 'ft' | 'm' }
   highlightLayers?: Set<string>
+  nearbySpots?: NearbySpot[]
+  onSpotSelect?: (spot: NearbySpot) => void
 }
 
 // ── Geodesy ────────────────────────────────────────────────────────────────────
@@ -155,6 +157,18 @@ function addDirectionalArcs(
   }
 }
 
+// ── Nearby spot numbered marker ────────────────────────────────────────────────
+function makeNearbyIcon(rank: number, color: string): L.DivIcon {
+  const html = `<div style="
+    width:22px;height:22px;border-radius:50%;background:${color};
+    border:2px solid rgba(255,255,255,0.85);
+    display:flex;align-items:center;justify-content:center;
+    font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:700;
+    color:white;box-shadow:0 2px 6px rgba(0,0,0,0.55);cursor:pointer;
+  ">${rank}</div>`
+  return L.divIcon({ html, className: '', iconAnchor: [11, 11], iconSize: [22, 22] })
+}
+
 // ── Spot marker ────────────────────────────────────────────────────────────────
 function makeSpotIcon(color: string): L.DivIcon {
   const html = `
@@ -171,11 +185,12 @@ function makeSpotIcon(color: string): L.DivIcon {
 }
 
 // ── Component ──────────────────────────────────────────────────────────────────
-export default function SurfMap({ report, units, highlightLayers }: Props) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const mapRef       = useRef<L.Map | null>(null)
-  const { themeId }  = useTheme()
-  const { t, bcp47 } = useLanguage()
+export default function SurfMap({ report, units, highlightLayers, nearbySpots, onSpotSelect }: Props) {
+  const containerRef      = useRef<HTMLDivElement>(null)
+  const mapRef            = useRef<L.Map | null>(null)
+  const nearbyMarkersRef  = useRef<L.Marker[]>([])
+  const { themeId }       = useTheme()
+  const { t, bcp47 }      = useLanguage()
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
@@ -247,8 +262,48 @@ export default function SurfMap({ report, units, highlightLayers }: Props) {
       })
     }
 
-    return () => { map.remove(); mapRef.current = null }
-  }, [themeId, bcp47]) // eslint-disable-line react-hooks/exhaustive-deps
+    return () => {
+      nearbyMarkersRef.current.forEach(m => m.remove())
+      nearbyMarkersRef.current = []
+      map.remove()
+      mapRef.current = null
+    }
+  }, [themeId, bcp47, report.location.lat, report.location.lon]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Nearby spot markers — separate effect so they don't force a full map rebuild
+  useEffect(() => {
+    const map = mapRef.current
+    nearbyMarkersRef.current.forEach(m => m.remove())
+    nearbyMarkersRef.current = []
+    if (!map || !nearbySpots?.length) return
+
+    nearbySpots.forEach((spot, idx) => {
+      const waveStr = formatWaveHeight(spot.waveHeight, units.height)
+      const marker = L.marker([spot.lat, spot.lon], {
+        icon: makeNearbyIcon(idx + 1, spot.rating.color),
+        zIndexOffset: -100,
+      })
+      marker.bindTooltip(
+        `<div style="font-family:system-ui,-apple-system,sans-serif;background:var(--panel-bg);` +
+        `color:var(--text-base);padding:8px 11px;border-radius:8px;border:1px solid var(--card-border);` +
+        `box-shadow:0 6px 20px rgba(0,0,0,0.45);min-width:130px;">` +
+        `<div style="font-size:12px;font-weight:600;color:var(--text-base);margin-bottom:3px;">${spot.name}</div>` +
+        `<div style="font-size:13px;font-weight:700;color:${spot.rating.color};">${waveStr}</div>` +
+        `</div>`,
+        { direction: 'top', offset: [0, -14], className: 'surf-nearby-tip' },
+      )
+      if (onSpotSelect) {
+        marker.on('click', () => onSpotSelect(spot))
+      }
+      marker.addTo(map)
+      nearbyMarkersRef.current.push(marker)
+    })
+
+    return () => {
+      nearbyMarkersRef.current.forEach(m => m.remove())
+      nearbyMarkersRef.current = []
+    }
+  }, [nearbySpots, onSpotSelect, themeId, bcp47]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Update dim attributes without rebuilding the map
   useEffect(() => {
@@ -321,6 +376,13 @@ export default function SurfMap({ report, units, highlightLayers }: Props) {
         .surf-map-container[data-dim-wind] .wind-a-2 {
           animation: none !important; opacity: 0.05 !important;
         }
+
+        /* ── Nearby spot tooltips ────────────────────────────────────────── */
+        .surf-nearby-tip .leaflet-tooltip {
+          background: transparent !important; border: none !important;
+          box-shadow: none !important; padding: 0 !important;
+        }
+        .surf-nearby-tip.leaflet-tooltip-top::before { display: none !important; }
 
         /* ── Popup ────────────────────────────────────────────────────────── */
         .surf-map-popup .leaflet-popup-content-wrapper {

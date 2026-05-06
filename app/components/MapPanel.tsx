@@ -4,7 +4,7 @@ import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import { AnimatePresence, motion } from 'framer-motion'
 import { X, Wind, Waves } from 'lucide-react'
-import type { SurfReport } from '@/app/lib/types'
+import type { SurfReport, NearbySpot } from '@/app/lib/types'
 import { formatWaveHeight, formatTemp } from '@/app/lib/utils'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 
@@ -14,9 +14,11 @@ interface Props {
   report: SurfReport
   units: { temp: 'c' | 'f'; height: 'ft' | 'm' }
   onClose: () => void
+  nearbySpots?: NearbySpot[]
+  onSpotSelect?: (spot: NearbySpot) => void
 }
 
-export default function MapPanel({ report, units, onClose }: Props) {
+export default function MapPanel({ report, units, onClose, nearbySpots, onSpotSelect }: Props) {
   const { t } = useLanguage()
   const { current, location } = report
   const [activeLayers, setActiveLayers] = useState<Set<string>>(new Set())
@@ -80,7 +82,13 @@ export default function MapPanel({ report, units, onClose }: Props) {
 
         {/* Map — fills remaining space */}
         <div className="flex-1 min-h-0 relative">
-          <SurfMap report={report} units={{ height: units.height }} highlightLayers={activeLayers} />
+          <SurfMap
+            report={report}
+            units={{ height: units.height }}
+            highlightLayers={activeLayers}
+            nearbySpots={nearbySpots}
+            onSpotSelect={onSpotSelect}
+          />
 
           {/* Clickable legend — click to isolate a layer */}
           {report.isCoastal && (

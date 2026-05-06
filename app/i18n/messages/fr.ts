@@ -348,6 +348,10 @@ const fr: Record<string, string> = {
   'buoy.agreement': 'Bon accord',
   'buoy.diffHigher': 'Bouée {pct}% plus haute que le modèle',
   'buoy.diffLower': 'Bouée {pct}% plus basse que le modèle',
+
+  // NearbySpots
+  'nearby.title': 'Spots à proximité',
+  'nearby.away': 'à {dist} km',
 }
 
 export default fr

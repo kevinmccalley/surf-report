@@ -348,6 +348,10 @@ const ptBR: Record<string, string> = {
   'buoy.agreement': 'Boa concordância',
   'buoy.diffHigher': 'Boia {pct}% acima do modelo',
   'buoy.diffLower': 'Boia {pct}% abaixo do modelo',
+
+  // NearbySpots
+  'nearby.title': 'Picos Próximos',
+  'nearby.away': 'a {dist} km',
 }
 
 export default ptBR

@@ -3,7 +3,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { Menu, X } from 'lucide-react'
 import { useUser } from '@clerk/nextjs'
-import type { SurfReport, TideReport, TideUnavailable, GeoResult, BuoyReading } from '@/app/lib/types'
+import type { SurfReport, TideReport, TideUnavailable, GeoResult, BuoyReading, NearbySpot } from '@/app/lib/types'
 import SearchBar from './SearchBar'
 import HeroSection from './HeroSection'
 import ConditionCards from './ConditionCards'
@@ -18,6 +18,7 @@ import ThemePicker from './ThemePicker'
 import LastYearCard from './LastYearCard'
 import BuoyCard from './BuoyCard'
 import MapPanel from './MapPanel'
+import NearbySpots from './NearbySpots'
 import LanguageSwitcher from './LanguageSwitcher'
 import type { ClimatologyMonth } from './ClimatologySection'
 import { useLanguage } from '@/app/i18n/LanguageContext'
@@ -45,6 +46,7 @@ export default function SurfApp() {
   const [lastYearReport, setLastYearReport] = useState<SurfReport | null>(null)
   const [buoyData, setBuoyData] = useState<(BuoyReading & { waveDirectionLabel?: string | null; windDirectionLabel?: string | null }) | null>(null)
   const [showMap, setShowMap] = useState(false)
+  const [nearbySpots, setNearbySpots] = useState<NearbySpot[]>([])
   const [showMenu, setShowMenu] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
 
@@ -90,6 +92,7 @@ export default function SurfApp() {
     setClimData(null)
     setLastYearReport(null)
     setBuoyData(null)
+    setNearbySpots([])
     setLastGeoResult(result)
     setHistDateInput('')
     if (updateUrl) {
@@ -130,6 +133,14 @@ export default function SurfApp() {
       setClimData(climJson)
       setBuoyData(buoyJson?.waveHeight !== undefined ? buoyJson : null)
       window.scrollTo({ top: 0, behavior: 'smooth' })
+
+      // Non-blocking: fetch nearby surf spots after main data is shown
+      if (surfJson.isCoastal) {
+        fetch(`/api/nearby?lat=${result.lat}&lon=${result.lon}`)
+          .then(r => r.ok ? r.json() : [])
+          .then((spots: NearbySpot[]) => setNearbySpots(spots))
+          .catch(() => {})
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Something went wrong')
     } finally {
@@ -316,6 +327,18 @@ export default function SurfApp() {
 
             {report.isCoastal && <ConditionCards report={report} units={units} />}
 
+            {report.isCoastal && nearbySpots.length > 0 && (
+              <NearbySpots
+                spots={nearbySpots}
+                units={units}
+                onSelect={(spot) => fetchReport({
+                  lat: spot.lat, lon: spot.lon,
+                  name: spot.name, country: '',
+                  displayName: spot.name,
+                })}
+              />
+            )}
+
             {report.isCoastal && !report.historical && buoyData && (
               <BuoyCard
                 buoy={buoyData}
@@ -423,6 +446,15 @@ export default function SurfApp() {
           report={report}
           units={units}
           onClose={() => setShowMap(false)}
+          nearbySpots={nearbySpots}
+          onSpotSelect={(spot) => {
+            fetchReport({
+              lat: spot.lat, lon: spot.lon,
+              name: spot.name, country: '',
+              displayName: spot.name,
+            })
+            // map stays open; new report + nearby spots load in the background
+          }}
         />
       )}
     </div>

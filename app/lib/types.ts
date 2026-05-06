@@ -107,6 +107,24 @@ export interface SurfReport {
   historicalDate?: string  // YYYY-MM-DD
 }
 
+export interface NearbySpot {
+  name: string
+  lat: number
+  lon: number
+  distanceKm: number
+  waveHeight: number
+  wavePeriod: number
+  swellDirection: number
+  swellDirectionLabel: string
+  windSpeed: number
+  windDirection: number
+  windDirectionLabel: string
+  waterTemp: number | null
+  airTemp: number
+  weatherCode: number
+  rating: SurfRating
+}
+
 export interface GeoResult {
   name: string
   country: string
