@@ -276,7 +276,7 @@ export default function SurfApp() {
           <LandingHero onSelect={fetchReport} />
         )}
 
-        {!report && !loading && isSignedIn && (
+        {!report && !loading && !error && (
           <EpicNowSection units={units} onSelect={fetchReport} />
         )}
 
