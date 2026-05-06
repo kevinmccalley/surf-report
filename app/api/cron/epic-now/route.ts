@@ -2,27 +2,10 @@ import { NextRequest, NextResponse } from 'next/server'
 import { rset } from '@/app/lib/redis'
 import { computeSurfRating } from '@/app/lib/surf-rating'
 import { getDirectionLabel, findCurrentHourIndex } from '@/app/lib/utils'
+import type { EpicSpot, EpicNowData } from '@/app/lib/types'
 import NOTABLE_SPOTS from '@/app/lib/notable-spots.json'
 
 export const maxDuration = 300
-
-export interface EpicSpot {
-  name: string
-  lat: number
-  lon: number
-  waveHeight: number
-  wavePeriod: number
-  swellDir: number
-  swellDirLabel: string
-  windSpeed: number
-  score: number
-}
-
-export interface EpicNowData {
-  spots: EpicSpot[]
-  updatedAt: string
-  checkedCount: number
-}
 
 const REDIS_KEY = 'epic-now'
 const REDIS_TTL = 6 * 3600  // 6 hours

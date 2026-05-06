@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { Zap } from 'lucide-react'
 import { formatWaveHeight } from '@/app/lib/utils'
 import { useLanguage } from '@/app/i18n/LanguageContext'
-import type { EpicNowData, EpicSpot } from '@/app/api/cron/epic-now/route'
+import type { EpicNowData, EpicSpot } from '@/app/lib/types'
 
 interface Props {
   units: { height: 'ft' | 'm' }

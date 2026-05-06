@@ -184,3 +184,21 @@ export interface BuoyReading {
   airTemp: number | null    // °C
   observedAt: string        // ISO UTC
 }
+
+export interface EpicSpot {
+  name: string
+  lat: number
+  lon: number
+  waveHeight: number
+  wavePeriod: number
+  swellDir: number
+  swellDirLabel: string
+  windSpeed: number
+  score: number
+}
+
+export interface EpicNowData {
+  spots: EpicSpot[]
+  updatedAt: string
+  checkedCount: number
+}

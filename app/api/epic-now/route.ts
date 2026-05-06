@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { rget } from '@/app/lib/redis'
-import type { EpicNowData } from '@/app/api/cron/epic-now/route'
+import type { EpicNowData } from '@/app/lib/types'
 
 export async function GET() {
   const data = await rget<EpicNowData>('epic-now')
