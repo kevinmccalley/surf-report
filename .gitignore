@@ -36,3 +36,24 @@ next-env.d.ts
 
 .vercel
 .env.local
+
+# local one-off scripts with hardcoded secrets
+scripts/delete-clerk-user.mjs
+scripts/test-ls-ids.mjs
+scripts/test-ls-checkout.mjs
+scripts/create-notion-audit.py
+scripts/create-notion-plan.py
+scripts/update-notion-critical.py
+scripts/update-notion-critical2.py
+scripts/update-notion-critical3.py
+scripts/update-notion-plan.py
+scripts/read-notion-todo.py
+
+# local assets and notes
+*.jpg
+*.png
+*.svg
+council-*.html
+council-*.md
+lemonSqueezy.txt
+.claude/

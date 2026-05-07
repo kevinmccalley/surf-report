@@ -6,18 +6,20 @@ const processor = process.env.PAYMENT_PROCESSOR ?? 'stripe'
 
 // ── Lemon Squeezy ─────────────────────────────────────────────────────────────
 async function lsCheckout(plan: 'annual' | 'monthly', email: string, userId: string, origin: string) {
-  const variantId = plan === 'annual'
+  const variantId = (plan === 'annual'
     ? process.env.LEMONSQUEEZY_ANNUAL_VARIANT_ID
-    : process.env.LEMONSQUEEZY_MONTHLY_VARIANT_ID
+    : process.env.LEMONSQUEEZY_MONTHLY_VARIANT_ID)?.trim()
+  const storeId = process.env.LEMONSQUEEZY_STORE_ID?.trim()
+  const apiKey = process.env.LEMONSQUEEZY_API_KEY?.trim()
 
-  if (!variantId || !process.env.LEMONSQUEEZY_STORE_ID || !process.env.LEMONSQUEEZY_API_KEY) {
+  if (!variantId || !storeId || !apiKey) {
     return NextResponse.json({ error: 'Lemon Squeezy is not configured.' }, { status: 503 })
   }
 
   const res = await fetch('https://api.lemonsqueezy.com/v1/checkouts', {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${process.env.LEMONSQUEEZY_API_KEY}`,
+      Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/vnd.api+json',
       Accept: 'application/vnd.api+json',
     },
@@ -34,7 +36,7 @@ async function lsCheckout(plan: 'annual' | 'monthly', email: string, userId: str
           },
         },
         relationships: {
-          store:   { data: { type: 'stores',   id: process.env.LEMONSQUEEZY_STORE_ID } },
+          store:   { data: { type: 'stores',   id: storeId } },
           variant: { data: { type: 'variants',  id: variantId } },
         },
       },

@@ -21,7 +21,7 @@ async function setSubscriptionStatus(
 
 // ── Lemon Squeezy ─────────────────────────────────────────────────────────────
 async function handleLS(req: NextRequest): Promise<NextResponse> {
-  const secret = process.env.LEMONSQUEEZY_WEBHOOK_SECRET
+  const secret = (process.env.LEMONSQUEEZY_WEBHOOK_SECRET ?? '').trim()
   if (!secret) return NextResponse.json({ error: 'LS not configured' }, { status: 503 })
 
   const rawBody = await req.text()
