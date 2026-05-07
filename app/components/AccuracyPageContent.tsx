@@ -1,8 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 import AccuracyTrendChart from './AccuracyTrendChart'
+import PaywallModal from './PaywallModal'
 import type { DailyAccuracyRecord } from '@/app/api/accuracy-history/route'
 
 // ── Shared types (imported by page.tsx too) ───────────────────────────────────
@@ -37,6 +39,7 @@ export interface AccuracyData {
   liveTotalExtremes: number
   liveStationsCount: number
   hist: HistAggregate | null
+  tier: 'free' | 'base'
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -77,10 +80,13 @@ function WaveLogo() {
 
 export default function AccuracyPageContent({ data }: { data: AccuracyData }) {
   const { t } = useLanguage()
-  const { updatedAt, results, historicalRecords, displayPct, liveTotalExtremes, liveStationsCount, hist } = data
+  const { updatedAt, results, historicalRecords, displayPct, liveTotalExtremes, liveStationsCount, hist, tier } = data
+  const isFree = tier === 'free'
+  const [showPaywall, setShowPaywall] = useState(false)
 
   return (
     <div className="theme-bg min-h-screen">
+      {showPaywall && <PaywallModal onClose={() => setShowPaywall(false)} />}
       <header className="sticky top-0 z-50 theme-header">
         <div className="mx-auto max-w-4xl px-4 py-3 flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2 hover:opacity-75 transition-opacity">
@@ -155,7 +161,7 @@ export default function AccuracyPageContent({ data }: { data: AccuracyData }) {
         )}
 
         {/* Aggregate headline stats */}
-        {hist && (
+        {hist && !isFree && (
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { label: t('accuracy.statAvgAccuracy'), value: `${hist.avgPct}%`,                       sub: t('accuracy.statWithin30'),                              color: '#2dd4bf' },
@@ -173,7 +179,7 @@ export default function AccuracyPageContent({ data }: { data: AccuracyData }) {
         )}
 
         {/* Best / worst station callouts */}
-        {hist && hist.best && hist.worst && hist.best.name !== hist.worst.name && (
+        {hist && hist.best && hist.worst && hist.best.name !== hist.worst.name && !isFree && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="glass-card rounded-xl p-4" style={{ borderColor: 'rgba(45,212,191,0.2)' }}>
               <p className="text-[10px] font-semibold uppercase tracking-widest text-teal-500 mb-1">{t('accuracy.mostAccurate')}</p>
@@ -190,6 +196,23 @@ export default function AccuracyPageContent({ data }: { data: AccuracyData }) {
           </div>
         )}
 
+        {/* Upgrade teaser for free tier */}
+        {isFree && (
+          <button
+            onClick={() => setShowPaywall(true)}
+            className="w-full flex items-center justify-between px-4 py-4 rounded-xl border border-teal-500/20 bg-teal-500/6 hover:bg-teal-500/10 transition-colors text-left group"
+          >
+            <div>
+              <p className="text-sm font-semibold text-teal-300">{t('accuracy.fullHistoryGateTitle')}</p>
+              <p className="text-xs text-slate-500 mt-0.5">{t('accuracy.fullHistoryGateDesc')}</p>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden className="shrink-0 text-teal-400/60 group-hover:text-teal-300 transition-colors">
+              <rect x="3" y="7" width="10" height="7.5" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
+              <path d="M5.5 7V5.5a2.5 2.5 0 0 1 5 0V7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+          </button>
+        )}
+
         {/* Divider */}
         <div className="flex items-center gap-3 pt-1">
           <div className="flex-1 border-t border-white/5" />
@@ -198,7 +221,7 @@ export default function AccuracyPageContent({ data }: { data: AccuracyData }) {
         </div>
 
         {/* Station cards */}
-        {results.map(station => (
+        {!isFree && results.map(station => (
           <section key={station.name} className="glass-card rounded-2xl p-4 sm:p-5">
             <div className="flex items-start justify-between mb-4 gap-3">
               <div>

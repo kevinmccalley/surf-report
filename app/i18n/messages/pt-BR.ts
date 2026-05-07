@@ -194,7 +194,7 @@ const ptBR: Record<string, string> = {
   'auth.signIn': 'Entrar',
   'auth.manageBilling': 'Gerenciar assinatura',
   'auth.signOut': 'Sair',
-  'auth.pro': 'Pro',
+  'auth.pro': 'Premium',
 
   // MarketingPage
   'mkt.liveBadge': 'Dados ao vivo · Atualizado a cada busca',
@@ -326,6 +326,12 @@ const ptBR: Record<string, string> = {
   'paywall.epicNowDesc': 'Veja onde as condições estão bombando globalmente, atualizado a cada 3 horas. Disponível em todos os planos pagos.',
   'paywall.upgradeLink': 'Upgrade por $4/mês',
   'paywall.historicalGate': 'Dados históricos (jan 2022–hoje) — pesquise qualquer data passada neste local',
+  'tides.freeTierLabel': 'Previsão de Marés de 3 Dias',
+  'tides.upgradeExtended': 'Curva de 5 dias · verificação ao vivo NOAA · detalhes da estação',
+  'forecast.upgradeCtaTitle': 'Desbloqueie a previsão completa de 10 dias',
+  'forecast.upgradeCtaDesc': 'Alturas de ondas, ratings de surf e resumos diários até o dia 10',
+  'accuracy.fullHistoryGateTitle': 'Histórico completo de precisão',
+  'accuracy.fullHistoryGateDesc': 'Mais de 400 dias de dados, detalhamento por estação e estatísticas agregadas',
 
   // Pontos cardinais (Leste = L, Oeste = O)
   'dir.N': 'N', 'dir.NNE': 'NNE', 'dir.NE': 'NE', 'dir.ENE': 'LNE',

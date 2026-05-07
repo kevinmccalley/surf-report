@@ -383,6 +383,21 @@ export default function SurfApp({ tier }: { tier: Tier }) {
                 {report.historical ? t('app.daySummary') : t('app.10dayForecast')}
               </h2>
               <ForecastGrid forecast={report.forecast} units={units} isCoastal={report.isCoastal} />
+              {!isPaid && !report.historical && report.isCoastal && (
+                <button
+                  onClick={() => setShowPaywall(true)}
+                  className="mt-4 w-full flex items-center justify-between px-4 py-3.5 rounded-xl border border-teal-500/20 bg-teal-500/6 hover:bg-teal-500/10 transition-colors text-left group"
+                >
+                  <div>
+                    <p className="text-sm font-semibold text-teal-300">{t('forecast.upgradeCtaTitle')}</p>
+                    <p className="text-xs text-slate-500 mt-0.5">{t('forecast.upgradeCtaDesc')}</p>
+                  </div>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden className="shrink-0 text-teal-400/60 group-hover:text-teal-300 transition-colors">
+                    <rect x="3" y="7" width="10" height="7.5" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
+                    <path d="M5.5 7V5.5a2.5 2.5 0 0 1 5 0V7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                  </svg>
+                </button>
+              )}
             </section>
 
             {report.isCoastal && !report.historical && (
@@ -404,6 +419,8 @@ export default function SurfApp({ tier }: { tier: Tier }) {
                     qualityWarning={(tideData as TideReport).qualityWarning}
                     observedOffset={(tideData as TideReport).observedOffset}
                     observedAt={(tideData as TideReport).observedAt}
+                    tier={tier}
+                    onUpgrade={() => setShowPaywall(true)}
                   />
                 ) : (
                   <TideSetupCard reason={(tideData as TideUnavailable | null)?.reason} />

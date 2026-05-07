@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { kv } from '@vercel/kv'
+import { auth, clerkClient } from '@clerk/nextjs/server'
 import AccuracyPageContent from '@/app/components/AccuracyPageContent'
 import type { AccuracyData, StationResult, HistAggregate } from '@/app/components/AccuracyPageContent'
 import type { DailyAccuracyRecord } from '@/app/api/accuracy-history/route'
+import { omUrl } from '@/app/lib/utils'
 
 export const dynamic = 'force-dynamic'
 
@@ -81,7 +83,7 @@ async function fetchNEMO(lat: number, lon: number): Promise<TideExtreme[]> {
     `https://marine-api.open-meteo.com/v1/marine` +
     `?latitude=${lat}&longitude=${lon}&hourly=sea_level_height_msl&forecast_days=5`
   try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(12000) })
+    const res = await fetch(omUrl(url), { signal: AbortSignal.timeout(12000) })
     if (!res.ok) return []
     const data = await res.json() as { hourly?: { time?: string[]; sea_level_height_msl?: (number | null)[] } }
     const times  = data.hourly?.time ?? []
@@ -181,14 +183,33 @@ function computeHistoricalAggregate(records: DailyAccuracyRecord[]): HistAggrega
   return { avgPct, totalMatches, avgError, fmtEarliest: fmtDate(earliest), fmtLatest: fmtDate(latest), days: records.length, best, worst }
 }
 
+// ── Auth ──────────────────────────────────────────────────────────────────────
+
+async function getUserTier(): Promise<'free' | 'base'> {
+  try {
+    const { userId } = await auth()
+    if (!userId) return 'free'
+    const client = await clerkClient()
+    const user = await client.users.getUser(userId)
+    const meta = user.privateMetadata as { subscriptionStatus?: string }
+    const bypassEmails = (process.env.BYPASS_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean)
+    const userEmail = user.emailAddresses[0]?.emailAddress?.toLowerCase() ?? ''
+    if (meta.subscriptionStatus === 'active' || (bypassEmails.length > 0 && bypassEmails.includes(userEmail))) {
+      return 'base'
+    }
+  } catch { /* treat as free */ }
+  return 'free'
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default async function AccuracyPage() {
   const updatedAt = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' }) + ' UTC'
+  const tier = await getUserTier()
 
   const [results, historicalRecords] = await Promise.all([
     Promise.all(STATIONS.map(computeStation)),
-    fetchHistoricalRecords(365),
+    fetchHistoricalRecords(tier === 'base' ? 365 : 7),
   ])
 
   const allMatches = results.flatMap(r => r.matches)
@@ -209,6 +230,7 @@ export default async function AccuracyPage() {
     liveTotalExtremes,
     liveStationsCount,
     hist,
+    tier,
   }
 
   return <AccuracyPageContent data={data} />

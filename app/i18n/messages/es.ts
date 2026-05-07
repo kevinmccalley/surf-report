@@ -194,7 +194,7 @@ const es: Record<string, string> = {
   'auth.signIn': 'Iniciar sesión',
   'auth.manageBilling': 'Gestionar suscripción',
   'auth.signOut': 'Cerrar sesión',
-  'auth.pro': 'Pro',
+  'auth.pro': 'Premium',
 
   // MarketingPage
   'mkt.liveBadge': 'Datos en vivo · Actualizado en cada búsqueda',
@@ -326,6 +326,12 @@ const es: Record<string, string> = {
   'paywall.epicNowDesc': 'Ve dónde las condiciones están perfectas globalmente, actualizado cada 3 horas. Disponible en todos los planes de pago.',
   'paywall.upgradeLink': 'Actualiza por $4/mes',
   'paywall.historicalGate': 'Datos históricos (ene 2022–hoy) — consulta cualquier fecha pasada en esta ubicación',
+  'tides.freeTierLabel': 'Pronóstico de Mareas de 3 Días',
+  'tides.upgradeExtended': 'Curva de 5 días · verificación en vivo NOAA · detalles de estación',
+  'forecast.upgradeCtaTitle': 'Desbloquea el pronóstico completo de 10 días',
+  'forecast.upgradeCtaDesc': 'Altura de olas, ratings de surf y resúmenes diarios hasta el día 10',
+  'accuracy.fullHistoryGateTitle': 'Historial completo de precisión',
+  'accuracy.fullHistoryGateDesc': 'Más de 400 días de datos, desglose por estación y estadísticas agregadas',
 
   // Puntos cardinales (Oeste = O, no W)
   'dir.N': 'N', 'dir.NNE': 'NNE', 'dir.NE': 'NE', 'dir.ENE': 'ENE',

@@ -20,6 +20,8 @@ interface Props {
   qualityWarning?: string
   observedOffset?: number | null
   observedAt?: string
+  tier?: 'free' | 'base'
+  onUpgrade?: () => void
 }
 
 function toDisplay(meters: number, unit: 'ft' | 'm'): number {
@@ -75,11 +77,13 @@ export default function TideSection({
   stationName, stationDistanceKm,
   timezoneLabel, qualityWarning,
   observedOffset, observedAt,
+  tier, onUpgrade,
 }: Props) {
   const { t } = useLanguage()
-  const upcomingExtremes = extremes.slice(0, 10)
+  const isFree = tier === 'free'
+  const upcomingExtremes = extremes.slice(0, isFree ? 6 : 10)
 
-  const chartDataBase = hourly.slice(0, 120).map((h, i) => {
+  const chartDataBase = hourly.slice(0, isFree ? 72 : 120).map((h, i) => {
     const { hour } = parseTime(h.time)
     const isDay0 = i === 0
     const label = (hour === 0 || isDay0) ? (isDay0 ? 'Now' : formatDate(h.time, t)) : ''
@@ -146,34 +150,38 @@ export default function TideSection({
 
   return (
     <div className="space-y-5">
-      <div className="flex items-start sm:items-center gap-1.5 text-xs text-slate-500 flex-wrap">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden className="shrink-0 mt-0.5 sm:mt-0">
-          <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1" />
-          <circle cx="6" cy="6" r="1.5" fill="currentColor" />
-        </svg>
-        <span className="text-slate-400">{attribution.label}</span>
-        {attribution.badge && (
-          <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/20">
-            {attribution.badge}
-          </span>
-        )}
-        {source === 'noaa' && observedOffset != null && (
-          <ObservationBadge offset={observedOffset} t={t} />
-        )}
-        <span className="ml-auto text-slate-600 hidden sm:block">{attribution.note}</span>
-      </div>
-      {attribution.note && (
-        <p className="text-xs text-slate-600 sm:hidden -mt-3">{attribution.note}</p>
-      )}
-      {qualityWarning && (
-        <div className="flex items-center gap-1.5 text-xs text-amber-400/80 bg-amber-500/8 border border-amber-500/15 rounded-lg px-3 py-2 -mt-1">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden className="shrink-0">
-            <path d="M6 1L11 10H1L6 1Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
-            <line x1="6" y1="4.5" x2="6" y2="7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-            <circle cx="6" cy="8.5" r="0.6" fill="currentColor" />
-          </svg>
-          <span>{qualityWarning}</span>
-        </div>
+      {!isFree && (
+        <>
+          <div className="flex items-start sm:items-center gap-1.5 text-xs text-slate-500 flex-wrap">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden className="shrink-0 mt-0.5 sm:mt-0">
+              <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1" />
+              <circle cx="6" cy="6" r="1.5" fill="currentColor" />
+            </svg>
+            <span className="text-slate-400">{attribution.label}</span>
+            {attribution.badge && (
+              <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/20">
+                {attribution.badge}
+              </span>
+            )}
+            {source === 'noaa' && observedOffset != null && (
+              <ObservationBadge offset={observedOffset} t={t} />
+            )}
+            <span className="ml-auto text-slate-600 hidden sm:block">{attribution.note}</span>
+          </div>
+          {attribution.note && (
+            <p className="text-xs text-slate-600 sm:hidden -mt-3">{attribution.note}</p>
+          )}
+          {qualityWarning && (
+            <div className="flex items-center gap-1.5 text-xs text-amber-400/80 bg-amber-500/8 border border-amber-500/15 rounded-lg px-3 py-2 -mt-1">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden className="shrink-0">
+                <path d="M6 1L11 10H1L6 1Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+                <line x1="6" y1="4.5" x2="6" y2="7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                <circle cx="6" cy="8.5" r="0.6" fill="currentColor" />
+              </svg>
+              <span>{qualityWarning}</span>
+            </div>
+          )}
+        </>
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-6">
@@ -220,8 +228,12 @@ export default function TideSection({
 
         <div className="lg:col-span-3">
           <div className="flex items-center justify-between mb-3">
-            <p className="text-xs text-slate-500 uppercase tracking-widest">5-Day Tide Curve</p>
-            <p className="text-[10px] text-slate-600">scroll for 5 days →</p>
+            <p className="text-xs text-slate-500 uppercase tracking-widest">
+              {isFree ? t('tides.freeTierLabel') : '5-Day Tide Curve'}
+            </p>
+            <p className="text-[10px] text-slate-600">
+              {isFree ? 'scroll for 3 days →' : 'scroll for 5 days →'}
+            </p>
           </div>
 
           <div className="overflow-x-auto forecast-scroll rounded-lg" style={{ cursor: 'grab' }}>
@@ -281,6 +293,22 @@ export default function TideSection({
           </div>
         </div>
       </div>
+
+      {isFree && onUpgrade && (
+        <button
+          onClick={onUpgrade}
+          className="w-full flex items-center justify-between px-4 py-3 rounded-xl border border-teal-500/20 bg-teal-500/6 hover:bg-teal-500/10 transition-colors text-left group"
+        >
+          <div className="flex items-center gap-2.5">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className="shrink-0 text-teal-400">
+              <rect x="2" y="6" width="10" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
+              <path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+            <span className="text-xs text-teal-300 font-medium">{t('tides.upgradeExtended')}</span>
+          </div>
+          <span className="text-[10px] text-teal-400/70 group-hover:text-teal-300 transition-colors">Upgrade →</span>
+        </button>
+      )}
     </div>
   )
 }

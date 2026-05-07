@@ -194,7 +194,7 @@ const en: Record<string, string> = {
   'auth.signIn': 'Sign in',
   'auth.manageBilling': 'Manage billing',
   'auth.signOut': 'Sign out',
-  'auth.pro': 'Pro',
+  'auth.pro': 'Premium',
 
   // MarketingPage
   'mkt.liveBadge': 'Live data · Fresh on every search',
@@ -326,6 +326,12 @@ const en: Record<string, string> = {
   'paywall.epicNowDesc': 'See where conditions are firing globally, updated every 3 hours. Available on all paid plans.',
   'paywall.upgradeLink': 'Upgrade for $4/month',
   'paywall.historicalGate': 'Historical data (Jan 2022–present) — search any past date at this location',
+  'tides.freeTierLabel': '3-Day Tide Forecast',
+  'tides.upgradeExtended': '5-day curve · NOAA live verification · station details',
+  'forecast.upgradeCtaTitle': 'Unlock the full 10-day forecast',
+  'forecast.upgradeCtaDesc': 'Wave heights, surf ratings, and daily summaries through day 10',
+  'accuracy.fullHistoryGateTitle': 'Full accuracy history',
+  'accuracy.fullHistoryGateDesc': '400+ days of data, per-station breakdown, and aggregate stats',
 
   // Compass directions
   'dir.N': 'N', 'dir.NNE': 'NNE', 'dir.NE': 'NE', 'dir.ENE': 'ENE',
