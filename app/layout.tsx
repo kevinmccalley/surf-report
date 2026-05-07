@@ -4,6 +4,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { Analytics } from '@vercel/analytics/next'
 import ThemeProvider from './components/ThemeProvider'
 import { LanguageProvider } from './i18n/LanguageContext'
+import ServiceWorkerRegistrar from './components/ServiceWorkerRegistrar'
 import './globals.css'
 
 const inter = Inter({
@@ -16,6 +17,15 @@ export const metadata: Metadata = {
   title: 'Groundswell — Surf Reports Worldwide',
   description: 'Real-time surf reports and 10-day forecasts for any spot on earth. Wave height, swell, wind, water temperature, and more.',
   keywords: 'surf report, surf forecast, wave height, swell, wind, surf conditions, beach report',
+  manifest: '/manifest.webmanifest',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Groundswell',
+  },
+  icons: {
+    apple: '/icons/icon-192.png',
+  },
   openGraph: {
     title: 'Groundswell — Surf Reports Worldwide',
     description: 'Real-time surf reports and 10-day forecasts for any spot on earth.',
@@ -45,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {children}
             </ThemeProvider>
           </LanguageProvider>
+          <ServiceWorkerRegistrar />
           <Analytics />
         </body>
       </html>
