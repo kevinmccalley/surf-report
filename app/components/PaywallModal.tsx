@@ -34,21 +34,25 @@ export default function PaywallModal({ onClose }: Props) {
   const { t } = useLanguage()
   const [loadingPlan, setLoadingPlan] = useState<'monthly' | 'annual' | null>(null)
   const [billingPeriod, setBillingPeriod] = useState<'annual' | 'monthly'>('annual')
+  const [checkoutError, setCheckoutError] = useState<string | null>(null)
 
   async function startCheckout(plan: 'monthly' | 'annual') {
     setLoadingPlan(plan)
-    const priceId = plan === 'monthly'
-      ? process.env.NEXT_PUBLIC_STRIPE_PRICE_MONTHLY
-      : process.env.NEXT_PUBLIC_STRIPE_PRICE_ANNUAL
-
+    setCheckoutError(null)
     try {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId }),
+        body: JSON.stringify({ plan }),
       })
       const data = await res.json()
-      if (data.url) window.location.href = data.url
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        setCheckoutError(data.error ?? 'Checkout failed. Please try again.')
+      }
+    } catch {
+      setCheckoutError('Network error. Please try again.')
     } finally {
       setLoadingPlan(null)
     }
@@ -172,6 +176,9 @@ export default function PaywallModal({ onClose }: Props) {
           </div>
 
           {/* CTA */}
+          {checkoutError && (
+            <p className="text-center text-xs text-red-400 mb-3">{checkoutError}</p>
+          )}
           {isSignedIn ? (
             <div className="space-y-2">
               <button
