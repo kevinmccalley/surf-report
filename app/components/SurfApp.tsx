@@ -96,10 +96,27 @@ export default function SurfApp({ tier }: { tier: Tier }) {
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // After sign-in, navigate to any location the user was searching for
+  useEffect(() => {
+    if (!isSignedIn) return
+    const pending = sessionStorage.getItem('postSignInUrl')
+    if (!pending) return
+    sessionStorage.removeItem('postSignInUrl')
+    const p = new URLSearchParams(pending.split('?')[1] ?? '')
+    const lat = parseFloat(p.get('lat') ?? '')
+    const lon = parseFloat(p.get('lon') ?? '')
+    const name = p.get('name') ?? ''
+    const country = p.get('country') ?? ''
+    if (!isNaN(lat) && !isNaN(lon) && name) {
+      fetchReport({ lat, lon, name, country, displayName: `${name}, ${country}` })
+    }
+  }, [isSignedIn]) // eslint-disable-line react-hooks/exhaustive-deps
+
   const fetchReport = useCallback(async (result: GeoResult, updateUrl = true) => {
     if (!isSignedIn) {
       const redirectUrl = `/?lat=${result.lat}&lon=${result.lon}&name=${encodeURIComponent(result.name)}&country=${encodeURIComponent(result.country)}`
-      openSignIn({ afterSignInUrl: redirectUrl })
+      sessionStorage.setItem('postSignInUrl', redirectUrl)
+      openSignIn()
       return
     }
     setLoading(true)
