@@ -137,11 +137,11 @@ async function fetchSpotConditions(
   const marineUrl =
     `https://marine-api.open-meteo.com/v1/marine?${base}` +
     `&hourly=wave_height,wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,sea_surface_temperature` +
-    `&timezone=auto&forecast_hours=4`
+    `&timezone=auto&forecast_days=1`
   const weatherUrl =
     `https://api.open-meteo.com/v1/forecast?${base}` +
     `&hourly=temperature_2m,wind_speed_10m,wind_direction_10m,weather_code` +
-    `&timezone=auto&forecast_hours=4&wind_speed_unit=kmh`
+    `&timezone=auto&forecast_days=1&wind_speed_unit=kmh`
   try {
     const [marineRes, weatherRes] = await Promise.all([
       fetch(omUrl(marineUrl), { next: { revalidate: 1800 } }),
