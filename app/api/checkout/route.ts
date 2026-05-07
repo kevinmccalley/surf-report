@@ -44,7 +44,9 @@ async function lsCheckout(plan: 'annual' | 'monthly', email: string, userId: str
   if (!res.ok) {
     const err = await res.text()
     console.error('[checkout/ls] error:', err)
-    return NextResponse.json({ error: 'Failed to create checkout.' }, { status: 500 })
+    let detail = ''
+    try { detail = JSON.parse(err)?.errors?.[0]?.detail ?? err } catch { detail = err }
+    return NextResponse.json({ error: `LS ${res.status}: ${detail}` }, { status: 500 })
   }
 
   const data = await res.json()
