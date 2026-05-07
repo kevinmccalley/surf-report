@@ -1,13 +1,42 @@
+import type { Metadata } from 'next'
 import { auth, clerkClient } from '@clerk/nextjs/server'
 import Stripe from 'stripe'
 import SurfApp from './components/SurfApp'
 
 export type Tier = 'free' | 'base'
 
+type SearchParams = Promise<{ name?: string; country?: string; lat?: string; lon?: string; subscribed?: string }>
+
+export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
+  const params = await searchParams
+  const { name, country } = params
+
+  if (!name) {
+    return {
+      title: 'Groundswell — Surf Reports Worldwide',
+      description: 'Real-time surf reports and 10-day forecasts for any spot in the world. Wave height, swell, wind, tides, and more.',
+    }
+  }
+
+  const location = country ? `${name}, ${country}` : name
+  const title = `${location} Surf Report — Groundswell`
+  const description = `Live surf report for ${name}: wave height, swell, wind, tides, and 10-day forecast. Updated hourly from open ocean data sources.`
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+    },
+  }
+}
+
 export default async function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ subscribed?: string }>
+  searchParams: SearchParams
 }) {
   const params = await searchParams
   let tier: Tier = 'free'
