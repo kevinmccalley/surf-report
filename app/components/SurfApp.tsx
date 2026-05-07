@@ -15,6 +15,7 @@ import TideSection from './TideSection'
 import TideSetupCard from './TideSetupCard'
 import ClimatologySection from './ClimatologySection'
 import LandingHero from './LandingHero'
+import MarketingLanding from './MarketingLanding'
 import AuthButton from './AuthButton'
 import ThemePicker from './ThemePicker'
 import LastYearCard from './LastYearCard'
@@ -96,6 +97,11 @@ export default function SurfApp({ tier }: { tier: Tier }) {
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchReport = useCallback(async (result: GeoResult, updateUrl = true) => {
+    if (!isSignedIn) {
+      const redirectUrl = `/?lat=${result.lat}&lon=${result.lon}&name=${encodeURIComponent(result.name)}&country=${encodeURIComponent(result.country)}`
+      openSignIn({ redirectUrl })
+      return
+    }
     setLoading(true)
     setError(null)
     setTideData(null)
@@ -353,13 +359,15 @@ export default function SurfApp({ tier }: { tier: Tier }) {
 
       <main id="main-content">
         {!report && !loading && !error && (
-          <LandingHero onSelect={fetchReport} />
+          isSignedIn
+            ? <LandingHero onSelect={fetchReport} />
+            : <MarketingLanding onSearch={fetchReport} />
         )}
 
-        {isPaid && !report && !loading && !error && (
+        {isPaid && isSignedIn && !report && !loading && !error && (
           <EpicNowSection units={units} onSelect={fetchReport} />
         )}
-        {!isPaid && !report && !loading && !error && (
+        {!isPaid && isSignedIn && !report && !loading && !error && (
           <UpgradeTeaser onUpgrade={() => setShowPaywall(true)} />
         )}
 
