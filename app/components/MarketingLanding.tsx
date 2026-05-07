@@ -94,7 +94,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
 
           <div className="flex items-center justify-center gap-3">
             <SignInButton mode="modal">
-              <button className="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-semibold text-sm transition-colors">
+              <button className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-400 to-cyan-300 hover:from-sky-300 hover:to-cyan-200 text-slate-900 font-bold text-sm transition-all shadow-lg shadow-sky-500/20">
                 {t('mktL.ctaFree')}
               </button>
             </SignInButton>
@@ -164,7 +164,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
                 <p className="text-white font-semibold text-sm mb-1">{t('mktL.teaserLock')}</p>
                 <p className="text-slate-500 text-xs mb-4">{t('mktL.teaserPrice')}</p>
                 <SignInButton mode="modal">
-                  <button className="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-white font-semibold text-xs transition-colors">
+                  <button className="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs transition-colors">
                     {t('mktL.teaserCta')}
                   </button>
                 </SignInButton>
@@ -290,7 +290,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
               </div>
             </div>
             <SignInButton mode="modal">
-              <button className="w-full py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-semibold transition-colors">
+              <button className="w-full py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold transition-colors">
                 {t('mktL.startTrial')}
               </button>
             </SignInButton>
