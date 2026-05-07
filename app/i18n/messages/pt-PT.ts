@@ -322,6 +322,10 @@ const ptPT: Record<string, string> = {
   'paywall.perk1': 'Cada spot no mundo',
   'paywall.perk2': 'Previsões em direto e de 10 dias',
   'paywall.perk3': 'Cancele quando quiser',
+  'paywall.epicNowTeaser': 'Melhor Surf Agora — 608 spots em todo o mundo',
+  'paywall.epicNowDesc': 'Veja onde as condições estão a bombar globalmente, atualizado a cada 3 horas. Disponível em todos os planos pagos.',
+  'paywall.upgradeLink': 'Upgrade por $4/mês',
+  'paywall.historicalGate': 'Dados históricos (jan 2022–hoje) — pesquise qualquer data passada nesta localização',
 
   // Pontos cardinais (Oeste = O, não W)
   'dir.N': 'N', 'dir.NNE': 'NNE', 'dir.NE': 'NE', 'dir.ENE': 'ENE',

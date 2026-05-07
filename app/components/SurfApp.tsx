@@ -1,8 +1,10 @@
 'use client'
 
 import { useState, useCallback, useEffect, useRef } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Lock } from 'lucide-react'
 import { useUser } from '@clerk/nextjs'
+import PaywallModal from './PaywallModal'
+import type { Tier } from '@/app/page'
 import type { SurfReport, TideReport, TideUnavailable, GeoResult, BuoyReading, NearbySpot } from '@/app/lib/types'
 import SearchBar from './SearchBar'
 import HeroSection from './HeroSection'
@@ -33,9 +35,11 @@ interface ClimatologyData {
   peakMonths: number[]
 }
 
-export default function SurfApp() {
+export default function SurfApp({ tier }: { tier: Tier }) {
   const { t, bcp47 } = useLanguage()
   const { isSignedIn } = useUser()
+  const isPaid = tier === 'base'
+  const [showPaywall, setShowPaywall] = useState(false)
   const [report, setReport] = useState<SurfReport | null>(null)
   const [tideData, setTideData] = useState<TideResult | null>(null)
   const [climData, setClimData] = useState<ClimatologyData | null>(null)
@@ -80,7 +84,7 @@ export default function SurfApp() {
     const country = params.get('country') ?? ''
     const geo: GeoResult = { lat, lon, name, country, displayName: `${name}, ${country}` }
     const date = params.get('date') ?? ''
-    if (date && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    if (date && /^\d{4}-\d{2}-\d{2}$/.test(date) && isPaid) {
       fetchHistorical(date, geo)
     } else {
       fetchReport(geo, false)
@@ -181,7 +185,7 @@ export default function SurfApp() {
   }, [lastGeoResult])
 
   useEffect(() => {
-    if (!report || report.historical || !report.isCoastal || !lastGeoResult) {
+    if (!isPaid || !report || report.historical || !report.isCoastal || !lastGeoResult) {
       setLastYearReport(null)
       return
     }
@@ -242,7 +246,7 @@ export default function SurfApp() {
             )}
             <LanguageSwitcher />
             <ThemePicker />
-            <AuthButton subscribed={true} onManageBilling={openBillingPortal} />
+            <AuthButton subscribed={isPaid} onManageBilling={openBillingPortal} />
           </div>
 
           {/* Mobile hamburger */}
@@ -266,7 +270,7 @@ export default function SurfApp() {
             )}
             <LanguageSwitcher align="left" />
             <ThemePicker align="left" />
-            <AuthButton subscribed={true} onManageBilling={openBillingPortal} />
+            <AuthButton subscribed={isPaid} onManageBilling={openBillingPortal} />
           </div>
         )}
       </header>
@@ -276,8 +280,11 @@ export default function SurfApp() {
           <LandingHero onSelect={fetchReport} />
         )}
 
-        {!report && !loading && !error && (
+        {isPaid && !report && !loading && !error && (
           <EpicNowSection units={units} onSelect={fetchReport} />
+        )}
+        {!isPaid && !report && !loading && !error && (
+          <UpgradeTeaser onUpgrade={() => setShowPaywall(true)} />
         )}
 
         {!report && !loading && !error && (
@@ -416,7 +423,7 @@ export default function SurfApp() {
               </section>
             )}
 
-            {!report.historical && lastGeoResult && (
+            {!report.historical && lastGeoResult && isPaid && (
               <PastConditionsPicker
                 onSubmit={fetchHistorical}
                 value={histDateInput}
@@ -427,7 +434,11 @@ export default function SurfApp() {
               />
             )}
 
-            {report.isCoastal && !report.historical && lastYearReport && (
+            {!report.historical && lastGeoResult && !isPaid && (
+              <HistoricalGate onUpgrade={() => setShowPaywall(true)} />
+            )}
+
+            {report.isCoastal && !report.historical && lastYearReport && isPaid && (
               <LastYearCard
                 report={lastYearReport}
                 units={units}
@@ -469,10 +480,11 @@ export default function SurfApp() {
               name: spot.name, country: '',
               displayName: spot.name,
             })
-            // map stays open; new report + nearby spots load in the background
           }}
         />
       )}
+
+      {showPaywall && <PaywallModal onClose={() => setShowPaywall(false)} />}
     </div>
   )
 }
@@ -566,6 +578,45 @@ function SiteFooterLinks() {
       <a href="/support"  className="hover:text-slate-300 transition-colors">{t('nav.support')}</a>
       <a href="/accuracy" className="hover:text-slate-300 transition-colors">{t('nav.accuracy')}</a>
     </nav>
+  )
+}
+
+function UpgradeTeaser({ onUpgrade }: { onUpgrade: () => void }) {
+  const { t } = useLanguage()
+  return (
+    <section className="mx-auto max-w-6xl px-4 py-6">
+      <button
+        onClick={onUpgrade}
+        className="w-full glass-card rounded-2xl p-6 border border-sky-500/20 bg-sky-500/5 hover:bg-sky-500/10 transition-colors text-left group"
+      >
+        <div className="flex items-center gap-3 mb-2">
+          <Lock size={16} className="text-sky-400 shrink-0" />
+          <span className="text-sm font-semibold text-sky-300">{t('paywall.epicNowTeaser')}</span>
+        </div>
+        <p className="text-xs text-slate-400 ml-7">{t('paywall.epicNowDesc')}</p>
+        <p className="text-xs text-sky-400 mt-3 ml-7 group-hover:text-sky-300 transition-colors">
+          {t('paywall.upgradeLink')} →
+        </p>
+      </button>
+    </section>
+  )
+}
+
+function HistoricalGate({ onUpgrade }: { onUpgrade: () => void }) {
+  const { t } = useLanguage()
+  return (
+    <button
+      onClick={onUpgrade}
+      className="glass-card rounded-xl px-4 py-3 flex items-center gap-3 border border-white/5 hover:border-sky-500/30 hover:bg-sky-500/5 transition-colors w-full text-left group"
+    >
+      <Lock size={14} className="text-slate-500 shrink-0 group-hover:text-sky-400 transition-colors" />
+      <span className="text-xs text-slate-400 group-hover:text-slate-300 transition-colors">
+        {t('paywall.historicalGate')}
+      </span>
+      <span className="ml-auto text-xs text-sky-500 group-hover:text-sky-300 transition-colors shrink-0">
+        {t('paywall.upgradeLink')} →
+      </span>
+    </button>
   )
 }
 

@@ -322,6 +322,10 @@ const en: Record<string, string> = {
   'paywall.perk1': 'Every spot on earth',
   'paywall.perk2': 'Live & 10-day forecasts',
   'paywall.perk3': 'Cancel anytime',
+  'paywall.epicNowTeaser': 'Best Surf Right Now — 608 spots worldwide',
+  'paywall.epicNowDesc': 'See where conditions are firing globally, updated every 3 hours. Available on all paid plans.',
+  'paywall.upgradeLink': 'Upgrade for $4/month',
+  'paywall.historicalGate': 'Historical data (Jan 2022–present) — search any past date at this location',
 
   // Compass directions
   'dir.N': 'N', 'dir.NNE': 'NNE', 'dir.NE': 'NE', 'dir.ENE': 'ENE',

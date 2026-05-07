@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { auth, clerkClient } from '@clerk/nextjs/server'
 import type {
   SurfReport, CurrentConditions, HourlyForecast, DayForecast
 } from '@/app/lib/types'
@@ -7,6 +8,26 @@ import {
   getDirectionLabel, getWeatherDescription,
   findCurrentHourIndex, estimateWaterTemp, getDayName
 } from '@/app/lib/utils'
+
+const FREE_FORECAST_DAYS = 3
+
+async function getSubscriptionTier(): Promise<'free' | 'base'> {
+  try {
+    const { userId } = await auth()
+    if (!userId) return 'free'
+    const client = await clerkClient()
+    const user = await client.users.getUser(userId)
+    const meta = user.privateMetadata as { subscriptionStatus?: string }
+    const bypassEmails = (process.env.BYPASS_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean)
+    const userEmail = user.emailAddresses[0]?.emailAddress?.toLowerCase() ?? ''
+    if (meta.subscriptionStatus === 'active' || (bypassEmails.length > 0 && bypassEmails.includes(userEmail))) {
+      return 'base'
+    }
+  } catch {
+    // Auth unavailable — treat as free
+  }
+  return 'free'
+}
 
 export async function GET(request: NextRequest) {
   const sp = request.nextUrl.searchParams
@@ -18,6 +39,9 @@ export async function GET(request: NextRequest) {
   if (!lat || !lon) {
     return NextResponse.json({ error: 'lat and lon required' }, { status: 400 })
   }
+
+  const tier = await getSubscriptionTier()
+  const forecastDays = tier === 'base' ? 10 : FREE_FORECAST_DAYS
 
   const marineUrl =
     `https://marine-api.open-meteo.com/v1/marine` +
@@ -51,6 +75,11 @@ export async function GET(request: NextRequest) {
       parseFloat(lat), parseFloat(lon),
       currentIdx, utcOffset, isCoastal, timezone
     )
+
+    // Enforce free-tier forecast window server-side
+    if (forecastDays < 10) {
+      report.forecast = report.forecast.slice(0, forecastDays)
+    }
 
     return NextResponse.json(report)
   } catch (e) {

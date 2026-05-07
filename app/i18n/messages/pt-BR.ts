@@ -322,6 +322,10 @@ const ptBR: Record<string, string> = {
   'paywall.perk1': 'Cada pico no mundo',
   'paywall.perk2': 'Previsões ao vivo e de 10 dias',
   'paywall.perk3': 'Cancele quando quiser',
+  'paywall.epicNowTeaser': 'Melhor Surf Agora — 608 picos ao redor do mundo',
+  'paywall.epicNowDesc': 'Veja onde as condições estão bombando globalmente, atualizado a cada 3 horas. Disponível em todos os planos pagos.',
+  'paywall.upgradeLink': 'Upgrade por $4/mês',
+  'paywall.historicalGate': 'Dados históricos (jan 2022–hoje) — pesquise qualquer data passada neste local',
 
   // Pontos cardinais (Leste = L, Oeste = O)
   'dir.N': 'N', 'dir.NNE': 'NNE', 'dir.NE': 'NE', 'dir.ENE': 'LNE',
