@@ -3,31 +3,10 @@
 import { useState } from 'react'
 import { SignInButton, useClerk } from '@clerk/nextjs'
 import SearchBar from './SearchBar'
+import { useLanguage } from '@/app/i18n/LanguageContext'
 import type { GeoResult } from '@/app/lib/types'
 
-// ── Data ──────────────────────────────────────────────────────────────────────
-
-const STEPS = [
-  {
-    icon: SearchIcon,
-    title: 'Search any spot',
-    desc: 'Type any beach, point break, or reef anywhere on Earth. Powered by OpenStreetMap.',
-  },
-  {
-    icon: WaveIcon,
-    title: 'See real-time conditions',
-    desc: 'Wave height, swell period & direction, wind, tides, and UV — updated every hour.',
-  },
-  {
-    icon: CalendarIcon,
-    title: 'Plan your session',
-    desc: 'Full 10-day forecast with surf ratings. Know the best window days in advance.',
-  },
-]
-
-const FREE_FEATURES    = ['Any surf spot worldwide', '3-day forecast', 'Current conditions & wind', 'Basic tide info', 'Save 1 favourite spot']
-const IND_FEATURES     = ['Full 10-day forecast', '5-day tide curve + NOAA verification', '400+ days of accuracy history', 'Historical conditions since 2022', 'Best surf now — 608 live spots', 'Save up to 20 spots']
-const PREMIUM_FEATURES = ['16-day extended forecast', 'Multi-model comparison (GFS vs NEMO)', 'Swell alert notifications', 'API access for developers']
+// ── Mock data (illustrative only — not user-facing text) ─────────────────────
 
 const MOCK_DAYS = [
   { label: 'Thu', rating: 'GOOD',  height: '3–4 ft', wind: '8 kts' },
@@ -53,7 +32,28 @@ const RATING_COLORS: Record<string, string> = {
 
 export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult) => void }) {
   const { openSignIn } = useClerk()
+  const { t } = useLanguage()
   const [billing, setBilling] = useState<'annual' | 'monthly'>('annual')
+
+  const STEPS = [
+    { icon: SearchIcon,   title: t('mktL.step1.title'), desc: t('mktL.step1.desc') },
+    { icon: WaveIcon,     title: t('mktL.step2.title'), desc: t('mktL.step2.desc') },
+    { icon: CalendarIcon, title: t('mktL.step3.title'), desc: t('mktL.step3.desc') },
+  ]
+
+  const FREE_FEATURES = [
+    t('mktL.free.f1'), t('mktL.free.f2'), t('mktL.free.f3'),
+    t('mktL.free.f4'), t('mktL.free.f5'),
+  ]
+
+  const IND_FEATURES = [
+    t('mktL.ind.f1'), t('mktL.ind.f2'), t('mktL.ind.f3'),
+    t('mktL.ind.f4'), t('mktL.ind.f5'), t('mktL.ind.f6'),
+  ]
+
+  const PREMIUM_FEATURES = [
+    t('mktL.prem.f1'), t('mktL.prem.f2'), t('mktL.prem.f3'), t('mktL.prem.f4'),
+  ]
 
   function handleSearch(result: GeoResult) {
     const url = `/?lat=${result.lat}&lon=${result.lon}&name=${encodeURIComponent(result.name)}&country=${encodeURIComponent(result.country)}`
@@ -75,17 +75,17 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
         <div className="relative z-10 text-center w-full max-w-2xl mx-auto">
           <div className="mb-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs font-medium">
             <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
-            Real-time surf reports — worldwide
+            {t('mktL.badge')}
           </div>
 
           <h1 className="text-5xl sm:text-7xl font-bold tracking-tight mb-4 leading-[1.05]">
-            <span className="text-white">Know </span>
-            <span className="bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">before</span>
-            <span className="text-white"> you go.</span>
+            <span className="text-white">{t('mktL.h1.pre')}</span>
+            <span className="bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">{t('mktL.h1.gradient')}</span>
+            <span className="text-white">{t('mktL.h1.post')}</span>
           </h1>
 
           <p className="text-slate-400 text-lg sm:text-xl mb-8 max-w-lg mx-auto leading-relaxed">
-            Wave height, swell, wind, tides, and 10-day forecasts for any surf spot on Earth.
+            {t('mktL.subtitle')}
           </p>
 
           <div className="w-full max-w-lg mx-auto mb-6">
@@ -95,11 +95,11 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
           <div className="flex items-center justify-center gap-3">
             <SignInButton mode="modal">
               <button className="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-semibold text-sm transition-colors">
-                Start free — no card needed
+                {t('mktL.ctaFree')}
               </button>
             </SignInButton>
             <a href="#pricing" className="px-5 py-2.5 rounded-xl border border-white/10 text-slate-300 hover:text-white hover:border-white/20 font-medium text-sm transition-colors">
-              See pricing
+              {t('mktL.ctaPricing')}
             </a>
           </div>
         </div>
@@ -112,8 +112,8 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
       {/* ── How it works ─────────────────────────────────────────────────── */}
       <section className="py-24 px-4 border-t border-white/5">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">How it works</h2>
-          <p className="text-slate-500 text-center mb-12">From search to session in seconds.</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">{t('mktL.howTitle')}</h2>
+          <p className="text-slate-500 text-center mb-12">{t('mktL.howSubtitle')}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {STEPS.map((step, i) => (
@@ -135,8 +135,8 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
       {/* ── Forecast teaser ──────────────────────────────────────────────── */}
       <section className="py-16 px-4 border-t border-white/5">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">10-day surf forecast</h2>
-          <p className="text-slate-500 text-center mb-10">See exactly when the swell peaks — days in advance.</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">{t('mktL.teaserTitle')}</h2>
+          <p className="text-slate-500 text-center mb-10">{t('mktL.teaserSubtitle')}</p>
 
           <div className="relative rounded-2xl border border-white/8 glass-card overflow-hidden p-4">
             {/* Mock forecast grid */}
@@ -161,11 +161,11 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
                 <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-500/15 border border-sky-500/25 mb-3">
                   <LockIcon />
                 </div>
-                <p className="text-white font-semibold text-sm mb-1">Unlock the full 10-day forecast</p>
-                <p className="text-slate-500 text-xs mb-4">Individual plan — from $3.33/mo</p>
+                <p className="text-white font-semibold text-sm mb-1">{t('mktL.teaserLock')}</p>
+                <p className="text-slate-500 text-xs mb-4">{t('mktL.teaserPrice')}</p>
                 <SignInButton mode="modal">
                   <button className="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-white font-semibold text-xs transition-colors">
-                    Start free trial
+                    {t('mktL.teaserCta')}
                   </button>
                 </SignInButton>
               </div>
@@ -177,13 +177,13 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
       {/* ── Feature comparison ───────────────────────────────────────────── */}
       <section className="py-16 px-4 border-t border-white/5">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Everything you need</h2>
-          <p className="text-slate-500 text-center mb-10">Start free. Upgrade when you're ready.</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">{t('mktL.featTitle')}</h2>
+          <p className="text-slate-500 text-center mb-10">{t('mktL.featSubtitle')}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {/* Free */}
             <div className="flex flex-col rounded-2xl border border-white/8 bg-white/3 p-5">
-              <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">Free</p>
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">{t('mktL.free.tier')}</p>
               <p className="text-3xl font-bold text-white mb-4">$0</p>
               <ul className="space-y-2.5 flex-1">
                 {FREE_FEATURES.map(f => (
@@ -195,7 +195,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
               </ul>
               <SignInButton mode="modal">
                 <button className="mt-6 w-full py-2.5 rounded-xl border border-white/10 text-slate-300 hover:bg-white/5 text-sm font-medium transition-colors">
-                  Get started free
+                  {t('mktL.free.cta')}
                 </button>
               </SignInButton>
             </div>
@@ -203,15 +203,15 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
             {/* Individual — highlighted */}
             <div className="flex flex-col rounded-2xl border border-teal-500/40 bg-teal-500/6 p-5 relative">
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[10px] font-semibold bg-teal-500 text-white whitespace-nowrap">
-                Most popular
+                {t('mktL.ind.badge')}
               </span>
-              <p className="text-xs font-semibold text-teal-400 uppercase tracking-widest mb-1">Individual</p>
+              <p className="text-xs font-semibold text-teal-400 uppercase tracking-widest mb-1">{t('mktL.ind.tier')}</p>
               <div className="mb-4">
                 <span className="text-3xl font-bold text-white">
                   {billing === 'annual' ? '$3.33' : '$4'}
                 </span>
                 <span className="text-sm text-slate-500 ml-1">/mo</span>
-                {billing === 'annual' && <p className="text-xs text-teal-400/80 mt-0.5">billed $40/year · save 17%</p>}
+                {billing === 'annual' && <p className="text-xs text-teal-400/80 mt-0.5">{t('mktL.ind.billed')}</p>}
               </div>
               <ul className="space-y-2.5 flex-1">
                 {IND_FEATURES.map(f => (
@@ -223,7 +223,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
               </ul>
               <SignInButton mode="modal">
                 <button className="mt-6 w-full py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-white text-sm font-semibold transition-colors">
-                  Start 7-day free trial
+                  {t('mktL.ind.cta')}
                 </button>
               </SignInButton>
             </div>
@@ -231,8 +231,8 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
             {/* Premium — coming soon */}
             <div className="flex flex-col rounded-2xl border border-white/8 bg-white/3 p-5 opacity-60">
               <div className="flex items-center justify-between mb-1">
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest">Premium</p>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/20 text-sky-400 font-medium">Coming soon</span>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest">{t('mktL.prem.tier')}</p>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/20 text-sky-400 font-medium">{t('mktL.prem.badge')}</span>
               </div>
               <p className="text-3xl font-bold text-slate-300 mb-4">$12<span className="text-base font-normal text-slate-500 ml-1">/mo</span></p>
               <ul className="space-y-2.5 flex-1">
@@ -244,7 +244,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
                 ))}
               </ul>
               <button disabled className="mt-6 w-full py-2.5 rounded-xl border border-white/8 text-slate-600 text-sm font-medium cursor-not-allowed">
-                Notify me
+                {t('mktL.prem.cta')}
               </button>
             </div>
           </div>
@@ -254,8 +254,8 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
       {/* ── Pricing section ──────────────────────────────────────────────── */}
       <section id="pricing" className="py-16 px-4 border-t border-white/5">
         <div className="max-w-md mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Simple pricing</h2>
-          <p className="text-slate-500 mb-8">No hidden fees. Cancel anytime.</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">{t('mktL.pricingTitle')}</h2>
+          <p className="text-slate-500 mb-8">{t('mktL.pricingSubtitle')}</p>
 
           {/* Billing toggle */}
           <div className="inline-flex items-center gap-1 p-1 rounded-xl bg-white/5 border border-white/8 mb-8">
@@ -263,13 +263,13 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
               onClick={() => setBilling('monthly')}
               className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${billing === 'monthly' ? 'bg-white/10 text-white' : 'text-slate-500 hover:text-slate-300'}`}
             >
-              Monthly · $4
+              {t('mktL.toggleMonthly')}
             </button>
             <button
               onClick={() => setBilling('annual')}
               className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${billing === 'annual' ? 'bg-white/10 text-white' : 'text-slate-500 hover:text-slate-300'}`}
             >
-              Annual · $40
+              {t('mktL.toggleAnnual')}
               <span className="ml-1.5 text-[10px] text-teal-400 font-semibold">–17%</span>
             </button>
           </div>
@@ -277,30 +277,30 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
           <div className="glass-card rounded-2xl border border-teal-500/30 p-6 text-left mb-4">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <p className="text-sm font-semibold text-teal-400 uppercase tracking-widest">Individual</p>
+                <p className="text-sm font-semibold text-teal-400 uppercase tracking-widest">{t('mktL.planName')}</p>
                 <div className="flex items-baseline gap-1 mt-1">
                   <span className="text-4xl font-bold text-white">{billing === 'annual' ? '$3.33' : '$4'}</span>
-                  <span className="text-slate-500 text-sm">/month</span>
+                  <span className="text-slate-500 text-sm">{t('mktL.perMonth')}</span>
                 </div>
-                {billing === 'annual' && <p className="text-xs text-teal-400/80 mt-0.5">Billed as $40/year</p>}
+                {billing === 'annual' && <p className="text-xs text-teal-400/80 mt-0.5">{t('mktL.billedAnnual')}</p>}
               </div>
               <div className="text-right">
-                <p className="text-xs text-slate-500">7-day free trial</p>
-                <p className="text-xs text-slate-500">Cancel anytime</p>
+                <p className="text-xs text-slate-500">{t('mktL.trial')}</p>
+                <p className="text-xs text-slate-500">{t('mktL.cancelAnytime')}</p>
               </div>
             </div>
             <SignInButton mode="modal">
               <button className="w-full py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-semibold transition-colors">
-                Start free trial
+                {t('mktL.startTrial')}
               </button>
             </SignInButton>
-            <p className="text-center text-xs text-slate-600 mt-2">No credit card required to start</p>
+            <p className="text-center text-xs text-slate-600 mt-2">{t('mktL.noCard')}</p>
           </div>
 
           <p className="text-xs text-slate-600">
-            Already have an account?{' '}
+            {t('mktL.haveAccount')}{' '}
             <SignInButton mode="modal">
-              <button className="text-sky-500 hover:text-sky-400 transition-colors">Sign in</button>
+              <button className="text-sky-500 hover:text-sky-400 transition-colors">{t('mktL.signIn')}</button>
             </SignInButton>
           </p>
         </div>
@@ -309,7 +309,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
       {/* ── Footer nudge ─────────────────────────────────────────────────── */}
       <div className="py-10 text-center border-t border-white/5">
         <p className="text-slate-600 text-xs">
-          Open ocean data from NOAA, ECMWF, and Copernicus Marine. Updated hourly.
+          {t('mktL.footer')}
         </p>
       </div>
 
