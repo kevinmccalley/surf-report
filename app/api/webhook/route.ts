@@ -34,17 +34,25 @@ async function handleLS(req: NextRequest): Promise<NextResponse> {
 
   const event = JSON.parse(rawBody)
   const eventName: string = event.meta?.event_name ?? ''
-  const clerkUserId: string | undefined = event.meta?.custom_data?.clerk_user_id
   const status: string = event.data?.attributes?.status ?? ''
   const subscriptionId: string = event.data?.id ?? ''
   const portalUrl: string = event.data?.attributes?.urls?.customer_portal ?? ''
+  const userEmail: string = event.data?.attributes?.user_email ?? ''
+
+  const client = await clerkClient()
+
+  // Resolve Clerk user: prefer explicit clerk_user_id, fall back to email lookup
+  let clerkUserId: string | undefined = event.meta?.custom_data?.clerk_user_id
+  if (!clerkUserId && userEmail) {
+    const result = await client.users.getUserList({ emailAddress: [userEmail], limit: 1 })
+    clerkUserId = result.data[0]?.id
+  }
 
   if (!clerkUserId) {
-    console.warn('[webhook/ls] No clerk_user_id in custom_data — skipping')
+    console.warn('[webhook/ls] Could not resolve Clerk user for email:', userEmail)
     return NextResponse.json({ received: true })
   }
 
-  const client = await clerkClient()
   const isActive = ['active', 'on_trial'].includes(status)
 
   switch (eventName) {
