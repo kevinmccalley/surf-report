@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { kv } from '@vercel/kv'
 import type { DailyAccuracyRecord } from '@/app/api/accuracy-history/route'
+import { omUrl } from '@/app/lib/utils'
 
 // Call: GET /api/accuracy-backfill?month=2025-06
 // Processes one calendar month at a time. Skips days already in KV.
@@ -112,7 +113,7 @@ async function fetchNEMORange(
     `?latitude=${lat}&longitude=${lon}&hourly=sea_level_height_msl` +
     `&start_date=${from}&end_date=${to}`
   try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(15000) })
+    const res = await fetch(omUrl(url), { signal: AbortSignal.timeout(15000) })
     if (!res.ok) return { times: [], heights: [] }
     const data = await res.json() as { hourly?: { time?: string[]; sea_level_height_msl?: (number | null)[] } }
     const rawTimes = data.hourly?.time ?? []

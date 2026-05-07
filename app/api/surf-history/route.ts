@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import type { SurfReport, CurrentConditions, HourlyForecast, DayForecast } from '@/app/lib/types'
 import { computeSurfRating } from '@/app/lib/surf-rating'
 import {
-  getDirectionLabel, getWeatherDescription, estimateWaterTemp, getDayName
+  getDirectionLabel, getWeatherDescription, estimateWaterTemp, getDayName, omUrl
 } from '@/app/lib/utils'
 
 const MIN_DATE = '2022-01-01'
@@ -67,8 +67,8 @@ export async function GET(request: NextRequest) {
 
   try {
     const [weatherRes, marineRes] = await Promise.all([
-      fetch(weatherUrl, { cache: 'force-cache' }),
-      fetch(marineUrl, { cache: 'force-cache' }),
+      fetch(omUrl(weatherUrl), { cache: 'force-cache' }),
+      fetch(omUrl(marineUrl), { cache: 'force-cache' }),
     ])
 
     const [weather, marine] = await Promise.all([weatherRes.json(), marineRes.json()])

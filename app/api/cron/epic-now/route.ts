@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { rset } from '@/app/lib/redis'
 import { computeSurfRating } from '@/app/lib/surf-rating'
-import { getDirectionLabel, findCurrentHourIndex } from '@/app/lib/utils'
+import { getDirectionLabel, findCurrentHourIndex, omUrl } from '@/app/lib/utils'
 import type { EpicSpot, EpicNowData } from '@/app/lib/types'
 import NOTABLE_SPOTS from '@/app/lib/notable-spots.json'
 
@@ -32,8 +32,8 @@ async function checkSpot(spot: { name: string; lat: number; lon: number }): Prom
     `&hourly=wind_speed_10m&timezone=auto&forecast_hours=4&wind_speed_unit=kmh`
   try {
     const [marineRes, weatherRes] = await Promise.all([
-      fetch(marineUrl, { signal: AbortSignal.timeout(8000) }),
-      fetch(weatherUrl, { signal: AbortSignal.timeout(8000) }),
+      fetch(omUrl(marineUrl), { signal: AbortSignal.timeout(8000) }),
+      fetch(omUrl(weatherUrl), { signal: AbortSignal.timeout(8000) }),
     ])
     if (!marineRes.ok || !weatherRes.ok) return null
     const [marine, weather] = await Promise.all([marineRes.json(), weatherRes.json()])

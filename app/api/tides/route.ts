@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import type { TideExtreme, TideHeight } from '@/app/lib/types'
+import { omUrl } from '@/app/lib/utils'
 
 // ── Haversine ────────────────────────────────────────────────────────────────
 
@@ -427,7 +428,7 @@ async function tryOpenMeteo(lat: number, lon: number): Promise<TideResult | null
       `?latitude=${lat}&longitude=${lon}` +
       `&hourly=sea_level_height_msl&forecast_days=10`
 
-    const res = await fetch(url, { next: { revalidate: 21600 } })
+    const res = await fetch(omUrl(url), { next: { revalidate: 21600 } })
     if (!res.ok) return null
     const data = await res.json()
 

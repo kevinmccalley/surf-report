@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { kv } from '@vercel/kv'
 import type { DailyAccuracyRecord } from '@/app/api/accuracy-history/route'
+import { omUrl } from '@/app/lib/utils'
 
 function isAuthorized(req: NextRequest): boolean {
   if (process.env.NODE_ENV !== 'production') return true
@@ -130,7 +131,7 @@ async function fetchNEMO(lat: number, lon: number): Promise<{ extremes: TideExtr
     `https://marine-api.open-meteo.com/v1/marine` +
     `?latitude=${lat}&longitude=${lon}&hourly=sea_level_height_msl&forecast_days=5`
   try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(12000) })
+    const res = await fetch(omUrl(url), { signal: AbortSignal.timeout(12000) })
     if (!res.ok) return { extremes: [], rawCount: 0 }
     const data = await res.json() as { hourly?: { time?: string[]; sea_level_height_msl?: (number | null)[] } }
     const times  = data.hourly?.time ?? []
@@ -358,7 +359,7 @@ async function fetchOpenMeteoWaveHeight(lat: number, lon: number): Promise<numbe
     `https://marine-api.open-meteo.com/v1/marine` +
     `?latitude=${lat}&longitude=${lon}&hourly=wave_height&forecast_days=1&timezone=GMT`
   try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(8000) })
+    const res = await fetch(omUrl(url), { signal: AbortSignal.timeout(8000) })
     if (!res.ok) return null
     const data = await res.json() as {
       hourly?: { time?: string[]; wave_height?: (number | null)[] }

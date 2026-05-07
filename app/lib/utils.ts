@@ -88,3 +88,10 @@ export function getDayName(isoDate: string, index: number): string {
   const d = new Date(year, month - 1, day)
   return d.toLocaleDateString('en-US', { weekday: 'short' })
 }
+
+// Appends the Open-Meteo commercial API key when present.
+// Set OPEN_METEO_API_KEY in environment variables after purchasing a plan.
+export function omUrl(url: string): string {
+  const key = process.env.OPEN_METEO_API_KEY
+  return key ? `${url}&apikey=${key}` : url
+}

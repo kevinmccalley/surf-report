@@ -6,7 +6,7 @@ import type {
 import { computeSurfRating } from '@/app/lib/surf-rating'
 import {
   getDirectionLabel, getWeatherDescription,
-  findCurrentHourIndex, estimateWaterTemp, getDayName
+  findCurrentHourIndex, estimateWaterTemp, getDayName, omUrl
 } from '@/app/lib/utils'
 
 const FREE_FORECAST_DAYS = 3
@@ -59,8 +59,8 @@ export async function GET(request: NextRequest) {
 
   try {
     const [marineRes, weatherRes] = await Promise.all([
-      fetch(marineUrl, { next: { revalidate: 1800 } }),
-      fetch(weatherUrl, { next: { revalidate: 1800 } }),
+      fetch(omUrl(marineUrl), { next: { revalidate: 1800 } }),
+      fetch(omUrl(weatherUrl), { next: { revalidate: 1800 } }),
     ])
 
     const [marine, weather] = await Promise.all([marineRes.json(), weatherRes.json()])

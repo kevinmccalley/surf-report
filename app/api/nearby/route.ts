@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import type { NearbySpot } from '@/app/lib/types'
 import { computeSurfRating } from '@/app/lib/surf-rating'
-import { getDirectionLabel, findCurrentHourIndex, estimateWaterTemp } from '@/app/lib/utils'
+import { getDirectionLabel, findCurrentHourIndex, estimateWaterTemp, omUrl } from '@/app/lib/utils'
 import STATIC_SPOTS from '@/app/lib/surf-spots.json'
 
 interface RawSpot { name: string; lat: number; lon: number; source: 'static' | 'osm' | 'wikidata' }
@@ -144,8 +144,8 @@ async function fetchSpotConditions(
     `&timezone=auto&forecast_hours=4&wind_speed_unit=kmh`
   try {
     const [marineRes, weatherRes] = await Promise.all([
-      fetch(marineUrl, { next: { revalidate: 1800 } }),
-      fetch(weatherUrl, { next: { revalidate: 1800 } }),
+      fetch(omUrl(marineUrl), { next: { revalidate: 1800 } }),
+      fetch(omUrl(weatherUrl), { next: { revalidate: 1800 } }),
     ])
     const [marine, weather] = await Promise.all([marineRes.json(), weatherRes.json()])
     if (marine.error) return null

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import baseline from '@/app/lib/monitor-baseline.json'
+import { omUrl } from '@/app/lib/utils'
 
 // ── Auth ──────────────────────────────────────────────────────────────────────
 // Vercel cron sends Authorization: Bearer {CRON_SECRET}
@@ -30,7 +31,7 @@ async function checkOpenMeteo(): Promise<Finding[]> {
       '?latitude=34.0&longitude=-118.5' +
       '&hourly=wave_height,swell_wave_height,wind_wave_height,sea_level_height_msl' +
       '&forecast_days=1&timezone=auto'
-    const res = await fetch(url, { signal: AbortSignal.timeout(10000) })
+    const res = await fetch(omUrl(url), { signal: AbortSignal.timeout(10000) })
 
     if (!res.ok) {
       findings.push({
@@ -329,7 +330,7 @@ async function checkTideAccuracy(): Promise<Finding[]> {
           `https://marine-api.open-meteo.com/v1/marine` +
           `?latitude=${loc.lat}&longitude=${loc.lon}` +
           `&hourly=sea_level_height_msl&forecast_days=5`
-        const res = await fetch(url, { signal: AbortSignal.timeout(12000) })
+        const res = await fetch(omUrl(url), { signal: AbortSignal.timeout(12000) })
         if (!res.ok) return { loc, extremes: null as TideExtremeSample[] | null }
         const data = await res.json() as { hourly?: { time?: string[]; sea_level_height_msl?: (number | null)[] } }
         const times   = data.hourly?.time ?? []
@@ -523,7 +524,7 @@ async function checkWaveAccuracy(): Promise<Finding[]> {
           `https://marine-api.open-meteo.com/v1/marine` +
           `?latitude=${loc.lat}&longitude=${loc.lon}` +
           `&hourly=wave_height,swell_wave_height&forecast_days=3`
-        const res = await fetch(url, { signal: AbortSignal.timeout(10000) })
+        const res = await fetch(omUrl(url), { signal: AbortSignal.timeout(10000) })
         if (!res.ok) return { loc, ok: false, allZero: false, allNull: false, maxH: 0 }
         const data = await res.json() as { hourly?: { wave_height?: (number | null)[] } }
         const wh = (data.hourly?.wave_height ?? []).filter((h): h is number => h !== null && !isNaN(h))
