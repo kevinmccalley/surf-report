@@ -307,8 +307,8 @@ const ptPT: Record<string, string> = {
   'accuracy.errFetchFailed': 'Falha ao obter dados',
 
   // PaywallModal
-  'paywall.title': 'Experimente gratuitamente por uma semana',
-  'paywall.subtitle': 'Usou os seus 7 relatórios gratuitos. Inicie um período experimental de 7 dias — sem cobrança até à próxima semana.',
+  'paywall.title': 'Desbloqueie a previsão completa',
+  'paywall.subtitle': 'Período experimental de 7 dias · sem cartão de crédito',
   'paywall.monthly': 'Mensal',
   'paywall.perMonth': 'por mês',
   'paywall.annual': 'Anual',
@@ -322,6 +322,12 @@ const ptPT: Record<string, string> = {
   'paywall.perk1': 'Cada spot no mundo',
   'paywall.perk2': 'Previsões em direto e de 10 dias',
   'paywall.perk3': 'Cancele quando quiser',
+  'paywall.tierFree': 'Gratuito',
+  'paywall.tierIndividual': 'Individual',
+  'paywall.tierPremium': 'Premium',
+  'paywall.currentPlan': 'Atual',
+  'paywall.mostPopular': 'Mais popular',
+  'paywall.comingSoon': 'Brevemente',
   'paywall.epicNowTeaser': 'Melhor Surf Agora — 608 spots em todo o mundo',
   'paywall.epicNowDesc': 'Veja onde as condições estão a bombar globalmente, atualizado a cada 3 horas. Disponível em todos os planos pagos.',
   'paywall.upgradeLink': 'Upgrade por $4/mês',

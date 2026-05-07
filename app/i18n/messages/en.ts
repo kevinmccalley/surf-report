@@ -307,8 +307,8 @@ const en: Record<string, string> = {
   'accuracy.errFetchFailed': 'Fetch failed',
 
   // PaywallModal
-  'paywall.title': 'Try free for a week',
-  'paywall.subtitle': "You've used your 7 free reports. Start a free 7-day trial — no charge until next week.",
+  'paywall.title': 'Unlock the full forecast',
+  'paywall.subtitle': '7-day free trial · no credit card required',
   'paywall.monthly': 'Monthly',
   'paywall.perMonth': 'per month',
   'paywall.annual': 'Annual',
@@ -322,6 +322,12 @@ const en: Record<string, string> = {
   'paywall.perk1': 'Every spot on earth',
   'paywall.perk2': 'Live & 10-day forecasts',
   'paywall.perk3': 'Cancel anytime',
+  'paywall.tierFree': 'Free',
+  'paywall.tierIndividual': 'Individual',
+  'paywall.tierPremium': 'Premium',
+  'paywall.currentPlan': 'Current',
+  'paywall.mostPopular': 'Most popular',
+  'paywall.comingSoon': 'Coming soon',
   'paywall.epicNowTeaser': 'Best Surf Right Now — 608 spots worldwide',
   'paywall.epicNowDesc': 'See where conditions are firing globally, updated every 3 hours. Available on all paid plans.',
   'paywall.upgradeLink': 'Upgrade for $4/month',

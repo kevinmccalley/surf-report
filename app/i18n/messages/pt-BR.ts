@@ -307,8 +307,8 @@ const ptBR: Record<string, string> = {
   'accuracy.errFetchFailed': 'Falha ao obter dados',
 
   // PaywallModal
-  'paywall.title': 'Experimente grátis por uma semana',
-  'paywall.subtitle': 'Você usou seus 7 relatórios gratuitos. Inicie um teste gratuito de 7 dias — sem cobrança até a próxima semana.',
+  'paywall.title': 'Desbloqueie a previsão completa',
+  'paywall.subtitle': 'Teste gratuito de 7 dias · sem cartão de crédito',
   'paywall.monthly': 'Mensal',
   'paywall.perMonth': 'por mês',
   'paywall.annual': 'Anual',
@@ -322,6 +322,12 @@ const ptBR: Record<string, string> = {
   'paywall.perk1': 'Cada pico no mundo',
   'paywall.perk2': 'Previsões ao vivo e de 10 dias',
   'paywall.perk3': 'Cancele quando quiser',
+  'paywall.tierFree': 'Grátis',
+  'paywall.tierIndividual': 'Individual',
+  'paywall.tierPremium': 'Premium',
+  'paywall.currentPlan': 'Atual',
+  'paywall.mostPopular': 'Mais popular',
+  'paywall.comingSoon': 'Em breve',
   'paywall.epicNowTeaser': 'Melhor Surf Agora — 608 picos ao redor do mundo',
   'paywall.epicNowDesc': 'Veja onde as condições estão bombando globalmente, atualizado a cada 3 horas. Disponível em todos os planos pagos.',
   'paywall.upgradeLink': 'Upgrade por $4/mês',
