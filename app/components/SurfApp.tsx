@@ -43,6 +43,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
   const isPaid = tier === 'base'
   const savedLocations = (user?.publicMetadata?.savedLocations as SavedLocation[] | undefined) ?? []
   const [showPaywall, setShowPaywall] = useState(false)
+  const [billingError, setBillingError] = useState<string | null>(null)
   const [report, setReport] = useState<SurfReport | null>(null)
   const [tideData, setTideData] = useState<TideResult | null>(null)
   const [climData, setClimData] = useState<ClimatologyData | null>(null)
@@ -211,9 +212,20 @@ export default function SurfApp({ tier }: { tier: Tier }) {
   }, [report, lastGeoResult])
 
   async function openBillingPortal() {
-    const res = await fetch('/api/portal', { method: 'POST' })
-    const data = await res.json()
-    if (data.url) window.location.href = data.url
+    setBillingError(null)
+    try {
+      const res = await fetch('/api/portal', { method: 'POST' })
+      const data = await res.json()
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        setBillingError(data.error ?? 'Could not open billing portal. Please try again.')
+        setTimeout(() => setBillingError(null), 5000)
+      }
+    } catch {
+      setBillingError('Network error. Please try again.')
+      setTimeout(() => setBillingError(null), 5000)
+    }
   }
 
   const isSaved = report
@@ -332,6 +344,12 @@ export default function SurfApp({ tier }: { tier: Tier }) {
           </div>
         )}
       </header>
+
+      {billingError && (
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-red-500/90 text-white text-xs font-medium shadow-lg backdrop-blur-sm">
+          {billingError}
+        </div>
+      )}
 
       <main id="main-content">
         {!report && !loading && !error && (
