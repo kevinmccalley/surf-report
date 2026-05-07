@@ -391,8 +391,9 @@ export default function SurfApp({ tier }: { tier: Tier }) {
                   <div>
                     <p className="text-sm font-semibold text-teal-300">{t('forecast.upgradeCtaTitle')}</p>
                     <p className="text-xs text-slate-500 mt-0.5">{t('forecast.upgradeCtaDesc')}</p>
+                    <p className="text-xs text-teal-400/60 mt-1">{t('paywall.priceContrast')}</p>
                   </div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden className="shrink-0 text-teal-400/60 group-hover:text-teal-300 transition-colors">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden className="shrink-0 text-teal-400/60 group-hover:text-teal-300 transition-colors ml-3">
                     <rect x="3" y="7" width="10" height="7.5" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
                     <path d="M5.5 7V5.5a2.5 2.5 0 0 1 5 0V7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
                   </svg>
@@ -461,6 +462,10 @@ export default function SurfApp({ tier }: { tier: Tier }) {
                 units={units}
                 onViewFull={fetchHistorical}
               />
+            )}
+
+            {isPaid && !report.historical && (
+              <PremiumTeaser />
             )}
 
             <footer className="text-center text-xs text-slate-400 pt-4 space-y-1.5">
@@ -598,6 +603,46 @@ function SiteFooterLinks() {
   )
 }
 
+function PremiumTeaser() {
+  const FEATURES = [
+    { label: '16-day extended forecast', icon: '📅' },
+    { label: 'Multi-model comparison (GFS vs NEMO)', icon: '📊' },
+    { label: 'Swell alert notifications', icon: '🔔' },
+    { label: 'API access for developers', icon: '⚡' },
+  ]
+  return (
+    <section className="glass-card rounded-2xl p-4 sm:p-6 border border-sky-500/10">
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Premium</p>
+          <p className="text-sm font-semibold text-white mt-0.5">Coming soon</p>
+        </div>
+        <span className="text-[10px] px-2 py-1 rounded-full bg-sky-500/12 text-sky-400 border border-sky-500/20 font-medium">
+          In development
+        </span>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {FEATURES.map(f => (
+          <div
+            key={f.label}
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg border border-white/5 bg-white/2"
+          >
+            <span className="text-base opacity-40">{f.icon}</span>
+            <span className="text-xs text-slate-500">{f.label}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="ml-auto shrink-0 opacity-30">
+              <rect x="2" y="5.5" width="8" height="5.5" rx="1.2" stroke="#94a3b8" strokeWidth="1.2" />
+              <path d="M3.5 5.5V4a2.5 2.5 0 0 1 5 0v1.5" stroke="#94a3b8" strokeWidth="1.2" strokeLinecap="round" />
+            </svg>
+          </div>
+        ))}
+      </div>
+      <p className="text-[11px] text-slate-600 mt-3">
+        Subscribe now to get access when Premium launches — same price, no upgrade required.
+      </p>
+    </section>
+  )
+}
+
 function UpgradeTeaser({ onUpgrade }: { onUpgrade: () => void }) {
   const { t } = useLanguage()
   return (
@@ -611,7 +656,8 @@ function UpgradeTeaser({ onUpgrade }: { onUpgrade: () => void }) {
           <span className="text-sm font-semibold text-sky-300">{t('paywall.epicNowTeaser')}</span>
         </div>
         <p className="text-xs text-slate-400 ml-7">{t('paywall.epicNowDesc')}</p>
-        <p className="text-xs text-sky-400 mt-3 ml-7 group-hover:text-sky-300 transition-colors">
+        <p className="text-xs text-teal-400/70 mt-1.5 ml-7">{t('paywall.priceContrast')}</p>
+        <p className="text-xs text-sky-400 mt-2 ml-7 group-hover:text-sky-300 transition-colors">
           {t('paywall.upgradeLink')} →
         </p>
       </button>

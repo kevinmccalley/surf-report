@@ -331,6 +331,7 @@ const es: Record<string, string> = {
   'paywall.epicNowTeaser': 'Mejor Surf Ahora — 608 spots en todo el mundo',
   'paywall.epicNowDesc': 'Ve dónde las condiciones están perfectas globalmente, actualizado cada 3 horas. Disponible en todos los planes de pago.',
   'paywall.upgradeLink': 'Actualiza por $4/mes',
+  'paywall.priceContrast': '$4/mes · Surfline cobra $108/año por los mismos datos',
   'paywall.historicalGate': 'Datos históricos (ene 2022–hoy) — consulta cualquier fecha pasada en esta ubicación',
   'tides.freeTierLabel': 'Pronóstico de Mareas de 3 Días',
   'tides.upgradeExtended': 'Curva de 5 días · verificación en vivo NOAA · detalles de estación',

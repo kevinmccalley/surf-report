@@ -299,14 +299,17 @@ export default function TideSection({
           onClick={onUpgrade}
           className="w-full flex items-center justify-between px-4 py-3 rounded-xl border border-teal-500/20 bg-teal-500/6 hover:bg-teal-500/10 transition-colors text-left group"
         >
-          <div className="flex items-center gap-2.5">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className="shrink-0 text-teal-400">
-              <rect x="2" y="6" width="10" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
-              <path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-            </svg>
-            <span className="text-xs text-teal-300 font-medium">{t('tides.upgradeExtended')}</span>
+          <div>
+            <div className="flex items-center gap-2 mb-0.5">
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden className="shrink-0 text-teal-400">
+                <rect x="2" y="6" width="10" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
+                <path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+              </svg>
+              <span className="text-xs text-teal-300 font-medium">{t('tides.upgradeExtended')}</span>
+            </div>
+            <p className="text-[10px] text-teal-400/50 pl-5">{t('paywall.priceContrast')}</p>
           </div>
-          <span className="text-[10px] text-teal-400/70 group-hover:text-teal-300 transition-colors">Upgrade →</span>
+          <span className="text-[10px] text-teal-400/70 group-hover:text-teal-300 transition-colors shrink-0 ml-3">Upgrade →</span>
         </button>
       )}
     </div>

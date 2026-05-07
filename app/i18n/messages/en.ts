@@ -331,6 +331,7 @@ const en: Record<string, string> = {
   'paywall.epicNowTeaser': 'Best Surf Right Now — 608 spots worldwide',
   'paywall.epicNowDesc': 'See where conditions are firing globally, updated every 3 hours. Available on all paid plans.',
   'paywall.upgradeLink': 'Upgrade for $4/month',
+  'paywall.priceContrast': '$4/month · Surfline charges $108/year for the same data',
   'paywall.historicalGate': 'Historical data (Jan 2022–present) — search any past date at this location',
   'tides.freeTierLabel': '3-Day Tide Forecast',
   'tides.upgradeExtended': '5-day curve · NOAA live verification · station details',
