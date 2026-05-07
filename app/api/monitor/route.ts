@@ -629,7 +629,7 @@ async function sendAlert(findings: Finding[]) {
         Reply <strong>GO</strong> to this email and I'll implement the changes described above. If you want only specific items done, name them. Ignore this email to skip the cycle — the next check runs in 7 days.
       </p>
       <p style="font-size: 12px; color: #94a3b8; margin: 12px 0 0 0;">
-        Groundswell Monitor · <a href="https://surf-report-chi.vercel.app" style="color: #0ea5e9;">surf-report-chi.vercel.app</a>
+        Groundswell Monitor · <a href="https://groundswell.surf" style="color: #0ea5e9;">groundswell.surf</a>
       </p>
     </div>
   </div>

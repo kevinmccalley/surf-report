@@ -1,6 +1,6 @@
 {
   "_note": "This file is the source of truth for the weekly monitor. Update it after Kevin approves a change.",
-  "lastChecked": "2026-05-02T00:00:00Z",
+  "lastChecked": "2026-05-07T00:00:00Z",
   "openMeteo": {
     "marineAlive": true,
     "hasSealevelVariable": true,
@@ -18,7 +18,7 @@
     "stationCountBucket": 900
   },
   "packages": {
-    "next": { "major": 16, "latest": "16.2.4" },
+    "next": { "major": 16, "latest": "16.2.5" },
     "recharts": { "major": 2, "latest": "2.12.7" },
     "tailwindcss": { "major": 3, "latest": "3.4.1" },
     "@clerk/nextjs": { "major": 6, "latest": "6.12.12" },
