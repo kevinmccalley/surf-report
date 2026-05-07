@@ -2,7 +2,7 @@
 
 import type { SurfReport } from '@/app/lib/types'
 import { formatWaveHeight, formatTemp } from '@/app/lib/utils'
-import { MapPin, Clock, Wind, Droplets, Thermometer } from 'lucide-react'
+import { MapPin, Clock, Wind, Droplets, Thermometer, Bookmark } from 'lucide-react'
 import WeatherIcon from './WeatherIcon'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 
@@ -10,9 +10,11 @@ interface Props {
   report: SurfReport
   units: { temp: 'c' | 'f'; height: 'ft' | 'm' }
   onMapOpen?: () => void
+  isSaved?: boolean
+  onToggleSave?: () => void
 }
 
-export default function HeroSection({ report, units, onMapOpen }: Props) {
+export default function HeroSection({ report, units, onMapOpen, isSaved, onToggleSave }: Props) {
   const { t, bcp47 } = useLanguage()
   const { current, location } = report
   const { rating } = current
@@ -52,6 +54,16 @@ export default function HeroSection({ report, units, onMapOpen }: Props) {
             {location.name}
             {location.country && <span className="text-slate-400 font-normal">, {location.country}</span>}
           </h1>
+          {onToggleSave && (
+            <button
+              onClick={onToggleSave}
+              title={isSaved ? t('locations.saved') : t('locations.save')}
+              aria-label={isSaved ? t('locations.saved') : t('locations.save')}
+              className={`p-1 rounded-md transition-colors ${isSaved ? 'text-teal-400 hover:text-teal-300' : 'text-slate-600 hover:text-slate-400 hover:bg-white/5'}`}
+            >
+              <Bookmark size={15} className={isSaved ? 'fill-teal-400' : ''} />
+            </button>
+          )}
         </div>
         <div className="flex items-center gap-1 text-xs text-slate-500">
           <Clock size={11} />

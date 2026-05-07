@@ -384,6 +384,15 @@ const ptPT: Record<string, string> = {
   'nearby.away': 'a {dist} km',
   'nearby.noSpots': 'Nenhum spot de surf encontrado nas proximidades.',
 
+  // SavedLocations
+  'locations.yourSpots': 'Os Seus Spots',
+  'locations.noSaved': 'Nenhum spot guardado ainda',
+  'locations.save': 'Guardar localização',
+  'locations.saved': 'Guardado',
+  'locations.remove': 'Remover',
+  'locations.signInToSave': 'Inicie sessão para guardar localizações',
+  'locations.freeLimitHint': 'Plano gratuito: 1 spot guardado · Atualize para mais',
+
   // AccuracyPage — Data Sources section
   'accuracy.sourcesTitle': 'Fontes de dados',
   'accuracy.sourcesIntro': 'Cada número neste site vem de uma fonte aberta e gratuita. Sem feeds proprietários, sem modelos pagos. Aqui está exatamente de onde vem cada dado.',

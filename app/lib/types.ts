@@ -203,3 +203,12 @@ export interface EpicNowData {
   updatedAt: string
   checkedCount: number
 }
+
+export interface SavedLocation {
+  name: string
+  country: string
+  displayName: string
+  lat: number
+  lon: number
+  savedAt: string
+}

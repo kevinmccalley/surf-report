@@ -1,0 +1,51 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { auth, clerkClient } from '@clerk/nextjs/server'
+import type { SavedLocation } from '@/app/lib/types'
+
+const FREE_LIMIT = 1
+const PAID_LIMIT = 20
+
+async function getContext() {
+  const { userId } = await auth()
+  if (!userId) return null
+  const client = await clerkClient()
+  const user = await client.users.getUser(userId)
+  const privMeta = user.privateMetadata as { subscriptionStatus?: string }
+  const pubMeta  = user.publicMetadata  as { savedLocations?: SavedLocation[] }
+  const bypassEmails = (process.env.BYPASS_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean)
+  const userEmail = user.emailAddresses[0]?.emailAddress?.toLowerCase() ?? ''
+  const isPaid = privMeta.subscriptionStatus === 'active' || (bypassEmails.length > 0 && bypassEmails.includes(userEmail))
+  return { userId, client, isPaid, saved: pubMeta.savedLocations ?? [] }
+}
+
+export async function POST(request: NextRequest) {
+  const ctx = await getContext()
+  if (!ctx) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const { userId, client, isPaid, saved } = ctx
+
+  const body = await request.json() as Omit<SavedLocation, 'savedAt'>
+
+  if (saved.some(s => Math.abs(s.lat - body.lat) < 0.001 && Math.abs(s.lon - body.lon) < 0.001)) {
+    return NextResponse.json({ ok: true })
+  }
+
+  const limit = isPaid ? PAID_LIMIT : FREE_LIMIT
+  if (saved.length >= limit) {
+    return NextResponse.json({ error: 'limit', tier: isPaid ? 'paid' : 'free' }, { status: 403 })
+  }
+
+  const updated = [...saved, { ...body, savedAt: new Date().toISOString() }]
+  await client.users.updateUserMetadata(userId, { publicMetadata: { savedLocations: updated } })
+  return NextResponse.json({ ok: true })
+}
+
+export async function DELETE(request: NextRequest) {
+  const ctx = await getContext()
+  if (!ctx) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const { userId, client, saved } = ctx
+
+  const { lat, lon } = await request.json()
+  const updated = saved.filter(s => !(Math.abs(s.lat - lat) < 0.001 && Math.abs(s.lon - lon) < 0.001))
+  await client.users.updateUserMetadata(userId, { publicMetadata: { savedLocations: updated } })
+  return NextResponse.json({ ok: true })
+}

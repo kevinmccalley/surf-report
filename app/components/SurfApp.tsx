@@ -2,10 +2,10 @@
 
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { Menu, X, Lock } from 'lucide-react'
-import { useUser } from '@clerk/nextjs'
+import { useUser, useClerk } from '@clerk/nextjs'
 import PaywallModal from './PaywallModal'
 import type { Tier } from '@/app/page'
-import type { SurfReport, TideReport, TideUnavailable, GeoResult, BuoyReading, NearbySpot } from '@/app/lib/types'
+import type { SurfReport, TideReport, TideUnavailable, GeoResult, BuoyReading, NearbySpot, SavedLocation } from '@/app/lib/types'
 import SearchBar from './SearchBar'
 import HeroSection from './HeroSection'
 import ConditionCards from './ConditionCards'
@@ -23,6 +23,7 @@ import MapPanel from './MapPanel'
 import NearbySpots from './NearbySpots'
 import EpicNowSection from './EpicNowSection'
 import LanguageSwitcher from './LanguageSwitcher'
+import SavedLocations from './SavedLocations'
 import type { ClimatologyMonth } from './ClimatologySection'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 
@@ -37,8 +38,10 @@ interface ClimatologyData {
 
 export default function SurfApp({ tier }: { tier: Tier }) {
   const { t, bcp47 } = useLanguage()
-  const { isSignedIn } = useUser()
+  const { isSignedIn, user } = useUser()
+  const { openSignIn } = useClerk()
   const isPaid = tier === 'base'
+  const savedLocations = (user?.publicMetadata?.savedLocations as SavedLocation[] | undefined) ?? []
   const [showPaywall, setShowPaywall] = useState(false)
   const [report, setReport] = useState<SurfReport | null>(null)
   const [tideData, setTideData] = useState<TideResult | null>(null)
@@ -213,6 +216,47 @@ export default function SurfApp({ tier }: { tier: Tier }) {
     if (data.url) window.location.href = data.url
   }
 
+  const isSaved = report
+    ? savedLocations.some(s => Math.abs(s.lat - report.location.lat) < 0.001 && Math.abs(s.lon - report.location.lon) < 0.001)
+    : false
+
+  async function handleToggleSave() {
+    if (!isSignedIn) { openSignIn(); return }
+    if (!report) return
+    if (isSaved) {
+      await fetch('/api/locations', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lat: report.location.lat, lon: report.location.lon }),
+      })
+    } else {
+      const res = await fetch('/api/locations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: report.location.name,
+          country: report.location.country,
+          displayName: report.location.country
+            ? `${report.location.name}, ${report.location.country}`
+            : report.location.name,
+          lat: report.location.lat,
+          lon: report.location.lon,
+        }),
+      })
+      if (res.status === 403) { setShowPaywall(true); return }
+    }
+    await user?.reload()
+  }
+
+  async function handleRemoveLocation(lat: number, lon: number) {
+    await fetch('/api/locations', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lat, lon }),
+    })
+    await user?.reload()
+  }
+
   const toggleTemp   = () => setUnits(u => ({ ...u, temp:   u.temp   === 'f' ? 'c'  : 'f'  }))
   const toggleHeight = () => setUnits(u => ({ ...u, height: u.height === 'ft' ? 'm' : 'ft' }))
 
@@ -246,6 +290,13 @@ export default function SurfApp({ tier }: { tier: Tier }) {
             )}
             <LanguageSwitcher />
             <ThemePicker />
+            {isSignedIn && (
+              <SavedLocations
+                locations={savedLocations}
+                onSelect={(loc) => fetchReport({ name: loc.name, country: loc.country, lat: loc.lat, lon: loc.lon, displayName: loc.displayName })}
+                onRemove={handleRemoveLocation}
+              />
+            )}
             <AuthButton subscribed={isPaid} onManageBilling={openBillingPortal} />
           </div>
 
@@ -270,6 +321,13 @@ export default function SurfApp({ tier }: { tier: Tier }) {
             )}
             <LanguageSwitcher align="left" />
             <ThemePicker align="left" />
+            {isSignedIn && (
+              <SavedLocations
+                locations={savedLocations}
+                onSelect={(loc) => { fetchReport({ name: loc.name, country: loc.country, lat: loc.lat, lon: loc.lon, displayName: loc.displayName }); setShowMenu(false) }}
+                onRemove={handleRemoveLocation}
+              />
+            )}
             <AuthButton subscribed={isPaid} onManageBilling={openBillingPortal} />
           </div>
         )}
@@ -344,7 +402,13 @@ export default function SurfApp({ tier }: { tier: Tier }) {
               </div>
             )}
 
-            <HeroSection report={report} units={units} onMapOpen={() => setShowMap(true)} />
+            <HeroSection
+              report={report}
+              units={units}
+              onMapOpen={() => setShowMap(true)}
+              isSaved={isSaved}
+              onToggleSave={handleToggleSave}
+            />
 
             {report.isCoastal && <ConditionCards report={report} units={units} />}
 

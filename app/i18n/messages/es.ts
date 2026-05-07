@@ -384,6 +384,15 @@ const es: Record<string, string> = {
   'nearby.away': 'a {dist} km',
   'nearby.noSpots': 'No se encontraron spots de surf cercanos.',
 
+  // SavedLocations
+  'locations.yourSpots': 'Tus Spots',
+  'locations.noSaved': 'Aún no hay spots guardados',
+  'locations.save': 'Guardar ubicación',
+  'locations.saved': 'Guardado',
+  'locations.remove': 'Eliminar',
+  'locations.signInToSave': 'Inicia sesión para guardar ubicaciones',
+  'locations.freeLimitHint': 'Plan gratuito: 1 spot guardado · Actualiza para más',
+
   // AccuracyPage — Data Sources section
   'accuracy.sourcesTitle': 'Fuentes de datos',
   'accuracy.sourcesIntro': 'Cada dato de este sitio proviene de una fuente abierta y gratuita. Sin feeds propietarios ni modelos de pago. Aquí es exactamente de dónde proviene cada pieza de información.',
