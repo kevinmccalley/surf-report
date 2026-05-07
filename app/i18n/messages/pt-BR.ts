@@ -431,7 +431,7 @@ const ptBR: Record<string, string> = {
   'mktL.ind.f3': 'Mais de 400 dias de histórico de precisão',
   'mktL.ind.f4': 'Condições históricas desde 2022',
   'mktL.ind.f5': 'Melhor surf agora — 608 spots ao vivo',
-  'mktL.ind.f6': 'Salve até 20 spots',
+  'mktL.ind.f6': 'Spots salvos ilimitados',
   'mktL.ind.cta': 'Iniciar teste gratuito de 7 dias',
   'mktL.prem.tier': 'Premium',
   'mktL.prem.badge': 'Em breve',

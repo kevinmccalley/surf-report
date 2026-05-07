@@ -3,7 +3,6 @@ import { auth, clerkClient } from '@clerk/nextjs/server'
 import type { SavedLocation } from '@/app/lib/types'
 
 const FREE_LIMIT = 1
-const PAID_LIMIT = 20
 
 async function getContext() {
   const { userId } = await auth()
@@ -29,7 +28,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true })
   }
 
-  const limit = isPaid ? PAID_LIMIT : FREE_LIMIT
+  const limit = isPaid ? Infinity : FREE_LIMIT
   if (saved.length >= limit) {
     return NextResponse.json({ error: 'limit', tier: isPaid ? 'paid' : 'free' }, { status: 403 })
   }

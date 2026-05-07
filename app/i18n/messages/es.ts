@@ -431,7 +431,7 @@ const es: Record<string, string> = {
   'mktL.ind.f3': 'Más de 400 días de historial de precisión',
   'mktL.ind.f4': 'Condiciones históricas desde 2022',
   'mktL.ind.f5': 'Mejor surf ahora — 608 spots en vivo',
-  'mktL.ind.f6': 'Guarda hasta 20 spots',
+  'mktL.ind.f6': 'Spots guardados ilimitados',
   'mktL.ind.cta': 'Iniciar prueba gratuita de 7 días',
   'mktL.prem.tier': 'Premium',
   'mktL.prem.badge': 'Próximamente',

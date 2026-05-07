@@ -431,7 +431,7 @@ const en: Record<string, string> = {
   'mktL.ind.f3': '400+ days of accuracy history',
   'mktL.ind.f4': 'Historical conditions since 2022',
   'mktL.ind.f5': 'Best surf now — 608 live spots',
-  'mktL.ind.f6': 'Save up to 20 spots',
+  'mktL.ind.f6': 'Unlimited saved spots',
   'mktL.ind.cta': 'Start 7-day free trial',
   'mktL.prem.tier': 'Premium',
   'mktL.prem.badge': 'Coming soon',

@@ -95,6 +95,7 @@ async function stripeCheckout(plan: 'annual' | 'monthly', email: string, userId:
     payment_method_types: ['card'],
     line_items: [{ price: priceId, quantity: 1 }],
     subscription_data: { trial_period_days: 7 },
+    payment_method_collection: 'if_required',
     allow_promotion_codes: true,
     success_url: `${origin}/?subscribed=true`,
     cancel_url: `${origin}/`,
