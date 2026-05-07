@@ -57,7 +57,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
 
   function handleSearch(result: GeoResult) {
     const url = `/?lat=${result.lat}&lon=${result.lon}&name=${encodeURIComponent(result.name)}&country=${encodeURIComponent(result.country)}`
-    openSignIn({ redirectUrl: url })
+    openSignIn({ afterSignInUrl: url })
   }
 
   return (

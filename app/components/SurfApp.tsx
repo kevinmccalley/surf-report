@@ -99,7 +99,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
   const fetchReport = useCallback(async (result: GeoResult, updateUrl = true) => {
     if (!isSignedIn) {
       const redirectUrl = `/?lat=${result.lat}&lon=${result.lon}&name=${encodeURIComponent(result.name)}&country=${encodeURIComponent(result.country)}`
-      openSignIn({ redirectUrl })
+      openSignIn({ afterSignInUrl: redirectUrl })
       return
     }
     setLoading(true)
