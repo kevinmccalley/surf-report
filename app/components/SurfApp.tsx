@@ -41,6 +41,8 @@ export default function SurfApp({ tier }: { tier: Tier }) {
   const { t, bcp47 } = useLanguage()
   const { isSignedIn, user } = useUser()
   const { openSignIn } = useClerk()
+  const isSignedInRef = useRef(false)
+  useEffect(() => { isSignedInRef.current = !!isSignedIn }, [isSignedIn])
   const isPaid = tier === 'base'
   const savedLocations = (user?.publicMetadata?.savedLocations as SavedLocation[] | undefined) ?? []
   const [showPaywall, setShowPaywall] = useState(false)
@@ -113,7 +115,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
   }, [isSignedIn]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchReport = useCallback(async (result: GeoResult, updateUrl = true) => {
-    if (!isSignedIn) {
+    if (!isSignedInRef.current) {
       const redirectUrl = `/?lat=${result.lat}&lon=${result.lon}&name=${encodeURIComponent(result.name)}&country=${encodeURIComponent(result.country)}`
       sessionStorage.setItem('postSignInUrl', redirectUrl)
       openSignIn()
