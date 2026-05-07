@@ -395,9 +395,9 @@ const fr: Record<string, string> = {
 
   // MarketingLanding
   'mktL.badge': 'Rapports de surf en temps réel — partout dans le monde',
-  'mktL.h1.pre': 'Sachez ',
+  'mktL.h1.pre': 'Sache ',
   'mktL.h1.gradient': 'avant',
-  'mktL.h1.post': ' de partir.',
+  'mktL.h1.post': ' de plonger.',
   'mktL.subtitle': "Hauteur de vague, houle, vent, marées et prévisions 10 jours pour n'importe quel spot.",
   'mktL.ctaFree': 'Commencer gratuitement — sans carte',
   'mktL.ctaPricing': 'Voir les tarifs',

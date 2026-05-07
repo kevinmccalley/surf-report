@@ -397,7 +397,7 @@ const es: Record<string, string> = {
   'mktL.badge': 'Informes de surf en tiempo real — mundial',
   'mktL.h1.pre': 'Sabe ',
   'mktL.h1.gradient': 'antes',
-  'mktL.h1.post': ' de ir.',
+  'mktL.h1.post': ' de entrar.',
   'mktL.subtitle': 'Altura de ola, oleaje, viento, mareas y pronósticos de 10 días para cualquier spot del mundo.',
   'mktL.ctaFree': 'Empieza gratis — sin tarjeta',
   'mktL.ctaPricing': 'Ver precios',

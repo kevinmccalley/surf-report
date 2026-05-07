@@ -397,7 +397,7 @@ const ptPT: Record<string, string> = {
   'mktL.badge': 'Relatórios de surf em tempo real — mundo inteiro',
   'mktL.h1.pre': 'Saiba ',
   'mktL.h1.gradient': 'antes',
-  'mktL.h1.post': ' de ir.',
+  'mktL.h1.post': ' de partir.',
   'mktL.subtitle': 'Altura de onda, ondulação, vento, marés e previsões de 10 dias para qualquer spot do mundo.',
   'mktL.ctaFree': 'Comece grátis — sem cartão',
   'mktL.ctaPricing': 'Ver preços',
