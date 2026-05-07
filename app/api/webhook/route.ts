@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { clerkClient } from '@clerk/nextjs/server'
 import Stripe from 'stripe'
 import crypto from 'crypto'
+import { triggerEvent } from '@/app/lib/loops'
 
 const processor = process.env.PAYMENT_PROCESSOR ?? 'stripe'
 
@@ -68,6 +69,7 @@ async function handleLS(req: NextRequest): Promise<NextResponse> {
       await setSubscriptionStatus(client, clerkUserId, 'inactive', {
         lsSubscriptionId: subscriptionId,
       })
+      if (userEmail) await triggerEvent(userEmail, 'subscription_cancelled')
       break
   }
 
@@ -117,6 +119,15 @@ async function handleStripe(req: NextRequest): Promise<NextResponse> {
     case 'customer.subscription.deleted': {
       const sub = event.data.object as Stripe.Subscription
       await updateByCustomer(sub.customer as string, 'inactive')
+      // Churn recovery: find the user email and trigger Loops event
+      const cancelledUsers = await client.users.getUserList({ limit: 500 })
+      const cancelledUser = cancelledUsers.data.find(
+        u => (u.privateMetadata as { stripeCustomerId?: string }).stripeCustomerId === (sub.customer as string)
+      )
+      if (cancelledUser) {
+        const email = cancelledUser.emailAddresses[0]?.emailAddress
+        if (email) await triggerEvent(email, 'subscription_cancelled')
+      }
       break
     }
   }
