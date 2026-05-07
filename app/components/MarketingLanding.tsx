@@ -138,7 +138,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
           <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">10-day surf forecast</h2>
           <p className="text-slate-500 text-center mb-10">See exactly when the swell peaks — days in advance.</p>
 
-          <div className="relative rounded-2xl border border-white/8 bg-white/3 overflow-hidden p-4">
+          <div className="relative rounded-2xl border border-white/8 glass-card overflow-hidden p-4">
             {/* Mock forecast grid */}
             <div className="grid grid-cols-10 gap-1.5">
               {MOCK_DAYS.map((day, i) => (
@@ -156,7 +156,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
 
             {/* Blur overlay for days 4–10 */}
             <div className="absolute inset-y-0 right-0 w-[72%] flex items-center justify-center"
-              style={{ background: 'linear-gradient(to right, transparent, rgba(6,18,36,0.85) 20%, rgba(6,18,36,0.97) 50%)' }}>
+              style={{ background: 'linear-gradient(to right, transparent, color-mix(in srgb, var(--bg-mid) 85%, transparent) 20%, color-mix(in srgb, var(--bg-mid) 97%, transparent) 50%)' }}>
               <div className="text-center px-6">
                 <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-500/15 border border-sky-500/25 mb-3">
                   <LockIcon />
