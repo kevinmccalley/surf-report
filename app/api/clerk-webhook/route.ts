@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { clerkClient } from '@clerk/nextjs/server'
 import crypto from 'crypto'
 import { syncContact, triggerEvent } from '@/app/lib/loops'
 
@@ -36,12 +35,6 @@ export async function POST(req: NextRequest) {
   const userId: string = data.id ?? ''
   const firstName: string = data.first_name ?? ''
   const lastName:  string = data.last_name  ?? ''
-
-  // Mark the user as opted in for swell alerts by default
-  const client = await clerkClient()
-  await client.users.updateUserMetadata(userId, {
-    publicMetadata: { swellAlertOptIn: true },
-  })
 
   await syncContact(email, userId, {
     firstName,
