@@ -3,6 +3,7 @@ import { clerkClient } from '@clerk/nextjs/server'
 import Stripe from 'stripe'
 import crypto from 'crypto'
 import { triggerEvent } from '@/app/lib/loops'
+import { isPremiumPriceId } from '@/app/lib/subscription'
 
 const processor = process.env.PAYMENT_PROCESSOR ?? 'stripe'
 
@@ -96,7 +97,7 @@ async function handleStripe(req: NextRequest): Promise<NextResponse> {
 
   const client = await clerkClient()
 
-  async function updateByCustomer(customerId: string, status: 'active' | 'inactive') {
+  async function updateByCustomer(customerId: string, status: 'active' | 'inactive', tier?: string) {
     const users = await client.users.getUserList({ limit: 500 })
     const user = users.data.find(
       u => (u.privateMetadata as { stripeCustomerId?: string }).stripeCustomerId === customerId
@@ -104,7 +105,7 @@ async function handleStripe(req: NextRequest): Promise<NextResponse> {
     if (!user) return
     const meta = user.privateMetadata as Record<string, unknown>
     await client.users.updateUserMetadata(user.id, {
-      privateMetadata: { ...meta, subscriptionStatus: status },
+      privateMetadata: { ...meta, subscriptionStatus: status, ...(tier ? { subscriptionTier: tier } : {}) },
     })
   }
 
@@ -113,7 +114,9 @@ async function handleStripe(req: NextRequest): Promise<NextResponse> {
     case 'customer.subscription.updated': {
       const sub = event.data.object as Stripe.Subscription
       const status = sub.status === 'active' || sub.status === 'trialing' ? 'active' : 'inactive'
-      await updateByCustomer(sub.customer as string, status)
+      const priceId = sub.items.data[0]?.price?.id ?? ''
+      const subscriptionTier = isPremiumPriceId(priceId) ? 'premium' : 'individual'
+      await updateByCustomer(sub.customer as string, status, subscriptionTier)
       break
     }
     case 'customer.subscription.deleted': {

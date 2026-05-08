@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth, clerkClient } from '@clerk/nextjs/server'
 import type { SavedLocation } from '@/app/lib/types'
+import { getSubscriptionTier } from '@/app/lib/subscription'
 
 const FREE_LIMIT = 1
 
@@ -9,11 +10,9 @@ async function getContext() {
   if (!userId) return null
   const client = await clerkClient()
   const user = await client.users.getUser(userId)
-  const privMeta = user.privateMetadata as { subscriptionStatus?: string }
-  const pubMeta  = user.publicMetadata  as { savedLocations?: SavedLocation[] }
-  const bypassEmails = (process.env.BYPASS_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean)
-  const userEmail = user.emailAddresses[0]?.emailAddress?.toLowerCase() ?? ''
-  const isPaid = privMeta.subscriptionStatus === 'active' || (bypassEmails.length > 0 && bypassEmails.includes(userEmail))
+  const pubMeta = user.publicMetadata as { savedLocations?: SavedLocation[] }
+  const tier = await getSubscriptionTier()
+  const isPaid = tier !== 'free'
   return { userId, client, isPaid, saved: pubMeta.savedLocations ?? [] }
 }
 

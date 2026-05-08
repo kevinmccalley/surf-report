@@ -57,16 +57,22 @@ async function lsCheckout(plan: 'annual' | 'monthly', email: string, userId: str
 
 // ── Stripe ────────────────────────────────────────────────────────────────────
 const STRIPE_PRICE_IDS = {
-  annual:  process.env.NEXT_PUBLIC_STRIPE_PRICE_ANNUAL  || process.env.STRIPE_PRICE_ANNUAL,
-  monthly: process.env.NEXT_PUBLIC_STRIPE_PRICE_MONTHLY || process.env.STRIPE_PRICE_MONTHLY,
+  individual: {
+    annual:  process.env.NEXT_PUBLIC_STRIPE_PRICE_ANNUAL  || process.env.STRIPE_PRICE_ANNUAL,
+    monthly: process.env.NEXT_PUBLIC_STRIPE_PRICE_MONTHLY || process.env.STRIPE_PRICE_MONTHLY,
+  },
+  premium: {
+    annual:  process.env.STRIPE_PRICE_YEARLY_PREMIUM,
+    monthly: process.env.STRIPE_PRICE_MONTHLY_PREMIUM,
+  },
 }
 
-async function stripeCheckout(plan: 'annual' | 'monthly', email: string, userId: string, origin: string, meta: Record<string, unknown>, clerkClientInstance: Awaited<ReturnType<typeof clerkClient>>) {
+async function stripeCheckout(plan: 'annual' | 'monthly', tier: 'individual' | 'premium', email: string, userId: string, origin: string, meta: Record<string, unknown>, clerkClientInstance: Awaited<ReturnType<typeof clerkClient>>) {
   if (!process.env.STRIPE_SECRET_KEY) {
     return NextResponse.json({ error: 'Stripe is not configured.' }, { status: 503 })
   }
 
-  const priceId = STRIPE_PRICE_IDS[plan]
+  const priceId = STRIPE_PRICE_IDS[tier][plan]
   if (!priceId) {
     return NextResponse.json({ error: `No Stripe price ID found for plan: ${plan}` }, { status: 400 })
   }
@@ -121,6 +127,7 @@ export async function POST(req: NextRequest) {
   }
 
   const plan = (body.plan as 'annual' | 'monthly' | undefined) ?? 'annual'
+  const tier = (body.tier as 'individual' | 'premium' | undefined) ?? 'individual'
   const origin = req.headers.get('origin') ?? 'https://groundswell.surf'
 
   const client = await clerkClient()
@@ -132,7 +139,7 @@ export async function POST(req: NextRequest) {
     if (processor === 'lemonsqueezy') {
       return await lsCheckout(plan, email, userId, origin)
     }
-    return await stripeCheckout(plan, email, userId, origin, meta, client)
+    return await stripeCheckout(plan, tier, email, userId, origin, meta, client)
   } catch (err) {
     console.error('[checkout] unexpected error:', err)
     return NextResponse.json({ error: 'Checkout failed.' }, { status: 500 })
