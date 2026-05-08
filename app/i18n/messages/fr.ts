@@ -58,6 +58,7 @@ const fr: Record<string, string> = {
 
   // ForecastGrid
   'forecast.hoverPrompt': 'Survolez ou touchez un jour pour voir les détails',
+  'forecast.extendedLabel': 'Prévisions étendues',
   'forecast.nonCoastal': '{hi} max, {lo} min. Vent {dir} à {wind} km/h{precip}.',
   'forecast.precipChance': ' avec {pct}% de risque de pluie',
   'forecast.summaries.EPIC': 'Bloquez votre agenda — {waves} de houle de fond {dir} à {period}s. Une session inoubliable.',
@@ -98,6 +99,7 @@ const fr: Record<string, string> = {
   'app.48hOutlook': 'Prévisions de vagues 48 heures',
   'app.daySummary': 'Résumé du jour',
   'app.10dayForecast': 'Prévisions sur 10 jours',
+  'app.16dayForecast': 'Prévisions sur 16 jours',
   'app.tides': 'Marées',
   'app.climatology': 'Climatologie du surf',
   'app.historicalSource': 'Données historiques : Open-Meteo Archive · {date}',

@@ -11,6 +11,7 @@ interface Props {
   forecast: DayForecast[]
   units: { temp: 'c' | 'f'; height: 'ft' | 'm' }
   isCoastal: boolean
+  isPremium?: boolean
 }
 
 const RATING_KEY_MAP: Record<string, string> = {
@@ -50,18 +51,20 @@ function generateDaySummary(day: DayForecast, isCoastal: boolean, units: Props['
   return t(key, { waves, dir, period })
 }
 
-export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
+export default function ForecastGrid({ forecast, units, isCoastal, isPremium }: Props) {
   const { t, locale } = useLanguage()
   const [hoveredDay, setHoveredDay]   = useState<DayForecast | null>(null)
   const [selectedDay, setSelectedDay] = useState<DayForecast | null>(null)
 
   const activeDay = hoveredDay ?? selectedDay
+  const baseDays     = forecast.slice(0, 10)
+  const extendedDays = forecast.slice(10)
 
   return (
     <div className="space-y-2">
       <div className="overflow-x-auto forecast-scroll -mx-1 px-1">
         <div className="flex gap-2 sm:gap-3 min-w-max sm:min-w-0 sm:grid sm:grid-cols-5 lg:grid-cols-10 pb-1">
-          {forecast.map(day => (
+          {baseDays.map(day => (
             <ForecastCard
               key={day.date}
               day={day}
@@ -75,11 +78,39 @@ export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
         </div>
       </div>
 
+      {isPremium && extendedDays.length > 0 && (
+        <div className="pt-1">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="h-px flex-1 bg-white/6" />
+            <span className="text-[10px] font-semibold uppercase tracking-widest text-sky-400/70 px-1">
+              {t('forecast.extendedLabel')}
+            </span>
+            <div className="h-px flex-1 bg-white/6" />
+          </div>
+          <div className="overflow-x-auto forecast-scroll -mx-1 px-1">
+            <div className="flex gap-2 sm:gap-3 min-w-max sm:min-w-0 sm:grid sm:grid-cols-6 pb-1">
+              {extendedDays.map(day => (
+                <ForecastCard
+                  key={day.date}
+                  day={day}
+                  units={units}
+                  isCoastal={isCoastal}
+                  isSelected={selectedDay?.date === day.date}
+                  onHover={setHoveredDay}
+                  onSelect={() => setSelectedDay(prev => prev?.date === day.date ? null : day)}
+                  dimmed
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="glass-card rounded-xl px-4 py-3 border border-white/8">
         <div className="grid">
           {/* Invisible sizing ghosts — one per day, all stacked in the same grid cell.
               The tallest summary determines the container height; it never changes. */}
-          {forecast.map(day => (
+          {[...baseDays, ...extendedDays].map(day => (
             <div key={day.date} className="col-start-1 row-start-1 invisible pointer-events-none" aria-hidden="true">
               <div className="flex items-center justify-between gap-3 mb-1.5">
                 <p className="text-sm font-semibold">&nbsp;</p>
@@ -123,13 +154,14 @@ export default function ForecastGrid({ forecast, units, isCoastal }: Props) {
   )
 }
 
-function ForecastCard({ day, units, isCoastal, isSelected, onHover, onSelect }: {
+function ForecastCard({ day, units, isCoastal, isSelected, onHover, onSelect, dimmed }: {
   day: DayForecast
   units: Props['units']
   isCoastal: boolean
   isSelected: boolean
   onHover: (day: DayForecast | null) => void
   onSelect: () => void
+  dimmed?: boolean
 }) {
   const { t, locale } = useLanguage()
   const { rating } = day
@@ -141,6 +173,7 @@ function ForecastCard({ day, units, isCoastal, isSelected, onHover, onSelect }: 
       className={`
         flex flex-col gap-2 p-3 rounded-xl border transition-all duration-200 cursor-pointer
         w-[88px] sm:w-auto shrink-0 sm:shrink
+        ${dimmed ? 'opacity-75' : ''}
         ${highlighted
           ? 'border-sky-500/30 bg-sky-500/5'
           : 'glass-card hover:border-sky-500/30 hover:bg-sky-500/5'

@@ -58,6 +58,7 @@ const ptPT: Record<string, string> = {
 
   // ForecastGrid
   'forecast.hoverPrompt': 'Passe o rato ou toque num dia para ver o resumo completo',
+  'forecast.extendedLabel': 'Previsão alargada',
   'forecast.nonCoastal': '{hi} máx, {lo} mín. Ventos {dir} a {wind} km/h{precip}.',
   'forecast.precipChance': ' com {pct}% de probabilidade de chuva',
   'forecast.summaries.EPIC': 'Marque no calendário! {waves} de swell de fundo {dir} a {period}s. Uma sessão que vai recordar para sempre.',
@@ -98,6 +99,7 @@ const ptPT: Record<string, string> = {
   'app.48hOutlook': 'Previsão de ondas 48 horas',
   'app.daySummary': 'Resumo do dia',
   'app.10dayForecast': 'Previsão de 10 dias',
+  'app.16dayForecast': 'Previsão de 16 dias',
   'app.tides': 'Marés',
   'app.climatology': 'Climatologia do surf',
   'app.historicalSource': 'Dados históricos: Open-Meteo Archive · {date}',

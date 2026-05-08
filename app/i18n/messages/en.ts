@@ -58,6 +58,7 @@ const en: Record<string, string> = {
 
   // ForecastGrid
   'forecast.hoverPrompt': 'Hover or tap any day for a full forecast breakdown',
+  'forecast.extendedLabel': 'Extended Forecast',
   'forecast.nonCoastal': '{hi} high, {lo} low. {wind} km/h {dir} winds{precip}.',
   'forecast.precipChance': ' with {pct}% chance of rain',
   'forecast.summaries.EPIC': "Block your calendar — {waves} of {dir} groundswell at {period}s. A session you'll remember for years.",
@@ -98,6 +99,7 @@ const en: Record<string, string> = {
   'app.48hOutlook': '48-Hour Wave Outlook',
   'app.daySummary': 'Day Summary',
   'app.10dayForecast': '10-Day Forecast',
+  'app.16dayForecast': '16-Day Forecast',
   'app.tides': 'Tides',
   'app.climatology': 'Surf Climatology',
   'app.historicalSource': 'Historical data: Open-Meteo Archive · {date}',

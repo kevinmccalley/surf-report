@@ -3,7 +3,7 @@ import { auth, clerkClient } from '@clerk/nextjs/server'
 import Stripe from 'stripe'
 import SurfApp from './components/SurfApp'
 
-export type Tier = 'free' | 'base'
+export type Tier = 'free' | 'individual' | 'premium'
 
 type SearchParams = Promise<{ name?: string; country?: string; lat?: string; lon?: string; subscribed?: string }>
 
@@ -47,15 +47,15 @@ export default async function Page({
     if (userId) {
       const client = await clerkClient()
       const user   = await client.users.getUser(userId)
-      const meta   = user.privateMetadata as { subscriptionStatus?: string; stripeCustomerId?: string; lsSubscriptionId?: string }
+      const meta   = user.privateMetadata as { subscriptionStatus?: string; subscriptionTier?: string; stripeCustomerId?: string; lsSubscriptionId?: string }
 
       const bypassEmails = (process.env.BYPASS_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean)
       const userEmail = user.emailAddresses[0]?.emailAddress?.toLowerCase() ?? ''
 
       if (bypassEmails.length > 0 && bypassEmails.includes(userEmail)) {
-        tier = 'base'
+        tier = 'premium'
       } else if (meta.subscriptionStatus === 'active') {
-        tier = 'base'
+        tier = meta.subscriptionTier === 'premium' ? 'premium' : 'individual'
       } else if (params.subscribed === 'true') {
         // ── Lemon Squeezy fallback ──────────────────────────────────────────
         if (process.env.PAYMENT_PROCESSOR === 'lemonsqueezy' && process.env.LEMONSQUEEZY_API_KEY) {
@@ -77,7 +77,7 @@ export default async function Page({
                   lsCustomerPortalUrl: activeSub.attributes?.urls?.customer_portal ?? '',
                 },
               })
-              tier = 'base'
+              tier = 'individual'
             }
           } catch {
             // LS check failed — remain free
@@ -88,12 +88,15 @@ export default async function Page({
           try {
             const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
             const subs   = await stripe.subscriptions.list({ customer: meta.stripeCustomerId, limit: 5 })
-            const isActive = subs.data.some(s => s.status === 'active' || s.status === 'trialing')
-            if (isActive) {
+            const activeSub = subs.data.find(s => s.status === 'active' || s.status === 'trialing')
+            if (activeSub) {
+              const priceId = activeSub.items.data[0]?.price?.id ?? ''
+              const isPremiumPrice = priceId === process.env.STRIPE_PRICE_MONTHLY_PREMIUM || priceId === process.env.STRIPE_PRICE_YEARLY_PREMIUM
+              const resolvedTier = isPremiumPrice ? 'premium' : 'individual'
               await client.users.updateUserMetadata(userId, {
-                privateMetadata: { ...meta, subscriptionStatus: 'active' },
+                privateMetadata: { ...meta, subscriptionStatus: 'active', subscriptionTier: resolvedTier },
               })
-              tier = 'base'
+              tier = resolvedTier
             }
           } catch {
             // Stripe check failed — remain free

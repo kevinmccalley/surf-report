@@ -43,7 +43,8 @@ export default function SurfApp({ tier }: { tier: Tier }) {
   const { openSignIn } = useClerk()
   const isSignedInRef = useRef(false)
   useEffect(() => { isSignedInRef.current = !!isSignedIn }, [isSignedIn])
-  const isPaid = tier === 'base'
+  const isPaid = tier !== 'free'
+  const isPremium = tier === 'premium'
   const savedLocations = (user?.publicMetadata?.savedLocations as SavedLocation[] | undefined) ?? []
   const [showPaywall, setShowPaywall] = useState(false)
   const [billingError, setBillingError] = useState<string | null>(null)
@@ -489,9 +490,9 @@ export default function SurfApp({ tier }: { tier: Tier }) {
 
             <section className="glass-card rounded-2xl p-4 sm:p-6">
               <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
-                {report.historical ? t('app.daySummary') : t('app.10dayForecast')}
+                {report.historical ? t('app.daySummary') : isPremium ? t('app.16dayForecast') : t('app.10dayForecast')}
               </h2>
-              <ForecastGrid forecast={report.forecast} units={units} isCoastal={report.isCoastal} />
+              <ForecastGrid forecast={report.forecast} units={units} isCoastal={report.isCoastal} isPremium={isPremium} />
               {!isPaid && !report.historical && report.isCoastal && (
                 <button
                   onClick={() => setShowPaywall(true)}
