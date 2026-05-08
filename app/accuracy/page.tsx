@@ -185,17 +185,18 @@ function computeHistoricalAggregate(records: DailyAccuracyRecord[]): HistAggrega
 
 // ── Auth ──────────────────────────────────────────────────────────────────────
 
-async function getUserTier(): Promise<'free' | 'base'> {
+async function getUserTier(): Promise<'free' | 'individual' | 'premium'> {
   try {
     const { userId } = await auth()
     if (!userId) return 'free'
     const client = await clerkClient()
     const user = await client.users.getUser(userId)
-    const meta = user.privateMetadata as { subscriptionStatus?: string }
+    const meta = user.privateMetadata as { subscriptionStatus?: string; subscriptionTier?: string }
     const bypassEmails = (process.env.BYPASS_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean)
     const userEmail = user.emailAddresses[0]?.emailAddress?.toLowerCase() ?? ''
-    if (meta.subscriptionStatus === 'active' || (bypassEmails.length > 0 && bypassEmails.includes(userEmail))) {
-      return 'base'
+    if (bypassEmails.length > 0 && bypassEmails.includes(userEmail)) return 'premium'
+    if (meta.subscriptionStatus === 'active') {
+      return meta.subscriptionTier === 'premium' ? 'premium' : 'individual'
     }
   } catch { /* treat as free */ }
   return 'free'
@@ -209,7 +210,7 @@ export default async function AccuracyPage() {
 
   const [results, historicalRecords] = await Promise.all([
     Promise.all(STATIONS.map(computeStation)),
-    fetchHistoricalRecords(tier === 'base' ? 365 : 7),
+    fetchHistoricalRecords(tier !== 'free' ? 365 : 7),
   ])
 
   const allMatches = results.flatMap(r => r.matches)

@@ -20,7 +20,7 @@ interface Props {
   qualityWarning?: string
   observedOffset?: number | null
   observedAt?: string
-  tier?: 'free' | 'base'
+  tier?: 'free' | 'individual' | 'premium'
   onUpgrade?: () => void
 }
 

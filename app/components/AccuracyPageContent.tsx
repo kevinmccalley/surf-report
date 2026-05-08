@@ -39,7 +39,7 @@ export interface AccuracyData {
   liveTotalExtremes: number
   liveStationsCount: number
   hist: HistAggregate | null
-  tier: 'free' | 'base'
+  tier: 'free' | 'individual' | 'premium'
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
