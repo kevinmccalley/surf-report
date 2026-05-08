@@ -28,6 +28,7 @@ export async function GET(request: NextRequest) {
   const forecastDays = tier === 'premium' ? PREMIUM_FORECAST_DAYS : tier === 'individual' ? 10 : FREE_FORECAST_DAYS
 
   const apiForecastDays = Math.min(forecastDays, 16)
+  const isPremium16 = forecastDays >= 16
 
   const marineUrl =
     `https://marine-api.open-meteo.com/v1/marine` +
@@ -44,12 +45,19 @@ export async function GET(request: NextRequest) {
     `&timezone=auto&forecast_days=${apiForecastDays}&wind_speed_unit=kmh`
 
   try {
-    const [marineRes, weatherRes] = await Promise.all([
+    const gfsMarineUrl = marineUrl + '&models=gfs_wave'
+
+    const [marineRes, weatherRes, gfsMarineRes] = await Promise.all([
       fetch(omUrl(marineUrl), { next: { revalidate: 1800 } }),
       fetch(omUrl(weatherUrl), { next: { revalidate: 1800 } }),
+      isPremium16 ? fetch(omUrl(gfsMarineUrl), { next: { revalidate: 1800 } }) : Promise.resolve(null),
     ])
 
-    const [marine, weather] = await Promise.all([marineRes.json(), weatherRes.json()])
+    const [marine, weather, gfsMarine] = await Promise.all([
+      marineRes.json(),
+      weatherRes.json(),
+      gfsMarineRes ? gfsMarineRes.json() : Promise.resolve(null),
+    ])
 
     const isCoastal = !marine.error
     const utcOffset = (marine.utc_offset_seconds ?? weather.utc_offset_seconds) ?? 0
@@ -60,7 +68,7 @@ export async function GET(request: NextRequest) {
       marine, weather, name, country,
       parseFloat(lat), parseFloat(lon),
       currentIdx, utcOffset, isCoastal, timezone,
-      forecastDays
+      forecastDays, gfsMarine
     )
 
     // Enforce forecast window server-side
@@ -80,6 +88,18 @@ function val(arr: unknown[] | undefined, i: number, fallback = 0): number {
   return typeof v === 'number' && !isNaN(v) ? v : fallback
 }
 
+function blendVal(
+  primary: unknown[] | undefined,
+  fallback: unknown[] | undefined,
+  i: number,
+  def = 0
+): number {
+  const p = primary?.[i]
+  if (typeof p === 'number' && !isNaN(p)) return p
+  const f = fallback?.[i]
+  return typeof f === 'number' && !isNaN(f) ? f : def
+}
+
 function buildReport(
   marine: Record<string, unknown>,
   weather: Record<string, unknown>,
@@ -91,10 +111,13 @@ function buildReport(
   utcOffset: number,
   isCoastal: boolean,
   timezone: string,
-  maxDays = 10
+  maxDays = 10,
+  gfsMarine: Record<string, unknown> | null = null
 ): SurfReport {
   const mh = (marine.hourly ?? {}) as Record<string, unknown[]>
   const md = (marine.daily ?? {}) as Record<string, unknown[]>
+  const gfsMh = ((gfsMarine?.hourly ?? {}) as Record<string, unknown[]>)
+  const gfsMd = ((gfsMarine?.daily ?? {}) as Record<string, unknown[]>)
   const wh = weather.hourly as Record<string, unknown[]>
   const wd = weather.daily as Record<string, unknown[]>
   const wTimes = wh.time as string[]
@@ -160,14 +183,14 @@ function buildReport(
     const mi = marineIdx + (i - currentIdx)
     hourly.push({
       time: wTimes[i],
-      waveHeight: isCoastal ? val(mh.wave_height, mi) : 0,
-      wavePeriod: isCoastal ? val(mh.wave_period, mi) : 0,
-      swellHeight: isCoastal ? val(mh.swell_wave_height, mi) : 0,
-      swellPeriod: isCoastal ? val(mh.swell_wave_period, mi) : 0,
-      swellDirection: isCoastal ? val(mh.swell_wave_direction, mi) : 0,
-      windWaveHeight: isCoastal ? val(mh.wind_wave_height, mi) : 0,
-      windWavePeriod: isCoastal ? val(mh.wind_wave_period, mi) : 0,
-      windWaveDirection: isCoastal ? val(mh.wind_wave_direction, mi) : 0,
+      waveHeight: isCoastal ? blendVal(mh.wave_height, gfsMh.wave_height, mi) : 0,
+      wavePeriod: isCoastal ? blendVal(mh.wave_period, gfsMh.wave_period, mi) : 0,
+      swellHeight: isCoastal ? blendVal(mh.swell_wave_height, gfsMh.swell_wave_height, mi) : 0,
+      swellPeriod: isCoastal ? blendVal(mh.swell_wave_period, gfsMh.swell_wave_period, mi) : 0,
+      swellDirection: isCoastal ? blendVal(mh.swell_wave_direction, gfsMh.swell_wave_direction, mi) : 0,
+      windWaveHeight: isCoastal ? blendVal(mh.wind_wave_height, gfsMh.wind_wave_height, mi) : 0,
+      windWavePeriod: isCoastal ? blendVal(mh.wind_wave_period, gfsMh.wind_wave_period, mi) : 0,
+      windWaveDirection: isCoastal ? blendVal(mh.wind_wave_direction, gfsMh.wind_wave_direction, mi) : 0,
       swell2Height: 0,
       swell2Period: 0,
       swell2Direction: 0,
@@ -183,11 +206,11 @@ function buildReport(
   // Daily forecast (up to maxDays)
   const dailyTimes = (wd.time ?? []) as string[]
   const forecast: DayForecast[] = dailyTimes.slice(0, maxDays).map((date: string, i: number) => {
-    const wvMax = isCoastal ? val(md.wave_height_max, i) : 0
-    const swMax = isCoastal ? val(md.swell_wave_height_max, i) : 0
-    const swPer = isCoastal ? val(md.swell_wave_period_max, i) : 0
-    const swDir = isCoastal ? val(md.swell_wave_direction_dominant, i) : 0
-    const wvPer = isCoastal ? val(md.wave_period_max, i) : 0
+    const wvMax = isCoastal ? blendVal(md.wave_height_max, gfsMd.wave_height_max, i) : 0
+    const swMax = isCoastal ? blendVal(md.swell_wave_height_max, gfsMd.swell_wave_height_max, i) : 0
+    const swPer = isCoastal ? blendVal(md.swell_wave_period_max, gfsMd.swell_wave_period_max, i) : 0
+    const swDir = isCoastal ? blendVal(md.swell_wave_direction_dominant, gfsMd.swell_wave_direction_dominant, i) : 0
+    const wvPer = isCoastal ? blendVal(md.wave_period_max, gfsMd.wave_period_max, i) : 0
     const windMax = val(wd.wind_speed_10m_max, i)
     const windDir = val(wd.wind_direction_10m_dominant, i)
     const dayRating = computeSurfRating(
