@@ -32,7 +32,7 @@ export async function GET(req: NextRequest) {
 
   const base = `https://marine-api.open-meteo.com/v1/marine?latitude=${lat}&longitude=${lon}&daily=${DAILY}&timezone=auto&forecast_days=10`
   const cmemsUrl = base
-  const gfsUrl   = `${base}&models=ncep_gfswave025`
+  const gfsUrl   = `${base}&models=ecmwf_wam`
 
   try {
     const [cmemsRes, gfsRes] = await Promise.all([
