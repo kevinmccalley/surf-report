@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
       `?latitude=${lat}&longitude=${lon}` +
       `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period` +
       `&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max` +
-      `&timezone=auto&forecast_days=${apiForecastDays}&models=gfs_wave`
+      `&timezone=auto&forecast_days=${apiForecastDays}&models=ncep_gfswave025`
 
     const [marineRes, weatherRes, gfsMarineRes] = await Promise.all([
       fetch(omUrl(marineUrl), { next: { revalidate: 1800 } }),
