@@ -11,7 +11,7 @@ import {
 import { getSubscriptionTier } from '@/app/lib/subscription'
 
 const FREE_FORECAST_DAYS = 3
-const PREMIUM_FORECAST_DAYS = 16
+const PREMIUM_FORECAST_DAYS = 15
 
 export async function GET(request: NextRequest) {
   const sp = request.nextUrl.searchParams
@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
   const forecastDays = tier === 'premium' ? PREMIUM_FORECAST_DAYS : tier === 'individual' ? 10 : FREE_FORECAST_DAYS
 
   const apiForecastDays = Math.min(forecastDays, 16)
-  const isPremium16 = forecastDays >= 16
+  const isPremiumExtended = forecastDays >= 15
 
   const marineUrl =
     `https://marine-api.open-meteo.com/v1/marine` +
@@ -55,7 +55,7 @@ export async function GET(request: NextRequest) {
     const [marineRes, weatherRes, gfsMarineRes] = await Promise.all([
       fetch(omUrl(marineUrl), { next: { revalidate: 1800 } }),
       fetch(omUrl(weatherUrl), { next: { revalidate: 1800 } }),
-      isPremium16 ? fetch(omUrl(gfsMarineUrl), { next: { revalidate: 1800 } }) : Promise.resolve(null),
+      isPremiumExtended ? fetch(omUrl(gfsMarineUrl), { next: { revalidate: 1800 } }) : Promise.resolve(null),
     ])
 
     const [marine, weather, gfsMarineRaw] = await Promise.all([
@@ -78,7 +78,7 @@ export async function GET(request: NextRequest) {
     )
 
     // Enforce forecast window server-side
-    if (forecastDays < 16) {
+    if (forecastDays < 15) {
       report.forecast = report.forecast.slice(0, forecastDays)
     }
 

@@ -724,7 +724,7 @@ function SiteFooterLinks() {
 
 function PremiumTeaser() {
   const FEATURES = [
-    { label: '16-day extended forecast', icon: '📅' },
+    { label: '15-day extended forecast', icon: '📅' },
     { label: 'Multi-model comparison (GFS vs CMEMS)', icon: '📊' },
     { label: 'Swell alert notifications', icon: '🔔' },
     { label: 'API access for developers', icon: '⚡' },

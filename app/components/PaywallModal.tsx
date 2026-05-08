@@ -23,7 +23,7 @@ const INDIVIDUAL_FEATURES = [
 ]
 
 const PREMIUM_FEATURES = [
-  '16-day extended forecast',
+  '15-day extended forecast',
   'Multi-model comparison (GFS vs NEMO)',
   'Swell alert notifications',
   'API access for developers',
