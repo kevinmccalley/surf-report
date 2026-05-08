@@ -77,10 +77,7 @@ export async function GET(request: NextRequest) {
       forecastDays, gfsMarine
     )
 
-    // Enforce forecast window server-side
-    if (forecastDays < 15) {
-      report.forecast = report.forecast.slice(0, forecastDays)
-    }
+    report.forecast = report.forecast.slice(0, forecastDays)
 
     return NextResponse.json(report)
   } catch (e) {
