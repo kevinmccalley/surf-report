@@ -27,19 +27,21 @@ export async function GET(request: NextRequest) {
   const tier = await getSubscriptionTier()
   const forecastDays = tier === 'premium' ? PREMIUM_FORECAST_DAYS : tier === 'individual' ? 10 : FREE_FORECAST_DAYS
 
+  const apiForecastDays = Math.min(forecastDays, 16)
+
   const marineUrl =
     `https://marine-api.open-meteo.com/v1/marine` +
     `?latitude=${lat}&longitude=${lon}` +
     `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,sea_surface_temperature` +
     `&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max` +
-    `&timezone=auto&forecast_days=10`
+    `&timezone=auto&forecast_days=${apiForecastDays}`
 
   const weatherUrl =
     `https://api.open-meteo.com/v1/forecast` +
     `?latitude=${lat}&longitude=${lon}` +
     `&hourly=temperature_2m,wind_speed_10m,wind_direction_10m,wind_gusts_10m,weather_code,precipitation_probability,visibility` +
     `&daily=temperature_2m_max,temperature_2m_min,weather_code,wind_speed_10m_max,wind_direction_10m_dominant,wind_gusts_10m_max,precipitation_probability_max,uv_index_max` +
-    `&timezone=auto&forecast_days=10&wind_speed_unit=kmh`
+    `&timezone=auto&forecast_days=${apiForecastDays}&wind_speed_unit=kmh`
 
   try {
     const [marineRes, weatherRes] = await Promise.all([
@@ -57,7 +59,8 @@ export async function GET(request: NextRequest) {
     const report = buildReport(
       marine, weather, name, country,
       parseFloat(lat), parseFloat(lon),
-      currentIdx, utcOffset, isCoastal, timezone
+      currentIdx, utcOffset, isCoastal, timezone,
+      forecastDays
     )
 
     // Enforce forecast window server-side
@@ -87,7 +90,8 @@ function buildReport(
   currentIdx: number,
   utcOffset: number,
   isCoastal: boolean,
-  timezone: string
+  timezone: string,
+  maxDays = 10
 ): SurfReport {
   const mh = (marine.hourly ?? {}) as Record<string, unknown[]>
   const md = (marine.daily ?? {}) as Record<string, unknown[]>
@@ -176,9 +180,9 @@ function buildReport(
     })
   }
 
-  // 10-day daily forecast
+  // Daily forecast (up to maxDays)
   const dailyTimes = (wd.time ?? []) as string[]
-  const forecast: DayForecast[] = dailyTimes.slice(0, 10).map((date: string, i: number) => {
+  const forecast: DayForecast[] = dailyTimes.slice(0, maxDays).map((date: string, i: number) => {
     const wvMax = isCoastal ? val(md.wave_height_max, i) : 0
     const swMax = isCoastal ? val(md.swell_wave_height_max, i) : 0
     const swPer = isCoastal ? val(md.swell_wave_period_max, i) : 0

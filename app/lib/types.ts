@@ -204,6 +204,26 @@ export interface EpicNowData {
   checkedCount: number
 }
 
+export interface ModelDay {
+  waveHeight: number
+  wavePeriod: number
+  swellDir: number
+  swellDirLabel: string
+}
+
+export interface ModelComparisonDay {
+  date: string
+  dayName: string
+  cmems: ModelDay
+  gfs: ModelDay
+  agreement: 'high' | 'medium' | 'low'
+}
+
+export interface ModelComparisonData {
+  days: ModelComparisonDay[]
+  available: boolean
+}
+
 export interface SavedLocation {
   name: string
   country: string

@@ -59,6 +59,19 @@ const en: Record<string, string> = {
   // ForecastGrid
   'forecast.hoverPrompt': 'Hover or tap any day for a full forecast breakdown',
   'forecast.extendedLabel': 'Extended Forecast',
+
+  // ModelComparison
+  'modelComp.title':       'Model Comparison',
+  'modelComp.subtitle':    'GFS (NOAA) vs CMEMS (European)',
+  'modelComp.cmems':       'CMEMS (European)',
+  'modelComp.gfs':         'GFS (NOAA)',
+  'modelComp.waveHeight':  'Wave height',
+  'modelComp.period':      'Period',
+  'modelComp.swell':       'Swell',
+  'modelComp.agree':       '● Models agree — high confidence',
+  'modelComp.mixed':       '● Mixed signals — moderate confidence',
+  'modelComp.diverge':     '● Models diverge — treat with caution',
+  'modelComp.explanation': 'When both models agree, the forecast is more reliable. Large differences signal uncertainty — check back as the swell approaches.',
   'forecast.nonCoastal': '{hi} high, {lo} low. {wind} km/h {dir} winds{precip}.',
   'forecast.precipChance': ' with {pct}% chance of rain',
   'forecast.summaries.EPIC': "Block your calendar — {waves} of {dir} groundswell at {period}s. A session you'll remember for years.",

@@ -59,6 +59,19 @@ const fr: Record<string, string> = {
   // ForecastGrid
   'forecast.hoverPrompt': 'Survolez ou touchez un jour pour voir les détails',
   'forecast.extendedLabel': 'Prévisions étendues',
+
+  // ModelComparison
+  'modelComp.title':       'Comparaison des modèles',
+  'modelComp.subtitle':    'GFS (NOAA) vs CMEMS (Européen)',
+  'modelComp.cmems':       'CMEMS (Européen)',
+  'modelComp.gfs':         'GFS (NOAA)',
+  'modelComp.waveHeight':  'Hauteur des vagues',
+  'modelComp.period':      'Période',
+  'modelComp.swell':       'Houle',
+  'modelComp.agree':       '● Les modèles concordent — haute fiabilité',
+  'modelComp.mixed':       '● Signaux mixtes — fiabilité modérée',
+  'modelComp.diverge':     '● Les modèles divergent — à prendre avec précaution',
+  'modelComp.explanation': 'Quand les deux modèles s\'accordent, les prévisions sont plus fiables. Des écarts importants signalent une incertitude — revenez vérifier à l\'approche de la houle.',
   'forecast.nonCoastal': '{hi} max, {lo} min. Vent {dir} à {wind} km/h{precip}.',
   'forecast.precipChance': ' avec {pct}% de risque de pluie',
   'forecast.summaries.EPIC': 'Bloquez votre agenda — {waves} de houle de fond {dir} à {period}s. Une session inoubliable.',

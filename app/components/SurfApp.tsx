@@ -23,6 +23,7 @@ import BuoyCard from './BuoyCard'
 import MapPanel from './MapPanel'
 import NearbySpots from './NearbySpots'
 import EpicNowSection from './EpicNowSection'
+import ModelComparison from './ModelComparison'
 import LanguageSwitcher from './LanguageSwitcher'
 import SavedLocations from './SavedLocations'
 import type { ClimatologyMonth } from './ClimatologySection'
@@ -574,7 +575,15 @@ export default function SurfApp({ tier }: { tier: Tier }) {
               />
             )}
 
-            {isPaid && !report.historical && (
+            {isPremium && !report.historical && report.isCoastal && (
+              <ModelComparison
+                lat={report.location.lat}
+                lon={report.location.lon}
+                units={units}
+              />
+            )}
+
+            {isPaid && !isPremium && !report.historical && (
               <PremiumTeaser />
             )}
 
@@ -716,7 +725,7 @@ function SiteFooterLinks() {
 function PremiumTeaser() {
   const FEATURES = [
     { label: '16-day extended forecast', icon: '📅' },
-    { label: 'Multi-model comparison (GFS vs NEMO)', icon: '📊' },
+    { label: 'Multi-model comparison (GFS vs CMEMS)', icon: '📊' },
     { label: 'Swell alert notifications', icon: '🔔' },
     { label: 'API access for developers', icon: '⚡' },
   ]

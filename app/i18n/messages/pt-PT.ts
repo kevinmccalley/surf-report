@@ -59,6 +59,19 @@ const ptPT: Record<string, string> = {
   // ForecastGrid
   'forecast.hoverPrompt': 'Passe o rato ou toque num dia para ver o resumo completo',
   'forecast.extendedLabel': 'Previsão alargada',
+
+  // ModelComparison
+  'modelComp.title':       'Comparação de modelos',
+  'modelComp.subtitle':    'GFS (NOAA) vs CMEMS (Europeu)',
+  'modelComp.cmems':       'CMEMS (Europeu)',
+  'modelComp.gfs':         'GFS (NOAA)',
+  'modelComp.waveHeight':  'Altura da onda',
+  'modelComp.period':      'Período',
+  'modelComp.swell':       'Swell',
+  'modelComp.agree':       '● Modelos concordam — elevada confiança',
+  'modelComp.mixed':       '● Sinais mistos — confiança moderada',
+  'modelComp.diverge':     '● Modelos divergem — tratar com cautela',
+  'modelComp.explanation': 'Quando os dois modelos concordam, a previsão é mais fiável. Grandes diferenças indicam incerteza — consulte novamente à medida que o swell se aproxima.',
   'forecast.nonCoastal': '{hi} máx, {lo} mín. Ventos {dir} a {wind} km/h{precip}.',
   'forecast.precipChance': ' com {pct}% de probabilidade de chuva',
   'forecast.summaries.EPIC': 'Marque no calendário! {waves} de swell de fundo {dir} a {period}s. Uma sessão que vai recordar para sempre.',

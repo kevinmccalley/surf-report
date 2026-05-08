@@ -20,6 +20,7 @@ const isPublicRoute = createRouteMatcher([
   '/api/cron/epic-now(.*)',
   '/api/cron/swell-alert(.*)',
   '/api/clerk-webhook(.*)',
+  '/api/model-comparison(.*)',
   '/accuracy(.*)',
   '/climatology(.*)',
   '/terms(.*)',
