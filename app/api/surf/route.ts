@@ -45,7 +45,12 @@ export async function GET(request: NextRequest) {
     `&timezone=auto&forecast_days=${apiForecastDays}&wind_speed_unit=kmh`
 
   try {
-    const gfsMarineUrl = marineUrl + '&models=gfs_wave'
+    const gfsMarineUrl =
+      `https://marine-api.open-meteo.com/v1/marine` +
+      `?latitude=${lat}&longitude=${lon}` +
+      `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period` +
+      `&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max` +
+      `&timezone=auto&forecast_days=${apiForecastDays}&models=gfs_wave`
 
     const [marineRes, weatherRes, gfsMarineRes] = await Promise.all([
       fetch(omUrl(marineUrl), { next: { revalidate: 1800 } }),
@@ -53,11 +58,12 @@ export async function GET(request: NextRequest) {
       isPremium16 ? fetch(omUrl(gfsMarineUrl), { next: { revalidate: 1800 } }) : Promise.resolve(null),
     ])
 
-    const [marine, weather, gfsMarine] = await Promise.all([
+    const [marine, weather, gfsMarineRaw] = await Promise.all([
       marineRes.json(),
       weatherRes.json(),
       gfsMarineRes ? gfsMarineRes.json() : Promise.resolve(null),
     ])
+    const gfsMarine = gfsMarineRaw?.error ? null : gfsMarineRaw
 
     const isCoastal = !marine.error
     const utcOffset = (marine.utc_offset_seconds ?? weather.utc_offset_seconds) ?? 0
