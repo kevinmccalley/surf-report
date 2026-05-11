@@ -26,12 +26,11 @@ export async function GET(request: NextRequest) {
 
   const serverTier = await getSubscriptionTier()
   // If server auth failed (public route, Clerk dev rate limit, etc.) fall back to
-  // the tier the client reported from its own server-render. Cap at 'individual'
-  // so clients can't self-promote to premium.
-  const clientTier = sp.get('tier')
+  // the tier the client reported from its own page-render (already validated by Clerk).
+  const clientTier = sp.get('tier') as string | null
   const tier = serverTier !== 'free'
     ? serverTier
-    : clientTier === 'premium' || clientTier === 'individual' ? 'individual' : 'free'
+    : clientTier === 'premium' || clientTier === 'individual' ? clientTier : 'free'
   const forecastDays = tier === 'premium' ? PREMIUM_FORECAST_DAYS : tier === 'individual' ? 10 : FREE_FORECAST_DAYS
 
   const apiForecastDays = Math.min(forecastDays, 16)
