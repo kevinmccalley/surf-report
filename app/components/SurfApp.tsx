@@ -354,7 +354,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
                 onSetAlert={handleSetAlert}
               />
             )}
-            <AuthButton subscribed={isPaid} onManageBilling={openBillingPortal} />
+            <AuthButton subscribed={isPaid} isPremium={isPremium} onManageBilling={openBillingPortal} />
           </div>
 
           {/* Mobile hamburger */}
@@ -387,7 +387,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
                 onSetAlert={handleSetAlert}
               />
             )}
-            <AuthButton subscribed={isPaid} onManageBilling={openBillingPortal} />
+            <AuthButton subscribed={isPaid} isPremium={isPremium} onManageBilling={openBillingPortal} />
           </div>
         )}
       </header>

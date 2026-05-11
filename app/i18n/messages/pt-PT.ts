@@ -209,7 +209,7 @@ const ptPT: Record<string, string> = {
   'auth.signIn': 'Entrar',
   'auth.manageBilling': 'Gerir subscrição',
   'auth.signOut': 'Sair',
-  'auth.pro': 'PRO',
+  'auth.pro': 'Premium',
 
   // MarketingPage
   'mkt.liveBadge': 'Dados em direto · Atualizado em cada pesquisa',

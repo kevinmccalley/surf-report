@@ -209,7 +209,7 @@ const ptBR: Record<string, string> = {
   'auth.signIn': 'Entrar',
   'auth.manageBilling': 'Gerenciar assinatura',
   'auth.signOut': 'Sair',
-  'auth.pro': 'PRO',
+  'auth.pro': 'Premium',
 
   // MarketingPage
   'mkt.liveBadge': 'Dados ao vivo · Atualizado a cada busca',

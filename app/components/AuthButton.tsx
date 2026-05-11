@@ -6,10 +6,11 @@ import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Props {
   subscribed: boolean
+  isPremium: boolean
   onManageBilling: () => void
 }
 
-export default function AuthButton({ subscribed, onManageBilling }: Props) {
+export default function AuthButton({ subscribed, isPremium, onManageBilling }: Props) {
   const { t } = useLanguage()
   const { isSignedIn, user } = useUser()
   const [open, setOpen] = useState(false)
@@ -28,7 +29,7 @@ export default function AuthButton({ subscribed, onManageBilling }: Props) {
     const initial = (user?.firstName?.[0] ?? user?.emailAddresses?.[0]?.emailAddress?.[0] ?? '?').toUpperCase()
     return (
       <div className="flex items-center gap-2">
-        {subscribed && (
+        {isPremium && (
           <button
             onClick={onManageBilling}
             className="px-2 py-1 rounded-md text-[10px] font-semibold bg-teal-500/15 border border-teal-500/20 text-teal-400 hover:bg-teal-500/25 transition-colors hidden sm:block"
