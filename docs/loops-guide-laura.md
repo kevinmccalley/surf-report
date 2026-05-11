@@ -16,6 +16,7 @@ There are three signals to build emails for:
 | `user_created` | Every time someone creates an account | Onboarding sequence |
 | `weekly_swell_alert` | Every Sunday at 8am UTC | Weekly surf conditions digest |
 | `subscription_cancelled` | When someone cancels their paid plan | Churn recovery |
+| `swell_threshold_alert` | Daily at 7am UTC, when waves hit a user's saved threshold | Personal swell alert |
 
 ---
 
@@ -151,6 +152,66 @@ You can also preview how variables will look by clicking **Preview** in the emai
 - **Events that fired before you published are gone.** If someone signed up before the onboarding Loop was live, they won't get those emails retroactively. Going forward is fine.
 - **Unsubscribes are handled automatically.** Loops adds an unsubscribe link to every email. You don't need to manage this.
 - **The sending domain is groundswell.surf.** Emails will come from whatever address Kevin has set in Loops → Settings → Domain (e.g. `hello@groundswell.surf`). Ask Kevin to confirm the from-address before you publish.
+
+---
+
+---
+
+### 4. Swell threshold alert — triggered by `swell_threshold_alert`
+
+This fires daily at 7am UTC for any user who has saved a surf spot and set a personal wave height threshold. It only fires when the actual wave height at that spot meets or exceeds their threshold. A 20-hour cooldown prevents the same spot from triggering again the next day unless they'd been alerted yesterday.
+
+The goal is to give users a "go surf now" moment — a short, punchy alert that gets them out of bed and into the water.
+
+**Structure: 1 email, sent immediately**
+
+---
+
+**Variables available in this email:**
+
+| Variable | What it contains | Example |
+|---|---|---|
+| `{{firstName}}` | User's first name | "Jamie" |
+| `{{spotName}}` | The saved spot that crossed the threshold | "Jeffreys Bay" |
+| `{{waveHeightFt}}` | Current wave height in feet | "6.2" |
+| `{{waveHeightM}}` | Current wave height in metres | "1.9" |
+| `{{thresholdFt}}` | The threshold the user set, in feet | "5.0" |
+| `{{thresholdM}}` | The threshold the user set, in metres | "1.5" |
+
+---
+
+**Subject line ideas:**
+
+- `🌊 {{spotName}} is firing — {{waveHeightFt}}ft right now`
+- `Your alert: {{spotName}} hit {{waveHeightFt}}ft`
+- `{{spotName}} just crossed your threshold`
+
+---
+
+**Sample email body:**
+
+> Hey {{firstName}},
+>
+> You asked us to let you know when **{{spotName}}** hits {{thresholdFt}}ft — it just did.
+>
+> **Right now: {{waveHeightFt}}ft**
+>
+> Conditions are live. Check the full forecast — swell direction, period, tide, and wind — before you head out.
+>
+> [Open {{spotName}} on Groundswell →](https://groundswell.surf)
+>
+> — The Groundswell team
+>
+> *You're receiving this because you set a swell alert for {{spotName}}. You can adjust or remove your alert from the bookmark menu on groundswell.surf.*
+
+---
+
+**A few notes:**
+
+- **This email is personal** — unlike the weekly digest which goes to everyone, this fires per-user based on their specific saved spot and threshold. Every recipient has explicitly asked for it.
+- **The link goes to groundswell.surf** — the user will need to search for their spot again when they arrive (we don't have deep-link URLs per spot yet).
+- **Units:** the email includes both feet and metres variables. Use whichever you prefer in the template — or include both if you want (e.g., "6.2ft / 1.9m"). Most of our users are international so metres is a safe default, but feet is fine for an English-language template.
+- **Keep it short.** This email should feel like a text message from a surf buddy, not a newsletter. One key fact (the wave height), one action (click to see the forecast).
 
 ---
 
