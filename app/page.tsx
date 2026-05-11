@@ -84,17 +84,34 @@ export default async function Page({
           }
         }
         // ── Stripe fallback ─────────────────────────────────────────────────
-        if (tier === 'free' && meta.stripeCustomerId && process.env.STRIPE_SECRET_KEY) {
+        if (tier === 'free' && process.env.STRIPE_SECRET_KEY) {
           try {
             const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
-            const subs   = await stripe.subscriptions.list({ customer: meta.stripeCustomerId, limit: 5 })
-            const activeSub = subs.data.find(s => s.status === 'active' || s.status === 'trialing')
+
+            // Try by stored customerId first, fall back to email lookup
+            let activeSub: Stripe.Subscription | undefined
+            let resolvedCustomerId: string | undefined = meta.stripeCustomerId as string | undefined
+
+            if (resolvedCustomerId) {
+              const subs = await stripe.subscriptions.list({ customer: resolvedCustomerId, limit: 5 })
+              activeSub = subs.data.find(s => s.status === 'active' || s.status === 'trialing')
+            }
+
+            if (!activeSub && userEmail) {
+              const customers = await stripe.customers.list({ email: userEmail, limit: 5 })
+              for (const customer of customers.data) {
+                const subs = await stripe.subscriptions.list({ customer: customer.id, limit: 5 })
+                activeSub = subs.data.find(s => s.status === 'active' || s.status === 'trialing')
+                if (activeSub) { resolvedCustomerId = customer.id; break }
+              }
+            }
+
             if (activeSub) {
               const priceId = activeSub.items.data[0]?.price?.id ?? ''
               const isPremiumPrice = priceId === process.env.STRIPE_PRICE_MONTHLY_PREMIUM || priceId === process.env.STRIPE_PRICE_YEARLY_PREMIUM
               const resolvedTier = isPremiumPrice ? 'premium' : 'individual'
               await client.users.updateUserMetadata(userId, {
-                privateMetadata: { ...meta, subscriptionStatus: 'active', subscriptionTier: resolvedTier },
+                privateMetadata: { ...meta, subscriptionStatus: 'active', subscriptionTier: resolvedTier, stripeCustomerId: resolvedCustomerId },
               })
               tier = resolvedTier
             }
