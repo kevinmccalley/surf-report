@@ -82,6 +82,12 @@ export default function SurfApp({ tier }: { tier: Tier }) {
 
     if (params.get('subscribed') === 'true') {
       window.history.replaceState({}, '', '/')
+      if (!isPaid) {
+        fetch('/api/sync-subscription')
+          .then(r => r.json())
+          .then(data => { if (data.tier !== 'free') window.location.reload() })
+          .catch(() => {})
+      }
       return
     }
 
