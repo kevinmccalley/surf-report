@@ -30,8 +30,17 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to surf-spots.json — skipping commit"
           else
-            COUNT=$(python3 -c "import json; d=json.load(open('app/lib/surf-spots.json')); print(len(d))")
-            git commit -m "chore: refresh surf spots dataset ($COUNT spots)"
+            NEW_COUNT=$(python3 -c "import json; d=json.load(open('app/lib/surf-spots.json')); print(len(d))")
+            OLD_COUNT=$(git show HEAD:app/lib/surf-spots.json | python3 -c "import json,sys; print(len(json.load(sys.stdin)))" 2>/dev/null || echo 0)
+            # Reject refresh if the new dataset is more than 20% smaller than the previous one
+            # (Surfline may be blocking GitHub IPs — don't overwrite good data with degraded results)
+            THRESHOLD=$(python3 -c "print(int(int('$OLD_COUNT') * 0.80))")
+            if [ "$NEW_COUNT" -lt "$THRESHOLD" ]; then
+              echo "WARNING: New spot count ($NEW_COUNT) is more than 20% below previous ($OLD_COUNT). Aborting to protect dataset."
+              git restore app/lib/surf-spots.json
+              exit 0
+            fi
+            git commit -m "chore: refresh surf spots dataset ($NEW_COUNT spots)"
             git push origin HEAD:master
             git push origin HEAD:dev
           fi
