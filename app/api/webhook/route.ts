@@ -97,19 +97,35 @@ async function handleStripe(req: NextRequest): Promise<NextResponse> {
 
   const client = await clerkClient()
 
-  async function updateByCustomer(customerId: string, status: 'active' | 'inactive', tier?: string) {
-    const users = await client.users.getUserList({ limit: 500 })
-    const user = users.data.find(
-      u => (u.privateMetadata as { stripeCustomerId?: string }).stripeCustomerId === customerId
-    )
-    if (!user) return
+  // Look up Clerk user via clerkUserId stored in Stripe customer metadata (set at checkout).
+  // Returns the clerkUserId so callers can do further work without re-fetching.
+  async function updateByCustomer(customerId: string, status: 'active' | 'inactive', tier?: string): Promise<string | null> {
+    const customer = await stripe.customers.retrieve(customerId)
+    if ((customer as { deleted?: boolean }).deleted) return null
+    const clerkUserId = (customer as Stripe.Customer).metadata?.clerkUserId
+    if (!clerkUserId) {
+      console.warn('[webhook/stripe] no clerkUserId in customer metadata:', customerId)
+      return null
+    }
+    const user = await client.users.getUser(clerkUserId)
     const meta = user.privateMetadata as Record<string, unknown>
-    await client.users.updateUserMetadata(user.id, {
+    await client.users.updateUserMetadata(clerkUserId, {
       privateMetadata: { ...meta, subscriptionStatus: status, ...(tier ? { subscriptionTier: tier } : {}) },
     })
+    return clerkUserId
   }
 
   switch (event.type) {
+    case 'checkout.session.completed': {
+      const session = event.data.object as Stripe.Checkout.Session
+      if (session.mode !== 'subscription' || !session.customer || !session.subscription) break
+      const sub = await stripe.subscriptions.retrieve(session.subscription as string)
+      const status = sub.status === 'active' || sub.status === 'trialing' ? 'active' : 'inactive'
+      const priceId = sub.items.data[0]?.price?.id ?? ''
+      const subscriptionTier = isPremiumPriceId(priceId) ? 'premium' : 'individual'
+      await updateByCustomer(session.customer as string, status, subscriptionTier)
+      break
+    }
     case 'customer.subscription.created':
     case 'customer.subscription.updated': {
       const sub = event.data.object as Stripe.Subscription
@@ -121,13 +137,9 @@ async function handleStripe(req: NextRequest): Promise<NextResponse> {
     }
     case 'customer.subscription.deleted': {
       const sub = event.data.object as Stripe.Subscription
-      await updateByCustomer(sub.customer as string, 'inactive')
-      // Churn recovery: find the user email and trigger Loops event
-      const cancelledUsers = await client.users.getUserList({ limit: 500 })
-      const cancelledUser = cancelledUsers.data.find(
-        u => (u.privateMetadata as { stripeCustomerId?: string }).stripeCustomerId === (sub.customer as string)
-      )
-      if (cancelledUser) {
+      const clerkUserId = await updateByCustomer(sub.customer as string, 'inactive')
+      if (clerkUserId) {
+        const cancelledUser = await client.users.getUser(clerkUserId)
         const email = cancelledUser.emailAddresses[0]?.emailAddress
         if (email) await triggerEvent(email, 'subscription_cancelled')
       }
