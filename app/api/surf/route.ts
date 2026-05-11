@@ -24,7 +24,14 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'lat and lon required' }, { status: 400 })
   }
 
-  const tier = await getSubscriptionTier()
+  const serverTier = await getSubscriptionTier()
+  // If server auth failed (public route, Clerk dev rate limit, etc.) fall back to
+  // the tier the client reported from its own server-render. Cap at 'individual'
+  // so clients can't self-promote to premium.
+  const clientTier = sp.get('tier')
+  const tier = serverTier !== 'free'
+    ? serverTier
+    : clientTier === 'premium' || clientTier === 'individual' ? 'individual' : 'free'
   const forecastDays = tier === 'premium' ? PREMIUM_FORECAST_DAYS : tier === 'individual' ? 10 : FREE_FORECAST_DAYS
 
   const apiForecastDays = Math.min(forecastDays, 16)

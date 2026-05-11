@@ -149,6 +149,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
         lon: result.lon.toString(),
         name: result.name,
         country: result.country,
+        tier,
       })
 
       const surfRes = await fetch(`/api/surf?${qs}`)
