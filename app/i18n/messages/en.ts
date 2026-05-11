@@ -209,7 +209,7 @@ const en: Record<string, string> = {
   'auth.signIn': 'Sign in',
   'auth.manageBilling': 'Manage billing',
   'auth.signOut': 'Sign out',
-  'auth.pro': 'Premium',
+  'auth.pro': 'PRO',
 
   // MarketingPage
   'mkt.liveBadge': 'Live data · Fresh on every search',
