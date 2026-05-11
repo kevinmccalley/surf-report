@@ -231,4 +231,6 @@ export interface SavedLocation {
   lat: number
   lon: number
   savedAt: string
+  alertThreshold?: number  // wave height in metres; undefined = no alert
+  lastAlertedAt?: string   // ISO timestamp, used to enforce cooldown
 }

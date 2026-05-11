@@ -407,6 +407,10 @@ const ptPT: Record<string, string> = {
   'locations.remove': 'Remover',
   'locations.signInToSave': 'Inicie sessão para guardar localizações',
   'locations.freeLimitHint': 'Plano gratuito: 1 spot guardado · Atualize para mais',
+  'locations.setAlert': 'Configurar alerta de ondas',
+  'locations.alertWhen': 'Alerta quando as ondas atingirem',
+  'locations.alertActive': 'Alerta ≥ {v}',
+  'locations.clearAlert': 'Remover',
 
   // MarketingLanding
   'mktL.badge': 'Relatórios de surf em tempo real — mundo inteiro',

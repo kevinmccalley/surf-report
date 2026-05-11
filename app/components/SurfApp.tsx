@@ -296,6 +296,15 @@ export default function SurfApp({ tier }: { tier: Tier }) {
     await user?.reload()
   }
 
+  async function handleSetAlert(lat: number, lon: number, thresholdM: number | null) {
+    await fetch('/api/locations', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lat, lon, alertThreshold: thresholdM }),
+    })
+    await user?.reload()
+  }
+
   const toggleTemp   = () => setUnits(u => ({ ...u, temp:   u.temp   === 'f' ? 'c'  : 'f'  }))
   const toggleHeight = () => setUnits(u => ({ ...u, height: u.height === 'ft' ? 'm' : 'ft' }))
 
@@ -332,8 +341,10 @@ export default function SurfApp({ tier }: { tier: Tier }) {
             {isSignedIn && (
               <SavedLocations
                 locations={savedLocations}
+                heightUnit={units.height}
                 onSelect={(loc) => fetchReport({ name: loc.name, country: loc.country, lat: loc.lat, lon: loc.lon, displayName: loc.displayName })}
                 onRemove={handleRemoveLocation}
+                onSetAlert={handleSetAlert}
               />
             )}
             <AuthButton subscribed={isPaid} onManageBilling={openBillingPortal} />
@@ -363,8 +374,10 @@ export default function SurfApp({ tier }: { tier: Tier }) {
             {isSignedIn && (
               <SavedLocations
                 locations={savedLocations}
+                heightUnit={units.height}
                 onSelect={(loc) => { fetchReport({ name: loc.name, country: loc.country, lat: loc.lat, lon: loc.lon, displayName: loc.displayName }); setShowMenu(false) }}
                 onRemove={handleRemoveLocation}
+                onSetAlert={handleSetAlert}
               />
             )}
             <AuthButton subscribed={isPaid} onManageBilling={openBillingPortal} />

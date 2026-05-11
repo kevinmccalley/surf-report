@@ -407,6 +407,10 @@ const es: Record<string, string> = {
   'locations.remove': 'Eliminar',
   'locations.signInToSave': 'Inicia sesión para guardar ubicaciones',
   'locations.freeLimitHint': 'Plan gratuito: 1 spot guardado · Actualiza para más',
+  'locations.setAlert': 'Configurar alerta de olas',
+  'locations.alertWhen': 'Alerta cuando las olas alcancen',
+  'locations.alertActive': 'Alerta ≥ {v}',
+  'locations.clearAlert': 'Eliminar',
 
   // MarketingLanding
   'mktL.badge': 'Informes de surf en tiempo real — mundial',

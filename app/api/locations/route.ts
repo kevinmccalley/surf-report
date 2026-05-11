@@ -37,6 +37,21 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({ ok: true })
 }
 
+export async function PATCH(request: NextRequest) {
+  const ctx = await getContext()
+  if (!ctx) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const { userId, client, saved } = ctx
+
+  const { lat, lon, alertThreshold } = await request.json() as { lat: number; lon: number; alertThreshold: number | null }
+  const updated = saved.map(s =>
+    Math.abs(s.lat - lat) < 0.001 && Math.abs(s.lon - lon) < 0.001
+      ? { ...s, alertThreshold: alertThreshold ?? undefined, lastAlertedAt: undefined }
+      : s
+  )
+  await client.users.updateUserMetadata(userId, { publicMetadata: { savedLocations: updated } })
+  return NextResponse.json({ ok: true })
+}
+
 export async function DELETE(request: NextRequest) {
   const ctx = await getContext()
   if (!ctx) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

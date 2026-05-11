@@ -407,6 +407,10 @@ const en: Record<string, string> = {
   'locations.remove': 'Remove',
   'locations.signInToSave': 'Sign in to save locations',
   'locations.freeLimitHint': 'Free plan: 1 saved spot · Upgrade for more',
+  'locations.setAlert': 'Set wave alert',
+  'locations.alertWhen': 'Alert when waves reach',
+  'locations.alertActive': 'Alert ≥ {v}',
+  'locations.clearAlert': 'Clear',
 
   // MarketingLanding
   'mktL.badge': 'Real-time surf reports — worldwide',
