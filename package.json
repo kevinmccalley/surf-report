@@ -17,7 +17,7 @@
     "ioredis": "^5.10.1",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.441.0",
-    "next": "^16.2.4",
+    "next": "16.2.6",
     "nodemailer": "^8.0.7",
     "react": "^18",
     "react-dom": "^18",
