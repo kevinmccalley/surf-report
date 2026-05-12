@@ -130,14 +130,14 @@ export default function SavedLocations({ locations, heightUnit, onSelect, onRemo
                       </div>
 
                       {hasAlert && !isEditingThis && (
-                        <div className="ml-2.5 mb-1 text-[10px] text-amber-400/80 flex items-center gap-1">
+                        <div className="ml-2.5 mb-1 text-[10px] alert-badge text-amber-400 opacity-80 flex items-center gap-1">
                           <BellRing size={9} />
                           {t('locations.alertActive').replace('{v}', alertDisplay!)}
                         </div>
                       )}
 
                       {isEditingThis && (
-                        <div className="mx-2 mb-2 p-2.5 rounded-xl bg-white/5 border border-white/10">
+                        <div className="mx-2 mb-2 p-2.5 rounded-xl theme-inset">
                           <p className="text-[10px] theme-label-muted mb-1.5">{t('locations.alertWhen')}</p>
                           <div className="flex items-center gap-1.5">
                             <input
@@ -148,7 +148,7 @@ export default function SavedLocations({ locations, heightUnit, onSelect, onRemo
                               value={editingAlert.value}
                               onChange={e => setEditingAlert(prev => prev ? { ...prev, value: e.target.value } : prev)}
                               onKeyDown={e => e.key === 'Enter' && handleSaveAlert(loc)}
-                              className="w-16 px-2 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white outline-none focus:border-teal-500"
+                              className="w-16 px-2 py-1 rounded-lg search-input text-xs"
                               autoFocus
                             />
                             <span className="text-xs theme-label-muted">{heightUnit}</span>
@@ -161,7 +161,7 @@ export default function SavedLocations({ locations, heightUnit, onSelect, onRemo
                             {hasAlert && (
                               <button
                                 onClick={() => handleClearAlert(loc)}
-                                className="text-[10px] text-slate-500 hover:text-slate-300 transition-colors px-1"
+                                className="text-[10px] text-slate-500 hover:text-slate-400 transition-colors px-1"
                               >
                                 {t('locations.clearAlert')}
                               </button>

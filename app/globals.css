@@ -221,6 +221,16 @@ body {
 .theme-row-active            { background: var(--panel-active); }
 .theme-row-active .theme-label { color: var(--accent-bright); }
 
+/* Inset sub-panel — works across all dark and light themes */
+.theme-inset {
+  background: var(--search-bg);
+  border: 1px solid var(--search-border);
+}
+
+/* Alert badge — amber needs an explicit light-theme override since
+   text-amber-400/80 (opacity-modified) isn't caught by the base selector */
+[data-theme*="light"] .alert-badge { color: #92400e; }
+
 .search-input {
   background: var(--search-bg);
   border: 1px solid var(--search-border);
