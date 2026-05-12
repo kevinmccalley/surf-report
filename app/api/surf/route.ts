@@ -69,7 +69,21 @@ export async function GET(request: NextRequest) {
       weatherRes.json(),
       gfsMarineRes ? gfsMarineRes.json() : Promise.resolve(null),
     ])
-    const gfsMarine = gfsMarineRaw?.error ? null : gfsMarineRaw
+
+    // If the primary NEMO model has no valid wave heights (land-mask or model gap),
+    // fetch the ECMWF model as a fallback — unless we already have it from above.
+    const nemoHasWaves = !marine.error &&
+      ((marine.hourly as Record<string, unknown[]>)?.wave_height ?? [])
+        .some(v => typeof v === 'number' && !isNaN(v))
+    let gfsFallbackRaw: Record<string, unknown> | null = null
+    if (!nemoHasWaves && !gfsMarineRaw) {
+      const r = await fetch(omUrl(gfsMarineUrl), { next: { revalidate: 1800 } }).catch(() => null)
+      gfsFallbackRaw = r ? await r.json().catch(() => null) : null
+    }
+    const gfsMarine = (() => {
+      const raw = gfsMarineRaw ?? gfsFallbackRaw
+      return raw && !(raw as Record<string, unknown>).error ? raw : null
+    })()
 
     const isCoastal = !marine.error
     const utcOffset = (marine.utc_offset_seconds ?? weather.utc_offset_seconds) ?? 0
