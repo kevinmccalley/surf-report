@@ -72,7 +72,7 @@ export default function SavedLocations({ locations, heightUnit, onSelect, onRemo
           className={hasSaved ? 'fill-teal-400 text-teal-400' : ''}
         />
         {hasSaved && (
-          <span className="absolute -top-0.5 -right-0.5 min-w-[14px] h-3.5 px-0.5 rounded-full bg-teal-500 text-[8px] font-bold text-white flex items-center justify-center leading-none">
+          <span className="absolute -top-0.5 -right-0.5 min-w-[14px] h-3.5 px-0.5 rounded-full bg-teal-400 text-[8px] font-bold text-slate-900 flex items-center justify-center leading-none">
             {locations.length}
           </span>
         )}
