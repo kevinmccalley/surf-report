@@ -106,13 +106,13 @@ function Timeline({ scored, windows }: { scored: ScoredHour[]; windows: SessionW
       {/* Hover tooltip */}
       {tooltip && (
         <div
-          className="absolute bottom-full mb-2 pointer-events-none z-10 bg-slate-800/95 border border-white/10 rounded-lg px-2.5 py-1.5 text-[10px] shadow-lg whitespace-nowrap"
-          style={{ left: '50%', transform: 'translateX(-50%)' }}
+          className="absolute bottom-full mb-2 pointer-events-none z-10 rounded-lg px-2.5 py-1.5 text-[10px] shadow-lg whitespace-nowrap"
+          style={{ left: '50%', transform: 'translateX(-50%)', background: 'var(--panel-bg)', border: '1px solid var(--card-border)', backdropFilter: 'blur(8px)' }}
         >
-          <p className="font-semibold text-white">{formatHour(parseLocalHour(tooltip.hour.time))}</p>
+          <p className="font-semibold" style={{ color: 'var(--text-base)' }}>{formatHour(parseLocalHour(tooltip.hour.time))}</p>
           <p style={{ color: tooltip.hour.rating.color }}>{tooltip.hour.rating.label}</p>
           {tooltip.hour.waveHeight >= 0.15 && (
-            <p className="text-slate-400">
+            <p style={{ color: 'var(--panel-label)' }}>
               {tooltip.hour.waveHeight.toFixed(1)}m · {Math.round(tooltip.hour.wavePeriod)}s · {Math.round(tooltip.hour.windSpeed)} km/h
             </p>
           )}

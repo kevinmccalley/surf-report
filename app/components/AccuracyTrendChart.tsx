@@ -14,8 +14,8 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
   if (!active || !payload?.length) return null
   const d = payload[0].payload
   return (
-    <div className="rounded-xl px-3 py-2.5 text-xs shadow-xl border border-white/10 whitespace-nowrap"
-      style={{ background: 'rgba(8,14,28,0.96)', backdropFilter: 'blur(8px)' }}>
+    <div className="rounded-xl px-3 py-2.5 text-xs shadow-xl whitespace-nowrap"
+      style={{ background: 'var(--panel-bg)', border: '1px solid var(--card-border)', backdropFilter: 'blur(8px)' }}>
       <p className="text-white font-semibold mb-1.5">{formatDate(d.date)}</p>
       <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-slate-400">
         <span>Overall</span>

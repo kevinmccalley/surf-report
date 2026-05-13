@@ -275,12 +275,12 @@ export default function TideSection({
                       return (
                         <g key={index}>
                           <line x1={cx} y1={lineY1} x2={cx} y2={lineY2} stroke={color} strokeWidth={1} strokeOpacity={0.55} />
-                          <circle cx={cx} cy={cy} r={5} fill={color} stroke="rgba(2,9,23,0.85)" strokeWidth={1.5} />
-                          <rect x={boxX} y={boxY} width={boxW} height={boxH} rx={4} fill="rgba(2,9,23,0.92)" stroke={stroke} strokeWidth={1} />
+                          <circle cx={cx} cy={cy} r={5} fill={color} style={{ stroke: 'var(--bg-start)' }} strokeWidth={1.5} />
+                          <rect x={boxX} y={boxY} width={boxW} height={boxH} rx={4} style={{ fill: 'var(--panel-bg)' }} stroke={stroke} strokeWidth={1} />
                           <text x={cx} y={boxY + 12} textAnchor="middle" fill={color} fontSize={9} fontWeight="700" fontFamily="system-ui,sans-serif">
                             {formatTime(extreme.time)}
                           </text>
-                          <text x={cx} y={boxY + 25} textAnchor="middle" fill="#e2e8f0" fontSize={9} fontFamily="system-ui,sans-serif">
+                          <text x={cx} y={boxY + 25} textAnchor="middle" style={{ fill: 'var(--text-base)' }} fontSize={9} fontFamily="system-ui,sans-serif">
                             {formatHeight(extreme.height, heightUnit)}
                           </text>
                         </g>

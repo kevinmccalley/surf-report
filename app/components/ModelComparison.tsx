@@ -94,8 +94,8 @@ export default function ModelComparison({ lat, lon, units }: Props) {
               tickFormatter={v => `${v}${unitLabel}`}
             />
             <Tooltip
-              contentStyle={{ background: '#0f172a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, fontSize: 12 }}
-              labelStyle={{ color: '#94a3b8' }}
+              contentStyle={{ background: 'var(--panel-bg)', border: '1px solid var(--card-border)', borderRadius: 8, fontSize: 12 }}
+              labelStyle={{ color: 'var(--panel-label)' }}
               formatter={(v: number, name: string) => [`${v} ${unitLabel}`, name === 'cmems' ? t('modelComp.cmems') : t('modelComp.gfs')]}
             />
             <Line

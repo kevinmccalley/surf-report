@@ -227,7 +227,7 @@ function CustomTooltip({ active, payload, heightUnit, hasTide, showSwells, hasWi
   const fmt = (m: number) => heightUnit === 'ft' ? `${m}ft` : `${m}m`
 
   return (
-    <div className="glass-card rounded-xl px-3 py-2.5 shadow-xl border border-white/10 text-xs">
+    <div className="glass-card rounded-xl px-3 py-2.5 shadow-xl text-xs">
       <p className="text-slate-300 font-medium mb-1.5">{formatHour(d.time)}</p>
       <div className="space-y-1">
         <Row color="#0ea5e9" label={t('chart.waves')} value={heightUnit === 'ft' ? `${d.waveHeightDisplay}ft` : `${d.waveHeightM.toFixed(1)}m`} />

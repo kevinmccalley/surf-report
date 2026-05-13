@@ -201,8 +201,8 @@ function FooterStat({ icon, label, value, sub }: { icon?: React.ReactNode; label
 
 function MapSkeleton() {
   return (
-    <div className="w-full h-full flex items-center justify-center bg-slate-900/50 animate-pulse">
-      <svg width="32" height="32" viewBox="0 0 32 32" className="text-slate-700">
+    <div className="w-full h-full flex items-center justify-center animate-pulse" style={{ background: 'var(--search-bg)' }}>
+      <svg width="32" height="32" viewBox="0 0 32 32" className="text-slate-400">
         <circle cx="16" cy="16" r="14" stroke="currentColor" strokeWidth="2" fill="none" />
         <path d="M8 20 C10 16, 13 22, 16 18 C19 14, 22 20, 24 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
       </svg>
