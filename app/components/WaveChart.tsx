@@ -23,6 +23,7 @@ interface ChartPoint {
   waveHeightM: number
   windSpeed: number
   windSpeedScaled: number
+  windDirKey: string
   period: number
   tideDisplay?: number
   primarySwellDisplay: number
@@ -68,6 +69,7 @@ export default function WaveChart({ hourly, heightUnit, tideHeights }: Props) {
       waveHeightM: h.waveHeight,
       windSpeed,
       windSpeedScaled: (windSpeed / maxWind) * waveYMax * 0.65,
+      windDirKey: getDirectionLabel(h.windDirection),
       period: Math.round(h.wavePeriod),
       tideDisplay: hasTide && tideHeights[i] !== undefined
         ? toDisplay(tideHeights[i], heightUnit)
@@ -154,6 +156,27 @@ export default function WaveChart({ hourly, heightUnit, tideHeights }: Props) {
 
             {showWind && (
               <Area yAxisId="wave" type="monotone" dataKey="windSpeedScaled" stroke="rgba(100,116,139,0.45)" strokeWidth={1} fill="url(#windGrad2)" strokeDasharray="3 2" dot={false} activeDot={false} />
+            )}
+            {showWind && (
+              <Line
+                yAxisId="wave" dataKey="windSpeedScaled"
+                stroke="none" fill="none" legendType="none"
+                isAnimationActive={false} activeDot={false}
+                dot={(props: { cx: number; cy: number; index: number; payload: ChartPoint }) => {
+                  if (props.index % 6 !== 0) return <g key={props.index} />
+                  return (
+                    <text
+                      key={`wd-${props.index}`}
+                      x={props.cx} y={props.cy - 6}
+                      textAnchor="middle"
+                      fontSize={8} fontFamily="system-ui,sans-serif"
+                      fill="rgba(148,163,184,0.85)"
+                    >
+                      {t('dir.' + props.payload.windDirKey)}
+                    </text>
+                  )
+                }}
+              />
             )}
             {showWave && (
               <Area yAxisId="wave" type="monotone" dataKey="waveHeightDisplay" stroke="#0ea5e9" strokeWidth={2.5} fill="url(#waveGrad2)" dot={false} activeDot={{ r: 4, fill: '#0ea5e9', stroke: 'white', strokeWidth: 1.5 }} />
@@ -248,7 +271,7 @@ function CustomTooltip({ active, payload, heightUnit, hasTide, showSwells, hasWi
           <Row color="#a78bfa" label={t('chart.swell3')}
             value={`${fmt(d.swell3Display)}${d.swell3Period > 0 ? ` · ${d.swell3Period}s` : ''} · ${t('dir.' + d.swell3DirKey)}`} />
         )}
-        <Row color="rgba(100,116,139,0.7)" label={t('chart.wind')} value={`${d.windSpeed} km/h`} />
+        <Row color="rgba(100,116,139,0.7)" label={t('chart.wind')} value={`${d.windSpeed} km/h · ${t('dir.' + d.windDirKey)}`} />
         {hasTide && d.tideDisplay !== undefined && (
           <Row color="#2dd4bf" label={t('chart.tide')} value={heightUnit === 'ft' ? `${d.tideDisplay}ft` : `${d.tideDisplay}m`} />
         )}
