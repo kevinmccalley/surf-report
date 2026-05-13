@@ -488,6 +488,30 @@ const ptPT: Record<string, string> = {
   'accuracy.sourceTag.buoy':    'Boia',
   'accuracy.sourceTag.geo':     'Localização',
   'accuracy.sourceTag.map':     'Mapa',
+
+  // SessionPlanner (Premium)
+  'sessions.title': 'Planeador de Sessão',
+  'sessions.subtitle': 'Janelas ideais de 2 horas para hoje e amanhã',
+  'sessions.today': 'Hoje',
+  'sessions.tomorrow': 'Amanhã',
+  'sessions.recommended': 'Janelas Recomendadas',
+  'sessions.waveAt': '{height} a {period}s',
+  'sessions.wind': '{speed} km/h · {dir}',
+  'sessions.risingTide': 'Maré a encher',
+  'sessions.fallingTide': 'Maré a vazar',
+  'sessions.slackTide': 'Maré parada',
+  'sessions.noData': 'Sem dados horários disponíveis para este dia',
+  'sessions.noSurfable': 'Sem janelas surfáveis — sem ondas ou vento todo o dia',
+
+  // PremiumTeaser
+  'premium.teaser.extended': 'Previsão alargada de 15 dias',
+  'premium.teaser.models': 'Comparação multimodelo (GFS vs CMEMS)',
+  'premium.teaser.alerts': 'Alertas de swell',
+  'premium.teaser.sessions': 'Ferramentas de planeamento de sessão',
+  'premium.teaser.api': 'Acesso à API para programadores',
+  'premium.teaser.comingSoon': 'Em breve',
+  'premium.teaser.inDev': 'Em desenvolvimento',
+  'premium.teaser.footer': 'Subscreva agora para ter acesso quando o Premium for lançado — mesmo preço, sem necessidade de upgrade.',
 }
 
 export default ptPT

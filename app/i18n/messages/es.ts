@@ -488,6 +488,30 @@ const es: Record<string, string> = {
   'accuracy.sourceTag.buoy':    'Boya',
   'accuracy.sourceTag.geo':     'Ubicación',
   'accuracy.sourceTag.map':     'Mapa',
+
+  // SessionPlanner (Premium)
+  'sessions.title': 'Planificador de Sesión',
+  'sessions.subtitle': 'Ventanas óptimas de 2 horas para hoy y mañana',
+  'sessions.today': 'Hoy',
+  'sessions.tomorrow': 'Mañana',
+  'sessions.recommended': 'Ventanas Recomendadas',
+  'sessions.waveAt': '{height} a {period}s',
+  'sessions.wind': '{speed} km/h · {dir}',
+  'sessions.risingTide': 'Marea subiendo',
+  'sessions.fallingTide': 'Marea bajando',
+  'sessions.slackTide': 'Marea en calma',
+  'sessions.noData': 'No hay datos por hora disponibles para este día',
+  'sessions.noSurfable': 'Sin ventanas surfeables — plano o destrozado todo el día',
+
+  // PremiumTeaser
+  'premium.teaser.extended': 'Pronóstico extendido de 15 días',
+  'premium.teaser.models': 'Comparación multimodelo (GFS vs CMEMS)',
+  'premium.teaser.alerts': 'Notificaciones de swell',
+  'premium.teaser.sessions': 'Herramientas de planificación de sesión',
+  'premium.teaser.api': 'Acceso API para desarrolladores',
+  'premium.teaser.comingSoon': 'Próximamente',
+  'premium.teaser.inDev': 'En desarrollo',
+  'premium.teaser.footer': 'Suscríbete ahora para obtener acceso cuando Premium se lance — mismo precio, sin necesidad de actualizar.',
 }
 
 export default es

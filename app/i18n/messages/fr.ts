@@ -488,6 +488,30 @@ const fr: Record<string, string> = {
   'accuracy.sourceTag.buoy':    'Bouée',
   'accuracy.sourceTag.geo':     'Lieu',
   'accuracy.sourceTag.map':     'Carte',
+
+  // SessionPlanner (Premium)
+  'sessions.title': 'Planificateur de Session',
+  'sessions.subtitle': 'Fenêtres optimales de 2 heures pour aujourd\'hui et demain',
+  'sessions.today': 'Aujourd\'hui',
+  'sessions.tomorrow': 'Demain',
+  'sessions.recommended': 'Fenêtres Recommandées',
+  'sessions.waveAt': '{height} à {period}s',
+  'sessions.wind': '{speed} km/h · {dir}',
+  'sessions.risingTide': 'Marée montante',
+  'sessions.fallingTide': 'Marée descendante',
+  'sessions.slackTide': 'Étale',
+  'sessions.noData': 'Pas de données horaires disponibles pour ce jour',
+  'sessions.noSurfable': 'Aucune fenêtre surfable — plat ou vent toute la journée',
+
+  // PremiumTeaser
+  'premium.teaser.extended': 'Prévision étendue 15 jours',
+  'premium.teaser.models': 'Comparaison multi-modèles (GFS vs CMEMS)',
+  'premium.teaser.alerts': 'Alertes de houle',
+  'premium.teaser.sessions': 'Outils de planification de session',
+  'premium.teaser.api': 'Accès API pour développeurs',
+  'premium.teaser.comingSoon': 'Bientôt disponible',
+  'premium.teaser.inDev': 'En développement',
+  'premium.teaser.footer': 'Abonnez-vous maintenant pour accéder au lancement de Premium — même prix, sans mise à niveau requise.',
 }
 
 export default fr

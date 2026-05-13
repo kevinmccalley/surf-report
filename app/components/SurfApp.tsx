@@ -24,6 +24,7 @@ import MapPanel from './MapPanel'
 import NearbySpots from './NearbySpots'
 import EpicNowSection from './EpicNowSection'
 import ModelComparison from './ModelComparison'
+import SessionPlanner from './SessionPlanner'
 import LanguageSwitcher from './LanguageSwitcher'
 import SavedLocations from './SavedLocations'
 import type { ClimatologyMonth } from './ClimatologySection'
@@ -603,6 +604,14 @@ export default function SurfApp({ tier }: { tier: Tier }) {
               />
             )}
 
+            {isPremium && !report.historical && report.isCoastal && (
+              <SessionPlanner
+                hourly={report.hourly}
+                tideData={tideData?.available ? tideData : null}
+                units={units}
+              />
+            )}
+
             {isPaid && !isPremium && !report.historical && (
               <PremiumTeaser />
             )}
@@ -743,31 +752,33 @@ function SiteFooterLinks() {
 }
 
 function PremiumTeaser() {
-  const FEATURES = [
-    { label: '15-day extended forecast', icon: '📅' },
-    { label: 'Multi-model comparison (GFS vs CMEMS)', icon: '📊' },
-    { label: 'Swell alert notifications', icon: '🔔' },
-    { label: 'API access for developers', icon: '⚡' },
+  const { t } = useLanguage()
+  const features = [
+    { key: 'premium.teaser.extended', icon: '📅' },
+    { key: 'premium.teaser.models',   icon: '📊' },
+    { key: 'premium.teaser.alerts',   icon: '🔔' },
+    { key: 'premium.teaser.sessions', icon: '🏄' },
+    { key: 'premium.teaser.api',      icon: '⚡' },
   ]
   return (
     <section className="glass-card rounded-2xl p-4 sm:p-6 border border-sky-500/10">
       <div className="flex items-center justify-between mb-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Premium</p>
-          <p className="text-sm font-semibold text-white mt-0.5">Coming soon</p>
+          <p className="text-sm font-semibold text-white mt-0.5">{t('premium.teaser.comingSoon')}</p>
         </div>
         <span className="text-[10px] px-2 py-1 rounded-full bg-sky-500/12 text-sky-400 border border-sky-500/20 font-medium">
-          In development
+          {t('premium.teaser.inDev')}
         </span>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-        {FEATURES.map(f => (
+        {features.map(f => (
           <div
-            key={f.label}
+            key={f.key}
             className="flex items-center gap-3 px-3 py-2.5 rounded-lg border border-white/5 bg-white/2"
           >
             <span className="text-base opacity-40">{f.icon}</span>
-            <span className="text-xs text-slate-500">{f.label}</span>
+            <span className="text-xs text-slate-500">{t(f.key)}</span>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="ml-auto shrink-0 opacity-30">
               <rect x="2" y="5.5" width="8" height="5.5" rx="1.2" stroke="#94a3b8" strokeWidth="1.2" />
               <path d="M3.5 5.5V4a2.5 2.5 0 0 1 5 0v1.5" stroke="#94a3b8" strokeWidth="1.2" strokeLinecap="round" />
@@ -775,9 +786,7 @@ function PremiumTeaser() {
           </div>
         ))}
       </div>
-      <p className="text-[11px] text-slate-600 mt-3">
-        Subscribe now to get access when Premium launches — same price, no upgrade required.
-      </p>
+      <p className="text-[11px] text-slate-600 mt-3">{t('premium.teaser.footer')}</p>
     </section>
   )
 }

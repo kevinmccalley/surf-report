@@ -488,6 +488,30 @@ const ptBR: Record<string, string> = {
   'accuracy.sourceTag.buoy':    'Boia',
   'accuracy.sourceTag.geo':     'Localização',
   'accuracy.sourceTag.map':     'Mapa',
+
+  // SessionPlanner (Premium)
+  'sessions.title': 'Planejador de Sessão',
+  'sessions.subtitle': 'Janelas ideais de 2 horas para hoje e amanhã',
+  'sessions.today': 'Hoje',
+  'sessions.tomorrow': 'Amanhã',
+  'sessions.recommended': 'Janelas Recomendadas',
+  'sessions.waveAt': '{height} a {period}s',
+  'sessions.wind': '{speed} km/h · {dir}',
+  'sessions.risingTide': 'Maré enchendo',
+  'sessions.fallingTide': 'Maré vazando',
+  'sessions.slackTide': 'Maré parada',
+  'sessions.noData': 'Sem dados horários disponíveis para este dia',
+  'sessions.noSurfable': 'Sem janelas surfáveis — sem ondas ou vento todo o dia',
+
+  // PremiumTeaser
+  'premium.teaser.extended': 'Previsão estendida de 15 dias',
+  'premium.teaser.models': 'Comparação multimodelo (GFS vs CMEMS)',
+  'premium.teaser.alerts': 'Notificações de swell',
+  'premium.teaser.sessions': 'Ferramentas de planejamento de sessão',
+  'premium.teaser.api': 'Acesso à API para desenvolvedores',
+  'premium.teaser.comingSoon': 'Em breve',
+  'premium.teaser.inDev': 'Em desenvolvimento',
+  'premium.teaser.footer': 'Assine agora para ter acesso quando o Premium for lançado — mesmo preço, sem necessidade de upgrade.',
 }
 
 export default ptBR

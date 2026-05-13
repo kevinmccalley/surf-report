@@ -474,6 +474,30 @@ const en: Record<string, string> = {
   'mktL.signIn': 'Sign in',
   'mktL.footer': 'Open ocean data from NOAA, ECMWF, and Copernicus Marine. Updated hourly.',
 
+  // SessionPlanner (Premium)
+  'sessions.title': 'Session Planner',
+  'sessions.subtitle': 'Optimal 2-hour windows for today and tomorrow',
+  'sessions.today': 'Today',
+  'sessions.tomorrow': 'Tomorrow',
+  'sessions.recommended': 'Recommended Windows',
+  'sessions.waveAt': '{height} @ {period}s',
+  'sessions.wind': '{speed} km/h · {dir}',
+  'sessions.risingTide': 'Rising tide',
+  'sessions.fallingTide': 'Falling tide',
+  'sessions.slackTide': 'Slack tide',
+  'sessions.noData': 'No hourly data available for this day',
+  'sessions.noSurfable': 'No surfable windows — flat or blown out all day',
+
+  // PremiumTeaser feature list (shown to Individual subscribers)
+  'premium.teaser.extended': '15-day extended forecast',
+  'premium.teaser.models': 'Multi-model comparison (GFS vs CMEMS)',
+  'premium.teaser.alerts': 'Swell alert notifications',
+  'premium.teaser.sessions': 'Session planning tools',
+  'premium.teaser.api': 'API access for developers',
+  'premium.teaser.comingSoon': 'Coming soon',
+  'premium.teaser.inDev': 'In development',
+  'premium.teaser.footer': 'Subscribe now to get access when Premium launches — same price, no upgrade required.',
+
   // AccuracyPage — Data Sources section
   'accuracy.sourcesTitle': 'Data Sources',
   'accuracy.sourcesIntro': 'Every number on this site comes from a free, open data source. No proprietary feeds, no paywalled models. Here is exactly where each piece of data originates.',
