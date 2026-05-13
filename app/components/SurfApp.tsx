@@ -480,19 +480,6 @@ export default function SurfApp({ tier }: { tier: Tier }) {
 
             {report.isCoastal && <ConditionCards report={report} units={units} />}
 
-            {report.isCoastal && (
-              <NearbySpots
-                spots={nearbySpots}
-                loading={nearbyLoading}
-                units={units}
-                onSelect={(spot) => fetchReport({
-                  lat: spot.lat, lon: spot.lon,
-                  name: spot.name, country: '',
-                  displayName: spot.name,
-                })}
-              />
-            )}
-
             {report.isCoastal && !report.historical && buoyData && (
               <BuoyCard
                 buoy={buoyData}
@@ -559,6 +546,19 @@ export default function SurfApp({ tier }: { tier: Tier }) {
                   <TideSetupCard reason={(tideData as TideUnavailable | null)?.reason} />
                 )}
               </section>
+            )}
+
+            {report.isCoastal && (
+              <NearbySpots
+                spots={nearbySpots}
+                loading={nearbyLoading}
+                units={units}
+                onSelect={(spot) => fetchReport({
+                  lat: spot.lat, lon: spot.lon,
+                  name: spot.name, country: '',
+                  displayName: spot.name,
+                })}
+              />
             )}
 
             {report.isCoastal && climData?.available && (
