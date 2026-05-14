@@ -346,7 +346,7 @@ const en: Record<string, string> = {
   'paywall.epicNowTeaser': 'Best Surf Right Now — 608 spots worldwide',
   'paywall.epicNowDesc': 'See where conditions are firing globally, updated every 3 hours. Available on all paid plans.',
   'paywall.upgradeLink': 'Upgrade for $4/month',
-  'paywall.priceContrast': '$4/month · Surfline charges $108/year for the same data',
+  'paywall.priceContrast': '$4/month · The big apps charge $100+ a year',
   'paywall.historicalGate': 'Historical data (Jan 2022–present) — search any past date at this location',
   'tides.freeTierLabel': '3-Day Tide Forecast',
   'tides.upgradeExtended': '5-day curve · NOAA live verification · station details',
@@ -446,8 +446,8 @@ const en: Record<string, string> = {
 
   // Why surfers switch (pain point section)
   'mktL.pain.title': 'Why surfers switch',
-  'mktL.pain.1.heading': "Surfline's price went up. Again.",
-  'mktL.pain.1.body': '$120 a year. Check limits. Ads between you and the forecast. In 2025 they added a cap on how many times you can check conditions per week. Surfers noticed.',
+  'mktL.pain.1.heading': 'Forecast apps keep raising prices.',
+  'mktL.pain.1.body': 'The big apps charge $100+ a year. Ads between you and the forecast. Features locked behind higher tiers. And the price keeps climbing.',
   'mktL.pain.1.answer': '$40/year. No check limits. No ads. No fine print.',
   'mktL.pain.2.heading': 'Magicseaweed is gone. Nothing replaced it.',
   'mktL.pain.2.body': 'Three million surfers in 200 countries lost their forecast tool overnight in 2023. No warning, no archive, no migration. Most still haven\'t found a home.',

@@ -346,7 +346,7 @@ const fr: Record<string, string> = {
   'paywall.epicNowTeaser': 'Meilleur Surf Maintenant — 608 spots dans le monde',
   'paywall.epicNowDesc': 'Voyez où les conditions sont parfaites dans le monde entier, mis à jour toutes les 3 heures. Disponible sur tous les forfaits payants.',
   'paywall.upgradeLink': 'Passer au $4/mois',
-  'paywall.priceContrast': '$4/mois · Surfline facture $108/an pour les mêmes données',
+  'paywall.priceContrast': '$4/mois · Les grandes apps facturent 100 $+ par an',
   'paywall.historicalGate': 'Données historiques (jan 2022–aujourd\'hui) — recherchez n\'importe quelle date passée à cet endroit',
   'tides.freeTierLabel': 'Prévisions de Marées 3 Jours',
   'tides.upgradeExtended': 'Courbe 5 jours · vérification en direct NOAA · détails de la station',
@@ -446,8 +446,8 @@ const fr: Record<string, string> = {
 
   // Pourquoi les surfeurs changent
   'mktL.pain.title': 'Pourquoi les surfeurs changent',
-  'mktL.pain.1.heading': 'Le prix de Surfline a encore augmenté.',
-  'mktL.pain.1.body': '120 $ par an. Des limites de consultation. Des pubs entre vous et la météo. En 2025, ils ont ajouté un plafond sur le nombre de fois que vous pouvez consulter les conditions par semaine. Les surfeurs ont remarqué.',
+  'mktL.pain.1.heading': 'Les apps météo surf continuent d\'augmenter leurs prix.',
+  'mktL.pain.1.body': 'Les grandes apps facturent 100 $+ par an. Des pubs entre vous et la météo. Des fonctionnalités bloquées derrière des niveaux plus chers. Et le prix continue de grimper.',
   'mktL.pain.1.answer': '40 $/an. Sans limites de consultation. Sans pub. Sans petits caractères.',
   'mktL.pain.2.heading': 'Magicseaweed a disparu. Rien ne l\'a remplacé.',
   'mktL.pain.2.body': 'Trois millions de surfeurs dans 200 pays ont perdu leur outil de prévision du jour au lendemain en 2023. Sans avertissement, sans archive, sans migration. La plupart n\'ont toujours pas trouvé de solution.',

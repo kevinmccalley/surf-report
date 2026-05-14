@@ -346,7 +346,7 @@ const ptBR: Record<string, string> = {
   'paywall.epicNowTeaser': 'Melhor Surf Agora — 608 picos ao redor do mundo',
   'paywall.epicNowDesc': 'Veja onde as condições estão bombando globalmente, atualizado a cada 3 horas. Disponível em todos os planos pagos.',
   'paywall.upgradeLink': 'Upgrade por $4/mês',
-  'paywall.priceContrast': '$4/mês · Surfline cobra $108/ano pelos mesmos dados',
+  'paywall.priceContrast': '$4/mês · Os grandes apps cobram $100+ por ano',
   'paywall.historicalGate': 'Dados históricos (jan 2022–hoje) — pesquise qualquer data passada neste local',
   'tides.freeTierLabel': 'Previsão de Marés de 3 Dias',
   'tides.upgradeExtended': 'Curva de 5 dias · verificação ao vivo NOAA · detalhes da estação',
@@ -446,8 +446,8 @@ const ptBR: Record<string, string> = {
 
   // Por que os surfistas mudam
   'mktL.pain.title': 'Por que os surfistas mudam para o Groundswell',
-  'mktL.pain.1.heading': 'O preço do Surfline subiu. De novo.',
-  'mktL.pain.1.body': '$120 por ano. Limites de consulta. Anúncios entre você e a previsão. Em 2025, eles adicionaram um limite de quantas vezes você pode verificar as condições por semana. Os surfistas notaram.',
+  'mktL.pain.1.heading': 'Os apps de previsão continuam aumentando os preços.',
+  'mktL.pain.1.body': 'Os grandes apps cobram $100+ por ano. Anúncios entre você e a previsão. Recursos bloqueados atrás de planos mais caros. E o preço continua subindo.',
   'mktL.pain.1.answer': '$40/ano. Sem limites de consulta. Sem anúncios. Sem letras miúdas.',
   'mktL.pain.2.heading': 'O Magicseaweed acabou. Nada o substituiu.',
   'mktL.pain.2.body': 'Três milhões de surfistas em 200 países perderam sua ferramenta de previsão da noite para o dia em 2023. Sem aviso, sem arquivo, sem migração. A maioria ainda não encontrou uma nova casa.',
