@@ -67,6 +67,17 @@ export default function SurfApp({ tier }: { tier: Tier }) {
   const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (lastGeoResult) {
+      const location = lastGeoResult.country
+        ? `${lastGeoResult.name}, ${lastGeoResult.country}`
+        : lastGeoResult.name
+      document.title = `${location} — ${t('meta.surfForecast')} — Groundswell`
+    } else {
+      document.title = `Groundswell — ${t('meta.tagline')}`
+    }
+  }, [lastGeoResult, t])
+
+  useEffect(() => {
     if (!showMenu) return
     function handleClick(e: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
