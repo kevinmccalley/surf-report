@@ -4,6 +4,8 @@ import { useRef, useState, useEffect } from 'react'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 import { SPOTS, REGIONS, type Region } from './spots-data'
 import SpotRow from './SpotRow'
+import ThemePicker from '@/app/components/ThemePicker'
+import LanguageSwitcher from '@/app/components/LanguageSwitcher'
 
 const REGION_IDS: Record<Region, string> = {
   'Hawaii': 'region-hawaii',
@@ -87,8 +89,12 @@ export default function Top100Client() {
         <p className="theme-label text-base sm:text-lg max-w-xl mx-auto">
           {t('top100.subtitle')}
         </p>
-        <p className="theme-label-muted text-xs mt-3">
-          {t('top100.hint')}
+        <p className="theme-label-muted text-xs mt-3 flex items-center justify-center gap-1.5 flex-wrap">
+          <span>{t('top100.hint')}</span>
+          <svg width="10" height="14" viewBox="0 0 12 16" fill="currentColor" style={{ color: 'var(--panel-muted)', flexShrink: 0 }}>
+            <path fillRule="evenodd" clipRule="evenodd" d="M6 0C2.686 0 0 2.686 0 6c0 4.5 6 10 6 10s6-5.5 6-10C12 2.686 9.314 0 6 0zm0 8.5A2.5 2.5 0 1 1 6 3.5a2.5 2.5 0 0 1 0 5z"/>
+          </svg>
+          <span>{t('top100.hintPin')}</span>
         </p>
       </div>
 
@@ -103,7 +109,7 @@ export default function Top100Client() {
           <h1
             className="font-black leading-tight transition-all duration-300"
             style={{
-              fontSize: scrolled ? '0.78rem' : 'clamp(1.75rem, 5vw, 3rem)',
+              fontSize: scrolled ? '1rem' : 'clamp(1.75rem, 5vw, 3rem)',
               letterSpacing: scrolled ? '0.1em' : '0',
             }}
           >
@@ -111,25 +117,31 @@ export default function Top100Client() {
           </h1>
         </div>
 
-        {/* Region pills — centered */}
-        <div className="px-2 pb-2 overflow-x-auto">
-          <div className="flex justify-center gap-1.5 min-w-max mx-auto">
-            {REGIONS.map(region => (
-              <button
-                key={region}
-                onClick={() => scrollToRegion(region)}
-                className="px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200"
-                style={{
-                  background: activeRegion === region ? 'var(--panel-active)' : 'var(--panel-hover)',
-                  color: activeRegion === region ? 'var(--accent-bright)' : 'var(--panel-label)',
-                  border: activeRegion === region
-                    ? '1px solid rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.35)'
-                    : '1px solid transparent',
-                }}
-              >
-                {t(REGION_LABEL_KEYS[region])}
-              </button>
-            ))}
+        {/* Region pills — centered with theme/language toggles */}
+        <div className="px-2 pb-2 flex items-center gap-2">
+          <div className="flex-1 overflow-x-auto">
+            <div className="flex justify-center gap-1.5 min-w-max mx-auto">
+              {REGIONS.map(region => (
+                <button
+                  key={region}
+                  onClick={() => scrollToRegion(region)}
+                  className="px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200"
+                  style={{
+                    background: activeRegion === region ? 'var(--panel-active)' : 'var(--panel-hover)',
+                    color: activeRegion === region ? 'var(--accent-bright)' : 'var(--panel-label)',
+                    border: activeRegion === region
+                      ? '1px solid rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.35)'
+                      : '1px solid transparent',
+                  }}
+                >
+                  {t(REGION_LABEL_KEYS[region])}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="flex items-center gap-1 shrink-0">
+            <LanguageSwitcher align="right" />
+            <ThemePicker align="right" />
           </div>
         </div>
       </div>
@@ -142,9 +154,6 @@ export default function Top100Client() {
             <div className="flex items-center gap-3 mb-6 pt-2">
               <h2 className="text-xl font-bold">{t(REGION_LABEL_KEYS[region])}</h2>
               <div className="flex-1 h-px" style={{ background: 'var(--card-border)' }} />
-              <span className="theme-label-muted text-xs font-mono">
-                #{spots[0].rank}–#{spots[spots.length - 1].rank}
-              </span>
             </div>
 
             {/* Spots */}

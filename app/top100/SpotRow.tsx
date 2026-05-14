@@ -120,13 +120,8 @@ export default function SpotRow({ spot, heightUnit }: Props) {
 
       <div className="p-4 sm:p-5 grid gap-3 lg:grid-cols-[auto_1fr] lg:gap-5">
 
-        {/* ── Left: rank + name ──────────────────────────────────────────── */}
-        <div className="flex gap-3 items-start min-w-0 lg:max-w-[280px]">
-          <span className="text-2xl font-black tabular-nums leading-none mt-0.5 shrink-0"
-            style={{ color: 'rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.25)', minWidth: '2.2rem' }}>
-            {spot.rank}
-          </span>
-          <div className="min-w-0">
+        {/* ── Left: name ─────────────────────────────────────────────────── */}
+        <div className="min-w-0 lg:max-w-[280px]">
             <div className="flex items-center gap-2 flex-wrap">
               <h3 className="font-bold text-base leading-tight">{spot.name}</h3>
               {firing && (
@@ -185,24 +180,26 @@ export default function SpotRow({ spot, heightUnit }: Props) {
                 )}
               </div>
             </div>
-          </div>
         </div>
 
-        {/* ── Right: forecast strip + description ───────────────────────── */}
-        <div className="flex flex-col gap-3">
+        {/* ── Right: description + forecast strip ───────────────────────── */}
+        <div className="flex items-start gap-4">
 
-          {/* Forecast strip */}
-          <div className="flex gap-3 sm:gap-4 items-start">
+          {/* Description */}
+          <p className="theme-label text-xs leading-relaxed line-clamp-4 flex-1 min-w-0">{spot.description}</p>
+
+          {/* Forecast cards */}
+          <div className="flex gap-2 items-start shrink-0">
             {loading && !fetched ? (
-              <div className="flex gap-3">
+              <>
                 {[0, 1].map(i => (
                   <div key={i} className="w-28 h-16 rounded-xl animate-pulse"
                     style={{ background: 'var(--panel-hover)' }} />
                 ))}
-              </div>
+              </>
             ) : today || tomorrow ? (
               [today, tomorrow].map((day, i) => day && (
-                <div key={i} className="rounded-xl px-3 py-2.5 min-w-[7rem]"
+                <div key={i} className="rounded-xl px-3 py-2.5 w-28"
                   style={{ background: 'var(--panel-hover)' }}>
                   <p className="theme-label-muted text-[10px] font-semibold uppercase tracking-widest mb-1.5">{day.label}</p>
                   <div className="flex items-center gap-1.5 mb-1">
@@ -223,9 +220,6 @@ export default function SpotRow({ spot, heightUnit }: Props) {
               <p className="theme-label-muted text-xs self-center">{t('top100.noData')}</p>
             ) : null}
           </div>
-
-          {/* Description */}
-          <p className="theme-label text-xs leading-relaxed line-clamp-4">{spot.description}</p>
         </div>
       </div>
 
