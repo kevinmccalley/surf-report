@@ -600,6 +600,33 @@ const fr: Record<string, string> = {
   'blog.rssLink':          'S\'abonner via RSS',
   'blog.emailCta.heading': 'Recevez des alertes houle hebdomadaires',
   'blog.emailCta.body':    'Abonnez-vous pour les prévisions de surf et les nouveaux articles.',
+
+  // Top 100 Surf Spots
+  'top100.heading':                    'Le Top 100 des Vagues du Monde',
+  'top100.subtitle':                   'Les spots les plus iconiques de la planète, avec des prévisions en direct.',
+  'top100.today':                      "Aujourd'hui",
+  'top100.tomorrow':                   'Demain',
+  'top100.firing':                     'Ça envoie',
+  'top100.saveSpot':                   'Sauvegarder le spot',
+  'top100.saved':                      'Sauvegardé',
+  'top100.signInToSave':               'Connectez-vous pour sauvegarder des spots',
+  'top100.viewMap':                    'Voir sur la carte',
+  'top100.closeMap':                   'Fermer la carte',
+  'top100.loading':                    'Chargement des prévisions…',
+  'top100.noData':                     'Pas de données',
+  'top100.bestSeason':                 'Meilleure période : {season}',
+  'top100.jumpTo':                     'Aller à la région',
+  'top100.difficulty.beginner':        'Débutant',
+  'top100.difficulty.intermediate':    'Intermédiaire',
+  'top100.difficulty.advanced':        'Avancé',
+  'top100.difficulty.expert':          'Expert',
+  'top100.waveType.reef':              'Récif',
+  'top100.waveType.beach':             'Beach Break',
+  'top100.waveType.point':             'Point Break',
+  'top100.waveType.river':             'Embouchure',
+  'top100.waveType.sandbar':           'Barre de Sable',
+  'top100.badge.ct':                   'Étape CT',
+  'top100.badge.bigwave':              'Grosse Vague',
 }
 
 export default fr

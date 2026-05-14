@@ -600,6 +600,33 @@ const es: Record<string, string> = {
   'blog.rssLink':          'Suscribirse vía RSS',
   'blog.emailCta.heading': 'Recibe alertas de oleaje semanales',
   'blog.emailCta.body':    'Suscríbete para pronósticos de surf y nuevos artículos.',
+
+  // Top 100 Surf Spots
+  'top100.heading':                    'Las 100 Mejores Olas del Mundo',
+  'top100.subtitle':                   'Las rompientes más icónicas del planeta, con pronósticos en vivo.',
+  'top100.today':                      'Hoy',
+  'top100.tomorrow':                   'Mañana',
+  'top100.firing':                     'Disparando ahora',
+  'top100.saveSpot':                   'Guardar spot',
+  'top100.saved':                      'Guardado',
+  'top100.signInToSave':               'Inicia sesión para guardar spots',
+  'top100.viewMap':                    'Ver en el mapa',
+  'top100.closeMap':                   'Cerrar mapa',
+  'top100.loading':                    'Cargando pronóstico…',
+  'top100.noData':                     'Sin datos',
+  'top100.bestSeason':                 'Mejor: {season}',
+  'top100.jumpTo':                     'Ir a región',
+  'top100.difficulty.beginner':        'Principiante',
+  'top100.difficulty.intermediate':    'Intermedio',
+  'top100.difficulty.advanced':        'Avanzado',
+  'top100.difficulty.expert':          'Experto',
+  'top100.waveType.reef':              'Arrecife',
+  'top100.waveType.beach':             'Playa',
+  'top100.waveType.point':             'Punta',
+  'top100.waveType.river':             'Boca de Río',
+  'top100.waveType.sandbar':           'Barra de Arena',
+  'top100.badge.ct':                   'CT Stop',
+  'top100.badge.bigwave':              'Ola Grande',
 }
 
 export default es

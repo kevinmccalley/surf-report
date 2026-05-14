@@ -600,6 +600,33 @@ const en: Record<string, string> = {
   'blog.rssLink':          'Subscribe via RSS',
   'blog.emailCta.heading': 'Get weekly swell alerts',
   'blog.emailCta.body':    'Subscribe for surf forecasts and new articles.',
+
+  // Top 100 Surf Spots
+  'top100.heading':                    'Top 100 Waves of the World',
+  'top100.subtitle':                   "The planet's most iconic surf breaks, with live forecasts.",
+  'top100.today':                      'Today',
+  'top100.tomorrow':                   'Tomorrow',
+  'top100.firing':                     'Firing now',
+  'top100.saveSpot':                   'Save spot',
+  'top100.saved':                      'Saved',
+  'top100.signInToSave':               'Sign in to save spots',
+  'top100.viewMap':                    'View on map',
+  'top100.closeMap':                   'Close map',
+  'top100.loading':                    'Loading forecast…',
+  'top100.noData':                     'No data',
+  'top100.bestSeason':                 'Best: {season}',
+  'top100.jumpTo':                     'Jump to region',
+  'top100.difficulty.beginner':        'Beginner',
+  'top100.difficulty.intermediate':    'Intermediate',
+  'top100.difficulty.advanced':        'Advanced',
+  'top100.difficulty.expert':          'Expert',
+  'top100.waveType.reef':              'Reef Break',
+  'top100.waveType.beach':             'Beach Break',
+  'top100.waveType.point':             'Point Break',
+  'top100.waveType.river':             'River Mouth',
+  'top100.waveType.sandbar':           'Sand Bar',
+  'top100.badge.ct':                   'CT Stop',
+  'top100.badge.bigwave':              'Big Wave',
 }
 
 export default en

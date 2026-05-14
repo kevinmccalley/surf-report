@@ -600,6 +600,33 @@ const ptBR: Record<string, string> = {
   'blog.rssLink':          'Assinar via RSS',
   'blog.emailCta.heading': 'Receba alertas de ondulação semanais',
   'blog.emailCta.body':    'Assine para previsões de surf e novos artigos.',
+
+  // Top 100 Surf Spots
+  'top100.heading':                    'As 100 Melhores Ondas do Mundo',
+  'top100.subtitle':                   'Os spots mais icônicos do planeta, com previsões ao vivo.',
+  'top100.today':                      'Hoje',
+  'top100.tomorrow':                   'Amanhã',
+  'top100.firing':                     'Pegando agora',
+  'top100.saveSpot':                   'Salvar spot',
+  'top100.saved':                      'Salvo',
+  'top100.signInToSave':               'Entre para salvar spots',
+  'top100.viewMap':                    'Ver no mapa',
+  'top100.closeMap':                   'Fechar mapa',
+  'top100.loading':                    'Carregando previsão…',
+  'top100.noData':                     'Sem dados',
+  'top100.bestSeason':                 'Melhor: {season}',
+  'top100.jumpTo':                     'Ir para região',
+  'top100.difficulty.beginner':        'Iniciante',
+  'top100.difficulty.intermediate':    'Intermediário',
+  'top100.difficulty.advanced':        'Avançado',
+  'top100.difficulty.expert':          'Expert',
+  'top100.waveType.reef':              'Recife',
+  'top100.waveType.beach':             'Praia',
+  'top100.waveType.point':             'Ponta',
+  'top100.waveType.river':             'Barra',
+  'top100.waveType.sandbar':           'Banco de Areia',
+  'top100.badge.ct':                   'CT Stop',
+  'top100.badge.bigwave':              'Onda Grande',
 }
 
 export default ptBR
