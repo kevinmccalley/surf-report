@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
-import { useAuth, useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 import type { DayForecast } from '@/app/lib/types'
 import { formatWaveRange } from '@/app/lib/utils'
@@ -59,27 +58,14 @@ interface Props {
 
 export default function SpotRow({ spot, heightUnit }: Props) {
   const { t } = useLanguage()
-  const { isSignedIn } = useAuth()
-  const { user } = useUser()
   const rowRef = useRef<HTMLDivElement>(null)
 
   const [today, setToday] = useState<MiniDay | null>(null)
   const [tomorrow, setTomorrow] = useState<MiniDay | null>(null)
   const [fetched, setFetched] = useState(false)
   const [loading, setLoading] = useState(false)
-
   const [mapOpen, setMapOpen] = useState(false)
-  const [saved, setSaved] = useState(false)
-  const [saveLoading, setSaveLoading] = useState(false)
-  const [showTooltip, setShowTooltip] = useState(false)
   const [showCoords, setShowCoords] = useState(false)
-
-  // Check if already saved
-  useEffect(() => {
-    if (!user) return
-    const locations = (user.publicMetadata?.savedLocations as { lat: number; lon: number }[] | undefined) ?? []
-    setSaved(locations.some(l => Math.abs(l.lat - spot.lat) < 0.001 && Math.abs(l.lon - spot.lon) < 0.001))
-  }, [user, spot.lat, spot.lon])
 
   const toMiniDay = useCallback((day: DayForecast, label: string): MiniDay => ({
     label,
@@ -122,38 +108,6 @@ export default function SpotRow({ spot, heightUnit }: Props) {
     return () => observer.disconnect()
   }, [fetched, spot.lat, spot.lon, spot.name, spot.country, t, toMiniDay])
 
-  const handleSave = async () => {
-    if (!isSignedIn) return
-    setSaveLoading(true)
-    try {
-      if (saved) {
-        await fetch('/api/locations', {
-          method: 'DELETE',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ lat: spot.lat, lon: spot.lon }),
-        })
-        setSaved(false)
-      } else {
-        const res = await fetch('/api/locations', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: spot.name,
-            country: spot.country,
-            displayName: `${spot.name}, ${spot.locality}`,
-            lat: spot.lat,
-            lon: spot.lon,
-          }),
-        })
-        if (res.ok) {
-          setSaved(true)
-          await user?.reload()
-        }
-      }
-    } catch {}
-    setSaveLoading(false)
-  }
-
   const firing = today?.firing
 
   return (
@@ -166,7 +120,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
           style={{ boxShadow: 'inset 0 0 0 1px rgba(34,197,94,0.35), 0 0 20px -4px rgba(34,197,94,0.15)' }} />
       )}
 
-      <div className="p-4 sm:p-5 grid gap-3 lg:grid-cols-[auto_1fr_auto] lg:gap-5">
+      <div className="p-4 sm:p-5 grid gap-3 lg:grid-cols-[auto_1fr] lg:gap-5">
 
         {/* ── Left: rank + name ──────────────────────────────────────────── */}
         <div className="flex gap-3 items-start min-w-0 lg:max-w-[280px]">
@@ -207,7 +161,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
               )}
             </div>
 
-            {/* Season + map icon */}
+            {/* Season + map pin */}
             <div className="flex items-center gap-3 mt-2">
               <span className="text-[11px] text-slate-500">
                 {t('top100.bestSeason', { season: spot.bestSeason })}
@@ -217,10 +171,12 @@ export default function SpotRow({ spot, heightUnit }: Props) {
                   onClick={() => setMapOpen(true)}
                   onMouseEnter={() => setShowCoords(true)}
                   onMouseLeave={() => setShowCoords(false)}
-                  className="text-slate-500 hover:text-sky-400 transition-colors text-sm leading-none"
+                  className="text-slate-500 hover:text-sky-400 transition-colors leading-none"
                   aria-label={t('top100.viewMap')}
                 >
-                  📍
+                  <svg width="11" height="15" viewBox="0 0 12 16" fill="currentColor">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M6 0C2.686 0 0 2.686 0 6c0 4.5 6 10 6 10s6-5.5 6-10C12 2.686 9.314 0 6 0zm0 8.5A2.5 2.5 0 1 1 6 3.5a2.5 2.5 0 0 1 0 5z"/>
+                  </svg>
                 </button>
                 {showCoords && (
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded-lg text-[10px] font-mono whitespace-nowrap z-10 pointer-events-none"
@@ -233,72 +189,44 @@ export default function SpotRow({ spot, heightUnit }: Props) {
           </div>
         </div>
 
-        {/* ── Center: forecast strip ─────────────────────────────────────── */}
-        <div className="flex gap-3 sm:gap-4 items-start">
-          {loading && !fetched ? (
-            <div className="flex gap-3">
-              {[0, 1].map(i => (
-                <div key={i} className="w-28 h-16 rounded-xl animate-pulse"
-                  style={{ background: 'rgba(255,255,255,0.05)' }} />
-              ))}
-            </div>
-          ) : today || tomorrow ? (
-            [today, tomorrow].map((day, i) => day && (
-              <div key={i} className="rounded-xl px-3 py-2.5 min-w-[7rem]"
-                style={{ background: 'rgba(255,255,255,0.05)' }}>
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-500 mb-1.5">{day.label}</p>
-                <div className="flex items-center gap-1.5 mb-1">
-                  <span className="w-2.5 h-2.5 rounded-full shrink-0 shadow-sm"
-                    style={{ backgroundColor: day.ratingBg }} />
-                  <span className="text-sm font-bold text-slate-100">{day.heightRange}</span>
-                </div>
-                <p className="text-[11px] text-slate-400">
-                  {day.dirArrow} {day.period}s
-                </p>
-                <p className="text-[10px] mt-0.5 font-medium capitalize"
-                  style={{ color: day.ratingBg }}>
-                  {day.ratingLabel.toLowerCase().replace('_', ' ')}
-                </p>
+        {/* ── Right: forecast strip + description ───────────────────────── */}
+        <div className="flex flex-col gap-3">
+
+          {/* Forecast strip */}
+          <div className="flex gap-3 sm:gap-4 items-start">
+            {loading && !fetched ? (
+              <div className="flex gap-3">
+                {[0, 1].map(i => (
+                  <div key={i} className="w-28 h-16 rounded-xl animate-pulse"
+                    style={{ background: 'rgba(255,255,255,0.05)' }} />
+                ))}
               </div>
-            ))
-          ) : fetched ? (
-            <p className="text-xs text-slate-600 self-center">{t('top100.noData')}</p>
-          ) : null}
-        </div>
-
-        {/* ── Right: description + bookmark ─────────────────────────────── */}
-        <div className="lg:max-w-[340px] flex flex-col gap-2">
-          <p className="text-xs text-slate-400 leading-relaxed line-clamp-4">{spot.description}</p>
-
-          {/* Bookmark */}
-          <div className="relative self-end mt-auto">
-            {isSignedIn ? (
-              <button
-                onClick={handleSave}
-                disabled={saveLoading}
-                className="text-lg leading-none transition-all duration-200 hover:scale-110 disabled:opacity-50"
-                title={saved ? t('top100.saved') : t('top100.saveSpot')}
-              >
-                {saved ? '🔖' : '🏄'}
-              </button>
-            ) : (
-              <div className="relative">
-                <button
-                  onMouseEnter={() => setShowTooltip(true)}
-                  onMouseLeave={() => setShowTooltip(false)}
-                  className="text-lg leading-none opacity-30 hover:opacity-50 transition-opacity"
-                >
-                  🏄
-                </button>
-                {showTooltip && (
-                  <div className="absolute bottom-full right-0 mb-2 px-2 py-1 rounded-lg text-[10px] whitespace-nowrap z-10 pointer-events-none"
-                    style={{ background: '#1e293b', color: '#94a3b8', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    {t('top100.signInToSave')}
+            ) : today || tomorrow ? (
+              [today, tomorrow].map((day, i) => day && (
+                <div key={i} className="rounded-xl px-3 py-2.5 min-w-[7rem]"
+                  style={{ background: 'rgba(255,255,255,0.05)' }}>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-500 mb-1.5">{day.label}</p>
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <span className="w-2.5 h-2.5 rounded-full shrink-0 shadow-sm"
+                      style={{ backgroundColor: day.ratingBg }} />
+                    <span className="text-sm font-bold text-slate-100">{day.heightRange}</span>
                   </div>
-                )}
-              </div>
-            )}
+                  <p className="text-[11px] text-slate-400">
+                    {day.dirArrow} {day.period}s
+                  </p>
+                  <p className="text-[10px] mt-0.5 font-medium capitalize"
+                    style={{ color: day.ratingBg }}>
+                    {day.ratingLabel.toLowerCase().replace('_', ' ')}
+                  </p>
+                </div>
+              ))
+            ) : fetched ? (
+              <p className="text-xs text-slate-600 self-center">{t('top100.noData')}</p>
+            ) : null}
           </div>
+
+          {/* Description */}
+          <p className="text-xs text-slate-400 leading-relaxed line-clamp-4">{spot.description}</p>
         </div>
       </div>
 
