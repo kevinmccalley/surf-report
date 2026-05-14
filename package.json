@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.3.0",
+    "@portabletext/react": "^6.2.0",
+    "@sanity/image-url": "^2.1.1",
     "@vercel/analytics": "^2.0.1",
     "@vercel/kv": "^3.0.0",
     "clsx": "^2.1.1",
@@ -18,10 +20,12 @@
     "leaflet": "^1.9.4",
     "lucide-react": "^0.441.0",
     "next": "16.2.6",
+    "next-sanity": "^12.4.5",
     "nodemailer": "^8.0.7",
     "react": "^18",
     "react-dom": "^18",
     "recharts": "^2.12.7",
+    "sanity": "^5.25.1",
     "stripe": "^22.1.0"
   },
   "devDependencies": {
