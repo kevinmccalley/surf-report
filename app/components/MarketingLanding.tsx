@@ -41,14 +41,28 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
     { icon: CalendarIcon, title: t('mktL.step3.title'), desc: t('mktL.step3.desc') },
   ]
 
+  const TRUST_ITEMS = [
+    { stat: t('mktL.trust.1stat'), label: t('mktL.trust.1label') },
+    { stat: t('mktL.trust.2stat'), label: t('mktL.trust.2label') },
+    { stat: t('mktL.trust.3stat'), label: t('mktL.trust.3label') },
+    { stat: t('mktL.trust.4stat'), label: t('mktL.trust.4label') },
+    { stat: t('mktL.trust.5stat'), label: t('mktL.trust.5label') },
+  ]
+
+  const PAIN_COLUMNS = [
+    { heading: t('mktL.pain.1.heading'), body: t('mktL.pain.1.body'), answer: t('mktL.pain.1.answer') },
+    { heading: t('mktL.pain.2.heading'), body: t('mktL.pain.2.body'), answer: t('mktL.pain.2.answer') },
+    { heading: t('mktL.pain.3.heading'), body: t('mktL.pain.3.body'), answer: t('mktL.pain.3.answer') },
+  ]
+
   const FREE_FEATURES = [
     t('mktL.free.f1'), t('mktL.free.f2'), t('mktL.free.f3'),
-    t('mktL.free.f4'), t('mktL.free.f5'),
+    t('mktL.free.f4'), t('mktL.free.f5'), t('mktL.free.f6'),
   ]
 
   const IND_FEATURES = [
-    t('mktL.ind.f1'), t('mktL.ind.f2'), t('mktL.ind.f3'),
-    t('mktL.ind.f4'), t('mktL.ind.f5'), t('mktL.ind.f6'),
+    t('mktL.ind.f1'), t('mktL.ind.f2'), t('mktL.ind.f3'), t('mktL.ind.f4'),
+    t('mktL.ind.f5'), t('mktL.ind.f6'), t('mktL.ind.f7'), t('mktL.ind.f8'),
   ]
 
   const PREMIUM_FEATURES = [
@@ -92,16 +106,18 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
             <SearchBar onSelect={handleSearch} loading={false} autoFocus />
           </div>
 
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 mb-4">
             <SignInButton mode="modal">
               <button className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-400 to-cyan-300 hover:from-sky-300 hover:to-cyan-200 text-slate-900 font-bold text-sm transition-all shadow-lg shadow-sky-500/20">
                 {t('mktL.ctaFree')}
               </button>
             </SignInButton>
-            <a href="#pricing" className="px-5 py-2.5 rounded-xl border border-white/10 text-slate-300 hover:text-white hover:border-white/20 font-medium text-sm transition-colors">
+            <a href="#how-it-works" className="px-5 py-2.5 rounded-xl border border-white/10 text-slate-300 hover:text-white hover:border-white/20 font-medium text-sm transition-colors">
               {t('mktL.ctaPricing')}
             </a>
           </div>
+
+          <p className="text-xs text-slate-600">{t('mktL.heroTrust')}</p>
         </div>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-600 animate-bounce">
@@ -109,8 +125,22 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
         </div>
       </section>
 
+      {/* ── Trust bar ────────────────────────────────────────────────────── */}
+      <section className="border-t border-white/5 py-10 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-6 sm:gap-4">
+            {TRUST_ITEMS.map((item, i) => (
+              <div key={i} className="flex flex-col items-center text-center">
+                <span className="text-xl sm:text-2xl font-bold text-white mb-0.5">{item.stat}</span>
+                <span className="text-xs text-slate-500 leading-snug">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── How it works ─────────────────────────────────────────────────── */}
-      <section className="py-24 px-4 border-t border-white/5">
+      <section id="how-it-works" className="py-24 px-4 border-t border-white/5">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">{t('mktL.howTitle')}</h2>
           <p className="text-slate-500 text-center mb-12">{t('mktL.howSubtitle')}</p>
@@ -132,14 +162,81 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
         </div>
       </section>
 
+      {/* ── Why surfers switch ───────────────────────────────────────────── */}
+      <section className="py-20 px-4 border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-12">{t('mktL.pain.title')}</h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {PAIN_COLUMNS.map((col, i) => (
+              <div key={i} className="flex flex-col p-6 rounded-2xl border border-white/8 bg-white/3">
+                <h3 className="text-white font-semibold text-base mb-3 leading-snug">{col.heading}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed flex-1 mb-4">{col.body}</p>
+                <div className="pt-4 border-t border-teal-500/20">
+                  <p className="text-teal-400 text-sm font-medium leading-snug">{col.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Feature: Historical data (hero feature) ──────────────────────── */}
+      <section className="py-20 px-4 border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <div className="rounded-2xl border border-sky-500/20 bg-sky-500/4 p-8 sm:p-10">
+            <p className="text-xs font-semibold text-sky-400 uppercase tracking-widest mb-3">{t('mktL.feat1.label')}</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-snug">{t('mktL.feat1.heading')}</h2>
+            <p className="text-slate-400 leading-relaxed max-w-2xl">{t('mktL.feat1.body')}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Features 2–5 ────────────────────────────────────────────────── */}
+      <section className="py-4 px-4">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+          {/* Best surf now */}
+          <div className="p-7 rounded-2xl border border-white/8 bg-white/3">
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">{t('mktL.feat2.label')}</p>
+            <h3 className="text-lg font-bold text-white mb-3 leading-snug">{t('mktL.feat2.heading')}</h3>
+            <p className="text-slate-500 text-sm leading-relaxed">{t('mktL.feat2.body')}</p>
+          </div>
+
+          {/* Accuracy */}
+          <div className="p-7 rounded-2xl border border-white/8 bg-white/3">
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">{t('mktL.feat3.label')}</p>
+            <h3 className="text-lg font-bold text-white mb-3 leading-snug">{t('mktL.feat3.heading')}</h3>
+            <p className="text-slate-500 text-sm leading-relaxed mb-4">{t('mktL.feat3.body')}</p>
+            <a href="/accuracy" className="text-xs text-sky-400 hover:text-sky-300 transition-colors font-medium">
+              {t('mktL.feat3.cta')}
+            </a>
+          </div>
+
+          {/* Tides */}
+          <div className="p-7 rounded-2xl border border-white/8 bg-white/3">
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">{t('mktL.feat4.label')}</p>
+            <h3 className="text-lg font-bold text-white mb-3 leading-snug">{t('mktL.feat4.heading')}</h3>
+            <p className="text-slate-500 text-sm leading-relaxed">{t('mktL.feat4.body')}</p>
+          </div>
+
+          {/* No ads */}
+          <div className="p-7 rounded-2xl border border-white/8 bg-white/3">
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">{t('mktL.feat5.label')}</p>
+            <h3 className="text-lg font-bold text-white mb-3 leading-snug">{t('mktL.feat5.heading')}</h3>
+            <p className="text-slate-500 text-sm leading-relaxed">{t('mktL.feat5.body')}</p>
+          </div>
+
+        </div>
+      </section>
+
       {/* ── Forecast teaser ──────────────────────────────────────────────── */}
-      <section className="py-16 px-4 border-t border-white/5">
+      <section className="py-16 px-4 border-t border-white/5 mt-12">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">{t('mktL.teaserTitle')}</h2>
           <p className="text-slate-500 text-center mb-10">{t('mktL.teaserSubtitle')}</p>
 
           <div className="relative rounded-2xl border border-white/8 glass-card overflow-hidden p-4">
-            {/* Mock forecast grid */}
             <div className="grid grid-cols-10 gap-1.5">
               {MOCK_DAYS.map((day, i) => (
                 <div
@@ -154,7 +251,6 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
               ))}
             </div>
 
-            {/* Blur overlay for days 4–10 */}
             <div className="absolute inset-y-0 right-0 w-[72%] flex items-center justify-center"
               style={{ background: 'linear-gradient(to right, transparent, color-mix(in srgb, var(--bg-mid) 85%, transparent) 20%, color-mix(in srgb, var(--bg-mid) 97%, transparent) 50%)' }}>
               <div className="text-center px-6">
@@ -184,7 +280,8 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
             {/* Free */}
             <div className="flex flex-col rounded-2xl border border-white/8 bg-white/3 p-5">
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">{t('mktL.free.tier')}</p>
-              <p className="text-3xl font-bold text-white mb-4">$0</p>
+              <p className="text-3xl font-bold text-white mb-1">$0</p>
+              <p className="text-xs text-slate-600 mb-4">{t('mktL.free.note')}</p>
               <ul className="space-y-2.5 flex-1">
                 {FREE_FEATURES.map(f => (
                   <li key={f} className="flex items-start gap-2 text-sm text-slate-400">
@@ -206,13 +303,14 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
                 {t('mktL.ind.badge')}
               </span>
               <p className="text-xs font-semibold text-teal-400 uppercase tracking-widest mb-1">{t('mktL.ind.tier')}</p>
-              <div className="mb-4">
+              <div className="mb-1">
                 <span className="text-3xl font-bold text-white">
                   {billing === 'annual' ? '$3.33' : '$4'}
                 </span>
                 <span className="text-sm text-slate-500 ml-1">/mo</span>
                 {billing === 'annual' && <p className="text-xs text-teal-400/80 mt-0.5">{t('mktL.ind.billed')}</p>}
               </div>
+              <p className="text-xs text-slate-600 mb-4">{t('mktL.ind.noCard')}</p>
               <ul className="space-y-2.5 flex-1">
                 {IND_FEATURES.map(f => (
                   <li key={f} className="flex items-start gap-2 text-sm text-slate-300">
@@ -257,7 +355,6 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">{t('mktL.pricingTitle')}</h2>
           <p className="text-slate-500 mb-8">{t('mktL.pricingSubtitle')}</p>
 
-          {/* Billing toggle */}
           <div className="inline-flex items-center gap-1 p-1 rounded-xl bg-white/5 border border-white/8 mb-8">
             <button
               onClick={() => setBilling('monthly')}
@@ -303,6 +400,24 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
               <button className="text-sky-500 hover:text-sky-400 transition-colors">{t('mktL.signIn')}</button>
             </SignInButton>
           </p>
+        </div>
+      </section>
+
+      {/* ── Final CTA ────────────────────────────────────────────────────── */}
+      <section className="py-20 px-4 border-t border-white/5 text-center">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-snug">
+            {t('mktL.finalCta.heading')}
+          </h2>
+          <p className="text-slate-400 mb-8 leading-relaxed">
+            {t('mktL.finalCta.body')}
+          </p>
+          <SignInButton mode="modal">
+            <button className="px-7 py-3 rounded-xl bg-gradient-to-r from-sky-400 to-cyan-300 hover:from-sky-300 hover:to-cyan-200 text-slate-900 font-bold text-sm transition-all shadow-lg shadow-sky-500/20 mb-4">
+              {t('mktL.ctaFree')}
+            </button>
+          </SignInButton>
+          <p className="text-xs text-slate-600 mt-3">{t('mktL.finalTrust')}</p>
         </div>
       </section>
 
