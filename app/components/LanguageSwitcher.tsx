@@ -23,6 +23,15 @@ export default function LanguageSwitcher({ align = 'right' }: { align?: 'left' |
   function select(code: Locale) {
     setLocale(code)
     setOpen(false)
+    // Mirror selected language into the URL so server-rendered <title> tags are localised
+    const params = new URLSearchParams(window.location.search)
+    if (code === 'en') {
+      params.delete('lang')
+    } else {
+      params.set('lang', code)
+    }
+    const query = params.toString()
+    window.history.replaceState(null, '', `${window.location.pathname}${query ? '?' + query : ''}`)
   }
 
   return (

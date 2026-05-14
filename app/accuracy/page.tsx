@@ -9,8 +9,14 @@ import { omUrl } from '@/app/lib/utils'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Forecast Accuracy | Groundswell',
+  title: 'Forecast Accuracy — Groundswell',
   description: 'Surfline doesn\'t publish their accuracy numbers. We do — verified live against NOAA official harmonic predictions, updated every page load.',
+  openGraph: {
+    title: 'Forecast Accuracy — Groundswell',
+    description: 'See exactly how accurate our tide predictions are vs. NOAA reference data. Live and transparent.',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', title: 'Forecast Accuracy — Groundswell' },
 }
 
 // ── Types ─────────────────────────────────────────────────────────────────────

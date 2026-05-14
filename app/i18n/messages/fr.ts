@@ -512,6 +512,17 @@ const fr: Record<string, string> = {
   'premium.teaser.comingSoon': 'Bientôt disponible',
   'premium.teaser.inDev': 'En développement',
   'premium.teaser.footer': 'Abonnez-vous maintenant pour accéder au lancement de Premium — même prix, sans mise à niveau requise.',
+
+  // Page metadata
+  'meta.tagline':           'Rapports de Surf dans le Monde Entier',
+  'meta.surfForecast':      'Prévisions de Surf',
+  'meta.surfClimatology':   'Climatologie du Surf',
+  'meta.bestTimeToSurf':    'Meilleure Saison pour Surfer',
+  'meta.forecastAccuracy':  'Précision des Prévisions',
+  'meta.privacyPolicy':     'Politique de Confidentialité',
+  'meta.termsOfService':    "Conditions d'Utilisation",
+  'meta.refundPolicy':      'Politique de Remboursement',
+  'meta.support':           'Assistance',
 }
 
 export default fr

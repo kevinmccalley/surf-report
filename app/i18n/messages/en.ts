@@ -512,6 +512,17 @@ const en: Record<string, string> = {
   'accuracy.sourceTag.buoy':    'Buoy',
   'accuracy.sourceTag.geo':     'Location',
   'accuracy.sourceTag.map':     'Map',
+
+  // Page metadata (used server-side via serverT for <title> tags)
+  'meta.tagline':           'Surf Reports Worldwide',
+  'meta.surfForecast':      'Surf Forecast',
+  'meta.surfClimatology':   'Surf Climatology',
+  'meta.bestTimeToSurf':    'Best Time to Surf',
+  'meta.forecastAccuracy':  'Forecast Accuracy',
+  'meta.privacyPolicy':     'Privacy Policy',
+  'meta.termsOfService':    'Terms of Service',
+  'meta.refundPolicy':      'Refund & Cancellation Policy',
+  'meta.support':           'Support',
 }
 
 export default en

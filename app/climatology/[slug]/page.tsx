@@ -3,24 +3,60 @@ import type { Metadata } from 'next'
 import { findSpotBySlug, slugify, getAllSpots } from '@/app/lib/surf-spots'
 import { getClimatologyData } from '@/app/lib/climatology'
 import ClimatologySection from '@/app/components/ClimatologySection'
+import { serverT } from '@/app/lib/server-t'
+
+const BASE_URL = 'https://groundswell.surf'
+const LOCALES = ['en', 'es', 'fr', 'pt-BR', 'pt-PT'] as const
 
 interface Props {
   params: Promise<{ slug: string }>
+  searchParams?: Promise<{ lang?: string }>
 }
 
 export async function generateStaticParams() {
   return getAllSpots().map(s => ({ slug: slugify(s.name) }))
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { slug } = await params
+  const lang = (await searchParams)?.lang ?? 'en'
   const spot = findSpotBySlug(slug)
   if (!spot) return { title: 'Surf Climatology' }
+
+  const climatologyLabel = serverT(lang, 'meta.surfClimatology')
+  const bestTimeLabel = serverT(lang, 'meta.bestTimeToSurf')
+  const title = `${spot.name} ${climatologyLabel} — ${bestTimeLabel} — Groundswell`
+  const description =
+    `Monthly swell averages, peak season, and dominant direction at ${spot.name}, ${spot.country}. ` +
+    `3-year historical wave data to help you plan the perfect surf trip.`
+
+  const canonical = `${BASE_URL}/climatology/${slug}`
+  const hreflangLanguages: Record<string, string> = { 'x-default': canonical }
+  for (const locale of LOCALES) {
+    hreflangLanguages[locale] = locale === 'en' ? canonical : `${canonical}?lang=${locale}`
+  }
+
   return {
-    title: `${spot.name} Surf Climatology — Best Time to Surf | Groundswell`,
-    description:
-      `Monthly swell averages, peak season, and dominant direction at ${spot.name}, ${spot.country}. ` +
-      `3-year historical wave data to help you plan the perfect surf trip.`,
+    title,
+    description,
+    alternates: {
+      canonical,
+      languages: hreflangLanguages,
+    },
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      url: canonical,
+      siteName: 'Groundswell',
+      images: [{ url: '/api/og', width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/api/og'],
+    },
   }
 }
 
@@ -46,8 +82,18 @@ export default async function ClimatologyPage({ params }: Props) {
     .map(m => ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m - 1])
     .join(' & ')
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Place',
+    name: spot.name,
+    description: `Monthly swell averages, peak season, and dominant direction at ${spot.name}, ${spot.country}.`,
+    geo: { '@type': 'GeoCoordinates', latitude: spot.lat, longitude: spot.lon },
+    url: `${BASE_URL}/climatology/${slugify(spot.name)}`,
+  }
+
   return (
     <div className="theme-bg min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Header */}
       <header className="theme-header sticky top-0 z-50">
         <div className="mx-auto max-w-4xl px-4 py-3 flex items-center gap-3">

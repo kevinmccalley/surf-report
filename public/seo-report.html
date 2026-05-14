@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Groundswell SEO Report</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; padding: 32px 24px; }
+    h1 { font-size: 1.75rem; font-weight: 700; color: #f8fafc; margin-bottom: 6px; }
+    .subtitle { font-size: 0.875rem; color: #64748b; margin-bottom: 32px; }
+    .subtitle code { background: #1e293b; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; color: #94a3b8; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #38bdf8; margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 8px; }
+    .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid #1e293b; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    thead th { background: #1e293b; color: #94a3b8; font-weight: 600; text-align: left; padding: 10px 14px; white-space: nowrap; }
+    tbody tr { border-top: 1px solid #1e293b; }
+    tbody tr:hover { background: #162032; }
+    td { padding: 10px 14px; vertical-align: top; }
+    td.route { font-family: monospace; color: #7dd3fc; white-space: nowrap; }
+    td.old-title { color: #f87171; text-decoration: line-through; opacity: 0.7; }
+    td.new-title { color: #86efac; font-weight: 500; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
+    .yes  { background: #166534; color: #86efac; }
+    .no   { background: #450a0a; color: #fca5a5; }
+    .part { background: #1c3a5e; color: #93c5fd; }
+    .note { font-size: 0.75rem; color: #64748b; font-style: italic; }
+    .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 40px; }
+    .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; }
+    .card-label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .card-value { font-size: 1.75rem; font-weight: 700; color: #f8fafc; }
+    .card-sub { font-size: 0.75rem; color: #94a3b8; margin-top: 2px; }
+    .i18n-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .locale-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 14px; }
+    .locale-flag { font-size: 1.1rem; margin-right: 6px; }
+    .locale-name { font-weight: 600; font-size: 0.85rem; }
+    .locale-title { font-size: 0.78rem; color: #7dd3fc; margin-top: 6px; font-style: italic; }
+    .legend { display: flex; gap: 16px; font-size: 0.75rem; color: #64748b; margin-bottom: 12px; flex-wrap: wrap; }
+    .legend span { display: flex; align-items: center; gap: 6px; }
+  </style>
+</head>
+<body>
+
+<h1>Groundswell — SEO Report</h1>
+<p class="subtitle">Generated 2026-05-14 &nbsp;·&nbsp; Branch: <code>dev</code> &nbsp;·&nbsp; Dev URL: <code>dev.groundswell.surf</code></p>
+
+<!-- Summary cards -->
+<div class="summary">
+  <div class="card">
+    <div class="card-label">Routes Updated</div>
+    <div class="card-value">8</div>
+    <div class="card-sub">All pages have unique titles</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Sitemap</div>
+    <div class="card-value">&#10003;</div>
+    <div class="card-sub">Static pages + 6,900+ climatology</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Robots.txt</div>
+    <div class="card-value">&#10003;</div>
+    <div class="card-sub">AI crawlers allowed</div>
+  </div>
+  <div class="card">
+    <div class="card-label">OG Images</div>
+    <div class="card-value">&#10003;</div>
+    <div class="card-sub">Dynamic via /api/og (next/og)</div>
+  </div>
+  <div class="card">
+    <div class="card-label">JSON-LD</div>
+    <div class="card-value">2</div>
+    <div class="card-sub">WebSite (root) + Place (climatology)</div>
+  </div>
+  <div class="card">
+    <div class="card-label">i18n Titles</div>
+    <div class="card-value">5</div>
+    <div class="card-sub">EN / ES / FR / PT-BR / PT-PT</div>
+  </div>
+</div>
+
+<!-- Main metadata table -->
+<section>
+  <h2>Page Titles &amp; Metadata</h2>
+  <div class="legend">
+    <span><span class="badge yes">YES</span> Implemented</span>
+    <span><span class="badge no">NO</span> Not yet</span>
+    <span><span class="badge part">PART</span> Partial</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Route</th>
+          <th>Old Title</th>
+          <th>New Title</th>
+          <th>OG</th>
+          <th>Twitter</th>
+          <th>Canonical</th>
+          <th>Hreflang</th>
+          <th>JSON-LD</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="route">/</td>
+          <td class="old-title">Groundswell — Surf Reports Worldwide</td>
+          <td class="new-title">Groundswell — Surf Reports Worldwide</td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td class="note">WebSite + SearchAction schema in root layout. Title unchanged (already correct format).</td>
+        </tr>
+        <tr>
+          <td class="route">/?name=Trestles&amp;country=USA</td>
+          <td class="old-title">Trestles, USA Surf Report — Groundswell</td>
+          <td class="new-title">Trestles, USA — Surf Forecast — Groundswell</td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td class="note">Dynamic via generateMetadata(). Title translated via serverT() + ?lang= param. Canonical preserves name/lat/lon/country.</td>
+        </tr>
+        <tr>
+          <td class="route">/?name=Pipeline&amp;country=USA</td>
+          <td class="old-title">Pipeline, USA Surf Report — Groundswell</td>
+          <td class="new-title">Pipeline, USA — Surf Forecast — Groundswell</td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td class="note">Same pattern as any spot page.</td>
+        </tr>
+        <tr>
+          <td class="route">/climatology/trestles</td>
+          <td class="old-title">Trestles Surf Climatology — Best Time to Surf | Groundswell</td>
+          <td class="new-title">Trestles Surf Climatology — Best Time to Surf — Groundswell</td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td class="note">Place schema (schema.org) with geo coordinates. Title translated via serverT(). 6,900+ routes statically generated.</td>
+        </tr>
+        <tr>
+          <td class="route">/accuracy</td>
+          <td class="old-title">Forecast Accuracy | Groundswell</td>
+          <td class="new-title">Forecast Accuracy — Groundswell</td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td class="note">Separator fixed from | to —. Static page, no lang param needed.</td>
+        </tr>
+        <tr>
+          <td class="route">/privacy</td>
+          <td class="old-title">Privacy Policy | Groundswell</td>
+          <td class="new-title">Privacy Policy — Groundswell</td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td class="note">Separator fixed.</td>
+        </tr>
+        <tr>
+          <td class="route">/terms</td>
+          <td class="old-title">Terms of Service | Groundswell</td>
+          <td class="new-title">Terms of Service — Groundswell</td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td class="note">Separator fixed.</td>
+        </tr>
+        <tr>
+          <td class="route">/refund</td>
+          <td class="old-title">Refund &amp; Cancellation Policy | Groundswell</td>
+          <td class="new-title">Refund &amp; Cancellation Policy — Groundswell</td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td class="note">Separator fixed.</td>
+        </tr>
+        <tr>
+          <td class="route">/support</td>
+          <td class="old-title">Support | Groundswell</td>
+          <td class="new-title">Support — Groundswell</td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge yes">YES</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td><span class="badge no">NO</span></td>
+          <td class="note">Separator fixed.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- i18n titles -->
+<section>
+  <h2>Localized Titles — Spot Page Example: "Trestles, USA"</h2>
+  <div class="i18n-grid">
+    <div class="locale-card">
+      <div><span class="locale-flag">🇺🇸</span><span class="locale-name">English (EN)</span></div>
+      <div class="locale-title">Trestles, USA — Surf Forecast — Groundswell</div>
+    </div>
+    <div class="locale-card">
+      <div><span class="locale-flag">🇪🇸</span><span class="locale-name">Español (ES)</span></div>
+      <div class="locale-title">Trestles, USA — Pronóstico de Surf — Groundswell</div>
+    </div>
+    <div class="locale-card">
+      <div><span class="locale-flag">🇫🇷</span><span class="locale-name">Français (FR)</span></div>
+      <div class="locale-title">Trestles, USA — Prévisions de Surf — Groundswell</div>
+    </div>
+    <div class="locale-card">
+      <div><span class="locale-flag">🇧🇷</span><span class="locale-name">Português Brasil (PT-BR)</span></div>
+      <div class="locale-title">Trestles, USA — Previsão de Surf — Groundswell</div>
+    </div>
+    <div class="locale-card">
+      <div><span class="locale-flag">🇵🇹</span><span class="locale-name">Português Portugal (PT-PT)</span></div>
+      <div class="locale-title">Trestles, USA — Previsão de Surf — Groundswell</div>
+    </div>
+  </div>
+  <p class="note" style="margin-top: 16px;">Titles are server-rendered via <code>serverT(lang, key)</code> reading the ?lang= URL param. The language switcher updates the URL using <code>window.history.replaceState</code> when the user changes locale.</p>
+</section>
+
+<!-- GEO / AI readiness -->
+<section>
+  <h2>GEO / AI Search Readiness</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Signal</th>
+          <th>Status</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>robots.txt — AI crawlers allowed</td>
+          <td><span class="badge yes">YES</span></td>
+          <td class="note">GPTBot, ClaudeBot, PerplexityBot, etc. all allowed. <code>Allow: /</code> for all user agents.</td>
+        </tr>
+        <tr>
+          <td>Sitemap coverage</td>
+          <td><span class="badge yes">YES</span></td>
+          <td class="note">All static pages + 6,900+ climatology routes at /sitemap.xml</td>
+        </tr>
+        <tr>
+          <td>WebSite + SearchAction JSON-LD</td>
+          <td><span class="badge yes">YES</span></td>
+          <td class="note">In root layout. Tells AI systems Groundswell is a searchable surf forecast tool.</td>
+        </tr>
+        <tr>
+          <td>Place JSON-LD (climatology pages)</td>
+          <td><span class="badge yes">YES</span></td>
+          <td class="note">Each climatology page has geo coordinates + description for entity clarity.</td>
+        </tr>
+        <tr>
+          <td>Canonical URLs (spot pages)</td>
+          <td><span class="badge yes">YES</span></td>
+          <td class="note">Prevents duplicate content across param variations (e.g., same spot searched multiple times).</td>
+        </tr>
+        <tr>
+          <td>Hreflang (spot + climatology)</td>
+          <td><span class="badge yes">YES</span></td>
+          <td class="note">All 5 locales declared with x-default fallback pointing to canonical.</td>
+        </tr>
+        <tr>
+          <td>OG image (social preview)</td>
+          <td><span class="badge yes">YES</span></td>
+          <td class="note">Dynamic branded image via /api/og (next/og edge function). 1200×630.</td>
+        </tr>
+        <tr>
+          <td>FAQPage schema (landing)</td>
+          <td><span class="badge no">NO</span></td>
+          <td class="note">Future: would help AI Q&amp;A surfaces (e.g. "What is Groundswell?") cite the site.</td>
+        </tr>
+        <tr>
+          <td>WeatherForecast schema (spot pages)</td>
+          <td><span class="badge no">NO</span></td>
+          <td class="note">Future: could explicitly mark wave height / wind data as structured weather data for AI.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Verification checklist -->
+<section>
+  <h2>Verification Checklist</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Test</th><th>Where to check</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sitemap generated</td>
+          <td class="note">Visit dev.groundswell.surf/sitemap.xml — should list 6,900+ URLs</td>
+        </tr>
+        <tr>
+          <td>Robots.txt correct</td>
+          <td class="note">Visit dev.groundswell.surf/robots.txt — should show Allow: / and sitemap URL</td>
+        </tr>
+        <tr>
+          <td>Spot page title</td>
+          <td class="note">Search "Trestles" in app → browser tab should show "Trestles, USA — Surf Forecast — Groundswell"</td>
+        </tr>
+        <tr>
+          <td>Localized title</td>
+          <td class="note">Switch to ES → title should update to "Trestles, USA — Pronóstico de Surf — Groundswell" after next navigation</td>
+        </tr>
+        <tr>
+          <td>Accuracy page title</td>
+          <td class="note">Visit /accuracy — tab should show "Forecast Accuracy — Groundswell" (no more |)</td>
+        </tr>
+        <tr>
+          <td>OG image preview</td>
+          <td class="note">Visit dev.groundswell.surf/api/og in browser — should render 1200×630 branded image</td>
+        </tr>
+        <tr>
+          <td>Climatology title</td>
+          <td class="note">Visit /climatology/trestles — tab should show "Trestles Surf Climatology — Best Time to Surf — Groundswell"</td>
+        </tr>
+        <tr>
+          <td>JSON-LD valid</td>
+          <td class="note">Paste /climatology/trestles URL into Google Rich Results Test</td>
+        </tr>
+        <tr>
+          <td>Hreflang present</td>
+          <td class="note">View source of any spot page — check &lt;link rel="alternate" hreflang="..."&gt; tags in &lt;head&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<p class="note" style="margin-top: 32px; text-align: center;">
+  This file is a dev artifact at <code>public/seo-report.html</code> and is served at /seo-report.html on dev.
+  It is not linked from any page. Remove before or after production launch if desired.
+</p>
+
+</body>
+</html>

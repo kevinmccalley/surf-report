@@ -512,6 +512,17 @@ const es: Record<string, string> = {
   'premium.teaser.comingSoon': 'Próximamente',
   'premium.teaser.inDev': 'En desarrollo',
   'premium.teaser.footer': 'Suscríbete ahora para obtener acceso cuando Premium se lance — mismo precio, sin necesidad de actualizar.',
+
+  // Page metadata
+  'meta.tagline':           'Informes de Surf en Todo el Mundo',
+  'meta.surfForecast':      'Pronóstico de Surf',
+  'meta.surfClimatology':   'Climatología del Surf',
+  'meta.bestTimeToSurf':    'Mejor Época para Surfear',
+  'meta.forecastAccuracy':  'Precisión del Pronóstico',
+  'meta.privacyPolicy':     'Política de Privacidad',
+  'meta.termsOfService':    'Términos de Servicio',
+  'meta.refundPolicy':      'Política de Reembolso y Cancelación',
+  'meta.support':           'Soporte',
 }
 
 export default es

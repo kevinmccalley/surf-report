@@ -2,33 +2,69 @@ import type { Metadata } from 'next'
 import { auth, clerkClient } from '@clerk/nextjs/server'
 import Stripe from 'stripe'
 import SurfApp from './components/SurfApp'
+import { serverT } from '@/app/lib/server-t'
 
 export type Tier = 'free' | 'individual' | 'premium'
 
-type SearchParams = Promise<{ name?: string; country?: string; lat?: string; lon?: string; subscribed?: string }>
+type SearchParams = Promise<{ name?: string; country?: string; lat?: string; lon?: string; subscribed?: string; lang?: string }>
+
+const BASE_URL = 'https://groundswell.surf'
+const LOCALES = ['en', 'es', 'fr', 'pt-BR', 'pt-PT'] as const
 
 export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
   const params = await searchParams
-  const { name, country } = params
+  const { name, country, lat, lon } = params
+  const lang = params.lang ?? 'en'
 
   if (!name) {
+    const tagline = serverT(lang, 'meta.tagline')
     return {
-      title: 'Groundswell — Surf Reports Worldwide',
+      title: `Groundswell — ${tagline}`,
       description: 'Real-time surf reports and 10-day forecasts for any spot in the world. Wave height, swell, wind, tides, and more.',
+      alternates: { canonical: BASE_URL },
     }
   }
 
   const location = country ? `${name}, ${country}` : name
-  const title = `${location} Surf Report — Groundswell`
+  const forecastLabel = serverT(lang, 'meta.surfForecast')
+  const title = `${location} — ${forecastLabel} — Groundswell`
   const description = `Live surf report for ${name}: wave height, swell, wind, tides, and 10-day forecast. Updated hourly from open ocean data sources.`
+
+  // Canonical: preserve the spot identity params, drop subscribed/lang
+  const canonicalParams = new URLSearchParams()
+  if (name) canonicalParams.set('name', name)
+  if (country) canonicalParams.set('country', country)
+  if (lat) canonicalParams.set('lat', lat)
+  if (lon) canonicalParams.set('lon', lon)
+  const canonical = `${BASE_URL}/?${canonicalParams}`
+
+  const hreflangLanguages: Record<string, string> = { 'x-default': canonical }
+  for (const locale of LOCALES) {
+    const lp = new URLSearchParams(canonicalParams)
+    if (locale !== 'en') lp.set('lang', locale)
+    hreflangLanguages[locale] = `${BASE_URL}/?${lp}`
+  }
 
   return {
     title,
     description,
+    alternates: {
+      canonical,
+      languages: hreflangLanguages,
+    },
     openGraph: {
       title,
       description,
       type: 'website',
+      url: canonical,
+      siteName: 'Groundswell',
+      images: [{ url: '/api/og', width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/api/og'],
     },
   }
 }

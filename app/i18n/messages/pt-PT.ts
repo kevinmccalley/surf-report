@@ -512,6 +512,17 @@ const ptPT: Record<string, string> = {
   'premium.teaser.comingSoon': 'Em breve',
   'premium.teaser.inDev': 'Em desenvolvimento',
   'premium.teaser.footer': 'Subscreva agora para ter acesso quando o Premium for lançado — mesmo preço, sem necessidade de upgrade.',
+
+  // Page metadata
+  'meta.tagline':           'Relatórios de Surf em Todo o Mundo',
+  'meta.surfForecast':      'Previsão de Surf',
+  'meta.surfClimatology':   'Climatologia do Surf',
+  'meta.bestTimeToSurf':    'Melhor Época para Surfar',
+  'meta.forecastAccuracy':  'Precisão da Previsão',
+  'meta.privacyPolicy':     'Política de Privacidade',
+  'meta.termsOfService':    'Termos de Serviço',
+  'meta.refundPolicy':      'Política de Reembolso e Cancelamento',
+  'meta.support':           'Suporte',
 }
 
 export default ptPT
