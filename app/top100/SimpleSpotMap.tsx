@@ -50,12 +50,13 @@ export default function SimpleSpotMap({ lat, lon, name, onClose }: Props) {
       maxZoom: 18,
     }).addTo(map)
 
-    const marker = L.marker([lat, lon], { icon: makePin() })
+    const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#22d3ee'
+    const marker = L.marker([lat, lon], { icon: makePin(accentColor) })
     const coordStr = `${Math.abs(lat).toFixed(4)}°${lat >= 0 ? 'N' : 'S'}, ${Math.abs(lon).toFixed(4)}°${lon >= 0 ? 'E' : 'W'}`
     marker.bindPopup(
-      `<div style="font-family:system-ui,sans-serif;color:#f1f5f9;padding:4px 2px;min-width:140px">
+      `<div style="font-family:system-ui,sans-serif;color:var(--text-base);padding:4px 2px;min-width:140px">
         <div style="font-weight:700;font-size:13px;margin-bottom:2px">${name}</div>
-        <div style="font-size:11px;color:#94a3b8;font-variant-numeric:tabular-nums">${coordStr}</div>
+        <div style="font-size:11px;color:var(--panel-label);font-variant-numeric:tabular-nums">${coordStr}</div>
       </div>`,
       { className: 'simple-map-popup', closeButton: false }
     )
@@ -112,17 +113,17 @@ export default function SimpleSpotMap({ lat, lon, name, onClose }: Props) {
       {/* Popup styles */}
       <style>{`
         .simple-map-popup .leaflet-popup-content-wrapper {
-          background: #1e293b !important;
-          border: 1px solid rgba(255,255,255,0.12) !important;
+          background: var(--panel-bg) !important;
+          border: 1px solid var(--card-border) !important;
           border-radius: 10px !important;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
           padding: 0 !important;
         }
         .simple-map-popup .leaflet-popup-content {
           margin: 10px 14px !important;
         }
         .simple-map-popup .leaflet-popup-tip {
-          background: #1e293b !important;
+          background: var(--panel-bg) !important;
         }
       `}</style>
     </AnimatePresence>

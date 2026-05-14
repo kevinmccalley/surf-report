@@ -77,7 +77,6 @@ export default function SpotRow({ spot, heightUnit }: Props) {
     firing: day.waveHeightMax >= 1.2 && day.rating.score >= 5,
   }), [heightUnit])
 
-  // Lazy load via IntersectionObserver
   useEffect(() => {
     if (fetched) return
     const el = rowRef.current
@@ -111,8 +110,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
   const firing = today?.firing
 
   return (
-    <div ref={rowRef} className="group relative glass-card rounded-2xl border transition-all duration-200"
-      style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
+    <div ref={rowRef} className="relative glass-card rounded-2xl transition-all duration-200">
 
       {/* Firing glow */}
       {firing && (
@@ -125,12 +123,12 @@ export default function SpotRow({ spot, heightUnit }: Props) {
         {/* ── Left: rank + name ──────────────────────────────────────────── */}
         <div className="flex gap-3 items-start min-w-0 lg:max-w-[280px]">
           <span className="text-2xl font-black tabular-nums leading-none mt-0.5 shrink-0"
-            style={{ color: 'rgba(255,255,255,0.15)', minWidth: '2.2rem' }}>
+            style={{ color: 'rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.25)', minWidth: '2.2rem' }}>
             {spot.rank}
           </span>
           <div className="min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="font-bold text-slate-100 text-base leading-tight">{spot.name}</h3>
+              <h3 className="font-bold text-base leading-tight">{spot.name}</h3>
               {firing && (
                 <span className="flex items-center gap-1 text-[10px] font-semibold text-green-400">
                   <span className="relative flex h-2 w-2">
@@ -141,12 +139,12 @@ export default function SpotRow({ spot, heightUnit }: Props) {
                 </span>
               )}
             </div>
-            <p className="text-xs text-slate-400 mt-0.5 truncate">{spot.locality} · {spot.country}</p>
+            <p className="theme-label text-xs mt-0.5 truncate">{spot.locality} · {spot.country}</p>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-1.5 mt-2">
-              <span className="text-[10px] px-2 py-0.5 rounded-full font-medium"
-                style={{ background: 'rgba(255,255,255,0.07)', color: '#cbd5e1' }}>
+              <span className="theme-label text-[10px] px-2 py-0.5 rounded-full font-medium"
+                style={{ background: 'var(--panel-hover)' }}>
                 {t(waveTypeKey(spot.waveType))}
               </span>
               <span className="text-[10px] px-2 py-0.5 rounded-full font-semibold"
@@ -163,7 +161,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
 
             {/* Season + map pin */}
             <div className="flex items-center gap-3 mt-2">
-              <span className="text-[11px] text-slate-500">
+              <span className="theme-label text-[11px]">
                 {t('top100.bestSeason', { season: spot.bestSeason })}
               </span>
               <div className="relative">
@@ -171,7 +169,8 @@ export default function SpotRow({ spot, heightUnit }: Props) {
                   onClick={() => setMapOpen(true)}
                   onMouseEnter={() => setShowCoords(true)}
                   onMouseLeave={() => setShowCoords(false)}
-                  className="text-slate-500 hover:text-sky-400 transition-colors leading-none"
+                  className="leading-none transition-colors duration-150"
+                  style={{ color: showCoords ? 'var(--accent)' : 'var(--panel-muted)' }}
                   aria-label={t('top100.viewMap')}
                 >
                   <svg width="11" height="15" viewBox="0 0 12 16" fill="currentColor">
@@ -180,7 +179,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
                 </button>
                 {showCoords && (
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded-lg text-[10px] font-mono whitespace-nowrap z-10 pointer-events-none"
-                    style={{ background: '#1e293b', color: '#94a3b8', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    style={{ background: 'var(--panel-bg)', color: 'var(--panel-label)', border: '1px solid var(--card-border)' }}>
                     {Math.abs(spot.lat).toFixed(4)}°{spot.lat >= 0 ? 'N' : 'S'}, {Math.abs(spot.lon).toFixed(4)}°{spot.lon >= 0 ? 'E' : 'W'}
                   </div>
                 )}
@@ -198,20 +197,20 @@ export default function SpotRow({ spot, heightUnit }: Props) {
               <div className="flex gap-3">
                 {[0, 1].map(i => (
                   <div key={i} className="w-28 h-16 rounded-xl animate-pulse"
-                    style={{ background: 'rgba(255,255,255,0.05)' }} />
+                    style={{ background: 'var(--panel-hover)' }} />
                 ))}
               </div>
             ) : today || tomorrow ? (
               [today, tomorrow].map((day, i) => day && (
                 <div key={i} className="rounded-xl px-3 py-2.5 min-w-[7rem]"
-                  style={{ background: 'rgba(255,255,255,0.05)' }}>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-500 mb-1.5">{day.label}</p>
+                  style={{ background: 'var(--panel-hover)' }}>
+                  <p className="theme-label-muted text-[10px] font-semibold uppercase tracking-widest mb-1.5">{day.label}</p>
                   <div className="flex items-center gap-1.5 mb-1">
                     <span className="w-2.5 h-2.5 rounded-full shrink-0 shadow-sm"
                       style={{ backgroundColor: day.ratingBg }} />
-                    <span className="text-sm font-bold text-slate-100">{day.heightRange}</span>
+                    <span className="text-sm font-bold">{day.heightRange}</span>
                   </div>
-                  <p className="text-[11px] text-slate-400">
+                  <p className="theme-label text-[11px]">
                     {day.dirArrow} {day.period}s
                   </p>
                   <p className="text-[10px] mt-0.5 font-medium capitalize"
@@ -221,12 +220,12 @@ export default function SpotRow({ spot, heightUnit }: Props) {
                 </div>
               ))
             ) : fetched ? (
-              <p className="text-xs text-slate-600 self-center">{t('top100.noData')}</p>
+              <p className="theme-label-muted text-xs self-center">{t('top100.noData')}</p>
             ) : null}
           </div>
 
           {/* Description */}
-          <p className="text-xs text-slate-400 leading-relaxed line-clamp-4">{spot.description}</p>
+          <p className="theme-label text-xs leading-relaxed line-clamp-4">{spot.description}</p>
         </div>
       </div>
 
