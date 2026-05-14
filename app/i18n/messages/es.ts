@@ -627,6 +627,17 @@ const es: Record<string, string> = {
   'top100.waveType.sandbar':           'Barra de Arena',
   'top100.badge.ct':                   'CT Stop',
   'top100.badge.bigwave':              'Ola Grande',
+  'top100.hint':                       'Las previsiones en vivo cargan al hacer scroll · Toca 📍 para ver el mapa',
+  'top100.footer':                     'Las clasificaciones reflejan el consenso de la cultura surf mundial y la calidad de las olas. Las previsiones son en vivo desde los modelos ECMWF — las condiciones varían diariamente. Consulta siempre el conocimiento local antes de entrar al agua.',
+  'top100.backToBlog':                 '← Volver al blog',
+  'top100.region.hawaii':              'Hawái',
+  'top100.region.northAmerica':        'América del Norte',
+  'top100.region.latinAmerica':        'América Latina',
+  'top100.region.europe':              'Europa',
+  'top100.region.africaAtlantic':      'África y Atlántico',
+  'top100.region.indianOcean':         'Océano Índico',
+  'top100.region.southeastAsia':       'Asia del Sudeste',
+  'top100.region.oceania':             'Oceanía y Pacífico',
 }
 
 export default es

@@ -627,6 +627,17 @@ const ptBR: Record<string, string> = {
   'top100.waveType.sandbar':           'Banco de Areia',
   'top100.badge.ct':                   'CT Stop',
   'top100.badge.bigwave':              'Onda Grande',
+  'top100.hint':                       'As previsões ao vivo carregam conforme você rola · Toque em 📍 para ver no mapa',
+  'top100.footer':                     'Os rankings refletem o consenso da cultura surf mundial e a qualidade das ondas. As previsões são ao vivo dos modelos ECMWF — as condições variam diariamente. Sempre verifique o conhecimento local antes de entrar no mar.',
+  'top100.backToBlog':                 '← Voltar ao blog',
+  'top100.region.hawaii':              'Havaí',
+  'top100.region.northAmerica':        'América do Norte',
+  'top100.region.latinAmerica':        'América Latina',
+  'top100.region.europe':              'Europa',
+  'top100.region.africaAtlantic':      'África & Atlântico',
+  'top100.region.indianOcean':         'Oceano Índico',
+  'top100.region.southeastAsia':       'Sudeste Asiático',
+  'top100.region.oceania':             'Oceania & Pacífico',
 }
 
 export default ptBR

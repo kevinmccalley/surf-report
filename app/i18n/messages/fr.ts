@@ -627,6 +627,17 @@ const fr: Record<string, string> = {
   'top100.waveType.sandbar':           'Barre de Sable',
   'top100.badge.ct':                   'Étape CT',
   'top100.badge.bigwave':              'Grosse Vague',
+  'top100.hint':                       'Les prévisions en direct se chargent au défilement · Cliquez sur 📍 pour la carte',
+  'top100.footer':                     'Les classements reflètent le consensus de la culture surf mondiale et la qualité des vagues. Les prévisions sont en direct via les modèles ECMWF — les conditions varient chaque jour. Consultez toujours les locaux avant de vous mettre à l\'eau.',
+  'top100.backToBlog':                 '← Retour au blog',
+  'top100.region.hawaii':              'Hawaï',
+  'top100.region.northAmerica':        'Amérique du Nord',
+  'top100.region.latinAmerica':        'Amérique latine',
+  'top100.region.europe':              'Europe',
+  'top100.region.africaAtlantic':      'Afrique & Atlantique',
+  'top100.region.indianOcean':         'Océan Indien',
+  'top100.region.southeastAsia':       'Asie du Sud-Est',
+  'top100.region.oceania':             'Océanie & Pacifique',
 }
 
 export default fr

@@ -16,6 +16,17 @@ const REGION_IDS: Record<Region, string> = {
   'Oceania & Pacific': 'region-oceania',
 }
 
+const REGION_LABEL_KEYS: Record<Region, string> = {
+  'Hawaii': 'top100.region.hawaii',
+  'North America': 'top100.region.northAmerica',
+  'Latin America': 'top100.region.latinAmerica',
+  'Europe': 'top100.region.europe',
+  'Africa & Atlantic': 'top100.region.africaAtlantic',
+  'Indian Ocean': 'top100.region.indianOcean',
+  'Southeast Asia': 'top100.region.southeastAsia',
+  'Oceania & Pacific': 'top100.region.oceania',
+}
+
 const REGION_EMOJI: Record<Region, string> = {
   'Hawaii': '🌺',
   'North America': '🏔',
@@ -81,7 +92,7 @@ export default function Top100Client() {
           {t('top100.subtitle')}
         </p>
         <p className="text-xs text-slate-600 mt-3">
-          Live forecasts load as you scroll · Click 📍 for location map
+          {t('top100.hint')}
         </p>
       </div>
 
@@ -103,7 +114,7 @@ export default function Top100Client() {
                 border: `1px solid ${activeRegion === region ? 'rgba(34,211,238,0.3)' : 'transparent'}`,
               }}
             >
-              {REGION_EMOJI[region]} {region}
+              {REGION_EMOJI[region]} {t(REGION_LABEL_KEYS[region])}
             </button>
           ))}
         </div>
@@ -116,7 +127,7 @@ export default function Top100Client() {
             {/* Region header */}
             <div className="flex items-center gap-3 mb-6 pt-2">
               <span className="text-2xl">{REGION_EMOJI[region]}</span>
-              <h2 className="text-xl font-bold text-slate-200">{region}</h2>
+              <h2 className="text-xl font-bold text-slate-200">{t(REGION_LABEL_KEYS[region])}</h2>
               <div className="flex-1 h-px" style={{ background: 'rgba(255,255,255,0.06)' }} />
               <span className="text-xs text-slate-600 font-mono">
                 #{spots[0].rank}–#{spots[spots.length - 1].rank}
@@ -136,10 +147,10 @@ export default function Top100Client() {
       {/* ── Footer note ─────────────────────────────────────────────────── */}
       <div className="text-center pb-12 px-4">
         <p className="text-xs text-slate-600 max-w-lg mx-auto leading-relaxed">
-          Rankings reflect global surf culture consensus and world-class wave quality. Forecasts are live from ECMWF open-ocean models — conditions vary daily. Always check local knowledge before paddling out.
+          {t('top100.footer')}
         </p>
         <a href="/blog" className="inline-block mt-4 text-xs text-sky-500 hover:text-sky-400 transition-colors">
-          ← Back to blog
+          {t('top100.backToBlog')}
         </a>
       </div>
     </div>

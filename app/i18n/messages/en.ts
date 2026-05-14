@@ -627,6 +627,17 @@ const en: Record<string, string> = {
   'top100.waveType.sandbar':           'Sand Bar',
   'top100.badge.ct':                   'CT Stop',
   'top100.badge.bigwave':              'Big Wave',
+  'top100.hint':                       'Live forecasts load as you scroll · Click 📍 for location map',
+  'top100.footer':                     'Rankings reflect global surf culture consensus and world-class wave quality. Forecasts are live from ECMWF open-ocean models — conditions vary daily. Always check local knowledge before paddling out.',
+  'top100.backToBlog':                 '← Back to blog',
+  'top100.region.hawaii':              'Hawaii',
+  'top100.region.northAmerica':        'North America',
+  'top100.region.latinAmerica':        'Latin America',
+  'top100.region.europe':              'Europe',
+  'top100.region.africaAtlantic':      'Africa & Atlantic',
+  'top100.region.indianOcean':         'Indian Ocean',
+  'top100.region.southeastAsia':       'Southeast Asia',
+  'top100.region.oceania':             'Oceania & Pacific',
 }
 
 export default en
