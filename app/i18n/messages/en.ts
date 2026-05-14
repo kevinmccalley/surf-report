@@ -385,6 +385,7 @@ const en: Record<string, string> = {
   'nav.refund': 'Refund Policy',
   'nav.support': 'Support',
   'nav.accuracy': 'Accuracy',
+  'nav.blog': 'Blog',
   'nav.lastUpdated': 'Last updated',
   'nav.backToGroundswell': 'Back to Groundswell',
 
@@ -584,6 +585,21 @@ const en: Record<string, string> = {
   'meta.termsOfService':    'Terms of Service',
   'meta.refundPolicy':      'Refund & Cancellation Policy',
   'meta.support':           'Support',
+
+  // Blog UI chrome
+  'blog.nav':              'Blog',
+  'blog.heading':          'Surf Reports & Insights',
+  'blog.subtitle':         'Wave science, forecasting tips, and surf stories from around the world.',
+  'blog.readMore':         'Read article',
+  'blog.backToBlog':       '← Back to blog',
+  'blog.by':               'By',
+  'blog.postedOn':         'Posted',
+  'blog.categories':       'Topics',
+  'blog.featuredPost':     'Featured',
+  'blog.noPostsYet':       'No posts yet — check back soon.',
+  'blog.rssLink':          'Subscribe via RSS',
+  'blog.emailCta.heading': 'Get weekly swell alerts',
+  'blog.emailCta.body':    'Subscribe for surf forecasts and new articles.',
 }
 
 export default en

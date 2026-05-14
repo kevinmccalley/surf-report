@@ -385,6 +385,7 @@ const es: Record<string, string> = {
   'nav.refund': 'Política de Reembolso',
   'nav.support': 'Soporte',
   'nav.accuracy': 'Precisión',
+  'nav.blog': 'Blog',
   'nav.lastUpdated': 'Última actualización',
   'nav.backToGroundswell': 'Volver a Groundswell',
 
@@ -584,6 +585,21 @@ const es: Record<string, string> = {
   'meta.termsOfService':    'Términos de Servicio',
   'meta.refundPolicy':      'Política de Reembolso y Cancelación',
   'meta.support':           'Soporte',
+
+  // Blog UI chrome
+  'blog.nav':              'Blog',
+  'blog.heading':          'Informes y Perspectivas de Surf',
+  'blog.subtitle':         'Ciencia del oleaje, consejos de pronóstico e historias de surf de todo el mundo.',
+  'blog.readMore':         'Leer artículo',
+  'blog.backToBlog':       '← Volver al blog',
+  'blog.by':               'Por',
+  'blog.postedOn':         'Publicado',
+  'blog.categories':       'Temas',
+  'blog.featuredPost':     'Destacado',
+  'blog.noPostsYet':       'Aún no hay artículos — vuelve pronto.',
+  'blog.rssLink':          'Suscribirse vía RSS',
+  'blog.emailCta.heading': 'Recibe alertas de oleaje semanales',
+  'blog.emailCta.body':    'Suscríbete para pronósticos de surf y nuevos artículos.',
 }
 
 export default es

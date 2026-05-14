@@ -385,6 +385,7 @@ const ptBR: Record<string, string> = {
   'nav.refund': 'Política de Reembolso',
   'nav.support': 'Suporte',
   'nav.accuracy': 'Precisão',
+  'nav.blog': 'Blog',
   'nav.lastUpdated': 'Última atualização',
   'nav.backToGroundswell': 'Voltar ao Groundswell',
 
@@ -584,6 +585,21 @@ const ptBR: Record<string, string> = {
   'meta.termsOfService':    'Termos de Serviço',
   'meta.refundPolicy':      'Política de Reembolso e Cancelamento',
   'meta.support':           'Suporte',
+
+  // Blog UI chrome
+  'blog.nav':              'Blog',
+  'blog.heading':          'Relatórios e Insights de Surf',
+  'blog.subtitle':         'Ciência das ondas, dicas de previsão e histórias de surf de todo o mundo.',
+  'blog.readMore':         'Ler artigo',
+  'blog.backToBlog':       '← Voltar ao blog',
+  'blog.by':               'Por',
+  'blog.postedOn':         'Publicado em',
+  'blog.categories':       'Tópicos',
+  'blog.featuredPost':     'Destaque',
+  'blog.noPostsYet':       'Nenhum artigo ainda — volte em breve.',
+  'blog.rssLink':          'Assinar via RSS',
+  'blog.emailCta.heading': 'Receba alertas de ondulação semanais',
+  'blog.emailCta.body':    'Assine para previsões de surf e novos artigos.',
 }
 
 export default ptBR

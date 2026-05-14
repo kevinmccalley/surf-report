@@ -385,6 +385,7 @@ const fr: Record<string, string> = {
   'nav.refund': 'Politique de remboursement',
   'nav.support': 'Assistance',
   'nav.accuracy': 'Précision',
+  'nav.blog': 'Blog',
   'nav.lastUpdated': 'Dernière mise à jour',
   'nav.backToGroundswell': 'Retour à Groundswell',
 
@@ -584,6 +585,21 @@ const fr: Record<string, string> = {
   'meta.termsOfService':    "Conditions d'Utilisation",
   'meta.refundPolicy':      'Politique de Remboursement',
   'meta.support':           'Assistance',
+
+  // Blog UI chrome
+  'blog.nav':              'Blog',
+  'blog.heading':          'Rapports et Analyses de Surf',
+  'blog.subtitle':         'Science des vagues, conseils de prévision et récits de surf du monde entier.',
+  'blog.readMore':         'Lire l\'article',
+  'blog.backToBlog':       '← Retour au blog',
+  'blog.by':               'Par',
+  'blog.postedOn':         'Publié le',
+  'blog.categories':       'Thèmes',
+  'blog.featuredPost':     'À la une',
+  'blog.noPostsYet':       'Aucun article pour l\'instant — revenez bientôt.',
+  'blog.rssLink':          'S\'abonner via RSS',
+  'blog.emailCta.heading': 'Recevez des alertes houle hebdomadaires',
+  'blog.emailCta.body':    'Abonnez-vous pour les prévisions de surf et les nouveaux articles.',
 }
 
 export default fr
