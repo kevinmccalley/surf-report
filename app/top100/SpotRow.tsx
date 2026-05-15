@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import { useLanguage } from '@/app/i18n/LanguageContext'
-import type { DayForecast } from '@/app/lib/types'
+import type { DayForecast, SurfReport, NearbySpot } from '@/app/lib/types'
 import { formatWaveRange } from '@/app/lib/utils'
 import type { Top100Spot } from './spots-data'
 
-const SimpleSpotMap = dynamic(() => import('./SimpleSpotMap'), { ssr: false })
+const MapPanel = dynamic(() => import('@/app/components/MapPanel'), { ssr: false })
 
 const DIRECTION_ARROWS: Record<string, string> = {
   N: '↑', NNE: '↑', NE: '↗', ENE: '↗',
@@ -62,9 +62,11 @@ export default function SpotRow({ spot, heightUnit }: Props) {
 
   const [today, setToday] = useState<MiniDay | null>(null)
   const [tomorrow, setTomorrow] = useState<MiniDay | null>(null)
+  const [report, setReport] = useState<SurfReport | null>(null)
   const [fetched, setFetched] = useState(false)
   const [loading, setLoading] = useState(false)
   const [mapOpen, setMapOpen] = useState(false)
+  const [nearbySpots, setNearbySpots] = useState<NearbySpot[]>([])
   const [showCoords, setShowCoords] = useState(false)
 
   const toMiniDay = useCallback((day: DayForecast): MiniDay => ({
@@ -76,35 +78,63 @@ export default function SpotRow({ spot, heightUnit }: Props) {
     firing: day.waveHeightMax >= 1.2 && day.rating.score >= 5,
   }), [heightUnit])
 
+  const doFetch = useCallback((lat: number, lon: number, name: string, country: string) => {
+    setLoading(true)
+    return fetch(`/api/surf?lat=${lat}&lon=${lon}&name=${encodeURIComponent(name)}&country=${encodeURIComponent(country)}`)
+      .then(r => r.json())
+      .then((r: SurfReport) => {
+        setReport(r)
+        const days: DayForecast[] = r.forecast ?? []
+        if (days[0]) setToday(toMiniDay(days[0]))
+        if (days[1]) setTomorrow(toMiniDay(days[1]))
+        setFetched(true)
+        return r
+      })
+      .catch(() => { setFetched(true) })
+      .finally(() => setLoading(false))
+  }, [toMiniDay])
+
+  // Lazy-load forecast as row scrolls into view
   useEffect(() => {
     if (fetched) return
     const el = rowRef.current
     if (!el) return
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           observer.disconnect()
-          setLoading(true)
-          fetch(`/api/surf?lat=${spot.lat}&lon=${spot.lon}&name=${encodeURIComponent(spot.name)}&country=${encodeURIComponent(spot.country)}`)
-            .then(r => r.json())
-            .then(report => {
-              const days: DayForecast[] = report.forecast ?? []
-              if (days[0]) setToday(toMiniDay(days[0]))
-              if (days[1]) setTomorrow(toMiniDay(days[1]))
-            })
-            .catch(() => {})
-            .finally(() => {
-              setFetched(true)
-              setLoading(false)
-            })
+          doFetch(spot.lat, spot.lon, spot.name, spot.country)
         }
       },
       { rootMargin: '300px' }
     )
     observer.observe(el)
     return () => observer.disconnect()
-  }, [fetched, spot.lat, spot.lon, spot.name, spot.country, t, toMiniDay])
+  }, [fetched, spot.lat, spot.lon, spot.name, spot.country, doFetch])
+
+  // Fetch nearby spots the first time the map panel opens
+  useEffect(() => {
+    if (!mapOpen || nearbySpots.length > 0) return
+    fetch(`/api/nearby?lat=${spot.lat}&lon=${spot.lon}`)
+      .then(r => r.ok ? r.json() : [])
+      .then((spots: NearbySpot[]) => setNearbySpots(spots))
+      .catch(() => {})
+  }, [mapOpen, spot.lat, spot.lon, nearbySpots.length])
+
+  const handlePinClick = useCallback(() => {
+    setMapOpen(true)
+    if (!fetched && !loading) {
+      doFetch(spot.lat, spot.lon, spot.name, spot.country)
+    }
+  }, [fetched, loading, spot, doFetch])
+
+  // When user selects a nearby spot inside the panel, swap the report
+  const handleSpotSelect = useCallback((nearby: NearbySpot) => {
+    fetch(`/api/surf?lat=${nearby.lat}&lon=${nearby.lon}&name=${encodeURIComponent(nearby.name)}&country=`)
+      .then(r => r.json())
+      .then((r: SurfReport) => setReport(r))
+      .catch(() => {})
+  }, [])
 
   const firing = today?.firing
 
@@ -160,7 +190,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
               </span>
               <div className="relative">
                 <button
-                  onClick={() => setMapOpen(true)}
+                  onClick={handlePinClick}
                   onMouseEnter={() => setShowCoords(true)}
                   onMouseLeave={() => setShowCoords(false)}
                   className="leading-none transition-colors duration-150"
@@ -224,13 +254,14 @@ export default function SpotRow({ spot, heightUnit }: Props) {
         </div>
       </div>
 
-      {/* Map modal */}
-      {mapOpen && (
-        <SimpleSpotMap
-          lat={spot.lat}
-          lon={spot.lon}
-          name={spot.name}
+      {/* Full MapPanel — same as main surf report */}
+      {mapOpen && report && (
+        <MapPanel
+          report={report}
+          units={{ temp: 'c', height: heightUnit }}
           onClose={() => setMapOpen(false)}
+          nearbySpots={nearbySpots}
+          onSpotSelect={handleSpotSelect}
         />
       )}
     </div>
