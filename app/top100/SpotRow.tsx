@@ -47,6 +47,7 @@ interface MiniDay {
   period: number
   ratingLabel: string
   ratingBg: string
+  ratingColor: string
   firing: boolean
 }
 
@@ -75,6 +76,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
     period: Math.round(day.wavePeriodMax),
     ratingLabel: day.rating.label,
     ratingBg: day.rating.bgColor,
+    ratingColor: day.rating.color,
     firing: day.waveHeightMax >= 1.2 && day.rating.score >= 5,
   }), [heightUnit])
 
@@ -235,15 +237,15 @@ export default function SpotRow({ spot, heightUnit }: Props) {
                   </p>
                   <div className="flex items-center gap-1.5 mb-1">
                     <span className="w-2.5 h-2.5 rounded-full shrink-0 shadow-sm"
-                      style={{ backgroundColor: day.ratingBg }} />
+                      style={{ backgroundColor: day.ratingColor }} />
                     <span className="text-sm font-bold">{day.heightRange}</span>
                   </div>
                   <p className="theme-label text-[11px]">
                     {day.dirArrow} {day.period}s
                   </p>
-                  <p className="text-[10px] mt-0.5 font-medium capitalize"
-                    style={{ color: day.ratingBg }}>
-                    {day.ratingLabel.toLowerCase().replace('_', ' ')}
+                  <p className="rating-chip text-[10px] mt-0.5 font-medium capitalize"
+                    data-rating={day.ratingLabel.replace(/ /g, '_')}>
+                    {day.ratingLabel.toLowerCase().replace(/_/g, ' ')}
                   </p>
                 </div>
               ))
