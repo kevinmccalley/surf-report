@@ -117,11 +117,11 @@ export default function Top100Client() {
           </h1>
         </div>
 
-        {/* Region pills — logo left, pills center, controls right */}
-        <div className="px-2 pb-2 flex items-center gap-2">
+        {/* Nav second row — wraps at 670px: logo+controls on top, pills full-width below */}
+        <div className="px-2 pb-2 flex flex-wrap items-center gap-y-2">
 
-          {/* Logo — mirrors the controls width to keep pills centred */}
-          <div className="flex items-center gap-1.5 shrink-0 w-28">
+          {/* Logo — row 1 left, always order-first */}
+          <div className="flex items-center gap-1.5 shrink-0 w-28 order-1">
             <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden>
               <circle cx="14" cy="14" r="14" fill="rgba(14,165,233,0.15)" />
               <path d="M4 17 C7 13, 10 20, 14 16 C18 12, 21 19, 24 15" stroke="#38bdf8" strokeWidth="2.2" strokeLinecap="round" fill="none" />
@@ -132,9 +132,9 @@ export default function Top100Client() {
             </span>
           </div>
 
-          {/* Scrollable region pills */}
-          <div className="flex-1 overflow-x-auto">
-            <div className="flex justify-center gap-1.5 min-w-max mx-auto">
+          {/* Region pills — row 2 full-width on narrow, row 1 center on wide */}
+          <div className="order-3 min-[670px]:order-2 w-full min-[670px]:w-auto min-[670px]:flex-1 overflow-x-auto">
+            <div className="flex justify-center gap-1.5 min-w-max mx-auto px-1">
               {REGIONS.map(region => (
                 <button
                   key={region}
@@ -154,8 +154,8 @@ export default function Top100Client() {
             </div>
           </div>
 
-          {/* Theme + language controls */}
-          <div className="flex items-center gap-1 shrink-0 w-28 justify-end">
+          {/* Theme + language controls — row 1 right, ml-auto on narrow keeps it right-aligned */}
+          <div className="order-2 min-[670px]:order-3 flex items-center gap-1 shrink-0 w-28 justify-end ml-auto min-[670px]:ml-0">
             <LanguageSwitcher align="right" />
             <ThemePicker align="right" />
           </div>
