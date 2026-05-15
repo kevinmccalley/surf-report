@@ -378,11 +378,11 @@ export default function SurfMap({ report, units, highlightLayers, nearbySpots, o
         }
 
         /* ── Nearby spot tooltips ────────────────────────────────────────── */
-        .surf-nearby-tip .leaflet-tooltip {
+        .surf-nearby-tip {
           background: transparent !important; border: none !important;
           box-shadow: none !important; padding: 0 !important;
         }
-        .surf-nearby-tip.leaflet-tooltip-top::before { display: none !important; }
+        .surf-nearby-tip::before { display: none !important; }
 
         /* ── Popup ────────────────────────────────────────────────────────── */
         .surf-map-popup .leaflet-popup-content-wrapper {
