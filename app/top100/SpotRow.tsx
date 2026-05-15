@@ -42,7 +42,6 @@ function difficultyColor(d: string): string {
 }
 
 interface MiniDay {
-  label: string
   heightRange: string
   dirArrow: string
   period: number
@@ -57,7 +56,8 @@ interface Props {
 }
 
 export default function SpotRow({ spot, heightUnit }: Props) {
-  const { t } = useLanguage()
+  const { t, locale } = useLanguage()
+  const description = spot.description[locale] ?? spot.description['en']
   const rowRef = useRef<HTMLDivElement>(null)
 
   const [today, setToday] = useState<MiniDay | null>(null)
@@ -67,8 +67,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
   const [mapOpen, setMapOpen] = useState(false)
   const [showCoords, setShowCoords] = useState(false)
 
-  const toMiniDay = useCallback((day: DayForecast, label: string): MiniDay => ({
-    label,
+  const toMiniDay = useCallback((day: DayForecast): MiniDay => ({
     heightRange: formatWaveRange(day.waveHeightMin, day.waveHeightMax, heightUnit),
     dirArrow: DIRECTION_ARROWS[day.swellDirectionLabel] ?? '↗',
     period: Math.round(day.wavePeriodMax),
@@ -91,8 +90,8 @@ export default function SpotRow({ spot, heightUnit }: Props) {
             .then(r => r.json())
             .then(report => {
               const days: DayForecast[] = report.forecast ?? []
-              if (days[0]) setToday(toMiniDay(days[0], t('top100.today')))
-              if (days[1]) setTomorrow(toMiniDay(days[1], t('top100.tomorrow')))
+              if (days[0]) setToday(toMiniDay(days[0]))
+              if (days[1]) setTomorrow(toMiniDay(days[1]))
             })
             .catch(() => {})
             .finally(() => {
@@ -121,7 +120,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
       <div className="p-4 sm:p-5 grid gap-3 lg:grid-cols-[auto_1fr] lg:gap-5">
 
         {/* ── Left: name ─────────────────────────────────────────────────── */}
-        <div className="min-w-0 lg:max-w-[280px]">
+        <div className="lg:max-w-[280px]" style={{ minWidth: '250px' }}>
             <div className="flex items-center gap-2 flex-wrap">
               <h3 className="font-bold text-base leading-tight">{spot.name}</h3>
               {firing && (
@@ -186,7 +185,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
         <div className="flex items-start gap-4">
 
           {/* Description */}
-          <p className="theme-label text-xs leading-relaxed line-clamp-4 flex-1 min-w-0">{spot.description}</p>
+          <p className="theme-label text-xs leading-relaxed line-clamp-4 flex-1 min-w-0">{description}</p>
 
           {/* Forecast cards */}
           <div className="flex gap-2 items-start shrink-0">
@@ -201,7 +200,9 @@ export default function SpotRow({ spot, heightUnit }: Props) {
               [today, tomorrow].map((day, i) => day && (
                 <div key={i} className="rounded-xl px-3 py-2.5 w-28"
                   style={{ background: 'var(--panel-hover)' }}>
-                  <p className="theme-label-muted text-[10px] font-semibold uppercase tracking-widest mb-1.5">{day.label}</p>
+                  <p className="theme-label-muted text-[10px] font-semibold uppercase tracking-widest mb-1.5">
+                    {i === 0 ? t('top100.today') : t('top100.tomorrow')}
+                  </p>
                   <div className="flex items-center gap-1.5 mb-1">
                     <span className="w-2.5 h-2.5 rounded-full shrink-0 shadow-sm"
                       style={{ backgroundColor: day.ratingBg }} />

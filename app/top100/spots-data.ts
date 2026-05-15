@@ -14,7 +14,7 @@ export interface Top100Spot {
   difficulty: Difficulty
   bestSeason: string
   wslBadge?: WslBadge
-  description: string
+  description: Record<string, string>  // keyed by locale: 'en' | 'es' | 'fr' | 'pt-BR' | 'pt-PT'
 }
 
 export const REGIONS = [
@@ -44,7 +44,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Oct–Mar',
     wslBadge: 'CT Stop',
-    description: 'The most iconic wave on earth, Pipeline throws a shattering left-hand barrel over a shallow coral reef on Oahu\'s North Shore. Six decades of surfing history have been defined here, from Gerry Lopez to Kelly Slater. When it\'s pumping at 8–12ft, it is simply the most thrilling and dangerous surf experience on the planet.',
+    description: {
+      en: 'The most iconic wave on earth, Pipeline throws a shattering left-hand barrel over a shallow coral reef on Oahu\'s North Shore. Six decades of surfing history have been defined here, from Gerry Lopez to Kelly Slater. When it\'s pumping at 8–12ft, it is simply the most thrilling and dangerous surf experience on the planet.',
+      es: 'La ola más icónica del planeta, Pipeline lanza un devastador tubo hacia la izquierda sobre un arrecife de coral poco profundo en la North Shore de Oahu. Seis décadas de historia del surf se han definido aquí, desde Gerry Lopez hasta Kelly Slater. Cuando rompe entre 8 y 12 pies, es simplemente la experiencia de surf más emocionante y peligrosa del mundo.',
+      fr: 'Le spot le plus emblématique de la planète, Pipeline lance un tube gauche dévastateur au-dessus d\'un récif de corail peu profond sur la North Shore d\'Oahu. Six décennies d\'histoire du surf se sont définies ici, de Gerry Lopez à Kelly Slater. Lorsqu\'il tourne à 8–12 pieds, c\'est tout simplement l\'expérience de surf la plus exaltante et la plus dangereuse au monde.',
+      'pt-BR': 'A onda mais icônica da Terra, Pipeline lança um tubo destruidor para a esquerda sobre um recife de coral raso na North Shore de Oahu. Seis décadas de história do surfe foram definidas aqui, de Gerry Lopez a Kelly Slater. Quando está pumping entre 8 e 12 pés, é simplesmente a experiência de surfe mais emocionante e perigosa do planeta.',
+      'pt-PT': 'A onda mais icónica do planeta, Pipeline lança um tubo destruidor para a esquerda sobre um recife de coral raso na North Shore de Oahu. Seis décadas de história do surf foram definidas aqui, de Gerry Lopez a Kelly Slater. Quando está a funcionar entre 8 e 12 pés, é simplesmente a experiência de surf mais emocionante e perigosa do mundo.',
+    },
   },
   {
     rank: 2,
@@ -58,7 +64,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Oct–Feb',
     wslBadge: 'CT Stop',
-    description: 'A massive, complex reef break that tests every dimension of big-wave surfing. Sunset demands power, paddle fitness, and split-second decision-making as multiple peaks shift with each swell direction. At 15–20ft it becomes a relentless proving ground that has shaped every generation of Hawaiian big-wave surfing.',
+    description: {
+      en: 'A massive, complex reef break that tests every dimension of big-wave surfing. Sunset demands power, paddle fitness, and split-second decision-making as multiple peaks shift with each swell direction. At 15–20ft it becomes a relentless proving ground that has shaped every generation of Hawaiian big-wave surfing.',
+      es: 'Una enorme y compleja rompiente de arrecife que pone a prueba todas las dimensiones del surf de olas grandes. Sunset exige potencia, condición física en el paloteo y toma de decisiones en fracciones de segundo mientras múltiples picos se desplazan con cada dirección del oleaje. A 15–20 pies se convierte en un implacable campo de pruebas que ha moldeado a cada generación del surf de olas grandes hawaiano.',
+      fr: 'Un pic de récif massif et complexe qui met à l\'épreuve toutes les dimensions du surf de grosses vagues. Sunset exige de la puissance, une excellente condition au pagayage et des décisions en une fraction de seconde, alors que plusieurs pics se déplacent à chaque direction de houle. À 15–20 pieds, il devient un terrain d\'épreuve implacable qui a façonné chaque génération du surf de grosses vagues hawaïen.',
+      'pt-BR': 'Um imenso e complexo pico de recife que testa todas as dimensões do surfe em ondas grandes. Sunset exige potência, preparo físico no remo e tomada de decisão em frações de segundo enquanto múltiplos picos se deslocam a cada direção do swell. A 15–20 pés torna-se um campo de provas implacável que moldou cada geração do surfe de ondas grandes no Havaí.',
+      'pt-PT': 'Um imenso e complexo pico de recife que testa todas as dimensões do surf em ondas grandes. Sunset exige potência, condição física na remada e tomada de decisão em frações de segundo enquanto múltiplos picos se deslocam a cada direção do swell. A 15–20 pés torna-se um campo de provas implacável que moldou cada geração do surf de ondas grandes no Havai.',
+    },
   },
   {
     rank: 3,
@@ -72,7 +84,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Nov–Feb',
     wslBadge: 'Big Wave',
-    description: 'The original big-wave arena, where Greg Noll paddled out in 1969 and modern big-wave surfing was born. Waimea only breaks on significant swells above 15ft and delivers thick, detonating drops into a deep bowl — requiring commitment at every level. The Bay\'s winter calm-to-chaos transformation is one of surfing\'s greatest spectacles.',
+    description: {
+      en: 'The original big-wave arena, where Greg Noll paddled out in 1969 and modern big-wave surfing was born. Waimea only breaks on significant swells above 15ft and delivers thick, detonating drops into a deep bowl — requiring commitment at every level. The Bay\'s winter calm-to-chaos transformation is one of surfing\'s greatest spectacles.',
+      es: 'El escenario original del surf de olas grandes, donde Greg Noll paloteó en 1969 y nació el surf moderno de grandes olas. Waimea solo rompe en swells significativos superiores a 15 pies y ofrece bajadas gruesas y detonantes hacia un profundo bowl, exigiendo compromiso en todos los niveles. La transformación invernal de la bahía de la calma al caos es uno de los espectáculos más grandes del surf.',
+      fr: 'L\'arène originelle du surf de grosses vagues, où Greg Noll a pagayé en 1969 et où le surf moderne de grosses vagues est né. Waimea ne se brise que sur des houles significatives dépassant 15 pieds et offre des drops épais et détonants dans un bowl profond — exigeant un engagement total à tous les niveaux. La transformation hivernale de la baie, du calme au chaos, est l\'un des plus grands spectacles du surf.',
+      'pt-BR': 'A arena original do surfe em ondas grandes, onde Greg Noll remou em 1969 e o surfe moderno de ondas grandes nasceu. Waimea só quebra em swells significativos acima de 15 pés e oferece drops grossos e detonantes em um bowl profundo — exigindo comprometimento em todos os níveis. A transformação invernal da baía, da calmaria ao caos, é um dos maiores espetáculos do surfe.',
+      'pt-PT': 'A arena original do surf em ondas grandes, onde Greg Noll remou em 1969 e o surf moderno de ondas grandes nasceu. Waimea só quebra em swells significativos acima de 15 pés e oferece drops grossos e detonantes num bowl profundo — exigindo comprometimento a todos os níveis. A transformação invernal da baía, da calmaria ao caos, é um dos maiores espetáculos do surf.',
+    },
   },
   {
     rank: 4,
@@ -86,7 +104,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Nov–Mar',
     wslBadge: 'Big Wave',
-    description: 'Pe\'ahi — nicknamed Jaws — is the world\'s most dramatic open-ocean big-wave break, producing 60-80ft faces on Maui\'s north coast. Tow-in surfing was pioneered here in the early 1990s when paddle surfing became physically impossible at its scale. On the right winter swell it produces the most awe-inspiring imagery in all of surfing.',
+    description: {
+      en: 'Pe\'ahi — nicknamed Jaws — is the world\'s most dramatic open-ocean big-wave break, producing 60-80ft faces on Maui\'s north coast. Tow-in surfing was pioneered here in the early 1990s when paddle surfing became physically impossible at its scale. On the right winter swell it produces the most awe-inspiring imagery in all of surfing.',
+      es: 'Pe\'ahi — apodada Jaws — es la rompiente de olas grandes en mar abierto más dramática del mundo, produciendo paredes de 60–80 pies en la costa norte de Maui. El surf de remolque fue pionero aquí a principios de los años 90 cuando el paloteo se volvió físicamente imposible a esa escala. Con el swell de invierno adecuado produce las imágenes más impresionantes de todo el surf.',
+      fr: 'Pe\'ahi — surnommée Jaws — est le spot de grosses vagues en océan ouvert le plus spectaculaire du monde, produisant des faces de 60–80 pieds sur la côte nord de Maui. Le surf tracté y a été mis au point au début des années 1990 lorsque le surf au pagayage est devenu physiquement impossible à cette échelle. Avec la bonne houle hivernale, elle produit les images les plus époustouflantes de tout le surf.',
+      'pt-BR': 'Pe\'ahi — apelidada de Jaws — é a maior e mais dramática onda de oceano aberto do mundo, produzindo faces de 60–80 pés na costa norte de Maui. O surfe de tow-in foi pioneiro aqui no início dos anos 1990 quando remar tornou-se fisicamente impossível nessa escala. Com o swell de inverno certo, produz as imagens mais impressionantes de todo o surfe.',
+      'pt-PT': 'Pe\'ahi — apelidada de Jaws — é a maior e mais dramática onda de oceano aberto do mundo, produzindo faces de 60–80 pés na costa norte de Maui. O surf de tow-in foi pioneiro aqui no início dos anos 1990, quando remar se tornou fisicamente impossível nessa escala. Com o swell de inverno certo, produz as imagens mais impressionantes de todo o surf.',
+    },
   },
   {
     rank: 5,
@@ -100,7 +124,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Advanced',
     bestSeason: 'Nov–Feb',
     wslBadge: 'CT Stop',
-    description: 'A protected bay on Maui\'s northwest tip that funnels north swells into a long, perfectly shaped right-hand point. Honolua Bay is known for its crystal-clear water, its dramatic cliffs, and its ability to hold large winter surf with remarkable consistency. On a solid swell, the barrel sections rival anything in Hawaii.',
+    description: {
+      en: 'A protected bay on Maui\'s northwest tip that funnels north swells into a long, perfectly shaped right-hand point. Honolua Bay is known for its crystal-clear water, its dramatic cliffs, and its ability to hold large winter surf with remarkable consistency. On a solid swell, the barrel sections rival anything in Hawaii.',
+      es: 'Una bahía protegida en el extremo noroeste de Maui que canaliza los swells del norte hacia un largo y perfectamente formado point hacia la derecha. Honolua Bay es conocida por su agua cristalina, sus dramáticos acantilados y su capacidad para aguantar un gran surf invernal con notable consistencia. Con un swell sólido, las secciones de tubo rivalizan con cualquier ola de Hawái.',
+      fr: 'Une baie protégée à la pointe nord-ouest de Maui qui canalise les houles du nord vers un point droit long et parfaitement formé. Honolua Bay est connue pour son eau cristalline, ses falaises spectaculaires et sa capacité à tenir un grand surf hivernal avec une remarquable constance. Sur une bonne houle, les sections de tube rivalisent avec n\'importe quel spot d\'Hawaï.',
+      'pt-BR': 'Uma baía protegida na ponta noroeste de Maui que canaliza os swells do norte para um point longo e perfeitamente formado para a direita. Honolua Bay é conhecida por suas águas cristalinas, falésias dramáticas e capacidade de aguentar surf grande de inverno com notável consistência. Em um swell sólido, as seções de tubo rivalizam com qualquer onda do Havaí.',
+      'pt-PT': 'Uma baía protegida na ponta noroeste de Maui que canaliza os swells do norte para um point longo e perfeitamente formado para a direita. Honolua Bay é conhecida pelas suas águas cristalinas, falésias dramáticas e capacidade de aguentar surf grande de inverno com notável consistência. Num swell sólido, as secções de tubo rivalizam com qualquer onda do Havai.',
+    },
   },
   {
     rank: 6,
@@ -113,7 +143,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'Oct–Mar',
-    description: 'A classic North Shore right-hander that breaks over a broad reef with long, workable walls ideal for powerful surfing. Laniakea has been photographed and filmed more than almost any other North Shore break, and its reliable shape made it a proving ground for power surfing in the 1970s and 1980s. Sea turtles are common in the water.',
+    description: {
+      en: 'A classic North Shore right-hander that breaks over a broad reef with long, workable walls ideal for powerful surfing. Laniakea has been photographed and filmed more than almost any other North Shore break, and its reliable shape made it a proving ground for power surfing in the 1970s and 1980s. Sea turtles are common in the water.',
+      es: 'Un clásico derecho de la North Shore que rompe sobre un amplio arrecife con paredes largas y manejables, ideales para el surf de potencia. Laniakea ha sido fotografiada y filmada más que casi cualquier otra ola de la North Shore, y su forma confiable la convirtió en campo de pruebas para el surf de potencia en las décadas de 1970 y 1980. Las tortugas marinas son habituales en el agua.',
+      fr: 'Un classique de la North Shore qui casse sur un récif large avec de longues parois maniables, idéales pour le surf de puissance. Laniakea a été photographié et filmé plus que presque n\'importe quel autre spot de la North Shore, et sa forme fiable en a fait un terrain d\'épreuve pour le surf de puissance dans les années 1970 et 1980. Les tortues marines sont fréquentes dans l\'eau.',
+      'pt-BR': 'Um clássico direito da North Shore que quebra sobre um recife largo com paredes longas e trabalháveis, ideais para o surfe de potência. Laniakea foi fotografada e filmada mais do que quase qualquer outro pico da North Shore, e sua forma confiável a tornou um campo de provas para o surfe de potência nas décadas de 1970 e 1980. Tartarugas marinhas são comuns na água.',
+      'pt-PT': 'Um clássico direito da North Shore que quebra sobre um recife largo com paredes longas e trabalháveis, ideais para o surf de potência. Laniakea foi fotografada e filmada mais do que quase qualquer outro pico da North Shore, e a sua forma fiável tornou-a um campo de provas para o surf de potência nas décadas de 1970 e 1980. As tartarugas marinhas são comuns na água.',
+    },
   },
   {
     rank: 7,
@@ -127,7 +163,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Nov–Feb',
     wslBadge: 'CT Stop',
-    description: 'Tucked at the eastern end of the North Shore, V-Land is a shifty, powerful right that rewards the surfers willing to navigate its tricky paddle-out. Less crowded than Pipeline or Sunset, it has produced some of the most progressive North Shore surfing in recent decades. Deep-pit barrels in the right conditions make this a must-surf destination.',
+    description: {
+      en: 'Tucked at the eastern end of the North Shore, V-Land is a shifty, powerful right that rewards the surfers willing to navigate its tricky paddle-out. Less crowded than Pipeline or Sunset, it has produced some of the most progressive North Shore surfing in recent decades. Deep-pit barrels in the right conditions make this a must-surf destination.',
+      es: 'Escondida en el extremo oriental de la North Shore, V-Land es un derecho cambiante y poderoso que recompensa a los surfistas dispuestos a sortear su complicada paloteada. Menos concurrida que Pipeline o Sunset, ha producido algunos de los surfeos más progresivos de la North Shore en las últimas décadas. Los tubos profundos en las condiciones adecuadas la convierten en un destino imprescindible.',
+      fr: 'Nichée à l\'extrémité est de la North Shore, V-Land est un droit changeant et puissant qui récompense les surfeurs prêts à affronter sa sortie au large délicate. Moins fréquentée que Pipeline ou Sunset, elle a produit certains des surfings les plus progressifs de la North Shore ces dernières décennies. Des tubes profonds dans les bonnes conditions en font une destination incontournable.',
+      'pt-BR': 'Escondida na extremidade leste da North Shore, V-Land é um direito instável e poderoso que recompensa os surfistas dispostos a enfrentar sua complicada remada. Menos lotada que Pipeline ou Sunset, produziu alguns dos surfe mais progressivos da North Shore nas últimas décadas. Tubos fundos nas condições certas fazem dela um destino obrigatório.',
+      'pt-PT': 'Situada na extremidade leste da North Shore, V-Land é um direito instável e poderoso que recompensa os surfistas dispostos a enfrentar a sua remada difícil. Menos lotada do que Pipeline ou Sunset, produziu alguns dos surfs mais progressivos da North Shore nas últimas décadas. Tubos fundos nas condições certas fazem dela um destino obrigatório.',
+    },
   },
   {
     rank: 8,
@@ -141,7 +183,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Advanced',
     bestSeason: 'Oct–Mar',
     wslBadge: 'CT Stop',
-    description: 'The town break and traditional opener of the North Shore Triple Crown. Haleiwa offers multiple peaks across a wide reef, handling everything from 3ft summer groundswells to 15ft winter pulses with equal grace. Its accessible channel and consistent shape have made it one of the most beloved all-round big-wave spots in Hawaii.',
+    description: {
+      en: 'The town break and traditional opener of the North Shore Triple Crown. Haleiwa offers multiple peaks across a wide reef, handling everything from 3ft summer groundswells to 15ft winter pulses with equal grace. Its accessible channel and consistent shape have made it one of the most beloved all-round big-wave spots in Hawaii.',
+      es: 'La ola del pueblo y el tradicional abridor de la Triple Corona de la North Shore. Haleiwa ofrece múltiples picos a lo largo de un amplio arrecife, gestionando desde swells de fondo de 3 pies en verano hasta pulsos invernales de 15 pies con igual gracia. Su canal accesible y su forma consistente la han convertido en uno de los spots de olas grandes más queridos de Hawái.',
+      fr: 'Le spot local et l\'ouverture traditionnelle de la Triple Couronne de la North Shore. Haleiwa offre plusieurs pics sur un récif large, gérant aussi bien les groundswells d\'été de 3 pieds que les pulsions hivernales de 15 pieds avec la même élégance. Son canal accessible et sa forme constante en ont fait l\'un des spots de grosses vagues les plus appréciés d\'Hawaï.',
+      'pt-BR': 'O pico local e o abre tradicional da Triple Crown da North Shore. Haleiwa oferece múltiplos picos ao longo de um recife largo, lidando com tudo, desde swells de fundo de 3 pés no verão até pulsos de 15 pés no inverno com igual elegância. Seu canal acessível e forma consistente fizeram dela um dos spots de ondas grandes mais amados do Havaí.',
+      'pt-PT': 'O pico local e o abre tradicional da Triple Crown da North Shore. Haleiwa oferece múltiplos picos ao longo de um recife largo, lidando com tudo, desde swells de fundo de 3 pés no verão até pulsos de 15 pés no inverno com igual elegância. O seu canal acessível e forma consistente fizeram dela um dos spots de ondas grandes mais amados do Havai.',
+    },
   },
 
   // ── North America ──────────────────────────────────────────────────────────────
@@ -157,7 +205,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Nov–Mar',
     wslBadge: 'Big Wave',
-    description: 'The most ferocious big-wave spot in North America, Mavericks breaks over a submerged rock shelf a half-mile off the coast of Half Moon Bay. Thirty-foot faces, cold 55°F water, and a three-wave hold-down reputation make it one of the most demanding challenges in big-wave surfing. Mark Foo\'s death here in 1994 brought Mavericks global attention.',
+    description: {
+      en: 'The most ferocious big-wave spot in North America, Mavericks breaks over a submerged rock shelf a half-mile off the coast of Half Moon Bay. Thirty-foot faces, cold 55°F water, and a three-wave hold-down reputation make it one of the most demanding challenges in big-wave surfing. Mark Foo\'s death here in 1994 brought Mavericks global attention.',
+      es: 'El spot de olas grandes más feroz de América del Norte, Mavericks rompe sobre una plataforma de roca sumergida a media milla de la costa de Half Moon Bay. Paredes de 30 pies, agua fría a 55°F y la reputación de dejarte bajo el agua tres olas lo convierten en uno de los desafíos más exigentes del surf de olas grandes. La muerte de Mark Foo aquí en 1994 le dio a Mavericks atención mundial.',
+      fr: 'Le spot de grosses vagues le plus féroce d\'Amérique du Nord, Mavericks se brise sur une dalle rocheuse immergée à un demi-mile de la côte de Half Moon Bay. Des faces de 30 pieds, une eau froide à 55°F et la réputation de tenir sous l\'eau pendant trois vagues en font l\'un des défis les plus exigeants du surf de grosses vagues. La mort de Mark Foo ici en 1994 a attiré l\'attention mondiale sur Mavericks.',
+      'pt-BR': 'O spot de ondas grandes mais feroz da América do Norte, Mavericks quebra sobre uma plataforma de rocha submersa a meia milha da costa de Half Moon Bay. Faces de 30 pés, água fria a 55°F e a reputação de segurar embaixo d\'água por três ondas fazem dele um dos desafios mais exigentes do surfe em ondas grandes. A morte de Mark Foo aqui em 1994 trouxe atenção mundial para Mavericks.',
+      'pt-PT': 'O spot de ondas grandes mais feroz da América do Norte, Mavericks quebra sobre uma plataforma de rocha submersa a meia milha da costa de Half Moon Bay. Faces de 30 pés, água fria a 55°F e a reputação de segurar debaixo de água por três ondas fazem dele um dos desafios mais exigentes do surf em ondas grandes. A morte de Mark Foo aqui em 1994 trouxe atenção mundial para Mavericks.',
+    },
   },
   {
     rank: 10,
@@ -171,7 +225,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Advanced',
     bestSeason: 'Sep–Nov',
     wslBadge: 'CT Stop',
-    description: 'Lowers at Trestles is California\'s most celebrated wave and a perennial CT venue, producing fast, punchy peaks over a sand-and-reef bottom inside a protected military base. The combination of consistent summer swells, warm water, and excellent shape has made it the proving ground for progressive surfing in the USA. No vehicles are allowed — you hike in past a river crossing.',
+    description: {
+      en: 'Lowers at Trestles is California\'s most celebrated wave and a perennial CT venue, producing fast, punchy peaks over a sand-and-reef bottom inside a protected military base. The combination of consistent summer swells, warm water, and excellent shape has made it the proving ground for progressive surfing in the USA. No vehicles are allowed — you hike in past a river crossing.',
+      es: 'Lowers en Trestles es la ola más celebrada de California y un escenario recurrente del CT, produciendo picos rápidos y potentes sobre un fondo de arena y arrecife dentro de una base militar protegida. La combinación de swells de verano consistentes, agua cálida y excelente forma la ha convertido en el campo de pruebas del surf progresivo en EE. UU. No se permiten vehículos — se accede a pie cruzando un río.',
+      fr: 'Lowers à Trestles est la vague la plus célébrée de Californie et un lieu pérenne du CT, produisant des pics rapides et percutants sur un fond de sable et de récif à l\'intérieur d\'une base militaire protégée. La combinaison de houles d\'été constantes, d\'eau chaude et d\'une excellente forme en a fait le terrain d\'épreuve du surf progressif aux États-Unis. Aucun véhicule n\'est autorisé — on y accède à pied en traversant une rivière.',
+      'pt-BR': 'Lowers em Trestles é a onda mais celebrada da Califórnia e um local perene do CT, produzindo picos rápidos e potentes sobre um fundo de areia e recife dentro de uma base militar protegida. A combinação de swells de verão consistentes, água quente e excelente forma fez dela o campo de provas do surfe progressivo nos EUA. Nenhum veículo é permitido — você entra a pé cruzando um rio.',
+      'pt-PT': 'Lowers em Trestles é a onda mais celebrada da Califórnia e um local perene do CT, produzindo picos rápidos e potentes sobre um fundo de areia e recife dentro de uma base militar protegida. A combinação de swells de verão consistentes, água quente e excelente forma fez dela o campo de provas do surf progressivo nos EUA. Nenhum veículo é permitido — acede-se a pé atravessando um rio.',
+    },
   },
   {
     rank: 11,
@@ -184,7 +244,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Nov–Mar',
-    description: 'Known as the "Queen of the Coast," Rincon is California\'s longest and most perfect point break, delivering classic right-hand walls from the Cobblestone all the way through the Rivermouth section. On a big NW swell you can ride 300 yards of flawless California wall. It set the template for what a perfect point break should be.',
+    description: {
+      en: 'Known as the "Queen of the Coast," Rincon is California\'s longest and most perfect point break, delivering classic right-hand walls from the Cobblestone all the way through the Rivermouth section. On a big NW swell you can ride 300 yards of flawless California wall. It set the template for what a perfect point break should be.',
+      es: 'Conocida como la "Reina de la Costa", Rincon es el point break más largo y perfecto de California, ofreciendo clásicas paredes hacia la derecha desde la sección Cobblestone hasta la sección Rivermouth. Con un gran swell del NW se pueden surfear 300 yardas de impecable pared californiana. Estableció el estándar de lo que debe ser un point break perfecto.',
+      fr: 'Connue sous le nom de "Reine de la Côte", Rincon est le point break le plus long et le plus parfait de Californie, offrant des murs classiques vers la droite depuis la section Cobblestone jusqu\'à la section Rivermouth. Sur une grande houle du NW, on peut surfer 300 yards d\'un mur californien impeccable. Elle a établi le modèle de ce que doit être un point break parfait.',
+      'pt-BR': 'Conhecida como a "Rainha da Costa", Rincon é o point break mais longo e perfeito da Califórnia, oferecendo clássicas paredes para a direita desde a seção Cobblestone até a seção Rivermouth. Em um grande swell de NW, você pode surfar 300 jardas de parede californiana impecável. Definiu o modelo do que deve ser um point break perfeito.',
+      'pt-PT': 'Conhecida como a "Rainha da Costa", Rincon é o point break mais longo e perfeito da Califórnia, oferecendo clássicas paredes para a direita desde a secção Cobblestone até à secção Rivermouth. Num grande swell de NW, pode-se surfar 300 jardas de parede californiana impecável. Definiu o modelo do que deve ser um point break perfeito.',
+    },
   },
   {
     rank: 12,
@@ -197,7 +263,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'Sep–Dec',
-    description: 'A powerful, hollow beach break at the base of Torrey Pines cliffs, Blacks is reachable only by a steep path or a long paddle — a filter that keeps the crowd manageable. The shallow sandbar produces thick, punching barrels on NW swells that rival anything on the California coast. The clothing-optional beach adds to its counterculture mystique.',
+    description: {
+      en: 'A powerful, hollow beach break at the base of Torrey Pines cliffs, Blacks is reachable only by a steep path or a long paddle — a filter that keeps the crowd manageable. The shallow sandbar produces thick, punching barrels on NW swells that rival anything on the California coast. The clothing-optional beach adds to its counterculture mystique.',
+      es: 'Una poderosa y hueca playa de rompiente a los pies de los acantilados de Torrey Pines, Blacks solo es accesible por un empinado sendero o un largo paloteo — un filtro que mantiene la multitud manejable. El banco de arena poco profundo produce tubos gruesos y contundentes con swells del NW que rivalizan con cualquier cosa en la costa californiana. La playa de ropa opcional añade a su mística contracultura.',
+      fr: 'Un beach break puissant et creux au pied des falaises de Torrey Pines, Blacks n\'est accessible que par un chemin escarpé ou une longue pagaie — un filtre qui maintient la foule gérable. Le banc de sable peu profond produit des tubes épais et percutants sur les houles NW qui rivalisent avec n\'importe quoi sur la côte californienne. La plage naturiste ajoute à sa mystique contre-culturelle.',
+      'pt-BR': 'Um beach break poderoso e oco ao pé das falésias de Torrey Pines, Blacks só é acessível por um caminho íngreme ou uma longa remada — um filtro que mantém a multidão controlável. O banco de areia raso produz tubos grossos e contundentes em swells de NW que rivalizam com qualquer coisa na costa californiana. A praia de nudismo opcional acrescenta à sua mística contracultural.',
+      'pt-PT': 'Um beach break poderoso e oco ao pé das falésias de Torrey Pines, Blacks só é acessível por um caminho íngreme ou uma longa remada — um filtro que mantém a multidão controlável. O banco de areia raso produz tubos grossos e contundentes em swells de NW que rivalizam com qualquer coisa na costa californiana. A praia de nudismo opcional acrescenta à sua mística contracultural.',
+    },
   },
   {
     rank: 13,
@@ -210,7 +282,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Intermediate',
     bestSeason: 'Sep–Nov',
-    description: 'Where modern surfing culture was born. Malibu\'s First Point is a gentle, long-walling right that catalyzed the Gidget era and gave the world longboarding as we know it. Hopelessly crowded today but still produces some of the most photogenic, graceful rides on the California coast when a solid south or NW swell lines it up properly.',
+    description: {
+      en: 'Where modern surfing culture was born. Malibu\'s First Point is a gentle, long-walling right that catalyzed the Gidget era and gave the world longboarding as we know it. Hopelessly crowded today but still produces some of the most photogenic, graceful rides on the California coast when a solid south or NW swell lines it up properly.',
+      es: 'Donde nació la cultura del surf moderno. El First Point de Malibu es un suave derecho de paredes largas que catalizó la era Gidget y le dio al mundo el longboard tal como lo conocemos. Hoy día está terriblemente concurrido, pero sigue produciendo algunos de los paseos más fotogénicos y elegantes de la costa californiana cuando un sólido swell del sur o del NW lo alinea correctamente.',
+      fr: 'Là où la culture du surf moderne est née. Le First Point de Malibu est un droit doux à longues parois qui a catalysé l\'ère Gidget et donné au monde le longboard tel que nous le connaissons. Désespérément fréquenté aujourd\'hui, il produit encore certaines des promenades les plus photogéniques et gracieuses de la côte californienne lorsqu\'une solide houle du sud ou du NW le met parfaitement en ligne.',
+      'pt-BR': 'Onde a cultura do surfe moderno nasceu. O First Point de Malibu é um direito suave de paredes longas que catalisou a era Gidget e deu ao mundo o longboard como o conhecemos. Desesperadamente lotado hoje, mas ainda produz algumas das remadas mais fotogênicas e elegantes da costa californiana quando um sólido swell do sul ou NW o alinha corretamente.',
+      'pt-PT': 'Onde a cultura do surf moderno nasceu. O First Point de Malibu é um direito suave de paredes longas que catalisou a era Gidget e deu ao mundo o longboard tal como o conhecemos. Desesperadamente lotado hoje, mas ainda produz algumas das remadas mais fotogénicas e elegantes da costa californiana quando um sólido swell do sul ou NW o alinha corretamente.',
+    },
   },
   {
     rank: 14,
@@ -223,7 +301,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'Oct–Mar',
-    description: 'The soul of Northern California surfing, Steamer Lane is a network of reef breaks beneath the Santa Cruz cliffs that fires on NW winter swells. The Slot, Middle Peak, and Indicators offer distinct challenges — from grinding barrels to open-face walls — over a sharp limestone reef. Cold, powerful, and unforgiving, it is the West Coast equivalent of Ireland\'s reef breaks.',
+    description: {
+      en: 'The soul of Northern California surfing, Steamer Lane is a network of reef breaks beneath the Santa Cruz cliffs that fires on NW winter swells. The Slot, Middle Peak, and Indicators offer distinct challenges — from grinding barrels to open-face walls — over a sharp limestone reef. Cold, powerful, and unforgiving, it is the West Coast equivalent of Ireland\'s reef breaks.',
+      es: 'El alma del surf del norte de California, Steamer Lane es una red de rompientes de arrecife bajo los acantilados de Santa Cruz que se activa con los swells invernales del NW. El Slot, Middle Peak e Indicators ofrecen desafíos distintos — desde tubos de molienda hasta paredes de cara abierta — sobre un afilado arrecife de caliza. Frío, poderoso e implacable, es el equivalente de la Costa Oeste a los arrecifes de Irlanda.',
+      fr: 'L\'âme du surf du nord de la Californie, Steamer Lane est un réseau de pics de récif sous les falaises de Santa Cruz qui s\'enflamme sur les houles hivernales du NW. Le Slot, Middle Peak et Indicators offrent des défis distincts — des tubes broyeurs aux murs à face ouverte — sur un récif de calcaire acéré. Froid, puissant et impitoyable, c\'est l\'équivalent côte ouest des récifs irlandais.',
+      'pt-BR': 'A alma do surfe do norte da Califórnia, Steamer Lane é uma rede de recifes sob as falésias de Santa Cruz que funciona nos swells de inverno do NW. O Slot, Middle Peak e Indicators oferecem desafios distintos — de tubos moedores a paredes abertas — sobre um recife afiado de calcário. Frio, poderoso e implacável, é o equivalente da Costa Oeste aos recifes da Irlanda.',
+      'pt-PT': 'A alma do surf do norte da Califórnia, Steamer Lane é uma rede de recifes sob as falésias de Santa Cruz que funciona nos swells de inverno do NW. O Slot, Middle Peak e Indicators oferecem desafios distintos — de tubos esmagadores a paredes abertas — sobre um recife afiado de calcário. Frio, poderoso e implacável, é o equivalente da Costa Oeste aos recifes irlandeses.',
+    },
   },
   {
     rank: 15,
@@ -237,7 +321,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Intermediate',
     bestSeason: 'Aug–Oct',
     wslBadge: 'CT Stop',
-    description: 'Surf City USA is built around this pier break, which hosts the US Open of Surfing annually. The sandbars on both sides of the pier produce punchy, reliable peaks ideal for progressive surfing. Huntington\'s warm water, consistent summer south swells, and beach-city energy have made it the epicentre of mainstream American surf culture for 60 years.',
+    description: {
+      en: 'Surf City USA is built around this pier break, which hosts the US Open of Surfing annually. The sandbars on both sides of the pier produce punchy, reliable peaks ideal for progressive surfing. Huntington\'s warm water, consistent summer south swells, and beach-city energy have made it the epicentre of mainstream American surf culture for 60 years.',
+      es: 'Surf City USA se construyó alrededor de este rompeolas junto al muelle, que acoge anualmente el US Open of Surfing. Los bancos de arena a ambos lados del muelle producen picos contundentes y confiables ideales para el surf progresivo. El agua cálida de Huntington, los consistentes swells del sur en verano y la energía de la ciudad playera la han convertido en el epicentro de la cultura del surf mainstream estadounidense durante 60 años.',
+      fr: 'Surf City USA est bâtie autour de ce pier break, qui accueille l\'US Open of Surfing chaque année. Les bancs de sable des deux côtés de la jetée produisent des pics percutants et fiables, idéaux pour le surf progressif. L\'eau chaude de Huntington, les houles sud d\'été constantes et l\'énergie de la ville balnéaire en ont fait l\'épicentre de la culture surf grand public américaine depuis 60 ans.',
+      'pt-BR': 'Surf City USA foi construída em torno deste pier break, que sedia o US Open of Surfing anualmente. Os bancos de areia dos dois lados do píer produzem picos contundentes e confiáveis, ideais para o surfe progressivo. A água quente de Huntington, os consistentes swells do sul no verão e a energia da cidade praiana fizeram dela o epicentro da cultura do surfe americano mainstream por 60 anos.',
+      'pt-PT': 'Surf City USA foi construída em torno deste pier break, que acolhe o US Open of Surfing anualmente. Os bancos de areia dos dois lados do píer produzem picos contundentes e fiáveis, ideais para o surf progressivo. A água quente de Huntington, os consistentes swells do sul no verão e a energia da cidade praiana fizeram dela o epicentro da cultura do surf americano mainstream durante 60 anos.',
+    },
   },
   {
     rank: 16,
@@ -250,7 +340,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Intermediate',
     bestSeason: 'Oct–Mar',
-    description: 'The surf capital of Canada, Tofino sits on the wild west coast of Vancouver Island inside Pacific Rim National Park. Long Beach and Chesterman Beach face the open Pacific and catch powerful NW groundswells year-round. Surfing here means grey skies, old-growth forest, and bears on the beach — one of the world\'s most dramatic surf environments.',
+    description: {
+      en: 'The surf capital of Canada, Tofino sits on the wild west coast of Vancouver Island inside Pacific Rim National Park. Long Beach and Chesterman Beach face the open Pacific and catch powerful NW groundswells year-round. Surfing here means grey skies, old-growth forest, and bears on the beach — one of the world\'s most dramatic surf environments.',
+      es: 'La capital del surf de Canadá, Tofino se asienta en la salvaje costa oeste de la Isla de Vancouver dentro del Parque Nacional Pacific Rim. Long Beach y Chesterman Beach dan al Pacífico abierto y capturan poderosos swells de fondo del NW durante todo el año. Surfear aquí significa cielos grises, bosque primigenio y osos en la playa — uno de los entornos de surf más dramáticos del mundo.',
+      fr: 'La capitale du surf du Canada, Tofino est située sur la côte ouest sauvage de l\'île de Vancouver, à l\'intérieur du parc national de la Péninsule-du-Pacifique. Long Beach et Chesterman Beach font face au Pacifique ouvert et captent de puissants groundswells du NW toute l\'année. Surfer ici signifie ciels gris, forêt ancienne et ours sur la plage — l\'un des environnements de surf les plus spectaculaires du monde.',
+      'pt-BR': 'A capital do surfe do Canadá, Tofino fica na selvagem costa oeste da Ilha de Vancouver, dentro do Parque Nacional Pacific Rim. Long Beach e Chesterman Beach dão para o Pacífico aberto e capturam poderosos swells de fundo do NW durante todo o ano. Surfar aqui significa céus cinzentos, floresta antiga e ursos na praia — um dos ambientes de surfe mais dramáticos do mundo.',
+      'pt-PT': 'A capital do surf do Canadá, Tofino fica na selvagem costa oeste da Ilha de Vancouver, dentro do Parque Nacional Pacific Rim. Long Beach e Chesterman Beach dão para o Pacífico aberto e capturam poderosos swells de fundo do NW durante todo o ano. Surfar aqui significa céus cinzentos, floresta antiga e ursos na praia — um dos ambientes de surf mais dramáticos do mundo.',
+    },
   },
   {
     rank: 17,
@@ -263,7 +359,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Intermediate',
     bestSeason: 'Sep–Nov',
-    description: 'The graveyard of the Atlantic is also one of the East Coast\'s best surf spots. The collision of the Gulf Stream and the Labrador Current creates constantly shifting sandbars that produce quality beach break waves. Hurricane season delivers long-period groundswells that travel the length of the Atlantic, and the National Seashore protects miles of unspoiled beach.',
+    description: {
+      en: 'The graveyard of the Atlantic is also one of the East Coast\'s best surf spots. The collision of the Gulf Stream and the Labrador Current creates constantly shifting sandbars that produce quality beach break waves. Hurricane season delivers long-period groundswells that travel the length of the Atlantic, and the National Seashore protects miles of unspoiled beach.',
+      es: 'El cementerio del Atlántico es también uno de los mejores spots de surf de la Costa Este. La colisión de la Corriente del Golfo y la Corriente del Labrador crea bancos de arena en constante cambio que producen olas de beach break de calidad. La temporada de huracanes aporta swells de fondo de largo período que recorren todo el Atlántico, y la costa nacional protege kilómetros de playa virgen.',
+      fr: 'Le cimetière de l\'Atlantique est aussi l\'un des meilleurs spots de surf de la côte Est. La collision du Gulf Stream et du courant du Labrador crée des bancs de sable en perpétuel mouvement qui produisent des vagues de beach break de qualité. La saison des ouragans apporte des groundswells de longue période qui parcourent tout l\'Atlantique, et le Seashore national protège des kilomètres de plage préservée.',
+      'pt-BR': 'O cemitério do Atlântico é também um dos melhores spots de surfe da Costa Leste. A colisão da Corrente do Golfo com a Corrente do Labrador cria bancos de areia em constante mudança que produzem ondas de beach break de qualidade. A temporada de furacões traz swells de fundo de longo período que percorrem todo o Atlântico, e o National Seashore protege quilômetros de praia intocada.',
+      'pt-PT': 'O cemitério do Atlântico é também um dos melhores spots de surf da Costa Leste. A colisão da Corrente do Golfo com a Corrente do Labrador cria bancos de areia em constante mudança que produzem ondas de beach break de qualidade. A temporada de furacões traz swells de fundo de longo período que percorrem todo o Atlântico, e o National Seashore protege quilómetros de praia intocada.',
+    },
   },
   {
     rank: 18,
@@ -276,7 +378,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Intermediate',
     bestSeason: 'Sep–Feb',
-    description: 'The best surf break on Florida\'s Space Coast and the wave that produced Kelly Slater and CJ Hobgood. The First Peak at Sebastian Inlet draws energy from a tidal jetty, creating a consistent, punchy right-hander that has produced more professional surfers per square mile than almost any other spot in the USA. Shark sightings are part of the deal.',
+    description: {
+      en: 'The best surf break on Florida\'s Space Coast and the wave that produced Kelly Slater and CJ Hobgood. The First Peak at Sebastian Inlet draws energy from a tidal jetty, creating a consistent, punchy right-hander that has produced more professional surfers per square mile than almost any other spot in the USA. Shark sightings are part of the deal.',
+      es: 'El mejor spot de surf de la Costa Espacial de Florida y la ola que produjo a Kelly Slater y CJ Hobgood. El First Peak en Sebastian Inlet extrae energía de un espigón de marea, creando un constante y potente derecho que ha producido más surfistas profesionales por milla cuadrada que casi cualquier otro spot en EE. UU. Los avistamientos de tiburones son parte del trato.',
+      fr: 'Le meilleur spot de surf de la Côte spatiale de Floride et la vague qui a donné naissance à Kelly Slater et CJ Hobgood. Le First Peak à Sebastian Inlet tire son énergie d\'une jetée de marée, créant un droit constant et percutant qui a produit plus de surfeurs professionnels par mile carré que presque n\'importe quel autre spot aux États-Unis. Les observations de requins font partie de l\'expérience.',
+      'pt-BR': 'O melhor spot de surfe da Costa Espacial da Flórida e a onda que revelou Kelly Slater e CJ Hobgood. O First Peak em Sebastian Inlet extrai energia de uma molhe de maré, criando um direito consistente e potente que produziu mais surfistas profissionais por milha quadrada do que quase qualquer outro spot nos EUA. Avistamentos de tubarões fazem parte da experiência.',
+      'pt-PT': 'O melhor spot de surf da Costa Espacial da Flórida e a onda que revelou Kelly Slater e CJ Hobgood. O First Peak em Sebastian Inlet extrai energia de um molhe de maré, criando um direito consistente e potente que produziu mais surfistas profissionais por milha quadrada do que quase qualquer outro spot nos EUA. Avistamentos de tubarões fazem parte da experiência.',
+    },
   },
 
   // ── Latin America ──────────────────────────────────────────────────────────────
@@ -291,7 +399,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Expert',
     bestSeason: 'May–Oct',
-    description: 'The Mexican Pipeline is one of the most powerful beach breaks on the planet, driven by long-period South Pacific groundswells that detonate on a steep sand bottom with little warning. At 8–12ft it produces some of the most violent barrels in the world, and the shore break alone has been responsible for serious injury. The town of Puerto Escondido has built its entire identity around this wave.',
+    description: {
+      en: 'The Mexican Pipeline is one of the most powerful beach breaks on the planet, driven by long-period South Pacific groundswells that detonate on a steep sand bottom with little warning. At 8–12ft it produces some of the most violent barrels in the world, and the shore break alone has been responsible for serious injury. The town of Puerto Escondido has built its entire identity around this wave.',
+      es: 'El Pipeline Mexicano es uno de los beach breaks más poderosos del planeta, impulsado por swells de fondo del Pacífico Sur de largo período que detonan sobre un fondo de arena empinado con escaso aviso. A 8–12 pies produce algunos de los tubos más violentos del mundo, y el shore break por sí solo ha sido responsable de lesiones graves. La ciudad de Puerto Escondido ha construido toda su identidad en torno a esta ola.',
+      fr: 'Le Pipeline mexicain est l\'un des beach breaks les plus puissants de la planète, alimenté par des groundswells de longue période du Pacifique Sud qui détonent sur un fond de sable raide sans prévenir. À 8–12 pieds, il produit certains des tubes les plus violents du monde, et le shore break à lui seul a causé de graves blessures. La ville de Puerto Escondido a construit toute son identité autour de cette vague.',
+      'pt-BR': 'O Pipeline Mexicano é um dos beach breaks mais poderosos do planeta, impulsionado por swells de fundo do Pacífico Sul de longo período que detonam sobre um fundo de areia íngreme sem aviso. A 8–12 pés produz alguns dos tubos mais violentos do mundo, e o shore break por si só já foi responsável por lesões graves. A cidade de Puerto Escondido construiu toda a sua identidade em torno desta onda.',
+      'pt-PT': 'O Pipeline Mexicano é um dos beach breaks mais poderosos do planeta, impulsionado por swells de fundo do Pacífico Sul de longo período que detonam sobre um fundo de areia íngreme sem aviso. A 8–12 pés produz alguns dos tubos mais violentos do mundo, e o shore break por si só já foi responsável por lesões graves. A cidade de Puerto Escondido construiu toda a sua identidade em torno desta onda.',
+    },
   },
   {
     rank: 20,
@@ -305,7 +419,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Nov–Mar',
     wslBadge: 'Big Wave',
-    description: 'Forty-five miles west of Ensenada in the Pacific, Todos Santos Island hosts Killers — a massive reef break capable of producing 50ft+ faces when large NW swells march south. It was the site of the Todos Santos Challenge big-wave contest and launched the careers of Mexican big-wave surfers. Reaching it requires a boat ride through cold, open ocean.',
+    description: {
+      en: 'Forty-five miles west of Ensenada in the Pacific, Todos Santos Island hosts Killers — a massive reef break capable of producing 50ft+ faces when large NW swells march south. It was the site of the Todos Santos Challenge big-wave contest and launched the careers of Mexican big-wave surfers. Reaching it requires a boat ride through cold, open ocean.',
+      es: 'A 45 millas al oeste de Ensenada en el Pacífico, la Isla Todos Santos alberga Killers — una masiva rompiente de arrecife capaz de producir paredes de más de 50 pies cuando grandes swells del NW avanzan hacia el sur. Fue el escenario del concurso de olas grandes Todos Santos Challenge y lanzó las carreras de los surfistas mexicanos de olas grandes. Llegar requiere un viaje en bote por un océano frío y abierto.',
+      fr: 'À 45 miles à l\'ouest d\'Ensenada dans le Pacifique, l\'île Todos Santos abrite Killers — un pic de récif massif capable de produire des faces de plus de 50 pieds lorsque de grandes houles du NW descendent vers le sud. C\'était le site du concours de grosses vagues Todos Santos Challenge et a lancé les carrières de surfeurs mexicains de grosses vagues. Y accéder nécessite une traversée en bateau sur un océan froid et ouvert.',
+      'pt-BR': 'A 45 milhas a oeste de Ensenada no Pacífico, a Ilha Todos Santos abriga Killers — uma enorme rompiente de recife capaz de produzir faces de mais de 50 pés quando grandes swells de NW avançam para o sul. Foi o local do concurso de ondas grandes Todos Santos Challenge e lançou a carreira de surfistas mexicanos de ondas grandes. Chegar requer uma viagem de barco pelo oceano frio e aberto.',
+      'pt-PT': 'A 45 milhas a oeste de Ensenada no Pacífico, a Ilha Todos Santos alberga Killers — uma enorme rompiente de recife capaz de produzir faces de mais de 50 pés quando grandes swells de NW avançam para sul. Foi o local do concurso de ondas grandes Todos Santos Challenge e lançou a carreira de surfistas mexicanos de ondas grandes. Chegar requer uma viagem de barco pelo oceano frio e aberto.',
+    },
   },
   {
     rank: 21,
@@ -318,7 +438,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'May–Sep',
-    description: 'A picturesque point on Mexico\'s Riviera Nayarit that breaks over a shallow reef on summer South Pacific swells. The wave at La Lancha and The Cove offers long, workable walls for powerful surfing in warm, clear water with backdrop views of the Sierra Madre. The upscale resort town has gentrified the area, but the surf remains world-class.',
+    description: {
+      en: 'A picturesque point on Mexico\'s Riviera Nayarit that breaks over a shallow reef on summer South Pacific swells. The wave at La Lancha and The Cove offers long, workable walls for powerful surfing in warm, clear water with backdrop views of the Sierra Madre. The upscale resort town has gentrified the area, but the surf remains world-class.',
+      es: 'Un pintoresco punto en la Riviera Nayarit de México que rompe sobre un arrecife poco profundo con los swells del Pacífico Sur en verano. La ola en La Lancha y The Cove ofrece largas paredes manejables para el surf de potencia en agua cálida y clara con vistas de la Sierra Madre de fondo. El exclusivo pueblo turístico ha gentrificado la zona, pero el surf sigue siendo de clase mundial.',
+      fr: 'Un point pittoresque sur la Riviera Nayarit du Mexique qui se brise sur un récif peu profond lors des houles estivales du Pacifique Sud. La vague à La Lancha et The Cove offre de longues parois maniables pour un surf de puissance dans une eau chaude et claire avec en toile de fond les vues de la Sierra Madre. La ville de villégiature haut de gamme a gentrifiée la zone, mais le surf reste de classe mondiale.',
+      'pt-BR': 'Um ponto pitoresco na Riviera Nayarit do México que quebra sobre um recife raso nos swells do Pacífico Sul no verão. A onda em La Lancha e The Cove oferece paredes longas e trabalháveis para o surfe de potência em água quente e clara com vista para a Sierra Madre ao fundo. A exclusiva cidade turística gentrificou a área, mas o surfe continua sendo de classe mundial.',
+      'pt-PT': 'Um ponto pitoresco na Riviera Nayarit do México que quebra sobre um recife raso nos swells do Pacífico Sul no verão. A onda em La Lancha e The Cove oferece paredes longas e trabalháveis para o surf de potência em água quente e clara com vistas para a Sierra Madre ao fundo. A exclusiva cidade turística gentrificou a área, mas o surf continua sendo de classe mundial.',
+    },
   },
   {
     rank: 22,
@@ -331,7 +457,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Expert',
     bestSeason: 'Jun–Sep',
-    description: 'An isolated, brutal beach break on Mexico\'s Pacific coast that fires on summer SW swells directed from storms in the southern hemisphere. Pascuales is relatively unknown outside of Mexico but produces some of the most powerful, barreling beach break waves in the Americas — arriving without warning and closing out with immense force over a shallow sand bottom.',
+    description: {
+      en: 'An isolated, brutal beach break on Mexico\'s Pacific coast that fires on summer SW swells directed from storms in the southern hemisphere. Pascuales is relatively unknown outside of Mexico but produces some of the most powerful, barreling beach break waves in the Americas — arriving without warning and closing out with immense force over a shallow sand bottom.',
+      es: 'Un brutal beach break aislado en la costa del Pacífico de México que se activa con swells del SO en verano provenientes de tormentas en el hemisferio sur. Pascuales es relativamente desconocido fuera de México, pero produce algunas de las olas de beach break más poderosas y tubulares de América, llegando sin previo aviso y cerrando con inmensa fuerza sobre un fondo de arena poco profundo.',
+      fr: 'Un beach break isolé et brutal sur la côte Pacifique du Mexique qui s\'enflamme sur les houles SO d\'été provenant de tempêtes dans l\'hémisphère sud. Pascuales est relativement méconnu en dehors du Mexique, mais produit certaines des vagues de beach break les plus puissantes et tubulaires des Amériques — arrivant sans prévenir et fermant avec une immense force sur un fond de sable peu profond.',
+      'pt-BR': 'Um beach break isolado e brutal na costa do Pacífico mexicano que funciona com swells de SO no verão provenientes de tempestades no hemisfério sul. Pascuales é relativamente desconhecido fora do México, mas produz algumas das ondas de beach break mais poderosas e tubulares das Américas — chegando sem aviso e fechando com imensa força sobre um fundo de areia raso.',
+      'pt-PT': 'Um beach break isolado e brutal na costa do Pacífico mexicano que funciona com swells de SO no verão provenientes de tempestades no hemisfério sul. Pascuales é relativamente desconhecido fora do México, mas produz algumas das ondas de beach break mais poderosas e tubulares das Américas — chegando sem aviso e fechando com imensa força sobre um fundo de areia raso.',
+    },
   },
   {
     rank: 23,
@@ -344,7 +476,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Advanced',
     bestSeason: 'May–Nov',
-    description: 'A remote beach break inside Santa Rosa National Park, accessible only by 4WD track or boat. Witch\'s Rock delivers powerful, hollow lefts and rights on NW and SW swells over a sand bottom backed by volcanic rock formations. The isolation keeps the crowd small, the wildlife abundant, and the surf experience genuinely raw. Howler monkeys are your alarm clock.',
+    description: {
+      en: 'A remote beach break inside Santa Rosa National Park, accessible only by 4WD track or boat. Witch\'s Rock delivers powerful, hollow lefts and rights on NW and SW swells over a sand bottom backed by volcanic rock formations. The isolation keeps the crowd small, the wildlife abundant, and the surf experience genuinely raw. Howler monkeys are your alarm clock.',
+      es: 'Un beach break remoto dentro del Parque Nacional Santa Rosa, accesible únicamente por pista 4x4 o en bote. Witch\'s Rock ofrece potentes izquierdas y derechas huecas en swells del NW y SW sobre un fondo de arena respaldado por formaciones de roca volcánica. El aislamiento mantiene la multitud pequeña, la fauna abundante y la experiencia de surf genuinamente cruda. Los monos aulladores son tu despertador.',
+      fr: 'Un beach break isolé à l\'intérieur du parc national de Santa Rosa, accessible uniquement par piste 4x4 ou en bateau. Witch\'s Rock offre des gauches et droites creuses et puissantes sur les houles NW et SW sur un fond de sable soutenu par des formations de roche volcanique. L\'isolement maintient la foule réduite, la faune abondante et l\'expérience de surf authentiquement brute. Les singes hurleurs sont votre réveil.',
+      'pt-BR': 'Um beach break remoto dentro do Parque Nacional Santa Rosa, acessível apenas por trilha 4x4 ou barco. Witch\'s Rock oferece esquerdas e direitas potentes e ocas em swells de NW e SO sobre um fundo de areia apoiado por formações de rocha vulcânica. O isolamento mantém a multidão pequena, a vida selvagem abundante e a experiência de surfe genuinamente crua. Macacos bugios são o seu despertador.',
+      'pt-PT': 'Um beach break remoto dentro do Parque Nacional Santa Rosa, acessível apenas por pista 4x4 ou barco. Witch\'s Rock oferece esquerdas e direitas potentes e ocas em swells de NW e SO sobre um fundo de areia apoiado por formações de rocha vulcânica. O isolamento mantém a multidão pequena, a fauna abundante e a experiência de surf genuinamente crua. Os macacos uivadores são o seu despertador.',
+    },
   },
   {
     rank: 24,
@@ -357,7 +495,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'Dec–Mar',
-    description: 'A heavy Caribbean reef break that produces thick, shallow-water barrels over a sharp coral shelf. Salsa Brava is the most powerful wave on the Caribbean side of Central America, driven by North Atlantic swells that funnel through the Lesser Antilles. The shallow reef and the violence of the barrel make it a place where you earn your tube rides.',
+    description: {
+      en: 'A heavy Caribbean reef break that produces thick, shallow-water barrels over a sharp coral shelf. Salsa Brava is the most powerful wave on the Caribbean side of Central America, driven by North Atlantic swells that funnel through the Lesser Antilles. The shallow reef and the violence of the barrel make it a place where you earn your tube rides.',
+      es: 'Una pesada rompiente de arrecife caribeña que produce tubos gruesos en aguas poco profundas sobre una afilada plataforma de coral. Salsa Brava es la ola más poderosa del lado caribeño de Centroamérica, impulsada por swells del Atlántico Norte que se canalizan a través de las Antillas Menores. El arrecife poco profundo y la violencia del tubo hacen de este un lugar donde te ganas tus tubazos.',
+      fr: 'Un heavy reef break caraïbe qui produit des tubes épais en eau peu profonde sur une dalle de corail acérée. Salsa Brava est la vague la plus puissante du côté caribéen de l\'Amérique centrale, alimentée par des houles nord-atlantiques qui s\'engouffrent à travers les Petites Antilles. Le récif peu profond et la violence du tube en font un endroit où l\'on mérite ses tubes.',
+      'pt-BR': 'Uma pesada rompiente de recife caribenha que produz tubos grossos em águas rasas sobre uma plataforma de coral afiada. Salsa Brava é a onda mais poderosa do lado caribenho da América Central, impulsionada por swells do Atlântico Norte que se canalizam pelas Pequenas Antilhas. O recife raso e a violência do tubo fazem deste um lugar onde você conquista seus tubos.',
+      'pt-PT': 'Uma pesada rompiente de recife caribenha que produz tubos grossos em águas rasas sobre uma plataforma de coral afiada. Salsa Brava é a onda mais poderosa do lado caribenho da América Central, impulsionada por swells do Atlântico Norte que se canalizam pelas Pequenas Antilhas. O recife raso e a violência do tubo fazem deste um lugar onde se conquistam os tubos.',
+    },
   },
   {
     rank: 25,
@@ -370,7 +514,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Intermediate',
     bestSeason: 'Nov–Apr',
-    description: 'El Salvador\'s most visited surf village clusters around a black-sand beach and volcanic rock point that catches almost every Pacific swell. El Tunco is famous for its consistent surf, warm water year-round, and the lively beach-town scene that has made it a hub for the Central American surf community. Great for intermediate surfers with beginner-friendly whitewater on smaller days.',
+    description: {
+      en: 'El Salvador\'s most visited surf village clusters around a black-sand beach and volcanic rock point that catches almost every Pacific swell. El Tunco is famous for its consistent surf, warm water year-round, and the lively beach-town scene that has made it a hub for the Central American surf community. Great for intermediate surfers with beginner-friendly whitewater on smaller days.',
+      es: 'El pueblo surfero más visitado de El Salvador se agrupa en torno a una playa de arena negra y un punto de roca volcánica que capta casi cada swell del Pacífico. El Tunco es famoso por su surf consistente, agua cálida durante todo el año y el animado ambiente de pueblo playero que lo ha convertido en el epicentro de la comunidad surf centroamericana. Ideal para surfistas intermedios con espuma accesible para principiantes en días de menor swell.',
+      fr: 'Le village de surf le plus visité du Salvador se regroupe autour d\'une plage de sable noir et d\'un point de roche volcanique qui capte presque chaque houle du Pacifique. El Tunco est célèbre pour son surf constant, son eau chaude toute l\'année et l\'ambiance animée du village balnéaire qui en a fait un pôle de la communauté surf d\'Amérique centrale. Idéal pour les surfeurs intermédiaires avec des whitewater accessibles aux débutants les jours de petites vagues.',
+      'pt-BR': 'O vilarejo de surf mais visitado de El Salvador se agrega em torno de uma praia de areia preta e um ponto de rocha vulcânica que capta quase cada swell do Pacífico. El Tunco é famoso por seu surf consistente, água quente durante todo o ano e o animado cenário de cidade praiana que o tornou um hub da comunidade de surfe centro-americana. Ótimo para surfistas intermediários com espuma acessível para iniciantes em dias menores.',
+      'pt-PT': 'A aldeia de surf mais visitada de El Salvador agrupa-se em torno de uma praia de areia preta e um ponto de rocha vulcânica que capta quase cada swell do Pacífico. El Tunco é famoso pelo seu surf consistente, água quente durante todo o ano e o animado ambiente de cidade praiana que o tornou um polo da comunidade surf da América Central. Ótimo para surfistas intermédios com espuma acessível a principiantes em dias menores.',
+    },
   },
   {
     rank: 26,
@@ -383,7 +533,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Nov–Apr',
-    description: 'A long, fast right-hand point that has driven El Salvador\'s rise as a surf destination. Punta Roca wraps swell around a rocky headland to produce walls that run 200–300m, rewarding surfers who can read the line-up and surf at speed. The wave has hosted international competitions and represents the best of what El Salvador\'s Pacific coast can offer.',
+    description: {
+      en: 'A long, fast right-hand point that has driven El Salvador\'s rise as a surf destination. Punta Roca wraps swell around a rocky headland to produce walls that run 200–300m, rewarding surfers who can read the line-up and surf at speed. The wave has hosted international competitions and represents the best of what El Salvador\'s Pacific coast can offer.',
+      es: 'Un largo y rápido point hacia la derecha que ha impulsado el ascenso de El Salvador como destino de surf. Punta Roca envuelve el swell alrededor de un promontorio rocoso para producir paredes que corren 200–300m, recompensando a los surfistas que saben leer el line-up y surfear a velocidad. La ola ha albergado competencias internacionales y representa lo mejor que la costa Pacífica de El Salvador puede ofrecer.',
+      fr: 'Un point droit long et rapide qui a propulsé El Salvador comme destination de surf. Punta Roca enroule la houle autour d\'un promontoire rocheux pour produire des murs qui courent 200–300m, récompensant les surfeurs capables de lire le line-up et de surfer à vitesse. La vague a accueilli des compétitions internationales et représente ce que la côte Pacifique d\'El Salvador offre de mieux.',
+      'pt-BR': 'Um point direito longo e rápido que impulsionou a ascensão de El Salvador como destino de surfe. Punta Roca envolve o swell em torno de um promontório rochoso para produzir paredes que correm 200–300m, recompensando surfistas que sabem ler o line-up e surfar em velocidade. A onda sediou competições internacionais e representa o melhor que a costa do Pacífico de El Salvador pode oferecer.',
+      'pt-PT': 'Um point direito longo e rápido que impulsionou a ascensão de El Salvador como destino de surf. Punta Roca envolve o swell em torno de um promontório rochoso para produzir paredes que correm 200–300m, recompensando surfistas que sabem ler o line-up e surfar em velocidade. A onda acolheu competições internacionais e representa o melhor que a costa do Pacífico de El Salvador pode oferecer.',
+    },
   },
   {
     rank: 27,
@@ -396,7 +552,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Apr–Oct',
-    description: 'The longest rideable left-hand wave in the world, Chicama wraps around a peninsula in northern Peru for up to four kilometres on the right swell. A single ride can last four to six minutes across the Malabrigo, Punto, Keys, and El Hombre sections. Cold Humboldt Current water (around 17°C) keeps crowds thin and the wave virtually perfect on winter groundswells.',
+    description: {
+      en: 'The longest rideable left-hand wave in the world, Chicama wraps around a peninsula in northern Peru for up to four kilometres on the right swell. A single ride can last four to six minutes across the Malabrigo, Punto, Keys, and El Hombre sections. Cold Humboldt Current water (around 17°C) keeps crowds thin and the wave virtually perfect on winter groundswells.',
+      es: 'La ola hacia la izquierda más larga del mundo, Chicama rodea una península en el norte de Perú hasta cuatro kilómetros con el swell adecuado. Un solo ride puede durar de cuatro a seis minutos a través de las secciones Malabrigo, Punto, Keys y El Hombre. Las frías aguas de la Corriente de Humboldt (alrededor de 17°C) mantienen las multitudes escasas y la ola prácticamente perfecta en los swells de fondo invernales.',
+      fr: 'La vague gauche la plus longue au monde, Chicama contourne une péninsule dans le nord du Pérou sur jusqu\'à quatre kilomètres avec la bonne houle. Une seule ride peut durer quatre à six minutes à travers les sections Malabrigo, Punto, Keys et El Hombre. Les eaux froides du courant de Humboldt (environ 17°C) maintiennent les foules légères et la vague pratiquement parfaite sur les groundswells hivernaux.',
+      'pt-BR': 'A onda esquerda mais longa do mundo, Chicama contorna uma península no norte do Peru por até quatro quilômetros no swell certo. Uma única remada pode durar de quatro a seis minutos pelas seções Malabrigo, Punto, Keys e El Hombre. A água fria da Corrente de Humboldt (em torno de 17°C) mantém as multidões escassas e a onda praticamente perfeita nos swells de fundo do inverno.',
+      'pt-PT': 'A onda esquerda mais longa do mundo, Chicama contorna uma península no norte do Peru por até quatro quilómetros no swell certo. Uma única remada pode durar de quatro a seis minutos pelas secções Malabrigo, Punto, Keys e El Hombre. A água fria da Corrente de Humboldt (cerca de 17°C) mantém as multidões escassas e a onda praticamente perfeita nos swells de fundo do inverno.',
+    },
   },
   {
     rank: 28,
@@ -409,7 +571,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Apr–Oct',
-    description: 'Lima\'s premier surf spot, Punta Hermosa hosts multiple breaks — Señoritas, Caballeros, and Slabs — that deliver quality left and right-handers on the Humboldt Current swells. The area is the centre of Peruvian competitive surfing and has produced WSL-level athletes. Cold water and long winter groundswells are the price of entry for some of South America\'s best waves.',
+    description: {
+      en: 'Lima\'s premier surf spot, Punta Hermosa hosts multiple breaks — Señoritas, Caballeros, and Slabs — that deliver quality left and right-handers on the Humboldt Current swells. The area is the centre of Peruvian competitive surfing and has produced WSL-level athletes. Cold water and long winter groundswells are the price of entry for some of South America\'s best waves.',
+      es: 'El principal spot de surf de Lima, Punta Hermosa alberga múltiples breaks — Señoritas, Caballeros y Slabs — que ofrecen calidad tanto en izquierdas como en derechas con los swells de la Corriente de Humboldt. La zona es el centro del surf competitivo peruano y ha producido atletas de nivel WSL. El agua fría y los largos swells de fondo invernales son el precio de admisión para algunas de las mejores olas de Sudamérica.',
+      fr: 'Le premier spot de surf de Lima, Punta Hermosa accueille plusieurs breaks — Señoritas, Caballeros et Slabs — qui offrent des gauches et droites de qualité sur les houles du courant de Humboldt. La zone est le centre du surf compétitif péruvien et a produit des athlètes de niveau WSL. L\'eau froide et les longs groundswells hivernaux sont le prix à payer pour certaines des meilleures vagues d\'Amérique du Sud.',
+      'pt-BR': 'O principal spot de surfe de Lima, Punta Hermosa abriga múltiplos picos — Señoritas, Caballeros e Slabs — que oferecem qualidade em esquerdas e direitas nos swells da Corrente de Humboldt. A área é o centro do surfe competitivo peruano e produziu atletas de nível WSL. Água fria e longos swells de fundo no inverno são o preço de entrada para algumas das melhores ondas da América do Sul.',
+      'pt-PT': 'O principal spot de surf de Lima, Punta Hermosa alberga múltiplos picos — Señoritas, Caballeros e Slabs — que oferecem qualidade em esquerdas e direitas nos swells da Corrente de Humboldt. A área é o centro do surf competitivo peruano e produziu atletas de nível WSL. Água fria e longos swells de fundo no inverno são o preço de entrada para algumas das melhores ondas da América do Sul.',
+    },
   },
   {
     rank: 29,
@@ -423,7 +591,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Apr–Sep',
     wslBadge: 'Big Wave',
-    description: 'Peru\'s big-wave capital breaks over a deep-water reef just offshore from Punta Hermosa. Pico Alto is capable of producing 30–40ft faces on the right Humboldt Current groundswell, and has been the site of Peru\'s big-wave challenge. Cold water, complex currents, and explosive size make it one of the most challenging big-wave venues in the Southern Hemisphere.',
+    description: {
+      en: 'Peru\'s big-wave capital breaks over a deep-water reef just offshore from Punta Hermosa. Pico Alto is capable of producing 30–40ft faces on the right Humboldt Current groundswell, and has been the site of Peru\'s big-wave challenge. Cold water, complex currents, and explosive size make it one of the most challenging big-wave venues in the Southern Hemisphere.',
+      es: 'La capital peruana de las olas grandes rompe sobre un arrecife de aguas profundas justo frente a Punta Hermosa. Pico Alto es capaz de producir paredes de 30–40 pies con el swell de fondo correcto de la Corriente de Humboldt, y ha sido el escenario del desafío de olas grandes de Perú. Agua fría, corrientes complejas y un tamaño explosivo lo convierten en uno de los escenarios de olas grandes más desafiantes del Hemisferio Sur.',
+      fr: 'La capitale péruvienne du surf de grosses vagues se brise sur un récif en eau profonde juste au large de Punta Hermosa. Pico Alto est capable de produire des faces de 30–40 pieds sur le bon groundswell du courant de Humboldt, et a été le site du défi de grosses vagues du Pérou. Eau froide, courants complexes et taille explosive en font l\'un des sites de grosses vagues les plus exigeants de l\'hémisphère Sud.',
+      'pt-BR': 'A capital peruana das ondas grandes quebra sobre um recife em águas profundas logo ao largo de Punta Hermosa. Pico Alto é capaz de produzir faces de 30–40 pés no swell de fundo certo da Corrente de Humboldt, e foi o local do desafio de ondas grandes do Peru. Água fria, correntes complexas e tamanho explosivo fazem dele um dos locais de ondas grandes mais desafiadores do Hemisfério Sul.',
+      'pt-PT': 'A capital peruana das ondas grandes quebra sobre um recife em águas profundas logo ao largo de Punta Hermosa. Pico Alto é capaz de produzir faces de 30–40 pés no swell de fundo certo da Corrente de Humboldt, e foi o local do desafio de ondas grandes do Peru. Água fria, correntes complexas e tamanho explosivo fazem dele um dos locais de ondas grandes mais exigentes do Hemisfério Sul.',
+    },
   },
   {
     rank: 30,
@@ -436,7 +610,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Apr–Sep',
-    description: 'Chile\'s northernmost city sits at the foot of the Atacama Desert and faces a left-hand point break that fires on long-period South Pacific swells. Arica has hosted ISA World Surfing Games and delivered Chile\'s first world champions. The wave breaks over a cobblestone and sand bottom with a backdrop of the Morro de Arica cliff — one of the world\'s most photogenic surf settings.',
+    description: {
+      en: 'Chile\'s northernmost city sits at the foot of the Atacama Desert and faces a left-hand point break that fires on long-period South Pacific swells. Arica has hosted ISA World Surfing Games and delivered Chile\'s first world champions. The wave breaks over a cobblestone and sand bottom with a backdrop of the Morro de Arica cliff — one of the world\'s most photogenic surf settings.',
+      es: 'La ciudad más al norte de Chile se asienta al pie del Desierto de Atacama y enfrenta un point break hacia la izquierda que se activa con swells del Pacífico Sur de largo período. Arica ha albergado los Juegos Mundiales de Surf de la ISA y producido a los primeros campeones mundiales de Chile. La ola rompe sobre un fondo de cantos rodados y arena con el acantilado del Morro de Arica como telón de fondo — uno de los escenarios de surf más fotogénicos del mundo.',
+      fr: 'La ville la plus septentrionale du Chili est nichée au pied du désert d\'Atacama et fait face à un point break gauche qui s\'enflamme sur les houles de longue période du Pacifique Sud. Arica a accueilli les Jeux mondiaux de surf de l\'ISA et produit les premiers champions du monde du Chili. La vague se brise sur un fond de galets et de sable avec en toile de fond la falaise du Morro de Arica — l\'un des décors de surf les plus photogéniques au monde.',
+      'pt-BR': 'A cidade mais ao norte do Chile fica ao pé do Deserto do Atacama e enfrenta um point break esquerdo que funciona nos swells de longo período do Pacífico Sul. Arica sediou os Jogos Mundiais de Surf da ISA e revelou os primeiros campeões mundiais do Chile. A onda quebra sobre um fundo de seixos e areia com a falésia do Morro de Arica como pano de fundo — um dos cenários de surfe mais fotogênicos do mundo.',
+      'pt-PT': 'A cidade mais ao norte do Chile fica ao pé do Deserto do Atacama e enfrenta um point break esquerdo que funciona nos swells de longo período do Pacífico Sul. Arica acolheu os Jogos Mundiais de Surf da ISA e revelou os primeiros campeões mundiais do Chile. A onda quebra sobre um fundo de seixos e areia com a falésia do Morro de Arica como pano de fundo — um dos cenários de surf mais fotogénicos do mundo.',
+    },
   },
 
   // ── Europe ────────────────────────────────────────────────────────────────────
@@ -452,7 +632,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Oct–Mar',
     wslBadge: 'Big Wave',
-    description: 'Home to the biggest waves ever surfed. A submarine canyon focuses Atlantic swells into a wall of water in front of the Praia do Norte that can exceed 100ft. Rodrigo Koxa and Garrett McNamara both set world records here. The canyon amplifies already large Atlantic storms into something that defies comprehension — and yet surfers paddle into it.',
+    description: {
+      en: 'Home to the biggest waves ever surfed. A submarine canyon focuses Atlantic swells into a wall of water in front of the Praia do Norte that can exceed 100ft. Rodrigo Koxa and Garrett McNamara both set world records here. The canyon amplifies already large Atlantic storms into something that defies comprehension — and yet surfers paddle into it.',
+      es: 'El hogar de las olas más grandes que jamás se han surfeado. Un cañón submarino concentra los swells atlánticos en una pared de agua frente a la Praia do Norte que puede superar los 100 pies. Rodrigo Koxa y Garrett McNamara establecieron récords mundiales aquí. El cañón amplifica las ya enormes tormentas atlánticas en algo que desafía la comprensión — y aun así los surfistas se lanzan al agua.',
+      fr: 'Le foyer des plus grandes vagues jamais surfées. Un canyon sous-marin concentre les houles atlantiques en un mur d\'eau devant la Praia do Norte qui peut dépasser 100 pieds. Rodrigo Koxa et Garrett McNamara y ont tous deux établi des records du monde. Le canyon amplifie des tempêtes atlantiques déjà gigantesques en quelque chose qui défie la compréhension — et pourtant les surfeurs y pagaient.',
+      'pt-BR': 'O lar das maiores ondas já surfadas. Um canhão submarino concentra os swells atlânticos em uma parede de água diante da Praia do Norte que pode ultrapassar 100 pés. Rodrigo Koxa e Garrett McNamara estabeleceram recordes mundiais aqui. O canhão amplifica tempestades atlânticas já gigantescas em algo que desafia a compreensão — e ainda assim os surfistas remam para dentro.',
+      'pt-PT': 'O lar das maiores ondas alguma vez surfadas. Um canhão submarino concentra os swells atlânticos numa parede de água diante da Praia do Norte que pode ultrapassar os 100 pés. Rodrigo Koxa e Garrett McNamara estabeleceram aqui recordes mundiais. O canhão amplifica tempestades atlânticas já gigantescas em algo que desafia a compreensão — e ainda assim os surfistas remam para dentro.',
+    },
   },
   {
     rank: 32,
@@ -466,7 +652,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Sep–Mar',
     wslBadge: 'CT Stop',
-    description: 'Europe\'s Pipeline, Supertubos is a thick, powerful beach break on a sand bottom that produces barreling waves of extraordinary quality on Atlantic swells. The CT Rip Curl Pro Portugal has been held here for decades and regularly produces the highest scores of any European event. Cold water, heavy lips, and shallow sand make it genuinely dangerous at size.',
+    description: {
+      en: 'Europe\'s Pipeline, Supertubos is a thick, powerful beach break on a sand bottom that produces barreling waves of extraordinary quality on Atlantic swells. The CT Rip Curl Pro Portugal has been held here for decades and regularly produces the highest scores of any European event. Cold water, heavy lips, and shallow sand make it genuinely dangerous at size.',
+      es: 'El Pipeline de Europa, Supertubos es un beach break grueso y poderoso sobre un fondo de arena que produce olas tubulares de extraordinaria calidad con los swells atlánticos. El CT Rip Curl Pro Portugal se ha celebrado aquí durante décadas y regularmente produce las puntuaciones más altas de cualquier evento europeo. Agua fría, labios pesados y arena poco profunda lo hacen genuinamente peligroso a tamaño.',
+      fr: 'Le Pipeline européen, Supertubos est un beach break épais et puissant sur fond de sable qui produit des vagues tubulaires d\'une qualité extraordinaire sur les houles atlantiques. Le CT Rip Curl Pro Portugal s\'y tient depuis des décennies et produit régulièrement les scores les plus élevés de tout événement européen. Eau froide, lèvres lourdes et sable peu profond le rendent véritablement dangereux à taille.',
+      'pt-BR': 'O Pipeline da Europa, Supertubos é um beach break grosso e poderoso sobre um fundo de areia que produz ondas tubulares de extraordinária qualidade nos swells atlânticos. O CT Rip Curl Pro Portugal é realizado aqui há décadas e regularmente produz as pontuações mais altas de qualquer evento europeu. Água fria, lábios pesados e areia rasa tornam-no genuinamente perigoso no tamanho.',
+      'pt-PT': 'O Pipeline da Europa, Supertubos é um beach break grosso e poderoso sobre um fundo de areia que produz ondas tubulares de extraordinária qualidade nos swells atlânticos. O CT Rip Curl Pro Portugal realiza-se aqui há décadas e produz regularmente as pontuações mais altas de qualquer evento europeu. Água fria, lábios pesados e areia rasa tornam-no genuinamente perigoso quando está grande.',
+    },
   },
   {
     rank: 33,
@@ -479,7 +671,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Sep–Apr',
-    description: 'The centrepiece of the Ericeira World Surfing Reserve, Ribeira d\'Ilhas is a long, shapely right-hand point that handles a wide range of swell sizes with elegance. The Reserve spans 4km of coastline with multiple world-class breaks. Ribeira d\'Ilhas is the most consistent, accessible wave in the Reserve — a perfect expression of European Atlantic point break surfing.',
+    description: {
+      en: 'The centrepiece of the Ericeira World Surfing Reserve, Ribeira d\'Ilhas is a long, shapely right-hand point that handles a wide range of swell sizes with elegance. The Reserve spans 4km of coastline with multiple world-class breaks. Ribeira d\'Ilhas is the most consistent, accessible wave in the Reserve — a perfect expression of European Atlantic point break surfing.',
+      es: 'La pieza central de la Reserva Mundial de Surf de Ericeira, Ribeira d\'Ilhas es un largo y bien formado point hacia la derecha que maneja una amplia gama de tamaños de swell con elegancia. La Reserva abarca 4 km de costa con múltiples breaks de clase mundial. Ribeira d\'Ilhas es la ola más consistente y accesible de la Reserva — una expresión perfecta del surf de point break atlántico europeo.',
+      fr: 'La pièce maîtresse de la Réserve mondiale de surf d\'Ericeira, Ribeira d\'Ilhas est un point droit long et bien formé qui gère une large gamme de tailles de houle avec élégance. La Réserve s\'étend sur 4 km de côte avec plusieurs breaks de classe mondiale. Ribeira d\'Ilhas est la vague la plus constante et accessible de la Réserve — une expression parfaite du surf de point break atlantique européen.',
+      'pt-BR': 'A peça central da Reserva Mundial de Surf de Ericeira, Ribeira d\'Ilhas é um point direito longo e bem formado que lida com uma ampla gama de tamanhos de swell com elegância. A Reserva abrange 4 km de costa com múltiplos picos de classe mundial. Ribeira d\'Ilhas é a onda mais consistente e acessível da Reserva — uma expressão perfeita do surfe de point break atlântico europeu.',
+      'pt-PT': 'A peça central da Reserva Mundial de Surf de Ericeira, Ribeira d\'Ilhas é um point direito longo e bem formado que lida com uma ampla gama de tamanhos de swell com elegância. A Reserva abrange 4 km de costa com múltiplos picos de classe mundial. Ribeira d\'Ilhas é a onda mais consistente e acessível da Reserva — uma expressão perfeita do surf de point break atlântico europeu.',
+    },
   },
   {
     rank: 34,
@@ -492,7 +690,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'Oct–Mar',
-    description: 'The most revered reef in Europe, Coxos is a long right-hand barrel that tracks along a ledge of rock inside the Ericeira Reserve. Only breaking at size, Coxos rewards the patient with some of the most spectacular barrel sections in the Atlantic — long, fast, and genuinely dangerous when the swell tops 8ft. It is to Europe what Backdoor is to Pipeline.',
+    description: {
+      en: 'The most revered reef in Europe, Coxos is a long right-hand barrel that tracks along a ledge of rock inside the Ericeira Reserve. Only breaking at size, Coxos rewards the patient with some of the most spectacular barrel sections in the Atlantic — long, fast, and genuinely dangerous when the swell tops 8ft. It is to Europe what Backdoor is to Pipeline.',
+      es: 'El arrecife más venerado de Europa, Coxos es un largo tubo hacia la derecha que sigue una repisa de roca dentro de la Reserva de Ericeira. Rompiendo solo cuando está grande, Coxos recompensa a los pacientes con algunas de las secciones de tubo más espectaculares del Atlántico — largas, rápidas y genuinamente peligrosas cuando el swell supera los 8 pies. Es para Europa lo que Backdoor es para Pipeline.',
+      fr: 'Le récif le plus vénéré d\'Europe, Coxos est un long tube droit qui longe une corniche rocheuse à l\'intérieur de la Réserve d\'Ericeira. Ne se brisant qu\'à taille, Coxos récompense les patients avec certaines des sections de tube les plus spectaculaires de l\'Atlantique — longues, rapides et véritablement dangereuses lorsque la houle dépasse 8 pieds. C\'est pour l\'Europe ce que Backdoor est à Pipeline.',
+      'pt-BR': 'O recife mais reverenciado da Europa, Coxos é um longo tubo direito que acompanha uma saliência de rocha dentro da Reserva de Ericeira. Quebrando apenas quando grande, Coxos recompensa os pacientes com algumas das seções de tubo mais espetaculares do Atlântico — longas, rápidas e genuinamente perigosas quando o swell ultrapassa os 8 pés. É para a Europa o que Backdoor é para o Pipeline.',
+      'pt-PT': 'O recife mais reverenciado da Europa, Coxos é um longo tubo direito que acompanha uma saliência de rocha dentro da Reserva de Ericeira. Quebrando apenas quando grande, Coxos recompensa os pacientes com algumas das secções de tubo mais espetaculares do Atlântico — longas, rápidas e genuinamente perigosas quando o swell ultrapassa os 8 pés. É para a Europa o que Backdoor é para o Pipeline.',
+    },
   },
   {
     rank: 35,
@@ -506,7 +710,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Sep–Mar',
     wslBadge: 'CT Stop',
-    description: 'Europe\'s most famous left-hand barrel, Mundaka is a sand-bottom river mouth break in the Basque Country that forms when Atlantic swells combine with outgoing river currents. The result is a cavernous, tube-heavy left that can run 400 metres on the best days. Dredging and sand loss have affected it in recent decades, but when it works, there is nothing else like it in Europe.',
+    description: {
+      en: 'Europe\'s most famous left-hand barrel, Mundaka is a sand-bottom river mouth break in the Basque Country that forms when Atlantic swells combine with outgoing river currents. The result is a cavernous, tube-heavy left that can run 400 metres on the best days. Dredging and sand loss have affected it in recent decades, but when it works, there is nothing else like it in Europe.',
+      es: 'El tubo izquierdo más famoso de Europa, Mundaka es una rompiente de desembocadura de río con fondo de arena en el País Vasco que se forma cuando los swells atlánticos se combinan con las corrientes salientes del río. El resultado es una izquierda cavernosa y cargada de tubos que puede correr 400 metros en los mejores días. El dragado y la pérdida de arena la han afectado en las últimas décadas, pero cuando funciona, no hay nada igual en Europa.',
+      fr: 'Le tube gauche le plus célèbre d\'Europe, Mundaka est un break d\'embouchure de rivière sur fond de sable au Pays basque qui se forme lorsque les houles atlantiques se combinent avec les courants sortants de la rivière. Le résultat est une gauche caverneuse et chargée de tubes qui peut courir 400 mètres lors des meilleurs jours. Le dragage et la perte de sable l\'ont affecté ces dernières décennies, mais quand il fonctionne, il n\'y a rien d\'autre comme lui en Europe.',
+      'pt-BR': 'O tubo esquerdo mais famoso da Europa, Mundaka é uma rompiente de foz de rio com fundo de areia no País Basco que se forma quando os swells atlânticos se combinam com as correntes de saída do rio. O resultado é uma esquerda cavernosa e carregada de tubos que pode correr 400 metros nos melhores dias. O dragamento e a perda de areia afetaram-no nas últimas décadas, mas quando funciona, não há nada igual na Europa.',
+      'pt-PT': 'O tubo esquerdo mais famoso da Europa, Mundaka é uma rompiente de foz de rio com fundo de areia no País Basco que se forma quando os swells atlânticos se combinam com as correntes de saída do rio. O resultado é uma esquerda cavernosa e carregada de tubos que pode correr 400 metros nos melhores dias. O dragamento e a perda de areia afetaram-no nas últimas décadas, mas quando funciona, não há nada igual na Europa.',
+    },
   },
   {
     rank: 36,
@@ -519,7 +729,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'Oct–Mar',
-    description: 'A heavy left-hand slab on the west coast of Lanzarote that detonates over a shallow lava reef with virtually no warning. El Quemao is Canary Islands surfing at its most raw — cold upwellings, Atlantic fetch, and a reef that breaks bones. In the right conditions it produces some of the best barrels in Spain, with a committed local crew that guards it closely.',
+    description: {
+      en: 'A heavy left-hand slab on the west coast of Lanzarote that detonates over a shallow lava reef with virtually no warning. El Quemao is Canary Islands surfing at its most raw — cold upwellings, Atlantic fetch, and a reef that breaks bones. In the right conditions it produces some of the best barrels in Spain, with a committed local crew that guards it closely.',
+      es: 'Un pesado slab hacia la izquierda en la costa oeste de Lanzarote que detona sobre un arrecife de lava poco profundo prácticamente sin previo aviso. El Quemao es el surf de las Islas Canarias en su estado más crudo — afloramientos fríos, el fetch atlántico y un arrecife que rompe huesos. En las condiciones adecuadas produce algunos de los mejores tubos de España, con un comprometido equipo local que lo custodia de cerca.',
+      fr: 'Un slab gauche lourd sur la côte ouest de Lanzarote qui détone sur un récif de lave peu profond pratiquement sans prévenir. El Quemao est le surf des îles Canaries dans son état le plus brut — remontées froides, fetch atlantique et un récif qui brise les os. Dans les bonnes conditions, il produit certains des meilleurs tubes d\'Espagne, avec une équipe locale engagée qui le surveille de près.',
+      'pt-BR': 'Um slab esquerdo pesado na costa oeste de Lanzarote que detona sobre um recife de lava raso praticamente sem aviso. El Quemao é o surfe das Ilhas Canárias em seu estado mais cru — ressurgências frias, fetch atlântico e um recife que quebra ossos. Nas condições certas produz alguns dos melhores tubos da Espanha, com uma equipe local comprometida que o guarda de perto.',
+      'pt-PT': 'Um slab esquerdo pesado na costa oeste de Lanzarote que detona sobre um recife de lava raso praticamente sem aviso. El Quemao é o surf das Ilhas Canárias no seu estado mais cru — ressurgências frias, fetch atlântico e um recife que quebra ossos. Nas condições certas produz alguns dos melhores tubos de Espanha, com uma equipa local comprometida que o guarda de perto.',
+    },
   },
   {
     rank: 37,
@@ -533,7 +749,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Sep–Nov',
     wslBadge: 'CT Stop',
-    description: 'The finest beach break in Europe and the venue for the Quiksilver Pro France. La Gravière\'s famous sandy bottom creates barreling peaks that rival anything in the world when the Atlantic delivers proper autumn swells. The whole Hossegor stretch — from La Nord to Les Culs Nuls — produces waves of consistent, exceptional quality throughout the long surf season.',
+    description: {
+      en: 'The finest beach break in Europe and the venue for the Quiksilver Pro France. La Gravière\'s famous sandy bottom creates barreling peaks that rival anything in the world when the Atlantic delivers proper autumn swells. The whole Hossegor stretch — from La Nord to Les Culs Nuls — produces waves of consistent, exceptional quality throughout the long surf season.',
+      es: 'El mejor beach break de Europa y el escenario del Quiksilver Pro France. El famoso fondo arenoso de La Gravière crea picos tubulares que rivalizan con cualquier cosa en el mundo cuando el Atlántico entrega sus verdaderos swells otoñales. Todo el tramo de Hossegor — desde La Nord hasta Les Culs Nuls — produce olas de calidad consistente y excepcional durante la larga temporada de surf.',
+      fr: 'Le meilleur beach break d\'Europe et le site du Quiksilver Pro France. Le célèbre fond sableux de La Gravière crée des pics tubulaires qui rivalisent avec n\'importe quoi au monde lorsque l\'Atlantique livre ses vraies houles automnales. Toute la bande de Hossegor — de La Nord à Les Culs Nuls — produit des vagues d\'une qualité constante et exceptionnelle tout au long de la longue saison de surf.',
+      'pt-BR': 'O melhor beach break da Europa e o palco do Quiksilver Pro France. O famoso fundo arenoso de La Gravière cria picos tubulares que rivalizam com qualquer coisa no mundo quando o Atlântico entrega seus verdadeiros swells de outono. Todo o trecho de Hossegor — de La Nord a Les Culs Nuls — produz ondas de qualidade consistente e excepcional durante a longa temporada de surfe.',
+      'pt-PT': 'O melhor beach break da Europa e o palco do Quiksilver Pro France. O famoso fundo arenoso de La Gravière cria picos tubulares que rivalizam com qualquer coisa no mundo quando o Atlântico entrega os seus verdadeiros swells de outono. Todo o trecho de Hossegor — de La Nord a Les Culs Nuls — produz ondas de qualidade consistente e excepcional durante a longa temporada de surf.',
+    },
   },
   {
     rank: 38,
@@ -546,7 +768,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Expert',
     bestSeason: 'Sep–Nov',
-    description: 'Just north of La Gravière, La Norte handles the largest Atlantic swells that hit the Hossegor coast and transforms them into powerful, cavernous barrels. When the swell is too big for La Gravière, the tour moves here. The banks shift seasonally, but the quality of the wave when it lines up is consistently among the best beach break surfing anywhere in the world.',
+    description: {
+      en: 'Just north of La Gravière, La Norte handles the largest Atlantic swells that hit the Hossegor coast and transforms them into powerful, cavernous barrels. When the swell is too big for La Gravière, the tour moves here. The banks shift seasonally, but the quality of the wave when it lines up is consistently among the best beach break surfing anywhere in the world.',
+      es: 'Justo al norte de La Gravière, La Norte maneja los swells atlánticos más grandes que golpean la costa de Hossegor y los transforma en poderosos y cavernosos tubos. Cuando el swell es demasiado grande para La Gravière, el tour se traslada aquí. Los bancos cambian estacionalmente, pero la calidad de la ola cuando se alinea es constantemente de las mejores del beach break mundial.',
+      fr: 'Juste au nord de La Gravière, La Norte gère les plus grandes houles atlantiques qui frappent la côte de Hossegor et les transforme en tubes puissants et caverneux. Lorsque la houle est trop grande pour La Gravière, le tour se déplace ici. Les bancs changent saisonnièrement, mais la qualité de la vague lorsqu\'elle s\'aligne est régulièrement parmi les meilleures du beach break mondial.',
+      'pt-BR': 'Logo ao norte de La Gravière, La Norte lida com os maiores swells atlânticos que atingem a costa de Hossegor e os transforma em tubos poderosos e cavernosos. Quando o swell é grande demais para La Gravière, o tour se move para cá. Os bancos mudam sazonalmente, mas a qualidade da onda quando alinha é consistentemente uma das melhores do surfe em beach break no mundo.',
+      'pt-PT': 'Logo ao norte de La Gravière, La Norte lida com os maiores swells atlânticos que atingem a costa de Hossegor e transforma-os em tubos poderosos e cavernosos. Quando o swell é grande demais para La Gravière, o tour move-se para aqui. Os bancos mudam sazonalmente, mas a qualidade da onda quando alinha é consistentemente uma das melhores do surf em beach break no mundo.',
+    },
   },
   {
     rank: 39,
@@ -559,7 +787,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Advanced',
     bestSeason: 'Sep–Nov',
-    description: 'A large, exposed beach on Spain\'s wild Atlantic coast that has hosted the Pantín Classic since 1988. Galicia\'s green headlands and Atlantic swells combine to produce powerful, consistent beach break surfing in a spectacular setting. The contest site has attracted every major professional surfer over three decades, and the town treats surf culture as a cornerstone of its identity.',
+    description: {
+      en: 'A large, exposed beach on Spain\'s wild Atlantic coast that has hosted the Pantín Classic since 1988. Galicia\'s green headlands and Atlantic swells combine to produce powerful, consistent beach break surfing in a spectacular setting. The contest site has attracted every major professional surfer over three decades, and the town treats surf culture as a cornerstone of its identity.',
+      es: 'Una gran playa expuesta en la salvaje costa atlántica de España que ha acogido el Pantín Classic desde 1988. Los verdes promontorios de Galicia y los swells atlánticos se combinan para producir un surf de beach break poderoso y consistente en un escenario espectacular. El lugar del concurso ha atraído a todos los principales surfistas profesionales durante tres décadas, y la ciudad trata la cultura del surf como una piedra angular de su identidad.',
+      fr: 'Une grande plage exposée sur la côte atlantique sauvage d\'Espagne qui accueille le Pantín Classic depuis 1988. Les promontoires verts de Galice et les houles atlantiques se combinent pour produire un surf de beach break puissant et régulier dans un cadre spectaculaire. Le site du concours a attiré tous les grands surfeurs professionnels depuis trois décennies, et la ville traite la culture surf comme une pierre angulaire de son identité.',
+      'pt-BR': 'Uma grande praia exposta na selvagem costa atlântica da Espanha que sedia o Pantín Classic desde 1988. Os promontórios verdes da Galícia e os swells atlânticos se combinam para produzir um surfe de beach break poderoso e consistente em um cenário espetacular. O local do concurso atraiu todos os grandes surfistas profissionais ao longo de três décadas, e a cidade trata a cultura do surfe como uma pedra angular de sua identidade.',
+      'pt-PT': 'Uma grande praia exposta na selvagem costa atlântica de Espanha que acolhe o Pantín Classic desde 1988. Os promontórios verdes da Galiza e os swells atlânticos combinam-se para produzir um surf de beach break poderoso e consistente num cenário espetacular. O local do concurso atraiu todos os grandes surfistas profissionais ao longo de três décadas, e a cidade trata a cultura do surf como uma pedra angular da sua identidade.',
+    },
   },
   {
     rank: 40,
@@ -572,7 +806,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Intermediate',
     bestSeason: 'Sep–Mar',
-    description: 'The most famous surf beach in Britain and the headquarters of the UK surf industry. Fistral faces the open Atlantic and catches swells from the NW and SW with impressive regularity. The Boardmasters Festival here is Europe\'s largest surf event. Cold water and variable conditions are the reality, but on a proper Atlantic swell it delivers quality beach break surfing.',
+    description: {
+      en: 'The most famous surf beach in Britain and the headquarters of the UK surf industry. Fistral faces the open Atlantic and catches swells from the NW and SW with impressive regularity. The Boardmasters Festival here is Europe\'s largest surf event. Cold water and variable conditions are the reality, but on a proper Atlantic swell it delivers quality beach break surfing.',
+      es: 'La playa de surf más famosa de Gran Bretaña y el cuartel general de la industria del surf del Reino Unido. Fistral da al Atlántico abierto y capta swells del NW y SW con impresionante regularidad. El Festival Boardmasters aquí es el mayor evento de surf de Europa. Agua fría y condiciones variables son la realidad, pero con un swell atlántico de verdad ofrece surf de beach break de calidad.',
+      fr: 'La plage de surf la plus célèbre de Grande-Bretagne et le siège de l\'industrie du surf britannique. Fistral fait face à l\'Atlantique ouvert et capte des houles NW et SO avec une régularité impressionnante. Le Festival Boardmasters ici est le plus grand événement de surf d\'Europe. L\'eau froide et les conditions variables sont la réalité, mais sur une vraie houle atlantique, elle offre un surf de beach break de qualité.',
+      'pt-BR': 'A praia de surfe mais famosa da Grã-Bretanha e a sede da indústria do surfe no Reino Unido. Fistral dá para o Atlântico aberto e capta swells de NW e SO com impressionante regularidade. O Festival Boardmasters aqui é o maior evento de surfe da Europa. Água fria e condições variáveis são a realidade, mas num swell atlântico de verdade oferece surfe de beach break de qualidade.',
+      'pt-PT': 'A praia de surf mais famosa da Grã-Bretanha e a sede da indústria do surf no Reino Unido. Fistral dá para o Atlântico aberto e capta swells de NW e SO com impressionante regularidade. O Festival Boardmasters aqui é o maior evento de surf da Europa. Água fria e condições variáveis são a realidade, mas num swell atlântico a sério oferece surf de beach break de qualidade.',
+    },
   },
   {
     rank: 41,
@@ -585,7 +825,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'Sep–Mar',
-    description: 'The most northerly CT-quality wave in the world, Thurso East is a slab reef break on the north coast of Scotland that produces thick, powerful right-handers on North Atlantic swells. It has hosted the O\'Neill Highland Open and introduced the world to Scottish surfing. Surfing here in December means two hours of daylight, 7°C water, and waves that could be on a Brazilian postcard.',
+    description: {
+      en: 'The most northerly CT-quality wave in the world, Thurso East is a slab reef break on the north coast of Scotland that produces thick, powerful right-handers on North Atlantic swells. It has hosted the O\'Neill Highland Open and introduced the world to Scottish surfing. Surfing here in December means two hours of daylight, 7°C water, and waves that could be on a Brazilian postcard.',
+      es: 'La ola de calidad CT más al norte del mundo, Thurso East es un slab reef break en la costa norte de Escocia que produce potentes derechos gruesos en swells del Atlántico Norte. Ha albergado el O\'Neill Highland Open e introdujo al mundo en el surf escocés. Surfear aquí en diciembre significa dos horas de luz diurna, agua a 7°C y olas que podrían estar en una postal brasileña.',
+      fr: 'La vague de qualité CT la plus septentrionale du monde, Thurso East est un slab reef break sur la côte nord de l\'Écosse qui produit des droits épais et puissants sur les houles nord-atlantiques. Il a accueilli l\'O\'Neill Highland Open et a fait découvrir le surf écossais au monde. Surfer ici en décembre signifie deux heures de lumière du jour, une eau à 7°C et des vagues qui pourraient figurer sur une carte postale brésilienne.',
+      'pt-BR': 'A onda de qualidade CT mais ao norte do mundo, Thurso East é um slab reef break na costa norte da Escócia que produz direitos grossos e poderosos nos swells do Atlântico Norte. Sediou o O\'Neill Highland Open e apresentou o surfe escocês ao mundo. Surfar aqui em dezembro significa duas horas de luz do dia, água a 7°C e ondas que poderiam estar num cartão-postal brasileiro.',
+      'pt-PT': 'A onda de qualidade CT mais ao norte do mundo, Thurso East é um slab reef break na costa norte da Escócia que produz direitos grossos e poderosos nos swells do Atlântico Norte. Acolheu o O\'Neill Highland Open e apresentou o surf escocês ao mundo. Surfar aqui em dezembro significa duas horas de luz do dia, água a 7°C e ondas que poderiam estar num postal brasileiro.',
+    },
   },
   {
     rank: 42,
@@ -599,7 +845,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Nov–Mar',
     wslBadge: 'Big Wave',
-    description: 'Ireland\'s most powerful and consequential big-wave venue, Mullaghmore is a left-hand slab that jacks up on a submerged reef and delivers 40ft-plus faces on monster North Atlantic storms. Conor Maguire and Ollie O\'Flaherty have pushed Irish big-wave surfing to global recognition here. A medieval castle on the headland provides the world\'s most cinematic backdrop.',
+    description: {
+      en: 'Ireland\'s most powerful and consequential big-wave venue, Mullaghmore is a left-hand slab that jacks up on a submerged reef and delivers 40ft-plus faces on monster North Atlantic storms. Conor Maguire and Ollie O\'Flaherty have pushed Irish big-wave surfing to global recognition here. A medieval castle on the headland provides the world\'s most cinematic backdrop.',
+      es: 'El escenario de olas grandes más poderoso y trascendental de Irlanda, Mullaghmore es un slab hacia la izquierda que se empina sobre un arrecife sumergido y entrega paredes de más de 40 pies en monstruosas tormentas del Atlántico Norte. Conor Maguire y Ollie O\'Flaherty han llevado el surf de olas grandes irlandés al reconocimiento global aquí. Un castillo medieval en el promontorio proporciona el telón de fondo más cinematográfico del mundo.',
+      fr: 'Le site de surf de grosses vagues le plus puissant et significatif d\'Irlande, Mullaghmore est un slab gauche qui se dresse sur un récif immergé et délivre des faces de plus de 40 pieds lors de monstrueuses tempêtes nord-atlantiques. Conor Maguire et Ollie O\'Flaherty ont porté le surf de grosses vagues irlandais à une reconnaissance mondiale ici. Un château médiéval sur le promontoire fournit la toile de fond la plus cinématographique au monde.',
+      'pt-BR': 'O local de ondas grandes mais poderoso e significativo da Irlanda, Mullaghmore é um slab esquerdo que se ergue sobre um recife submerso e entrega faces de mais de 40 pés em monstruosas tempestades do Atlântico Norte. Conor Maguire e Ollie O\'Flaherty levaram o surfe de ondas grandes irlandês ao reconhecimento global aqui. Um castelo medieval no promontório fornece o pano de fundo mais cinematográfico do mundo.',
+      'pt-PT': 'O local de ondas grandes mais poderoso e significativo da Irlanda, Mullaghmore é um slab esquerdo que se ergue sobre um recife submerso e entrega faces de mais de 40 pés em monstruosas tempestades do Atlântico Norte. Conor Maguire e Ollie O\'Flaherty levaram o surf de ondas grandes irlandês ao reconhecimento global aqui. Um castelo medieval no promontório fornece o pano de fundo mais cinematográfico do mundo.',
+    },
   },
   {
     rank: 43,
@@ -613,7 +865,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Nov–Mar',
     wslBadge: 'Big Wave',
-    description: 'A chunky, shallow slab tucked off the coast of Donegal that only comes alive on the largest Atlantic swells. Crab Island is part of Ireland\'s emerging big-wave scene, producing thick, heavy barrels that hold up surprisingly well at size. The lineup requires a boat or a long paddle in treacherous conditions — adding another layer of commitment to an already demanding wave.',
+    description: {
+      en: 'A chunky, shallow slab tucked off the coast of Donegal that only comes alive on the largest Atlantic swells. Crab Island is part of Ireland\'s emerging big-wave scene, producing thick, heavy barrels that hold up surprisingly well at size. The lineup requires a boat or a long paddle in treacherous conditions — adding another layer of commitment to an already demanding wave.',
+      es: 'Un slab grueso y poco profundo escondido frente a la costa de Donegal que solo cobra vida con los swells atlánticos más grandes. Crab Island forma parte de la emergente escena de olas grandes de Irlanda, produciendo tubos gruesos y pesados que aguantan sorprendentemente bien a tamaño. El line-up requiere un bote o un largo paloteo en condiciones traicioneras — añadiendo otra capa de compromiso a una ola ya exigente.',
+      fr: 'Un slab épais et peu profond niché au large de la côte du Donegal qui ne prend vie que sur les plus grandes houles atlantiques. Crab Island fait partie de la scène émergente de surf de grosses vagues irlandaise, produisant des tubes épais et lourds qui tiennent étonnamment bien à taille. Le line-up nécessite un bateau ou une longue pagaie dans des conditions traîtresses — ajoutant une autre couche d\'engagement à une vague déjà exigeante.',
+      'pt-BR': 'Um slab grosso e raso ao largo da costa de Donegal que só ganha vida nos maiores swells atlânticos. Crab Island faz parte da emergente cena de ondas grandes da Irlanda, produzindo tubos grossos e pesados que se sustentam surpreendentemente bem no tamanho. O line-up requer um barco ou uma longa remada em condições traiçoeiras — adicionando mais uma camada de comprometimento a uma onda já exigente.',
+      'pt-PT': 'Um slab grosso e raso ao largo da costa de Donegal que só ganha vida nos maiores swells atlânticos. Crab Island faz parte da emergente cena de ondas grandes da Irlanda, produzindo tubos grossos e pesados que se sustentam surpreendentemente bem no tamanho. O line-up requer um barco ou uma longa remada em condições traiçoeiras — adicionando mais uma camada de comprometimento a uma onda já exigente.',
+    },
   },
   {
     rank: 44,
@@ -626,7 +884,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'Oct–Mar',
-    description: 'The surf capital of Ireland is a small seaside town in Donegal that draws Atlantic swells onto a series of reef breaks around the headland. The Peak at Bundoran is a perfectly formed A-frame that breaks left and right with consistency and power. The town has built a thriving surf economy around its breaks, and the local surf culture is among the most passionate in Europe.',
+    description: {
+      en: 'The surf capital of Ireland is a small seaside town in Donegal that draws Atlantic swells onto a series of reef breaks around the headland. The Peak at Bundoran is a perfectly formed A-frame that breaks left and right with consistency and power. The town has built a thriving surf economy around its breaks, and the local surf culture is among the most passionate in Europe.',
+      es: 'La capital del surf de Irlanda es un pequeño pueblo costero en Donegal que atrae los swells atlánticos sobre una serie de rompientes de arrecife alrededor del promontorio. El Peak en Bundoran es un A-frame perfectamente formado que rompe izquierda y derecha con consistencia y potencia. La ciudad ha construido una próspera economía del surf alrededor de sus olas, y la cultura surf local es de las más apasionadas de Europa.',
+      fr: 'La capitale du surf irlandaise est une petite ville balnéaire du Donegal qui attire les houles atlantiques sur une série de récifs autour du promontoire. Le Peak à Bundoran est un A-frame parfaitement formé qui casse gauche et droite avec constance et puissance. La ville a construit une économie du surf florissante autour de ses breaks, et la culture surf locale est parmi les plus passionnées d\'Europe.',
+      'pt-BR': 'A capital do surfe da Irlanda é uma pequena cidade litorânea em Donegal que atrai os swells atlânticos para uma série de recifes ao redor do promontório. O Peak em Bundoran é um A-frame perfeitamente formado que quebra esquerda e direita com consistência e potência. A cidade construiu uma próspera economia do surfe em torno de seus picos, e a cultura do surfe local é uma das mais apaixonadas da Europa.',
+      'pt-PT': 'A capital do surf da Irlanda é uma pequena cidade costeira em Donegal que atrai os swells atlânticos para uma série de recifes à volta do promontório. O Peak em Bundoran é um A-frame perfeitamente formado que quebra esquerda e direita com consistência e potência. A cidade construiu uma próspera economia do surf em torno dos seus picos, e a cultura do surf local é uma das mais apaixonadas da Europa.',
+    },
   },
 
   // ── Africa & Atlantic ──────────────────────────────────────────────────────────
@@ -642,7 +906,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Advanced',
     bestSeason: 'Jun–Aug',
     wslBadge: 'CT Stop',
-    description: 'The fastest, longest right-hand point break in the world. J-Bay runs from Boneyards through Supertubes, Impossibles, and Kitchen Windows for up to 800 metres of wall-to-wall perfection. The CT stop here annually produces the highest aggregate scores in surfing. Cold Benguela Current water and offshore SW winds keep conditions precise and the experience unlike anywhere else on earth.',
+    description: {
+      en: 'The fastest, longest right-hand point break in the world. J-Bay runs from Boneyards through Supertubes, Impossibles, and Kitchen Windows for up to 800 metres of wall-to-wall perfection. The CT stop here annually produces the highest aggregate scores in surfing. Cold Benguela Current water and offshore SW winds keep conditions precise and the experience unlike anywhere else on earth.',
+      es: 'El point break hacia la derecha más rápido y largo del mundo. J-Bay corre desde Boneyards pasando por Supertubes, Impossibles y Kitchen Windows por hasta 800 metros de perfección de pared a pared. El stop del CT aquí produce anualmente las puntuaciones totales más altas en el surf. El agua fría de la Corriente de Benguela y los vientos offshore del SO mantienen las condiciones precisas y la experiencia única en la tierra.',
+      fr: 'Le point break droit le plus rapide et le plus long au monde. J-Bay court de Boneyards à travers Supertubes, Impossibles et Kitchen Windows sur jusqu\'à 800 mètres de perfection de mur à mur. Le stop CT ici produit annuellement les scores globaux les plus élevés du surf. L\'eau froide du courant du Benguela et les vents offshore SO maintiennent des conditions précises et une expérience unique au monde.',
+      'pt-BR': 'O point break direito mais rápido e longo do mundo. J-Bay vai de Boneyards passando por Supertubes, Impossibles e Kitchen Windows por até 800 metros de perfeição de parede a parede. A etapa do CT aqui produz anualmente as pontuações agregadas mais altas do surfe. A água fria da Corrente de Benguela e os ventos offshore de SO mantêm condições precisas e uma experiência única no planeta.',
+      'pt-PT': 'O point break direito mais rápido e longo do mundo. J-Bay vai de Boneyards passando por Supertubes, Impossibles e Kitchen Windows por até 800 metros de perfeição de parede a parede. A etapa do CT aqui produz anualmente as pontuações agregadas mais altas do surf. A água fria da Corrente de Benguela e os ventos offshore de SO mantêm condições precisas e uma experiência única no planeta.',
+    },
   },
   {
     rank: 46,
@@ -655,7 +925,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Sand Bar',
     difficulty: 'Expert',
     bestSeason: 'Mar–Sep',
-    description: 'The world\'s longest sand-bottom left-hand barrel, Skeleton Bay runs for 1–2 kilometres over a moving desert sandbar in one of the most desolate coastlines on earth. Discovered by the wider surfing world around 2008, it produces tube rides that last several minutes — unheard of anywhere else. Cold water (12°C), great white sharks, and howling Benguela winds are part of every session.',
+    description: {
+      en: 'The world\'s longest sand-bottom left-hand barrel, Skeleton Bay runs for 1–2 kilometres over a moving desert sandbar in one of the most desolate coastlines on earth. Discovered by the wider surfing world around 2008, it produces tube rides that last several minutes — unheard of anywhere else. Cold water (12°C), great white sharks, and howling Benguela winds are part of every session.',
+      es: 'El tubo izquierdo sobre fondo de arena más largo del mundo, Skeleton Bay corre durante 1–2 kilómetros sobre un banco de arena desértico en movimiento en una de las costas más desoladas de la tierra. Descubierto por el mundo del surf alrededor de 2008, produce tubos que duran varios minutos — algo inaudito en cualquier otro lugar. Agua fría (12°C), grandes tiburones blancos y los aullantes vientos de Benguela son parte de cada sesión.',
+      fr: 'Le plus long tube gauche sur fond de sable au monde, Skeleton Bay court sur 1–2 kilomètres au-dessus d\'un banc de sable désertique en mouvement sur l\'un des littoraux les plus désolés de la planète. Découverte par le monde du surf vers 2008, il produit des tubes qui durent plusieurs minutes — inouï ailleurs. Eau froide (12°C), grands requins blancs et vents hurlants du Benguela font partie de chaque session.',
+      'pt-BR': 'O tubo esquerdo sobre fundo de areia mais longo do mundo, Skeleton Bay percorre 1–2 quilômetros sobre um banco de areia do deserto em movimento em uma das costas mais desoladas da terra. Descoberto pelo mundo do surfe por volta de 2008, produz tubos que duram vários minutos — algo inédito em qualquer outro lugar. Água fria (12°C), grandes tubarões brancos e os uivantes ventos de Benguela fazem parte de cada sessão.',
+      'pt-PT': 'O tubo esquerdo sobre fundo de areia mais longo do mundo, Skeleton Bay percorre 1–2 quilómetros sobre um banco de areia do deserto em movimento numa das costas mais desoladas da terra. Descoberto pelo mundo do surf por volta de 2008, produz tubos que duram vários minutos — algo inédito em qualquer outro lugar. Água fria (12°C), grandes tubarões brancos e os uivantes ventos de Benguela fazem parte de cada sessão.',
+    },
   },
   {
     rank: 47,
@@ -668,7 +944,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Oct–Mar',
-    description: 'Morocco\'s flagship wave is a long right-hander that peels along a rocky point north of Agadir on Atlantic groundswells. Anchor Point offers rides of up to 400 metres — plenty of time for powerful surfing on a consistent wall. The Atlas Mountains form the backdrop, the water is cold and clear, and the Moroccan surf culture that has grown around Taghazout village is warm and welcoming.',
+    description: {
+      en: 'Morocco\'s flagship wave is a long right-hander that peels along a rocky point north of Agadir on Atlantic groundswells. Anchor Point offers rides of up to 400 metres — plenty of time for powerful surfing on a consistent wall. The Atlas Mountains form the backdrop, the water is cold and clear, and the Moroccan surf culture that has grown around Taghazout village is warm and welcoming.',
+      es: 'La ola insignia de Marruecos es un largo derecho que se despega a lo largo de un punto rocoso al norte de Agadir en swells de fondo atlánticos. Anchor Point ofrece rides de hasta 400 metros — suficiente tiempo para un surf poderoso en una pared consistente. Las montañas del Atlas forman el telón de fondo, el agua es fría y clara, y la cultura surf marroquí que ha crecido alrededor del pueblo de Taghazout es cálida y acogedora.',
+      fr: 'La vague phare du Maroc est un long droit qui déroule le long d\'un point rocheux au nord d\'Agadir sur des groundswells atlantiques. Anchor Point offre des rides jusqu\'à 400 mètres — amplement le temps pour un surf puissant sur un mur constant. Les montagnes de l\'Atlas forment la toile de fond, l\'eau est froide et claire, et la culture surf marocaine qui s\'est développée autour du village de Taghazout est chaleureuse et accueillante.',
+      'pt-BR': 'A onda principal de Marrocos é um longo direito que se desenrola ao longo de um ponto rochoso ao norte de Agadir nos swells de fundo atlânticos. Anchor Point oferece remadas de até 400 metros — tempo suficiente para um surfe poderoso em uma parede consistente. As montanhas do Atlas formam o pano de fundo, a água é fria e clara, e a cultura do surfe marroquina que cresceu em torno da aldeia de Taghazout é calorosa e acolhedora.',
+      'pt-PT': 'A onda principal de Marrocos é um longo direito que se desenrola ao longo de um ponto rochoso ao norte de Agadir nos swells de fundo atlânticos. Anchor Point oferece remadas de até 400 metros — tempo suficiente para um surf poderoso numa parede consistente. As montanhas do Atlas formam o pano de fundo, a água é fria e clara, e a cultura do surf marroquina que cresceu em torno da aldeia de Taghazout é calorosa e acolhedora.',
+    },
   },
   {
     rank: 48,
@@ -681,7 +963,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Oct–Mar',
-    description: 'Just south of Anchor Point, Killer Point is a longer, more exposed right that only comes alive on the biggest Atlantic swells. When it fires, it delivers one of the longest point break rides in Morocco — grinding along a rocky coastline for 500+ metres. The two breaks rarely peak on the same day, making the choice between them one of the great tactical decisions of a Moroccan surf trip.',
+    description: {
+      en: 'Just south of Anchor Point, Killer Point is a longer, more exposed right that only comes alive on the biggest Atlantic swells. When it fires, it delivers one of the longest point break rides in Morocco — grinding along a rocky coastline for 500+ metres. The two breaks rarely peak on the same day, making the choice between them one of the great tactical decisions of a Moroccan surf trip.',
+      es: 'Justo al sur de Anchor Point, Killer Point es un derecho más largo y expuesto que solo cobra vida con los swells atlánticos más grandes. Cuando funciona, entrega uno de los rides de point break más largos de Marruecos — rodando a lo largo de una costa rocosa por más de 500 metros. Las dos olas rara vez alcanzan su pico el mismo día, convirtiendo la elección entre ellas en una de las grandes decisiones tácticas de un viaje de surf marroquí.',
+      fr: 'Juste au sud d\'Anchor Point, Killer Point est un droit plus long et plus exposé qui ne prend vie que sur les plus grandes houles atlantiques. Lorsqu\'il fonctionne, il délivre l\'une des plus longues rides de point break au Maroc — longeant une côte rocheuse sur plus de 500 mètres. Les deux breaks atteignent rarement leur pic le même jour, faisant du choix entre eux l\'une des grandes décisions tactiques d\'un voyage de surf marocain.',
+      'pt-BR': 'Logo ao sul de Anchor Point, Killer Point é um direito mais longo e exposto que só ganha vida nos maiores swells atlânticos. Quando funciona, oferece uma das mais longas remadas de point break em Marrocos — percorrendo uma costa rochosa por mais de 500 metros. Os dois picos raramente alcançam o seu auge no mesmo dia, tornando a escolha entre eles uma das grandes decisões táticas de uma viagem de surfe marroquina.',
+      'pt-PT': 'Logo ao sul de Anchor Point, Killer Point é um direito mais longo e exposto que só ganha vida nos maiores swells atlânticos. Quando funciona, oferece uma das mais longas remadas de point break em Marrocos — percorrendo uma costa rochosa por mais de 500 metros. Os dois picos raramente atingem o seu auge no mesmo dia, tornando a escolha entre eles uma das grandes decisões táticas de uma viagem de surf marroquina.',
+    },
   },
   {
     rank: 49,
@@ -694,7 +982,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Intermediate',
     bestSeason: 'May–Sep',
-    description: 'The mythical "perfect wave" that inspired the 1966 surf film *The Endless Summer*, Cape St. Francis is a long right-hand point that works on the same Indian Ocean swells as Jeffreys Bay. It is more fickle and rarely as powerful as J-Bay, but on the right day it delivers the kind of long, elegant rides that Bruce Brown captured on 16mm and showed the world. The romance around this wave is indestructible.',
+    description: {
+      en: 'The mythical "perfect wave" that inspired the 1966 surf film *The Endless Summer*, Cape St. Francis is a long right-hand point that works on the same Indian Ocean swells as Jeffreys Bay. It is more fickle and rarely as powerful as J-Bay, but on the right day it delivers the kind of long, elegant rides that Bruce Brown captured on 16mm and showed the world. The romance around this wave is indestructible.',
+      es: 'La mítica "ola perfecta" que inspiró el film de surf de 1966 *The Endless Summer*, Cape St. Francis es un largo point hacia la derecha que funciona con los mismos swells del Océano Índico que Jeffreys Bay. Es más caprichoso y raramente tan poderoso como J-Bay, pero en el día correcto ofrece el tipo de rides largos y elegantes que Bruce Brown capturó en 16mm y mostró al mundo. El romanticismo que rodea esta ola es indestructible.',
+      fr: 'La mythique "vague parfaite" qui a inspiré le film de surf de 1966 *The Endless Summer*, Cape St. Francis est un long point droit qui fonctionne sur les mêmes houles de l\'océan Indien que Jeffreys Bay. Il est plus capricieux et rarement aussi puissant que J-Bay, mais le bon jour, il délivre le genre de longues rides élégantes que Bruce Brown a capturées en 16mm et montrées au monde. La romance autour de cette vague est indestructible.',
+      'pt-BR': 'A mítica "onda perfeita" que inspirou o filme de surfe de 1966 *The Endless Summer*, Cape St. Francis é um longo point direito que funciona nos mesmos swells do Oceano Índico que Jeffreys Bay. É mais instável e raramente tão poderoso quanto J-Bay, mas no dia certo oferece o tipo de remadas longas e elegantes que Bruce Brown capturou em 16mm e mostrou ao mundo. O romantismo em torno desta onda é indestrutível.',
+      'pt-PT': 'A mítica "onda perfeita" que inspirou o filme de surf de 1966 *The Endless Summer*, Cape St. Francis é um longo point direito que funciona nos mesmos swells do Oceano Índico que Jeffreys Bay. É mais instável e raramente tão poderoso como J-Bay, mas no dia certo oferece o tipo de remadas longas e elegantes que Bruce Brown capturou em 16mm e mostrou ao mundo. O romantismo em torno desta onda é indestrutível.',
+    },
   },
   {
     rank: 50,
@@ -707,7 +1001,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'Apr–Sep',
-    description: 'One of Cape Town\'s most secretive reef breaks, Phantom Forest fires on solid SW Atlantic swells to produce a thick, powerful right-hand barrel in cold, shark-heavy waters. The Cape Peninsula\'s dramatic mountains rise behind the break, and the combination of heavy surf and genuine wilderness makes every session here feel consequential. Crowd levels stay low by necessity.',
+    description: {
+      en: 'One of Cape Town\'s most secretive reef breaks, Phantom Forest fires on solid SW Atlantic swells to produce a thick, powerful right-hand barrel in cold, shark-heavy waters. The Cape Peninsula\'s dramatic mountains rise behind the break, and the combination of heavy surf and genuine wilderness makes every session here feel consequential. Crowd levels stay low by necessity.',
+      es: 'Una de las rompientes de arrecife más secretas de Ciudad del Cabo, Phantom Forest se activa con sólidos swells del SO atlántico para producir un grueso y poderoso tubo hacia la derecha en aguas frías y llenas de tiburones. Las dramáticas montañas de la Península del Cabo se elevan detrás del break, y la combinación de surf pesado y verdadera naturaleza salvaje hace que cada sesión aquí se sienta trascendental. Los niveles de multitud se mantienen bajos por necesidad.',
+      fr: 'L\'un des spots de récif les plus secrets du Cap, Phantom Forest s\'enflamme sur de solides houles SO atlantiques pour produire un tube droit épais et puissant dans des eaux froides et infestées de requins. Les montagnes spectaculaires de la Péninsule du Cap s\'élèvent derrière le break, et la combinaison de surf lourd et de vraie nature sauvage rend chaque session ici conséquente. Les niveaux de foule restent bas par nécessité.',
+      'pt-BR': 'Um dos recifes mais secretos da Cidade do Cabo, Phantom Forest funciona com sólidos swells de SO atlântico para produzir um tubo direito grosso e poderoso em águas frias e infestadas de tubarões. As dramáticas montanhas da Península do Cabo se erguem atrás do pico, e a combinação de surf pesado e verdadeiro wilderness faz de cada sessão aqui algo consequente. Os níveis de lotação permanecem baixos por necessidade.',
+      'pt-PT': 'Um dos recifes mais secretos da Cidade do Cabo, Phantom Forest funciona com sólidos swells de SO atlântico para produzir um tubo direito grosso e poderoso em águas frias e infestadas de tubarões. As dramáticas montanhas da Península do Cabo erguem-se atrás do pico, e a combinação de surf pesado e verdadeira natureza selvagem faz de cada sessão aqui algo consequente. Os níveis de lotação permanecem baixos por necessidade.',
+    },
   },
   {
     rank: 51,
@@ -720,7 +1020,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Intermediate',
     bestSeason: 'Oct–Mar',
-    description: 'A charming fishing village that has become Morocco\'s surf hub, Taghazout itself faces a right-hand point that catches mid-size Atlantic swells and delivers fun, accessible waves in front of the brightly painted houses. It\'s the perfect base camp for the cluster of world-class waves — Hash Point, Panoramas, Mysteries — that spread north along the coast.',
+    description: {
+      en: 'A charming fishing village that has become Morocco\'s surf hub, Taghazout itself faces a right-hand point that catches mid-size Atlantic swells and delivers fun, accessible waves in front of the brightly painted houses. It\'s the perfect base camp for the cluster of world-class waves — Hash Point, Panoramas, Mysteries — that spread north along the coast.',
+      es: 'Un encantador pueblo pesquero que se ha convertido en el centro surfero de Marruecos, el propio Taghazout enfrenta un point hacia la derecha que capta swells atlánticos de tamaño medio y ofrece olas divertidas y accesibles frente a las casas pintadas de colores vivos. Es el campamento base perfecto para el grupo de olas de clase mundial — Hash Point, Panoramas, Mysteries — que se extienden hacia el norte a lo largo de la costa.',
+      fr: 'Un charmant village de pêcheurs devenu le hub surf du Maroc, Taghazout lui-même fait face à un point droit qui capte des houles atlantiques de taille moyenne et offre des vagues amusantes et accessibles devant les maisons aux couleurs vives. C\'est le camp de base idéal pour le groupe de vagues de classe mondiale — Hash Point, Panoramas, Mysteries — qui s\'étendent vers le nord le long de la côte.',
+      'pt-BR': 'Um charmoso vilarejo de pescadores que se tornou o hub de surfe de Marrocos, o próprio Taghazout enfrenta um point direito que capta swells atlânticos de tamanho médio e oferece ondas divertidas e acessíveis em frente às casas pintadas com cores vivas. É o campo base perfeito para o cluster de ondas de classe mundial — Hash Point, Panoramas, Mysteries — que se estendem ao norte ao longo da costa.',
+      'pt-PT': 'Uma charmosa aldeia piscatória que se tornou o hub de surf de Marrocos, o próprio Taghazout enfrenta um point direito que capta swells atlânticos de tamanho médio e oferece ondas divertidas e acessíveis em frente às casas pintadas com cores vivas. É o campo base perfeito para o cluster de ondas de classe mundial — Hash Point, Panoramas, Mysteries — que se estendem para norte ao longo da costa.',
+    },
   },
   {
     rank: 52,
@@ -733,7 +1039,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Intermediate',
     bestSeason: 'Nov–Mar',
-    description: 'Tenerife\'s south coast beach town faces unimpeded North Atlantic swells and consistent Alisio trade winds that make El Médano one of the world\'s premier windsurfing and kiteboarding destinations. On glassy mornings, however, the beach break delivers solid surf for all levels. The Canary Islands\' year-round warm-ish water and excellent swell exposure keep it on every European surfer\'s travel list.',
+    description: {
+      en: 'Tenerife\'s south coast beach town faces unimpeded North Atlantic swells and consistent Alisio trade winds that make El Médano one of the world\'s premier windsurfing and kiteboarding destinations. On glassy mornings, however, the beach break delivers solid surf for all levels. The Canary Islands\' year-round warm-ish water and excellent swell exposure keep it on every European surfer\'s travel list.',
+      es: 'El pueblo playero de la costa sur de Tenerife enfrenta swells del Atlántico Norte sin obstrucción y consistentes vientos alisios que hacen de El Médano uno de los principales destinos de windsurf y kitesurf del mundo. En las mañanas con mar en calma, sin embargo, el beach break ofrece surf sólido para todos los niveles. El agua cálida durante todo el año y la excelente exposición al swell de las Islas Canarias lo mantienen en la lista de viajes de todo surfista europeo.',
+      fr: 'La ville balnéaire de la côte sud de Tenerife fait face à des houles nord-atlantiques sans obstruction et à des vents alizés constants qui font d\'El Médano l\'une des premières destinations mondiales de planche à voile et de kitesurf. Par les matins calmes, cependant, le beach break offre un surf solide pour tous les niveaux. L\'eau toujours tiède des Canaries et l\'excellente exposition aux houles le maintiennent sur la liste de voyage de tout surfeur européen.',
+      'pt-BR': 'A cidade praiana da costa sul de Tenerife enfrenta swells do Atlântico Norte sem obstáculos e ventos alísios consistentes que tornam El Médano um dos principais destinos de windsurf e kitesurf do mundo. Nas manhãs de mar calmo, no entanto, o beach break oferece surf sólido para todos os níveis. A água morna durante todo o ano e a excelente exposição ao swell das Ilhas Canárias mantêm-no na lista de viagem de todo surfista europeu.',
+      'pt-PT': 'A cidade praiana da costa sul de Tenerife enfrenta swells do Atlântico Norte sem obstáculos e ventos alísios consistentes que tornam El Médano um dos principais destinos de windsurf e kitesurf do mundo. Nas manhãs de mar calmo, no entanto, o beach break oferece surf sólido para todos os níveis. A água morna durante todo o ano e a excelente exposição ao swell das Ilhas Canárias mantêm-no na lista de viagem de todo surfista europeu.',
+    },
   },
 
   // ── Indian Ocean ───────────────────────────────────────────────────────────────
@@ -748,7 +1060,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'Mar–Oct',
-    description: 'The most celebrated wave in the Maldives, Pasta Point is a long left-hand reef break that works on Indian Ocean swells with clockwork consistency. Accessible only to guests of the adjacent Cinnamon Dhonveli resort, it offers exclusivity and quality in equal measure. The wave holds up to 6ft with classic tube sections, set against the turquoise water and white sand of a perfect atoll.',
+    description: {
+      en: 'The most celebrated wave in the Maldives, Pasta Point is a long left-hand reef break that works on Indian Ocean swells with clockwork consistency. Accessible only to guests of the adjacent Cinnamon Dhonveli resort, it offers exclusivity and quality in equal measure. The wave holds up to 6ft with classic tube sections, set against the turquoise water and white sand of a perfect atoll.',
+      es: 'La ola más celebrada de las Maldivas, Pasta Point es un largo reef break hacia la izquierda que funciona con los swells del Océano Índico con una consistencia de relojería. Accesible solo para los huéspedes del resort Cinnamon Dhonveli adyacente, ofrece exclusividad y calidad a partes iguales. La ola aguanta hasta 6 pies con secciones de tubo clásicas, con el telón de fondo del agua turquesa y la arena blanca de un atolón perfecto.',
+      fr: 'La vague la plus célébrée des Maldives, Pasta Point est un long reef break gauche qui fonctionne sur les houles de l\'océan Indien avec une constance d\'horlogerie. Accessible uniquement aux clients du resort Cinnamon Dhonveli adjacent, elle offre exclusivité et qualité à parts égales. La vague tient jusqu\'à 6 pieds avec des sections de tube classiques, sur fond d\'eau turquoise et de sable blanc d\'un atoll parfait.',
+      'pt-BR': 'A onda mais celebrada das Maldivas, Pasta Point é um longo reef break esquerdo que funciona nos swells do Oceano Índico com consistência de relógio. Acessível apenas aos hóspedes do resort Cinnamon Dhonveli adjacente, oferece exclusividade e qualidade em igual medida. A onda aguenta até 6 pés com seções de tubo clássicas, ambientada nas águas turquesas e areia branca de um atol perfeito.',
+      'pt-PT': 'A onda mais celebrada das Maldivas, Pasta Point é um longo reef break esquerdo que funciona nos swells do Oceano Índico com consistência de relógio. Acessível apenas aos hóspedes do resort Cinnamon Dhonveli adjacente, oferece exclusividade e qualidade em igual medida. A onda aguenta até 6 pés com secções de tubo clássicas, ambientada nas águas turquesas e areia branca de um atol perfeito.',
+    },
   },
   {
     rank: 54,
@@ -761,7 +1079,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Intermediate',
     bestSeason: 'Mar–Oct',
-    description: 'The most accessible and consistent wave in the Maldives surf zone, Sultans is a long, fun right-hander that breaks on the outside of the atoll and delivers playful, workable walls for surfers of intermediate and above ability. The boat-access lineup, crystal-clear warm water, and consistent swell direction from the Indian Ocean make it the go-to wave for surf charters in the region.',
+    description: {
+      en: 'The most accessible and consistent wave in the Maldives surf zone, Sultans is a long, fun right-hander that breaks on the outside of the atoll and delivers playful, workable walls for surfers of intermediate and above ability. The boat-access lineup, crystal-clear warm water, and consistent swell direction from the Indian Ocean make it the go-to wave for surf charters in the region.',
+      es: 'La ola más accesible y consistente de la zona de surf de las Maldivas, Sultans es un largo y divertido derecho que rompe en el exterior del atolón y ofrece paredes juguetonas y manejables para surfistas de nivel intermedio y superior. El line-up accesible en barco, el agua cálida y cristalina y la dirección constante del swell del Océano Índico lo convierten en la ola de referencia para los chárter de surf de la región.',
+      fr: 'La vague la plus accessible et constante de la zone surf des Maldives, Sultans est un long droit amusant qui se brise à l\'extérieur de l\'atoll et offre des murs joueurs et maniables pour les surfeurs de niveau intermédiaire et au-dessus. Le line-up accessible en bateau, l\'eau chaude cristalline et la direction constante des houles de l\'océan Indien en font la vague de référence pour les charters de surf dans la région.',
+      'pt-BR': 'A onda mais acessível e consistente da zona de surfe das Maldivas, Sultans é um longo direito divertido que quebra no exterior do atol e oferece paredes brincalhonas e trabalháveis para surfistas de nível intermediário ou acima. O line-up acessível de barco, a água quente e cristalina e a direção consistente do swell do Oceano Índico fazem dela a onda de referência para os charters de surfe da região.',
+      'pt-PT': 'A onda mais acessível e consistente da zona de surf das Maldivas, Sultans é um longo direito divertido que quebra no exterior do atol e oferece paredes brincalhonas e trabalháveis para surfistas de nível intermédio ou acima. O line-up acessível de barco, a água quente e cristalina e a direção consistente do swell do Oceano Índico fazem dela a onda de referência para os charters de surf da região.',
+    },
   },
   {
     rank: 55,
@@ -774,7 +1098,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'May–Oct',
-    description: 'Widely regarded as one of the longest and most perfect barrels in the world, Desert Point is a left-hand reef break in a remote bay on the southwest tip of Lombok. When the dry season swells arrive from the southern Indian Ocean, it produces cavernous, draining barrels that run for hundreds of metres with barely a section to interrupt the ride. The isolation and perfection create a kind of surfing pilgrimage.',
+    description: {
+      en: 'Widely regarded as one of the longest and most perfect barrels in the world, Desert Point is a left-hand reef break in a remote bay on the southwest tip of Lombok. When the dry season swells arrive from the southern Indian Ocean, it produces cavernous, draining barrels that run for hundreds of metres with barely a section to interrupt the ride. The isolation and perfection create a kind of surfing pilgrimage.',
+      es: 'Ampliamente considerado como uno de los tubos más largos y perfectos del mundo, Desert Point es un reef break hacia la izquierda en una bahía remota en la punta suroeste de Lombok. Cuando los swells de temporada seca llegan desde el sur del Océano Índico, produce tubos cavernosos y drenantes que corren cientos de metros con apenas una sección que interrumpa el ride. El aislamiento y la perfección crean una especie de peregrinación del surf.',
+      fr: 'Largement considéré comme l\'un des tubes les plus longs et les plus parfaits au monde, Desert Point est un reef break gauche dans une baie isolée à la pointe sud-ouest de Lombok. Lorsque les houles de saison sèche arrivent du sud de l\'océan Indien, il produit des tubes caverneux et asséchants qui courent sur des centaines de mètres avec à peine une section pour interrompre la ride. L\'isolement et la perfection créent une sorte de pèlerinage du surf.',
+      'pt-BR': 'Amplamente considerado um dos tubos mais longos e perfeitos do mundo, Desert Point é um reef break esquerdo em uma baía remota na ponta sudoeste de Lombok. Quando os swells da estação seca chegam do sul do Oceano Índico, produz tubos cavernosos e drenantes que correm por centenas de metros com quase nenhuma seção para interromper a remada. O isolamento e a perfeição criam uma espécie de peregrinação do surfe.',
+      'pt-PT': 'Amplamente considerado um dos tubos mais longos e perfeitos do mundo, Desert Point é um reef break esquerdo numa baía remota na ponta sudoeste de Lombok. Quando os swells da estação seca chegam do sul do Oceano Índico, produz tubos cavernosos e drenantes que correm por centenas de metros com quase nenhuma secção para interromper a remada. O isolamento e a perfeição criam uma espécie de peregrinação do surf.',
+    },
   },
   {
     rank: 56,
@@ -787,7 +1117,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'Jun–Sep',
-    description: 'Deep in the Alas Purwo National Park on Java\'s remote southeastern tip, G-Land is one of the original Indonesian surf discoveries — a left-hand point that fires on Indian Ocean groundswells across multiple sections (Kongs, Money Trees, Launching Pads). Surf camps in the jungle have operated here since the 1970s. The waves are powerful, the jungle is dense, and the monkeys steal everything.',
+    description: {
+      en: 'Deep in the Alas Purwo National Park on Java\'s remote southeastern tip, G-Land is one of the original Indonesian surf discoveries — a left-hand point that fires on Indian Ocean groundswells across multiple sections (Kongs, Money Trees, Launching Pads). Surf camps in the jungle have operated here since the 1970s. The waves are powerful, the jungle is dense, and the monkeys steal everything.',
+      es: 'En las profundidades del Parque Nacional Alas Purwo en el remoto extremo sureste de Java, G-Land es uno de los descubrimientos originales del surf indonesio — un point hacia la izquierda que se activa con swells de fondo del Océano Índico a través de múltiples secciones (Kongs, Money Trees, Launching Pads). Los campamentos de surf en la selva han operado aquí desde los años 70. Las olas son poderosas, la selva es densa y los monos roban todo.',
+      fr: 'Au cœur du parc national d\'Alas Purwo à la pointe sud-est isolée de Java, G-Land est l\'une des découvertes surf indonésiennes originelles — un point gauche qui s\'enflamme sur des groundswells de l\'océan Indien à travers plusieurs sections (Kongs, Money Trees, Launching Pads). Des camps de surf dans la jungle opèrent ici depuis les années 1970. Les vagues sont puissantes, la jungle est dense et les singes volent tout.',
+      'pt-BR': 'No coração do Parque Nacional Alas Purwo na remota ponta sudeste de Java, G-Land é uma das descobertas originais do surfe indonésio — um point esquerdo que funciona nos swells de fundo do Oceano Índico através de múltiplas seções (Kongs, Money Trees, Launching Pads). Acampamentos de surfe na selva operam aqui desde os anos 1970. As ondas são poderosas, a selva é densa e os macacos roubam tudo.',
+      'pt-PT': 'No coração do Parque Nacional Alas Purwo na remota ponta sudeste de Java, G-Land é uma das descobertas originais do surf indonésio — um point esquerdo que funciona nos swells de fundo do Oceano Índico através de múltiplas secções (Kongs, Money Trees, Launching Pads). Acampamentos de surf na selva operam aqui desde os anos 1970. As ondas são poderosas, a selva é densa e os macacos roubam tudo.',
+    },
   },
   {
     rank: 57,
@@ -800,7 +1136,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'May–Oct',
-    description: 'A world-class left-hand reef break on the south coast of Samoa\'s main island that delivers long, powerful barrels in a genuinely remote Pacific setting. Salani works on south swells that travel from the roaring forties without obstruction, producing waves of outstanding consistency and power. The local village community is an integral part of the experience here.',
+    description: {
+      en: 'A world-class left-hand reef break on the south coast of Samoa\'s main island that delivers long, powerful barrels in a genuinely remote Pacific setting. Salani works on south swells that travel from the roaring forties without obstruction, producing waves of outstanding consistency and power. The local village community is an integral part of the experience here.',
+      es: 'Un reef break izquierdo de clase mundial en la costa sur de la isla principal de Samoa que ofrece tubos largos y poderosos en un entorno del Pacífico genuinamente remoto. Salani funciona con swells del sur que viajan desde los cuarenta rugientes sin obstáculos, produciendo olas de excepcional consistencia y potencia. La comunidad de la aldea local es parte integral de la experiencia aquí.',
+      fr: 'Un reef break gauche de classe mondiale sur la côte sud de l\'île principale des Samoa qui délivre de longs tubes puissants dans un cadre Pacifique véritablement isolé. Salani fonctionne sur des houles du sud qui voyagent depuis les quarantièmes rugissants sans obstruction, produisant des vagues d\'une constance et d\'une puissance exceptionnelles. La communauté du village local fait partie intégrante de l\'expérience ici.',
+      'pt-BR': 'Um reef break esquerdo de classe mundial na costa sul da ilha principal de Samoa que oferece tubos longos e poderosos em um cenário genuinamente remoto do Pacífico. Salani funciona nos swells do sul que viajam dos Quarenta Furiosos sem obstáculos, produzindo ondas de consistência e potência excepcionais. A comunidade da aldeia local é parte integrante da experiência aqui.',
+      'pt-PT': 'Um reef break esquerdo de classe mundial na costa sul da ilha principal de Samoa que oferece tubos longos e poderosos num cenário genuinamente remoto do Pacífico. Salani funciona nos swells do sul que viajam dos Quarenta Furiosos sem obstáculos, produzindo ondas de consistência e potência excecionais. A comunidade da aldeia local é parte integrante da experiência aqui.',
+    },
   },
   {
     rank: 58,
@@ -813,7 +1155,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'Jun–Sep',
-    description: 'On the northwestern tip of Tongatapu, Ha\'atafu faces open Pacific swells and offers a variety of reef breaks for intermediate to expert surfers. The beach faces north and catches winter swells with good consistency. The combination of warm Pacific water, uncrowded lineup, and the raw beauty of Tonga\'s islands makes this one of the South Pacific\'s most rewarding off-the-beaten-path surf destinations.',
+    description: {
+      en: 'On the northwestern tip of Tongatapu, Ha\'atafu faces open Pacific swells and offers a variety of reef breaks for intermediate to expert surfers. The beach faces north and catches winter swells with good consistency. The combination of warm Pacific water, uncrowded lineup, and the raw beauty of Tonga\'s islands makes this one of the South Pacific\'s most rewarding off-the-beaten-path surf destinations.',
+      es: 'En la punta noroeste de Tongatapu, Ha\'atafu enfrenta swells del Pacífico abierto y ofrece una variedad de rompientes de arrecife para surfistas de nivel intermedio a experto. La playa mira al norte y capta los swells invernales con buena consistencia. La combinación de agua cálida del Pacífico, line-up poco concurrido y la belleza virgen de las islas de Tonga hace de este uno de los destinos de surf fuera de lo común más gratificantes del Pacífico Sur.',
+      fr: 'À la pointe nord-ouest de Tongatapu, Ha\'atafu fait face aux houles du Pacifique ouvert et offre une variété de récifs pour les surfeurs de niveau intermédiaire à expert. La plage fait face au nord et capte les houles hivernales avec une bonne constance. La combinaison d\'eau chaude du Pacifique, d\'un line-up peu fréquenté et de la beauté brute des îles des Tonga en fait l\'une des destinations de surf hors des sentiers battus les plus gratifiantes du Pacifique Sud.',
+      'pt-BR': 'Na ponta noroeste de Tongatapu, Ha\'atafu enfrenta swells do Pacífico aberto e oferece uma variedade de recifes para surfistas de nível intermediário a expert. A praia fica voltada para o norte e capta os swells de inverno com boa consistência. A combinação de água quente do Pacífico, line-up pouco lotado e a beleza bruta das ilhas de Tonga faz desta um dos destinos de surfe fora dos roteiros mais gratificantes do Pacífico Sul.',
+      'pt-PT': 'Na ponta noroeste de Tongatapu, Ha\'atafu enfrenta swells do Pacífico aberto e oferece uma variedade de recifes para surfistas de nível intermédio a expert. A praia fica voltada para norte e capta os swells de inverno com boa consistência. A combinação de água quente do Pacífico, line-up pouco lotado e a beleza bruta das ilhas de Tonga faz desta um dos destinos de surf fora dos roteiros mais gratificantes do Pacífico Sul.',
+    },
   },
 
   // ── Southeast Asia ─────────────────────────────────────────────────────────────
@@ -829,7 +1177,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Advanced',
     bestSeason: 'Apr–Oct',
     wslBadge: 'CT Stop',
-    description: 'The most iconic surf break in Bali, Uluwatu is a long left-hand reef break accessed through a cave in a cliff face beneath a Hindu temple. Multiple sections — The Peak, Racetrack, and Outside Corner — produce rides of 200–300m on solid Indian Ocean swells. The temple, the cliffs, the monkeys, and the wave itself make Uluwatu the complete tropical surf experience.',
+    description: {
+      en: 'The most iconic surf break in Bali, Uluwatu is a long left-hand reef break accessed through a cave in a cliff face beneath a Hindu temple. Multiple sections — The Peak, Racetrack, and Outside Corner — produce rides of 200–300m on solid Indian Ocean swells. The temple, the cliffs, the monkeys, and the wave itself make Uluwatu the complete tropical surf experience.',
+      es: 'El break de surf más icónico de Bali, Uluwatu es un largo reef break hacia la izquierda al que se accede a través de una cueva en un acantilado bajo un templo hindú. Múltiples secciones — The Peak, Racetrack y Outside Corner — producen rides de 200–300m en sólidos swells del Océano Índico. El templo, los acantilados, los monos y la propia ola hacen de Uluwatu la experiencia de surf tropical completa.',
+      fr: 'Le break de surf le plus emblématique de Bali, Uluwatu est un long reef break gauche accessible à travers une grotte dans une falaise sous un temple hindou. Plusieurs sections — The Peak, Racetrack et Outside Corner — produisent des rides de 200–300m sur de solides houles de l\'océan Indien. Le temple, les falaises, les singes et la vague elle-même font d\'Uluwatu l\'expérience de surf tropical complète.',
+      'pt-BR': 'O pico de surfe mais icônico de Bali, Uluwatu é um longo reef break esquerdo acessado através de uma caverna na falésia sob um templo hindu. Múltiplas seções — The Peak, Racetrack e Outside Corner — produzem remadas de 200–300m em sólidos swells do Oceano Índico. O templo, as falésias, os macacos e a própria onda tornam Uluwatu a experiência de surfe tropical completa.',
+      'pt-PT': 'O pico de surf mais icónico de Bali, Uluwatu é um longo reef break esquerdo acessado através de uma caverna na falésia sob um templo hindu. Múltiplas secções — The Peak, Racetrack e Outside Corner — produzem remadas de 200–300m em sólidos swells do Oceano Índico. O templo, as falésias, os macacos e a própria onda tornam Uluwatu a experiência de surf tropical completa.',
+    },
   },
   {
     rank: 60,
@@ -843,7 +1197,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'May–Sep',
     wslBadge: 'CT Stop',
-    description: 'Bali\'s Padang Padang is a short, ferociously shallow barrel that breaks directly at the base of limestone cliffs over a razor-sharp reef. It only works on the biggest Indian Ocean swells but when it fires, it produces some of the most extreme tube surfing in the world. The CT Rip Curl Cup has been held here on invitation — waiting, sometimes for years, for the right swell.',
+    description: {
+      en: 'Bali\'s Padang Padang is a short, ferociously shallow barrel that breaks directly at the base of limestone cliffs over a razor-sharp reef. It only works on the biggest Indian Ocean swells but when it fires, it produces some of the most extreme tube surfing in the world. The CT Rip Curl Cup has been held here on invitation — waiting, sometimes for years, for the right swell.',
+      es: 'Padang Padang de Bali es un tubo corto y ferozmente poco profundo que rompe directamente a los pies de acantilados de caliza sobre un arrecife afilado como una navaja. Solo funciona con los swells más grandes del Océano Índico, pero cuando se activa, produce algunos de los surf de tubo más extremos del mundo. El CT Rip Curl Cup se ha celebrado aquí por invitación — esperando, a veces años, el swell correcto.',
+      fr: 'Le Padang Padang de Bali est un tube court et férocement peu profond qui se brise directement au pied des falaises calcaires sur un récif tranchant comme un rasoir. Il ne fonctionne que sur les plus grandes houles de l\'océan Indien mais lorsqu\'il se déclenche, il produit certains des surf de tube les plus extrêmes au monde. Le CT Rip Curl Cup s\'y est tenu sur invitation — attendant, parfois des années, la bonne houle.',
+      'pt-BR': 'O Padang Padang de Bali é um tubo curto e ferozmente raso que quebra diretamente ao pé de falésias de calcário sobre um recife afiado como navalha. Só funciona nos maiores swells do Oceano Índico, mas quando funciona, produz alguns dos surfe de tubo mais extremos do mundo. O CT Rip Curl Cup foi realizado aqui por convite — aguardando, às vezes por anos, o swell certo.',
+      'pt-PT': 'O Padang Padang de Bali é um tubo curto e ferozmente raso que quebra diretamente ao pé de falésias de calcário sobre um recife afiado como navalha. Só funciona nos maiores swells do Oceano Índico, mas quando funciona, produz alguns dos surf de tubo mais extremos do mundo. O CT Rip Curl Cup foi realizado aqui por convite — aguardando, às vezes durante anos, o swell certo.',
+    },
   },
   {
     rank: 61,
@@ -856,7 +1216,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'Apr–Oct',
-    description: 'A powerful right-hand reef break on Bali\'s east coast that fires on SE swells and has recently hosted the CT Komune Bali Pro. Keramas produces punchy, fast barrels that have attracted some of the world\'s best surfers to train here. The wave works on all tides, and night surfing sessions under floodlights have given it a spectacle no other Indonesian break can match.',
+    description: {
+      en: 'A powerful right-hand reef break on Bali\'s east coast that fires on SE swells and has recently hosted the CT Komune Bali Pro. Keramas produces punchy, fast barrels that have attracted some of the world\'s best surfers to train here. The wave works on all tides, and night surfing sessions under floodlights have given it a spectacle no other Indonesian break can match.',
+      es: 'Un poderoso reef break hacia la derecha en la costa este de Bali que se activa con swells del SE y ha albergado recientemente el CT Komune Bali Pro. Keramas produce tubos contundentes y rápidos que han atraído a algunos de los mejores surfistas del mundo para entrenar aquí. La ola funciona con todas las mareas, y las sesiones de surf nocturno bajo focos le han dado un espectáculo que ningún otro break indonesio puede igualar.',
+      fr: 'Un puissant reef break droit sur la côte est de Bali qui s\'enflamme sur les houles SE et a récemment accueilli le CT Komune Bali Pro. Keramas produit des tubes percutants et rapides qui ont attiré certains des meilleurs surfeurs du monde pour s\'y entraîner. La vague fonctionne à toutes les marées, et les sessions de surf nocturne sous des projecteurs lui ont donné un spectacle qu\'aucun autre break indonésien ne peut égaler.',
+      'pt-BR': 'Um poderoso reef break direito na costa leste de Bali que funciona nos swells de SE e recentemente sediou o CT Komune Bali Pro. Keramas produz tubos contundentes e rápidos que atraíram alguns dos melhores surfistas do mundo para treinar aqui. A onda funciona em todas as marés, e as sessões de surfe noturno sob holofotes deram a ele um espetáculo que nenhum outro pico indonésio consegue igualar.',
+      'pt-PT': 'Um poderoso reef break direito na costa leste de Bali que funciona nos swells de SE e recentemente acolheu o CT Komune Bali Pro. Keramas produz tubos contundentes e rápidos que atraíram alguns dos melhores surfistas do mundo para treinar aqui. A onda funciona em todas as marés, e as sessões de surf noturno sob holofotes deram-lhe um espetáculo que nenhum outro pico indonésio consegue igualar.',
+    },
   },
   {
     rank: 62,
@@ -869,7 +1235,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Intermediate',
     bestSeason: 'Apr–Oct',
-    description: 'Bali\'s longest left-hand point break peels along a cobblestone and lava reef on the island\'s quiet western coast. Medewi is Bali\'s answer to Rincon — gentle enough for intermediate surfers on smaller days, yet holding shape at 6ft and delivering long, satisfying rides. The village atmosphere is relaxed and removed from the Bukit\'s tourist circus.',
+    description: {
+      en: 'Bali\'s longest left-hand point break peels along a cobblestone and lava reef on the island\'s quiet western coast. Medewi is Bali\'s answer to Rincon — gentle enough for intermediate surfers on smaller days, yet holding shape at 6ft and delivering long, satisfying rides. The village atmosphere is relaxed and removed from the Bukit\'s tourist circus.',
+      es: 'El point break izquierdo más largo de Bali se despega a lo largo de un arrecife de adoquines y lava en la tranquila costa occidental de la isla. Medewi es la respuesta de Bali a Rincon — lo suficientemente suave para surfistas intermedios en días pequeños, pero manteniendo la forma a 6 pies y ofreciendo rides largos y satisfactorios. El ambiente del pueblo es relajado y alejado del circo turístico de Bukit.',
+      fr: 'Le plus long point break gauche de Bali déroule le long d\'un récif de galets et de lave sur la côte ouest tranquille de l\'île. Medewi est la réponse de Bali à Rincon — assez doux pour les surfeurs intermédiaires les petits jours, mais tenant sa forme à 6 pieds et offrant de longues rides satisfaisantes. L\'atmosphère du village est détendue et éloignée du cirque touristique du Bukit.',
+      'pt-BR': 'O point break esquerdo mais longo de Bali se desenrola ao longo de um recife de paralelepípedos e lava na tranquila costa oeste da ilha. Medewi é a resposta de Bali ao Rincon — suave o suficiente para surfistas intermediários em dias menores, mas mantendo a forma em 6 pés e oferecendo remadas longas e satisfatórias. O ambiente da aldeia é relaxado e distante do circo turístico do Bukit.',
+      'pt-PT': 'O point break esquerdo mais longo de Bali desenrola-se ao longo de um recife de paralelepípedos e lava na tranquila costa oeste da ilha. Medewi é a resposta de Bali ao Rincon — suave o suficiente para surfistas intermédios em dias menores, mas mantendo a forma em 6 pés e oferecendo remadas longas e satisfatórias. O ambiente da aldeia é relaxado e distante do circo turístico do Bukit.',
+    },
   },
   {
     rank: 63,
@@ -882,7 +1254,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'Apr–Oct',
-    description: 'The most photographed wave in the Mentawai Islands and one of the most perfect right-hand barrels anywhere on earth. Lance\'s Right (also known as HTs) is a long, draining tube that runs over a coral reef with machine-like precision on Indian Ocean groundswells. Every surfer who has ridden it considers it a life-defining experience. Access is by liveaboard only.',
+    description: {
+      en: 'The most photographed wave in the Mentawai Islands and one of the most perfect right-hand barrels anywhere on earth. Lance\'s Right (also known as HTs) is a long, draining tube that runs over a coral reef with machine-like precision on Indian Ocean groundswells. Every surfer who has ridden it considers it a life-defining experience. Access is by liveaboard only.',
+      es: 'La ola más fotografiada de las Islas Mentawai y uno de los tubos hacia la derecha más perfectos de la tierra. Lance\'s Right (también conocido como HTs) es un tubo largo y drenante que corre sobre un arrecife de coral con precisión mecánica en swells de fondo del Océano Índico. Todo surfista que lo ha surfeado lo considera una experiencia que define su vida. El acceso es solo en barco liveaboard.',
+      fr: 'La vague la plus photographiée des îles Mentawai et l\'un des tubes droits les plus parfaits au monde. Lance\'s Right (aussi connu sous le nom de HTs) est un long tube asséchant qui court sur un récif de corail avec une précision mécanique sur les groundswells de l\'océan Indien. Chaque surfeur qui l\'a ridden le considère comme une expérience qui définit sa vie. L\'accès se fait uniquement par liveaboard.',
+      'pt-BR': 'A onda mais fotografada das Ilhas Mentawai e um dos tubos direitos mais perfeitos da terra. Lance\'s Right (também conhecido como HTs) é um tubo longo e drenante que corre sobre um recife de coral com precisão maquinal nos swells de fundo do Oceano Índico. Todo surfista que já o surfou considera uma experiência que define a vida. O acesso é apenas por liveaboard.',
+      'pt-PT': 'A onda mais fotografada das Ilhas Mentawai e um dos tubos direitos mais perfeitos da terra. Lance\'s Right (também conhecido como HTs) é um tubo longo e drenante que corre sobre um recife de coral com precisão maquinal nos swells de fundo do Oceano Índico. Todo surfista que já o surfou considera uma experiência que define a vida. O acesso é apenas por liveaboard.',
+    },
   },
   {
     rank: 64,
@@ -895,7 +1273,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'Apr–Oct',
-    description: 'A fun, consistent left-hand reef break in the southern Mentawais that offers big barrels with slightly more room for error than the heavier breaks. Macaronis is beloved for its consistency — it\'s almost always surfable — and its perfectly shaped barrel sections that allow even solid intermediate surfers to get tubed. The Mentawai liveaboard circuit typically includes it on every itinerary.',
+    description: {
+      en: 'A fun, consistent left-hand reef break in the southern Mentawais that offers big barrels with slightly more room for error than the heavier breaks. Macaronis is beloved for its consistency — it\'s almost always surfable — and its perfectly shaped barrel sections that allow even solid intermediate surfers to get tubed. The Mentawai liveaboard circuit typically includes it on every itinerary.',
+      es: 'Un reef break izquierdo divertido y consistente en los Mentawais del sur que ofrece grandes tubos con un poco más de margen de error que los breaks más pesados. Macaronis es amado por su consistencia — casi siempre se puede surfear — y sus secciones de tubo perfectamente formadas que permiten incluso a surfistas intermedios sólidos meterse en el tubo. El circuito de liveaboard de Mentawai típicamente lo incluye en cada itinerario.',
+      fr: 'Un reef break gauche amusant et constant dans le sud des Mentawai qui offre de gros tubes avec un peu plus de marge d\'erreur que les breaks plus lourds. Macaronis est adoré pour sa constance — il est presque toujours surfable — et ses sections de tube parfaitement formées qui permettent même aux surfeurs intermédiaires solides de se faire tuber. Le circuit liveaboard des Mentawai l\'inclut généralement dans chaque itinéraire.',
+      'pt-BR': 'Um reef break esquerdo divertido e consistente no sul dos Mentawais que oferece tubos grandes com um pouco mais de margem de erro do que os picos mais pesados. Macaronis é amado pela sua consistência — quase sempre pode ser surfado — e suas seções de tubo perfeitamente formadas que permitem até surfistas intermediários sólidos se tubarem. O circuito de liveaboard dos Mentawai tipicamente o inclui em cada itinerário.',
+      'pt-PT': 'Um reef break esquerdo divertido e consistente no sul dos Mentawais que oferece tubos grandes com um pouco mais de margem de erro do que os picos mais pesados. Macaronis é amado pela sua consistência — quase sempre pode ser surfado — e as suas secções de tubo perfeitamente formadas que permitem até surfistas intermédios sólidos entrarem no tubo. O circuito de liveaboard dos Mentawai tipicamente inclui-o em cada itinerário.',
+    },
   },
   {
     rank: 65,
@@ -908,7 +1292,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'Apr–Oct',
-    description: 'A dreamy right-hand reef break in the Mentawais that catches a wide range of swell sizes and delivers long, peeling barrels with an aesthetic quality rarely matched. Telescopes is the Mentawai break most likely to appear on magazine covers — the water is impossibly clear, the barrel is perfectly round, and the channel provides an easy paddle-out. One of the most purely beautiful surf spots on earth.',
+    description: {
+      en: 'A dreamy right-hand reef break in the Mentawais that catches a wide range of swell sizes and delivers long, peeling barrels with an aesthetic quality rarely matched. Telescopes is the Mentawai break most likely to appear on magazine covers — the water is impossibly clear, the barrel is perfectly round, and the channel provides an easy paddle-out. One of the most purely beautiful surf spots on earth.',
+      es: 'Un soñado reef break hacia la derecha en los Mentawais que capta una amplia gama de tamaños de swell y ofrece tubos largos y despegados con una calidad estética raramente igualada. Telescopes es el break de Mentawai que más probablemente aparece en portadas de revistas — el agua es increíblemente clara, el tubo es perfectamente redondo y el canal ofrece una salida fácil. Uno de los spots de surf más puramente bellos de la tierra.',
+      fr: 'Un reef break droit de rêve aux Mentawai qui capte une large gamme de tailles de houle et délivre de longs tubes se détachant avec une qualité esthétique rarement égalée. Telescopes est le break des Mentawai qui apparaît le plus souvent en couverture de magazines — l\'eau est incroyablement claire, le tube est parfaitement rond et le chenal offre une sortie facile au pagayage. L\'un des spots de surf les plus purement beaux au monde.',
+      'pt-BR': 'Um reef break direito dos sonhos nos Mentawais que capta uma ampla gama de tamanhos de swell e oferece tubos longos e se abrindo com uma qualidade estética raramente igualada. Telescopes é o pico dos Mentawais que mais provavelmente aparece nas capas de revistas — a água é incrivelmente clara, o tubo é perfeitamente redondo e o canal oferece uma remada fácil. Um dos spots de surfe mais puramente belos da terra.',
+      'pt-PT': 'Um reef break direito dos sonhos nos Mentawais que capta uma ampla gama de tamanhos de swell e oferece tubos longos e se abrindo com uma qualidade estética raramente igualada. Telescopes é o pico dos Mentawais que mais provavelmente aparece nas capas de revistas — a água é incrivelmente clara, o tubo é perfeitamente redondo e o canal oferece uma remada fácil. Um dos spots de surf mais puramente belos da terra.',
+    },
   },
   {
     rank: 66,
@@ -921,7 +1311,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'Jun–Sep',
-    description: 'One of the original discoveries of the Indonesian surf exodus in the 1970s, Nias breaks over a coral reef on the island\'s south coast to deliver thick, powerful rights. At size it rivals anything in the Mentawais — long, draining barrels over a shallow reef with genuine consequence. The 2004 tsunami destroyed much of the island but the wave, raised slightly by tectonic activity, recovered beautifully.',
+    description: {
+      en: 'One of the original discoveries of the Indonesian surf exodus in the 1970s, Nias breaks over a coral reef on the island\'s south coast to deliver thick, powerful rights. At size it rivals anything in the Mentawais — long, draining barrels over a shallow reef with genuine consequence. The 2004 tsunami destroyed much of the island but the wave, raised slightly by tectonic activity, recovered beautifully.',
+      es: 'Uno de los descubrimientos originales del éxodo surfero indonesio en los años 70, Nias rompe sobre un arrecife de coral en la costa sur de la isla para ofrecer derechos gruesos y poderosos. A tamaño rivaliza con cualquier cosa en los Mentawais — tubos largos y drenantes sobre un arrecife poco profundo con consecuencias reales. El tsunami de 2004 destruyó gran parte de la isla, pero la ola, ligeramente elevada por la actividad tectónica, se recuperó de manera hermosa.',
+      fr: 'L\'une des découvertes originelles de l\'exode surf indonésien dans les années 1970, Nias se brise sur un récif de corail sur la côte sud de l\'île pour délivrer des droits épais et puissants. À taille, elle rivalise avec n\'importe quoi aux Mentawai — de longs tubes asséchants sur un récif peu profond avec de vraies conséquences. Le tsunami de 2004 a détruit une grande partie de l\'île, mais la vague, légèrement soulevée par l\'activité tectonique, s\'est magnifiquement rétablie.',
+      'pt-BR': 'Uma das descobertas originais do êxodo de surfe indonésio nos anos 1970, Nias quebra sobre um recife de coral na costa sul da ilha para oferecer direitos grossos e poderosos. No tamanho rivaliza com qualquer coisa nos Mentawais — tubos longos e drenantes sobre um recife raso com consequências reais. O tsunami de 2004 destruiu grande parte da ilha, mas a onda, ligeiramente elevada pela atividade tectônica, se recuperou lindamente.',
+      'pt-PT': 'Uma das descobertas originais do êxodo de surf indonésio nos anos 1970, Nias quebra sobre um recife de coral na costa sul da ilha para oferecer direitos grossos e poderosos. No tamanho rivaliza com qualquer coisa nos Mentawais — tubos longos e drenantes sobre um recife raso com consequências reais. O tsunami de 2004 destruiu grande parte da ilha, mas a onda, ligeiramente elevada pela atividade tectónica, recuperou lindamente.',
+    },
   },
   {
     rank: 67,
@@ -935,7 +1331,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Sep–Dec',
     wslBadge: 'CT Stop',
-    description: 'The most famous wave in the Philippines and the host of the CT Siargao Cloud 9 Surfing Cup. Cloud 9 is a hollow right-hand reef break that jacks up over a shallow mushroom coral shelf and delivers explosive barrels when the northeast monsoon brings consistent groundswells. The iconic wooden viewing platform overlooking the break has made it one of the most recognisable images in Asian surfing.',
+    description: {
+      en: 'The most famous wave in the Philippines and the host of the CT Siargao Cloud 9 Surfing Cup. Cloud 9 is a hollow right-hand reef break that jacks up over a shallow mushroom coral shelf and delivers explosive barrels when the northeast monsoon brings consistent groundswells. The iconic wooden viewing platform overlooking the break has made it one of the most recognisable images in Asian surfing.',
+      es: 'La ola más famosa de Filipinas y sede del CT Siargao Cloud 9 Surfing Cup. Cloud 9 es un hueco reef break hacia la derecha que se eleva sobre una plataforma de coral seta poco profunda y ofrece tubos explosivos cuando el monzón del noreste trae swells de fondo consistentes. La icónica plataforma de madera con vistas al break la ha convertido en una de las imágenes más reconocibles del surf asiático.',
+      fr: 'La vague la plus célèbre des Philippines et hôte du CT Siargao Cloud 9 Surfing Cup. Cloud 9 est un reef break droit creux qui se dresse sur une dalle de corail en champignon peu profonde et délivre des tubes explosifs lorsque la mousson du nord-est apporte des groundswells constants. La plateforme d\'observation en bois emblématique surplombant le break en a fait l\'une des images les plus reconnaissables du surf asiatique.',
+      'pt-BR': 'A onda mais famosa das Filipinas e palco do CT Siargao Cloud 9 Surfing Cup. Cloud 9 é um reef break direito oco que se ergue sobre uma plataforma de coral cogumelo rasa e oferece tubos explosivos quando a monção do nordeste traz swells de fundo consistentes. A icônica plataforma de madeira com vista para o pico tornou-a uma das imagens mais reconhecíveis do surfe asiático.',
+      'pt-PT': 'A onda mais famosa das Filipinas e palco do CT Siargao Cloud 9 Surfing Cup. Cloud 9 é um reef break direito oco que se ergue sobre uma plataforma de coral cogumelo rasa e oferece tubos explosivos quando a monção do nordeste traz swells de fundo consistentes. A icónica plataforma de madeira com vista para o pico tornou-a uma das imagens mais reconhecíveis do surf asiático.',
+    },
   },
   {
     rank: 68,
@@ -948,7 +1350,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'Sep–Dec',
-    description: 'A more forgiving alternative to Cloud 9, Rock Island is a fun right-hand reef break on Siargao that fires when Cloud 9 is too big or too crowded. The wave peels along a reef with good consistency and manageable power for advanced surfers seeking tube time. Its proximity to Cloud 9 makes it part of every Siargao itinerary, and the boat ride out adds to the adventure.',
+    description: {
+      en: 'A more forgiving alternative to Cloud 9, Rock Island is a fun right-hand reef break on Siargao that fires when Cloud 9 is too big or too crowded. The wave peels along a reef with good consistency and manageable power for advanced surfers seeking tube time. Its proximity to Cloud 9 makes it part of every Siargao itinerary, and the boat ride out adds to the adventure.',
+      es: 'Una alternativa más indulgente a Cloud 9, Rock Island es un divertido reef break hacia la derecha en Siargao que funciona cuando Cloud 9 es demasiado grande o demasiado concurrido. La ola se despega a lo largo de un arrecife con buena consistencia y potencia manejable para surfistas avanzados que buscan tiempo en el tubo. Su proximidad a Cloud 9 lo convierte en parte de cada itinerario en Siargao, y el paseo en barco añade a la aventura.',
+      fr: 'Une alternative plus indulgente à Cloud 9, Rock Island est un reef break droit amusant sur Siargao qui se déclenche lorsque Cloud 9 est trop grand ou trop fréquenté. La vague déroule le long d\'un récif avec une bonne constance et une puissance gérable pour les surfeurs avancés cherchant du temps dans le tube. Sa proximité avec Cloud 9 en fait une partie de chaque itinéraire à Siargao, et la traversée en bateau ajoute à l\'aventure.',
+      'pt-BR': 'Uma alternativa mais acessível ao Cloud 9, Rock Island é um divertido reef break direito em Siargao que funciona quando Cloud 9 está grande demais ou lotado demais. A onda se abre ao longo de um recife com boa consistência e potência manejável para surfistas avançados que buscam tempo no tubo. Sua proximidade com Cloud 9 faz dela parte de cada itinerário em Siargao, e o passeio de barco acrescenta à aventura.',
+      'pt-PT': 'Uma alternativa mais acessível ao Cloud 9, Rock Island é um divertido reef break direito em Siargao que funciona quando Cloud 9 está grande demais ou lotado demais. A onda desenrola ao longo de um recife com boa consistência e potência manejável para surfistas avançados que buscam tempo no tubo. A sua proximidade com Cloud 9 faz dela parte de cada itinerário em Siargao, e o passeio de barco acrescenta à aventura.',
+    },
   },
   {
     rank: 69,
@@ -961,7 +1369,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Advanced',
     bestSeason: 'Jun–Sep',
-    description: 'An A-frame beach break on the remote south coast of Sumbawa that delivers both left and right barrels simultaneously. Lakey Peak is the hub of a small cluster of world-class breaks — Lakey Pipe and Periscopes — that make Sumbawa one of Indonesia\'s premier destinations after Bali. The dry season offshore winds keep it clean and the beach camp scene keeps it social.',
+    description: {
+      en: 'An A-frame beach break on the remote south coast of Sumbawa that delivers both left and right barrels simultaneously. Lakey Peak is the hub of a small cluster of world-class breaks — Lakey Pipe and Periscopes — that make Sumbawa one of Indonesia\'s premier destinations after Bali. The dry season offshore winds keep it clean and the beach camp scene keeps it social.',
+      es: 'Un beach break en forma de A en la remota costa sur de Sumbawa que ofrece simultáneamente tubos hacia la izquierda y la derecha. Lakey Peak es el centro de un pequeño grupo de breaks de clase mundial — Lakey Pipe y Periscopes — que hacen de Sumbawa uno de los principales destinos de Indonesia después de Bali. Los vientos offshore de la temporada seca lo mantienen limpio y la escena del campamento en la playa lo mantiene social.',
+      fr: 'Un beach break en A-frame sur la côte sud isolée de Sumbawa qui délivre simultanément des tubes gauche et droit. Lakey Peak est le centre d\'un petit groupe de breaks de classe mondiale — Lakey Pipe et Periscopes — qui font de Sumbawa l\'une des premières destinations d\'Indonésie après Bali. Les vents offshore de saison sèche le maintiennent propre et la scène de camp de plage le maintient convivial.',
+      'pt-BR': 'Um beach break em A-frame na remota costa sul de Sumbawa que oferece simultaneamente tubos para esquerda e direita. Lakey Peak é o hub de um pequeno cluster de picos de classe mundial — Lakey Pipe e Periscopes — que tornam Sumbawa um dos principais destinos da Indonésia depois de Bali. Os ventos offshore da estação seca mantêm-no limpo e o cenário do acampamento na praia mantém-no social.',
+      'pt-PT': 'Um beach break em A-frame na remota costa sul de Sumbawa que oferece simultaneamente tubos para esquerda e direita. Lakey Peak é o hub de um pequeno cluster de picos de classe mundial — Lakey Pipe e Periscopes — que tornam Sumbawa um dos principais destinos da Indonésia depois de Bali. Os ventos offshore da estação seca mantêm-no limpo e o cenário do acampamento na praia mantém-no social.',
+    },
   },
   {
     rank: 70,
@@ -974,7 +1388,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'Jun–Sep',
-    description: 'A brutal, shallow reef break near Lakey Peak that lives up to its name by vacuuming water off the reef and creating pitching barrels of extraordinary violence. Supersuck is not for the faint-hearted — the reef is sharp, the drop is steep, and the wave throws with zero mercy. On the right day, it is one of the most intense surf experiences in Southeast Asia.',
+    description: {
+      en: 'A brutal, shallow reef break near Lakey Peak that lives up to its name by vacuuming water off the reef and creating pitching barrels of extraordinary violence. Supersuck is not for the faint-hearted — the reef is sharp, the drop is steep, and the wave throws with zero mercy. On the right day, it is one of the most intense surf experiences in Southeast Asia.',
+      es: 'Un brutal reef break poco profundo cerca de Lakey Peak que hace honor a su nombre aspirando el agua del arrecife y creando tubos lanzados de extraordinaria violencia. Supersuck no es para los débiles de corazón — el arrecife es afilado, el drop es empinado y la ola arroja sin piedad alguna. En el día correcto, es una de las experiencias de surf más intensas del Sudeste Asiático.',
+      fr: 'Un brutal reef break peu profond près de Lakey Peak qui porte bien son nom en aspirant l\'eau du récif et créant des tubes lancés d\'une violence extraordinaire. Supersuck n\'est pas pour les cœurs sensibles — le récif est acéré, le drop est raide et la vague déferle sans aucune pitié. Le bon jour, c\'est l\'une des expériences de surf les plus intenses d\'Asie du Sud-Est.',
+      'pt-BR': 'Um brutal reef break raso perto de Lakey Peak que faz jus ao seu nome aspirando a água do recife e criando tubos lançados de violência extraordinária. Supersuck não é para os fracos de coração — o recife é afiado, o drop é íngreme e a onda arremessa sem nenhuma misericórdia. No dia certo, é uma das experiências de surfe mais intensas do Sudeste Asiático.',
+      'pt-PT': 'Um brutal reef break raso perto de Lakey Peak que faz jus ao seu nome ao aspirar a água do recife e criar tubos lançados de violência extraordinária. Supersuck não é para os fracos de coração — o recife é afiado, o drop é íngreme e a onda arremessa sem nenhuma misericórdia. No dia certo, é uma das experiências de surf mais intensas do Sudeste Asiático.',
+    },
   },
   {
     rank: 71,
@@ -987,7 +1407,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'Apr–Sep',
-    description: 'A private reef break on the west coast of Sumba accessible only to guests of the legendary Nihiwatu resort. The wave — known as God\'s Left — is a long, cavernous left-hand barrel that fires on Indian Ocean swells in almost total isolation. Sumba\'s traditional culture, wild horses on the beach, and an absolute absence of crowds make this the most exclusive surf experience on earth.',
+    description: {
+      en: 'A private reef break on the west coast of Sumba accessible only to guests of the legendary Nihiwatu resort. The wave — known as God\'s Left — is a long, cavernous left-hand barrel that fires on Indian Ocean swells in almost total isolation. Sumba\'s traditional culture, wild horses on the beach, and an absolute absence of crowds make this the most exclusive surf experience on earth.',
+      es: 'Una rompiente de arrecife privada en la costa oeste de Sumba accesible solo a los huéspedes del legendario resort Nihiwatu. La ola — conocida como God\'s Left — es un largo y cavernoso tubo hacia la izquierda que se activa con swells del Océano Índico en casi total aislamiento. La cultura tradicional de Sumba, los caballos salvajes en la playa y la absoluta ausencia de multitudes hacen de esta la experiencia de surf más exclusiva de la tierra.',
+      fr: 'Un reef break privé sur la côte ouest de Sumba accessible uniquement aux clients du légendaire resort Nihiwatu. La vague — connue sous le nom de God\'s Left — est un long tube gauche caverneux qui s\'enflamme sur les houles de l\'océan Indien dans un isolement presque total. La culture traditionnelle de Sumba, les chevaux sauvages sur la plage et l\'absence absolue de foule font de cela l\'expérience de surf la plus exclusive au monde.',
+      'pt-BR': 'Um reef break privado na costa oeste de Sumba acessível apenas aos hóspedes do lendário resort Nihiwatu. A onda — conhecida como God\'s Left — é um longo e cavernoso tubo esquerdo que funciona nos swells do Oceano Índico em quase total isolamento. A cultura tradicional de Sumba, cavalos selvagens na praia e a ausência absoluta de multidões fazem desta a experiência de surfe mais exclusiva da terra.',
+      'pt-PT': 'Um reef break privado na costa oeste de Sumba acessível apenas aos hóspedes do lendário resort Nihiwatu. A onda — conhecida como God\'s Left — é um longo e cavernoso tubo esquerdo que funciona nos swells do Oceano Índico em quase total isolamento. A cultura tradicional de Sumba, cavalos selvagens na praia e a ausência absoluta de multidões fazem desta a experiência de surf mais exclusiva da terra.',
+    },
   },
   {
     rank: 72,
@@ -1000,7 +1426,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Intermediate',
     bestSeason: 'Apr–Oct',
-    description: 'The right-hand reef on the southern tip of Bali\'s Nusa Dua peninsula offers long, workable walls for intermediate and advanced surfers on Indian Ocean swells. The adjacent Nusa Dua Hotel Zone hosts luxury resorts, but the wave itself is democratically accessible. The deeper reef and more forgiving shape make it the ideal step-up break after mastering Kuta\'s beach break.',
+    description: {
+      en: 'The right-hand reef on the southern tip of Bali\'s Nusa Dua peninsula offers long, workable walls for intermediate and advanced surfers on Indian Ocean swells. The adjacent Nusa Dua Hotel Zone hosts luxury resorts, but the wave itself is democratically accessible. The deeper reef and more forgiving shape make it the ideal step-up break after mastering Kuta\'s beach break.',
+      es: 'El arrecife derecho en la punta sur de la península de Nusa Dua de Bali ofrece largas paredes manejables para surfistas intermedios y avanzados en swells del Océano Índico. La adyacente Zona Hotelera de Nusa Dua alberga resorts de lujo, pero la ola en sí es democráticamente accesible. El arrecife más profundo y la forma más indulgente la convierten en el break de mejora ideal tras dominar el beach break de Kuta.',
+      fr: 'Le récif droit à la pointe sud de la péninsule de Nusa Dua à Bali offre de longues parois maniables pour les surfeurs intermédiaires et avancés sur les houles de l\'océan Indien. La zone hôtelière de Nusa Dua adjacente accueille des resorts de luxe, mais la vague elle-même est démocratiquement accessible. Le récif plus profond et la forme plus indulgente en font le break de progression idéal après avoir maîtrisé le beach break de Kuta.',
+      'pt-BR': 'O recife direito na ponta sul da península de Nusa Dua em Bali oferece paredes longas e trabalháveis para surfistas intermediários e avançados nos swells do Oceano Índico. A Zona Hoteleira de Nusa Dua adjacente abriga resorts de luxo, mas a própria onda é democraticamente acessível. O recife mais fundo e a forma mais indulgente fazem dela o pico de progressão ideal após dominar o beach break de Kuta.',
+      'pt-PT': 'O recife direito na ponta sul da península de Nusa Dua em Bali oferece paredes longas e trabalháveis para surfistas intermédios e avançados nos swells do Oceano Índico. A Zona Hoteleira de Nusa Dua adjacente alberga resorts de luxo, mas a própria onda é democraticamente acessível. O recife mais fundo e a forma mais indulgente fazem dela o pico de progressão ideal após dominar o beach break de Kuta.',
+    },
   },
   {
     rank: 73,
@@ -1013,7 +1445,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'River Mouth',
     difficulty: 'Intermediate',
     bestSeason: 'Apr–Oct',
-    description: 'A mellow left-hand river mouth break on Bali\'s tranquil west coast that works year-round and provides a laid-back alternative to the Bukit\'s heavier reef breaks. Balian\'s longer, more forgiving walls are ideal for intermediate surfers building confidence, and the small village and bamboo warungs along the beach provide a slice of authentic Bali far from the tourist centres.',
+    description: {
+      en: 'A mellow left-hand river mouth break on Bali\'s tranquil west coast that works year-round and provides a laid-back alternative to the Bukit\'s heavier reef breaks. Balian\'s longer, more forgiving walls are ideal for intermediate surfers building confidence, and the small village and bamboo warungs along the beach provide a slice of authentic Bali far from the tourist centres.',
+      es: 'Una tranquila rompiente de desembocadura de río hacia la izquierda en la tranquila costa oeste de Bali que funciona todo el año y proporciona una alternativa relajada a los pesados reef breaks del Bukit. Las paredes más largas y más indulgentes de Balian son ideales para surfistas intermedios que ganan confianza, y el pequeño pueblo y los warungs de bambú a lo largo de la playa ofrecen un trozo de Bali auténtico lejos de los centros turísticos.',
+      fr: 'Un break d\'embouchure de rivière gauche paisible sur la côte ouest tranquille de Bali qui fonctionne toute l\'année et offre une alternative décontractée aux reef breaks plus lourds du Bukit. Les murs plus longs et plus indulgents de Balian sont idéaux pour les surfeurs intermédiaires qui prennent confiance, et le petit village et les warungs en bambou le long de la plage offrent un morceau de Bali authentique loin des centres touristiques.',
+      'pt-BR': 'Uma tranquila rompiente de foz de rio esquerda na tranquila costa oeste de Bali que funciona o ano todo e oferece uma alternativa relaxada aos recifes mais pesados do Bukit. As paredes mais longas e mais indulgentes de Balian são ideais para surfistas intermediários que ganham confiança, e a pequena aldeia e os warungs de bambu ao longo da praia oferecem um pedaço do Bali autêntico longe dos centros turísticos.',
+      'pt-PT': 'Uma tranquila rompiente de foz de rio esquerda na tranquila costa oeste de Bali que funciona durante todo o ano e oferece uma alternativa relaxada aos recifes mais pesados do Bukit. As paredes mais longas e mais indulgentes de Balian são ideais para surfistas intermédios que ganham confiança, e a pequena aldeia e os warungs de bambu ao longo da praia oferecem um pedaço do Bali autêntico longe dos centros turísticos.',
+    },
   },
   {
     rank: 74,
@@ -1026,7 +1464,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'Apr–Oct',
-    description: 'A seldom-surfed right-hand reef in the northern Mentawais that rewards liveaboards venturing off the standard circuit. Bawa can produce extraordinary barrels on the right swell — longer and rawer than its more famous southern counterparts. Its relative obscurity means that on the rare occasions it fires to perfection, you might surf it alone or with just a handful of other boats.',
+    description: {
+      en: 'A seldom-surfed right-hand reef in the northern Mentawais that rewards liveaboards venturing off the standard circuit. Bawa can produce extraordinary barrels on the right swell — longer and rawer than its more famous southern counterparts. Its relative obscurity means that on the rare occasions it fires to perfection, you might surf it alone or with just a handful of other boats.',
+      es: 'Un arrecife derecho poco surfeado en los Mentawais del norte que recompensa a los liveaboards que se aventuran fuera del circuito estándar. Bawa puede producir tubos extraordinarios con el swell correcto — más largos y más crudos que sus contrapartes del sur más famosas. Su relativa oscuridad significa que en las raras ocasiones en que funciona a la perfección, podrías surfearlo solo o con solo un puñado de otros barcos.',
+      fr: 'Un récif droit rarement surfé dans les Mentawai du nord qui récompense les liveaboards s\'aventurant hors du circuit standard. Bawa peut produire des tubes extraordinaires sur la bonne houle — plus longs et plus bruts que ses homologues du sud plus célèbres. Son obscurité relative signifie que les rares fois où il se déclenche à la perfection, vous pourriez le surfer seul ou avec seulement une poignée d\'autres bateaux.',
+      'pt-BR': 'Um recife direito raramente surfado no norte dos Mentawais que recompensa os liveaboards que se aventuram fora do circuito padrão. Bawa pode produzir tubos extraordinários no swell certo — mais longos e mais crus do que seus homólogos do sul mais famosos. Sua relativa obscuridade significa que nas raras ocasiões em que funciona na perfeição, você pode surfá-lo sozinho ou com apenas um punhado de outros barcos.',
+      'pt-PT': 'Um recife direito raramente surfado no norte dos Mentawais que recompensa os liveaboards que se aventuram fora do circuito padrão. Bawa pode produzir tubos extraordinários no swell certo — mais longos e mais crus do que os seus homólogos do sul mais famosos. A sua relativa obscuridade significa que nas raras ocasiões em que funciona na perfeição, pode surfá-lo sozinho ou com apenas um punhado de outros barcos.',
+    },
   },
 
   // ── Oceania & Pacific ──────────────────────────────────────────────────────────
@@ -1042,7 +1486,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Apr–Sep',
     wslBadge: 'CT Stop',
-    description: 'The heaviest wave on earth. Teahupo\'o breaks over a coral shelf so shallow that the water literally runs dry at the bottom of the barrel, producing waves that are thicker than they are tall. The CT event here — nicknamed the "Code Red" event — has produced the most spectacular and terrifying surfing imagery ever captured. Laird Hamilton\'s 2000 ride here redefined what was possible in surfing.',
+    description: {
+      en: 'The heaviest wave on earth. Teahupo\'o breaks over a coral shelf so shallow that the water literally runs dry at the bottom of the barrel, producing waves that are thicker than they are tall. The CT event here — nicknamed the "Code Red" event — has produced the most spectacular and terrifying surfing imagery ever captured. Laird Hamilton\'s 2000 ride here redefined what was possible in surfing.',
+      es: 'La ola más pesada de la tierra. Teahupo\'o rompe sobre una plataforma de coral tan poco profunda que el agua literalmente se seca en la parte inferior del tubo, produciendo olas que son más gruesas que altas. El evento CT aquí — apodado el evento "Code Red" — ha producido las imágenes de surf más espectaculares y aterradoras jamás capturadas. El ride de Laird Hamilton aquí en 2000 redefinió lo que era posible en el surf.',
+      fr: 'La vague la plus lourde de la planète. Teahupo\'o se brise sur une dalle de corail si peu profonde que l\'eau s\'assèche littéralement au bas du tube, produisant des vagues plus épaisses que hautes. L\'événement CT ici — surnommé l\'événement "Code Red" — a produit les images de surf les plus spectaculaires et terrifiantes jamais capturées. La ride de Laird Hamilton ici en 2000 a redéfini ce qui était possible en surf.',
+      'pt-BR': 'A onda mais pesada da terra. Teahupo\'o quebra sobre uma plataforma de coral tão rasa que a água literalmente seca na parte inferior do tubo, produzindo ondas mais grossas do que altas. O evento do CT aqui — apelidado de evento "Code Red" — produziu as imagens de surfe mais espetaculares e aterrorizantes já capturadas. A remada de Laird Hamilton aqui em 2000 redefiniu o que era possível no surfe.',
+      'pt-PT': 'A onda mais pesada da terra. Teahupo\'o quebra sobre uma plataforma de coral tão rasa que a água literalmente seca na parte inferior do tubo, produzindo ondas mais grossas do que altas. O evento do CT aqui — apelidado de evento "Code Red" — produziu as imagens de surf mais espetaculares e aterrorizantes alguma vez capturadas. A remada de Laird Hamilton aqui em 2000 redefiniu o que era possível no surf.',
+    },
   },
   {
     rank: 76,
@@ -1056,7 +1506,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Apr–Oct',
     wslBadge: 'CT Stop',
-    description: 'One of the finest left-hand reef breaks in the world, Cloudbreak detonates on a horseshoe-shaped reef a mile offshore from Tavarua Island. At 6–10ft it delivers world-class surfing with multiple sections; at 15ft+ it becomes a legitimate big-wave arena. The 2012 Volcom Fiji Pro produced what many consider the greatest day of professional surfing ever photographed.',
+    description: {
+      en: 'One of the finest left-hand reef breaks in the world, Cloudbreak detonates on a horseshoe-shaped reef a mile offshore from Tavarua Island. At 6–10ft it delivers world-class surfing with multiple sections; at 15ft+ it becomes a legitimate big-wave arena. The 2012 Volcom Fiji Pro produced what many consider the greatest day of professional surfing ever photographed.',
+      es: 'Una de las mejores rompientes de arrecife hacia la izquierda del mundo, Cloudbreak detona en un arrecife con forma de herradura a una milla de la costa de la Isla Tavarua. A 6–10 pies ofrece surf de clase mundial con múltiples secciones; a más de 15 pies se convierte en un auténtico escenario de olas grandes. El Volcom Fiji Pro de 2012 produjo lo que muchos consideran el mejor día de surf profesional jamás fotografiado.',
+      fr: 'L\'un des meilleurs reef breaks gauches au monde, Cloudbreak détone sur un récif en fer à cheval à un mile au large de l\'île Tavarua. À 6–10 pieds, il offre un surf de classe mondiale avec plusieurs sections ; à 15 pieds et plus, il devient une véritable arène de grosses vagues. Le Volcom Fiji Pro 2012 a produit ce que beaucoup considèrent comme la plus grande journée de surf professionnel jamais photographiée.',
+      'pt-BR': 'Um dos melhores reef breaks esquerdos do mundo, Cloudbreak detona em um recife em forma de ferradura a uma milha ao largo da Ilha Tavarua. A 6–10 pés oferece surfe de classe mundial com múltiplas seções; a mais de 15 pés torna-se uma legítima arena de ondas grandes. O Volcom Fiji Pro de 2012 produziu o que muitos consideram o maior dia de surfe profissional já fotografado.',
+      'pt-PT': 'Um dos melhores reef breaks esquerdos do mundo, Cloudbreak detona num recife em forma de ferradura a uma milha ao largo da Ilha Tavarua. A 6–10 pés oferece surf de classe mundial com múltiplas secções; a mais de 15 pés torna-se uma legítima arena de ondas grandes. O Volcom Fiji Pro de 2012 produziu o que muitos consideram o maior dia de surf profissional alguma vez fotografado.',
+    },
   },
   {
     rank: 77,
@@ -1069,7 +1525,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'Apr–Oct',
-    description: 'The right-hand complement to Cloudbreak, Restaurants breaks on the inside of the Tavarua reef and offers a more accessible but still world-class experience. Long walls and shorter barrel sections make it forgiving enough for strong intermediate surfers while still delivering genuine tube rides. The Tavarua resort\'s boat service puts you in the lineup within minutes of waking up.',
+    description: {
+      en: 'The right-hand complement to Cloudbreak, Restaurants breaks on the inside of the Tavarua reef and offers a more accessible but still world-class experience. Long walls and shorter barrel sections make it forgiving enough for strong intermediate surfers while still delivering genuine tube rides. The Tavarua resort\'s boat service puts you in the lineup within minutes of waking up.',
+      es: 'El complemento derecho de Cloudbreak, Restaurants rompe en el interior del arrecife de Tavarua y ofrece una experiencia más accesible pero aún de clase mundial. Las largas paredes y las secciones de tubo más cortas lo hacen lo suficientemente indulgente para surfistas intermedios fuertes mientras aún ofrece verdaderos tubazos. El servicio de bote del resort Tavarua te pone en el line-up a minutos de despertar.',
+      fr: 'Le complément droit de Cloudbreak, Restaurants se brise à l\'intérieur du récif de Tavarua et offre une expérience plus accessible mais toujours de classe mondiale. Les longues parois et les sections de tube plus courtes le rendent suffisamment indulgent pour les surfeurs intermédiaires forts tout en délivrant encore de véritables tubes. Le service de bateau du resort Tavarua vous place dans le line-up en quelques minutes après le réveil.',
+      'pt-BR': 'O complemento direito do Cloudbreak, Restaurants quebra no interior do recife de Tavarua e oferece uma experiência mais acessível mas ainda de classe mundial. As paredes longas e as seções de tubo mais curtas tornam-no indulgente o suficiente para surfistas intermediários fortes enquanto ainda oferece verdadeiras remadas no tubo. O serviço de barco do resort Tavarua coloca você no line-up minutos após acordar.',
+      'pt-PT': 'O complemento direito do Cloudbreak, Restaurants quebra no interior do recife de Tavarua e oferece uma experiência mais acessível mas ainda de classe mundial. As paredes longas e as secções de tubo mais curtas tornam-no indulgente o suficiente para surfistas intermédios fortes enquanto ainda oferece verdadeiras remadas no tubo. O serviço de barco do resort Tavarua coloca-o no line-up minutos após acordar.',
+    },
   },
   {
     rank: 78,
@@ -1082,7 +1544,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Intermediate',
     bestSeason: 'Apr–Oct',
-    description: 'A long, rolling left-hand reef break adjacent to the exclusive Namotu Island Resort that offers some of the best intermediate-level surfing in the South Pacific. Namotu Left provides long walls and easy tube sections in warm, clear Fijian water with an uncrowded lineup. On the right swell it connects for 200–300m — enough length to practice linking turns all the way to the channel.',
+    description: {
+      en: 'A long, rolling left-hand reef break adjacent to the exclusive Namotu Island Resort that offers some of the best intermediate-level surfing in the South Pacific. Namotu Left provides long walls and easy tube sections in warm, clear Fijian water with an uncrowded lineup. On the right swell it connects for 200–300m — enough length to practice linking turns all the way to the channel.',
+      es: 'Un largo y rodante reef break hacia la izquierda adyacente al exclusivo Namotu Island Resort que ofrece algunos de los mejores surfs de nivel intermedio del Pacífico Sur. Namotu Left proporciona paredes largas y secciones de tubo fáciles en el agua cálida y clara de Fiyi con un line-up poco concurrido. Con el swell correcto conecta por 200–300m — suficiente longitud para practicar encadenando giros hasta el canal.',
+      fr: 'Un reef break gauche long et roulant adjacent à l\'exclusif Namotu Island Resort qui offre certains des meilleurs surf de niveau intermédiaire du Pacifique Sud. Namotu Left offre de longues parois et des sections de tube faciles dans l\'eau chaude et claire de Fidji avec un line-up peu fréquenté. Sur la bonne houle, il se connecte sur 200–300m — assez de longueur pour s\'entraîner à enchaîner les virages jusqu\'au chenal.',
+      'pt-BR': 'Um reef break esquerdo longo e ondulante adjacente ao exclusivo Namotu Island Resort que oferece alguns dos melhores surfs de nível intermediário do Pacífico Sul. Namotu Left oferece paredes longas e seções de tubo fáceis na água quente e clara de Fiji com um line-up pouco lotado. No swell certo conecta por 200–300m — comprimento suficiente para praticar a encadeação de manobras até o canal.',
+      'pt-PT': 'Um reef break esquerdo longo e ondulante adjacente ao exclusivo Namotu Island Resort que oferece alguns dos melhores surfs de nível intermédio do Pacífico Sul. Namotu Left oferece paredes longas e secções de tubo fáceis na água quente e clara de Fiji com um line-up pouco lotado. No swell certo conecta por 200–300m — comprimento suficiente para praticar a encadeação de manobras até ao canal.',
+    },
   },
   {
     rank: 79,
@@ -1096,7 +1564,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Advanced',
     bestSeason: 'Mar–Sep',
     wslBadge: 'CT Stop',
-    description: 'The start of the Gold Coast Superbank — a sandbars-and-rock-point system that can produce the longest rides in Australia. On cyclone-generated swells, Snapper connects through Greenmount to Kirra for 2km of barreling perfection. The Quiksilver Pro Gold Coast opens the CT season here and annually produces the highest heat scores in the tour calendar.',
+    description: {
+      en: 'The start of the Gold Coast Superbank — a sandbars-and-rock-point system that can produce the longest rides in Australia. On cyclone-generated swells, Snapper connects through Greenmount to Kirra for 2km of barreling perfection. The Quiksilver Pro Gold Coast opens the CT season here and annually produces the highest heat scores in the tour calendar.',
+      es: 'El comienzo del Superbank de la Gold Coast — un sistema de bancos de arena y punto rocoso que puede producir los rides más largos de Australia. Con swells generados por ciclones, Snapper conecta a través de Greenmount hasta Kirra para 2 km de perfección tubular. El Quiksilver Pro Gold Coast abre la temporada del CT aquí y produce anualmente las puntuaciones de serie más altas en el calendario del tour.',
+      fr: 'Le début du Superbank de la Gold Coast — un système de bancs de sable et de point rocheux qui peut produire les rides les plus longs d\'Australie. Sur des houles générées par des cyclones, Snapper se connecte à travers Greenmount jusqu\'à Kirra pour 2 km de perfection tubulaire. Le Quiksilver Pro Gold Coast ouvre la saison CT ici et produit annuellement les scores de série les plus élevés du calendrier du tour.',
+      'pt-BR': 'O início do Superbank da Gold Coast — um sistema de bancos de areia e ponto rochoso que pode produzir as remadas mais longas da Austrália. Em swells gerados por ciclones, Snapper conecta através de Greenmount até Kirra por 2 km de perfeição tubular. O Quiksilver Pro Gold Coast abre a temporada do CT aqui e produz anualmente as pontuações de série mais altas no calendário do tour.',
+      'pt-PT': 'O início do Superbank da Gold Coast — um sistema de bancos de areia e ponto rochoso que pode produzir as remadas mais longas da Austrália. Em swells gerados por ciclones, Snapper conecta através de Greenmount até Kirra por 2 km de perfeição tubular. O Quiksilver Pro Gold Coast abre a temporada do CT aqui e produz anualmente as pontuações de série mais altas no calendário do tour.',
+    },
   },
   {
     rank: 80,
@@ -1109,7 +1583,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Expert',
     bestSeason: 'Mar–Sep',
-    description: 'When the Superbank\'s sand connects, Kirra emerges as perhaps the most perfect and dangerous end section in world surfing. The barrel at Kirra is fast, shallow, and relentless — a tube that closes faster than any other break on the Superbank. Cyclone swells and the right sandbank configurations create Kirra sessions that legendary surfers speak of for decades.',
+    description: {
+      en: 'When the Superbank\'s sand connects, Kirra emerges as perhaps the most perfect and dangerous end section in world surfing. The barrel at Kirra is fast, shallow, and relentless — a tube that closes faster than any other break on the Superbank. Cyclone swells and the right sandbank configurations create Kirra sessions that legendary surfers speak of for decades.',
+      es: 'Cuando la arena del Superbank conecta, Kirra emerge como quizás la sección final más perfecta y peligrosa en el surf mundial. El tubo en Kirra es rápido, poco profundo e implacable — un tubo que cierra más rápido que cualquier otro break en el Superbank. Los swells de ciclón y las configuraciones correctas del banco de arena crean sesiones en Kirra de las que los surfistas legendarios hablan durante décadas.',
+      fr: 'Lorsque le sable du Superbank se connecte, Kirra émerge comme peut-être la section finale la plus parfaite et la plus dangereuse du surf mondial. Le tube à Kirra est rapide, peu profond et implacable — un tube qui se ferme plus vite que n\'importe quel autre break du Superbank. Les houles cycloniques et les bonnes configurations de banc de sable créent des sessions à Kirra dont les surfeurs légendaires parlent pendant des décennies.',
+      'pt-BR': 'Quando a areia do Superbank conecta, Kirra emerge como talvez a seção final mais perfeita e perigosa no surfe mundial. O tubo em Kirra é rápido, raso e implacável — um tubo que fecha mais rápido do que qualquer outro pico no Superbank. Os swells de ciclone e as configurações certas do banco de areia criam sessões em Kirra das quais surfistas lendários falam por décadas.',
+      'pt-PT': 'Quando a areia do Superbank conecta, Kirra emerge como talvez a secção final mais perfeita e perigosa no surf mundial. O tubo em Kirra é rápido, raso e implacável — um tubo que fecha mais rápido do que qualquer outro pico no Superbank. Os swells de ciclone e as configurações certas do banco de areia criam sessões em Kirra das quais surfistas lendários falam durante décadas.',
+    },
   },
   {
     rank: 81,
@@ -1122,7 +1602,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Mar–Sep',
-    description: 'A legendary headland point break that has shaped Queensland surfing and produced some of Australia\'s finest competitive surfers. Burleigh wraps around a volcanic headland covered with Burleigh Heads National Park, delivering long rights that are powerful, fast, and rewarding for surfers who can ride at speed. The Burleigh Head section at the end of the point is one of the most barreling waves on the Gold Coast.',
+    description: {
+      en: 'A legendary headland point break that has shaped Queensland surfing and produced some of Australia\'s finest competitive surfers. Burleigh wraps around a volcanic headland covered with Burleigh Heads National Park, delivering long rights that are powerful, fast, and rewarding for surfers who can ride at speed. The Burleigh Head section at the end of the point is one of the most barreling waves on the Gold Coast.',
+      es: 'Un legendario point break de promontorio que ha moldeado el surf de Queensland y producido algunos de los mejores surfistas competitivos de Australia. Burleigh envuelve un promontorio volcánico cubierto por el Parque Nacional Burleigh Heads, ofreciendo largos derechos que son poderosos, rápidos y gratificantes para los surfistas que pueden surfear a velocidad. La sección Burleigh Head al final del point es una de las olas más tubulares de la Gold Coast.',
+      fr: 'Un légendaire point break de promontoire qui a façonné le surf du Queensland et produit certains des meilleurs surfeurs compétitifs d\'Australie. Burleigh s\'enroule autour d\'un promontoire volcanique couvert par le parc national de Burleigh Heads, offrant de longs droits puissants, rapides et gratifiants pour les surfeurs capables de rider à vitesse. La section Burleigh Head au bout du point est l\'une des vagues les plus tubulaires de la Gold Coast.',
+      'pt-BR': 'Um lendário point break de promontório que moldou o surfe de Queensland e produziu alguns dos melhores surfistas competitivos da Austrália. Burleigh se envolve em torno de um promontório vulcânico coberto pelo Parque Nacional Burleigh Heads, oferecendo direitos longos que são poderosos, rápidos e gratificantes para surfistas que conseguem surfar em velocidade. A seção Burleigh Head no final do point é uma das ondas mais tubulares da Gold Coast.',
+      'pt-PT': 'Um lendário point break de promontório que moldou o surf de Queensland e produziu alguns dos melhores surfistas competitivos da Austrália. Burleigh envolve-se em torno de um promontório vulcânico coberto pelo Parque Nacional Burleigh Heads, oferecendo direitos longos que são poderosos, rápidos e gratificantes para surfistas que conseguem surfar em velocidade. A secção Burleigh Head no final do point é uma das ondas mais tubulares da Gold Coast.',
+    },
   },
   {
     rank: 82,
@@ -1136,7 +1622,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Advanced',
     bestSeason: 'Mar–Jul',
     wslBadge: 'CT Stop',
-    description: 'The spiritual home of Australian surfing, Bells Beach has hosted the Rip Curl Pro continuously since 1961 — the longest-running professional surfing event in the world. The cold Southern Ocean delivers powerful, long-period groundswells that wrap into the amphitheatre-shaped cliff bowl. Bells is powerful, cold, and demanding — a test of surfing\'s deepest traditions.',
+    description: {
+      en: 'The spiritual home of Australian surfing, Bells Beach has hosted the Rip Curl Pro continuously since 1961 — the longest-running professional surfing event in the world. The cold Southern Ocean delivers powerful, long-period groundswells that wrap into the amphitheatre-shaped cliff bowl. Bells is powerful, cold, and demanding — a test of surfing\'s deepest traditions.',
+      es: 'El hogar espiritual del surf australiano, Bells Beach ha albergado el Rip Curl Pro de forma continua desde 1961 — el evento de surf profesional de mayor duración del mundo. El frío Océano Austral entrega poderosos swells de fondo de largo período que se enrollan en el anfiteatro de acantilados. Bells es poderosa, fría y exigente — una prueba de las tradiciones más profundas del surf.',
+      fr: 'Le foyer spirituel du surf australien, Bells Beach accueille le Rip Curl Pro en continu depuis 1961 — l\'événement de surf professionnel le plus long au monde. L\'océan Austral froid délivre des groundswells puissants de longue période qui s\'enroulent dans la cuvette de falaises en amphithéâtre. Bells est puissante, froide et exigeante — une épreuve des traditions les plus profondes du surf.',
+      'pt-BR': 'O lar espiritual do surfe australiano, Bells Beach sediou o Rip Curl Pro continuamente desde 1961 — o evento de surfe profissional de maior duração do mundo. O frio Oceano Austral entrega poderosos swells de fundo de longo período que se enrolam na tigela de falésias em forma de anfiteatro. Bells é poderosa, fria e exigente — um teste das tradições mais profundas do surfe.',
+      'pt-PT': 'O lar espiritual do surf australiano, Bells Beach acolhe o Rip Curl Pro continuamente desde 1961 — o evento de surf profissional de maior duração do mundo. O frio Oceano Austral entrega poderosos swells de fundo de longo período que se enrolam na tigela de falésias em forma de anfiteatro. Bells é poderosa, fria e exigente — um teste das tradições mais profundas do surf.',
+    },
   },
   {
     rank: 83,
@@ -1150,7 +1642,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Mar–Aug',
     wslBadge: 'CT Stop',
-    description: 'The most powerful CT wave in Australia, Margaret River Main Break fires on direct Southern Ocean groundswells over a shallow reef on WA\'s wild coastline. The Margaret River Pro regularly produces the most dangerous conditions on the entire tour. The combination of power, cold water, and consistent swell makes the Margaret River region — a cluster of world-class reefs — Australia\'s most complete surf destination.',
+    description: {
+      en: 'The most powerful CT wave in Australia, Margaret River Main Break fires on direct Southern Ocean groundswells over a shallow reef on WA\'s wild coastline. The Margaret River Pro regularly produces the most dangerous conditions on the entire tour. The combination of power, cold water, and consistent swell makes the Margaret River region — a cluster of world-class reefs — Australia\'s most complete surf destination.',
+      es: 'La ola CT más poderosa de Australia, Margaret River Main Break se activa con swells de fondo directos del Océano Austral sobre un arrecife poco profundo en la salvaje costa de WA. El Margaret River Pro produce regularmente las condiciones más peligrosas de todo el tour. La combinación de potencia, agua fría y swell consistente hace de la región de Margaret River — un conjunto de arrecifes de clase mundial — el destino de surf más completo de Australia.',
+      fr: 'La vague CT la plus puissante d\'Australie, Margaret River Main Break s\'enflamme sur des groundswells directs de l\'océan Austral sur un récif peu profond sur la côte sauvage de l\'Australie-Occidentale. Le Margaret River Pro produit régulièrement les conditions les plus dangereuses de tout le tour. La combinaison de puissance, d\'eau froide et de houle constante fait de la région de Margaret River — un groupe de récifs de classe mondiale — la destination de surf la plus complète d\'Australie.',
+      'pt-BR': 'A onda CT mais poderosa da Austrália, Margaret River Main Break funciona nos swells de fundo diretos do Oceano Austral sobre um recife raso na costa selvagem da WA. O Margaret River Pro regularmente produz as condições mais perigosas em todo o tour. A combinação de potência, água fria e swell consistente faz da região de Margaret River — um cluster de recifes de classe mundial — o destino de surfe mais completo da Austrália.',
+      'pt-PT': 'A onda CT mais poderosa da Austrália, Margaret River Main Break funciona nos swells de fundo diretos do Oceano Austral sobre um recife raso na costa selvagem da WA. O Margaret River Pro regularmente produz as condições mais perigosas em todo o tour. A combinação de potência, água fria e swell consistente faz da região de Margaret River — um cluster de recifes de classe mundial — o destino de surf mais completo da Austrália.',
+    },
   },
   {
     rank: 84,
@@ -1164,7 +1662,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Mar–Aug',
     wslBadge: 'Big Wave',
-    description: 'Adjacent to the Margaret River Main Break, The Box is a shallow, slab-type reef that only handles truly large Southern Ocean swells — and when it does, it produces some of the most violent, close-out barrels in Australia. Named for the square cross-section of its barrel, it\'s a wave that separates serious surfers from the rest. At 12ft+ it is beyond description.',
+    description: {
+      en: 'Adjacent to the Margaret River Main Break, The Box is a shallow, slab-type reef that only handles truly large Southern Ocean swells — and when it does, it produces some of the most violent, close-out barrels in Australia. Named for the square cross-section of its barrel, it\'s a wave that separates serious surfers from the rest. At 12ft+ it is beyond description.',
+      es: 'Adyacente al Margaret River Main Break, The Box es un arrecife poco profundo tipo slab que solo maneja swells del Océano Austral verdaderamente grandes — y cuando lo hace, produce algunos de los tubos cerrantes más violentos de Australia. Nombrado por la sección transversal cuadrada de su tubo, es una ola que separa a los surfistas serios del resto. A más de 12 pies está más allá de toda descripción.',
+      fr: 'Adjacent au Margaret River Main Break, The Box est un récif peu profond de type slab qui ne gère que les vraies grandes houles de l\'océan Austral — et lorsqu\'il le fait, il produit certains des tubes fermants les plus violents d\'Australie. Nommé pour la section transversale carrée de son tube, c\'est une vague qui sépare les surfeurs sérieux des autres. À 12 pieds et plus, il dépasse toute description.',
+      'pt-BR': 'Adjacente ao Margaret River Main Break, The Box é um recife raso tipo slab que só lida com swells verdadeiramente grandes do Oceano Austral — e quando o faz, produz alguns dos tubos mais violentos e fechantes da Austrália. Nomeado pela seção transversal quadrada de seu tubo, é uma onda que separa os surfistas sérios dos demais. A mais de 12 pés está além de qualquer descrição.',
+      'pt-PT': 'Adjacente ao Margaret River Main Break, The Box é um recife raso tipo slab que só lida com swells verdadeiramente grandes do Oceano Austral — e quando o faz, produz alguns dos tubos mais violentos e fechantes da Austrália. Nomeado pela secção transversal quadrada do seu tubo, é uma onda que separa os surfistas sérios dos demais. A mais de 12 pés está além de qualquer descrição.',
+    },
   },
   {
     rank: 85,
@@ -1178,7 +1682,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Apr–Sep',
     wslBadge: 'Big Wave',
-    description: 'Australia\'s most extreme big-wave break, Shipstern Bluff is a left-hand slab on Tasmania\'s remote southwest coast accessible only by sea. The wave features a mid-face ledge — the "step" — that interrupts the barrel and sends surfers airborne before the tube closes out with ferocious force. Cold water, great white sharks, and a 4km hike through ancient rainforest gatekeep the experience.',
+    description: {
+      en: 'Australia\'s most extreme big-wave break, Shipstern Bluff is a left-hand slab on Tasmania\'s remote southwest coast accessible only by sea. The wave features a mid-face ledge — the "step" — that interrupts the barrel and sends surfers airborne before the tube closes out with ferocious force. Cold water, great white sharks, and a 4km hike through ancient rainforest gatekeep the experience.',
+      es: 'La rompiente de olas grandes más extrema de Australia, Shipstern Bluff es un slab hacia la izquierda en la remota costa suroeste de Tasmania accesible solo por mar. La ola presenta una repisa a mitad de cara — el "step" — que interrumpe el tubo y lanza a los surfistas al aire antes de que el tubo cierre con fuerza feroz. Agua fría, grandes tiburones blancos y una caminata de 4 km a través de antigua selva tropical son los guardianes de la experiencia.',
+      fr: 'Le spot de grosses vagues le plus extrême d\'Australie, Shipstern Bluff est un slab gauche sur la côte sud-ouest isolée de Tasmanie, accessible uniquement par mer. La vague comporte une corniche à mi-face — le "step" — qui interrompt le tube et envoie les surfeurs en l\'air avant que le tube ne se ferme avec une force féroce. Eau froide, grands requins blancs et une randonnée de 4 km à travers une forêt tropicale ancienne gardent l\'expérience.',
+      'pt-BR': 'A rompiente de ondas grandes mais extrema da Austrália, Shipstern Bluff é um slab esquerdo na remota costa sudoeste da Tasmânia, acessível apenas por mar. A onda apresenta uma saliência a meia face — o "step" — que interrompe o tubo e arremessa os surfistas no ar antes que o tubo feche com força feroz. Água fria, grandes tubarões brancos e uma caminhada de 4 km por floresta tropical antiga guardam a experiência.',
+      'pt-PT': 'A rompiente de ondas grandes mais extrema da Austrália, Shipstern Bluff é um slab esquerdo na remota costa sudoeste da Tasmânia, acessível apenas por mar. A onda apresenta uma saliência a meia face — o "step" — que interrompe o tubo e arremessa os surfistas no ar antes que o tubo feche com força feroz. Água fria, grandes tubarões brancos e uma caminhada de 4 km por floresta tropical antiga guardam a experiência.',
+    },
   },
   {
     rank: 86,
@@ -1191,7 +1701,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Beginner',
     bestSeason: 'Mar–Aug',
-    description: 'The finest longboard wave in Australia, Noosa\'s First Point delivers perfectly formed right-hand walls through a national park that protects the coastline from development. The Noosa Festival of Surfing celebrates everything from Mal log surfing to prone paddleboarding here annually. The warm, crystal-clear water and protected national park setting make it one of Queensland\'s most treasured surfing places.',
+    description: {
+      en: 'The finest longboard wave in Australia, Noosa\'s First Point delivers perfectly formed right-hand walls through a national park that protects the coastline from development. The Noosa Festival of Surfing celebrates everything from Mal log surfing to prone paddleboarding here annually. The warm, crystal-clear water and protected national park setting make it one of Queensland\'s most treasured surfing places.',
+      es: 'La mejor ola de longboard de Australia, el First Point de Noosa ofrece paredes hacia la derecha perfectamente formadas a través de un parque nacional que protege la costa del desarrollo. El Festival de Surf de Noosa celebra aquí anualmente todo, desde el surf en longboard de madera hasta el paddleboard en decúbito prono. El agua cálida y cristalina y el entorno protegido del parque nacional lo convierten en uno de los lugares de surf más apreciados de Queensland.',
+      fr: 'La meilleure vague de longboard d\'Australie, le First Point de Noosa offre des murs droits parfaitement formés à travers un parc national qui protège le littoral du développement. Le Festival de surf de Noosa célèbre ici chaque année tout, du surf sur longboard en bois au paddleboard en position allongée. L\'eau chaude et cristalline et le cadre du parc national protégé en font l\'un des lieux de surf les plus prisés du Queensland.',
+      'pt-BR': 'A melhor onda de longboard da Austrália, o First Point de Noosa oferece paredes direitas perfeitamente formadas através de um parque nacional que protege o litoral do desenvolvimento. O Festival de Surf de Noosa celebra aqui anualmente tudo, desde o surf em longboard de madeira até o paddleboard em posição deitada. A água quente e cristalina e o ambiente protegido do parque nacional fazem dele um dos lugares de surfe mais apreciados de Queensland.',
+      'pt-PT': 'A melhor onda de longboard da Austrália, o First Point de Noosa oferece paredes direitas perfeitamente formadas através de um parque nacional que protege o litoral do desenvolvimento. O Festival de Surf de Noosa celebra aqui anualmente tudo, desde o surf em longboard de madeira até ao paddleboard em posição deitada. A água quente e cristalina e o ambiente protegido do parque nacional fazem dele um dos lugares de surf mais apreciados de Queensland.',
+    },
   },
   {
     rank: 87,
@@ -1204,7 +1720,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Apr–Sep',
-    description: 'One of NSW\'s most revered point breaks, Angourie is a long right-hander in a national park that delivers powerful, workable walls on consistent NE swells. The Blue Pool — a freshwater rock pool adjacent to the break — is as beloved by locals as the surf itself. On a solid 6ft swell, Angourie produces some of the most satisfying long-period rides on Australia\'s east coast.',
+    description: {
+      en: 'One of NSW\'s most revered point breaks, Angourie is a long right-hander in a national park that delivers powerful, workable walls on consistent NE swells. The Blue Pool — a freshwater rock pool adjacent to the break — is as beloved by locals as the surf itself. On a solid 6ft swell, Angourie produces some of the most satisfying long-period rides on Australia\'s east coast.',
+      es: 'Uno de los point breaks más reverenciados de NSW, Angourie es un largo derecho en un parque nacional que ofrece paredes poderosas y manejables con swells del NE consistentes. El Blue Pool — una poza de agua dulce en roca adyacente al break — es tan amado por los locales como el propio surf. Con un sólido swell de 6 pies, Angourie produce algunas de las remadas de largo período más satisfactorias de la costa este de Australia.',
+      fr: 'L\'un des points breaks les plus vénérés de NSW, Angourie est un long droit dans un parc national qui offre des murs puissants et maniables sur des houles NE constantes. Le Blue Pool — une piscine d\'eau douce dans la roche adjacente au break — est aussi aimé des locaux que le surf lui-même. Sur une houle solide de 6 pieds, Angourie produit certaines des rides de longue période les plus satisfaisantes de la côte est australienne.',
+      'pt-BR': 'Um dos point breaks mais reverenciados de NSW, Angourie é um longo direito em um parque nacional que oferece paredes poderosas e trabalháveis em swells de NE consistentes. O Blue Pool — uma piscina de água doce em rocha adjacente ao pico — é tão amado pelos locais quanto o próprio surfe. Em um sólido swell de 6 pés, Angourie produz algumas das remadas de longo período mais satisfatórias da costa leste da Austrália.',
+      'pt-PT': 'Um dos point breaks mais reverenciados de NSW, Angourie é um longo direito num parque nacional que oferece paredes poderosas e trabalháveis em swells de NE consistentes. O Blue Pool — uma piscina de água doce em rocha adjacente ao pico — é tão amado pelos locais quanto o próprio surf. Num sólido swell de 6 pés, Angourie produz algumas das remadas de longo período mais satisfatórias da costa leste da Austrália.',
+    },
   },
   {
     rank: 88,
@@ -1217,7 +1739,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Intermediate',
     bestSeason: 'Mar–Aug',
-    description: 'The most consistently good beach break in Sydney and one of Australia\'s most storied surf spots. North Narrabeen has produced multiple world champions and remains the spiritual home of Sydney\'s surfing culture. Its reliable beach break peaks work on a wide range of swell directions, and the local surf club tradition keeps the community tight-knit and the standards high.',
+    description: {
+      en: 'The most consistently good beach break in Sydney and one of Australia\'s most storied surf spots. North Narrabeen has produced multiple world champions and remains the spiritual home of Sydney\'s surfing culture. Its reliable beach break peaks work on a wide range of swell directions, and the local surf club tradition keeps the community tight-knit and the standards high.',
+      es: 'El beach break más consistentemente bueno de Sídney y uno de los spots de surf con más historia de Australia. North Narrabeen ha producido múltiples campeones del mundo y sigue siendo el hogar espiritual de la cultura del surf de Sídney. Sus picos de beach break confiables funcionan con una amplia gama de direcciones de swell, y la tradición del club de surf local mantiene a la comunidad unida y los estándares altos.',
+      fr: 'Le beach break le plus constant de Sydney et l\'un des spots de surf les plus riches en histoire d\'Australie. North Narrabeen a produit plusieurs champions du monde et reste le foyer spirituel de la culture surf de Sydney. Ses pics de beach break fiables fonctionnent sur une large gamme de directions de houle, et la tradition du club de surf local maintient la communauté soudée et les standards élevés.',
+      'pt-BR': 'O beach break mais consistentemente bom de Sydney e um dos spots de surfe com mais história da Austrália. North Narrabeen produziu múltiplos campeões mundiais e continua sendo o lar espiritual da cultura do surfe de Sydney. Seus picos de beach break confiáveis funcionam em uma ampla gama de direções de swell, e a tradição do clube de surf local mantém a comunidade unida e os padrões altos.',
+      'pt-PT': 'O beach break mais consistentemente bom de Sydney e um dos spots de surf com mais história da Austrália. North Narrabeen produziu múltiplos campeões mundiais e continua a ser o lar espiritual da cultura do surf de Sydney. Os seus picos de beach break fiáveis funcionam numa ampla gama de direções de swell, e a tradição do clube de surf local mantém a comunidade unida e os padrões altos.',
+    },
   },
   {
     rank: 89,
@@ -1230,7 +1758,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Apr–Sep',
-    description: 'New Zealand\'s most famous wave is a long left-hand point break on the Tasman Sea coast that has been delivering world-class rides since Barry Gifford first surfed it in the 1960s. Raglan\'s multiple sections — Manu Bay and Whale Bay — produce walls of up to 400 metres on the right SW groundswell. Cold, green, consistent, and surrounded by fern-covered New Zealand farmland.',
+    description: {
+      en: 'New Zealand\'s most famous wave is a long left-hand point break on the Tasman Sea coast that has been delivering world-class rides since Barry Gifford first surfed it in the 1960s. Raglan\'s multiple sections — Manu Bay and Whale Bay — produce walls of up to 400 metres on the right SW groundswell. Cold, green, consistent, and surrounded by fern-covered New Zealand farmland.',
+      es: 'La ola más famosa de Nueva Zelanda es un largo point break hacia la izquierda en la costa del Mar de Tasmania que ha estado ofreciendo rides de clase mundial desde que Barry Gifford lo surfeó por primera vez en la década de 1960. Las múltiples secciones de Raglan — Manu Bay y Whale Bay — producen paredes de hasta 400 metros con el swell de fondo del SO correcto. Frío, verde, consistente y rodeado de tierras de cultivo neozelandesas cubiertas de helechos.',
+      fr: 'La vague la plus célèbre de Nouvelle-Zélande est un long point break gauche sur la côte de la mer de Tasmanie qui offre des rides de classe mondiale depuis que Barry Gifford l\'a surfée pour la première fois dans les années 1960. Les sections multiples de Raglan — Manu Bay et Whale Bay — produisent des murs allant jusqu\'à 400 mètres sur le bon groundswell SO. Froide, verte, constante et entourée de terres agricoles néo-zélandaises couvertes de fougères.',
+      'pt-BR': 'A onda mais famosa da Nova Zelândia é um longo point break esquerdo na costa do Mar da Tasmânia que vem oferecendo remadas de classe mundial desde que Barry Gifford o surfou pela primeira vez na década de 1960. As múltiplas seções de Raglan — Manu Bay e Whale Bay — produzem paredes de até 400 metros no swell de fundo de SO certo. Frio, verde, consistente e cercado por terras agrícolas neozelandesas cobertas de samambaias.',
+      'pt-PT': 'A onda mais famosa da Nova Zelândia é um longo point break esquerdo na costa do Mar da Tasmânia que vem oferecendo remadas de classe mundial desde que Barry Gifford o surfou pela primeira vez na década de 1960. As múltiplas secções de Raglan — Manu Bay e Whale Bay — produzem paredes de até 400 metros no swell de fundo de SO certo. Frio, verde, consistente e cercado por terras agrícolas neozelandesas cobertas de fetos.',
+    },
   },
   {
     rank: 90,
@@ -1243,7 +1777,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Beach Break',
     difficulty: 'Advanced',
     bestSeason: 'Mar–Sep',
-    description: 'New Zealand\'s most iconic beach, Piha sits in a valley of black sand at the foot of Lion Rock, protected by the Waitakere Ranges. The powerful Tasman Sea beach break is responsible for many of NZ\'s surf rescues — and its surf lifesaving culture is as strong as its surf. On the right swell it delivers punchy, powerful waves that rival anything on the NZ coast.',
+    description: {
+      en: 'New Zealand\'s most iconic beach, Piha sits in a valley of black sand at the foot of Lion Rock, protected by the Waitakere Ranges. The powerful Tasman Sea beach break is responsible for many of NZ\'s surf rescues — and its surf lifesaving culture is as strong as its surf. On the right swell it delivers punchy, powerful waves that rival anything on the NZ coast.',
+      es: 'La playa más icónica de Nueva Zelanda, Piha se asienta en un valle de arena negra a los pies de Lion Rock, protegida por las Waitakere Ranges. El poderoso beach break del Mar de Tasmania es responsable de muchos rescates de surf de NZ — y su cultura de salvamento en surf es tan fuerte como su surf. Con el swell correcto ofrece olas contundentes y poderosas que rivalizan con cualquier cosa en la costa de NZ.',
+      fr: 'La plage la plus emblématique de Nouvelle-Zélande, Piha est nichée dans une vallée de sable noir au pied de Lion Rock, protégée par les Waitakere Ranges. Le puissant beach break de la mer de Tasmanie est responsable de nombreux sauvetages de surf en NZ — et sa culture de sauvetage en surf est aussi forte que son surf. Sur la bonne houle, il délivre des vagues percutantes et puissantes qui rivalisent avec n\'importe quoi sur la côte néo-zélandaise.',
+      'pt-BR': 'A praia mais icônica da Nova Zelândia, Piha fica num vale de areia preta ao pé de Lion Rock, protegida pelos Waitakere Ranges. O poderoso beach break do Mar da Tasmânia é responsável por muitos resgates de surfe na NZ — e sua cultura de salva-vidas de surfe é tão forte quanto seu surfe. No swell certo, oferece ondas contundentes e poderosas que rivalizam com qualquer coisa na costa da NZ.',
+      'pt-PT': 'A praia mais icónica da Nova Zelândia, Piha fica num vale de areia preta ao pé de Lion Rock, protegida pelos Waitakere Ranges. O poderoso beach break do Mar da Tasmânia é responsável por muitos resgates de surf na NZ — e a sua cultura de salvamento em surf é tão forte quanto o seu surf. No swell certo, oferece ondas contundentes e poderosas que rivalizam com qualquer coisa na costa da NZ.',
+    },
   },
   {
     rank: 91,
@@ -1256,7 +1796,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Apr–Sep',
-    description: 'The second section of the Raglan point system, Whale Bay receives larger, more exposed swell and produces longer, more powerful walls than Manu Bay. On a significant SW groundswell, it connects with Manu Bay for one of the longest rides in New Zealand. The uncrowded lineup, clean green water, and dramatic fern-clad cliffs make it one of the most beautiful surf spots in the Southern Hemisphere.',
+    description: {
+      en: 'The second section of the Raglan point system, Whale Bay receives larger, more exposed swell and produces longer, more powerful walls than Manu Bay. On a significant SW groundswell, it connects with Manu Bay for one of the longest rides in New Zealand. The uncrowded lineup, clean green water, and dramatic fern-clad cliffs make it one of the most beautiful surf spots in the Southern Hemisphere.',
+      es: 'La segunda sección del sistema de point de Raglan, Whale Bay recibe swells más grandes y expuestos y produce paredes más largas y poderosas que Manu Bay. Con un groundswell del SO significativo, conecta con Manu Bay para uno de los rides más largos de Nueva Zelanda. El line-up poco concurrido, el agua limpia y verde y los dramáticos acantilados cubiertos de helechos lo convierten en uno de los spots de surf más hermosos del Hemisferio Sur.',
+      fr: 'La deuxième section du système de point de Raglan, Whale Bay reçoit des houles plus grandes et plus exposées et produit des murs plus longs et plus puissants que Manu Bay. Sur un groundswell SO significatif, elle se connecte avec Manu Bay pour l\'une des plus longues rides de Nouvelle-Zélande. Le line-up peu fréquenté, l\'eau verte et propre et les falaises spectaculaires couvertes de fougères en font l\'un des plus beaux spots de surf de l\'hémisphère Sud.',
+      'pt-BR': 'A segunda seção do sistema de point de Raglan, Whale Bay recebe swells maiores e mais expostos e produz paredes mais longas e poderosas do que Manu Bay. Num swell de fundo de SO significativo, conecta-se com Manu Bay para uma das remadas mais longas da Nova Zelândia. O line-up pouco lotado, a água verde e limpa e as dramáticas falésias recobertas de samambaias fazem dele um dos spots de surfe mais bonitos do Hemisfério Sul.',
+      'pt-PT': 'A segunda secção do sistema de point de Raglan, Whale Bay recebe swells maiores e mais expostos e produz paredes mais longas e poderosas do que Manu Bay. Num swell de fundo de SO significativo, conecta-se com Manu Bay para uma das remadas mais longas da Nova Zelândia. O line-up pouco lotado, a água verde e limpa e as dramáticas falésias recobertas de fetos fazem dele um dos spots de surf mais bonitos do Hemisfério Sul.',
+    },
   },
   {
     rank: 92,
@@ -1269,7 +1815,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Advanced',
     bestSeason: 'Apr–Sep',
-    description: 'The more accessible sibling of Teahupo\'o, Taapuna is a quality right-hand reef break on Tahiti\'s west coast that delivers powerful, hollow waves without the extreme shallow-water danger of the more famous break. It serves as the "local\'s wave" for Papeete surfers and provides an excellent alternative for advanced surfers who want a taste of Polynesian reef surfing at a more manageable consequence level.',
+    description: {
+      en: 'The more accessible sibling of Teahupo\'o, Taapuna is a quality right-hand reef break on Tahiti\'s west coast that delivers powerful, hollow waves without the extreme shallow-water danger of the more famous break. It serves as the "local\'s wave" for Papeete surfers and provides an excellent alternative for advanced surfers who want a taste of Polynesian reef surfing at a more manageable consequence level.',
+      es: 'El hermano más accesible de Teahupo\'o, Taapuna es un reef break derecho de calidad en la costa oeste de Tahití que ofrece olas poderosas y huecas sin el extremo peligro de aguas poco profundas del break más famoso. Sirve como la "ola de los locales" para los surfistas de Papeete y proporciona una excelente alternativa para surfistas avanzados que quieren experimentar el surf de arrecife polinesio con un nivel de consecuencias más manejable.',
+      fr: 'Le frère plus accessible de Teahupo\'o, Taapuna est un reef break droit de qualité sur la côte ouest de Tahiti qui délivre des vagues puissantes et creuses sans le danger extrême des eaux peu profondes du break plus célèbre. Il sert de "vague des locaux" pour les surfeurs de Papeete et offre une excellente alternative aux surfeurs avancés qui veulent goûter au surf de récif polynésien à un niveau de conséquences plus gérable.',
+      'pt-BR': 'O irmão mais acessível de Teahupo\'o, Taapuna é um reef break direito de qualidade na costa oeste do Taiti que oferece ondas poderosas e ocas sem o perigo extremo de águas rasas do pico mais famoso. Serve como a "onda dos locais" para os surfistas de Papeete e oferece uma excelente alternativa para surfistas avançados que querem experimentar o surfe em recife polinésio com um nível de consequências mais manejável.',
+      'pt-PT': 'O irmão mais acessível de Teahupo\'o, Taapuna é um reef break direito de qualidade na costa oeste do Taiti que oferece ondas poderosas e ocas sem o perigo extremo de águas rasas do pico mais famoso. Serve como a "onda dos locais" para os surfistas de Papeete e oferece uma excelente alternativa para surfistas avançados que querem experimentar o surf em recife polinésio com um nível de consequências mais manejável.',
+    },
   },
   {
     rank: 93,
@@ -1282,7 +1834,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Intermediate',
     bestSeason: 'Apr–Oct',
-    description: 'A right-hand reef pass in the Tavarua cluster that works on smaller swells when Cloudbreak is too powerful. Wilkes Pass provides a more relaxed alternative with fun, consistent walls and shorter barrel sections. The Tavarua surf camp uses it as the go-to when conditions suit intermediate surfers, and its warm Fijian water and accessible channel make it one of the most pleasant surf experiences in the Pacific.',
+    description: {
+      en: 'A right-hand reef pass in the Tavarua cluster that works on smaller swells when Cloudbreak is too powerful. Wilkes Pass provides a more relaxed alternative with fun, consistent walls and shorter barrel sections. The Tavarua surf camp uses it as the go-to when conditions suit intermediate surfers, and its warm Fijian water and accessible channel make it one of the most pleasant surf experiences in the Pacific.',
+      es: 'Un paso de arrecife derecho en el grupo de Tavarua que funciona con swells más pequeños cuando Cloudbreak es demasiado poderoso. Wilkes Pass proporciona una alternativa más relajada con paredes divertidas y consistentes y secciones de tubo más cortas. El campamento de surf de Tavarua lo usa como la opción predeterminada cuando las condiciones se adaptan a surfistas intermedios, y su cálida agua fiyiana y canal accesible lo convierten en una de las experiencias de surf más placenteras del Pacífico.',
+      fr: 'Une passe de récif droite dans le groupe de Tavarua qui fonctionne sur des houles plus petites lorsque Cloudbreak est trop puissant. Wilkes Pass offre une alternative plus détendue avec des murs amusants et constants et des sections de tube plus courtes. Le camp de surf de Tavarua l\'utilise comme option par défaut lorsque les conditions conviennent aux surfeurs intermédiaires, et son eau fidjienne chaude et son chenal accessible en font l\'une des expériences de surf les plus agréables du Pacifique.',
+      'pt-BR': 'Um passe de recife direito no cluster de Tavarua que funciona em swells menores quando Cloudbreak está poderoso demais. Wilkes Pass oferece uma alternativa mais relaxada com paredes divertidas e consistentes e seções de tubo mais curtas. O acampamento de surfe de Tavarua usa-o como primeira opção quando as condições se adequam a surfistas intermediários, e sua água quente fijiana e canal acessível fazem dele uma das experiências de surfe mais agradáveis do Pacífico.',
+      'pt-PT': 'Um passe de recife direito no cluster de Tavarua que funciona em swells menores quando Cloudbreak está demasiado poderoso. Wilkes Pass oferece uma alternativa mais relaxada com paredes divertidas e consistentes e secções de tubo mais curtas. O acampamento de surf de Tavarua usa-o como primeira opção quando as condições se adequam a surfistas intermédios, e a sua água quente fijiana e canal acessível fazem dele uma das experiências de surf mais agradáveis do Pacífico.',
+    },
   },
   {
     rank: 94,
@@ -1295,7 +1853,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Expert',
     bestSeason: 'Apr–Sep',
-    description: 'A remote right-hand point break on WA\'s Coral Coast that delivers long, powerful rides on Southern Ocean groundswells in a wilderness setting accessible only by long dirt track. Gnaraloo\'s Tombstones section is a genuine slab that breaks over a shallow reef with ferocity. The station homestead provides simple accommodation; otherwise, it\'s camping under stars, surfing alone, and watching humpback whales breach offshore.',
+    description: {
+      en: 'A remote right-hand point break on WA\'s Coral Coast that delivers long, powerful rides on Southern Ocean groundswells in a wilderness setting accessible only by long dirt track. Gnaraloo\'s Tombstones section is a genuine slab that breaks over a shallow reef with ferocity. The station homestead provides simple accommodation; otherwise, it\'s camping under stars, surfing alone, and watching humpback whales breach offshore.',
+      es: 'Un remoto point break hacia la derecha en la Costa de Coral de WA que ofrece rides largos y poderosos en swells de fondo del Océano Austral en un entorno salvaje accesible solo por una larga pista de tierra. La sección Tombstones de Gnaraloo es un auténtico slab que rompe sobre un arrecife poco profundo con ferocidad. El caserío de la estación proporciona alojamiento simple; de lo contrario, es acampar bajo las estrellas, surfear solo y ver ballenas jorobadas saltar frente a la costa.',
+      fr: 'Un point break droit isolé sur la côte de Corail de l\'Australie-Occidentale qui offre de longues rides puissantes sur des groundswells de l\'océan Austral dans un cadre sauvage accessible uniquement par une longue piste de terre. La section Tombstones de Gnaraloo est un véritable slab qui se brise sur un récif peu profond avec férocité. Le homestead de la station fournit un hébergement simple ; sinon, c\'est camper sous les étoiles, surfer seul et regarder les baleines à bosse sauter au large.',
+      'pt-BR': 'Um remoto point break direito na Costa de Coral de WA que oferece remadas longas e poderosas em swells de fundo do Oceano Austral em um ambiente selvagem acessível apenas por uma longa estrada de terra. A seção Tombstones de Gnaraloo é um autêntico slab que quebra sobre um recife raso com ferocidade. O rancho da estação oferece acomodação simples; caso contrário, é acampar sob as estrelas, surfar sozinho e observar baleias jubarte saltando ao largo.',
+      'pt-PT': 'Um remoto point break direito na Costa de Coral de WA que oferece remadas longas e poderosas em swells de fundo do Oceano Austral num ambiente selvagem acessível apenas por uma longa pista de terra. A secção Tombstones de Gnaraloo é um autêntico slab que quebra sobre um recife raso com ferocidade. O rancho da estação oferece acomodação simples; caso contrário, é acampar sob as estrelas, surfar sozinho e observar baleias jubarte a saltar ao largo.',
+    },
   },
   {
     rank: 95,
@@ -1309,7 +1873,13 @@ export const SPOTS: Top100Spot[] = [
     difficulty: 'Expert',
     bestSeason: 'Mar–Aug',
     wslBadge: 'Big Wave',
-    description: 'A frightening big-wave right-hander near Augusta in WA that is widely considered the most dangerous wave in Australia. The Right detonates on a submerged reef with immense power, creating a thick, barreling lip that has broken boards, ribs, and surfers. Cold Southern Ocean water, white sharks, and the sheer violence of the wave restrict sessions to the most committed big-wave surfers in Australia.',
+    description: {
+      en: 'A frightening big-wave right-hander near Augusta in WA that is widely considered the most dangerous wave in Australia. The Right detonates on a submerged reef with immense power, creating a thick, barreling lip that has broken boards, ribs, and surfers. Cold Southern Ocean water, white sharks, and the sheer violence of the wave restrict sessions to the most committed big-wave surfers in Australia.',
+      es: 'Un aterrador derecho de olas grandes cerca de Augusta en WA que se considera ampliamente como la ola más peligrosa de Australia. The Right detona en un arrecife sumergido con inmensa potencia, creando un labio grueso y tubular que ha roto tablas, costillas y surfistas. El agua fría del Océano Austral, los tiburones blancos y la pura violencia de la ola restringen las sesiones a los surfistas de olas grandes más comprometidos de Australia.',
+      fr: 'Un terrifiant droit de grosses vagues près d\'Augusta en Australie-Occidentale qui est largement considéré comme la vague la plus dangereuse d\'Australie. The Right détone sur un récif immergé avec une puissance immense, créant une lèvre épaisse et tubulaire qui a brisé des planches, des côtes et des surfeurs. L\'eau froide de l\'océan Austral, les requins blancs et la pure violence de la vague restreignent les sessions aux surfeurs de grosses vagues les plus engagés d\'Australie.',
+      'pt-BR': 'Um assustador direito de ondas grandes perto de Augusta em WA que é amplamente considerado a onda mais perigosa da Austrália. The Right detona em um recife submerso com imensa potência, criando um lábio grosso e tubular que quebrou pranchas, costelas e surfistas. A água fria do Oceano Austral, tubarões brancos e a pura violência da onda restringem as sessões aos surfistas de ondas grandes mais comprometidos da Austrália.',
+      'pt-PT': 'Um assustador direito de ondas grandes perto de Augusta em WA que é amplamente considerado a onda mais perigosa da Austrália. The Right detona num recife submerso com imensa potência, criando um lábio grosso e tubular que quebrou pranchas, costelas e surfistas. A água fria do Oceano Austral, tubarões brancos e a pura violência da onda restringem as sessões aos surfistas de ondas grandes mais comprometidos da Austrália.',
+    },
   },
   {
     rank: 96,
@@ -1322,7 +1892,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Mar–Aug',
-    description: 'Sydney\'s southernmost surf community is built around a rocky headland point that wraps NE and SE swells into a classic right-hand wall. Cronulla Point is a surfers\' surfer\'s wave — powerful, consistent, and demanding — that has produced world-class talent from a city-fringe suburb. The local crew is one of the most passionate and tight-knit surf communities in Australia.',
+    description: {
+      en: 'Sydney\'s southernmost surf community is built around a rocky headland point that wraps NE and SE swells into a classic right-hand wall. Cronulla Point is a surfers\' surfer\'s wave — powerful, consistent, and demanding — that has produced world-class talent from a city-fringe suburb. The local crew is one of the most passionate and tight-knit surf communities in Australia.',
+      es: 'La comunidad de surf más al sur de Sídney se construye alrededor de un punto de promontorio rocoso que envuelve los swells del NE y SE en una clásica pared hacia la derecha. Cronulla Point es la ola de los surfistas de surfistas — poderosa, consistente y exigente — que ha producido talento de clase mundial desde un suburbio en los márgenes de la ciudad. El equipo local es una de las comunidades de surf más apasionadas y unidas de Australia.',
+      fr: 'La communauté de surf la plus méridionale de Sydney est construite autour d\'un point de promontoire rocheux qui enroule les houles NE et SE dans un mur classique vers la droite. Cronulla Point est la vague des surfeurs de surfeurs — puissante, constante et exigeante — qui a produit des talents de classe mondiale depuis une banlieue en périphérie de la ville. L\'équipe locale est l\'une des communautés de surf les plus passionnées et soudées d\'Australie.',
+      'pt-BR': 'A comunidade de surfe mais ao sul de Sydney é construída em torno de um ponto de promontório rochoso que envolve os swells de NE e SE em uma parede direita clássica. Cronulla Point é a onda dos surfistas de surfistas — poderosa, consistente e exigente — que produziu talento de classe mundial de um subúrbio na periferia da cidade. A equipe local é uma das comunidades de surfe mais apaixonadas e unidas da Austrália.',
+      'pt-PT': 'A comunidade de surf mais ao sul de Sydney é construída em torno de um ponto de promontório rochoso que envolve os swells de NE e SE numa parede direita clássica. Cronulla Point é a onda dos surfistas de surfistas — poderosa, consistente e exigente — que produziu talento de classe mundial de um subúrbio na periferia da cidade. A equipa local é uma das comunidades de surf mais apaixonadas e unidas da Austrália.',
+    },
   },
   {
     rank: 97,
@@ -1335,7 +1911,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Point Break',
     difficulty: 'Advanced',
     bestSeason: 'Mar–Sep',
-    description: 'A long right-hand point on NSW\'s northern coast that consistently rates among the top five point breaks in Australia. Lennox Head delivers rides of 200–400m on cyclone-generated east swells, with a powerful, fast-walling section over the rocky bottom. The headland is protected and the town retains its surf village character — a welcome contrast to the Gold Coast\'s commercial sprawl just over the border.',
+    description: {
+      en: 'A long right-hand point on NSW\'s northern coast that consistently rates among the top five point breaks in Australia. Lennox Head delivers rides of 200–400m on cyclone-generated east swells, with a powerful, fast-walling section over the rocky bottom. The headland is protected and the town retains its surf village character — a welcome contrast to the Gold Coast\'s commercial sprawl just over the border.',
+      es: 'Un largo point hacia la derecha en la costa norte de NSW que constantemente se clasifica entre los cinco mejores point breaks de Australia. Lennox Head ofrece rides de 200–400m en swells del este generados por ciclones, con una sección de pared rápida y poderosa sobre el fondo rocoso. El promontorio está protegido y la ciudad conserva su carácter de pueblo surfero — un bienvenido contraste con la expansión comercial de la Gold Coast justo al otro lado de la frontera.',
+      fr: 'Un long point droit sur la côte nord de NSW qui se classe régulièrement parmi les cinq meilleurs points breaks d\'Australie. Lennox Head offre des rides de 200–400m sur des houles d\'est générées par des cyclones, avec une section de mur rapide et puissante sur le fond rocheux. Le promontoire est protégé et la ville conserve son caractère de village de surf — un contraste bienvenu avec l\'étalement commercial de la Gold Coast juste de l\'autre côté de la frontière.',
+      'pt-BR': 'Um longo point direito na costa norte de NSW que consistentemente está entre os cinco melhores point breaks da Austrália. Lennox Head oferece remadas de 200–400m em swells do leste gerados por ciclones, com uma seção de parede rápida e poderosa sobre o fundo rochoso. O promontório é protegido e a cidade mantém seu caráter de aldeia de surfe — um contraste bem-vindo com o sprawl comercial da Gold Coast logo do outro lado da fronteira.',
+      'pt-PT': 'Um longo point direito na costa norte de NSW que consistentemente está entre os cinco melhores point breaks da Austrália. Lennox Head oferece remadas de 200–400m em swells do leste gerados por ciclones, com uma secção de parede rápida e poderosa sobre o fundo rochoso. O promontório é protegido e a cidade mantém o seu caráter de aldeia de surf — um contraste bem-vindo com o sprawl comercial da Gold Coast logo do outro lado da fronteira.',
+    },
   },
   {
     rank: 98,
@@ -1348,7 +1930,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Sand Bar',
     difficulty: 'Expert',
     bestSeason: 'Mar–Jun',
-    description: 'When cyclone-generated swells hit the Gold Coast at the right angle and the sand connects from Snapper Rocks through Greenmount and Rainbow Bay all the way to Kirra, the result is a 2-kilometre barreling conveyor belt with no equal on earth. The full Superbank connection only happens a handful of times per year, but when it does, it is one of surfing\'s most extraordinary events.',
+    description: {
+      en: 'When cyclone-generated swells hit the Gold Coast at the right angle and the sand connects from Snapper Rocks through Greenmount and Rainbow Bay all the way to Kirra, the result is a 2-kilometre barreling conveyor belt with no equal on earth. The full Superbank connection only happens a handful of times per year, but when it does, it is one of surfing\'s most extraordinary events.',
+      es: 'Cuando los swells generados por ciclones golpean la Gold Coast en el ángulo correcto y la arena conecta desde Snapper Rocks pasando por Greenmount y Rainbow Bay hasta Kirra, el resultado es una cinta transportadora tubular de 2 kilómetros sin igual en la tierra. La conexión completa del Superbank solo ocurre un puñado de veces por año, pero cuando lo hace, es uno de los eventos más extraordinarios del surf.',
+      fr: 'Lorsque les houles générées par des cyclones frappent la Gold Coast au bon angle et que le sable se connecte de Snapper Rocks à travers Greenmount et Rainbow Bay jusqu\'à Kirra, le résultat est un tapis roulant tubulaire de 2 kilomètres sans égal sur terre. La connexion complète du Superbank ne se produit qu\'une poignée de fois par an, mais lorsqu\'elle se produit, c\'est l\'un des événements les plus extraordinaires du surf.',
+      'pt-BR': 'Quando os swells gerados por ciclones atingem a Gold Coast no ângulo certo e a areia conecta de Snapper Rocks passando por Greenmount e Rainbow Bay até Kirra, o resultado é uma esteira tubular de 2 quilômetros sem igual na terra. A conexão completa do Superbank só acontece algumas vezes por ano, mas quando acontece, é um dos eventos mais extraordinários do surfe.',
+      'pt-PT': 'Quando os swells gerados por ciclones atingem a Gold Coast no ângulo certo e a areia conecta de Snapper Rocks passando por Greenmount e Rainbow Bay até Kirra, o resultado é uma esteira tubular de 2 quilómetros sem igual na terra. A conexão completa do Superbank só acontece algumas vezes por ano, mas quando acontece, é um dos eventos mais extraordinários do surf.',
+    },
   },
   {
     rank: 99,
@@ -1361,7 +1949,13 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Expert',
     bestSeason: 'Apr–Sep',
-    description: 'A powerful, hollow left-hand reef break on Phillip Island\'s exposed southern coastline that fires on Bass Strait groundswells in spectacular fashion. Black Rock is Victoria\'s most dramatic wave — a thick, pitching barrel that breaks over a shallow basalt reef with cold Southern Ocean water and wild winds. The backdrop of penguins, seals, and crashing seas makes every session memorable.',
+    description: {
+      en: 'A powerful, hollow left-hand reef break on Phillip Island\'s exposed southern coastline that fires on Bass Strait groundswells in spectacular fashion. Black Rock is Victoria\'s most dramatic wave — a thick, pitching barrel that breaks over a shallow basalt reef with cold Southern Ocean water and wild winds. The backdrop of penguins, seals, and crashing seas makes every session memorable.',
+      es: 'Una poderosa y hueca rompiente de arrecife hacia la izquierda en la costa sur expuesta de la Isla Phillip que se activa con swells de fondo del Estrecho de Bass de manera espectacular. Black Rock es la ola más dramática de Victoria — un tubo grueso y lanzado que rompe sobre un arrecife de basalto poco profundo con agua fría del Océano Austral y vientos salvajes. El telón de fondo de pingüinos, focas y mares embravecidos hace que cada sesión sea memorable.',
+      fr: 'Un reef break gauche puissant et creux sur le littoral sud exposé de Phillip Island qui se déclenche sur les groundswells du détroit de Bass de façon spectaculaire. Black Rock est la vague la plus dramatique de Victoria — un tube épais et lancé qui se brise sur un récif de basalte peu profond avec de l\'eau froide de l\'océan Austral et des vents sauvages. La toile de fond de pingouins, de phoques et de mers déferlantes rend chaque session mémorable.',
+      'pt-BR': 'Uma poderosa e oca rompiente de recife esquerda na costa sul exposta de Phillip Island que funciona nos swells de fundo do Estreito de Bass de forma espetacular. Black Rock é a onda mais dramática de Victoria — um tubo grosso e lançado que quebra sobre um recife de basalto raso com água fria do Oceano Austral e ventos selvagens. O pano de fundo de pinguins, focas e mares bravios torna cada sessão memorável.',
+      'pt-PT': 'Uma poderosa e oca rompiente de recife esquerda na costa sul exposta de Phillip Island que funciona nos swells de fundo do Estreito de Bass de forma espetacular. Black Rock é a onda mais dramática de Victoria — um tubo grosso e lançado que quebra sobre um recife de basalto raso com água fria do Oceano Austral e ventos selvagens. O pano de fundo de pinguins, focas e mares bravios torna cada sessão memorável.',
+    },
   },
   {
     rank: 100,
@@ -1374,6 +1968,12 @@ export const SPOTS: Top100Spot[] = [
     waveType: 'Reef Break',
     difficulty: 'Intermediate',
     bestSeason: 'Apr–Oct',
-    description: 'A long right-hand reef break off Sanur\'s calm east coast beach that works on the same Indian Ocean swells as the Bukit but with a gentler character. Sanur Reef is Bali\'s hidden gem for intermediate and advanced surfers seeking quality waves without the Bukit\'s crowds and consequence. The reef break delivers long, consistent walls with good shape — ideal for progressing surfers ready to move from beach to reef.',
+    description: {
+      en: 'A long right-hand reef break off Sanur\'s calm east coast beach that works on the same Indian Ocean swells as the Bukit but with a gentler character. Sanur Reef is Bali\'s hidden gem for intermediate and advanced surfers seeking quality waves without the Bukit\'s crowds and consequence. The reef break delivers long, consistent walls with good shape — ideal for progressing surfers ready to move from beach to reef.',
+      es: 'Una larga rompiente de arrecife hacia la derecha frente a la tranquila playa de la costa este de Sanur que funciona con los mismos swells del Océano Índico que el Bukit pero con un carácter más suave. Sanur Reef es la joya oculta de Bali para surfistas intermedios y avanzados que buscan olas de calidad sin las multitudes y consecuencias del Bukit. El reef break ofrece paredes largas y consistentes con buena forma — ideal para surfistas en progresión listos para pasar de la playa al arrecife.',
+      fr: 'Un long reef break droit au large de la plage calme de la côte est de Sanur qui fonctionne sur les mêmes houles de l\'océan Indien que le Bukit mais avec un caractère plus doux. Sanur Reef est le joyau caché de Bali pour les surfeurs intermédiaires et avancés cherchant des vagues de qualité sans les foules et les conséquences du Bukit. Le reef break offre de longs murs constants avec une bonne forme — idéal pour les surfeurs en progression prêts à passer de la plage au récif.',
+      'pt-BR': 'Um longo reef break direito ao largo da tranquila praia da costa leste de Sanur que funciona nos mesmos swells do Oceano Índico que o Bukit mas com um caráter mais suave. Sanur Reef é a joia oculta de Bali para surfistas intermediários e avançados que buscam ondas de qualidade sem as multidões e consequências do Bukit. O reef break oferece paredes longas e consistentes com boa forma — ideal para surfistas em progressão prontos para passar da praia ao recife.',
+      'pt-PT': 'Um longo reef break direito ao largo da tranquila praia da costa leste de Sanur que funciona nos mesmos swells do Oceano Índico que o Bukit mas com um caráter mais suave. Sanur Reef é a joia oculta de Bali para surfistas intermédios e avançados que buscam ondas de qualidade sem as multidões e consequências do Bukit. O reef break oferece paredes longas e consistentes com boa forma — ideal para surfistas em progressão prontos para passar da praia ao recife.',
+    },
   },
 ]
