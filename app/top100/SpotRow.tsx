@@ -143,12 +143,6 @@ export default function SpotRow({ spot, heightUnit }: Props) {
   return (
     <div ref={rowRef} className="relative glass-card rounded-2xl transition-all duration-200">
 
-      {/* Firing glow */}
-      {firing && (
-        <div className="absolute inset-0 rounded-2xl pointer-events-none"
-          style={{ boxShadow: 'inset 0 0 0 1px rgba(34,197,94,0.35), 0 0 20px -4px rgba(34,197,94,0.15)' }} />
-      )}
-
       <div className="p-4 sm:p-5 grid gap-3 lg:grid-cols-[auto_1fr] lg:gap-5">
 
         {/* ── Left: name ─────────────────────────────────────────────────── */}
