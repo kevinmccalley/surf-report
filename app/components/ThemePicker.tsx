@@ -30,7 +30,7 @@ export default function ThemePicker({ align = 'right' }: { align?: 'left' | 'rig
         className="flex items-center gap-1.5 px-2 py-1 rounded-md text-xs text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
       >
         <PaletteIcon />
-        <span className="hidden lg:block text-[11px] font-medium">{t('theme.' + current.id.replace(/-/g, '_'))}</span>
+        <span className="hidden lg:block text-[11px] font-medium whitespace-nowrap">{t('theme.' + current.id.replace(/-/g, '_'))}</span>
       </button>
 
       {open && (
