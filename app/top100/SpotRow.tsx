@@ -120,7 +120,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
       <div className="p-4 sm:p-5 grid gap-3 lg:grid-cols-[auto_1fr] lg:gap-5">
 
         {/* ── Left: name ─────────────────────────────────────────────────── */}
-        <div className="lg:max-w-[280px]" style={{ minWidth: '250px' }}>
+        <div style={{ width: '280px', flexShrink: 0 }}>
             <div className="flex items-center gap-2 flex-wrap">
               <h3 className="font-bold text-base leading-tight">{spot.name}</h3>
               {firing && (
