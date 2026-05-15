@@ -167,9 +167,8 @@ export default function Top100Client() {
         {spotsByRegion.map(({ region, spots }) => (
           <section key={region} id={REGION_IDS[region]}>
             {/* Region header */}
-            <div className="flex items-center gap-3 mb-6 pt-2">
+            <div className="mb-6 pt-2">
               <h2 className="text-xl font-bold">{t(REGION_LABEL_KEYS[region])}</h2>
-              <div className="flex-1 h-px" style={{ background: 'var(--card-border)' }} />
             </div>
 
             {/* Spots */}
