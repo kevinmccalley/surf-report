@@ -33,7 +33,7 @@ const jsonLd = {
     '@type': 'ListItem',
     position: spot.rank,
     name: spot.name,
-    description: spot.description.slice(0, 200),
+    description: spot.description['en'].slice(0, 200),
     url: `${BASE_URL}/?lat=${spot.lat}&lon=${spot.lon}`,
   })),
 }
