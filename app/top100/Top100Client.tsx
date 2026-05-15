@@ -117,8 +117,22 @@ export default function Top100Client() {
           </h1>
         </div>
 
-        {/* Region pills — centered with theme/language toggles */}
+        {/* Region pills — logo left, pills center, controls right */}
         <div className="px-2 pb-2 flex items-center gap-2">
+
+          {/* Logo — mirrors the controls width to keep pills centred */}
+          <div className="flex items-center gap-1.5 shrink-0 w-28">
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden>
+              <circle cx="14" cy="14" r="14" fill="rgba(14,165,233,0.15)" />
+              <path d="M4 17 C7 13, 10 20, 14 16 C18 12, 21 19, 24 15" stroke="#38bdf8" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+              <path d="M4 20 C7 16, 10 23, 14 19 C18 15, 21 22, 24 18" stroke="#0ea5e9" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.5" />
+            </svg>
+            <span className="text-xs font-bold tracking-wide" style={{ color: 'var(--accent-bright)' }}>
+              Groundswell
+            </span>
+          </div>
+
+          {/* Scrollable region pills */}
           <div className="flex-1 overflow-x-auto">
             <div className="flex justify-center gap-1.5 min-w-max mx-auto">
               {REGIONS.map(region => (
@@ -139,7 +153,9 @@ export default function Top100Client() {
               ))}
             </div>
           </div>
-          <div className="flex items-center gap-1 shrink-0">
+
+          {/* Theme + language controls */}
+          <div className="flex items-center gap-1 shrink-0 w-28 justify-end">
             <LanguageSwitcher align="right" />
             <ThemePicker align="right" />
           </div>
