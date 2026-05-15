@@ -215,7 +215,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
 
           {/* Description */}
-          <p className="theme-label text-xs leading-relaxed line-clamp-4 sm:flex-1 sm:min-w-0">{description}</p>
+          <p className="theme-label text-xs leading-relaxed sm:flex-1 sm:min-w-0">{description}</p>
 
           {/* Forecast cards */}
           <div className="flex gap-2 items-start shrink-0">
