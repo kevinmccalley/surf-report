@@ -60,6 +60,7 @@ export default function SpotRow({ spot, heightUnit }: Props) {
   const { t, locale } = useLanguage()
   const description = spot.description[locale] ?? spot.description['en']
   const rowRef = useRef<HTMLDivElement>(null)
+  const nearbyForRef = useRef<string | null>(null)
 
   const [today, setToday] = useState<MiniDay | null>(null)
   const [tomorrow, setTomorrow] = useState<MiniDay | null>(null)
@@ -114,14 +115,18 @@ export default function SpotRow({ spot, heightUnit }: Props) {
     return () => observer.disconnect()
   }, [fetched, spot.lat, spot.lon, spot.name, spot.country, doFetch])
 
-  // Fetch nearby spots the first time the map panel opens
+  // Fetch nearby spots whenever the map is open and the active report location changes
   useEffect(() => {
-    if (!mapOpen || nearbySpots.length > 0) return
-    fetch(`/api/nearby?lat=${spot.lat}&lon=${spot.lon}`)
+    if (!mapOpen || !report) return
+    const key = `${report.location.lat.toFixed(4)},${report.location.lon.toFixed(4)}`
+    if (nearbyForRef.current === key) return
+    nearbyForRef.current = key
+    setNearbySpots([])
+    fetch(`/api/nearby?lat=${report.location.lat}&lon=${report.location.lon}`)
       .then(r => r.ok ? r.json() : [])
       .then((spots: NearbySpot[]) => setNearbySpots(spots))
       .catch(() => {})
-  }, [mapOpen, spot.lat, spot.lon, nearbySpots.length])
+  }, [mapOpen, report])
 
   const handlePinClick = useCallback(() => {
     setMapOpen(true)
@@ -130,13 +135,18 @@ export default function SpotRow({ spot, heightUnit }: Props) {
     }
   }, [fetched, loading, spot, doFetch])
 
-  // When user selects a nearby spot inside the panel, swap the report
+  // When user selects a nearby spot, swap report + forecast cards + trigger nearby re-fetch
   const handleSpotSelect = useCallback((nearby: NearbySpot) => {
     fetch(`/api/surf?lat=${nearby.lat}&lon=${nearby.lon}&name=${encodeURIComponent(nearby.name)}&country=`)
       .then(r => r.json())
-      .then((r: SurfReport) => setReport(r))
+      .then((r: SurfReport) => {
+        setReport(r)
+        const days: DayForecast[] = r.forecast ?? []
+        if (days[0]) setToday(toMiniDay(days[0]))
+        if (days[1]) setTomorrow(toMiniDay(days[1]))
+      })
       .catch(() => {})
-  }, [])
+  }, [toMiniDay])
 
   const firing = today?.firing
 
