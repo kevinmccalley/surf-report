@@ -191,7 +191,7 @@ function GalleryTile({ tile }: { tile: GalleryTileData }) {
 
       {/* Wave icon centered on blank tiles */}
       {!tile.imageSrc && !hovered && (
-        <div className="absolute inset-0 flex items-center justify-center" style={{ color: 'var(--panel-muted)' }}>
+        <div className="absolute inset-0 flex items-center justify-center" style={{ color: 'var(--panel-muted)', opacity: 0.25 }}>
           <svg width="48" height="22" viewBox="3 11 22 13" fill="none" aria-hidden>
             <path d="M4 17 C7 13, 10 20, 14 16 C18 12, 21 19, 24 15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
             <path d="M4 20 C7 16, 10 23, 14 19 C18 15, 21 22, 24 18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
