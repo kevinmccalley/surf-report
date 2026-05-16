@@ -201,9 +201,9 @@ const ptPT: Record<string, string> = {
   'theme.ocean': 'Oceano',
   'theme.sunset': 'Ferrugem',
   'theme.forest': 'Kelp',
-  'theme.sand': 'Areia',
+  'theme.sand': 'Terra',
   'theme.light_ocean': 'Céu',
-  'theme.light_sand': 'Palha',
+  'theme.light_sand': 'Areia',
   'theme.black': 'Preto',
   'theme.light_white': 'Branco',
 

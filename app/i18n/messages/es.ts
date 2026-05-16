@@ -201,9 +201,9 @@ const es: Record<string, string> = {
   'theme.ocean': 'Océano',
   'theme.sunset': 'Óxido',
   'theme.forest': 'Kelp',
-  'theme.sand': 'Arena',
+  'theme.sand': 'Barro',
   'theme.light_ocean': 'Cielo',
-  'theme.light_sand': 'Paja',
+  'theme.light_sand': 'Arena',
   'theme.black': 'Negro',
   'theme.light_white': 'Blanco',
 

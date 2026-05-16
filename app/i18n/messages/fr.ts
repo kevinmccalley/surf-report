@@ -201,9 +201,9 @@ const fr: Record<string, string> = {
   'theme.ocean': 'Océan',
   'theme.sunset': 'Rouille',
   'theme.forest': 'Kelp',
-  'theme.sand': 'Sable',
+  'theme.sand': 'Terre',
   'theme.light_ocean': 'Ciel',
-  'theme.light_sand': 'Paille',
+  'theme.light_sand': 'Sable',
   'theme.black': 'Noir',
   'theme.light_white': 'Blanc',
 
