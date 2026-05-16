@@ -199,11 +199,11 @@ const en: Record<string, string> = {
   'theme.label': 'Theme',
   'theme.light': 'Light',
   'theme.ocean': 'Ocean',
-  'theme.sunset': 'Sunset',
+  'theme.sunset': 'Rust',
   'theme.forest': 'Kelp',
   'theme.sand': 'Sand',
-  'theme.light_ocean': 'Light Ocean',
-  'theme.light_sand': 'Light Sand',
+  'theme.light_ocean': 'Sky',
+  'theme.light_sand': 'Straw',
 
   // AuthButton
   'auth.signIn': 'Sign in',

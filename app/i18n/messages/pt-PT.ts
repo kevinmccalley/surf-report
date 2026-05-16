@@ -199,11 +199,11 @@ const ptPT: Record<string, string> = {
   'theme.label': 'Tema',
   'theme.light': 'Claro',
   'theme.ocean': 'Oceano',
-  'theme.sunset': 'Pôr do Sol',
+  'theme.sunset': 'Ferrugem',
   'theme.forest': 'Kelp',
   'theme.sand': 'Areia',
-  'theme.light_ocean': 'Oceano Claro',
-  'theme.light_sand': 'Areia Clara',
+  'theme.light_ocean': 'Céu',
+  'theme.light_sand': 'Palha',
 
   // AuthButton
   'auth.signIn': 'Entrar',
