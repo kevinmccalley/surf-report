@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
+import { auth, clerkClient } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
 import Top100Client from './Top100Client'
 import { SPOTS } from './spots-data'
+
+export const dynamic = 'force-dynamic'
 
 const BASE_URL = 'https://groundswell.surf'
 
@@ -38,7 +42,15 @@ const jsonLd = {
   })),
 }
 
-export default function Top100Page() {
+export default async function Top100Page() {
+  const { userId } = await auth()
+  if (!userId) redirect('/sign-in')
+
+  const client = await clerkClient()
+  const user = await client.users.getUser(userId)
+  const email = user.emailAddresses[0]?.emailAddress?.toLowerCase() ?? ''
+  const allowed = (process.env.BYPASS_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean)
+  if (!allowed.includes(email)) redirect('/')
   return (
     <>
       <script
