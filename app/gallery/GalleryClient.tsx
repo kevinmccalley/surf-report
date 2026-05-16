@@ -138,8 +138,8 @@ function GalleryTile({ tile }: { tile: GalleryTileData }) {
             : 'rgba(0,0,0,0.72)',
         }} />
 
-        {/* Content */}
-        <div className="relative px-2.5 pb-2.5 pt-6 text-white">
+        {/* Content — color forced via inline style so light themes can't override it */}
+        <div className="relative px-2.5 pb-2.5 pt-6" style={{ color: 'white' }}>
           {/* Rank + name */}
           <div className="flex items-baseline gap-1.5 flex-wrap">
             <span className="text-[10px] font-bold opacity-60">#{tile.rank}</span>
