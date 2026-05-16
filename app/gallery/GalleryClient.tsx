@@ -248,7 +248,7 @@ export default function GalleryClient({ tiles }: Props) {
               <SearchBar onSelect={handleSelect} compact />
             </div>
 
-            <div className="hidden sm:flex items-center gap-1 shrink-0">
+            <div className="hidden sm:flex items-center gap-1 shrink-0 ml-auto">
               <LanguageSwitcher />
               <ThemePicker />
               <AuthButton subscribed={false} isPremium={false} onManageBilling={() => router.push('/')} />

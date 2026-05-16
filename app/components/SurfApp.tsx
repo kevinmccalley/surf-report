@@ -348,7 +348,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
           </div>
 
           {/* Desktop controls */}
-          <div className="hidden sm:flex items-center gap-1 shrink-0 content:ml-auto">
+          <div className="hidden sm:flex items-center gap-1 shrink-0 ml-auto">
             {report && (
               <>
                 <UnitToggle label={units.height.toUpperCase()} onClick={toggleHeight} />
