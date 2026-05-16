@@ -50,10 +50,8 @@ export default function ThemePicker({ align = 'right' }: { align?: 'left' | 'rig
                 >
                   {/* Gradient swatch */}
                   <span
-                    className="w-7 h-7 rounded-lg shrink-0 border border-white/10 shadow-inner"
-                    style={{
-                      background: `linear-gradient(135deg, ${theme.preview[0]} 0%, ${theme.preview[1]} 60%, ${theme.preview[2]} 100%)`,
-                    }}
+                    className="w-5 h-5 rounded-full shrink-0 shadow-sm"
+                    style={{ background: theme.preview[2] }}
                   />
                   <span className="text-xs font-medium theme-label flex-1 text-left">
                     {t('theme.' + theme.id.replace(/-/g, '_'))}
