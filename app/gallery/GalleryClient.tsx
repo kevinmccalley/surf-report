@@ -111,6 +111,8 @@ function GalleryTile({ tile }: { tile: GalleryTileData }) {
       style={{ aspectRatio: '271 / 178', background: 'var(--panel-hover)' }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setHovered(false)}
+      onFocus={handleMouseEnter}
+      onBlur={() => setHovered(false)}
     >
       {/* Photo */}
       {tile.imageSrc && (
