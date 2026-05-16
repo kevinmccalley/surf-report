@@ -12,8 +12,8 @@ export const metadata = {
   description: 'World-class surf spot photography',
 }
 
-// Map image filename stem → exact spot name in spots-data
-const IMAGE_SPOT_MAP: Record<string, string> = {
+// Legacy map for irregular filenames (predates slug convention)
+const LEGACY_FILENAME_MAP: Record<string, string> = {
   'jbay':          'Jeffreys Bay',
   'padangPadang':  'Padang Padang',
   'peru-chicama':  'Chicama',
@@ -21,6 +21,17 @@ const IMAGE_SPOT_MAP: Record<string, string> = {
   'skeleton-bay':  'Skeleton Bay',
   'sunset-hi':     'Sunset Beach',
   'teahopo':       "Teahupo'o",
+}
+
+// Normalize a string to a slug for auto-matching (e.g. "Teahupo'o" → "teahupoo")
+function slugify(str: string): string {
+  return str
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '') // strip combining accents
+    .replace(/'/g, '')               // strip apostrophes
+    .replace(/[^a-z0-9]+/g, '-')    // non-alphanumeric → hyphen
+    .replace(/^-|-$/g, '')           // trim leading/trailing hyphens
 }
 
 export default async function GalleryPage() {
@@ -44,14 +55,17 @@ export default async function GalleryPage() {
   } catch {}
 
   // ── Build tile list: matched image spots first, then remaining in rank order ──
+  const spotsBySlug = new Map(SPOTS.map(s => [slugify(s.name), s]))
+
   const tiles: GalleryTileData[] = []
   const usedNames = new Set<string>()
 
   for (const filename of imageFiles) {
     const stem = filename.replace(/\.[^/.]+$/, '')
-    const spotName = IMAGE_SPOT_MAP[stem]
-    if (!spotName) continue
-    const spot = SPOTS.find(s => s.name === spotName)
+    const legacyName = LEGACY_FILENAME_MAP[stem]
+    const spot = legacyName
+      ? SPOTS.find(s => s.name === legacyName)
+      : spotsBySlug.get(slugify(stem))
     if (!spot) continue
     tiles.push({
       rank:       spot.rank,
