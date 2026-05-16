@@ -59,11 +59,6 @@ export default function ThemePicker({ align = 'right' }: { align?: 'left' | 'rig
                   <span className="text-xs font-medium theme-label flex-1 text-left">
                     {t('theme.' + theme.id.replace(/-/g, '_'))}
                   </span>
-                  {!theme.dark && (
-                    <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-400/15 text-amber-500 font-semibold">
-                      {t('theme.light')}
-                    </span>
-                  )}
                   {themeId === theme.id && (
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0">
                       <path d="M2 6L5 9L10 3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="theme-check" />
