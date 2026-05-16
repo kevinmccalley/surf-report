@@ -12,6 +12,8 @@ export const THEMES: Theme[] = [
   { id: 'sand',        name: 'Sand',        dark: true,  preview: ['#120f05', '#28210c', '#c49a2e'] },
   { id: 'light-ocean', name: 'Sky',         dark: false, preview: ['#f0f9ff', '#bae6fd', '#06b6d4'] },
   { id: 'light-sand',  name: 'Straw',       dark: false, preview: ['#fffbeb', '#fde68a', '#f59e0b'] },
+  { id: 'black',       name: 'Black',       dark: true,  preview: ['#000000', '#111111', '#9ca3af'] },
+  { id: 'light-white', name: 'White',       dark: false, preview: ['#ffffff', '#f9fafb', '#374151'] },
 ]
 
 export const DEFAULT_THEME = 'ocean'

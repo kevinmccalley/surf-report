@@ -204,6 +204,8 @@ const ptPT: Record<string, string> = {
   'theme.sand': 'Areia',
   'theme.light_ocean': 'Céu',
   'theme.light_sand': 'Palha',
+  'theme.black': 'Preto',
+  'theme.light_white': 'Branco',
 
   // AuthButton
   'auth.signIn': 'Entrar',

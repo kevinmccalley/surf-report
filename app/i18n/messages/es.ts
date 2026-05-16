@@ -204,6 +204,8 @@ const es: Record<string, string> = {
   'theme.sand': 'Arena',
   'theme.light_ocean': 'Cielo',
   'theme.light_sand': 'Paja',
+  'theme.black': 'Negro',
+  'theme.light_white': 'Blanco',
 
   // AuthButton
   'auth.signIn': 'Iniciar sesión',
