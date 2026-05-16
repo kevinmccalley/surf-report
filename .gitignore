@@ -49,12 +49,15 @@ scripts/update-notion-critical3.py
 scripts/update-notion-plan.py
 scripts/read-notion-todo.py
 
-# local assets and notes (allow PWA icons in public/)
+# local assets and notes (allow PWA icons and gallery spot photos in public/)
 *.jpg
 *.png
 *.svg
 !public/icons/*.png
 !public/icons/*.svg
+!public/images/topSpots/*.png
+!public/images/topSpots/*.jpg
+!public/images/topSpots/*.webp
 council-*.html
 council-*.md
 lemonSqueezy.txt
