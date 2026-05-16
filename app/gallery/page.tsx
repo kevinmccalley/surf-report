@@ -14,13 +14,15 @@ export const metadata = {
 
 // Legacy map for irregular filenames (predates slug convention)
 const LEGACY_FILENAME_MAP: Record<string, string> = {
-  'jbay':          'Jeffreys Bay',
-  'padangPadang':  'Padang Padang',
-  'peru-chicama':  'Chicama',
-  'raglan':        'Raglan',
-  'skeleton-bay':  'Skeleton Bay',
-  'sunset-hi':     'Sunset Beach',
-  'teahopo':       "Teahupo'o",
+  'jbay':           'Jeffreys Bay',
+  'padangPadang':   'Padang Padang',
+  'peru-chicama':   'Chicama',
+  'raglan':         'Raglan',
+  'skeleton-bay':   'Skeleton Bay',
+  'sunset-hi':      'Sunset Beach',
+  'teahopo':        "Teahupo'o",
+  'pipeline':       'Banzai Pipeline',
+  'lower-trestles': 'Trestles (Lowers)',
 }
 
 // Normalize a string to a slug for auto-matching (e.g. "Teahupo'o" → "teahupoo")
