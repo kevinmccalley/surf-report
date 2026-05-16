@@ -200,7 +200,7 @@ const fr: Record<string, string> = {
   'theme.light': 'Clair',
   'theme.ocean': 'Océan',
   'theme.sunset': 'Coucher de soleil',
-  'theme.forest': 'Forêt',
+  'theme.forest': 'Kelp',
   'theme.sand': 'Sable',
   'theme.light_ocean': 'Océan Clair',
   'theme.light_sand': 'Sable Clair',

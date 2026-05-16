@@ -200,7 +200,7 @@ const ptBR: Record<string, string> = {
   'theme.light': 'Claro',
   'theme.ocean': 'Oceano',
   'theme.sunset': 'Pôr do Sol',
-  'theme.forest': 'Floresta',
+  'theme.forest': 'Kelp',
   'theme.sand': 'Areia',
   'theme.light_ocean': 'Oceano Claro',
   'theme.light_sand': 'Areia Clara',

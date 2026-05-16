@@ -200,7 +200,7 @@ const en: Record<string, string> = {
   'theme.light': 'Light',
   'theme.ocean': 'Ocean',
   'theme.sunset': 'Sunset',
-  'theme.forest': 'Forest',
+  'theme.forest': 'Kelp',
   'theme.sand': 'Sand',
   'theme.light_ocean': 'Light Ocean',
   'theme.light_sand': 'Light Sand',
