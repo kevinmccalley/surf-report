@@ -4,6 +4,7 @@ import type {
   SurfReport, CurrentConditions, HourlyForecast, DayForecast, SwellInfo
 } from '@/app/lib/types'
 import { computeSurfRating } from '@/app/lib/surf-rating'
+import { findCalibration, applyCalibration } from '@/app/lib/spot-calibration'
 import {
   getDirectionLabel, getWeatherDescription,
   findCurrentHourIndex, estimateWaterTemp, getDayName, omUrl
@@ -137,6 +138,7 @@ function buildReport(
   maxDays = 10,
   gfsMarine: Record<string, unknown> | null = null
 ): SurfReport {
+  const calibration = findCalibration(lat, lon)
   const mh = (marine.hourly ?? {}) as Record<string, unknown[]>
   const md = (marine.daily ?? {}) as Record<string, unknown[]>
   const gfsMh = ((gfsMarine?.hourly ?? {}) as Record<string, unknown[]>)
@@ -171,7 +173,10 @@ function buildReport(
   const precipProb = val(wh.precipitation_probability, currentIdx)
 
   // Rate on swell height, not total Hs — wind chop doesn't create surfable waves
-  const rating = computeSurfRating(swellHeight, wavePeriod, swellHeight, swellPeriod, windSpeed)
+  const rawRating = computeSurfRating(swellHeight, wavePeriod, swellHeight, swellPeriod, windSpeed)
+  const rating = calibration
+    ? applyCalibration(rawRating, swellHeight, swellPeriod, swellDir, calibration)
+    : rawRating
 
   const additionalSwells: SwellInfo[] = []
   if (swell2H > 0.1) {
@@ -253,9 +258,12 @@ function buildReport(
     const wvPer = isCoastal ? blendVal(md.wave_period_max, gfsMd.wave_period_max, i) : 0
     const windMax = val(wd.wind_speed_10m_max, i)
     const windDir = val(wd.wind_direction_10m_dominant, i)
-    const dayRating = computeSurfRating(
+    const rawDayRating = computeSurfRating(
       wvMax * 0.6, wvPer, swMax * 0.6, swPer, windMax * 0.5
     )
+    const dayRating = calibration
+      ? applyCalibration(rawDayRating, swMax, swPer, swDir, calibration)
+      : rawDayRating
     return {
       date,
       dayName: getDayName(date, i),

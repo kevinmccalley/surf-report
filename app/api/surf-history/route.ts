@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import type { SurfReport, CurrentConditions, HourlyForecast, DayForecast } from '@/app/lib/types'
 import { computeSurfRating } from '@/app/lib/surf-rating'
+import { findCalibration, applyCalibration } from '@/app/lib/spot-calibration'
 import {
   getDirectionLabel, getWeatherDescription, estimateWaterTemp, getDayName, omUrl
 } from '@/app/lib/utils'
@@ -127,7 +128,11 @@ export async function GET(request: NextRequest) {
     const dailyTimes = (wd.time ?? []) as string[]
     const dailyIdx = dailyTimes.findIndex(t => t === date)
 
-    const rating = computeSurfRating(waveHeight, wavePeriod, swellHeight, swellPeriod, windSpeed)
+    const calibration = findCalibration(parseFloat(lat), parseFloat(lon))
+    const rawRating = computeSurfRating(waveHeight, wavePeriod, swellHeight, swellPeriod, windSpeed)
+    const rating = calibration
+      ? applyCalibration(rawRating, swellHeight, swellPeriod, swellDir, calibration)
+      : rawRating
 
     const current: CurrentConditions = {
       waveHeight,
@@ -220,7 +225,10 @@ export async function GET(request: NextRequest) {
       const dWvPer = isCoastal ? val(md.wave_period_max, dailyIdx) : 0
       const dWindMax = val(wd.wind_speed_10m_max, dailyIdx)
       const dWindDir = val(wd.wind_direction_10m_dominant, dailyIdx)
-      const dayRating = computeSurfRating(dWvMax * 0.6, dWvPer, dSwMax * 0.6, dSwPer, dWindMax * 0.5)
+      const rawDayRating = computeSurfRating(dWvMax * 0.6, dWvPer, dSwMax * 0.6, dSwPer, dWindMax * 0.5)
+      const dayRating = calibration
+        ? applyCalibration(rawDayRating, dSwMax, dSwPer, dSwDir, calibration)
+        : rawDayRating
       forecast.push({
         date,
         dayName: getDayName(date, 99),
