@@ -1,4 +1,9 @@
 import { defineField, defineType } from 'sanity'
+import { getAllSpots, slugify } from '@/app/lib/surf-spots'
+
+const SPOT_OPTIONS = getAllSpots()
+  .map(s => ({ title: `${s.name} — ${s.country}`, value: slugify(s.name) }))
+  .sort((a, b) => a.title.localeCompare(b.title))
 
 export default defineType({
   name: 'post',
@@ -99,6 +104,15 @@ export default defineType({
     }),
 
     // ── Settings ──────────────────────────────────────────────
+    defineField({
+      name: 'surfSpots',
+      title: 'Featured Surf Spots',
+      type: 'array',
+      group: 'settings',
+      of: [{ type: 'string' }],
+      options: { list: SPOT_OPTIONS },
+      description: 'Tag the breaks featured in this post. Powers automatic links to/from climatology pages.',
+    }),
     defineField({
       name: 'publishedAt',
       title: 'Published at',

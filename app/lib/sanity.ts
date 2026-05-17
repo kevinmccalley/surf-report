@@ -47,6 +47,15 @@ export interface SanityPost {
   body?: unknown[]
   seoTitle?: string
   seoDescription?: string
+  surfSpots?: string[]
+}
+
+export interface SanityPostStub {
+  title: string
+  slug: string
+  excerpt: string
+  publishedAt?: string
+  coverImage?: { asset: SanityImageSource; alt?: string }
 }
 
 // ── GROQ queries ──────────────────────────────────────────────────────────
@@ -71,7 +80,23 @@ export const POST_BY_SLUG_QUERY = `
     author->{ name, slug, role, bio, avatar { asset, alt } },
     categories[]->{ title, slug },
     body,
-    seoTitle, seoDescription
+    seoTitle, seoDescription,
+    surfSpots
+  }
+`
+
+export const POSTS_FOR_SPOT_QUERY = `
+  *[_type == "post"
+    && !(_id in path("drafts.**"))
+    && defined(publishedAt)
+    && publishedAt <= now()
+    && $slug in surfSpots
+  ] | order(publishedAt desc) [0..2] {
+    title,
+    "slug": slug.current,
+    excerpt,
+    publishedAt,
+    coverImage { asset, alt }
   }
 `
 
@@ -81,6 +106,17 @@ export const ALL_SLUGS_QUERY = `
     && defined(publishedAt)
     && publishedAt <= now()
   ].slug.current
+`
+
+export const ALL_SLUGS_WITH_DATE_QUERY = `
+  *[_type == "post"
+    && !(_id in path("drafts.**"))
+    && defined(publishedAt)
+    && publishedAt <= now()
+  ] | order(publishedAt desc) {
+    "slug": slug.current,
+    "date": coalesce(_updatedAt, publishedAt)
+  }
 `
 
 // ── Fetch helpers ──────────────────────────────────────────────────────────
@@ -107,6 +143,32 @@ export async function getAllSlugs(): Promise<string[]> {
   if (!isSanityConfigured) return []
   try {
     return await sanityClient.fetch<string[]>(ALL_SLUGS_QUERY, {}, { next: { revalidate: 3600 } })
+  } catch {
+    return []
+  }
+}
+
+export async function getPostsForSpot(slug: string): Promise<SanityPostStub[]> {
+  if (!isSanityConfigured) return []
+  try {
+    return await sanityClient.fetch<SanityPostStub[]>(
+      POSTS_FOR_SPOT_QUERY,
+      { slug },
+      { next: { revalidate: 3600 } },
+    )
+  } catch {
+    return []
+  }
+}
+
+export async function getAllSlugsWithDate(): Promise<Array<{ slug: string; date: string }>> {
+  if (!isSanityConfigured) return []
+  try {
+    return await sanityClient.fetch<Array<{ slug: string; date: string }>>(
+      ALL_SLUGS_WITH_DATE_QUERY,
+      {},
+      { next: { revalidate: 3600 } },
+    )
   } catch {
     return []
   }

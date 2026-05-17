@@ -62,15 +62,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'WebSite',
-              name: 'Groundswell',
-              url: 'https://groundswell.surf',
-              description: 'Real-time surf reports and 10-day forecasts for any spot on earth.',
-              potentialAction: {
-                '@type': 'SearchAction',
-                target: 'https://groundswell.surf/?name={search_term_string}',
-                'query-input': 'required name=search_term_string',
-              },
+              '@graph': [
+                {
+                  '@type': 'WebSite',
+                  '@id': 'https://groundswell.surf/#website',
+                  name: 'Groundswell',
+                  url: 'https://groundswell.surf',
+                  description: 'Real-time surf reports and 10-day forecasts for any spot on earth.',
+                  potentialAction: {
+                    '@type': 'SearchAction',
+                    target: 'https://groundswell.surf/?name={search_term_string}',
+                    'query-input': 'required name=search_term_string',
+                  },
+                },
+                {
+                  '@type': 'Organization',
+                  '@id': 'https://groundswell.surf/#organization',
+                  name: 'Groundswell',
+                  url: 'https://groundswell.surf',
+                  logo: {
+                    '@type': 'ImageObject',
+                    url: 'https://groundswell.surf/icons/icon-192.png',
+                    width: 192,
+                    height: 192,
+                  },
+                  contactPoint: {
+                    '@type': 'ContactPoint',
+                    email: 'support@groundswell.surf',
+                    contactType: 'customer support',
+                  },
+                },
+              ],
             }) }}
           />
           <a

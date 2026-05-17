@@ -66,6 +66,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     } catch {}
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  useEffect(() => {
+    document.documentElement.lang = locale
+  }, [locale])
+
   const loadLocale = useCallback(async (next: Locale) => {
     const msgs = await loaders[next]()
     setMessages(msgs)

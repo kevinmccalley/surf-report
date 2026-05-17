@@ -1,0 +1,29 @@
+# Groundswell
+
+> Groundswell (groundswell.surf) is a surf conditions SaaS providing real-time surf reports and 10-day forecasts for any surf spot on earth. It covers wave height, swell period and direction, wind speed, water temperature, tides, and UV index. The site also hosts historical surf climatology data (ERA5 reanalysis, 2022–2024) for over 6,900 surf destinations worldwide, enabling surfers to identify the best season for any break.
+
+## About
+
+Groundswell aggregates marine forecast data from Open-Meteo (ECMWF wave model) and combines it with 3-year ERA5 historical reanalysis data to show both current conditions and long-term seasonal patterns. It is available as a progressive web app (PWA) and supports five languages: English, Spanish, French, Brazilian Portuguese, and European Portuguese.
+
+The site targets surfers planning local sessions and international surf trips. Premium subscribers receive swell alerts and extended forecast access.
+
+## Key pages
+
+- [Home / Spot Forecast](https://groundswell.surf/): Search any surf spot by name and get a live 7–10 day surf forecast including wave height, swell period, swell direction, wind, tides, water temperature, and a composite surf rating.
+- [Surf Climatology](https://groundswell.surf/climatology/pipeline): Monthly swell averages, peak surf season, and dominant swell direction for hundreds of surf spots worldwide. Each page covers a specific named break. Example spots: Pipeline (Hawaii), Jeffreys Bay (South Africa), Hossegor (France), Uluwatu (Indonesia).
+- [Blog](https://groundswell.surf/blog): Articles on surf travel, wave science, swell forecasting, and surf spot guides.
+- [Forecast Accuracy](https://groundswell.surf/accuracy): Explanation of data sources, model accuracy, and how Groundswell's composite surf rating is calculated.
+
+## Data sources
+
+- **Live forecasts**: Open-Meteo Marine API powered by ECMWF wave model
+- **Historical climatology**: ERA5 reanalysis (offshore significant wave height, Hs), 2022–2024
+- **Tides**: Open-Meteo tidal model
+- **UV index**: Open-Meteo atmospheric model
+- **Spot database**: ~6,900 named surf breaks worldwide with latitude/longitude coordinates
+
+## Content index
+
+- [Sitemap](https://groundswell.surf/sitemap.xml): Full URL list of all forecast, climatology, and blog pages
+- [RSS Feed](https://groundswell.surf/blog/rss.xml): Blog posts in RSS 2.0 format

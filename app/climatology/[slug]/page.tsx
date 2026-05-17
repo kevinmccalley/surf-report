@@ -1,7 +1,9 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { findSpotBySlug, slugify, getAllSpots } from '@/app/lib/surf-spots'
 import { getClimatologyData } from '@/app/lib/climatology'
+import { getPostsForSpot } from '@/app/lib/sanity'
 import ClimatologySection from '@/app/components/ClimatologySection'
 import { serverT } from '@/app/lib/server-t'
 
@@ -78,17 +80,46 @@ export default async function ClimatologyPage({ params }: Props) {
     notFound()
   }
 
+  const relatedPosts = await getPostsForSpot(slug)
+
   const peakNames = peakMonths
     .map(m => ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m - 1])
     .join(' & ')
 
+  const spotUrl = `${BASE_URL}/climatology/${slugify(spot.name)}`
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Place',
-    name: spot.name,
-    description: `Monthly swell averages, peak season, and dominant direction at ${spot.name}, ${spot.country}.`,
-    geo: { '@type': 'GeoCoordinates', latitude: spot.lat, longitude: spot.lon },
-    url: `${BASE_URL}/climatology/${slugify(spot.name)}`,
+    '@graph': [
+      {
+        '@type': 'Place',
+        name: spot.name,
+        description: `Monthly swell averages, peak season, and dominant direction at ${spot.name}, ${spot.country}.`,
+        geo: { '@type': 'GeoCoordinates', latitude: spot.lat, longitude: spot.lon },
+        url: spotUrl,
+      },
+      {
+        '@type': 'Dataset',
+        name: `${spot.name} Surf Climatology — Monthly Wave Averages`,
+        description:
+          `Monthly offshore significant wave height (Hs), swell direction, and peak season for ${spot.name}, ${spot.country}. ` +
+          `Derived from ERA5 reanalysis data provided by Open-Meteo, covering 2022–2024.`,
+        url: spotUrl,
+        temporalCoverage: '2022/2024',
+        spatialCoverage: {
+          '@type': 'Place',
+          name: `${spot.name}, ${spot.country}`,
+          geo: { '@type': 'GeoCoordinates', latitude: spot.lat, longitude: spot.lon },
+        },
+        measurementTechnique: 'ERA5 reanalysis offshore significant wave height (Hs) via Open-Meteo',
+        variableMeasured: 'Significant wave height in metres',
+        creator: {
+          '@type': 'Organization',
+          '@id': 'https://groundswell.surf/#organization',
+          name: 'Groundswell',
+          url: BASE_URL,
+        },
+      },
+    ],
   }
 
   return (
@@ -167,6 +198,31 @@ export default async function ClimatologyPage({ params }: Props) {
             </svg>
           </a>
         </div>
+
+        {/* Related blog posts */}
+        {relatedPosts.length > 0 && (
+          <section className="space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+              Related articles
+            </p>
+            <div className="flex flex-col gap-3">
+              {relatedPosts.map(post => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="glass-card rounded-xl px-4 py-3 border border-white/5 hover:border-sky-500/30 transition-colors group"
+                >
+                  <p className="text-sm font-semibold text-white group-hover:text-sky-300 transition-colors leading-snug">
+                    {post.title}
+                  </p>
+                  {post.excerpt && (
+                    <p className="text-xs text-slate-400 mt-1 line-clamp-2">{post.excerpt}</p>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
       </main>
     </div>

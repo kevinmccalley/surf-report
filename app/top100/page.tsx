@@ -11,6 +11,7 @@ const BASE_URL = 'https://groundswell.surf'
 export const metadata: Metadata = {
   title: 'Top 100 Surf Spots in the World — Groundswell',
   description: "Live wave forecasts for the planet's 100 most iconic surf breaks — from Pipeline to Teahupo'o, ranked by region.",
+  robots: { index: false, follow: false },
   alternates: { canonical: `${BASE_URL}/top100` },
   openGraph: {
     title: 'Top 100 Surf Spots in the World — Groundswell',

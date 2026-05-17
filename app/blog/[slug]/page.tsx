@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 import { getPostBySlug, getAllSlugs, urlFor } from '@/app/lib/sanity'
 import { portableTextComponents } from '@/app/components/blog/PortableTextComponents'
+import { findSpotBySlug } from '@/app/lib/surf-spots'
 
 export const revalidate = 60
 
@@ -26,6 +27,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = post.seoDescription ?? post.excerpt
   const canonical = `${BASE_URL}/blog/${slug}`
 
+  const ogImageUrl = post.coverImage?.asset
+    ? urlFor(post.coverImage.asset).width(1200).height(630).auto('format').quality(85).url()
+    : `${BASE_URL}/api/og`
+
   return {
     title,
     description,
@@ -38,9 +43,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       publishedTime: post.publishedAt,
       authors: post.author ? [post.author.name] : undefined,
-      images: [{ url: '/api/og', width: 1200, height: 630, alt: title }],
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: post.coverImage?.alt ?? title }],
     },
-    twitter: { card: 'summary_large_image', title, description, images: ['/api/og'] },
+    twitter: { card: 'summary_large_image', title, description, images: [ogImageUrl] },
   }
 }
 
@@ -63,20 +68,32 @@ export default async function BlogPost({ params }: Props) {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.excerpt,
-    url: `${BASE_URL}/blog/${slug}`,
-    datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
-    author: post.author ? { '@type': 'Person', name: post.author.name } : undefined,
-    image: coverSrc ?? undefined,
-    publisher: {
-      '@type': 'Organization',
-      name: 'Groundswell',
-      url: BASE_URL,
-    },
-    keywords: post.categories?.map(c => c.title).join(', '),
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt,
+        url: `${BASE_URL}/blog/${slug}`,
+        datePublished: post.publishedAt,
+        dateModified: post.publishedAt,
+        author: post.author ? { '@type': 'Person', name: post.author.name } : undefined,
+        image: coverSrc ?? undefined,
+        publisher: {
+          '@type': 'Organization',
+          name: 'Groundswell',
+          url: BASE_URL,
+        },
+        keywords: post.categories?.map(c => c.title).join(', '),
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Groundswell', item: BASE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
+          { '@type': 'ListItem', position: 3, name: post.title, item: `${BASE_URL}/blog/${slug}` },
+        ],
+      },
+    ],
   }
 
   return (
@@ -159,6 +176,37 @@ export default async function BlogPost({ params }: Props) {
         <article className="prose-invert max-w-none">
           {post.body && <PortableText value={post.body} components={portableTextComponents} />}
         </article>
+
+        {/* Tagged surf spots → climatology links */}
+        {post.surfSpots && post.surfSpots.length > 0 && (() => {
+          const spots = post.surfSpots!
+            .map(slug => ({ slug, spot: findSpotBySlug(slug) }))
+            .filter(({ spot }) => spot != null)
+          return spots.length > 0 ? (
+            <div className="mt-12">
+              <p className="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-3">
+                Check conditions at {spots.length === 1 ? 'this spot' : 'these spots'}
+              </p>
+              <div className="flex flex-col gap-2">
+                {spots.map(({ slug, spot }) => (
+                  <Link
+                    key={slug}
+                    href={`/climatology/${slug}`}
+                    className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-sky-500/40 transition-colors group"
+                  >
+                    <div>
+                      <p className="text-sm font-semibold text-[var(--color-text-primary)] group-hover:text-sky-400 transition-colors">
+                        {spot!.name}
+                      </p>
+                      <p className="text-xs text-[var(--color-text-muted)]">{spot!.country}</p>
+                    </div>
+                    <span className="text-xs text-sky-400 whitespace-nowrap">Swell history →</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : null
+        })()}
 
         {/* Email CTA */}
         <div className="mt-14 p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] text-center">

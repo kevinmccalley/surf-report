@@ -10,6 +10,7 @@ export const dynamic = 'force-dynamic'
 export const metadata = {
   title: 'Surf Gallery — Groundswell',
   description: 'World-class surf spot photography',
+  robots: { index: false, follow: false },
 }
 
 // Legacy map for irregular filenames (predates slug convention)
