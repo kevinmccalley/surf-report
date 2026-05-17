@@ -35,7 +35,9 @@ const fr: Record<string, string> = {
   // ConditionCards
   'cards.swell': 'Houle',
   'cards.primary': 'Principale',
-  'cards.windSwell': 'Houle de vent',
+  'cards.windSwell': 'Mer de vent',
+  'cards.swell2': 'Houle 2',
+  'cards.swell3': 'Houle 3',
   'cards.wind': 'Vent',
   'cards.conditions': 'Conditions',
   'cards.water': 'Eau',

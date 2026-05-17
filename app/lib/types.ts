@@ -34,7 +34,8 @@ export interface CurrentConditions {
   waveHeight: number
   wavePeriod: number
   primarySwell: SwellInfo
-  secondarySwell?: SwellInfo
+  secondarySwell?: SwellInfo     // wind sea (locally generated)
+  additionalSwells?: SwellInfo[] // extra swell partitions when model provides them
   wind: WindInfo
   waterTemp: number | null
   airTemp: number

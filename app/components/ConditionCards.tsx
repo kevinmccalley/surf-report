@@ -27,6 +27,24 @@ export default function ConditionCards({ report, units }: Props) {
     current.wind.speed < 25 ? '#eab308' :
     current.wind.speed < 40 ? '#f97316' : '#ef4444'
 
+  const additionalColors = ['#22d3ee', '#f59e0b']
+  const additionalLabels = [t('cards.swell2'), t('cards.swell3')]
+  const allSwells = [
+    { swell: current.primarySwell, label: t('cards.primary'), color: '#0ea5e9', dashed: false },
+    ...(current.additionalSwells ?? []).slice(0, 2).map((s, i) => ({
+      swell: s,
+      label: additionalLabels[i],
+      color: additionalColors[i],
+      dashed: false,
+    })),
+    ...(current.secondarySwell ? [{
+      swell: current.secondarySwell,
+      label: t('cards.windSwell'),
+      color: '#64748b',
+      dashed: true,
+    }] : []),
+  ]
+
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
       {/* Swell Card */}
@@ -34,29 +52,25 @@ export default function ConditionCards({ report, units }: Props) {
         <CardLabel>{t('cards.swell')}</CardLabel>
         <div className="flex items-center justify-between">
           <div className="space-y-3 flex-1">
-            <SwellRow
-              label={t('cards.primary')}
-              height={formatWaveHeight(current.primarySwell.height, units.height)}
-              period={`${current.primarySwell.period.toFixed(0)}s`}
-              from={`${t('cards.from')} ${t('dir.' + current.primarySwell.directionLabel)}`}
-              degrees={current.primarySwell.direction}
-              color="#0ea5e9"
-            />
-            {current.secondarySwell && (
+            {allSwells.map(({ swell, label, color }) => (
               <SwellRow
-                label={t('cards.windSwell')}
-                height={formatWaveHeight(current.secondarySwell.height, units.height)}
-                period={`${current.secondarySwell.period.toFixed(0)}s`}
-                from={`${t('cards.from')} ${t('dir.' + current.secondarySwell.directionLabel)}`}
-                degrees={current.secondarySwell.direction}
-                color="#64748b"
+                key={label}
+                label={label}
+                height={formatWaveHeight(swell.height, units.height)}
+                period={`${swell.period.toFixed(0)}s`}
+                from={`${t('cards.from')} ${t('dir.' + swell.directionLabel)} ${Math.round(swell.direction)}°`}
+                color={color}
               />
-            )}
+            ))}
           </div>
           <div className="ml-2 shrink-0">
             <SwellCompass
-              primaryDirection={current.primarySwell.direction}
-              secondaryDirection={current.secondarySwell?.direction}
+              swells={allSwells.map(({ swell, color, dashed }, i) => ({
+                direction: swell.direction,
+                color,
+                opacity: i === 0 ? 1 : 0.45,
+                dashed,
+              }))}
               size={90}
             />
           </div>
@@ -141,19 +155,16 @@ function CardLabel({ children }: { children: React.ReactNode }) {
   return <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">{children}</p>
 }
 
-function SwellRow({ label, height, period, from, degrees, color }: {
-  label: string; height: string; period: string; from: string; degrees?: number; color: string
+function SwellRow({ label, height, period, from, color }: {
+  label: string; height: string; period: string; from: string; color: string
 }) {
   return (
     <div>
       <p className="text-xs text-slate-500 mb-0.5">{label}</p>
-      <div className="flex items-baseline gap-1.5">
+      <div className="flex items-baseline gap-1.5 flex-wrap">
         <span className="text-base font-bold" style={{ color }}>{height}</span>
         <span className="text-xs text-slate-400">{period}</span>
         <span className="text-xs text-slate-500">{from}</span>
-        {degrees !== undefined && (
-          <span className="text-[10px] text-slate-600 tabular-nums">{Math.round(degrees)}°</span>
-        )}
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth, clerkClient } from '@clerk/nextjs/server'
 import type {
-  SurfReport, CurrentConditions, HourlyForecast, DayForecast
+  SurfReport, CurrentConditions, HourlyForecast, DayForecast, SwellInfo
 } from '@/app/lib/types'
 import { computeSurfRating } from '@/app/lib/surf-rating'
 import {
@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
   const marineUrl =
     `https://marine-api.open-meteo.com/v1/marine` +
     `?latitude=${lat}&longitude=${lon}` +
-    `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,sea_surface_temperature` +
+    `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,swell_wave_height_2,swell_wave_direction_2,swell_wave_period_2,sea_surface_temperature` +
     `&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max` +
     `&timezone=auto&forecast_days=${apiForecastDays}`
 
@@ -54,7 +54,7 @@ export async function GET(request: NextRequest) {
     const gfsMarineUrl =
       `https://marine-api.open-meteo.com/v1/marine` +
       `?latitude=${lat}&longitude=${lon}` +
-      `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period` +
+      `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,swell_wave_height_2,swell_wave_direction_2,swell_wave_period_2` +
       `&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max` +
       `&timezone=auto&forecast_days=${apiForecastDays}&models=ecmwf_wam`
 
@@ -158,6 +158,10 @@ function buildReport(
   const waterTempNum = typeof waterTempRaw === 'number' && !isNaN(waterTempRaw) && waterTempRaw > -50 ? waterTempRaw : null
   const waterTemp = waterTempNum !== null ? waterTempNum : estimateWaterTemp(lat, new Date().getMonth())
 
+  const swell2H = isCoastal ? val(mh.swell_wave_height_2, currentIdx) : 0
+  const swell2Dir = isCoastal ? val(mh.swell_wave_direction_2, currentIdx) : 0
+  const swell2Per = isCoastal ? val(mh.swell_wave_period_2, currentIdx) : 0
+
   const windSpeed = val(wh.wind_speed_10m, currentIdx)
   const windGust = val(wh.wind_gusts_10m, currentIdx)
   const windDir = val(wh.wind_direction_10m, currentIdx)
@@ -169,6 +173,16 @@ function buildReport(
   // Rate on swell height, not total Hs — wind chop doesn't create surfable waves
   const rating = computeSurfRating(swellHeight, wavePeriod, swellHeight, swellPeriod, windSpeed)
 
+  const additionalSwells: SwellInfo[] = []
+  if (swell2H > 0.1) {
+    additionalSwells.push({
+      height: swell2H,
+      period: swell2Per,
+      direction: swell2Dir,
+      directionLabel: getDirectionLabel(swell2Dir),
+    })
+  }
+
   const current: CurrentConditions = {
     waveHeight,
     wavePeriod,
@@ -178,6 +192,7 @@ function buildReport(
       direction: swellDir,
       directionLabel: getDirectionLabel(swellDir),
     },
+    additionalSwells: additionalSwells.length > 0 ? additionalSwells : undefined,
     secondarySwell: windWaveH > 0.1 && isCoastal ? {
       height: windWaveH,
       period: windWavePer,
@@ -215,9 +230,9 @@ function buildReport(
       windWaveHeight: isCoastal ? blendVal(mh.wind_wave_height, gfsMh.wind_wave_height, mi) : 0,
       windWavePeriod: isCoastal ? blendVal(mh.wind_wave_period, gfsMh.wind_wave_period, mi) : 0,
       windWaveDirection: isCoastal ? blendVal(mh.wind_wave_direction, gfsMh.wind_wave_direction, mi) : 0,
-      swell2Height: 0,
-      swell2Period: 0,
-      swell2Direction: 0,
+      swell2Height: isCoastal ? blendVal(mh.swell_wave_height_2, gfsMh.swell_wave_height_2, mi) : 0,
+      swell2Period: isCoastal ? blendVal(mh.swell_wave_period_2, gfsMh.swell_wave_period_2, mi) : 0,
+      swell2Direction: isCoastal ? blendVal(mh.swell_wave_direction_2, gfsMh.swell_wave_direction_2, mi) : 0,
       swell3Height: 0,
       swell3Period: 0,
       swell3Direction: 0,

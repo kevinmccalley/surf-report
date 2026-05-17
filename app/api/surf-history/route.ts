@@ -138,6 +138,7 @@ export async function GET(request: NextRequest) {
         direction: swellDir,
         directionLabel: getDirectionLabel(swellDir),
       },
+      additionalSwells: undefined,
       secondarySwell: windWaveH > 0.1 && isCoastal ? {
         height: windWaveH,
         period: windWavePer,

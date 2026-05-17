@@ -35,7 +35,9 @@ const ptPT: Record<string, string> = {
   // ConditionCards
   'cards.swell': 'Swell',
   'cards.primary': 'Principal',
-  'cards.windSwell': 'Swell de Vento',
+  'cards.windSwell': 'Mar de vento',
+  'cards.swell2': 'Swell 2',
+  'cards.swell3': 'Swell 3',
   'cards.wind': 'Vento',
   'cards.conditions': 'Condições',
   'cards.water': 'Água',
