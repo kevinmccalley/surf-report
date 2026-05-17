@@ -166,7 +166,8 @@ function buildReport(
   const visibility = val(wh.visibility, currentIdx, 10000) / 1000
   const precipProb = val(wh.precipitation_probability, currentIdx)
 
-  const rating = computeSurfRating(waveHeight, wavePeriod, swellHeight, swellPeriod, windSpeed)
+  // Rate on swell height, not total Hs — wind chop doesn't create surfable waves
+  const rating = computeSurfRating(swellHeight, wavePeriod, swellHeight, swellPeriod, windSpeed)
 
   const current: CurrentConditions = {
     waveHeight,
@@ -229,8 +230,9 @@ function buildReport(
   // Daily forecast (up to maxDays)
   const dailyTimes = (wd.time ?? []) as string[]
   const forecast: DayForecast[] = dailyTimes.slice(0, maxDays).map((date: string, i: number) => {
-    const wvMax = isCoastal ? blendVal(md.wave_height_max, gfsMd.wave_height_max, i) : 0
-    const swMax = isCoastal ? blendVal(md.swell_wave_height_max, gfsMd.swell_wave_height_max, i) : 0
+    // Use swell max (not total Hs) so daily cards reflect rideable surf, not wind chop
+    const wvMax = isCoastal ? blendVal(md.swell_wave_height_max, gfsMd.swell_wave_height_max, i) : 0
+    const swMax = wvMax
     const swPer = isCoastal ? blendVal(md.swell_wave_period_max, gfsMd.swell_wave_period_max, i) : 0
     const swDir = isCoastal ? blendVal(md.swell_wave_direction_dominant, gfsMd.swell_wave_direction_dominant, i) : 0
     const wvPer = isCoastal ? blendVal(md.wave_period_max, gfsMd.wave_period_max, i) : 0

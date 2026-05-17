@@ -19,12 +19,13 @@ const fr: Record<string, string> = {
 
   // HeroSection
   'hero.updatedAt': 'Mis à jour {time}',
-  'hero.waveHeight': 'hauteur des vagues',
+  'hero.waveHeight': 'houle',
   'hero.noWaveData': 'Pas de données de vagues',
   'hero.periodSuffix': 'période {period}s',
   'hero.air': 'air',
   'hero.water': 'eau',
-  'hero.primarySwell': 'Houle principale',
+  'hero.offshoreHs': 'Hs offshore',
+  'hero.nearbyBuoy': 'bouée · {dist}km',
   'hero.swellPeriod': 'Période de houle',
   'hero.swellDir': 'Dir. houle',
   'hero.wind': 'Vent',
@@ -122,7 +123,7 @@ const fr: Record<string, string> = {
   'app.forecastAccuracy': 'Précision et vérification des prévisions →',
 
   // WaveChart
-  'chart.waveHeight': 'Hauteur des vagues',
+  'chart.waveHeight': 'Houle',
   'chart.windSpeed': 'Vitesse du vent',
   'chart.tideHeight': 'Hauteur des marées',
   'chart.swellComponents': 'Houles',
@@ -369,8 +370,8 @@ const fr: Record<string, string> = {
 
   // BuoyCard
   'buoy.title': 'Bouée NDBC la plus proche',
-  'buoy.measured': 'Mesuré par bouée',
-  'buoy.modelForecast': 'Prévision du modèle',
+  'buoy.measured': 'Hs bouée',
+  'buoy.modelForecast': 'Hs modèle',
   'buoy.period': 'Période',
   'buoy.direction': 'Direction',
   'buoy.waterTemp': 'Temp. eau',

@@ -1,8 +1,8 @@
 'use client'
 
-import type { SurfReport } from '@/app/lib/types'
+import type { SurfReport, BuoyReading } from '@/app/lib/types'
 import { formatWaveHeight, formatTemp } from '@/app/lib/utils'
-import { MapPin, Clock, Wind, Droplets, Thermometer, Bookmark } from 'lucide-react'
+import { MapPin, Clock, Wind, Droplets, Thermometer, Bookmark, Anchor } from 'lucide-react'
 import WeatherIcon from './WeatherIcon'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 
@@ -12,9 +12,10 @@ interface Props {
   onMapOpen?: () => void
   isSaved?: boolean
   onToggleSave?: () => void
+  buoy?: (BuoyReading & { waveDirectionLabel?: string | null }) | null
 }
 
-export default function HeroSection({ report, units, onMapOpen, isSaved, onToggleSave }: Props) {
+export default function HeroSection({ report, units, onMapOpen, isSaved, onToggleSave, buoy }: Props) {
   const { t, bcp47 } = useLanguage()
   const { current, location } = report
   const { rating } = current
@@ -79,7 +80,7 @@ export default function HeroSection({ report, units, onMapOpen, isSaved, onToggl
                 className="text-6xl sm:text-8xl font-bold leading-none tracking-tighter count-up"
                 style={{ color: rating.color }}
               >
-                {formatWaveHeight(current.waveHeight, units.height)}
+                {formatWaveHeight(current.primarySwell.height, units.height)}
               </div>
               <div className="text-xs text-slate-500 mt-1">{t('hero.waveHeight')}</div>
             </div>
@@ -132,12 +133,20 @@ export default function HeroSection({ report, units, onMapOpen, isSaved, onToggl
 
       {report.isCoastal && (
         <div className="mt-5 pt-4 border-t border-white/5 grid grid-cols-3 gap-3 sm:grid-cols-6">
-          <MiniStat label={t('hero.primarySwell')} value={formatWaveHeight(current.primarySwell.height, units.height)} />
+          <MiniStat label={t('hero.offshoreHs')} value={formatWaveHeight(current.waveHeight, units.height)} />
           <MiniStat label={t('hero.swellPeriod')} value={`${current.primarySwell.period.toFixed(0)}s`} />
           <MiniStat label={t('hero.swellDir')} value={t('dir.' + current.primarySwell.directionLabel)} />
           <MiniStat label={t('hero.wind')} value={`${Math.round(current.wind.speed)} km/h`} />
           <MiniStat label={t('hero.windGust')} value={`${Math.round(current.wind.gust)} km/h`} />
-          <MiniStat label={t('hero.uvIndex')} value={current.uvIndex > 0 ? current.uvIndex.toFixed(0) : '—'} uvVal={current.uvIndex} />
+          {buoy ? (
+            <MiniStat
+              label={t('hero.nearbyBuoy', { dist: buoy.distanceKm.toString() })}
+              value={formatWaveHeight(buoy.waveHeight, units.height)}
+              icon={<Anchor size={10} className="text-sky-400 shrink-0" />}
+            />
+          ) : (
+            <MiniStat label={t('hero.uvIndex')} value={current.uvIndex > 0 ? current.uvIndex.toFixed(0) : '—'} uvVal={current.uvIndex} />
+          )}
         </div>
       )}
     </section>
@@ -154,14 +163,14 @@ function StatPill({ icon, value, label }: { icon: React.ReactNode; value: string
   )
 }
 
-function MiniStat({ label, value, uvVal }: { label: string; value: string; uvVal?: number }) {
+function MiniStat({ label, value, uvVal, icon }: { label: string; value: string; uvVal?: number; icon?: React.ReactNode }) {
   const uvColor = uvVal !== undefined
     ? uvVal <= 2 ? '#22c55e' : uvVal <= 5 ? '#eab308' : uvVal <= 7 ? '#f97316' : '#ef4444'
     : undefined
 
   return (
     <div className="flex flex-col gap-0.5">
-      <span className="text-xs text-slate-500">{label}</span>
+      <span className="flex items-center gap-1 text-xs text-slate-500">{icon}{label}</span>
       <span className="text-sm font-semibold text-white" style={uvColor ? { color: uvColor } : undefined}>{value}</span>
     </div>
   )

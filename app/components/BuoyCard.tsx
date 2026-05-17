@@ -30,6 +30,8 @@ export default function BuoyCard({ buoy, modelWaveHeight, units }: Props) {
     : 0
   const higher = buoy.waveHeight > modelWaveHeight
 
+  // Both sides are offshore Hs — buoy always reads higher than model swell height
+  // because buoy captures total sea state (swell + wind chop) while model shows swell only
   let agreementText: string
   let agreementColor: string
   if (pct <= 20) {
@@ -37,10 +39,10 @@ export default function BuoyCard({ buoy, modelWaveHeight, units }: Props) {
     agreementColor = '#22c55e'
   } else if (higher) {
     agreementText = t('buoy.diffHigher', { pct: pct.toString() })
-    agreementColor = '#f59e0b'
+    agreementColor = '#94a3b8'
   } else {
     agreementText = t('buoy.diffLower', { pct: pct.toString() })
-    agreementColor = '#f59e0b'
+    agreementColor = '#94a3b8'
   }
 
   const stationUrl = `https://www.ndbc.noaa.gov/station_page.php?station=${buoy.stationId}`

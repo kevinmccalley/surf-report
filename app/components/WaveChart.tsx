@@ -52,7 +52,7 @@ export default function WaveChart({ hourly, heightUnit, tideHeights }: Props) {
   const [showWind, setShowWind]   = useState(true)
   const [showSwells, setShowSwells] = useState(false)
 
-  const maxWave = Math.max(...hourly.map(h => toDisplay(h.waveHeight, heightUnit)), 1)
+  const maxWave = Math.max(...hourly.map(h => toDisplay(h.swellHeight, heightUnit)), 1)
   const maxWind = Math.max(...hourly.map(h => Math.round(h.windSpeed)), 1)
   const waveYMax = Math.max(Math.ceil((maxWave + 2) / 2) * 2, 4)
 
@@ -65,8 +65,8 @@ export default function WaveChart({ hourly, heightUnit, tideHeights }: Props) {
     return {
       time: h.time,
       displayLabel: i % 6 === 0 ? formatHour(h.time) : '',
-      waveHeightDisplay: toDisplay(h.waveHeight, heightUnit),
-      waveHeightM: h.waveHeight,
+      waveHeightDisplay: toDisplay(h.swellHeight, heightUnit),
+      waveHeightM: h.swellHeight,
       windSpeed,
       windSpeedScaled: (windSpeed / maxWind) * waveYMax * 0.65,
       windDirKey: getDirectionLabel(h.windDirection),

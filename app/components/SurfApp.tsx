@@ -487,6 +487,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
               onMapOpen={() => setShowMap(true)}
               isSaved={isSaved}
               onToggleSave={handleToggleSave}
+              buoy={buoyData}
             />
 
             {report.isCoastal && <ConditionCards report={report} units={units} />}

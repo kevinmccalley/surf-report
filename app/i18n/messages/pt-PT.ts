@@ -19,12 +19,13 @@ const ptPT: Record<string, string> = {
 
   // HeroSection
   'hero.updatedAt': 'Atualizado às {time}',
-  'hero.waveHeight': 'altura das ondas',
+  'hero.waveHeight': 'swell',
   'hero.noWaveData': 'Sem dados de ondas',
   'hero.periodSuffix': 'período {period}s',
   'hero.air': 'ar',
   'hero.water': 'água',
-  'hero.primarySwell': 'Swell Principal',
+  'hero.offshoreHs': 'Hs oceânico',
+  'hero.nearbyBuoy': 'boia · {dist}km',
   'hero.swellPeriod': 'Período do Swell',
   'hero.swellDir': 'Dir. Swell',
   'hero.wind': 'Vento',
@@ -122,7 +123,7 @@ const ptPT: Record<string, string> = {
   'app.forecastAccuracy': 'Precisão e verificação das previsões →',
 
   // WaveChart
-  'chart.waveHeight': 'Altura das ondas',
+  'chart.waveHeight': 'Swell',
   'chart.windSpeed': 'Velocidade do vento',
   'chart.tideHeight': 'Altura da maré',
   'chart.swellComponents': 'Ondulação',
@@ -369,8 +370,8 @@ const ptPT: Record<string, string> = {
 
   // BuoyCard
   'buoy.title': 'Boia NDBC mais próxima',
-  'buoy.measured': 'Medido pela boia',
-  'buoy.modelForecast': 'Previsão do modelo',
+  'buoy.measured': 'Hs boia',
+  'buoy.modelForecast': 'Hs modelo',
   'buoy.period': 'Período',
   'buoy.direction': 'Direção',
   'buoy.waterTemp': 'Temp. água',
