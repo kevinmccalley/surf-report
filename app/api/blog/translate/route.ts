@@ -15,10 +15,24 @@ type LocaleKey = typeof TRANSLATE_LOCALES[number]['key']
 
 function isAuthorized(req: NextRequest): boolean {
   if (process.env.NODE_ENV !== 'production') return true
+
+  // Token-based auth (server-to-server or cron)
   const auth = req.headers.get('authorization')
-  return (
+  if (
     auth === `Bearer ${process.env.CRON_SECRET}` ||
     auth === `Bearer ${process.env.BLOG_TRANSLATE_TOKEN}`
+  ) return true
+
+  // Same-origin auth — Sanity Studio calls from groundswell.surf are same-origin.
+  // The endpoint is safe to call without a token because writing to Sanity and
+  // calling Anthropic both require server-side secrets the caller doesn't have.
+  const origin  = req.headers.get('origin')  ?? ''
+  const referer = req.headers.get('referer') ?? ''
+  const host    = req.headers.get('host')    ?? ''
+  return (
+    host === 'groundswell.surf' ||
+    origin.startsWith('https://groundswell.surf') ||
+    referer.startsWith('https://groundswell.surf')
   )
 }
 
