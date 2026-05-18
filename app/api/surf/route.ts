@@ -86,13 +86,16 @@ export async function GET(request: NextRequest) {
       return raw && !(raw as Record<string, unknown>).error ? raw : null
     })()
 
-    const isCoastal = !marine.error
-    const utcOffset = (marine.utc_offset_seconds ?? weather.utc_offset_seconds) ?? 0
-    const timezone = (weather.timezone as string | undefined) ?? (marine.timezone as string | undefined) ?? 'UTC'
+    // When NEMO is land-masked, promote the ECMWF fallback to primary so all
+    // val() calls in buildReport read real wave data instead of zeros.
+    const effectiveMarine = (!nemoHasWaves && gfsMarine) ? gfsMarine : marine
+    const isCoastal = nemoHasWaves || gfsMarine !== null
+    const utcOffset = ((effectiveMarine.utc_offset_seconds ?? weather.utc_offset_seconds) as number) ?? 0
+    const timezone = (weather.timezone as string | undefined) ?? (effectiveMarine.timezone as string | undefined) ?? 'UTC'
     const currentIdx = findCurrentHourIndex(weather.hourly.time, utcOffset)
 
     const report = buildReport(
-      marine, weather, name, country,
+      effectiveMarine, weather, name, country,
       parseFloat(lat), parseFloat(lon),
       currentIdx, utcOffset, isCoastal, timezone,
       forecastDays, gfsMarine
