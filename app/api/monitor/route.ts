@@ -99,6 +99,7 @@ async function checkOpenMeteo(): Promise<Finding[]> {
 
     // Check for new interesting marine variables
     const knownVars = new Set([
+      'time',
       'wave_height','wave_direction','wave_period',
       'swell_wave_height','swell_wave_direction','swell_wave_period',
       'wind_wave_height','wind_wave_direction','wind_wave_period',
@@ -509,7 +510,7 @@ async function checkTideAccuracy(): Promise<Finding[]> {
 
 const WAVE_TEST_LOCATIONS = [
   { name: 'Pipeline, Hawaii',         lat:  21.66, lon: -158.05 },
-  { name: 'Hossegor, France',         lat:  43.69, lon:    1.42 },
+  { name: 'Hossegor, France',         lat:  43.67, lon:   -1.44 },
   { name: 'Snapper Rocks, Australia', lat: -28.17, lon:  153.55 },
   { name: 'Jeffreys Bay, S. Africa',  lat: -34.05, lon:   24.92 },
 ]
@@ -626,7 +627,7 @@ async function sendAlert(findings: Finding[]) {
 
     <div style="border-top: 1px solid #e2e8f0; padding-top: 20px; margin-top: 8px;">
       <p style="font-size: 13px; color: #64748b; line-height: 1.6; margin: 0;">
-        Reply <strong>GO</strong> to this email and I'll implement the changes described above. If you want only specific items done, name them. Ignore this email to skip the cycle — the next check runs in 7 days.
+        To act on any of these: paste this email into Claude Code and say <strong>GO</strong> (or name the specific items you want). Ignore to skip this cycle — the next check runs in 7 days.
       </p>
       <p style="font-size: 12px; color: #94a3b8; margin: 12px 0 0 0;">
         Groundswell Monitor · <a href="https://groundswell.surf" style="color: #0ea5e9;">groundswell.surf</a>
