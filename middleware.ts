@@ -17,6 +17,7 @@ const isPublicRoute = createRouteMatcher([
   '/api/nearby(.*)',
   '/api/buoy(.*)',
   '/api/epic-now(.*)',
+  '/api/blog/translate(.*)',
   '/api/cron/epic-now(.*)',
   '/api/cron/swell-alert(.*)',
   '/api/cron/swell-alert-check(.*)',
