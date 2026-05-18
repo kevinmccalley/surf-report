@@ -46,9 +46,12 @@ export function TranslatePostAction({ id, type, published }: DocumentActionProps
         const data = await res.json().catch(() => ({ error: res.statusText })) as {
           ok?: boolean
           translated?: string[]
-          error?: string
+          error?: unknown
         }
-        if (!res.ok) throw new Error(data.error ?? res.statusText)
+        if (!res.ok) {
+          const msg = typeof data.error === 'string' ? data.error : JSON.stringify(data.error) ?? res.statusText
+          throw new Error(msg)
+        }
         const langs = (data.translated ?? []).join(', ')
         setResult({ ok: true, message: `Successfully translated to: ${langs}` })
       } catch (err) {

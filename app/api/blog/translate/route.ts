@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from 'next-sanity'
 
-export const maxDuration = 300
+export const maxDuration = 60
 
 const TRANSLATE_LOCALES = [
   { key: 'es',   lang: 'Spanish' },
@@ -149,6 +149,7 @@ ${JSON.stringify(payload, null, 2)}`,
 // ── Route ─────────────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
+  try {
   if (!isAuthorized(req)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
@@ -222,4 +223,9 @@ export async function POST(req: NextRequest) {
     translated: Object.keys(translations),
     ...(errors.length > 0 ? { errors } : {}),
   })
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error('[translate] Unhandled error:', err)
+    return NextResponse.json({ error: msg }, { status: 500 })
+  }
 }
