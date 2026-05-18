@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
   const marineUrl =
     `https://marine-api.open-meteo.com/v1/marine` +
     `?latitude=${lat}&longitude=${lon}` +
-    `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,swell_wave_height_2,swell_wave_direction_2,swell_wave_period_2,sea_surface_temperature` +
+    `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,sea_surface_temperature` +
     `&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max` +
     `&timezone=auto&forecast_days=${apiForecastDays}`
 
@@ -55,7 +55,7 @@ export async function GET(request: NextRequest) {
     const gfsMarineUrl =
       `https://marine-api.open-meteo.com/v1/marine` +
       `?latitude=${lat}&longitude=${lon}` +
-      `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,swell_wave_height_2,swell_wave_direction_2,swell_wave_period_2` +
+      `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period` +
       `&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max` +
       `&timezone=auto&forecast_days=${apiForecastDays}&models=ecmwf_wam`
 
