@@ -1,17 +1,8 @@
 'use client'
 
 import { useLanguage } from '@/app/i18n/LanguageContext'
-import type { Locale } from '@/app/i18n/LanguageContext'
 
-const LOCALE_CURRENCY: Record<Locale, string> = {
-  'en':    'USD',
-  'es':    'EUR',
-  'fr':    'EUR',
-  'pt-BR': 'BRL',
-  'pt-PT': 'EUR',
-}
-
-// Approximate rates against USD — display only, Stripe bills the actual amount
+// Approximate rates against USD — display only; Stripe bills the actual amount
 const RATES: Record<string, number> = {
   USD: 1,
   EUR: 0.91,
@@ -25,8 +16,9 @@ const META: Record<string, { symbol: string; decimals: number }> = {
 }
 
 export function usePriceDisplay() {
-  const { locale } = useLanguage()
-  const currency = LOCALE_CURRENCY[locale] ?? 'USD'
+  const { t } = useLanguage()
+  // Use t() so currency updates in the same render as translated text
+  const currency = t('currency.code') || 'USD'
   const meta     = META[currency]  ?? META.USD
   const rate     = RATES[currency] ?? 1
 

@@ -423,13 +423,13 @@ const en: Record<string, string> = {
   'mktL.h1.pre': 'Know ',
   'mktL.h1.gradient': 'before',
   'mktL.h1.post': ' you go. Actually know.',
-  'mktL.subtitle': 'Groundswell gives you honest, global surf forecasts — with real historical data, zero ads, and the accuracy transparency page no competitor will dare publish. From $4 a month.',
+  'mktL.subtitle': 'Groundswell gives you honest, global surf forecasts — with real historical data, zero ads, and the accuracy transparency page no competitor will dare publish. From {price4} a month.',
   'mktL.ctaFree': 'Start free — no card needed',
   'mktL.ctaPricing': 'See how it works ↓',
   'mktL.heroTrust': '7-day free trial · Cancel anytime · No credit card to start',
 
   // Trust bar
-  'mktL.trust.1stat': '$4/month',
+  'mktL.trust.1stat': '{price4}/month',
   'mktL.trust.1label': 'less than a coffee',
   'mktL.trust.2stat': '608 spots',
   'mktL.trust.2label': 'live, every 3 hours',
@@ -484,7 +484,7 @@ const en: Record<string, string> = {
   'mktL.teaserTitle': '10-day surf forecast',
   'mktL.teaserSubtitle': 'See exactly when the swell peaks — days in advance.',
   'mktL.teaserLock': 'Unlock the full 10-day forecast',
-  'mktL.teaserPrice': 'Individual plan — from $3.33/mo',
+  'mktL.teaserPrice': 'Individual plan — from {price333}/mo',
   'mktL.teaserCta': 'Start free trial',
 
   // Feature comparison (3 tiers)
@@ -501,7 +501,7 @@ const en: Record<string, string> = {
   'mktL.free.cta': 'Get started free',
   'mktL.ind.tier': 'Individual',
   'mktL.ind.badge': 'Most popular',
-  'mktL.ind.billed': 'billed $40/year · save 17%',
+  'mktL.ind.billed': 'billed {price40}/year · save 17%',
   'mktL.ind.f1': 'Everything in Free',
   'mktL.ind.f2': 'Full 10-day forecast',
   'mktL.ind.f3': '4+ years of historical swell data',
@@ -537,7 +537,7 @@ const en: Record<string, string> = {
 
   // Final CTA & footer
   'mktL.finalCta.heading': "The ocean doesn't lie. Your forecast app shouldn't either.",
-  'mktL.finalCta.body': "Try Groundswell free — no card required. If it's not worth $4 a month after 7 days, the free tier stays free. No hard feelings, no cancellation hoops.",
+  'mktL.finalCta.body': "Try Groundswell free — no card required. If it's not worth {price4} a month after 7 days, the free tier stays free. No hard feelings, no cancellation hoops.",
   'mktL.finalTrust': 'No ads · No check limits · No card to start · Cancel anytime · Published accuracy stats · 5 languages',
   'mktL.footer': 'Open ocean data from NOAA, ECMWF, and Copernicus Marine. Updated hourly.',
 
@@ -579,6 +579,9 @@ const en: Record<string, string> = {
   'accuracy.sourceTag.buoy':    'Buoy',
   'accuracy.sourceTag.geo':     'Location',
   'accuracy.sourceTag.map':     'Map',
+
+  // Currency for locale-aware price display
+  'currency.code':          'USD',
 
   // Page metadata (used server-side via serverT for <title> tags)
   'meta.tagline':           'Surf Reports Worldwide',

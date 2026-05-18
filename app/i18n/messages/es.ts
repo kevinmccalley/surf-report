@@ -423,13 +423,13 @@ const es: Record<string, string> = {
   'mktL.h1.pre': 'Sabe ',
   'mktL.h1.gradient': 'antes',
   'mktL.h1.post': ' de entrar. De verdad.',
-  'mktL.subtitle': 'Groundswell te ofrece pronósticos de surf honestos y globales — con datos históricos reales, cero anuncios y la página de precisión que ningún competidor se atrevería a publicar. Desde $4 al mes.',
+  'mktL.subtitle': 'Groundswell te ofrece pronósticos de surf honestos y globales — con datos históricos reales, cero anuncios y la página de precisión que ningún competidor se atrevería a publicar. Desde {price4} al mes.',
   'mktL.ctaFree': 'Empieza gratis — sin tarjeta',
   'mktL.ctaPricing': 'Ver cómo funciona ↓',
   'mktL.heroTrust': 'Prueba gratis 7 días · Cancela cuando quieras · Sin tarjeta de crédito',
 
   // Trust bar
-  'mktL.trust.1stat': '$4/mes',
+  'mktL.trust.1stat': '{price4}/mes',
   'mktL.trust.1label': 'menos que un café',
   'mktL.trust.2stat': '608 spots',
   'mktL.trust.2label': 'en vivo, cada 3 horas',
@@ -484,7 +484,7 @@ const es: Record<string, string> = {
   'mktL.teaserTitle': 'Pronóstico de surf de 10 días',
   'mktL.teaserSubtitle': 'Ve exactamente cuándo llega el swell — con días de antelación.',
   'mktL.teaserLock': 'Desbloquea el pronóstico completo de 10 días',
-  'mktL.teaserPrice': 'Plan Individual — desde $3.33/mes',
+  'mktL.teaserPrice': 'Plan Individual — desde {price333}/mes',
   'mktL.teaserCta': 'Iniciar prueba gratuita',
 
   // Comparativa de planes
@@ -501,7 +501,7 @@ const es: Record<string, string> = {
   'mktL.free.cta': 'Comenzar gratis',
   'mktL.ind.tier': 'Individual',
   'mktL.ind.badge': 'Más popular',
-  'mktL.ind.billed': 'facturado $40/año · ahorra 17%',
+  'mktL.ind.billed': 'facturado {price40}/año · ahorra 17%',
   'mktL.ind.f1': 'Todo lo del plan Gratis',
   'mktL.ind.f2': 'Pronóstico completo de 10 días',
   'mktL.ind.f3': '4+ años de datos históricos de oleaje',
@@ -537,7 +537,7 @@ const es: Record<string, string> = {
 
   // CTA final y pie de página
   'mktL.finalCta.heading': 'El océano no miente. Tu app de pronóstico tampoco debería hacerlo.',
-  'mktL.finalCta.body': 'Prueba Groundswell gratis — sin tarjeta. Si no vale $4 al mes después de 7 días, el plan gratuito seguirá siendo gratuito. Sin dramas, sin complicaciones para cancelar.',
+  'mktL.finalCta.body': 'Prueba Groundswell gratis — sin tarjeta. Si no vale {price4} al mes después de 7 días, el plan gratuito seguirá siendo gratuito. Sin dramas, sin complicaciones para cancelar.',
   'mktL.finalTrust': 'Sin anuncios · Sin límites de consulta · Sin tarjeta para empezar · Cancela cuando quieras · Estadísticas de precisión publicadas · 5 idiomas',
   'mktL.footer': 'Datos oceánicos de NOAA, ECMWF y Copernicus Marine. Actualizado cada hora.',
 
@@ -579,6 +579,8 @@ const es: Record<string, string> = {
   'premium.teaser.comingSoon': 'Próximamente',
   'premium.teaser.inDev': 'En desarrollo',
   'premium.teaser.footer': 'Suscríbete ahora para obtener acceso cuando Premium se lance — mismo precio, sin necesidad de actualizar.',
+
+  'currency.code':          'EUR',
 
   // Page metadata
   'meta.tagline':           'Informes de Surf en Todo el Mundo',

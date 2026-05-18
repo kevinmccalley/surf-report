@@ -423,13 +423,13 @@ const fr: Record<string, string> = {
   'mktL.h1.pre': 'Sache ',
   'mktL.h1.gradient': 'avant',
   'mktL.h1.post': ' de plonger. Vraiment.',
-  'mktL.subtitle': "Groundswell vous propose des prévisions de surf honnêtes et mondiales — avec de vraies données historiques, zéro publicité et la page de transparence sur la précision qu'aucun concurrent n'osera publier. À partir de 4 $/mois.",
+  'mktL.subtitle': "Groundswell vous propose des prévisions de surf honnêtes et mondiales — avec de vraies données historiques, zéro publicité et la page de transparence sur la précision qu'aucun concurrent n'osera publier. À partir de {price4}/mois.",
   'mktL.ctaFree': 'Commencer gratuitement — sans carte',
   'mktL.ctaPricing': 'Voir comment ça marche ↓',
   'mktL.heroTrust': 'Essai gratuit 7 jours · Annulez à tout moment · Sans carte bancaire',
 
   // Barre de confiance
-  'mktL.trust.1stat': '4 $/mois',
+  'mktL.trust.1stat': '{price4}/mois',
   'mktL.trust.1label': 'moins qu\'un café',
   'mktL.trust.2stat': '608 spots',
   'mktL.trust.2label': 'en direct, toutes les 3 heures',
@@ -484,7 +484,7 @@ const fr: Record<string, string> = {
   'mktL.teaserTitle': 'Prévision surf 10 jours',
   'mktL.teaserSubtitle': "Voyez exactement quand la houle arrive — des jours à l'avance.",
   'mktL.teaserLock': 'Débloquez la prévision complète 10 jours',
-  'mktL.teaserPrice': 'Formule Individuelle — à partir de 3,33 $/mois',
+  'mktL.teaserPrice': 'Formule Individuelle — à partir de {price333}/mois',
   'mktL.teaserCta': "Démarrer l'essai gratuit",
 
   // Comparaison des formules
@@ -501,7 +501,7 @@ const fr: Record<string, string> = {
   'mktL.free.cta': 'Commencer gratuitement',
   'mktL.ind.tier': 'Individuel',
   'mktL.ind.badge': 'Le plus populaire',
-  'mktL.ind.billed': 'facturé 40 $/an · économisez 17 %',
+  'mktL.ind.billed': 'facturé {price40}/an · économisez 17 %',
   'mktL.ind.f1': 'Tout ce qui est inclus dans Gratuit',
   'mktL.ind.f2': 'Prévision complète 10 jours',
   'mktL.ind.f3': '4+ ans de données historiques de houle',
@@ -537,7 +537,7 @@ const fr: Record<string, string> = {
 
   // CTA final et pied de page
   'mktL.finalCta.heading': "L'océan ne ment pas. Votre appli de prévision ne devrait pas non plus.",
-  'mktL.finalCta.body': "Essayez Groundswell gratuitement — sans carte. Si ça ne vaut pas 4 $/mois après 7 jours, l'abonnement gratuit reste gratuit. Sans mauvaise conscience, sans tracas pour annuler.",
+  'mktL.finalCta.body': "Essayez Groundswell gratuitement — sans carte. Si ça ne vaut pas {price4}/mois après 7 jours, l'abonnement gratuit reste gratuit. Sans mauvaise conscience, sans tracas pour annuler.",
   'mktL.finalTrust': 'Sans pub · Sans limites de consultation · Sans carte pour commencer · Annulez à tout moment · Statistiques de précision publiées · 5 langues',
   'mktL.footer': 'Données océaniques de NOAA, ECMWF et Copernicus Marine. Mis à jour toutes les heures.',
 
@@ -579,6 +579,8 @@ const fr: Record<string, string> = {
   'premium.teaser.comingSoon': 'Bientôt disponible',
   'premium.teaser.inDev': 'En développement',
   'premium.teaser.footer': 'Abonnez-vous maintenant pour accéder au lancement de Premium — même prix, sans mise à niveau requise.',
+
+  'currency.code':          'EUR',
 
   // Page metadata
   'meta.tagline':           'Rapports de Surf dans le Monde Entier',

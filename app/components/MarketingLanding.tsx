@@ -44,7 +44,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
   ]
 
   const TRUST_ITEMS = [
-    { stat: t('mktL.trust.1stat'), label: t('mktL.trust.1label') },
+    { stat: t('mktL.trust.1stat', { price4: format(4) }), label: t('mktL.trust.1label') },
     { stat: t('mktL.trust.2stat'), label: t('mktL.trust.2label') },
     { stat: t('mktL.trust.3stat'), label: t('mktL.trust.3label') },
     { stat: t('mktL.trust.4stat'), label: t('mktL.trust.4label') },
@@ -101,7 +101,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
           </h1>
 
           <p className="text-slate-400 text-lg sm:text-xl mb-8 max-w-lg mx-auto leading-relaxed">
-            {t('mktL.subtitle')}
+            {t('mktL.subtitle', { price4: format(4) })}
           </p>
 
           <div className="w-full max-w-lg mx-auto mb-6">
@@ -260,7 +260,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
                   <LockIcon />
                 </div>
                 <p className="text-white font-semibold text-sm mb-1">{t('mktL.teaserLock')}</p>
-                <p className="text-slate-500 text-xs mb-4">{t('mktL.teaserPrice')}</p>
+                <p className="text-slate-500 text-xs mb-4">{t('mktL.teaserPrice', { price333: format(3.33) })}</p>
                 <SignInButton mode="modal">
                   <button className="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs transition-colors">
                     {t('mktL.teaserCta')}
@@ -310,7 +310,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
                   {billing === 'annual' ? format(3.33) : format(4)}
                 </span>
                 <span className="text-sm text-slate-500 ml-1">/mo</span>
-                {billing === 'annual' && <p className="text-xs text-teal-400/80 mt-0.5">{t('mktL.ind.billed')}</p>}
+                {billing === 'annual' && <p className="text-xs text-teal-400/80 mt-0.5">{t('mktL.ind.billed', { price40: format(40) })}</p>}
               </div>
               <p className="text-xs text-slate-600 mb-4">{t('mktL.ind.noCard')}</p>
               <ul className="space-y-2.5 flex-1">
@@ -412,7 +412,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
             {t('mktL.finalCta.heading')}
           </h2>
           <p className="text-slate-400 mb-8 leading-relaxed">
-            {t('mktL.finalCta.body')}
+            {t('mktL.finalCta.body', { price4: format(4) })}
           </p>
           <SignInButton mode="modal">
             <button className="px-7 py-3 rounded-xl bg-gradient-to-r from-sky-400 to-cyan-300 hover:from-sky-300 hover:to-cyan-200 text-slate-900 font-bold text-sm transition-all shadow-lg shadow-sky-500/20 mb-4">

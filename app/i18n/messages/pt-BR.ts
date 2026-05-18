@@ -423,13 +423,13 @@ const ptBR: Record<string, string> = {
   'mktL.h1.pre': 'Saiba ',
   'mktL.h1.gradient': 'antes',
   'mktL.h1.post': ' de pegar a onda. De verdade.',
-  'mktL.subtitle': 'O Groundswell oferece previsões de surf honestas e globais — com dados históricos reais, zero anúncios e a página de transparência de precisão que nenhum concorrente ousaria publicar. A partir de $4 por mês.',
+  'mktL.subtitle': 'O Groundswell oferece previsões de surf honestas e globais — com dados históricos reais, zero anúncios e a página de transparência de precisão que nenhum concorrente ousaria publicar. A partir de {price4} por mês.',
   'mktL.ctaFree': 'Comece grátis — sem cartão',
   'mktL.ctaPricing': 'Ver como funciona ↓',
   'mktL.heroTrust': 'Teste grátis de 7 dias · Cancele a qualquer momento · Sem cartão de crédito',
 
   // Barra de confiança
-  'mktL.trust.1stat': '$4/mês',
+  'mktL.trust.1stat': '{price4}/mês',
   'mktL.trust.1label': 'menos que um café',
   'mktL.trust.2stat': '608 spots',
   'mktL.trust.2label': 'ao vivo, a cada 3 horas',
@@ -484,7 +484,7 @@ const ptBR: Record<string, string> = {
   'mktL.teaserTitle': 'Previsão de surf de 10 dias',
   'mktL.teaserSubtitle': 'Veja exatamente quando a ondulação vai chegar — com dias de antecedência.',
   'mktL.teaserLock': 'Desbloqueie a previsão completa de 10 dias',
-  'mktL.teaserPrice': 'Plano Individual — a partir de $3,33/mês',
+  'mktL.teaserPrice': 'Plano Individual — a partir de {price333}/mês',
   'mktL.teaserCta': 'Iniciar teste gratuito',
 
   // Comparativo de planos
@@ -501,7 +501,7 @@ const ptBR: Record<string, string> = {
   'mktL.free.cta': 'Começar grátis',
   'mktL.ind.tier': 'Individual',
   'mktL.ind.badge': 'Mais popular',
-  'mktL.ind.billed': 'cobrado $40/ano · economize 17%',
+  'mktL.ind.billed': 'cobrado {price40}/ano · economize 17%',
   'mktL.ind.f1': 'Tudo do plano Grátis',
   'mktL.ind.f2': 'Previsão completa de 10 dias',
   'mktL.ind.f3': '4+ anos de dados históricos de ondulação',
@@ -537,7 +537,7 @@ const ptBR: Record<string, string> = {
 
   // CTA final e rodapé
   'mktL.finalCta.heading': 'O oceano não mente. Seu app de previsão também não deveria.',
-  'mktL.finalCta.body': 'Experimente o Groundswell de graça — sem cartão. Se não valer $4 por mês após 7 dias, o plano gratuito continua gratuito. Sem drama, sem complicação para cancelar.',
+  'mktL.finalCta.body': 'Experimente o Groundswell de graça — sem cartão. Se não valer {price4} por mês após 7 dias, o plano gratuito continua gratuito. Sem drama, sem complicação para cancelar.',
   'mktL.finalTrust': 'Sem anúncios · Sem limites de consulta · Sem cartão para começar · Cancele a qualquer momento · Estatísticas de precisão publicadas · 5 idiomas',
   'mktL.footer': 'Dados oceânicos da NOAA, ECMWF e Copernicus Marine. Atualizado a cada hora.',
 
@@ -579,6 +579,8 @@ const ptBR: Record<string, string> = {
   'premium.teaser.comingSoon': 'Em breve',
   'premium.teaser.inDev': 'Em desenvolvimento',
   'premium.teaser.footer': 'Assine agora para ter acesso quando o Premium for lançado — mesmo preço, sem necessidade de upgrade.',
+
+  'currency.code':          'BRL',
 
   // Page metadata
   'meta.tagline':           'Relatórios de Surf no Mundo Todo',
