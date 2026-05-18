@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react'
 import { SignInButton, useUser, useClerk, useAuth } from '@clerk/nextjs'
 import Link from 'next/link'
 import { useLanguage } from '@/app/i18n/LanguageContext'
+import { usePriceDisplay } from '@/app/hooks/usePriceDisplay'
 import LanguageSwitcher from './LanguageSwitcher'
 
 export default function MarketingPage() {
   const { t } = useLanguage()
+  const { format } = usePriceDisplay()
   const { isLoaded, isSignedIn } = useUser()
   const { signOut } = useClerk()
   const { getToken } = useAuth()
@@ -288,7 +290,7 @@ export default function MarketingPage() {
             <div className="glass-card rounded-2xl p-6 border border-white/10">
               <p className="text-xs text-slate-300 uppercase tracking-widest mb-3">{t('mkt.planMonthly')}</p>
               <div className="flex items-end gap-1 mb-1">
-                <span className="text-4xl font-black text-white">$4</span>
+                <span className="text-4xl font-black text-white">{format(4)}</span>
                 <span className="text-slate-200 mb-1">{t('mkt.perMonth')}</span>
               </div>
               <p className="text-xs text-slate-300 mb-6">{t('mkt.billedMonthly')}</p>
@@ -301,7 +303,7 @@ export default function MarketingPage() {
               </div>
               <p className="text-xs text-teal-300 uppercase tracking-widest mb-3">{t('mkt.planAnnual')}</p>
               <div className="flex items-end gap-1 mb-1">
-                <span className="text-4xl font-black text-white">$40</span>
+                <span className="text-4xl font-black text-white">{format(40)}</span>
                 <span className="text-slate-200 mb-1">{t('mkt.perYear')}</span>
               </div>
               <p className="text-xs text-slate-300 mb-6">{t('mkt.bestRate')}</p>

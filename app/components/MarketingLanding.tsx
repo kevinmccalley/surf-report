@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { SignInButton, useClerk } from '@clerk/nextjs'
 import SearchBar from './SearchBar'
 import { useLanguage } from '@/app/i18n/LanguageContext'
+import { usePriceDisplay } from '@/app/hooks/usePriceDisplay'
 import type { GeoResult } from '@/app/lib/types'
 
 // ── Mock data (illustrative only — not user-facing text) ─────────────────────
@@ -33,6 +34,7 @@ const RATING_COLORS: Record<string, string> = {
 export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult) => void }) {
   const { openSignIn } = useClerk()
   const { t } = useLanguage()
+  const { format } = usePriceDisplay()
   const [billing, setBilling] = useState<'annual' | 'monthly'>('annual')
 
   const STEPS = [
@@ -280,7 +282,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
             {/* Free */}
             <div className="flex flex-col rounded-2xl border border-white/8 bg-white/3 p-5">
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">{t('mktL.free.tier')}</p>
-              <p className="text-3xl font-bold text-white mb-1">$0</p>
+              <p className="text-3xl font-bold text-white mb-1">{format(0)}</p>
               <p className="text-xs text-slate-600 mb-4">{t('mktL.free.note')}</p>
               <ul className="space-y-2.5 flex-1">
                 {FREE_FEATURES.map(f => (
@@ -305,7 +307,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
               <p className="text-xs font-semibold text-teal-400 uppercase tracking-widest mb-1">{t('mktL.ind.tier')}</p>
               <div className="mb-1">
                 <span className="text-3xl font-bold text-white">
-                  {billing === 'annual' ? '$3.33' : '$4'}
+                  {billing === 'annual' ? format(3.33) : format(4)}
                 </span>
                 <span className="text-sm text-slate-500 ml-1">/mo</span>
                 {billing === 'annual' && <p className="text-xs text-teal-400/80 mt-0.5">{t('mktL.ind.billed')}</p>}
@@ -332,7 +334,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
                 <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest">{t('mktL.prem.tier')}</p>
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/20 text-sky-400 font-medium">{t('mktL.prem.badge')}</span>
               </div>
-              <p className="text-3xl font-bold text-slate-300 mb-4">$12<span className="text-base font-normal text-slate-500 ml-1">/mo</span></p>
+              <p className="text-3xl font-bold text-slate-300 mb-4">{format(12)}<span className="text-base font-normal text-slate-500 ml-1">/mo</span></p>
               <ul className="space-y-2.5 flex-1">
                 {PREMIUM_FEATURES.map(f => (
                   <li key={f} className="flex items-start gap-2 text-sm text-slate-500">
@@ -376,7 +378,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
               <div>
                 <p className="text-sm font-semibold text-teal-400 uppercase tracking-widest">{t('mktL.planName')}</p>
                 <div className="flex items-baseline gap-1 mt-1">
-                  <span className="text-4xl font-bold text-white">{billing === 'annual' ? '$3.33' : '$4'}</span>
+                  <span className="text-4xl font-bold text-white">{billing === 'annual' ? format(3.33) : format(4)}</span>
                   <span className="text-slate-500 text-sm">{t('mktL.perMonth')}</span>
                 </div>
                 {billing === 'annual' && <p className="text-xs text-teal-400/80 mt-0.5">{t('mktL.billedAnnual')}</p>}

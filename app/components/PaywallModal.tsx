@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useUser, SignInButton } from '@clerk/nextjs'
 import { useLanguage } from '@/app/i18n/LanguageContext'
+import { usePriceDisplay } from '@/app/hooks/usePriceDisplay'
 
 interface Props {
   onClose: () => void
@@ -32,6 +33,7 @@ const PREMIUM_FEATURES = [
 export default function PaywallModal({ onClose }: Props) {
   const { isSignedIn } = useUser()
   const { t } = useLanguage()
+  const { format } = usePriceDisplay()
   const [loadingPlan, setLoadingPlan] = useState<'monthly' | 'annual' | null>(null)
   const [billingPeriod, setBillingPeriod] = useState<'annual' | 'monthly'>('annual')
   const [checkoutError, setCheckoutError] = useState<string | null>(null)
@@ -88,7 +90,7 @@ export default function PaywallModal({ onClose }: Props) {
                 <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest">{t('paywall.tierFree')}</span>
                 <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-white/8 text-slate-500 font-medium">{t('paywall.currentPlan')}</span>
               </div>
-              <p className="text-xl font-bold text-slate-300 mb-3">$0</p>
+              <p className="text-xl font-bold text-slate-300 mb-3">{format(0)}</p>
               <ul className="space-y-1.5 flex-1">
                 {FREE_FEATURES.map(f => (
                   <li key={f} className="flex items-start gap-1.5 text-[11px] text-slate-500 leading-tight">
@@ -109,11 +111,11 @@ export default function PaywallModal({ onClose }: Props) {
               </div>
               <div className="mb-3">
                 <span className="text-xl font-bold text-white">
-                  {billingPeriod === 'annual' ? '$3.33' : '$4'}
+                  {billingPeriod === 'annual' ? format(3.33) : format(4)}
                 </span>
                 <span className="text-xs text-slate-500 ml-1">/mo</span>
                 {billingPeriod === 'annual' && (
-                  <p className="text-[10px] text-teal-400/80 mt-0.5">billed $40/year</p>
+                  <p className="text-[10px] text-teal-400/80 mt-0.5">billed {format(40)}/year</p>
                 )}
               </div>
               <ul className="space-y-1.5 flex-1">
@@ -134,7 +136,7 @@ export default function PaywallModal({ onClose }: Props) {
                 <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest">{t('paywall.tierPremium')}</span>
                 <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-sky-500/15 text-sky-400 font-medium border border-sky-500/20">{t('paywall.comingSoon')}</span>
               </div>
-              <p className="text-xl font-bold text-slate-300 mb-3">$12<span className="text-xs text-slate-500 font-normal ml-1">/mo</span></p>
+              <p className="text-xl font-bold text-slate-300 mb-3">{format(12)}<span className="text-xs text-slate-500 font-normal ml-1">/mo</span></p>
               <ul className="space-y-1.5 flex-1">
                 {PREMIUM_FEATURES.map(f => (
                   <li key={f} className="flex items-start gap-1.5 text-[11px] text-slate-500 leading-tight">
@@ -159,7 +161,7 @@ export default function PaywallModal({ onClose }: Props) {
                   : 'text-slate-500 hover:text-slate-400'
               }`}
             >
-              {t('paywall.monthly')} · $4/mo
+              {t('paywall.monthly')} · {format(4)}/mo
             </button>
             <span className="text-slate-700 text-xs">·</span>
             <button
@@ -170,7 +172,7 @@ export default function PaywallModal({ onClose }: Props) {
                   : 'text-slate-500 hover:text-slate-400'
               }`}
             >
-              {t('paywall.annual')} · $40/yr
+              {t('paywall.annual')} · {format(40)}/yr
               <span className="ml-1.5 text-[10px] text-teal-400 font-semibold">–17%</span>
             </button>
           </div>
