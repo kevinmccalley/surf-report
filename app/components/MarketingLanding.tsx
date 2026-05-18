@@ -362,13 +362,13 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
               onClick={() => setBilling('monthly')}
               className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${billing === 'monthly' ? 'bg-white/10 text-white' : 'text-slate-500 hover:text-slate-300'}`}
             >
-              {t('mktL.toggleMonthly')}
+              {t('mktL.toggleMonthly', { price4: format(4) })}
             </button>
             <button
               onClick={() => setBilling('annual')}
               className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${billing === 'annual' ? 'bg-white/10 text-white' : 'text-slate-500 hover:text-slate-300'}`}
             >
-              {t('mktL.toggleAnnual')}
+              {t('mktL.toggleAnnual', { price40: format(40) })}
               <span className="ml-1.5 text-[10px] text-teal-400 font-semibold">–17%</span>
             </button>
           </div>
@@ -381,7 +381,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
                   <span className="text-4xl font-bold text-white">{billing === 'annual' ? format(3.33) : format(4)}</span>
                   <span className="text-slate-500 text-sm">{t('mktL.perMonth')}</span>
                 </div>
-                {billing === 'annual' && <p className="text-xs text-teal-400/80 mt-0.5">{t('mktL.billedAnnual')}</p>}
+                {billing === 'annual' && <p className="text-xs text-teal-400/80 mt-0.5">{t('mktL.billedAnnual', { price40: format(40) })}</p>}
               </div>
               <div className="text-right">
                 <p className="text-xs text-slate-500">{t('mktL.trial')}</p>
