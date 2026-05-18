@@ -1,30 +1,24 @@
+import { useToast } from 'sanity'
 import { useState } from 'react'
 import type { DocumentActionProps } from 'sanity'
 
-type State = 'idle' | 'loading' | 'done' | 'error'
-
-const LABELS: Record<State, string> = {
-  idle:    'Translate to all languages',
-  loading: 'Translating…',
-  done:    'Translations saved ✓',
-  error:   'Translation failed — retry?',
-}
-
 export function TranslatePostAction({ id, type, published }: DocumentActionProps) {
-  const [state, setState] = useState<State>('idle')
+  const toast = useToast()
+  const [loading, setLoading] = useState(false)
 
   if (type !== 'post') return null
 
   const isPublished = Boolean(published)
 
   return {
-    label:    LABELS[state],
-    disabled: !isPublished || state === 'loading',
+    label:    loading ? 'Translating…' : 'Translate to all languages',
+    disabled: !isPublished || loading,
     title:    isPublished
       ? 'Translate this post to Spanish, French, and Portuguese via Claude'
       : 'Publish the post first, then translate',
     onHandle: async () => {
-      setState('loading')
+      setLoading(true)
+      toast.push({ title: 'Translating…', description: 'Claude is translating to ES, FR, PT-BR, PT-PT. This takes ~20 seconds.', status: 'info', duration: 25000 })
       try {
         const token = process.env.NEXT_PUBLIC_BLOG_TRANSLATE_TOKEN
         const res = await fetch('/api/blog/translate', {
@@ -35,16 +29,17 @@ export function TranslatePostAction({ id, type, published }: DocumentActionProps
           },
           body: JSON.stringify({ postId: id }),
         })
-        if (!res.ok) {
-          const err = await res.json().catch(() => ({ error: res.statusText }))
-          throw new Error(err.error ?? res.statusText)
-        }
-        setState('done')
-        setTimeout(() => setState('idle'), 4000)
+        const data = await res.json().catch(() => ({ error: res.statusText }))
+        if (!res.ok) throw new Error(data.error ?? res.statusText)
+
+        const langs = (data.translated as string[] ?? []).join(', ')
+        toast.push({ title: 'Translations saved!', description: `Translated to: ${langs}`, status: 'success', duration: 6000 })
       } catch (err) {
+        const msg = err instanceof Error ? err.message : 'Unknown error'
         console.error('[TranslatePostAction]', err)
-        setState('error')
-        setTimeout(() => setState('idle'), 5000)
+        toast.push({ title: 'Translation failed', description: msg, status: 'error', duration: 8000 })
+      } finally {
+        setLoading(false)
       }
     },
   }
