@@ -77,7 +77,9 @@ async function translateToLocale(
   post: PostData,
   lang: string,
 ): Promise<Record<string, unknown>> {
-  const bodyItems = post.body ? extractTextItems(post.body) : []
+  const allBodyItems = post.body ? extractTextItems(post.body) : []
+  // Cap at 200 spans so the prompt stays within a ~20s response window on Haiku
+  const bodyItems = allBodyItems.slice(0, 200)
 
   const payload = {
     title: post.title,
@@ -88,7 +90,7 @@ async function translateToLocale(
   }
 
   const message = await anthropic.messages.create({
-    model: 'claude-sonnet-4-6',
+    model: 'claude-haiku-4-5-20251001',
     max_tokens: 8192,
     system: 'You are a professional translator specializing in surf, ocean sports, and outdoor adventure content. You translate accurately, naturally, and preserve technical terminology.',
     messages: [{
