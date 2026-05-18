@@ -3,10 +3,11 @@
 import { useLanguage } from '@/app/i18n/LanguageContext'
 
 // Approximate rates against USD — display only; Stripe bills the actual amount
+// Last updated May 2026 (EUR/USD ~1.13, USD/BRL ~5.70)
 const RATES: Record<string, number> = {
   USD: 1,
-  EUR: 0.91,
-  BRL: 5.80,
+  EUR: 0.88,
+  BRL: 5.70,
 }
 
 const META: Record<string, { symbol: string; decimals: number }> = {
