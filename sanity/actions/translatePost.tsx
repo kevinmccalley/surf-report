@@ -1,6 +1,13 @@
 import { useState } from 'react'
 import type { DocumentActionProps } from 'sanity'
 
+const LOCALES = [
+  { key: 'es',   label: 'Spanish' },
+  { key: 'fr',   label: 'French' },
+  { key: 'ptBR', label: 'Brazilian Portuguese' },
+  { key: 'ptPT', label: 'European Portuguese' },
+]
+
 export function TranslatePostAction({ id, type, published }: DocumentActionProps) {
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<{ ok: boolean; message: string } | null>(null)
@@ -13,10 +20,9 @@ export function TranslatePostAction({ id, type, published }: DocumentActionProps
     label:    loading ? 'Translating…' : 'Translate to all languages',
     disabled: !isPublished || loading,
     title:    isPublished
-      ? 'Translate to Spanish, French, and Portuguese via Claude (~20 s)'
+      ? 'Translate to Spanish, French, and Portuguese via Claude (~30 s)'
       : 'Publish the post first, then translate',
 
-    // Shows a modal after the async job finishes
     dialog: result
       ? {
           type:    'confirm' as const,
@@ -34,26 +40,49 @@ export function TranslatePostAction({ id, type, published }: DocumentActionProps
       setLoading(true)
       setResult(null)
       try {
-        const token = process.env.NEXT_PUBLIC_BLOG_TRANSLATE_TOKEN
-        const res = await fetch('/api/blog/translate', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            ...(token ? { Authorization: `Bearer ${token}` } : {}),
-          },
-          body: JSON.stringify({ postId: id }),
+        // Fire one request per locale in parallel — each stays under the 60s function limit
+        const settled = await Promise.allSettled(
+          LOCALES.map(({ key }) =>
+            fetch('/api/blog/translate', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ postId: id, locale: key }),
+            }).then(async (res) => {
+              const data = await res.json().catch(() => ({ error: res.statusText })) as {
+                ok?: boolean
+                locale?: string
+                error?: unknown
+              }
+              if (!res.ok) {
+                const msg = typeof data.error === 'string' ? data.error : JSON.stringify(data.error) ?? res.statusText
+                throw new Error(`${key}: ${msg}`)
+              }
+              return key
+            })
+          )
+        )
+
+        const succeeded: string[] = []
+        const failed: string[] = []
+
+        settled.forEach((r) => {
+          if (r.status === 'fulfilled') {
+            succeeded.push(r.value)
+          } else {
+            failed.push(r.reason instanceof Error ? r.reason.message : String(r.reason))
+          }
         })
-        const data = await res.json().catch(() => ({ error: res.statusText })) as {
-          ok?: boolean
-          translated?: string[]
-          error?: unknown
+
+        if (succeeded.length === 0) {
+          setResult({ ok: false, message: `All translations failed:\n${failed.join('\n')}` })
+        } else if (failed.length > 0) {
+          setResult({
+            ok: true,
+            message: `Translated: ${succeeded.join(', ')}\nFailed: ${failed.join('; ')}`,
+          })
+        } else {
+          setResult({ ok: true, message: `Successfully translated to: ${succeeded.join(', ')}` })
         }
-        if (!res.ok) {
-          const msg = typeof data.error === 'string' ? data.error : JSON.stringify(data.error) ?? res.statusText
-          throw new Error(msg)
-        }
-        const langs = (data.translated ?? []).join(', ')
-        setResult({ ok: true, message: `Successfully translated to: ${langs}` })
       } catch (err) {
         const msg = err instanceof Error ? err.message : 'Unknown error'
         console.error('[TranslatePostAction]', err)

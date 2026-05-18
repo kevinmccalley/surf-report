@@ -2,22 +2,14 @@ import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from 'next-sanity'
 
+// Each call translates ONE locale — stays well under Vercel's 60s limit.
 export const maxDuration = 60
 
-const TRANSLATE_LOCALES = [
-  { key: 'es',   lang: 'Spanish' },
-  { key: 'fr',   lang: 'French' },
-  { key: 'ptBR', lang: 'Brazilian Portuguese' },
-  { key: 'ptPT', lang: 'European Portuguese (as spoken in Portugal)' },
-] as const
-
-type LocaleKey = typeof TRANSLATE_LOCALES[number]['key']
-
-// No auth gate — callers can't do anything without the server-side
-// SANITY_API_WRITE_TOKEN and ANTHROPIC_API_KEY, so the endpoint is self-protecting.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function isAuthorized(_req: NextRequest): boolean {
-  return true
+const LOCALE_MAP: Record<string, string> = {
+  es:   'Spanish',
+  fr:   'French',
+  ptBR: 'Brazilian Portuguese',
+  ptPT: 'European Portuguese (as spoken in Portugal)',
 }
 
 // ── PortableText helpers ───────────────────────────────────────────────────────
@@ -39,7 +31,6 @@ function extractTextItems(body: unknown[]): TextItem[] {
     } else if (block._type === 'callout' && typeof block.content === 'string' && (block.content as string).trim()) {
       items.push({ key: `c${i}`, text: block.content as string })
     }
-    // Images and codeBlocks pass through untranslated
   }
   return items
 }
@@ -81,10 +72,9 @@ interface TranslateResult {
   bodyItems: TextItem[]
 }
 
-async function translateLocale(
+async function translateToLocale(
   anthropic: Anthropic,
   post: PostData,
-  localeKey: LocaleKey,
   lang: string,
 ): Promise<Record<string, unknown>> {
   const bodyItems = post.body ? extractTextItems(post.body) : []
@@ -128,7 +118,7 @@ ${JSON.stringify(payload, null, 2)}`,
 
   const raw = message.content[0].type === 'text' ? message.content[0].text : ''
   const jsonMatch = raw.match(/\{[\s\S]*\}/)
-  if (!jsonMatch) throw new Error(`No JSON found in Claude response for ${localeKey}`)
+  if (!jsonMatch) throw new Error(`No JSON found in Claude response`)
 
   const result = JSON.parse(jsonMatch[0]) as TranslateResult
 
@@ -150,79 +140,53 @@ ${JSON.stringify(payload, null, 2)}`,
 
 export async function POST(req: NextRequest) {
   try {
-  if (!isAuthorized(req)) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+    const body = await req.json().catch(() => null) as { postId?: string; locale?: string } | null
+    const postId = body?.postId
+    const locale = body?.locale
 
-  const body = await req.json().catch(() => null) as { postId?: string } | null
-  const postId = body?.postId
-  if (!postId) {
-    return NextResponse.json({ error: 'postId is required' }, { status: 400 })
-  }
+    if (!postId) return NextResponse.json({ error: 'postId is required' }, { status: 400 })
+    if (!locale) return NextResponse.json({ error: 'locale is required' }, { status: 400 })
 
-  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-  const dataset   = process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production'
-  const readToken = process.env.SANITY_API_READ_TOKEN
-  const writeToken = process.env.SANITY_API_WRITE_TOKEN
+    const lang = LOCALE_MAP[locale]
+    if (!lang) return NextResponse.json({ error: `Unsupported locale: ${locale}` }, { status: 400 })
 
-  if (!projectId)   return NextResponse.json({ error: 'NEXT_PUBLIC_SANITY_PROJECT_ID not set' }, { status: 500 })
-  if (!writeToken)  return NextResponse.json({ error: 'SANITY_API_WRITE_TOKEN not set' }, { status: 500 })
-  if (!process.env.ANTHROPIC_API_KEY) return NextResponse.json({ error: 'ANTHROPIC_API_KEY not set' }, { status: 500 })
+    const projectId  = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+    const dataset    = process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production'
+    const readToken  = process.env.SANITY_API_READ_TOKEN
+    const writeToken = process.env.SANITY_API_WRITE_TOKEN
 
-  const readClient = createClient({
-    projectId, dataset, apiVersion: '2025-05-14', useCdn: false,
-    ...(readToken ? { token: readToken } : {}),
-  })
+    if (!projectId)                    return NextResponse.json({ error: 'NEXT_PUBLIC_SANITY_PROJECT_ID not set' }, { status: 500 })
+    if (!writeToken)                   return NextResponse.json({ error: 'SANITY_API_WRITE_TOKEN not set' }, { status: 500 })
+    if (!process.env.ANTHROPIC_API_KEY) return NextResponse.json({ error: 'ANTHROPIC_API_KEY not set' }, { status: 500 })
 
-  // Strip drafts. prefix — always translate the published document
-  const baseId = postId.replace(/^drafts\./, '')
+    const readClient = createClient({
+      projectId, dataset, apiVersion: '2025-05-14', useCdn: false,
+      ...(readToken ? { token: readToken } : {}),
+    })
 
-  const post = await readClient.fetch<PostData | null>(
-    `*[_type == "post" && _id == $id && !(_id in path("drafts.**"))][0] {
-      title, excerpt, body, seoTitle, seoDescription
-    }`,
-    { id: baseId },
-  )
+    const baseId = postId.replace(/^drafts\./, '')
 
-  if (!post) {
-    return NextResponse.json({ error: 'Published post not found. Publish the post before translating.' }, { status: 404 })
-  }
+    const post = await readClient.fetch<PostData | null>(
+      `*[_type == "post" && _id == $id && !(_id in path("drafts.**"))][0] {
+        title, excerpt, body, seoTitle, seoDescription
+      }`,
+      { id: baseId },
+    )
 
-  const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-
-  // Translate all locales in parallel
-  const settled = await Promise.allSettled(
-    TRANSLATE_LOCALES.map(({ key, lang }) => translateLocale(anthropic, post, key, lang))
-  )
-
-  const translations: Record<string, unknown> = {}
-  const errors: string[] = []
-
-  TRANSLATE_LOCALES.forEach(({ key, lang }, i) => {
-    const r = settled[i]
-    if (r.status === 'fulfilled') {
-      translations[key] = r.value
-    } else {
-      errors.push(`${lang}: ${r.reason instanceof Error ? r.reason.message : String(r.reason)}`)
-      console.error(`[translate] ${lang} failed:`, r.reason)
+    if (!post) {
+      return NextResponse.json({ error: 'Published post not found. Publish the post before translating.' }, { status: 404 })
     }
-  })
 
-  if (Object.keys(translations).length === 0) {
-    return NextResponse.json({ error: 'All translations failed', details: errors }, { status: 500 })
-  }
+    const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+    const translation = await translateToLocale(anthropic, post, lang)
 
-  const writeClient = createClient({
-    projectId, dataset, apiVersion: '2025-05-14', useCdn: false, token: writeToken,
-  })
+    const writeClient = createClient({
+      projectId, dataset, apiVersion: '2025-05-14', useCdn: false, token: writeToken,
+    })
 
-  await writeClient.patch(baseId).set({ translations }).commit()
+    await writeClient.patch(baseId).set({ [`translations.${locale}`]: translation }).commit()
 
-  return NextResponse.json({
-    ok: true,
-    translated: Object.keys(translations),
-    ...(errors.length > 0 ? { errors } : {}),
-  })
+    return NextResponse.json({ ok: true, locale })
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err)
     console.error('[translate] Unhandled error:', err)
