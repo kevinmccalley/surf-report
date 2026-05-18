@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import type { NearbySpot } from '@/app/lib/types'
 import { computeSurfRating } from '@/app/lib/surf-rating'
+import { findCalibration, applyCalibration } from '@/app/lib/spot-calibration'
 import { getDirectionLabel, findCurrentHourIndex, estimateWaterTemp, omUrl } from '@/app/lib/utils'
 import STATIC_SPOTS from '@/app/lib/surf-spots.json'
 
@@ -185,7 +186,11 @@ async function fetchSpotConditions(
       waterTemp,
       airTemp,
       weatherCode,
-      rating:              computeSurfRating(waveHeight, wavePeriod, swellHeight, swellPeriod, windSpeed),
+      rating: (() => {
+        const raw = computeSurfRating(swellHeight, wavePeriod, swellHeight, swellPeriod, windSpeed)
+        const cal = findCalibration(spot.lat, spot.lon)
+        return cal ? applyCalibration(raw, swellHeight, swellPeriod, swellDir, cal) : raw
+      })(),
     }
   } catch {
     return null
