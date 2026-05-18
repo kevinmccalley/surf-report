@@ -28,7 +28,7 @@ interface Props {
 }
 
 export default function BlogPostContent({ post, coverSrc, avatarSrc }: Props) {
-  const { locale, bcp47 } = useLanguage()
+  const { locale, bcp47, t } = useLanguage()
 
   const key = translationKey(locale)
   const tx  = key ? post.translations?.[key] : undefined
@@ -148,20 +148,20 @@ export default function BlogPostContent({ post, coverSrc, avatarSrc }: Props) {
 
       {/* Email CTA */}
       <div className="mt-14 p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] text-center">
-        <p className="text-lg font-semibold text-[var(--color-text-primary)] mb-1">Get weekly swell alerts</p>
-        <p className="text-sm text-[var(--color-text-secondary)] mb-4">Subscribe for surf forecasts and new articles.</p>
+        <p className="text-lg font-semibold text-[var(--color-text-primary)] mb-1">{t('blog.emailCta.heading')}</p>
+        <p className="text-sm text-[var(--color-text-secondary)] mb-4">{t('blog.emailCta.body')}</p>
         <Link
           href="/"
           className="inline-block bg-sky-500 hover:bg-sky-400 text-white text-sm font-semibold px-6 py-2.5 rounded-lg transition-colors"
         >
-          Get started free →
+          {t('mktL.free.cta')} →
         </Link>
       </div>
 
       {/* Footer nav */}
       <div className="mt-10 pt-8 border-t border-[var(--color-border)]">
         <Link href="/blog" className="text-sm text-[var(--color-text-muted)] hover:text-sky-400 transition-colors">
-          ← Back to blog
+          {t('blog.backToBlog')}
         </Link>
       </div>
     </main>
