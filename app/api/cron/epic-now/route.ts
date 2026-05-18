@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { rset } from '@/app/lib/redis'
 import { computeSurfRating } from '@/app/lib/surf-rating'
+import { findCalibration, applyCalibration } from '@/app/lib/spot-calibration'
 import { getDirectionLabel, findCurrentHourIndex, omUrl } from '@/app/lib/utils'
 import type { EpicSpot, EpicNowData } from '@/app/lib/types'
 import NOTABLE_SPOTS from '@/app/lib/notable-spots.json'
@@ -21,12 +22,15 @@ function val(arr: unknown[] | undefined, i: number): number {
   return typeof v === 'number' && !isNaN(v) ? v : 0
 }
 
+const EXCLUDE_LABELS = new Set(['FLAT', 'POOR', 'POOR TO FAIR', 'FAIR'])
+
 async function checkSpot(spot: { name: string; lat: number; lon: number }): Promise<EpicSpot | null> {
   const base = `latitude=${spot.lat}&longitude=${spot.lon}`
-  const marineUrl =
-    `https://marine-api.open-meteo.com/v1/marine?${base}` +
+  const marineParams =
     `&hourly=wave_height,wave_period,swell_wave_height,swell_wave_direction,swell_wave_period` +
     `&timezone=auto&forecast_hours=4`
+  const marineUrl = `https://marine-api.open-meteo.com/v1/marine?${base}${marineParams}`
+  const ecmwfUrl  = `${marineUrl}&models=ecmwf_wam`
   const weatherUrl =
     `https://api.open-meteo.com/v1/forecast?${base}` +
     `&hourly=wind_speed_10m&timezone=auto&forecast_hours=4&wind_speed_unit=kmh`
@@ -36,35 +40,46 @@ async function checkSpot(spot: { name: string; lat: number; lon: number }): Prom
       fetch(omUrl(weatherUrl), { signal: AbortSignal.timeout(8000) }),
     ])
     if (!marineRes.ok || !weatherRes.ok) return null
-    const [marine, weather] = await Promise.all([marineRes.json(), weatherRes.json()])
-    if (marine.error) return null
+    const [marineRaw, weather] = await Promise.all([marineRes.json(), weatherRes.json()])
 
-    const utcOffset = (marine.utc_offset_seconds ?? weather.utc_offset_seconds) ?? 0
+    // ECMWF fallback when NEMO is land-masked
+    let marine = marineRaw
+    if (marine.error) {
+      const r = await fetch(omUrl(ecmwfUrl), { signal: AbortSignal.timeout(8000) }).catch(() => null)
+      if (!r?.ok) return null
+      const fb = await r.json().catch(() => null)
+      if (!fb || fb.error) return null
+      marine = fb
+    }
+
+    const utcOffset = ((marine.utc_offset_seconds ?? weather.utc_offset_seconds) as number) ?? 0
     const idx = findCurrentHourIndex(weather.hourly.time as string[], utcOffset)
     const mh = marine.hourly as Record<string, unknown[]>
     const wh = weather.hourly as Record<string, unknown[]>
 
-    const waveHeight  = val(mh.wave_height, idx)
-    const wavePeriod  = val(mh.wave_period, idx)
     const swellHeight = val(mh.swell_wave_height, idx)
     const swellPeriod = val(mh.swell_wave_period, idx)
     const swellDir    = val(mh.swell_wave_direction, idx)
+    const wavePeriod  = val(mh.wave_period, idx)
     const windSpeed   = val(wh.wind_speed_10m, idx)
 
-    const rating = computeSurfRating(waveHeight, wavePeriod, swellHeight, swellPeriod, windSpeed)
-    if (rating.label === 'FLAT' || rating.label === 'POOR') return null
+    const rawRating = computeSurfRating(swellHeight, wavePeriod, swellHeight, swellPeriod, windSpeed)
+    const cal = findCalibration(spot.lat, spot.lon)
+    const rating = cal ? applyCalibration(rawRating, swellHeight, swellPeriod, swellDir, cal) : rawRating
+
+    if (EXCLUDE_LABELS.has(rating.label)) return null
 
     return {
-      name:         spot.name,
-      lat:          spot.lat,
-      lon:          spot.lon,
-      waveHeight,
+      name:          spot.name,
+      lat:           spot.lat,
+      lon:           spot.lon,
+      waveHeight:    swellHeight,
       wavePeriod,
       swellDir,
       swellDirLabel: getDirectionLabel(swellDir),
       windSpeed,
-      score:        rating.score,
-      ratingLabel:  rating.label,
+      score:         rating.score,
+      ratingLabel:   rating.label,
     }
   } catch {
     return null
