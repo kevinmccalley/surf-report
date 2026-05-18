@@ -1,6 +1,7 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { schemaTypes } from './sanity/schemas'
+import { TranslatePostAction } from './sanity/actions/translatePost'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production'
@@ -35,5 +36,9 @@ export default defineConfig({
   ],
   schema: {
     types: schemaTypes,
+  },
+  document: {
+    actions: (prev, ctx) =>
+      ctx.schemaType === 'post' ? [...prev, TranslatePostAction] : prev,
   },
 })

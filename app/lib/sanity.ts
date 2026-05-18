@@ -23,6 +23,21 @@ export function urlFor(source: SanityImageSource) {
 
 // ── TypeScript interfaces ──────────────────────────────────────────────────
 
+export interface PostTranslation {
+  title?: string
+  excerpt?: string
+  body?: unknown[]
+  seoTitle?: string
+  seoDescription?: string
+}
+
+export interface PostTranslations {
+  es?: PostTranslation
+  fr?: PostTranslation
+  ptBR?: PostTranslation
+  ptPT?: PostTranslation
+}
+
 export interface SanityPost {
   _id: string
   _createdAt: string
@@ -48,6 +63,7 @@ export interface SanityPost {
   seoTitle?: string
   seoDescription?: string
   surfSpots?: string[]
+  translations?: PostTranslations
 }
 
 export interface SanityPostStub {
@@ -69,7 +85,13 @@ export const ALL_POSTS_QUERY = `
     _id, _createdAt, title, slug, excerpt, publishedAt, featured,
     coverImage { asset, alt, caption },
     author->{ name, slug, role, avatar { asset, alt } },
-    categories[]->{ title, slug }
+    categories[]->{ title, slug },
+    translations {
+      es { title, excerpt },
+      fr { title, excerpt },
+      ptBR { title, excerpt },
+      ptPT { title, excerpt }
+    }
   }
 `
 
@@ -81,7 +103,13 @@ export const POST_BY_SLUG_QUERY = `
     categories[]->{ title, slug },
     body,
     seoTitle, seoDescription,
-    surfSpots
+    surfSpots,
+    translations {
+      es { title, excerpt, body, seoTitle, seoDescription },
+      fr { title, excerpt, body, seoTitle, seoDescription },
+      ptBR { title, excerpt, body, seoTitle, seoDescription },
+      ptPT { title, excerpt, body, seoTitle, seoDescription }
+    }
   }
 `
 

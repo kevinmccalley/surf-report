@@ -121,6 +121,20 @@ export default defineType({
       description: 'Set a future date to schedule the post. Leave blank to keep as draft.',
     }),
     defineField({
+      name: 'translations',
+      title: 'Translations',
+      type: 'object',
+      group: 'settings',
+      description: 'Auto-generated. Use the "Translate to all languages" action — do not edit manually.',
+      options: { collapsible: true, collapsed: true },
+      fields: [
+        defineField({ name: 'es',   title: 'Español',           type: 'postTranslationContent' }),
+        defineField({ name: 'fr',   title: 'Français',          type: 'postTranslationContent' }),
+        defineField({ name: 'ptBR', title: 'Português (Brasil)', type: 'postTranslationContent' }),
+        defineField({ name: 'ptPT', title: 'Português (PT)',     type: 'postTranslationContent' }),
+      ],
+    }),
+    defineField({
       name: 'featured',
       title: 'Featured post',
       type: 'boolean',
