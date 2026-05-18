@@ -61,8 +61,23 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     try {
+      // Explicit user choice always wins
       const stored = localStorage.getItem(STORAGE_KEY) as Locale | null
-      if (stored && stored in loaders) loadLocale(stored)
+      if (stored && stored in loaders) { loadLocale(stored); return }
+
+      // First-time visitor — match browser language to a supported locale
+      const langs = Array.from(navigator.languages ?? [navigator.language])
+      for (const lang of langs) {
+        const l = lang.toLowerCase()
+        const detected: Locale | null =
+          l === 'pt-br' || l.startsWith('pt-b') ? 'pt-BR' :
+          l === 'pt-pt'                          ? 'pt-PT' :
+          l.startsWith('pt')                     ? 'pt-BR' :
+          l.startsWith('es')                     ? 'es'    :
+          l.startsWith('fr')                     ? 'fr'    :
+          null
+        if (detected) { loadLocale(detected); return }
+      }
     } catch {}
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
