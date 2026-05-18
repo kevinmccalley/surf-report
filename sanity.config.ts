@@ -38,7 +38,6 @@ export default defineConfig({
     types: schemaTypes,
   },
   document: {
-    actions: (prev, ctx) =>
-      ctx.schemaType === 'post' ? [...prev, TranslatePostAction] : prev,
+    actions: (prev) => [...prev, TranslatePostAction],
   },
 })
