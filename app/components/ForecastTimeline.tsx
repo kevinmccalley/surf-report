@@ -152,8 +152,8 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
 
   // ── Pill geometry ───────────────────────────────────────────────
   const pillW    = visibleWidth > 0
-    ? Math.max(240, Math.round((visibleWidth / Math.max(totalW, 1)) * visibleWidth))
-    : 240
+    ? Math.max(320, Math.round((visibleWidth / Math.max(totalW, 1)) * visibleWidth))
+    : 320
   const maxSl    = Math.max(0, totalW - visibleWidth)
   const trackUse = Math.max(0, visibleWidth - pillW)
   const pillL    = maxSl > 0 ? Math.round((scrollLeft / maxSl) * trackUse) : 0
@@ -325,6 +325,16 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
                     <span className="text-[12px] font-semibold shrink-0" style={{ color: 'var(--text-base)' }}>
                       {formatWaveHeight(activeHour.waveHeight, units.height)}
                     </span>
+                    {activeHour.swellHeight > 0 && (
+                      <>
+                        <span className="shrink-0 text-[10px]" style={{ color: 'var(--panel-muted)', opacity: 0.5 }}>|</span>
+                        <span className="flex items-center gap-0.5 text-[10px] shrink-0" style={{ color: 'var(--panel-muted)' }}>
+                          <SmallSwellIcon />
+                          {t('dir.' + getDirectionLabel(activeHour.swellDirection))}
+                          {activeHour.swellPeriod > 0 && ` ${Math.round(activeHour.swellPeriod)}s`}
+                        </span>
+                      </>
+                    )}
                     {activeTide !== undefined && (
                       <>
                         <span className="shrink-0 text-[10px]" style={{ color: 'var(--panel-muted)', opacity: 0.5 }}>|</span>
