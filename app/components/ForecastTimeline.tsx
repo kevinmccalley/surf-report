@@ -251,7 +251,11 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
       <div className="flex" style={{ gap: 6 }}>
 
         {/* ── Icon column (fixed, not scrolled) ─────────── */}
-        <div className="shrink-0 flex flex-col" style={{ width: ICON_W, marginTop: topOffset }}>
+        {/* align-self: flex-start prevents the outer row from stretching this
+            column to the scroll column's full height, which was causing the
+            grid centering to fail. A spacer replaces the old marginTop. */}
+        <div className="shrink-0 flex flex-col" style={{ width: ICON_W, alignSelf: 'flex-start' }}>
+          <div style={{ height: topOffset }} />
           <div style={{ height: WAVE_H, display: 'grid', placeItems: 'center' }} className="text-slate-500">
             <WaveRowIcon />
           </div>
