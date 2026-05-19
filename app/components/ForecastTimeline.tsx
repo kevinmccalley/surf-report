@@ -187,6 +187,9 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
   const { hour: vpHour, day: vpDay } = getViewportInfo()
   const activeHour = hoveredBar?.hour ?? vpHour
   const activeDay  = hoveredBar ? (days[hoveredBar.di] ?? null) : vpDay
+  const activeTide = (showTide && tideByKey && activeHour)
+    ? tideByKey.get(tideKey(activeHour.time))
+    : undefined
 
   if (!days.length) return null
 
@@ -237,7 +240,7 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
       <div className="flex" style={{ gap: 6 }}>
 
         {/* ── Icon column (fixed, not scrolled) ─────────── */}
-        <div className="shrink-0 flex flex-col items-center" style={{ width: ICON_W, marginTop: topOffset }}>
+        <div className="shrink-0 flex flex-col" style={{ width: ICON_W, marginTop: topOffset }}>
           <div style={{ height: WAVE_H }} className="flex items-center justify-center text-slate-500">
             <WaveRowIcon />
           </div>
@@ -282,30 +285,24 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
             <div className="my-1.5" style={{ position: 'relative', height: 36 }}>
 
               {/* Groove */}
-              <div className="absolute inset-0 rounded-full bg-white/[0.03] border border-white/[0.06]" />
+              <div className="absolute inset-0 rounded-full timeline-groove" />
 
               {/* Draggable pill */}
               <div
-                className="absolute top-0 bottom-0 rounded-full flex items-center overflow-hidden
-                           border border-white/[0.18]
+                className="timeline-pill absolute top-0 bottom-0 rounded-full flex items-center overflow-hidden
                            cursor-grab active:cursor-grabbing select-none"
-                style={{
-                  left: pillL,
-                  width: pillW,
-                  background: 'linear-gradient(180deg, rgba(71,85,105,0.80) 0%, rgba(51,65,85,0.85) 100%)',
-                  boxShadow: '0 2px 12px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.06) inset',
-                }}
+                style={{ left: pillL, width: pillW }}
                 onMouseDown={startDrag}
               >
                 {/* Left chevron */}
-                <span className="shrink-0 flex items-center pl-2.5 text-slate-400">
+                <span className="shrink-0 flex items-center pl-2.5" style={{ color: 'var(--panel-label)' }}>
                   <ChevronLeft />
                 </span>
 
                 {/* Info */}
                 {activeHour && activeDay ? (
                   <div className="flex-1 flex items-center gap-1.5 px-1 whitespace-nowrap overflow-hidden min-w-0">
-                    <span className="text-[9px] text-slate-400 tabular-nums shrink-0">
+                    <span className="text-[9px] tabular-nums shrink-0" style={{ color: 'var(--panel-label)' }}>
                       {shortDayLabel(activeDay, locale, t)} · {hourLabel(activeHour.time)}
                     </span>
                     {activeDay.hasMarineData && (
@@ -314,37 +311,46 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
                         {t(RATING_KEY[activeDay.rating.label] ?? 'rating.FLAT')}
                       </span>
                     )}
-                    <span className="text-[10px] font-semibold text-slate-200 shrink-0">
+                    <span className="text-[10px] font-semibold shrink-0" style={{ color: 'var(--text-base)' }}>
                       {formatWaveHeight(activeHour.waveHeight, units.height)}
                     </span>
                     {activeHour.swellHeight > 0 && (
                       <>
-                        <span className="text-white/20 shrink-0 text-[9px]">|</span>
-                        <span className="flex items-center gap-0.5 text-[9px] text-slate-500 shrink-0">
+                        <span className="shrink-0 text-[9px]" style={{ color: 'var(--panel-muted)', opacity: 0.5 }}>|</span>
+                        <span className="flex items-center gap-0.5 text-[9px] shrink-0" style={{ color: 'var(--panel-muted)' }}>
                           <SmallSwellIcon />
                           {t('dir.' + getDirectionLabel(activeHour.swellDirection))}
                           {activeHour.swellPeriod > 0 && ` ${Math.round(activeHour.swellPeriod)}s`}
                         </span>
                       </>
                     )}
-                    <span className="text-white/20 shrink-0 text-[9px]">|</span>
-                    <span className="flex items-center gap-0.5 text-[9px] text-slate-500 shrink-0">
+                    <span className="shrink-0 text-[9px]" style={{ color: 'var(--panel-muted)', opacity: 0.5 }}>|</span>
+                    <span className="flex items-center gap-0.5 text-[9px] shrink-0" style={{ color: 'var(--panel-muted)' }}>
                       <SmallWindIcon />
                       {t('dir.' + getDirectionLabel(activeHour.windDirection))}
                       {' '}{Math.round(activeHour.windSpeed)} km/h
                     </span>
+                    {activeTide !== undefined && (
+                      <>
+                        <span className="shrink-0 text-[9px]" style={{ color: 'var(--panel-muted)', opacity: 0.5 }}>|</span>
+                        <span className="flex items-center gap-0.5 text-[9px] shrink-0" style={{ color: 'var(--panel-muted)' }}>
+                          <SmallTideIcon />
+                          {formatWaveHeight(activeTide, units.height)}
+                        </span>
+                      </>
+                    )}
                   </div>
                 ) : (
                   // Grip pattern when too narrow for text
                   <div className="flex-1 flex items-center justify-center gap-0.5">
                     {[0, 1, 2].map(i => (
-                      <div key={i} className="w-0.5 h-3.5 rounded-full bg-white/20" />
+                      <div key={i} className="w-0.5 h-3.5 rounded-full timeline-grip" />
                     ))}
                   </div>
                 )}
 
                 {/* Right chevron */}
-                <span className="shrink-0 flex items-center pr-2.5 text-slate-400">
+                <span className="shrink-0 flex items-center pr-2.5" style={{ color: 'var(--panel-label)' }}>
                   <ChevronRight />
                 </span>
               </div>
@@ -499,6 +505,17 @@ function SmallWindIcon() {
     <svg width="10" height="9" viewBox="0 0 11 10" fill="none" aria-hidden>
       <path d="M1 2.5h6.5a1.25 1.25 0 0 1 0 2.5H1" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
       <path d="M1 6.5h4a1 1 0 0 1 0 2H1"           stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+    </svg>
+  )
+}
+
+function SmallTideIcon() {
+  return (
+    <svg width="9" height="9" viewBox="0 0 14 14" fill="none" aria-hidden>
+      <path d="M1 9.5 C2.5 7.5, 4 7.5, 5.5 9.5 C7 11.5, 8.5 11.5, 10 9.5 C11 8, 12 8, 13 9.5"
+            stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M7 7V1.5M7 1.5L5 3.5M7 1.5L9 3.5"
+            stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
