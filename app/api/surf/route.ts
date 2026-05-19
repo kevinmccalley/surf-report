@@ -254,10 +254,10 @@ function buildReport(
     rating,
   }
 
-  // 48-hour hourly data for chart
+  // Hourly data covering the full forecast window (used by WaveChart and Timeline)
   const hourly: HourlyForecast[] = []
   const marineIdx = findCurrentHourIndex(mTimes, utcOffset)
-  for (let i = currentIdx; i < Math.min(currentIdx + 48, wTimes.length); i++) {
+  for (let i = currentIdx; i < wTimes.length; i++) {
     const mi = marineIdx + (i - currentIdx)
     hourly.push({
       time: wTimes[i],

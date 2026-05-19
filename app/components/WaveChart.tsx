@@ -45,8 +45,9 @@ function toDisplay(meters: number, unit: 'ft' | 'm'): number {
   return Math.round(meters * 10) / 10
 }
 
-export default function WaveChart({ hourly, heightUnit, tideHeights }: Props) {
+export default function WaveChart({ hourly: hourlyAll, heightUnit, tideHeights }: Props) {
   const { t } = useLanguage()
+  const hourly = hourlyAll.slice(0, 48)  // chart stays as a tight 48-h view
   const hasTide = tideHeights && tideHeights.length > 0
   const [showWave, setShowWave]   = useState(true)
   const [showWind, setShowWind]   = useState(true)
