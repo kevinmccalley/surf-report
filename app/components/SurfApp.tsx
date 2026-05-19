@@ -516,6 +516,8 @@ export default function SurfApp({ tier }: { tier: Tier }) {
                 hourly={report.hourly}
                 units={units}
                 tideHourly={tideData?.available ? (tideData as import('@/app/lib/types').TideReport).hourly : undefined}
+                tier={tier}
+                onUpgrade={() => setShowPaywall(true)}
               />
             )}
 

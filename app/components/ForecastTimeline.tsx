@@ -6,11 +6,15 @@ import { formatWaveHeight, getDirectionLabel } from '@/app/lib/utils'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 import type { TFn } from '@/app/i18n/LanguageContext'
 
+type Tier = 'free' | 'individual' | 'premium'
+
 interface Props {
   forecast:    DayForecast[]
   hourly:      HourlyForecast[]
   units:       { temp: 'c' | 'f'; height: 'ft' | 'm' }
   tideHourly?: { time: string; height: number }[]
+  tier?:       Tier
+  onUpgrade?:  () => void
 }
 
 const HOUR_W = 12
@@ -68,7 +72,7 @@ function tideKey(time: string): string {
   return m ? `${m[1]}|${m[2]}` : time
 }
 
-export default function ForecastTimeline({ forecast, hourly, units, tideHourly }: Props) {
+export default function ForecastTimeline({ forecast, hourly, units, tideHourly, tier = 'premium', onUpgrade }: Props) {
   const { t, locale } = useLanguage()
 
   const topRef     = useRef<HTMLDivElement>(null)   // day-label scroll pane
@@ -108,10 +112,20 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
     return map
   }, [tideHourly])
 
-  const days    = forecast.filter(d => hourlyByDay.has(d.date))
-  const totalW  = days.length * DAY_W
-  const maxWave = Math.max(...hourly.map(h => h.waveHeight), 0.5)
-  const maxWind = Math.max(...hourly.map(h => h.windSpeed),  1)
+  const allDays = forecast.filter(d => hourlyByDay.has(d.date))
+
+  // Tier gating: slice visible days and show an upgrade teaser after them
+  const visibleDayLimit = tier === 'premium' ? Infinity : tier === 'individual' ? 10 : 3
+  const days      = allDays.slice(0, visibleDayLimit)
+  const hasTeaser = tier !== 'premium' && allDays.length > days.length
+  const teaserMsg = tier === 'free'
+    ? 'timeline.gateIndividual'
+    : 'timeline.gatePremium'
+  const teaserW   = hasTeaser ? DAY_W : 0
+  const totalW    = days.length * DAY_W + teaserW
+  const visibleHourly = hourly.filter(h => days.some(d => d.date === h.time.slice(0, 10)))
+  const maxWave = Math.max(...visibleHourly.map(h => h.waveHeight), 0.5)
+  const maxWind = Math.max(...visibleHourly.map(h => h.windSpeed),  1)
 
   const tideVals  = tideHourly?.map(t => t.height) ?? []
   const tideMin   = tideVals.length ? Math.min(...tideVals) : 0
@@ -230,7 +244,7 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
     return tideByKey.get(`${date}|${hour}`)
   })() : undefined
 
-  if (!days.length) return null
+  if (!allDays.length) return null
 
   // ── Bar renderer (reused for wave / wind / tide) ─────────────
   const barRow = (
@@ -368,6 +382,12 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
                     <p className="text-[9px] text-slate-600 leading-tight">{shortDate(day.date)}</p>
                   </div>
                 ))}
+                {hasTeaser && (
+                  <div style={{ width: teaserW }}
+                       className="flex-shrink-0 pl-1 pb-1">
+                    <p className="text-[10px] font-semibold leading-tight text-teal-400/60 truncate">···</p>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -454,7 +474,7 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
                className="overflow-x-auto"
                style={{ scrollbarWidth: 'none' }}
                onScroll={() => handlePaneScroll('bot')}>
-            <div style={{ minWidth: totalW }}>
+            <div style={{ minWidth: totalW, position: 'relative' }}>
 
               {/* Wave bars */}
               {barRow(
@@ -534,7 +554,46 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
                     ))}
                   </div>
                 ))}
+                {hasTeaser && <div style={{ width: teaserW, height: TICK_H }} className="flex-shrink-0" />}
               </div>
+
+              {/* Upgrade teaser overlay */}
+              {hasTeaser && (
+                <button
+                  onClick={onUpgrade}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: days.length * DAY_W,
+                    width: teaserW,
+                    bottom: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 6,
+                    cursor: onUpgrade ? 'pointer' : 'default',
+                    borderLeft: '1px dashed rgba(20,184,166,0.3)',
+                    background: 'linear-gradient(to right, rgba(20,184,166,0.04), rgba(20,184,166,0.10))',
+                  }}
+                  className="group"
+                  aria-label={t(teaserMsg)}
+                >
+                  <LockIcon />
+                  <span style={{
+                    fontSize: 9,
+                    fontWeight: 600,
+                    color: 'rgba(94,234,212,0.75)',
+                    textAlign: 'center',
+                    lineHeight: 1.35,
+                    padding: '0 6px',
+                    whiteSpace: 'pre-wrap',
+                    maxWidth: teaserW - 8,
+                  }}>
+                    {t(teaserMsg)}
+                  </span>
+                </button>
+              )}
 
             </div>
           </div>
@@ -610,6 +669,16 @@ function SmallWindIcon() {
     <svg width="10" height="9" viewBox="0 0 11 10" fill="none" aria-hidden>
       <path d="M1 2.5h6.5a1.25 1.25 0 0 1 0 2.5H1" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
       <path d="M1 6.5h4a1 1 0 0 1 0 2H1"           stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+    </svg>
+  )
+}
+
+function LockIcon() {
+  return (
+    <svg width="14" height="16" viewBox="0 0 14 16" fill="none" aria-hidden style={{ color: 'rgba(94,234,212,0.6)' }}>
+      <rect x="2" y="7" width="10" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.4"/>
+      <path d="M4.5 7V5.5a2.5 2.5 0 0 1 5 0V7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+      <circle cx="7" cy="11" r="1" fill="currentColor"/>
     </svg>
   )
 }

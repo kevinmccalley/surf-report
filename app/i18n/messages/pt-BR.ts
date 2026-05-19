@@ -114,6 +114,8 @@ const ptBR: Record<string, string> = {
   'app.hourlyWave': 'Condições horárias das ondas',
   'app.48hOutlook': 'Previsão de ondas 48 horas',
   'timeline.title': 'Linha do Tempo',
+  'timeline.gateIndividual': 'Assine o Individual para desbloquear previsões de 10 dias',
+  'timeline.gatePremium': 'Assine o Premium para desbloquear previsões de 15 dias',
   'app.daySummary': 'Resumo do dia',
   'app.10dayForecast': 'Previsão de 10 dias',
   'app.16dayForecast': 'Previsão de 15 dias',

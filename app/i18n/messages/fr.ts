@@ -114,6 +114,8 @@ const fr: Record<string, string> = {
   'app.hourlyWave': 'Conditions horaires des vagues',
   'app.48hOutlook': 'Prévisions de vagues 48 heures',
   'timeline.title': 'Chronologie',
+  'timeline.gateIndividual': 'Passez à Individual pour accéder aux prévisions sur 10 jours',
+  'timeline.gatePremium': 'Passez à Premium pour accéder aux prévisions sur 15 jours',
   'app.daySummary': 'Résumé du jour',
   'app.10dayForecast': 'Prévisions sur 10 jours',
   'app.16dayForecast': 'Prévisions sur 15 jours',

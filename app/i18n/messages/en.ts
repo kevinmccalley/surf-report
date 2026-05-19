@@ -114,6 +114,8 @@ const en: Record<string, string> = {
   'app.hourlyWave': 'Hourly Wave Conditions',
   'app.48hOutlook': '48-Hour Wave Outlook',
   'timeline.title': 'Timeline',
+  'timeline.gateIndividual': 'Upgrade to Individual to unlock 10-day forecasts',
+  'timeline.gatePremium': 'Upgrade to Premium to unlock 15-day forecasts',
   'app.daySummary': 'Day Summary',
   'app.10dayForecast': '10-Day Forecast',
   'app.16dayForecast': '15-Day Forecast',
