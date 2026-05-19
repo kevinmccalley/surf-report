@@ -35,14 +35,16 @@ export async function GET(request: NextRequest) {
   const forecastDays = tier === 'premium' ? PREMIUM_FORECAST_DAYS : tier === 'individual' ? 10 : FREE_FORECAST_DAYS
 
   const apiForecastDays = Math.min(forecastDays, 16)
-  const isPremiumExtended = forecastDays >= 15
+  // Fetch extended marine data for any tier that needs more than NEMO's ~8-day range
+  const isPremiumExtended = forecastDays > 8
 
   const marineUrl =
     `https://marine-api.open-meteo.com/v1/marine` +
     `?latitude=${lat}&longitude=${lon}` +
     `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,sea_surface_temperature` +
     `&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max` +
-    `&timezone=auto&forecast_days=${apiForecastDays}`
+    `&timezone=auto&forecast_days=${apiForecastDays}` +
+    (forecastDays > 8 ? '&models=best_match' : '')
 
   const weatherUrl =
     `https://api.open-meteo.com/v1/forecast` +
@@ -57,7 +59,7 @@ export async function GET(request: NextRequest) {
       `?latitude=${lat}&longitude=${lon}` +
       `&hourly=wave_height,wave_direction,wave_period,wind_wave_height,wind_wave_direction,wind_wave_period,swell_wave_height,swell_wave_direction,swell_wave_period` +
       `&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max` +
-      `&timezone=auto&forecast_days=${apiForecastDays}&models=ecmwf_wam`
+      `&timezone=auto&forecast_days=${apiForecastDays}&models=best_match`
 
     const [marineRes, weatherRes, gfsMarineRes] = await Promise.all([
       fetch(omUrl(marineUrl), { next: { revalidate: 1800 } }),
@@ -71,8 +73,8 @@ export async function GET(request: NextRequest) {
       gfsMarineRes ? gfsMarineRes.json() : Promise.resolve(null),
     ])
 
-    // If the primary NEMO model has no valid wave heights (land-mask or model gap),
-    // fetch the ECMWF model as a fallback — unless we already have it from above.
+    // If the primary marine model has no valid wave heights (land-mask or model gap),
+    // fetch the best_match model as a fallback — unless we already have it from above.
     const nemoHasWaves = !marine.error &&
       ((marine.hourly as Record<string, unknown[]>)?.wave_height ?? [])
         .some(v => typeof v === 'number' && !isNaN(v))
