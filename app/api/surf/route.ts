@@ -12,7 +12,7 @@ import {
 import { getSubscriptionTier } from '@/app/lib/subscription'
 
 const FREE_FORECAST_DAYS = 3
-const PREMIUM_FORECAST_DAYS = 14
+const PREMIUM_FORECAST_DAYS = 15
 
 export async function GET(request: NextRequest) {
   const sp = request.nextUrl.searchParams
@@ -60,16 +60,26 @@ export async function GET(request: NextRequest) {
       `&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max` +
       `&timezone=auto&forecast_days=${apiForecastDays}&models=ecmwf_wam`
 
-    const [marineRes, weatherRes, gfsMarineRes] = await Promise.all([
+    // ncep_gfswave025 covers 15 days where ecmwf_wam stops at 14; used only as a
+    // day-15 gap-filler since GFS has coverage gaps at some coastal locations.
+    const ncepMarineUrl =
+      `https://marine-api.open-meteo.com/v1/marine` +
+      `?latitude=${lat}&longitude=${lon}` +
+      `&daily=wave_height_max,wave_direction_dominant,wave_period_max` +
+      `&timezone=auto&forecast_days=${apiForecastDays}&models=ncep_gfswave025`
+
+    const [marineRes, weatherRes, gfsMarineRes, ncepMarineRes] = await Promise.all([
       fetch(omUrl(marineUrl), { next: { revalidate: 1800 } }),
       fetch(omUrl(weatherUrl), { next: { revalidate: 1800 } }),
       isPremiumExtended ? fetch(omUrl(gfsMarineUrl), { next: { revalidate: 1800 } }) : Promise.resolve(null),
+      forecastDays >= 15 ? fetch(omUrl(ncepMarineUrl), { next: { revalidate: 1800 } }) : Promise.resolve(null),
     ])
 
-    const [marine, weather, gfsMarineRaw] = await Promise.all([
+    const [marine, weather, gfsMarineRaw, ncepMarineRaw] = await Promise.all([
       marineRes.json(),
       weatherRes.json(),
       gfsMarineRes ? gfsMarineRes.json() : Promise.resolve(null),
+      ncepMarineRes ? ncepMarineRes.json() : Promise.resolve(null),
     ])
 
     // If the primary marine model has no valid wave heights (land-mask or model gap),
@@ -84,7 +94,27 @@ export async function GET(request: NextRequest) {
     }
     const gfsMarine = (() => {
       const raw = gfsMarineRaw ?? gfsFallbackRaw
-      return raw && !(raw as Record<string, unknown>).error ? raw : null
+      const base = raw && !(raw as Record<string, unknown>).error ? raw : null
+      // Patch nulls in ecmwf_wam daily arrays with ncep_gfswave025 values (fills day 15)
+      if (base && ncepMarineRaw && !(ncepMarineRaw as Record<string, unknown>).error) {
+        const bd = (base.daily ?? {}) as Record<string, unknown[]>
+        const nd = ((ncepMarineRaw as Record<string, unknown>).daily ?? {}) as Record<string, unknown[]>
+        const patched: Record<string, unknown[]> = {}
+        const allKeys = new Set([...Object.keys(bd), ...Object.keys(nd)])
+        for (const key of allKeys) {
+          const bArr = bd[key] ?? []
+          const nArr = nd[key] ?? []
+          const len = Math.max(bArr.length, nArr.length)
+          patched[key] = Array.from({ length: len }, (_, i) => {
+            const b = bArr[i]
+            if (typeof b === 'number' && !isNaN(b)) return b
+            const n = nArr[i]
+            return typeof n === 'number' && !isNaN(n) ? n : null
+          })
+        }
+        return { ...base, daily: patched }
+      }
+      return base
     })()
 
     // When NEMO is land-masked, promote the ECMWF fallback to primary so all
