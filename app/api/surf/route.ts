@@ -256,6 +256,12 @@ function buildReport(
   const dailyTimes = (wd.time ?? []) as string[]
   const forecast: DayForecast[] = dailyTimes.slice(0, maxDays).map((date: string, i: number) => {
     // Use swell max (not total Hs) so daily cards reflect rideable surf, not wind chop
+    const primaryVal = md.swell_wave_height_max?.[i]
+    const fallbackVal = gfsMd.swell_wave_height_max?.[i]
+    const hasMarineData = isCoastal && (
+      (typeof primaryVal === 'number' && !isNaN(primaryVal)) ||
+      (typeof fallbackVal === 'number' && !isNaN(fallbackVal))
+    )
     const wvMax = isCoastal ? blendVal(md.swell_wave_height_max, gfsMd.swell_wave_height_max, i) : 0
     const swMax = wvMax
     const swPer = isCoastal ? blendVal(md.swell_wave_period_max, gfsMd.swell_wave_period_max, i) : 0
@@ -288,6 +294,7 @@ function buildReport(
       uvIndexMax: val(wd.uv_index_max, i),
       precipProbabilityMax: val(wd.precipitation_probability_max, i),
       rating: dayRating,
+      hasMarineData,
     }
   })
 

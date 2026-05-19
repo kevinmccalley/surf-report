@@ -33,7 +33,7 @@ function localDayName(day: DayForecast, locale: string, t: TFn): string {
 }
 
 function generateDaySummary(day: DayForecast, isCoastal: boolean, units: Props['units'], t: TFn): string {
-  if (!isCoastal) {
+  if (!isCoastal || !day.hasMarineData) {
     const hi     = formatTemp(day.tempMax, units.temp)
     const lo     = formatTemp(day.tempMin, units.temp)
     const wind   = Math.round(day.windSpeedMax)
@@ -191,7 +191,7 @@ function ForecastCard({ day, units, isCoastal, isSelected, onHover, onSelect, di
         <WeatherIcon code={day.weatherCode} size={22} />
       </div>
 
-      {isCoastal && (
+      {isCoastal && day.hasMarineData && (
         <div
           className="text-center text-xs font-bold py-0.5 rounded-md"
           style={{ backgroundColor: rating.bgColor, color: rating.textColor }}
@@ -208,13 +208,13 @@ function ForecastCard({ day, units, isCoastal, isSelected, onHover, onSelect, di
         </div>
       )}
 
-      {isCoastal && (
+      {isCoastal && day.hasMarineData && (
         <p className="text-xs font-semibold text-white text-center">
           {formatWaveRange(day.waveHeightMin, day.waveHeightMax, units.height)}
         </p>
       )}
 
-      {isCoastal && (
+      {isCoastal && day.hasMarineData && (
         <div className="flex items-center gap-1 text-xs text-sky-400/80">
           <SwellIcon />
           <span className="font-medium">{t('dir.' + day.swellDirectionLabel)}</span>

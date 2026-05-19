@@ -87,6 +87,7 @@ export interface DayForecast {
   uvIndexMax: number
   precipProbabilityMax: number
   rating: SurfRating
+  hasMarineData: boolean
 }
 
 export interface SurfLocation {
