@@ -113,6 +113,7 @@ const fr: Record<string, string> = {
   'app.tryAgain': 'Réessayer',
   'app.hourlyWave': 'Conditions horaires des vagues',
   'app.48hOutlook': 'Prévisions de vagues 48 heures',
+  'timeline.title': 'Chronologie',
   'app.daySummary': 'Résumé du jour',
   'app.10dayForecast': 'Prévisions sur 10 jours',
   'app.16dayForecast': 'Prévisions sur 15 jours',

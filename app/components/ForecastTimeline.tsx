@@ -1,17 +1,20 @@
 'use client'
 
-import { useState } from 'react'
-import type { DayForecast } from '@/app/lib/types'
-import { formatWaveRange } from '@/app/lib/utils'
+import { useState, useMemo } from 'react'
+import type { DayForecast, HourlyForecast } from '@/app/lib/types'
+import { formatWaveHeight, getDirectionLabel } from '@/app/lib/utils'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 import type { TFn } from '@/app/i18n/LanguageContext'
 
 interface Props {
   forecast: DayForecast[]
+  hourly:   HourlyForecast[]
   units: { temp: 'c' | 'f'; height: 'ft' | 'm' }
 }
 
-const COL_W = 60
+const HOUR_W = 12            // px per hour column
+const DAY_W  = HOUR_W * 24  // 288px per day — 4 days ≈ 1152px (fits wide screen)
+const BAR_H  = 60            // max bar height in px
 
 const RATING_KEY: Record<string, string> = {
   'FLAT':         'rating.FLAT',
@@ -23,6 +26,8 @@ const RATING_KEY: Record<string, string> = {
   'VERY GOOD':    'rating.VERY_GOOD',
   'EPIC':         'rating.EPIC',
 }
+
+const TICK_LABELS: Record<number, string> = { 0: '12a', 6: '6a', 12: '12p', 18: '6p' }
 
 function shortDayLabel(day: DayForecast, locale: string, t: TFn): string {
   if (day.dayName === 'Today')    return t('day.today')
@@ -36,150 +41,212 @@ function shortDate(date: string): string {
   return `${parseInt(d)}/${parseInt(m)}`
 }
 
-export default function ForecastTimeline({ forecast, units }: Props) {
+function hourLabel(timeStr: string): string {
+  const h = parseInt(timeStr.slice(11, 13), 10)
+  if (h === 0)  return '12am'
+  if (h < 12)  return `${h}am`
+  if (h === 12) return '12pm'
+  return `${h - 12}pm`
+}
+
+export default function ForecastTimeline({ forecast, hourly, units }: Props) {
   const { t, locale } = useLanguage()
-  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null)
+  const [hovered, setHovered] = useState<{ di: number; hour: HourlyForecast } | null>(null)
 
-  if (forecast.length === 0) return null
+  // Slot each hourly entry into a [date → array of 24] map by hour-of-day index
+  const hourlyByDay = useMemo(() => {
+    const map = new Map<string, (HourlyForecast | null)[]>()
+    for (const h of hourly) {
+      const date = h.time.slice(0, 10)
+      if (!map.has(date)) map.set(date, Array(24).fill(null))
+      const hi = parseInt(h.time.slice(11, 13), 10)
+      if (hi >= 0 && hi < 24) map.get(date)![hi] = h
+    }
+    return map
+  }, [hourly])
 
-  const activeIdx = hoveredIdx ?? 0
-  const active    = forecast[activeIdx]
-  const marineMax = Math.max(...forecast.map(d => d.hasMarineData ? d.waveHeightMax : 0), 0.5)
+  // Only show forecast days for which we have hourly data
+  const days = forecast.filter(d => hourlyByDay.has(d.date))
+  if (days.length === 0) return null
+
+  const maxWave = Math.max(...hourly.map(h => h.waveHeight), 0.5)
+
+  // Default active state: noon of first day (or first available hour)
+  const defaultDayHours = hourlyByDay.get(days[0].date) ?? []
+  const defaultHour = defaultDayHours[12] ?? defaultDayHours.find(h => h !== null) ?? null
+
+  const activeDi   = hovered?.di   ?? 0
+  const activeHour = hovered?.hour ?? defaultHour
+  const activeDay  = days[activeDi]
 
   return (
-    <div className="mb-5">
+    <section className="glass-card rounded-2xl p-4 sm:p-6">
+      <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
+        {t('timeline.title')}
+      </h2>
 
-      {/* ── Scrollable rows ──────────────────────────────────────── */}
       <div className="overflow-x-auto forecast-scroll -mx-2 px-2 pb-1">
-        <div style={{ minWidth: forecast.length * COL_W }}>
+        <div style={{ minWidth: days.length * DAY_W }}>
 
-          {/* Row 1: day labels */}
+          {/* Row 1 — Day headers */}
           <div className="flex mb-1">
-            {forecast.map((day, i) => {
-              const isToday  = day.dayName === 'Today'
-              const isActive = i === activeIdx
+            {days.map(day => (
+              <div
+                key={day.date}
+                style={{ width: DAY_W }}
+                className="flex-shrink-0 border-r border-white/5 last:border-r-0 pl-1"
+              >
+                <p className={`text-[10px] font-semibold leading-tight truncate ${
+                  day.dayName === 'Today' ? 'text-sky-400' : 'text-slate-400'
+                }`}>
+                  {shortDayLabel(day, locale, t)}
+                </p>
+                <p className="text-[9px] text-slate-600 leading-tight">{shortDate(day.date)}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Row 2 — Rating color bar (daily) */}
+          <div className="flex h-[14px] rounded-sm overflow-hidden mb-1">
+            {days.map(day => (
+              <div
+                key={day.date}
+                style={{
+                  width: DAY_W,
+                  backgroundColor: day.hasMarineData
+                    ? day.rating.color
+                    : 'rgba(100,116,139,0.15)',
+                }}
+                className="flex-shrink-0 border-r border-black/20 last:border-r-0"
+              />
+            ))}
+          </div>
+
+          {/* Row 3 — Hourly wave-height bar chart */}
+          <div className="flex" style={{ height: BAR_H }}>
+            {days.map((day, di) => {
+              const hours = hourlyByDay.get(day.date) ?? Array(24).fill(null)
               return (
                 <div
                   key={day.date}
-                  style={{ width: COL_W }}
-                  className={`flex-shrink-0 text-center py-1 cursor-pointer rounded-t transition-colors ${
-                    isActive ? 'bg-white/5' : ''
-                  }`}
-                  onMouseEnter={() => setHoveredIdx(i)}
-                  onMouseLeave={() => setHoveredIdx(null)}
+                  style={{ width: DAY_W }}
+                  className="flex-shrink-0 flex items-end border-r border-white/5 last:border-r-0"
                 >
-                  <p className={`text-[10px] font-semibold leading-tight truncate ${
-                    isToday ? 'text-sky-400' : 'text-slate-400'
-                  }`}>
-                    {shortDayLabel(day, locale, t)}
-                  </p>
-                  <p className="text-[9px] text-slate-600 leading-tight">{shortDate(day.date)}</p>
+                  {hours.map((h, hi) => {
+                    const wh    = h?.waveHeight ?? 0
+                    const barH  = Math.max(Math.round((wh / maxWave) * (BAR_H - 4)), wh > 0 ? 2 : 0)
+                    const isActive = hovered?.di === di && hovered?.hour === h
+                    const isDimmed = hovered !== null && !isActive
+                    return (
+                      <div
+                        key={hi}
+                        style={{ width: HOUR_W, height: '100%' }}
+                        className="flex-shrink-0 flex items-end cursor-crosshair"
+                        onMouseEnter={() => h && setHovered({ di, hour: h })}
+                        onMouseLeave={() => setHovered(null)}
+                      >
+                        <div
+                          style={{
+                            height: barH,
+                            width: HOUR_W - 1,
+                            backgroundColor: day.hasMarineData && wh > 0
+                              ? day.rating.color
+                              : 'rgba(100,116,139,0.08)',
+                            opacity: isActive ? 1 : isDimmed ? 0.3 : 0.55,
+                            transition: 'opacity 0.08s',
+                          }}
+                          className="rounded-t-[1px]"
+                        />
+                      </div>
+                    )
+                  })}
                 </div>
               )
             })}
           </div>
 
-          {/* Row 2: rating color bar */}
-          <div className="flex h-[18px] rounded-lg overflow-hidden mb-1">
-            {forecast.map((day, i) => {
-              const isActive = i === activeIdx
-              return (
-                <div
-                  key={day.date}
-                  className="flex-shrink-0 cursor-pointer transition-opacity duration-150"
-                  style={{
-                    width: COL_W,
-                    backgroundColor: day.hasMarineData
-                      ? day.rating.color
-                      : 'rgba(100,116,139,0.15)',
-                    opacity: hoveredIdx !== null && !isActive ? 0.45 : 1,
-                    borderRight: i < forecast.length - 1 ? '1px solid rgba(0,0,0,0.2)' : undefined,
-                  }}
-                  onMouseEnter={() => setHoveredIdx(i)}
-                  onMouseLeave={() => setHoveredIdx(null)}
-                />
-              )
-            })}
-          </div>
-
-          {/* Row 3: wave height bar chart */}
-          <div className="flex items-end" style={{ height: 64 }}>
-            {forecast.map((day, i) => {
-              const isActive = i === activeIdx
-              const pct  = day.hasMarineData ? day.waveHeightMax / marineMax : 0
-              const barH = Math.max(Math.round(pct * 50), day.hasMarineData ? 3 : 0)
-              return (
-                <div
-                  key={day.date}
-                  style={{ width: COL_W }}
-                  className="flex-shrink-0 flex flex-col items-center justify-end px-1 cursor-pointer"
-                  onMouseEnter={() => setHoveredIdx(i)}
-                  onMouseLeave={() => setHoveredIdx(null)}
-                >
-                  {day.hasMarineData && (
-                    <p className={`text-[9px] leading-tight mb-0.5 transition-colors truncate ${
-                      isActive ? 'text-slate-300' : 'text-slate-600'
-                    }`}>
-                      {formatWaveRange(day.waveHeightMin, day.waveHeightMax, units.height)}
-                    </p>
-                  )}
+          {/* Row 4 — Hour ticks + labels (6a, 12p, 6p, 12a) */}
+          <div className="flex">
+            {days.map(day => (
+              <div
+                key={day.date}
+                style={{ width: DAY_W }}
+                className="flex-shrink-0 relative h-[20px] border-r border-white/5 last:border-r-0"
+              >
+                {/* One tick per hour boundary (0–24) */}
+                {Array.from({ length: 25 }, (_, hi) => (
                   <div
-                    className="w-full rounded-t-sm"
-                    style={{
-                      height: barH,
-                      backgroundColor: day.hasMarineData
-                        ? day.rating.color
-                        : 'rgba(100,116,139,0.08)',
-                      opacity: isActive ? 0.9 : 0.35,
-                      transition: 'opacity 0.15s',
-                    }}
+                    key={hi}
+                    style={{ left: hi * HOUR_W }}
+                    className={`absolute top-0 w-px ${
+                      hi % 6 === 0
+                        ? 'h-[10px] bg-white/20'
+                        : hi % 3 === 0
+                          ? 'h-[6px] bg-white/10'
+                          : 'h-[4px] bg-white/6'
+                    }`}
                   />
-                </div>
-              )
-            })}
+                ))}
+                {/* Labels only at 0h, 6h, 12h, 18h */}
+                {([0, 6, 12, 18] as const).map(hi => (
+                  <span
+                    key={hi}
+                    style={{ left: hi * HOUR_W }}
+                    className="absolute top-[11px] text-[8px] text-slate-600 -translate-x-1/2 select-none"
+                  >
+                    {TICK_LABELS[hi]}
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
 
         </div>
       </div>
 
-      {/* ── Info panel (outside scroll — never clips) ──────────── */}
-      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 px-1 min-h-[28px]">
-        {active.hasMarineData ? (
+      {/* Info panel — sits outside the scroll container so it never clips */}
+      <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 px-1 min-h-[26px]">
+        {activeDay && activeHour ? (
           <>
-            <span
-              className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shrink-0"
-              style={{ backgroundColor: active.rating.bgColor, color: active.rating.textColor }}
-            >
-              {t(RATING_KEY[active.rating.label] ?? 'rating.FLAT')}
+            <span className="text-[10px] text-slate-500 shrink-0 tabular-nums">
+              {shortDayLabel(activeDay, locale, t)} · {hourLabel(activeHour.time)}
             </span>
+
+            {activeDay.hasMarineData && (
+              <span
+                className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shrink-0"
+                style={{ backgroundColor: activeDay.rating.bgColor, color: activeDay.rating.textColor }}
+              >
+                {t(RATING_KEY[activeDay.rating.label] ?? 'rating.FLAT')}
+              </span>
+            )}
 
             <span className="text-sm font-semibold text-white shrink-0">
-              {formatWaveRange(active.waveHeightMin, active.waveHeightMax, units.height)}
+              {formatWaveHeight(activeHour.waveHeight, units.height)}
             </span>
 
-            <span className="hidden sm:block text-white/15 shrink-0">|</span>
-
-            <span className="flex items-center gap-1 text-xs text-slate-400 shrink-0">
-              <SwellIcon />
-              {t('dir.' + active.swellDirectionLabel)}
-              {' · '}{Math.round(active.wavePeriodMax)}s
-            </span>
+            {activeHour.swellHeight > 0 && (
+              <>
+                <span className="hidden sm:block text-white/15 shrink-0">|</span>
+                <span className="flex items-center gap-1 text-xs text-slate-400 shrink-0">
+                  <SwellIcon />
+                  {t('dir.' + getDirectionLabel(activeHour.swellDirection))}
+                  {activeHour.swellPeriod > 0 && ` · ${Math.round(activeHour.swellPeriod)}s`}
+                </span>
+              </>
+            )}
 
             <span className="hidden sm:block text-white/15 shrink-0">|</span>
 
             <span className="flex items-center gap-1 text-xs text-slate-400 shrink-0">
               <WindIcon />
-              {t('dir.' + active.windDirectionLabel)}
-              {' · '}{Math.round(active.windSpeedMax)} km/h
+              {t('dir.' + getDirectionLabel(activeHour.windDirection))}
+              {' · '}{Math.round(activeHour.windSpeed)} km/h
             </span>
           </>
-        ) : (
-          <span className="text-xs text-slate-600 italic">
-            {shortDayLabel(active, locale, t)} · {t('forecast.extendedLabel')}
-          </span>
-        )}
+        ) : null}
       </div>
-    </div>
+    </section>
   )
 }
 

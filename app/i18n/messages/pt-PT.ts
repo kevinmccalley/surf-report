@@ -113,6 +113,7 @@ const ptPT: Record<string, string> = {
   'app.tryAgain': 'Tentar novamente',
   'app.hourlyWave': 'Condições horárias das ondas',
   'app.48hOutlook': 'Previsão de ondas 48 horas',
+  'timeline.title': 'Linha do Tempo',
   'app.daySummary': 'Resumo do dia',
   'app.10dayForecast': 'Previsão de 10 dias',
   'app.16dayForecast': 'Previsão de 15 dias',

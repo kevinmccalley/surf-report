@@ -113,6 +113,7 @@ const en: Record<string, string> = {
   'app.tryAgain': 'Try Again',
   'app.hourlyWave': 'Hourly Wave Conditions',
   'app.48hOutlook': '48-Hour Wave Outlook',
+  'timeline.title': 'Timeline',
   'app.daySummary': 'Day Summary',
   'app.10dayForecast': '10-Day Forecast',
   'app.16dayForecast': '15-Day Forecast',

@@ -510,13 +510,14 @@ export default function SurfApp({ tier }: { tier: Tier }) {
               </section>
             )}
 
+            {!report.historical && report.isCoastal && report.hourly.length > 0 && (
+              <ForecastTimeline forecast={report.forecast} hourly={report.hourly} units={units} />
+            )}
+
             <section className="glass-card rounded-2xl p-4 sm:p-6">
               <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
                 {report.historical ? t('app.daySummary') : isPremium ? t('app.16dayForecast') : t('app.10dayForecast')}
               </h2>
-              {!report.historical && report.isCoastal && (
-                <ForecastTimeline forecast={report.forecast} units={units} />
-              )}
               <ForecastGrid forecast={report.forecast} units={units} isCoastal={report.isCoastal} isPremium={isPremium} />
               {!isPaid && !report.historical && report.isCoastal && (
                 <button
