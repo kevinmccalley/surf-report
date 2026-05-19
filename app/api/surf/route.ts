@@ -12,7 +12,7 @@ import {
 import { getSubscriptionTier } from '@/app/lib/subscription'
 
 const FREE_FORECAST_DAYS = 3
-const PREMIUM_FORECAST_DAYS = 15
+const PREMIUM_FORECAST_DAYS = 14
 
 export async function GET(request: NextRequest) {
   const sp = request.nextUrl.searchParams
