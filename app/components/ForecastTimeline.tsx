@@ -9,12 +9,14 @@ import type { TFn } from '@/app/i18n/LanguageContext'
 type Tier = 'free' | 'individual' | 'premium'
 
 interface Props {
-  forecast:    DayForecast[]
-  hourly:      HourlyForecast[]
-  units:       { temp: 'c' | 'f'; height: 'ft' | 'm' }
-  tideHourly?: { time: string; height: number }[]
-  tier?:       Tier
-  onUpgrade?:  () => void
+  forecast:      DayForecast[]
+  hourly:        HourlyForecast[]
+  units:         { temp: 'c' | 'f'; height: 'ft' | 'm' }
+  tideHourly?:   { time: string; height: number }[]
+  tier?:         Tier
+  onUpgrade?:    () => void
+  activeDate?:   string | null
+  onDateSelect?: (date: string | null) => void
 }
 
 const HOUR_W = 12
@@ -72,13 +74,15 @@ function tideKey(time: string): string {
   return m ? `${m[1]}|${m[2]}` : time
 }
 
-export default function ForecastTimeline({ forecast, hourly, units, tideHourly, tier = 'premium', onUpgrade }: Props) {
+export default function ForecastTimeline({ forecast, hourly, units, tideHourly, tier = 'premium', onUpgrade, activeDate, onDateSelect }: Props) {
   const { t, locale } = useLanguage()
 
-  const topRef     = useRef<HTMLDivElement>(null)   // day-label scroll pane
-  const botRef     = useRef<HTMLDivElement>(null)   // bar-chart scroll pane
-  const topAreaRef = useRef<HTMLDivElement>(null)   // labels + pill — measured for icon alignment
-  const syncing    = useRef(false)
+  const topRef           = useRef<HTMLDivElement>(null)   // day-label scroll pane
+  const botRef           = useRef<HTMLDivElement>(null)   // bar-chart scroll pane
+  const topAreaRef       = useRef<HTMLDivElement>(null)   // labels + pill — measured for icon alignment
+  const syncing          = useRef(false)
+  const programmaticScroll = useRef(false)   // true while we're scrolling in response to external activeDate
+  const lastReportedDate   = useRef<string | null>(null)  // deduplicates onDateSelect calls
 
   const [scrollLeft,   setScrollLeft]   = useState(0)
   const [visibleWidth, setVisibleWidth] = useState(0)
@@ -154,6 +158,13 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly, 
   }, [])
 
   // ── Scroll sync ─────────────────────────────────────────────────
+  const dateAtScroll = (sl: number): string | null => {
+    if (!days.length) return null
+    const cx = sl + visibleWidth / 2
+    const di = Math.max(0, Math.min(Math.floor(cx / DAY_W), days.length - 1))
+    return days[di]?.date ?? null
+  }
+
   const handlePaneScroll = (src: 'top' | 'bot') => {
     if (syncing.current) return
     const sl = (src === 'top' ? topRef : botRef).current?.scrollLeft ?? 0
@@ -162,7 +173,31 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly, 
     const other = src === 'top' ? botRef : topRef
     if (other.current) other.current.scrollLeft = sl
     setTimeout(() => { syncing.current = false }, 0)
+    if (!programmaticScroll.current) {
+      const date = dateAtScroll(sl)
+      if (date !== lastReportedDate.current) {
+        lastReportedDate.current = date
+        onDateSelect?.(date)
+      }
+    }
   }
+
+  // ── Scroll to activeDate when changed externally ─────────────────
+  useEffect(() => {
+    if (!activeDate || !visibleWidth || !days.length) return
+    if (activeDate === lastReportedDate.current) return   // we triggered this change
+    const di = days.findIndex(d => d.date === activeDate)
+    if (di < 0) return
+    const maxScroll = Math.max(0, totalW - visibleWidth)
+    const targetSl  = Math.max(0, Math.min(di * DAY_W + DAY_W / 2 - visibleWidth / 2, maxScroll))
+    programmaticScroll.current = true
+    lastReportedDate.current   = activeDate
+    if (topRef.current) topRef.current.scrollLeft = targetSl
+    if (botRef.current) botRef.current.scrollLeft = targetSl
+    setScrollLeft(targetSl)
+    setTimeout(() => { programmaticScroll.current = false }, 50)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeDate])
 
   // ── Pill geometry ───────────────────────────────────────────────
   // Desktop: 420px floor so translations have room for all data fields.
@@ -188,6 +223,11 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly, 
     if (botRef.current) botRef.current.scrollLeft = newSl
     setScrollLeft(newSl)
     setTimeout(() => { syncing.current = false }, 0)
+    const date = dateAtScroll(newSl)
+    if (date !== lastReportedDate.current) {
+      lastReportedDate.current = date
+      onDateSelect?.(date)
+    }
   }
 
   const startDrag = (e: React.MouseEvent) => {
@@ -289,10 +329,18 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly, 
     return (
       <div className="relative flex" style={{ height: rowH }}>
         {days.map((day, di) => {
-          const hours = hourlyByDay.get(day.date) ?? Array(24).fill(null)
+          const hours   = hourlyByDay.get(day.date) ?? Array(24).fill(null)
+          const isActive = activeDate === day.date
           return (
-            <div key={day.date} style={{ width: DAY_W }}
+            <div key={day.date} style={{ width: DAY_W, position: 'relative' }}
                  className="flex-shrink-0 flex items-end h-full border-r border-white/5 last:border-r-0">
+              {isActive && (
+                <div style={{
+                  position: 'absolute', inset: 0, pointerEvents: 'none',
+                  background: 'rgba(56,189,248,0.06)',
+                  borderTop: '1px solid rgba(56,189,248,0.18)',
+                }} />
+              )}
               {hours.map((h, hi) => (
                 <div key={hi} style={{ width: HOUR_W, height: '100%' }}
                      className="flex-shrink-0 flex items-end cursor-crosshair"
@@ -375,7 +423,7 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly, 
                   <div key={day.date} style={{ width: DAY_W }}
                        className="flex-shrink-0 border-r border-white/5 last:border-r-0 pl-1 pb-1">
                     <p className={`text-[10px] font-semibold leading-tight truncate ${
-                      day.dayName === 'Today' ? 'text-sky-400' : 'text-slate-400'
+                      activeDate === day.date ? 'text-sky-300' : day.dayName === 'Today' ? 'text-sky-400' : 'text-slate-400'
                     }`}>
                       {shortDayLabel(day, locale, t)}
                     </p>

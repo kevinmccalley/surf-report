@@ -12,6 +12,8 @@ interface Props {
   units: { temp: 'c' | 'f'; height: 'ft' | 'm' }
   isCoastal: boolean
   isPremium?: boolean
+  activeDate?: string | null
+  onDateSelect?: (date: string | null) => void
 }
 
 const RATING_KEY_MAP: Record<string, string> = {
@@ -51,12 +53,12 @@ function generateDaySummary(day: DayForecast, isCoastal: boolean, units: Props['
   return t(key, { waves, dir, period })
 }
 
-export default function ForecastGrid({ forecast, units, isCoastal, isPremium }: Props) {
+export default function ForecastGrid({ forecast, units, isCoastal, isPremium, activeDate, onDateSelect }: Props) {
   const { t, locale } = useLanguage()
-  const [hoveredDay, setHoveredDay]   = useState<DayForecast | null>(null)
-  const [selectedDay, setSelectedDay] = useState<DayForecast | null>(null)
+  const [hoveredDay, setHoveredDay] = useState<DayForecast | null>(null)
 
-  const activeDay = hoveredDay ?? selectedDay
+  const selectedDay = activeDate ? (forecast.find(d => d.date === activeDate) ?? null) : null
+  const activeDay   = hoveredDay ?? selectedDay
   const baseDays     = forecast.slice(0, 10)
   const extendedDays = forecast.slice(10)
 
@@ -70,9 +72,9 @@ export default function ForecastGrid({ forecast, units, isCoastal, isPremium }: 
               day={day}
               units={units}
               isCoastal={isCoastal}
-              isSelected={selectedDay?.date === day.date}
+              isSelected={activeDate === day.date}
               onHover={setHoveredDay}
-              onSelect={() => setSelectedDay(prev => prev?.date === day.date ? null : day)}
+              onSelect={() => onDateSelect?.(activeDate === day.date ? null : day.date)}
             />
           ))}
         </div>
@@ -95,9 +97,9 @@ export default function ForecastGrid({ forecast, units, isCoastal, isPremium }: 
                   day={day}
                   units={units}
                   isCoastal={isCoastal}
-                  isSelected={selectedDay?.date === day.date}
+                  isSelected={activeDate === day.date}
                   onHover={setHoveredDay}
-                  onSelect={() => setSelectedDay(prev => prev?.date === day.date ? null : day)}
+                  onSelect={() => onDateSelect?.(activeDate === day.date ? null : day.date)}
                   dimmed
                 />
               ))}

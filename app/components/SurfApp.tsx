@@ -51,6 +51,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
   const savedLocations = (user?.publicMetadata?.savedLocations as SavedLocation[] | undefined) ?? []
   const [showPaywall, setShowPaywall] = useState(false)
   const [billingError, setBillingError] = useState<string | null>(null)
+  const [activeDate, setActiveDate] = useState<string | null>(null)
   const [report, setReport] = useState<SurfReport | null>(null)
   const [tideData, setTideData] = useState<TideResult | null>(null)
   const [climData, setClimData] = useState<ClimatologyData | null>(null)
@@ -518,6 +519,8 @@ export default function SurfApp({ tier }: { tier: Tier }) {
                 tideHourly={tideData?.available ? (tideData as import('@/app/lib/types').TideReport).hourly : undefined}
                 tier={tier}
                 onUpgrade={() => setShowPaywall(true)}
+                activeDate={activeDate}
+                onDateSelect={setActiveDate}
               />
             )}
 
@@ -525,7 +528,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
               <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
                 {report.historical ? t('app.daySummary') : isPremium ? t('app.16dayForecast') : t('app.10dayForecast')}
               </h2>
-              <ForecastGrid forecast={report.forecast} units={units} isCoastal={report.isCoastal} isPremium={isPremium} />
+              <ForecastGrid forecast={report.forecast} units={units} isCoastal={report.isCoastal} isPremium={isPremium} activeDate={activeDate} onDateSelect={setActiveDate} />
               {!isPaid && !report.historical && report.isCoastal && (
                 <button
                   onClick={() => setShowPaywall(true)}
