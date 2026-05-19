@@ -7,7 +7,7 @@ import { computeSurfRating } from '@/app/lib/surf-rating'
 import { findCalibration, applyCalibration } from '@/app/lib/spot-calibration'
 import {
   getDirectionLabel, getWeatherDescription,
-  findCurrentHourIndex, estimateWaterTemp, getDayName, omUrl
+  findCurrentHourIndex, findCurrentHourIndexByTz, estimateWaterTemp, getDayName, omUrl
 } from '@/app/lib/utils'
 import { getSubscriptionTier } from '@/app/lib/subscription'
 
@@ -125,7 +125,7 @@ export async function GET(request: NextRequest) {
     // when timezone=auto isn't honoured, causing currentIdx to be wrong.
     const utcOffset = ((weather.utc_offset_seconds ?? effectiveMarine.utc_offset_seconds) as number) ?? 0
     const timezone = (weather.timezone as string | undefined) ?? (effectiveMarine.timezone as string | undefined) ?? 'UTC'
-    const currentIdx = findCurrentHourIndex(weather.hourly.time, utcOffset)
+    const currentIdx = findCurrentHourIndexByTz(weather.hourly.time, timezone, utcOffset)
 
     const report = buildReport(
       effectiveMarine, weather, name, country,
@@ -256,11 +256,13 @@ function buildReport(
     rating,
   }
 
-  // Hourly data covering the full forecast window (used by WaveChart and Timeline)
+  // Hourly data covering the full forecast window (used by WaveChart and Timeline).
+  // Start 6 hours before current so the timeline can show recent history.
   const hourly: HourlyForecast[] = []
-  const marineIdx = findCurrentHourIndex(mTimes, utcOffset)
-  for (let i = currentIdx; i < wTimes.length; i++) {
-    const mi = marineIdx + (i - currentIdx)
+  const marineIdx = findCurrentHourIndexByTz(mTimes, timezone, utcOffset)
+  const historyStart = Math.max(0, currentIdx - 6)
+  for (let i = historyStart; i < wTimes.length; i++) {
+    const mi = Math.max(0, marineIdx + (i - currentIdx))
     hourly.push({
       time: wTimes[i],
       waveHeight: isCoastal ? blendVal(mh.wave_height, gfsMh.wave_height, mi) : 0,

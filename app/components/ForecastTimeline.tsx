@@ -152,8 +152,8 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
 
   // ── Pill geometry ───────────────────────────────────────────────
   const pillW    = visibleWidth > 0
-    ? Math.max(160, Math.round((visibleWidth / Math.max(totalW, 1)) * visibleWidth))
-    : 160
+    ? Math.max(240, Math.round((visibleWidth / Math.max(totalW, 1)) * visibleWidth))
+    : 240
   const maxSl    = Math.max(0, totalW - visibleWidth)
   const trackUse = Math.max(0, visibleWidth - pillW)
   const pillL    = maxSl > 0 ? Math.round((scrollLeft / maxSl) * trackUse) : 0
@@ -312,44 +312,34 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
 
                 {/* Info */}
                 {activeHour && activeDay ? (
-                  <div className="flex-1 flex items-center gap-1.5 px-1 whitespace-nowrap overflow-hidden min-w-0">
-                    <span className="text-[9px] tabular-nums shrink-0" style={{ color: 'var(--panel-label)' }}>
+                  <div className="flex-1 flex items-center gap-2 px-1.5 whitespace-nowrap overflow-hidden min-w-0">
+                    <span className="text-[10px] tabular-nums shrink-0" style={{ color: 'var(--panel-label)' }}>
                       {shortDayLabel(activeDay, locale, t)} · {hourLabel(activeHour.time)}
                     </span>
                     {activeDay.hasMarineData && (
-                      <span className="text-[8px] font-bold uppercase px-1.5 py-0.5 rounded-full shrink-0"
+                      <span className="pill-rating text-[9px] font-bold uppercase px-1.5 py-0.5 rounded-full shrink-0"
                             style={{ backgroundColor: activeDay.rating.bgColor, color: activeDay.rating.color }}>
                         {t(RATING_KEY[activeDay.rating.label] ?? 'rating.FLAT')}
                       </span>
                     )}
-                    <span className="text-[10px] font-semibold shrink-0" style={{ color: 'var(--text-base)' }}>
+                    <span className="text-[12px] font-semibold shrink-0" style={{ color: 'var(--text-base)' }}>
                       {formatWaveHeight(activeHour.waveHeight, units.height)}
-                    </span>
-                    {activeHour.swellHeight > 0 && (
-                      <>
-                        <span className="shrink-0 text-[9px]" style={{ color: 'var(--panel-muted)', opacity: 0.5 }}>|</span>
-                        <span className="flex items-center gap-0.5 text-[9px] shrink-0" style={{ color: 'var(--panel-muted)' }}>
-                          <SmallSwellIcon />
-                          {t('dir.' + getDirectionLabel(activeHour.swellDirection))}
-                          {activeHour.swellPeriod > 0 && ` ${Math.round(activeHour.swellPeriod)}s`}
-                        </span>
-                      </>
-                    )}
-                    <span className="shrink-0 text-[9px]" style={{ color: 'var(--panel-muted)', opacity: 0.5 }}>|</span>
-                    <span className="flex items-center gap-0.5 text-[9px] shrink-0" style={{ color: 'var(--panel-muted)' }}>
-                      <SmallWindIcon />
-                      {t('dir.' + getDirectionLabel(activeHour.windDirection))}
-                      {' '}{Math.round(activeHour.windSpeed)} km/h
                     </span>
                     {activeTide !== undefined && (
                       <>
-                        <span className="shrink-0 text-[9px]" style={{ color: 'var(--panel-muted)', opacity: 0.5 }}>|</span>
-                        <span className="flex items-center gap-0.5 text-[9px] shrink-0" style={{ color: 'var(--panel-muted)' }}>
+                        <span className="shrink-0 text-[10px]" style={{ color: 'var(--panel-muted)', opacity: 0.5 }}>|</span>
+                        <span className="flex items-center gap-0.5 text-[10px] shrink-0" style={{ color: 'var(--panel-muted)' }}>
                           <SmallTideIcon />
                           {formatWaveHeight(activeTide, units.height)}
                         </span>
                       </>
                     )}
+                    <span className="shrink-0 text-[10px]" style={{ color: 'var(--panel-muted)', opacity: 0.5 }}>|</span>
+                    <span className="flex items-center gap-0.5 text-[10px] shrink-0" style={{ color: 'var(--panel-muted)' }}>
+                      <SmallWindIcon />
+                      {t('dir.' + getDirectionLabel(activeHour.windDirection))}
+                      {' '}{Math.round(activeHour.windSpeed)} km/h
+                    </span>
                   </div>
                 ) : (
                   // Grip pattern when too narrow for text

@@ -284,6 +284,7 @@ body {
 }
 .timeline-grip { background: rgba(255,255,255,0.22); }
 [data-theme*="light"] .timeline-grip { background: rgba(0,0,0,0.20); }
+[data-theme*="light"] .pill-rating { color: rgba(0,0,0,0.75) !important; }
 
 .theme-panel {
   background: var(--panel-bg);

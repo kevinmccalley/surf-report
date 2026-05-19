@@ -58,7 +58,40 @@ export function findCurrentHourIndex(times: string[], utcOffsetSeconds: number):
   const index = times.findIndex(t => t === target)
   if (index >= 0) return index
 
-  // Fallback: find closest
+  for (let i = times.length - 1; i >= 0; i--) {
+    if (times[i] <= target) return i
+  }
+  return 0
+}
+
+// More reliable than findCurrentHourIndex when the API utc_offset_seconds is
+// unreliable (e.g. ecmwf_wam returning 0 for non-UTC locations).
+export function findCurrentHourIndexByTz(
+  times: string[],
+  timezone: string,
+  utcOffsetFallback: number
+): number {
+  let target: string
+  try {
+    const fmt = new Intl.DateTimeFormat('en-CA', {
+      timeZone: timezone,
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', hour12: false,
+    })
+    const parts = fmt.formatToParts(new Date())
+    const get = (type: string) => parts.find(p => p.type === type)?.value ?? ''
+    const year = get('year'), month = get('month'), day = get('day')
+    // Intl can return '24' for midnight in some environments
+    const rawHour = get('hour')
+    const hour = rawHour === '24' ? '00' : rawHour
+    target = `${year}-${month}-${day}T${hour}:00`
+  } catch {
+    return findCurrentHourIndex(times, utcOffsetFallback)
+  }
+
+  const index = times.findIndex(t => t === target)
+  if (index >= 0) return index
+
   for (let i = times.length - 1; i >= 0; i--) {
     if (times[i] <= target) return i
   }
