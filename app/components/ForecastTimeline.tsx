@@ -284,19 +284,21 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
             grid centering to fail. A spacer replaces the old marginTop. */}
         <div className="shrink-0 flex flex-col" style={{ width: ICON_W, alignSelf: 'flex-start' }}>
           <div style={{ height: topOffset }} />
+          {/* Fixed-pixel offsets: % top fails on flex items (resolves to 0).
+              top = (rowH - svgH) / 2, left = (ICON_W - svgW) / 2          */}
           <div style={{ position: 'relative', height: WAVE_H, flexShrink: 0 }} className="text-slate-500">
-            <span style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', display: 'flex' }}>
+            <span style={{ position: 'absolute', top: Math.floor((WAVE_H - 10) / 2), left: Math.floor((ICON_W - 16) / 2) }}>
               <WaveRowIcon />
             </span>
           </div>
           <div style={{ position: 'relative', height: WIND_H, flexShrink: 0 }} className="text-slate-500">
-            <span style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', display: 'flex' }}>
+            <span style={{ position: 'absolute', top: Math.floor((WIND_H - 12) / 2), left: Math.floor((ICON_W - 15) / 2) }}>
               <WindRowIcon />
             </span>
           </div>
           {showTide && (
             <div style={{ position: 'relative', height: TIDE_H, flexShrink: 0 }} className="text-slate-500">
-              <span style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', display: 'flex' }}>
+              <span style={{ position: 'absolute', top: Math.floor((TIDE_H - 14) / 2), left: Math.floor((ICON_W - 14) / 2) }}>
                 <TideRowIcon />
               </span>
             </div>
