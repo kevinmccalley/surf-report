@@ -344,8 +344,11 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
         {/* ── Scroll column ──────────────────────────────── */}
         <div className="flex-1 min-w-0">
 
-          {/* Top area wrapper — measured so icon column aligns correctly */}
-          <div ref={topAreaRef}>
+          {/* Top area wrapper — measured so icon column aligns correctly.
+              paddingBottom:1 prevents the pill track's margin-bottom from
+              collapsing through this div, which would exclude it from
+              offsetHeight and shift the icon column 6px above the bars. */}
+          <div ref={topAreaRef} style={{ paddingBottom: 1 }}>
 
             {/* Day-label pane */}
             <div ref={topRef}
