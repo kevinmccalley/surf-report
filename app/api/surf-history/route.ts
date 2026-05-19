@@ -248,6 +248,7 @@ export async function GET(request: NextRequest) {
         uvIndexMax: val(wd.uv_index_max, dailyIdx),
         precipProbabilityMax: 0,
         rating: dayRating,
+        hasMarineData: true,
       })
     }
 
