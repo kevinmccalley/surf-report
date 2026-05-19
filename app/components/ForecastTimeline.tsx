@@ -204,7 +204,7 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly, 
   // Mobile: cap at 55% of visible width so at least 45% remains as drag track.
   const isMobile = visibleWidth > 0 && visibleWidth < 640
   const pillMinW = isMobile
-    ? Math.round(visibleWidth * 0.55)
+    ? Math.round(visibleWidth * 0.92)
     : 420
   const pillW    = visibleWidth > 0
     ? Math.max(pillMinW, Math.round((visibleWidth / Math.max(totalW, 1)) * visibleWidth))
