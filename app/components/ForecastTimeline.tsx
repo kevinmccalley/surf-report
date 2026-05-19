@@ -252,14 +252,14 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
 
         {/* ── Icon column (fixed, not scrolled) ─────────── */}
         <div className="shrink-0 flex flex-col" style={{ width: ICON_W, marginTop: topOffset }}>
-          <div style={{ height: WAVE_H }} className="flex items-center justify-center text-slate-500">
+          <div style={{ height: WAVE_H, display: 'grid', placeItems: 'center' }} className="text-slate-500">
             <WaveRowIcon />
           </div>
-          <div style={{ height: WIND_H }} className="flex items-center justify-center text-slate-500">
+          <div style={{ height: WIND_H, display: 'grid', placeItems: 'center' }} className="text-slate-500">
             <WindRowIcon />
           </div>
           {showTide && (
-            <div style={{ height: TIDE_H }} className="flex items-center justify-center text-slate-500">
+            <div style={{ height: TIDE_H, display: 'grid', placeItems: 'center' }} className="text-slate-500">
               <TideRowIcon />
             </div>
           )}
