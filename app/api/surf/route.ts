@@ -254,17 +254,20 @@ function buildReport(
   // Daily forecast (up to maxDays)
   const dailyTimes = (wd.time ?? []) as string[]
   const forecast: DayForecast[] = dailyTimes.slice(0, maxDays).map((date: string, i: number) => {
-    // Use swell max (not total Hs) so daily cards reflect rideable surf, not wind chop
-    const primaryVal = md.swell_wave_height_max?.[i]
-    const fallbackVal = gfsMd.swell_wave_height_max?.[i]
-    const hasMarineData = isCoastal && (
-      (typeof primaryVal === 'number' && !isNaN(primaryVal)) ||
-      (typeof fallbackVal === 'number' && !isNaN(fallbackVal))
-    )
-    const wvMax = isCoastal ? blendVal(md.swell_wave_height_max, gfsMd.swell_wave_height_max, i) : 0
+    // Prefer swell_wave_height_max (NEMO days 1-8); fall back to total wave_height_max
+    // from ecmwf_wam for extended days where swell decomposition isn't available.
+    const swellHt = isCoastal ? blendVal(md.swell_wave_height_max, gfsMd.swell_wave_height_max, i) : 0
+    const wvMax   = swellHt > 0 ? swellHt : (isCoastal ? blendVal(md.wave_height_max, gfsMd.wave_height_max, i) : 0)
+    const hasMarineData = isCoastal && wvMax > 0
     const swMax = wvMax
-    const swPer = isCoastal ? blendVal(md.swell_wave_period_max, gfsMd.swell_wave_period_max, i) : 0
-    const swDir = isCoastal ? blendVal(md.swell_wave_direction_dominant, gfsMd.swell_wave_direction_dominant, i) : 0
+    const swPer = isCoastal
+      ? (blendVal(md.swell_wave_period_max, gfsMd.swell_wave_period_max, i) ||
+         blendVal(md.wave_period_max,       gfsMd.wave_period_max,       i))
+      : 0
+    const swDir = isCoastal
+      ? (blendVal(md.swell_wave_direction_dominant, gfsMd.swell_wave_direction_dominant, i) ||
+         blendVal(md.wave_direction_dominant,        gfsMd.wave_direction_dominant,        i))
+      : 0
     const wvPer = isCoastal ? blendVal(md.wave_period_max, gfsMd.wave_period_max, i) : 0
     const windMax = val(wd.wind_speed_10m_max, i)
     const windDir = val(wd.wind_direction_10m_dominant, i)
