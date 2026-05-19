@@ -7,14 +7,27 @@ import { useLanguage } from '@/app/i18n/LanguageContext'
 import type { TFn } from '@/app/i18n/LanguageContext'
 
 interface Props {
-  forecast: DayForecast[]
-  hourly:   HourlyForecast[]
-  units: { temp: 'c' | 'f'; height: 'ft' | 'm' }
+  forecast:    DayForecast[]
+  hourly:      HourlyForecast[]
+  units:       { temp: 'c' | 'f'; height: 'ft' | 'm' }
+  tideHourly?: { time: string; height: number }[]
 }
 
 const HOUR_W = 12
-const DAY_W  = HOUR_W * 24   // 288px — 4 days visible on a ~1150px widescreen
-const BAR_H  = 64
+const DAY_W  = HOUR_W * 24   // 288px — 4 days on a ~1150px widescreen
+const WAVE_H = 56
+const WIND_H = 36
+const TIDE_H = 36
+const TICK_H = 20
+const ICON_W = 20            // icon column width (px)
+
+function windColor(kmh: number): string {
+  if (kmh < 10) return 'rgba(148,163,184,0.15)'
+  if (kmh < 20) return 'rgba(56,189,248,0.50)'
+  if (kmh < 35) return 'rgba(250,204,21,0.60)'
+  if (kmh < 50) return 'rgba(249,115,22,0.75)'
+  return              'rgba(239,68,68,0.85)'
+}
 
 const RATING_KEY: Record<string, string> = {
   'FLAT':         'rating.FLAT',
@@ -49,18 +62,26 @@ function hourLabel(timeStr: string): string {
   return `${h - 12}pm`
 }
 
-export default function ForecastTimeline({ forecast, hourly, units }: Props) {
+// Best-effort: extract "YYYY-MM-DD|HH" regardless of T/space separator or timezone suffix
+function tideKey(time: string): string {
+  const m = time.match(/(\d{4}-\d{2}-\d{2})[T ](\d{2}):/)
+  return m ? `${m[1]}|${m[2]}` : time
+}
+
+export default function ForecastTimeline({ forecast, hourly, units, tideHourly }: Props) {
   const { t, locale } = useLanguage()
 
-  // Two synced scroll panes so the pill track can sit between them
-  const topRef  = useRef<HTMLDivElement>(null)   // day-label pane
-  const botRef  = useRef<HTMLDivElement>(null)   // bar-chart pane
-  const syncing = useRef(false)
+  const topRef     = useRef<HTMLDivElement>(null)   // day-label scroll pane
+  const botRef     = useRef<HTMLDivElement>(null)   // bar-chart scroll pane
+  const topAreaRef = useRef<HTMLDivElement>(null)   // labels + pill — measured for icon alignment
+  const syncing    = useRef(false)
 
   const [scrollLeft,   setScrollLeft]   = useState(0)
   const [visibleWidth, setVisibleWidth] = useState(0)
+  const [topOffset,    setTopOffset]    = useState(80)  // initial guess; replaced after mount
   const [hoveredBar,   setHoveredBar]   = useState<{ di: number; hi: number; hour: HourlyForecast } | null>(null)
 
+  // ── Data grouping ───────────────────────────────────────────────
   const hourlyByDay = useMemo(() => {
     const map = new Map<string, (HourlyForecast | null)[]>()
     for (const h of hourly) {
@@ -72,12 +93,24 @@ export default function ForecastTimeline({ forecast, hourly, units }: Props) {
     return map
   }, [hourly])
 
-  const days = forecast.filter(d => hourlyByDay.has(d.date))
+  const tideByKey = useMemo(() => {
+    if (!tideHourly?.length) return null
+    const map = new Map<string, number>()
+    for (const th of tideHourly) map.set(tideKey(th.time), th.height)
+    return map
+  }, [tideHourly])
 
-  const maxWave = Math.max(...hourly.map(h => h.waveHeight), 0.5)
+  const days    = forecast.filter(d => hourlyByDay.has(d.date))
   const totalW  = days.length * DAY_W
+  const maxWave = Math.max(...hourly.map(h => h.waveHeight), 0.5)
+  const maxWind = Math.max(...hourly.map(h => h.windSpeed),  1)
 
-  // Measure scroll viewport width (same for both panes)
+  const tideVals  = tideHourly?.map(t => t.height) ?? []
+  const tideMin   = tideVals.length ? Math.min(...tideVals) : 0
+  const tideRange = tideVals.length ? Math.max(Math.max(...tideVals) - tideMin, 0.1) : 1
+  const showTide  = (tideByKey?.size ?? 0) > 0
+
+  // ── Measurements ────────────────────────────────────────────────
   useEffect(() => {
     const el = botRef.current
     if (!el) return
@@ -88,11 +121,20 @@ export default function ForecastTimeline({ forecast, hourly, units }: Props) {
     return () => ro.disconnect()
   }, [])
 
-  // Keep both panes in sync when either is scrolled natively
+  useEffect(() => {
+    const el = topAreaRef.current
+    if (!el) return
+    const update = () => setTopOffset(el.offsetHeight)
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
+  // ── Scroll sync ─────────────────────────────────────────────────
   const handlePaneScroll = (src: 'top' | 'bot') => {
     if (syncing.current) return
-    const ref = src === 'top' ? topRef : botRef
-    const sl  = ref.current?.scrollLeft ?? 0
+    const sl = (src === 'top' ? topRef : botRef).current?.scrollLeft ?? 0
     setScrollLeft(sl)
     syncing.current = true
     const other = src === 'top' ? botRef : topRef
@@ -100,24 +142,22 @@ export default function ForecastTimeline({ forecast, hourly, units }: Props) {
     setTimeout(() => { syncing.current = false }, 0)
   }
 
-  // Pill geometry (proportional scrollbar)
+  // ── Pill geometry ───────────────────────────────────────────────
   const pillW    = visibleWidth > 0
-    ? Math.max(120, Math.round((visibleWidth / totalW) * visibleWidth))
-    : 120
+    ? Math.max(140, Math.round((visibleWidth / Math.max(totalW, 1)) * visibleWidth))
+    : 140
   const maxSl    = Math.max(0, totalW - visibleWidth)
   const trackUse = Math.max(0, visibleWidth - pillW)
   const pillL    = maxSl > 0 ? Math.round((scrollLeft / maxSl) * trackUse) : 0
 
-  // Drag the pill to scroll both panes
+  // ── Drag pill ───────────────────────────────────────────────────
   const startDrag = (e: React.MouseEvent) => {
     e.preventDefault()
-    const startX    = e.clientX
-    const startSl   = scrollLeft
-
-    const onMove = (me: MouseEvent) => {
-      const dx    = me.clientX - startX
+    const startX  = e.clientX
+    const startSl = scrollLeft
+    const onMove  = (me: MouseEvent) => {
       const newSl = trackUse > 0
-        ? Math.max(0, Math.min(startSl + (dx / trackUse) * maxSl, maxSl))
+        ? Math.max(0, Math.min(startSl + ((me.clientX - startX) / trackUse) * maxSl, maxSl))
         : 0
       syncing.current = true
       if (topRef.current) topRef.current.scrollLeft = newSl
@@ -133,21 +173,60 @@ export default function ForecastTimeline({ forecast, hourly, units }: Props) {
     window.addEventListener('mouseup', onUp)
   }
 
-  // Active info: hovered bar takes priority, otherwise use center of viewport
-  const getViewportHour = (): { hour: HourlyForecast | null; day: DayForecast | null } => {
-    if (days.length === 0) return { hour: null, day: null }
-    const centerX = scrollLeft + Math.max(visibleWidth / 2, 0)
-    const di = Math.max(0, Math.min(Math.floor(centerX / DAY_W), days.length - 1))
-    const hi = Math.max(0, Math.min(Math.floor((centerX % DAY_W) / HOUR_W), 23))
-    const hours = hourlyByDay.get(days[di]?.date ?? '') ?? []
-    return { hour: hours[hi] ?? null, day: days[di] ?? null }
+  // ── Active info ─────────────────────────────────────────────────
+  const getViewportInfo = (): { hour: HourlyForecast | null; day: DayForecast | null } => {
+    if (!days.length) return { hour: null, day: null }
+    const cx = scrollLeft + visibleWidth / 2
+    const di = Math.max(0, Math.min(Math.floor(cx / DAY_W), days.length - 1))
+    const hi = Math.max(0, Math.min(Math.floor((cx % DAY_W) / HOUR_W), 23))
+    return {
+      hour: (hourlyByDay.get(days[di]?.date ?? '') ?? [])[hi] ?? null,
+      day:  days[di] ?? null,
+    }
   }
-
-  const { hour: vpHour, day: vpDay } = getViewportHour()
+  const { hour: vpHour, day: vpDay } = getViewportInfo()
   const activeHour = hoveredBar?.hour ?? vpHour
   const activeDay  = hoveredBar ? (days[hoveredBar.di] ?? null) : vpDay
 
-  if (days.length === 0) return null
+  if (!days.length) return null
+
+  // ── Bar renderer (reused for wave / wind / tide) ─────────────
+  const barRow = (
+    rowH: number,
+    getBarH:   (di: number, hi: number) => number,
+    getColor:  (di: number, hi: number) => string,
+    getOpacity:(di: number, hi: number) => number,
+  ) => (
+    <div className="flex" style={{ height: rowH }}>
+      {days.map((day, di) => {
+        const hours = hourlyByDay.get(day.date) ?? Array(24).fill(null)
+        return (
+          <div key={day.date} style={{ width: DAY_W }}
+               className="flex-shrink-0 flex items-end h-full border-r border-white/5 last:border-r-0">
+            {hours.map((h, hi) => (
+              <div key={hi} style={{ width: HOUR_W, height: '100%' }}
+                   className="flex-shrink-0 flex items-end cursor-crosshair"
+                   onMouseEnter={() => h && setHoveredBar({ di, hi, hour: h })}
+                   onMouseLeave={() => setHoveredBar(null)}>
+                <div style={{
+                  height: getBarH(di, hi),
+                  width:  HOUR_W - 1,
+                  backgroundColor: getColor(di, hi),
+                  opacity: getOpacity(di, hi),
+                  transition: 'opacity 0.08s',
+                }} className="rounded-t-[1px]" />
+              </div>
+            ))}
+          </div>
+        )
+      })}
+    </div>
+  )
+
+  const barOpacity = (di: number, hi: number) => {
+    const isActive = hoveredBar?.di === di && hoveredBar?.hi === hi
+    return isActive ? 1 : hoveredBar ? 0.25 : 0.55
+  }
 
   return (
     <section className="glass-card rounded-2xl p-4 sm:p-6">
@@ -155,199 +234,271 @@ export default function ForecastTimeline({ forecast, hourly, units }: Props) {
         {t('timeline.title')}
       </h2>
 
-      {/* ── TOP PANE: day labels ──────────────────────────────────── */}
-      <div
-        ref={topRef}
-        className="overflow-x-auto forecast-scroll -mx-2 px-2"
-        style={{ scrollbarWidth: 'none' }}
-        onScroll={() => handlePaneScroll('top')}
-      >
-        <div style={{ minWidth: totalW }} className="flex">
-          {days.map(day => (
-            <div
-              key={day.date}
-              style={{ width: DAY_W }}
-              className="flex-shrink-0 border-r border-white/5 last:border-r-0 pl-1 pb-1"
-            >
-              <p className={`text-[10px] font-semibold leading-tight truncate ${
-                day.dayName === 'Today' ? 'text-sky-400' : 'text-slate-400'
-              }`}>
-                {shortDayLabel(day, locale, t)}
-              </p>
-              <p className="text-[9px] text-slate-600 leading-tight">{shortDate(day.date)}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      <div className="flex" style={{ gap: 6 }}>
 
-      {/* ── PILL TRACK: draggable scrollbar between the two panes ── */}
-      <div className="relative h-9 my-1 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-        {/* Pill */}
-        <div
-          className="absolute top-0 bottom-0 rounded-xl bg-white/[0.07] border border-white/10
-                     cursor-grab active:cursor-grabbing select-none
-                     flex items-center overflow-hidden"
-          style={{ left: pillL, width: pillW }}
-          onMouseDown={startDrag}
-        >
-          {activeHour && activeDay ? (
-            <div className="flex items-center gap-2 px-3 whitespace-nowrap min-w-0 overflow-hidden">
-              {/* Time */}
-              <span className="text-[9px] text-slate-400 tabular-nums shrink-0">
-                {shortDayLabel(activeDay, locale, t)} · {hourLabel(activeHour.time)}
-              </span>
-
-              {/* Rating chip */}
-              {activeDay.hasMarineData && (
-                <span
-                  className="text-[8px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full shrink-0"
-                  style={{ backgroundColor: activeDay.rating.bgColor, color: activeDay.rating.textColor }}
-                >
-                  {t(RATING_KEY[activeDay.rating.label] ?? 'rating.FLAT')}
-                </span>
-              )}
-
-              {/* Wave height */}
-              <span className="text-[10px] font-semibold text-slate-200 shrink-0">
-                {formatWaveHeight(activeHour.waveHeight, units.height)}
-              </span>
-
-              {/* Swell */}
-              {activeHour.swellHeight > 0 && (
-                <>
-                  <span className="text-white/15 shrink-0">|</span>
-                  <span className="flex items-center gap-0.5 text-[9px] text-slate-500 shrink-0">
-                    <SwellIcon />
-                    {t('dir.' + getDirectionLabel(activeHour.swellDirection))}
-                    {activeHour.swellPeriod > 0 && ` ${Math.round(activeHour.swellPeriod)}s`}
-                  </span>
-                </>
-              )}
-
-              {/* Wind */}
-              <span className="text-white/15 shrink-0">|</span>
-              <span className="flex items-center gap-0.5 text-[9px] text-slate-500 shrink-0">
-                <WindIcon />
-                {t('dir.' + getDirectionLabel(activeHour.windDirection))}
-                {' '}{Math.round(activeHour.windSpeed)} km/h
-              </span>
-            </div>
-          ) : (
-            <div className="px-3">
-              <span className="text-[9px] text-slate-600">—</span>
+        {/* ── Icon column (fixed, not scrolled) ─────────── */}
+        <div className="shrink-0 flex flex-col items-center" style={{ width: ICON_W, marginTop: topOffset }}>
+          <div style={{ height: WAVE_H }} className="flex items-center justify-center text-slate-500">
+            <WaveRowIcon />
+          </div>
+          <div style={{ height: WIND_H }} className="flex items-center justify-center text-slate-500">
+            <WindRowIcon />
+          </div>
+          {showTide && (
+            <div style={{ height: TIDE_H }} className="flex items-center justify-center text-slate-500">
+              <TideRowIcon />
             </div>
           )}
         </div>
-      </div>
 
-      {/* ── BOTTOM PANE: bar chart + ticks ───────────────────────── */}
-      <div
-        ref={botRef}
-        className="overflow-x-auto forecast-scroll -mx-2 px-2"
-        style={{ scrollbarWidth: 'none' }}
-        onScroll={() => handlePaneScroll('bot')}
-      >
-        <div style={{ minWidth: totalW }}>
+        {/* ── Scroll column ──────────────────────────────── */}
+        <div className="flex-1 min-w-0">
 
-          {/* Wave height bars */}
-          <div className="flex" style={{ height: BAR_H }}>
-            {days.map((day, di) => {
-              const hours = hourlyByDay.get(day.date) ?? Array(24).fill(null)
-              return (
-                <div
-                  key={day.date}
-                  style={{ width: DAY_W }}
-                  className="flex-shrink-0 flex items-end h-full border-r border-white/5 last:border-r-0"
-                >
-                  {hours.map((h, hi) => {
-                    const wh   = h?.waveHeight ?? 0
-                    const barH = Math.max(Math.round((wh / maxWave) * (BAR_H - 4)), wh > 0 ? 2 : 0)
-                    const isActive = hoveredBar?.di === di && hoveredBar?.hi === hi
-                    const isDimmed = hoveredBar !== null && !isActive
-                    return (
-                      <div
-                        key={hi}
-                        style={{ width: HOUR_W, height: '100%' }}
-                        className="flex-shrink-0 flex items-end cursor-crosshair"
-                        onMouseEnter={() => h && setHoveredBar({ di, hi, hour: h })}
-                        onMouseLeave={() => setHoveredBar(null)}
-                      >
-                        <div
-                          style={{
-                            height: barH,
-                            width: HOUR_W - 1,
-                            backgroundColor: day.hasMarineData && wh > 0
-                              ? day.rating.color
-                              : 'rgba(100,116,139,0.08)',
-                            opacity: isActive ? 1 : isDimmed ? 0.25 : 0.5,
-                            transition: 'opacity 0.08s',
-                          }}
-                          className="rounded-t-[1px]"
-                        />
-                      </div>
-                    )
-                  })}
-                </div>
-              )
-            })}
-          </div>
+          {/* Top area wrapper — measured so icon column aligns correctly */}
+          <div ref={topAreaRef}>
 
-          {/* Hour ticks + labels */}
-          <div className="flex">
-            {days.map(day => (
-              <div
-                key={day.date}
-                style={{ width: DAY_W }}
-                className="flex-shrink-0 relative h-[20px] border-r border-white/5 last:border-r-0"
-              >
-                {Array.from({ length: 25 }, (_, hi) => (
-                  <div
-                    key={hi}
-                    style={{ left: hi * HOUR_W }}
-                    className={`absolute top-0 w-px ${
-                      hi % 6 === 0
-                        ? 'h-[10px] bg-white/20'
-                        : hi % 3 === 0
-                          ? 'h-[6px] bg-white/10'
-                          : 'h-[4px] bg-white/6'
-                    }`}
-                  />
-                ))}
-                {([0, 6, 12, 18] as const).map(hi => (
-                  <span
-                    key={hi}
-                    style={{ left: hi * HOUR_W }}
-                    className="absolute top-[11px] text-[8px] text-slate-600 -translate-x-1/2 select-none"
-                  >
-                    {TICK_LABELS[hi]}
-                  </span>
+            {/* Day-label pane */}
+            <div ref={topRef}
+                 className="overflow-x-auto"
+                 style={{ scrollbarWidth: 'none' }}
+                 onScroll={() => handlePaneScroll('top')}>
+              <style>{'.tl-pane::-webkit-scrollbar{display:none}'}</style>
+              <div style={{ minWidth: totalW }} className="flex tl-pane">
+                {days.map(day => (
+                  <div key={day.date} style={{ width: DAY_W }}
+                       className="flex-shrink-0 border-r border-white/5 last:border-r-0 pl-1 pb-1">
+                    <p className={`text-[10px] font-semibold leading-tight truncate ${
+                      day.dayName === 'Today' ? 'text-sky-400' : 'text-slate-400'
+                    }`}>
+                      {shortDayLabel(day, locale, t)}
+                    </p>
+                    <p className="text-[9px] text-slate-600 leading-tight">{shortDate(day.date)}</p>
+                  </div>
                 ))}
               </div>
-            ))}
+            </div>
+
+            {/* ── Pill track ─────────────────────────────── */}
+            <div className="my-1.5" style={{ position: 'relative', height: 36 }}>
+
+              {/* Groove */}
+              <div className="absolute inset-0 rounded-full bg-white/[0.03] border border-white/[0.06]" />
+
+              {/* Draggable pill */}
+              <div
+                className="absolute top-0 bottom-0 rounded-full flex items-center overflow-hidden
+                           border border-white/[0.18]
+                           cursor-grab active:cursor-grabbing select-none"
+                style={{
+                  left: pillL,
+                  width: pillW,
+                  background: 'linear-gradient(180deg, rgba(71,85,105,0.80) 0%, rgba(51,65,85,0.85) 100%)',
+                  boxShadow: '0 2px 12px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.06) inset',
+                }}
+                onMouseDown={startDrag}
+              >
+                {/* Left chevron */}
+                <span className="shrink-0 flex items-center pl-2.5 text-slate-400">
+                  <ChevronLeft />
+                </span>
+
+                {/* Info */}
+                {activeHour && activeDay ? (
+                  <div className="flex-1 flex items-center gap-1.5 px-1 whitespace-nowrap overflow-hidden min-w-0">
+                    <span className="text-[9px] text-slate-400 tabular-nums shrink-0">
+                      {shortDayLabel(activeDay, locale, t)} · {hourLabel(activeHour.time)}
+                    </span>
+                    {activeDay.hasMarineData && (
+                      <span className="text-[8px] font-bold uppercase px-1.5 py-0.5 rounded-full shrink-0"
+                            style={{ backgroundColor: activeDay.rating.bgColor, color: activeDay.rating.textColor }}>
+                        {t(RATING_KEY[activeDay.rating.label] ?? 'rating.FLAT')}
+                      </span>
+                    )}
+                    <span className="text-[10px] font-semibold text-slate-200 shrink-0">
+                      {formatWaveHeight(activeHour.waveHeight, units.height)}
+                    </span>
+                    {activeHour.swellHeight > 0 && (
+                      <>
+                        <span className="text-white/20 shrink-0 text-[9px]">|</span>
+                        <span className="flex items-center gap-0.5 text-[9px] text-slate-500 shrink-0">
+                          <SmallSwellIcon />
+                          {t('dir.' + getDirectionLabel(activeHour.swellDirection))}
+                          {activeHour.swellPeriod > 0 && ` ${Math.round(activeHour.swellPeriod)}s`}
+                        </span>
+                      </>
+                    )}
+                    <span className="text-white/20 shrink-0 text-[9px]">|</span>
+                    <span className="flex items-center gap-0.5 text-[9px] text-slate-500 shrink-0">
+                      <SmallWindIcon />
+                      {t('dir.' + getDirectionLabel(activeHour.windDirection))}
+                      {' '}{Math.round(activeHour.windSpeed)} km/h
+                    </span>
+                  </div>
+                ) : (
+                  // Grip pattern when too narrow for text
+                  <div className="flex-1 flex items-center justify-center gap-0.5">
+                    {[0, 1, 2].map(i => (
+                      <div key={i} className="w-0.5 h-3.5 rounded-full bg-white/20" />
+                    ))}
+                  </div>
+                )}
+
+                {/* Right chevron */}
+                <span className="shrink-0 flex items-center pr-2.5 text-slate-400">
+                  <ChevronRight />
+                </span>
+              </div>
+            </div>
+
+          </div>{/* end topAreaRef */}
+
+          {/* ── Bar-chart pane ─────────────────────────────── */}
+          <div ref={botRef}
+               className="overflow-x-auto"
+               style={{ scrollbarWidth: 'none' }}
+               onScroll={() => handlePaneScroll('bot')}>
+            <div style={{ minWidth: totalW }}>
+
+              {/* Wave bars */}
+              {barRow(
+                WAVE_H,
+                (di, hi) => {
+                  const wh = (hourlyByDay.get(days[di]?.date ?? '') ?? [])[hi]?.waveHeight ?? 0
+                  return Math.max(Math.round((wh / maxWave) * (WAVE_H - 4)), wh > 0 ? 2 : 0)
+                },
+                (di, hi) => {
+                  const day = days[di]
+                  const wh  = (hourlyByDay.get(day?.date ?? '') ?? [])[hi]?.waveHeight ?? 0
+                  return day?.hasMarineData && wh > 0 ? day.rating.color : 'rgba(100,116,139,0.08)'
+                },
+                barOpacity,
+              )}
+
+              {/* Wind bars */}
+              {barRow(
+                WIND_H,
+                (di, hi) => {
+                  const ws = (hourlyByDay.get(days[di]?.date ?? '') ?? [])[hi]?.windSpeed ?? 0
+                  return Math.max(Math.round((ws / maxWind) * (WIND_H - 4)), ws > 0 ? 2 : 0)
+                },
+                (di, hi) => {
+                  const ws = (hourlyByDay.get(days[di]?.date ?? '') ?? [])[hi]?.windSpeed ?? 0
+                  return windColor(ws)
+                },
+                barOpacity,
+              )}
+
+              {/* Tide bars */}
+              {showTide && barRow(
+                TIDE_H,
+                (di, hi) => {
+                  const date = days[di]?.date ?? ''
+                  const key  = `${date}|${String(hi).padStart(2, '0')}`
+                  const h    = tideByKey!.get(key)
+                  if (h === undefined) return 0
+                  return Math.max(Math.round(((h - tideMin) / tideRange) * (TIDE_H - 4)), 2)
+                },
+                () => 'rgba(56,189,248,0.45)',
+                barOpacity,
+              )}
+
+              {/* Hour ticks + labels */}
+              <div className="flex">
+                {days.map(day => (
+                  <div key={day.date} style={{ width: DAY_W, height: TICK_H }}
+                       className="flex-shrink-0 relative border-r border-white/5 last:border-r-0">
+                    {Array.from({ length: 25 }, (_, hi) => (
+                      <div key={hi} style={{ left: hi * HOUR_W }}
+                           className={`absolute top-0 w-px ${
+                             hi % 6 === 0 ? 'h-[10px] bg-white/20'
+                             : hi % 3 === 0 ? 'h-[6px] bg-white/10'
+                             : 'h-[4px] bg-white/6'
+                           }`} />
+                    ))}
+                    {([0, 6, 12, 18] as const).map(hi => (
+                      <span key={hi} style={{ left: hi * HOUR_W }}
+                            className="absolute top-[11px] text-[8px] text-slate-600 -translate-x-1/2 select-none">
+                        {TICK_LABELS[hi]}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+
+            </div>
           </div>
 
-        </div>
-      </div>
+        </div>{/* end scroll column */}
+
+      </div>{/* end outer flex */}
+
     </section>
   )
 }
 
-function SwellIcon() {
+// ── Icons ──────────────────────────────────────────────────────────
+
+function WaveRowIcon() {
   return (
-    <svg width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden>
-      <path
-        d="M0.5 5.5 C1.5 3.5, 2.5 3.5, 3.5 5.5 C4.5 7.5, 5.5 7.5, 6.5 5.5 C7.5 3.5, 8.5 3.5, 9.5 5.5 C10 6.5, 10.5 6.5, 11.5 5.5"
-        stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"
-      />
+    <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden>
+      <path d="M0.5 7 C2 4.5, 3.5 4.5, 5 7 C6.5 9.5, 8 9.5, 9.5 7 C11 4.5, 12.5 4.5, 14 7 C14.8 8.3, 15.3 8.3, 15.5 7"
+            stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+      <path d="M0.5 3 C2 1.3, 3.5 1.3, 5 3 C6.5 4.7, 8 4.7, 9.5 3"
+            stroke="currentColor" strokeWidth="1.0" strokeLinecap="round" opacity="0.45"/>
     </svg>
   )
 }
 
-function WindIcon() {
+function WindRowIcon() {
+  return (
+    <svg width="15" height="12" viewBox="0 0 15 12" fill="none" aria-hidden>
+      <path d="M1 3.5h9a1.75 1.75 0 0 1 0 3.5H1" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+      <path d="M1 8.5h5.5a1.25 1.25 0 0 1 0 2.5H1"  stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+    </svg>
+  )
+}
+
+function TideRowIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
+      <path d="M1 9.5 C2.5 7.5, 4 7.5, 5.5 9.5 C7 11.5, 8.5 11.5, 10 9.5 C11 8, 12 8, 13 9.5"
+            stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+      <path d="M7 7V1.5M7 1.5L5 3.5M7 1.5L9 3.5"
+            stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+function ChevronLeft() {
+  return (
+    <svg width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden>
+      <path d="M5.5 1L1.5 5.5l4 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+function ChevronRight() {
+  return (
+    <svg width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden>
+      <path d="M1.5 1L5.5 5.5l-4 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+function SmallSwellIcon() {
+  return (
+    <svg width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden>
+      <path d="M0.5 5.5 C1.5 3.5, 2.5 3.5, 3.5 5.5 C4.5 7.5, 5.5 7.5, 6.5 5.5 C7.5 3.5, 8.5 3.5, 9.5 5.5 C10 6.5, 10.5 6.5, 11.5 5.5"
+            stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    </svg>
+  )
+}
+
+function SmallWindIcon() {
   return (
     <svg width="10" height="9" viewBox="0 0 11 10" fill="none" aria-hidden>
-      <path d="M1 2.5h6.5a1.25 1.25 0 0 1 0 2.5H1" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
-      <path d="M1 6.5h4a1 1 0 0 1 0 2H1"           stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+      <path d="M1 2.5h6.5a1.25 1.25 0 0 1 0 2.5H1" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+      <path d="M1 6.5h4a1 1 0 0 1 0 2H1"           stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
     </svg>
   )
 }

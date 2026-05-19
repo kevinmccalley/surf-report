@@ -511,7 +511,12 @@ export default function SurfApp({ tier }: { tier: Tier }) {
             )}
 
             {!report.historical && report.isCoastal && report.hourly.length > 0 && (
-              <ForecastTimeline forecast={report.forecast} hourly={report.hourly} units={units} />
+              <ForecastTimeline
+                forecast={report.forecast}
+                hourly={report.hourly}
+                units={units}
+                tideHourly={tideData?.available ? (tideData as import('@/app/lib/types').TideReport).hourly : undefined}
+              />
             )}
 
             <section className="glass-card rounded-2xl p-4 sm:p-6">
