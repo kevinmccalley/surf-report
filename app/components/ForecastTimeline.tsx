@@ -238,32 +238,68 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
     getBarH:   (di: number, hi: number) => number,
     getColor:  (di: number, hi: number) => string,
     getOpacity:(di: number, hi: number) => number,
-  ) => (
-    <div className="flex" style={{ height: rowH }}>
-      {days.map((day, di) => {
-        const hours = hourlyByDay.get(day.date) ?? Array(24).fill(null)
-        return (
-          <div key={day.date} style={{ width: DAY_W }}
-               className="flex-shrink-0 flex items-end h-full border-r border-white/5 last:border-r-0">
-            {hours.map((h, hi) => (
-              <div key={hi} style={{ width: HOUR_W, height: '100%' }}
-                   className="flex-shrink-0 flex items-end cursor-crosshair"
-                   onMouseEnter={() => h && setHoveredBar({ di, hi, hour: h })}
-                   onMouseLeave={() => setHoveredBar(null)}>
-                <div style={{
-                  height: getBarH(di, hi),
-                  width:  HOUR_W - 1,
-                  backgroundColor: getColor(di, hi),
-                  opacity: getOpacity(di, hi),
-                  transition: 'opacity 0.08s',
-                }} className="rounded-t-[1px]" />
-              </div>
-            ))}
-          </div>
-        )
-      })}
-    </div>
-  )
+    getLabel?: (di: number, hi: number) => string | undefined,
+  ) => {
+    // Hover-value chip: floats just above the hovered bar
+    const chip = hoveredBar && getLabel ? (() => {
+      const label = getLabel(hoveredBar.di, hoveredBar.hi)
+      if (!label) return null
+      const barH = getBarH(hoveredBar.di, hoveredBar.hi)
+      const x    = hoveredBar.di * DAY_W + hoveredBar.hi * HOUR_W + HOUR_W / 2
+      return (
+        <div
+          className="pointer-events-none"
+          style={{
+            position:        'absolute',
+            bottom:          Math.max(0, barH) + 4,
+            left:            x,
+            transform:       'translateX(-50%)',
+            zIndex:          20,
+            background:      'var(--panel-bg)',
+            border:          '1px solid var(--card-border)',
+            borderRadius:    4,
+            padding:         '1px 5px',
+            fontSize:        10,
+            fontWeight:      600,
+            color:           'var(--text-base)',
+            whiteSpace:      'nowrap',
+            backdropFilter:        'blur(6px)',
+            WebkitBackdropFilter:  'blur(6px)',
+          }}
+        >
+          {label}
+        </div>
+      )
+    })() : null
+
+    return (
+      <div className="relative flex" style={{ height: rowH }}>
+        {days.map((day, di) => {
+          const hours = hourlyByDay.get(day.date) ?? Array(24).fill(null)
+          return (
+            <div key={day.date} style={{ width: DAY_W }}
+                 className="flex-shrink-0 flex items-end h-full border-r border-white/5 last:border-r-0">
+              {hours.map((h, hi) => (
+                <div key={hi} style={{ width: HOUR_W, height: '100%' }}
+                     className="flex-shrink-0 flex items-end cursor-crosshair"
+                     onMouseEnter={() => h && setHoveredBar({ di, hi, hour: h })}
+                     onMouseLeave={() => setHoveredBar(null)}>
+                  <div style={{
+                    height: getBarH(di, hi),
+                    width:  HOUR_W - 1,
+                    backgroundColor: getColor(di, hi),
+                    opacity: getOpacity(di, hi),
+                    transition: 'opacity 0.08s',
+                  }} className="rounded-t-[1px]" />
+                </div>
+              ))}
+            </div>
+          )
+        })}
+        {chip}
+      </div>
+    )
+  }
 
   const barOpacity = (di: number, hi: number) => {
     const isActive = hoveredBar?.di === di && hoveredBar?.hi === hi
@@ -430,6 +466,10 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
                   return day?.hasMarineData && wh > 0 ? day.rating.color : 'rgba(100,116,139,0.08)'
                 },
                 barOpacity,
+                (di, hi) => {
+                  const wh = (hourlyByDay.get(days[di]?.date ?? '') ?? [])[hi]?.waveHeight
+                  return wh ? formatWaveHeight(wh, units.height) : undefined
+                },
               )}
 
               {/* Wind bars */}
@@ -444,6 +484,10 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
                   return windColor(ws)
                 },
                 barOpacity,
+                (di, hi) => {
+                  const h = (hourlyByDay.get(days[di]?.date ?? '') ?? [])[hi]
+                  return h ? `${Math.round(h.windSpeed)} km/h` : undefined
+                },
               )}
 
               {/* Tide bars */}
@@ -458,6 +502,12 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
                 },
                 () => 'rgba(56,189,248,0.45)',
                 barOpacity,
+                (di, hi) => {
+                  const date = days[di]?.date ?? ''
+                  const key  = `${date}|${String(hi).padStart(2, '0')}`
+                  const h    = tideByKey!.get(key)
+                  return h !== undefined ? formatWaveHeight(h, units.height) : undefined
+                },
               )}
 
               {/* Hour ticks + labels */}
