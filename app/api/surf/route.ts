@@ -121,7 +121,9 @@ export async function GET(request: NextRequest) {
     // val() calls in buildReport read real wave data instead of zeros.
     const effectiveMarine = (!nemoHasWaves && gfsMarine) ? gfsMarine : marine
     const isCoastal = nemoHasWaves || gfsMarine !== null
-    const utcOffset = ((effectiveMarine.utc_offset_seconds ?? weather.utc_offset_seconds) as number) ?? 0
+    // Prefer weather API offset — marine models (esp. ecmwf_wam) can return 0
+    // when timezone=auto isn't honoured, causing currentIdx to be wrong.
+    const utcOffset = ((weather.utc_offset_seconds ?? effectiveMarine.utc_offset_seconds) as number) ?? 0
     const timezone = (weather.timezone as string | undefined) ?? (effectiveMarine.timezone as string | undefined) ?? 'UTC'
     const currentIdx = findCurrentHourIndex(weather.hourly.time, utcOffset)
 

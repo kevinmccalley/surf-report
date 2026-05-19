@@ -96,7 +96,15 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
   const tideByKey = useMemo(() => {
     if (!tideHourly?.length) return null
     const map = new Map<string, number>()
-    for (const th of tideHourly) map.set(tideKey(th.time), th.height)
+    for (const th of tideHourly) {
+      // Primary: direct slice — handles "YYYY-MM-DD HH:MM", "YYYY-MM-DDTHH:MM", ISO-Z variants
+      const date = th.time.slice(0, 10)
+      const hour = th.time.slice(11, 13)
+      if (date && hour) map.set(`${date}|${hour}`, th.height)
+      // Belt-and-suspenders: regex key for any unusual format
+      const rk = tideKey(th.time)
+      if (!map.has(rk)) map.set(rk, th.height)
+    }
     return map
   }, [tideHourly])
 
@@ -144,8 +152,8 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
 
   // ── Pill geometry ───────────────────────────────────────────────
   const pillW    = visibleWidth > 0
-    ? Math.max(140, Math.round((visibleWidth / Math.max(totalW, 1)) * visibleWidth))
-    : 140
+    ? Math.max(160, Math.round((visibleWidth / Math.max(totalW, 1)) * visibleWidth))
+    : 160
   const maxSl    = Math.max(0, totalW - visibleWidth)
   const trackUse = Math.max(0, visibleWidth - pillW)
   const pillL    = maxSl > 0 ? Math.round((scrollLeft / maxSl) * trackUse) : 0
@@ -187,9 +195,12 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
   const { hour: vpHour, day: vpDay } = getViewportInfo()
   const activeHour = hoveredBar?.hour ?? vpHour
   const activeDay  = hoveredBar ? (days[hoveredBar.di] ?? null) : vpDay
-  const activeTide = (showTide && tideByKey && activeHour)
-    ? tideByKey.get(tideKey(activeHour.time))
-    : undefined
+  // Direct slice is more robust than regex — Open-Meteo times are always "YYYY-MM-DDTHH:MM"
+  const activeTide = (showTide && tideByKey && activeHour) ? (() => {
+    const date = activeHour.time.slice(0, 10)
+    const hour = activeHour.time.slice(11, 13)
+    return tideByKey.get(`${date}|${hour}`)
+  })() : undefined
 
   if (!days.length) return null
 
@@ -307,7 +318,7 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
                     </span>
                     {activeDay.hasMarineData && (
                       <span className="text-[8px] font-bold uppercase px-1.5 py-0.5 rounded-full shrink-0"
-                            style={{ backgroundColor: activeDay.rating.bgColor, color: activeDay.rating.textColor }}>
+                            style={{ backgroundColor: activeDay.rating.bgColor, color: activeDay.rating.color }}>
                         {t(RATING_KEY[activeDay.rating.label] ?? 'rating.FLAT')}
                       </span>
                     )}

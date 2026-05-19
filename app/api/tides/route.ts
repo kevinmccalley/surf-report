@@ -23,6 +23,17 @@ function yyyymmdd(d: Date): string {
   return `${y}${m}${day}`
 }
 
+// YYYYMMDD in the location's local timezone (avoids UTC date ≠ local date mismatch)
+function yyyymmddLocal(d: Date, tz: string): string {
+  try {
+    return new Intl.DateTimeFormat('en-CA', {
+      timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit',
+    }).format(d).replace(/-/g, '')
+  } catch {
+    return yyyymmdd(d)
+  }
+}
+
 function toISOLocal(d: Date): string {
   return d.toISOString()
 }
@@ -120,7 +131,7 @@ async function fetchNOAAObserved(
 
 interface NOAAStation { id: string; name: string; lat: number; lon: number }
 
-async function tryNOAA(lat: number, lon: number): Promise<TideResult | null> {
+async function tryNOAA(lat: number, lon: number, tz?: string): Promise<TideResult | null> {
   try {
     const stationsRes = await fetch(
       'https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations.json?type=tidepredictions',
@@ -155,9 +166,10 @@ async function tryNOAA(lat: number, lon: number): Promise<TideResult | null> {
 
     const now = new Date()
     const end = new Date(now.getTime() + 10 * 86400 * 1000)
+    const toDate = tz ? (d: Date) => yyyymmddLocal(d, tz) : yyyymmdd
     const base =
       `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter` +
-      `?begin_date=${yyyymmdd(now)}&end_date=${yyyymmdd(end)}` +
+      `?begin_date=${toDate(now)}&end_date=${toDate(end)}` +
       `&station=${best.station.id}` +
       `&product=predictions&datum=MLLW&time_zone=lst_ldt&units=metric&application=groundswell&format=json`
 
@@ -587,7 +599,7 @@ export async function GET(request: NextRequest) {
   try {
     // Try NOAA and DFO in parallel; use the first that succeeds with data
     const [noaaResult, dfoResult] = await Promise.all([
-      tryNOAA(lat, lon),
+      tryNOAA(lat, lon, tz),
       tryDFO(lat, lon),
     ])
 
