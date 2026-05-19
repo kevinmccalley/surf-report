@@ -11,6 +11,7 @@ import HeroSection from './HeroSection'
 import ConditionCards from './ConditionCards'
 import WaveChart from './WaveChart'
 import ForecastGrid from './ForecastGrid'
+import ForecastTimeline from './ForecastTimeline'
 import TideSection from './TideSection'
 import TideSetupCard from './TideSetupCard'
 import ClimatologySection from './ClimatologySection'
@@ -513,6 +514,9 @@ export default function SurfApp({ tier }: { tier: Tier }) {
               <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
                 {report.historical ? t('app.daySummary') : isPremium ? t('app.16dayForecast') : t('app.10dayForecast')}
               </h2>
+              {!report.historical && report.isCoastal && (
+                <ForecastTimeline forecast={report.forecast} units={units} />
+              )}
               <ForecastGrid forecast={report.forecast} units={units} isCoastal={report.isCoastal} isPremium={isPremium} />
               {!isPaid && !report.historical && report.isCoastal && (
                 <button
