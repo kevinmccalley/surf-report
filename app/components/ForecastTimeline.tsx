@@ -151,34 +151,58 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
   }
 
   // ── Pill geometry ───────────────────────────────────────────────
+  const isMobile = visibleWidth > 0 && visibleWidth < 640
+  const pillMinW = isMobile ? 160 : 320
   const pillW    = visibleWidth > 0
-    ? Math.max(320, Math.round((visibleWidth / Math.max(totalW, 1)) * visibleWidth))
-    : 320
+    ? Math.max(pillMinW, Math.round((visibleWidth / Math.max(totalW, 1)) * visibleWidth))
+    : pillMinW
   const maxSl    = Math.max(0, totalW - visibleWidth)
   const trackUse = Math.max(0, visibleWidth - pillW)
   const pillL    = maxSl > 0 ? Math.round((scrollLeft / maxSl) * trackUse) : 0
 
-  // ── Drag pill ───────────────────────────────────────────────────
+  // ── Drag pill (mouse + touch) ────────────────────────────────────
+  const applyDrag = (clientX: number, startX: number, startSl: number) => {
+    const newSl = trackUse > 0
+      ? Math.max(0, Math.min(startSl + ((clientX - startX) / trackUse) * maxSl, maxSl))
+      : 0
+    syncing.current = true
+    if (topRef.current) topRef.current.scrollLeft = newSl
+    if (botRef.current) botRef.current.scrollLeft = newSl
+    setScrollLeft(newSl)
+    setTimeout(() => { syncing.current = false }, 0)
+  }
+
   const startDrag = (e: React.MouseEvent) => {
     e.preventDefault()
     const startX  = e.clientX
     const startSl = scrollLeft
-    const onMove  = (me: MouseEvent) => {
-      const newSl = trackUse > 0
-        ? Math.max(0, Math.min(startSl + ((me.clientX - startX) / trackUse) * maxSl, maxSl))
-        : 0
-      syncing.current = true
-      if (topRef.current) topRef.current.scrollLeft = newSl
-      if (botRef.current) botRef.current.scrollLeft = newSl
-      setScrollLeft(newSl)
-      setTimeout(() => { syncing.current = false }, 0)
-    }
-    const onUp = () => {
+    const onMove  = (me: MouseEvent) => applyDrag(me.clientX, startX, startSl)
+    const onUp    = () => {
       window.removeEventListener('mousemove', onMove)
       window.removeEventListener('mouseup', onUp)
     }
     window.addEventListener('mousemove', onMove)
     window.addEventListener('mouseup', onUp)
+  }
+
+  const startTouchDrag = (e: React.TouchEvent) => {
+    const touch = e.touches[0]
+    if (!touch) return
+    e.preventDefault()
+    const startX  = touch.clientX
+    const startSl = scrollLeft
+    const onMove  = (te: TouchEvent) => {
+      if (te.touches[0]) {
+        te.preventDefault()
+        applyDrag(te.touches[0].clientX, startX, startSl)
+      }
+    }
+    const onEnd = () => {
+      window.removeEventListener('touchmove', onMove)
+      window.removeEventListener('touchend', onEnd)
+    }
+    window.addEventListener('touchmove', onMove, { passive: false })
+    window.addEventListener('touchend', onEnd)
   }
 
   // ── Active info ─────────────────────────────────────────────────
@@ -306,8 +330,9 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly }
               <div
                 className="timeline-pill absolute top-0 bottom-0 rounded-full flex items-center overflow-hidden
                            cursor-grab active:cursor-grabbing select-none"
-                style={{ left: pillL, width: pillW }}
+                style={{ left: pillL, width: pillW, touchAction: 'none' }}
                 onMouseDown={startDrag}
+                onTouchStart={startTouchDrag}
               >
                 {/* Left chevron */}
                 <span className="shrink-0 flex items-center pl-2.5" style={{ color: 'var(--panel-label)' }}>
