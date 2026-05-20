@@ -440,7 +440,7 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly, 
             </div>
 
             {/* ── Pill track ─────────────────────────────── */}
-            <div className="my-1.5" style={{ position: 'relative', height: 36 }}>
+            <div className="mt-1.5 mb-4" style={{ position: 'relative', height: 36 }}>
 
               {/* Groove */}
               <div className="absolute inset-0 rounded-full timeline-groove" />
