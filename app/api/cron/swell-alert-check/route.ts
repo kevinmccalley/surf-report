@@ -19,12 +19,12 @@ async function getWaveHeight(lat: number, lon: number): Promise<number> {
     const url =
       `https://marine-api.open-meteo.com/v1/marine` +
       `?latitude=${lat}&longitude=${lon}` +
-      `&hourly=wave_height&forecast_days=1&timezone=UTC`
+      `&hourly=swell_wave_height&forecast_days=1&timezone=UTC`
     const res = await fetch(url, { cache: 'no-store' })
     const data = await res.json()
-    if (data.error || !data.hourly?.wave_height) return 0
+    if (data.error || !data.hourly?.swell_wave_height) return 0
     const nowHour = new Date().getUTCHours()
-    return data.hourly.wave_height[nowHour] ?? data.hourly.wave_height[0] ?? 0
+    return data.hourly.swell_wave_height[nowHour] ?? data.hourly.swell_wave_height[0] ?? 0
   } catch {
     return 0
   }
