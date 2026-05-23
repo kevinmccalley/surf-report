@@ -252,7 +252,7 @@ export default function GalleryClient({ tiles }: Props) {
             <div className="hidden sm:flex items-center gap-1 shrink-0 ml-auto">
               <LanguageSwitcher />
               <ThemePicker />
-              <AuthButton subscribed={false} isPremium={false} onManageBilling={() => router.push('/')} />
+              <AuthButton subscribed={false} isPremium={false} swellAlertOptIn={false} onManageBilling={() => router.push('/')} onToggleSwellAlert={() => {}} />
             </div>
 
             <button
@@ -268,7 +268,7 @@ export default function GalleryClient({ tiles }: Props) {
             <div className="sm:hidden border-t border-white/5 px-4 py-2.5 flex items-center gap-1 flex-wrap">
               <LanguageSwitcher align="left" />
               <ThemePicker align="left" />
-              <AuthButton subscribed={false} isPremium={false} onManageBilling={() => router.push('/')} />
+              <AuthButton subscribed={false} isPremium={false} swellAlertOptIn={false} onManageBilling={() => router.push('/')} onToggleSwellAlert={() => {}} />
             </div>
           )}
         </div>

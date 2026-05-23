@@ -218,6 +218,7 @@ const fr: Record<string, string> = {
   'auth.manageBilling': 'Gérer l\'abonnement',
   'auth.signOut': 'Se déconnecter',
   'auth.pro': 'Premium',
+  'auth.weeklyAlerts': 'Alertes hebdomadaires',
 
   // MarketingPage
   'mkt.liveBadge': 'Données en direct · Actualisé à chaque recherche',

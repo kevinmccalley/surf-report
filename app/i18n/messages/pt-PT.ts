@@ -218,6 +218,7 @@ const ptPT: Record<string, string> = {
   'auth.manageBilling': 'Gerir subscrição',
   'auth.signOut': 'Sair',
   'auth.pro': 'Premium',
+  'auth.weeklyAlerts': 'Alertas semanais',
 
   // MarketingPage
   'mkt.liveBadge': 'Dados em direto · Atualizado em cada pesquisa',

@@ -7,10 +7,12 @@ import { useLanguage } from '@/app/i18n/LanguageContext'
 interface Props {
   subscribed: boolean
   isPremium: boolean
+  swellAlertOptIn: boolean
   onManageBilling: () => void
+  onToggleSwellAlert: () => void
 }
 
-export default function AuthButton({ subscribed, isPremium, onManageBilling }: Props) {
+export default function AuthButton({ subscribed, isPremium, swellAlertOptIn, onManageBilling, onToggleSwellAlert }: Props) {
   const { t } = useLanguage()
   const { isSignedIn, user } = useUser()
   const [open, setOpen] = useState(false)
@@ -56,6 +58,15 @@ export default function AuthButton({ subscribed, isPremium, onManageBilling }: P
                   {t('auth.manageBilling')}
                 </button>
               )}
+              <button
+                onClick={onToggleSwellAlert}
+                className="w-full text-left px-3 py-2 text-xs theme-row-hover theme-label transition-colors flex items-center justify-between"
+              >
+                {t('auth.weeklyAlerts')}
+                <span className={`relative inline-flex w-7 h-4 rounded-full transition-colors ${swellAlertOptIn ? 'bg-teal-500' : 'bg-slate-600'}`}>
+                  <span className={`absolute top-0.5 left-0.5 w-3 h-3 rounded-full bg-white transition-transform ${swellAlertOptIn ? 'translate-x-3' : 'translate-x-0'}`} />
+                </span>
+              </button>
               <SignOutButton>
                 <button
                   onClick={() => setOpen(false)}

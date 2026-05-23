@@ -49,6 +49,9 @@ export default function SurfApp({ tier }: { tier: Tier }) {
   const isPaid = tier !== 'free'
   const isPremium = tier === 'premium'
   const savedLocations = (user?.publicMetadata?.savedLocations as SavedLocation[] | undefined) ?? []
+  const [swellAlertOptIn, setSwellAlertOptIn] = useState<boolean>(
+    (user?.publicMetadata?.swellAlertOptIn as boolean | undefined) ?? true
+  )
   const [showPaywall, setShowPaywall] = useState(false)
   const [billingError, setBillingError] = useState<string | null>(null)
   const [activeDate, setActiveDate] = useState<string | null>(null)
@@ -259,6 +262,16 @@ export default function SurfApp({ tier }: { tier: Tier }) {
       .catch(() => {})
   }, [report, lastGeoResult])
 
+  async function handleToggleSwellAlert() {
+    const next = !swellAlertOptIn
+    setSwellAlertOptIn(next)
+    await fetch('/api/preferences', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ swellAlertOptIn: next }),
+    }).catch(() => setSwellAlertOptIn(!next))
+  }
+
   async function openBillingPortal() {
     setBillingError(null)
     try {
@@ -368,7 +381,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
                 onSetAlert={handleSetAlert}
               />
             )}
-            <AuthButton subscribed={isPaid} isPremium={isPremium} onManageBilling={openBillingPortal} />
+            <AuthButton subscribed={isPaid} isPremium={isPremium} swellAlertOptIn={swellAlertOptIn} onManageBilling={openBillingPortal} onToggleSwellAlert={handleToggleSwellAlert} />
           </div>
 
           {/* Mobile hamburger */}
@@ -401,7 +414,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
                 onSetAlert={handleSetAlert}
               />
             )}
-            <AuthButton subscribed={isPaid} isPremium={isPremium} onManageBilling={openBillingPortal} />
+            <AuthButton subscribed={isPaid} isPremium={isPremium} swellAlertOptIn={swellAlertOptIn} onManageBilling={openBillingPortal} onToggleSwellAlert={handleToggleSwellAlert} />
           </div>
         )}
       </header>
