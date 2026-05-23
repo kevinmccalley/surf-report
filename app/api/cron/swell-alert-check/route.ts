@@ -40,6 +40,7 @@ export async function GET(req: NextRequest) {
   let checked = 0
   let offset = 0
   const pageSize = 500
+  const debug: { email: string; spot: string; waveHeightM: number; waveHeightFt: string; thresholdM: number; thresholdFt: string; triggered: boolean; skippedCooldown: boolean }[] = []
 
   while (true) {
     const page = await client.users.getUserList({ limit: pageSize, offset })
@@ -57,7 +58,6 @@ export async function GET(req: NextRequest) {
       let metaChanged = false
       const updatedLocations = locations.map(l => ({ ...l }))
 
-      // Fetch wave heights for all alert spots in parallel
       const heights = await Promise.all(
         alertSpots.map(spot => getWaveHeight(spot.lat, spot.lon))
       )
@@ -65,26 +65,38 @@ export async function GET(req: NextRequest) {
       for (let i = 0; i < alertSpots.length; i++) {
         const spot = alertSpots[i]
         const waveHeight = heights[i]
+        const threshold = spot.alertThreshold ?? 0
 
-        // Skip if within cooldown window
-        if (spot.lastAlertedAt) {
-          const elapsed = Date.now() - new Date(spot.lastAlertedAt).getTime()
-          if (elapsed < COOLDOWN_MS) continue
-        }
+        const inCooldown = spot.lastAlertedAt
+          ? (Date.now() - new Date(spot.lastAlertedAt).getTime()) < COOLDOWN_MS
+          : false
 
+        const triggered = !inCooldown && waveHeight >= threshold
+
+        debug.push({
+          email,
+          spot: spot.name,
+          waveHeightM: waveHeight,
+          waveHeightFt: (waveHeight * M_TO_FT).toFixed(2),
+          thresholdM: threshold,
+          thresholdFt: (threshold * M_TO_FT).toFixed(2),
+          triggered,
+          skippedCooldown: inCooldown,
+        })
+
+        if (inCooldown) continue
         checked++
-        if (waveHeight < (spot.alertThreshold ?? 0)) continue
+        if (waveHeight < threshold) continue
 
         await triggerEvent(email, 'swell_threshold_alert', {
-          spotName:    spot.name,
+          spotName:     spot.name,
           waveHeightFt: (waveHeight * M_TO_FT).toFixed(1),
           waveHeightM:  waveHeight.toFixed(1),
-          thresholdFt:  ((spot.alertThreshold ?? 0) * M_TO_FT).toFixed(1),
-          thresholdM:   (spot.alertThreshold ?? 0).toFixed(1),
+          thresholdFt:  (threshold * M_TO_FT).toFixed(1),
+          thresholdM:   threshold.toFixed(1),
         })
         sent++
 
-        // Stamp lastAlertedAt on the matching entry
         const idx = updatedLocations.findIndex(
           l => Math.abs(l.lat - spot.lat) < 0.001 && Math.abs(l.lon - spot.lon) < 0.001
         )
@@ -105,5 +117,5 @@ export async function GET(req: NextRequest) {
     offset += pageSize
   }
 
-  return NextResponse.json({ ok: true, sent, checked })
+  return NextResponse.json({ ok: true, sent, checked, debug })
 }
