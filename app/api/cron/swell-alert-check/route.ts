@@ -117,5 +117,6 @@ export async function GET(req: NextRequest) {
     offset += pageSize
   }
 
+  console.log('[swell-alert-check]', JSON.stringify({ sent, checked, debug }))
   return NextResponse.json({ ok: true, sent, checked, debug })
 }
