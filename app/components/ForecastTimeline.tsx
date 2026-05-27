@@ -207,7 +207,7 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly, 
     ? Math.round(visibleWidth * 0.92)
     : 420
   const pillW    = visibleWidth > 0
-    ? Math.max(pillMinW, Math.round((visibleWidth / Math.max(totalW, 1)) * visibleWidth))
+    ? Math.min(visibleWidth, Math.max(pillMinW, Math.round((visibleWidth / Math.max(totalW, 1)) * visibleWidth)))
     : pillMinW
   const maxSl    = Math.max(0, totalW - visibleWidth)
   const trackUse = Math.max(0, visibleWidth - pillW)

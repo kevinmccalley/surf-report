@@ -15,8 +15,8 @@ export async function getSubscriptionTier(): Promise<SubscriptionTier> {
     const user = await client.users.getUser(userId)
     const meta = user.privateMetadata as UserMeta
     const bypassEmails = (process.env.BYPASS_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean)
-    const userEmail = user.emailAddresses[0]?.emailAddress?.toLowerCase() ?? ''
-    const isBypassed = bypassEmails.length > 0 && bypassEmails.includes(userEmail)
+    const userEmails = user.emailAddresses.map(e => e.emailAddress?.toLowerCase() ?? '').filter(Boolean)
+    const isBypassed = bypassEmails.length > 0 && userEmails.some(e => bypassEmails.includes(e))
 
     if (meta.subscriptionStatus !== 'active' && !isBypassed) return 'free'
     if (isBypassed || meta.subscriptionTier === 'premium') return 'premium'

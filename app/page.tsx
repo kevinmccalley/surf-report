@@ -86,9 +86,9 @@ export default async function Page({
       const meta   = user.privateMetadata as { subscriptionStatus?: string; subscriptionTier?: string; stripeCustomerId?: string; lsSubscriptionId?: string }
 
       const bypassEmails = (process.env.BYPASS_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean)
-      const userEmail = user.emailAddresses[0]?.emailAddress?.toLowerCase() ?? ''
+      const userEmails = user.emailAddresses.map(e => e.emailAddress?.toLowerCase() ?? '').filter(Boolean)
 
-      if (bypassEmails.length > 0 && bypassEmails.includes(userEmail)) {
+      if (bypassEmails.length > 0 && userEmails.some(e => bypassEmails.includes(e))) {
         tier = 'premium'
       } else if (meta.subscriptionStatus === 'active') {
         tier = meta.subscriptionTier === 'premium' ? 'premium' : 'individual'
