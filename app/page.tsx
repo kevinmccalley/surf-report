@@ -87,6 +87,7 @@ export default async function Page({
 
       const bypassEmails = (process.env.BYPASS_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean)
       const userEmails = user.emailAddresses.map(e => e.emailAddress?.toLowerCase() ?? '').filter(Boolean)
+      const userEmail  = userEmails[0] ?? ''
 
       if (bypassEmails.length > 0 && userEmails.some(e => bypassEmails.includes(e))) {
         tier = 'premium'
