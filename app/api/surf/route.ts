@@ -4,7 +4,8 @@ import type {
   SurfReport, CurrentConditions, HourlyForecast, DayForecast, SwellInfo
 } from '@/app/lib/types'
 import { computeSurfRating } from '@/app/lib/surf-rating'
-import { findCalibration, applyCalibration } from '@/app/lib/spot-calibration'
+import { findCalibration, applyCalibration, inferFacingDirection } from '@/app/lib/spot-calibration'
+import { kv } from '@vercel/kv'
 import {
   getDirectionLabel, getWeatherDescription,
   findCurrentHourIndex, findCurrentHourIndexByTz, estimateWaterTemp, getDayName, omUrl
@@ -127,11 +128,37 @@ export async function GET(request: NextRequest) {
     const timezone = (weather.timezone as string | undefined) ?? (effectiveMarine.timezone as string | undefined) ?? 'UTC'
     const currentIdx = findCurrentHourIndexByTz(weather.hourly.time, timezone, utcOffset)
 
+    // Resolve facing direction for wind-quality scoring.
+    // Calibrated spots already have it; for everything else check KV cache
+    // then fire the Open-Meteo probe inference (result stored for future calls).
+    const latN = parseFloat(lat)
+    const lonN = parseFloat(lon)
+    const calibrationForFacing = findCalibration(latN, lonN)
+    let facingDirection: number | undefined = calibrationForFacing?.facingDirection
+
+    if (facingDirection === undefined) {
+      const kvKey = `facing:${latN.toFixed(4)}:${lonN.toFixed(4)}`
+      try {
+        const cached = await kv.get<number>(kvKey)
+        if (cached !== null && cached !== undefined) {
+          facingDirection = cached
+        } else {
+          const inferred = await inferFacingDirection(latN, lonN)
+          if (inferred !== null) {
+            facingDirection = inferred
+            kv.set(kvKey, inferred, { ex: 365 * 24 * 3600 }).catch(() => {})
+          }
+        }
+      } catch {
+        // KV unavailable — proceed without facing direction (speed-only wind score)
+      }
+    }
+
     const report = buildReport(
       effectiveMarine, weather, name, country,
-      parseFloat(lat), parseFloat(lon),
+      latN, lonN,
       currentIdx, utcOffset, isCoastal, timezone,
-      forecastDays, gfsMarine
+      forecastDays, gfsMarine, facingDirection
     )
 
     report.forecast = report.forecast.slice(0, forecastDays)
@@ -172,7 +199,8 @@ function buildReport(
   isCoastal: boolean,
   timezone: string,
   maxDays = 10,
-  gfsMarine: Record<string, unknown> | null = null
+  gfsMarine: Record<string, unknown> | null = null,
+  facingDirection?: number,
 ): SurfReport {
   const calibration = findCalibration(lat, lon)
   const mh = (marine.hourly ?? {}) as Record<string, unknown[]>
@@ -209,7 +237,7 @@ function buildReport(
   const precipProb = val(wh.precipitation_probability, currentIdx)
 
   // Rate on swell height, not total Hs — wind chop doesn't create surfable waves
-  const rawRating = computeSurfRating(swellHeight, wavePeriod, swellHeight, swellPeriod, windSpeed)
+  const rawRating = computeSurfRating(swellHeight, wavePeriod, swellHeight, swellPeriod, windSpeed, windDir, facingDirection)
   const rating = calibration
     ? applyCalibration(rawRating, swellHeight, swellPeriod, swellDir, calibration)
     : rawRating
@@ -306,7 +334,7 @@ function buildReport(
     const windMax = val(wd.wind_speed_10m_max, i)
     const windDir = val(wd.wind_direction_10m_dominant, i)
     const rawDayRating = computeSurfRating(
-      wvMax * 0.6, wvPer, swMax * 0.6, swPer, windMax * 0.5
+      wvMax * 0.6, wvPer, swMax * 0.6, swPer, windMax * 0.5, windDir, facingDirection
     )
     const dayRating = calibration
       ? applyCalibration(rawDayRating, swMax, swPer, swDir, calibration)

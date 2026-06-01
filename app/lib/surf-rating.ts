@@ -1,17 +1,82 @@
 import type { SurfRating, SurfRatingLabel } from './types'
 
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+function angularDiff(a: number, b: number): number {
+  const d = Math.abs(a - b) % 360
+  return d > 180 ? 360 - d : d
+}
+
+/**
+ * Wind score (0–3).
+ *
+ * Without direction data → speed-only penalty (original behaviour, used for
+ * uncalibrated spots).
+ *
+ * With direction data → compound model: the break's facing direction tells us
+ * where "dead offshore" is, offshoreness = cos(angle from dead offshore),
+ * and wind speed amplifies the effect in either direction.
+ *
+ *   Offshore 20 km/h  →  3.0 (groomed faces, max score)
+ *   Glassy < 5 km/h   →  3.0 (glassy is equally great)
+ *   Cross-shore        →  same as speed-only baseline
+ *   Onshore 20 km/h   →  ~0  (choppy, heavily penalised)
+ */
+function computeWindScore(
+  windSpeed: number,
+  windDirection?: number,
+  facingDirection?: number,
+): number {
+  // Speed-only baseline — used directly when direction data is unavailable,
+  // or as the starting point for the compound model below.
+  const speedScore =
+    windSpeed < 8  ? 3.0 :
+    windSpeed < 15 ? 2.4 :
+    windSpeed < 22 ? 1.6 :
+    windSpeed < 30 ? 0.8 :
+    windSpeed < 40 ? 0.3 : 0
+
+  if (windDirection === undefined || facingDirection === undefined) {
+    return speedScore
+  }
+
+  // Offshoreness: +1 = dead offshore, 0 = cross-shore, -1 = dead onshore.
+  // "Dead offshore" is the wind direction 180° opposite the break's facing
+  // direction (i.e. blowing FROM behind the break TOWARDS the ocean).
+  const deadOffshoreDir = (facingDirection + 180) % 360
+  const degreesFromOffshore = angularDiff(windDirection, deadOffshoreDir)
+  const offshoreness = Math.cos(degreesFromOffshore * Math.PI / 180)
+
+  // Speed amplifier: 0 at calm, ramps linearly to 1.0 at 30 km/h, then
+  // tapers at extreme speeds (even offshore 50 km/h starts creating spray).
+  const speedAmp =
+    windSpeed <= 5  ? 0 :
+    windSpeed <= 30 ? (windSpeed - 5) / 25 :
+    Math.max(0, 1 - (windSpeed - 30) / 40)
+
+  // Directional effect: ±2.0 at full amplifier.
+  // Positive = offshore lifts score; negative = onshore hammers it.
+  const directionalEffect = offshoreness * speedAmp * 2.0
+
+  return Math.max(0, Math.min(3.0, speedScore + directionalEffect))
+}
+
+// ── Main export ───────────────────────────────────────────────────────────────
+
 export function computeSurfRating(
   waveHeight: number,
   wavePeriod: number,
   swellHeight: number,
   swellPeriod: number,
-  windSpeed: number
+  windSpeed: number,
+  windDirection?: number,
+  facingDirection?: number,
 ): SurfRating {
   if (waveHeight < 0.15) {
     return { label: 'FLAT', score: 0, color: '#6b7280', bgColor: 'rgba(107,114,128,0.15)', textColor: '#9ca3af' }
   }
 
-  // Height score (0-4)
+  // Height score (0–4)
   let heightScore: number
   if (waveHeight < 0.3) heightScore = 0.5
   else if (waveHeight < 0.6) heightScore = 1.5
@@ -22,7 +87,7 @@ export function computeSurfRating(
   else if (waveHeight < 4.5) heightScore = 3.8
   else heightScore = 3.2
 
-  // Period score (0-3) — longer = cleaner, more powerful
+  // Period score (0–3) — longer = cleaner, more powerful
   const effectivePeriod = Math.max(wavePeriod, swellPeriod)
   let periodScore: number
   if (effectivePeriod < 6) periodScore = 0
@@ -33,14 +98,8 @@ export function computeSurfRating(
   else if (effectivePeriod < 18) periodScore = 2.7
   else periodScore = 3.0
 
-  // Wind score (0-3) — calm = better
-  let windScore: number
-  if (windSpeed < 8) windScore = 3.0
-  else if (windSpeed < 15) windScore = 2.4
-  else if (windSpeed < 22) windScore = 1.6
-  else if (windSpeed < 30) windScore = 0.8
-  else if (windSpeed < 40) windScore = 0.3
-  else windScore = 0
+  // Wind score (0–3) — direction-aware when facing data is available
+  const windScore = computeWindScore(windSpeed, windDirection, facingDirection)
 
   const totalScore = heightScore + periodScore + windScore
 
