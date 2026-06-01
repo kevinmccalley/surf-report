@@ -1,6 +1,77 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --breakpoint-content: 1152px;
+
+  --color-ocean-500: #1a3d6e;
+  --color-ocean-600: #132e54;
+  --color-ocean-700: #0d2040;
+  --color-ocean-800: #0a1628;
+  --color-ocean-900: #070f1f;
+  --color-ocean-950: #020917;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-mono), monospace;
+
+  --animate-wave: wave 20s linear infinite;
+  --animate-wave-slow: wave 30s linear infinite;
+  --animate-pulse-slow: pulse 3s ease-in-out infinite;
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  --background-image-ocean-gradient: linear-gradient(
+    180deg,
+    #020917 0%,
+    #0a1628 40%,
+    #0d2040 100%
+  );
+  --background-image-card-gradient: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  --background-image-glow-blue: radial-gradient(
+    ellipse at center,
+    rgba(14, 165, 233, 0.15) 0%,
+    transparent 70%
+  );
+
+  @keyframes wave {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 :root,
 [data-theme="ocean"] {

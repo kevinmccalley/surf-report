@@ -147,7 +147,7 @@ export default function WaveChart({ hourly: hourlyAll, heightUnit, tideHeights }
             <Tooltip content={(props) => (
               <CustomTooltip
                 active={props.active}
-                payload={props.payload as { payload: ChartPoint }[] | undefined}
+                payload={props.payload as unknown as { payload: ChartPoint }[] | undefined}
                 heightUnit={heightUnit} hasTide={hasTide ?? false}
                 showSwells={showSwells}
                 hasWindWave={hasWindWave} hasSwell2={hasSwell2} hasSwell3={hasSwell3}
@@ -163,17 +163,18 @@ export default function WaveChart({ hourly: hourlyAll, heightUnit, tideHeights }
                 yAxisId="wave" dataKey="windSpeedScaled"
                 stroke="none" fill="none" legendType="none"
                 isAnimationActive={false} activeDot={false}
-                dot={(props: { cx: number; cy: number; index: number; payload: ChartPoint }) => {
-                  if (props.index % 6 !== 0) return <g key={props.index} />
+                dot={(props: { cx?: number; cy?: number; index: number; payload: ChartPoint }) => {
+                  const { cx = 0, cy = 0, index, payload } = props
+                  if (index % 6 !== 0) return <g key={index} />
                   return (
                     <text
-                      key={`wd-${props.index}`}
-                      x={props.cx} y={props.cy - 6}
+                      key={`wd-${index}`}
+                      x={cx} y={cy - 6}
                       textAnchor="middle"
                       fontSize={8} fontFamily="system-ui,sans-serif"
                       fill="rgba(148,163,184,0.85)"
                     >
-                      {t('dir.' + props.payload.windDirKey)}
+                      {t('dir.' + payload.windDirKey)}
                     </text>
                   )
                 }}

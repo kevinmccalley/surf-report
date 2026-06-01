@@ -96,7 +96,7 @@ export default function ModelComparison({ lat, lon, units }: Props) {
             <Tooltip
               contentStyle={{ background: 'var(--panel-bg)', border: '1px solid var(--card-border)', borderRadius: 8, fontSize: 12 }}
               labelStyle={{ color: 'var(--panel-label)' }}
-              formatter={(v: number, name: string) => [`${v} ${unitLabel}`, name === 'cmems' ? t('modelComp.cmems') : t('modelComp.gfs')]}
+              formatter={(v, name) => [`${v} ${unitLabel}`, name === 'cmems' ? t('modelComp.cmems') : t('modelComp.gfs')]}
             />
             <Line
               type="monotone" dataKey="cmems"
