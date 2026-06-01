@@ -71,6 +71,15 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
+
+  /* Tailwind v4 removed cursor:pointer from Preflight — restore v3 behaviour */
+  button,
+  [role="button"],
+  a,
+  label[for],
+  select {
+    cursor: pointer;
+  }
 }
 
 :root,
