@@ -89,7 +89,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const msgs = await loaders[next]()
     setMessages(msgs)
     setLocaleState(next)
-    try { localStorage.setItem(STORAGE_KEY, next) } catch {}
+    try {
+      localStorage.setItem(STORAGE_KEY, next)
+      document.cookie = `groundswell_locale=${next};path=/;max-age=31536000;SameSite=Lax`
+    } catch {}
   }, [])
 
   const t = useCallback<TFn>((key, vars) => {

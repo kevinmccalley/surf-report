@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Analytics } from '@vercel/analytics/next'
+import { cookies } from 'next/headers'
 import ThemeProvider from './components/ThemeProvider'
 import { LanguageProvider } from './i18n/LanguageContext'
 import ServiceWorkerRegistrar from './components/ServiceWorkerRegistrar'
@@ -53,10 +54,16 @@ export const viewport: Viewport = {
   themeColor: '#020917',
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const VALID_LOCALES = new Set(['en', 'es', 'fr', 'pt-BR', 'pt-PT'])
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies()
+  const rawLocale = cookieStore.get('groundswell_locale')?.value ?? 'en'
+  const locale = VALID_LOCALES.has(rawLocale) ? rawLocale : 'en'
+
   return (
     <ClerkProvider>
-      <html lang="en" className={inter.variable}>
+      <html lang={locale} suppressHydrationWarning className={inter.variable}>
         <body className="font-sans antialiased">
           <script
             type="application/ld+json"
@@ -73,6 +80,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     '@type': 'SearchAction',
                     target: 'https://groundswell.surf/?name={search_term_string}',
                     'query-input': 'required name=search_term_string',
+                  },
+                },
+                {
+                  '@type': 'SoftwareApplication',
+                  '@id': 'https://groundswell.surf/#app',
+                  name: 'Groundswell',
+                  applicationCategory: 'SportsApplication',
+                  operatingSystem: 'Web, iOS, Android',
+                  description: 'Real-time surf reports and 10-day wave forecasts for any surf spot on earth. Covers wave height, swell period and direction, wind, water temperature, and tides.',
+                  url: 'https://groundswell.surf',
+                  featureList: [
+                    'Real-time surf conditions',
+                    '10-day wave forecasts',
+                    'Swell period and direction analysis',
+                    'Wind speed and direction',
+                    'Water temperature',
+                    'Tide charts',
+                    'Historical surf climatology by spot',
+                    'Custom spot tracking',
+                    'Swell alerts',
+                  ],
+                  offers: {
+                    '@type': 'Offer',
+                    price: '0',
+                    priceCurrency: 'USD',
+                    description: 'Free with optional premium subscription',
                   },
                 },
                 {

@@ -18,10 +18,14 @@ export async function generateMetadata({ searchParams }: { searchParams: SearchP
 
   if (!name) {
     const tagline = serverT(lang, 'meta.tagline')
+    const hreflangLanguages: Record<string, string> = { 'x-default': BASE_URL }
+    for (const locale of LOCALES) {
+      hreflangLanguages[locale] = locale === 'en' ? BASE_URL : `${BASE_URL}/?lang=${locale}`
+    }
     return {
       title: `Groundswell — ${tagline}`,
       description: 'Real-time surf reports and 10-day forecasts for any spot in the world. Wave height, swell, wind, tides, and more.',
-      alternates: { canonical: BASE_URL },
+      alternates: { canonical: BASE_URL, languages: hreflangLanguages },
     }
   }
 

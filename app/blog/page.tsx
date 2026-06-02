@@ -7,19 +7,28 @@ import BlogBackLink, { BlogNoPostsMessage } from '@/app/components/blog/BlogBack
 export const revalidate = 60
 
 const BASE_URL = 'https://groundswell.surf'
+const LOCALES = ['en', 'es', 'fr', 'pt-BR', 'pt-PT'] as const
+
+const blogHreflang: Record<string, string> = { 'x-default': `${BASE_URL}/blog` }
+for (const locale of LOCALES) {
+  blogHreflang[locale] = locale === 'en' ? `${BASE_URL}/blog` : `${BASE_URL}/blog?lang=${locale}`
+}
+
+const TITLE = 'Surf Reports & Insights — Groundswell'
+const DESCRIPTION = 'Wave science, forecasting tips, and surf stories from around the world.'
 
 export const metadata: Metadata = {
-  title: 'Surf Reports & Insights — Groundswell',
-  description: 'Wave science, forecasting tips, and surf stories from around the world.',
-  alternates: { canonical: `${BASE_URL}/blog` },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: `${BASE_URL}/blog`, languages: blogHreflang },
   openGraph: {
-    title: 'Surf Reports & Insights — Groundswell',
-    description: 'Wave science, forecasting tips, and surf stories from around the world.',
+    title: TITLE,
+    description: DESCRIPTION,
     url: `${BASE_URL}/blog`,
     siteName: 'Groundswell',
-    images: [{ url: '/api/og', width: 1200, height: 630 }],
+    images: [{ url: '/api/og', width: 1200, height: 630, alt: TITLE }],
   },
-  twitter: { card: 'summary_large_image', images: ['/api/og'] },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/api/og'] },
 }
 
 export default async function BlogIndex() {

@@ -1,37 +1,64 @@
-# Groundswell — Technical SEO Checklist
+# Groundswell SEO & GEO Checklist
 
-Items identified May 2026. Work through in priority order.
+Last audited: 2026-06-02. Run `/seo audit` any time to refresh.
+
+## Critical
+
+- [x] **#1 — `html lang` hardcoded to `"en"`**
+  Root layout always renders `<html lang="en">` regardless of user locale. Fixed by writing a
+  locale cookie in `LanguageProvider` and reading it server-side in `layout.tsx`.
+
+## High
+
+- [x] **#2 — No `SoftwareApplication` schema**
+  AI engines (Perplexity, ChatGPT search, Google AI Overviews) need to understand what Groundswell
+  IS. Added `SoftwareApplication` node to the root `@graph` in `layout.tsx`.
+
+- [ ] **#3 — No FAQ schema**
+  Biggest GEO opportunity remaining. Surfing vocabulary ("what is swell period?", "how is wave
+  height measured?") maps perfectly to FAQ schema that AI engines extract for direct answers.
+  Candidates: a `/faq` page, the blog, and the home page footer.
+
+- [x] **#4 — hreflang missing on home page default state + static pages**
+  Home page `/` (no spot selected) had no `alternates.languages`. Blog index also missing.
+  Fixed both. Remaining static pages (`/accuracy`, `/terms`, `/privacy`, `/refund`, `/support`)
+  are low-traffic utility pages — add hreflang if they get translated content.
+
+- [ ] **#5 — `dateModified` on BlogPosting always equals `publishedAt`**
+  Sanity exposes `_updatedAt` on every document. Wire it through `getAllSlugsWithDate` and
+  `getPostBySlug` queries, then use it as `dateModified` in the BlogPosting schema.
+
+- [ ] **#6 — Blog index page missing `twitter.title`, `twitter.description`, OG `alt`**
+  Minor but easy — three fields missing from `app/blog/page.tsx` metadata export.
+
+## Medium
+
+- [x] **#8 — `robots.ts` allows everything including `/api/`, `/sign-in`, `/studio/`**
+  Added `disallow` rules for API routes, auth pages, Sanity Studio, and debug endpoints.
+
+- [ ] **#7 — No `BreadcrumbList` on climatology pages**
+  Blog posts have breadcrumbs; spot climatology pages (`/climatology/[slug]`) don't. Add the
+  same `BreadcrumbList` pattern: Home → Climatology → [Spot Name].
+
+- [ ] **#9 — No `sameAs` on Organization schema**
+  Social profile URLs (Twitter/X, Instagram) on the `Organization` node boost entity clarity
+  for Google Knowledge Graph and AI engines. Add when social handles are confirmed.
+
+## Low
+
+- [ ] **#10 — `keywords` meta tag in root layout**
+  Google ignores it. Harmless dead weight — remove on next layout touch.
+
+- [ ] **#11 — Sitemap `STATIC_LAST_MODIFIED` dates are hardcoded**
+  Minor freshness signal issue. Low impact; update when static pages change.
 
 ---
 
-## High priority
+## GEO Roadmap (AI Search — future work)
 
-- [x] **`/llms.txt`** — Plain-markdown file in `public/` telling AI crawlers (ChatGPT, Perplexity, Anthropic, Google AI) what Groundswell is, what data it contains, and where to find authoritative pages. The emerging robots.txt equivalent for the AI search era.
-
-- [x] **Fix blog post OG images** — `generateMetadata` in `app/blog/[slug]/page.tsx` emits the generic `/api/og` for every post instead of the actual Sanity cover image. AI-powered social previews and search snippets read the OG image; fixed to use the real cover image with `/api/og` as fallback.
-
-- [x] **`BreadcrumbList` JSON-LD on blog posts** — The breadcrumb `<nav>` exists in HTML but has no structured data counterpart. Google's AI Overviews and rich results use `BreadcrumbList` to understand site hierarchy.
-
-- [x] **`Organization` schema in root layout** — Expanded the existing `WebSite` JSON-LD into a `@graph` block that also includes an `Organization` node (logo, contact point, `@id` anchor). Feeds AI models' E-E-A-T trust graph for citations.
-
-- [ ] **Add `/top100` to sitemap** — `app/top100` is a strong keyword-traffic page but is currently whitelisted-only (`BYPASS_EMAILS`). Add to sitemap and remove `robots: { index: false }` once the feature ships publicly.
-
----
-
-## Medium priority
-
-- [x] **`Dataset` schema on climatology pages** — Converted single `Place` to a `@graph` with `Place` + `Dataset` (ERA5 `temporalCoverage`, `spatialCoverage`, `measurementTechnique`, `variableMeasured`, `creator`). Makes pages citable by AI models answering "best time to surf at X."
-
-- [x] **`FAQPage` schema** — Added to `app/support/page.tsx` (server component wrapper) with 6 Q&A pairs covering contact, billing, forecast accuracy, refunds, GDPR, and bug reports.
-
-- [x] **Sitemap `lastModified` accuracy** — Blog posts now use Sanity `_updatedAt ?? publishedAt` via new `getAllSlugsWithDate()` helper. Static and climatology pages use pinned dates. Blog index `lastModified` reflects most recent post date.
-
-- [x] **Internal linking: blog ↔ climatology** — Fully automatic once writer tags spots in Studio. `surfSpots` field (searchable picker from the curated 250-spot list) added to Sanity post schema. Blog posts render "Swell history" cards linking to each tagged spot's climatology page. Climatology pages fetch and render a "Related articles" section for posts tagged with that slug. Only ongoing editorial task: authors linking to climatology pages organically within prose.
-
----
-
-## Lower priority / process
-
-- [x] **`hreflang` on blog posts** — N/A: blog content is English-only. Hreflang is only correct when translated content actually exists at the alternate URL. Climatology pages correctly use hreflang because they have locale variants via `?lang=`.
-
-- [x] **`html lang` attribute reflects active locale** — `LanguageProvider` now syncs `document.documentElement.lang` to the active locale via `useEffect`. Covers both user-initiated switches and localStorage restore on page load. Googlebot (JS-aware) and screen readers both react to this correctly.
+- [ ] FAQ page (`/faq`) with FAQ schema — surf conditions vocabulary
+- [ ] HowTo schema on blog posts that describe processes ("How to read a swell forecast")
+- [ ] E-E-A-T improvements: author bios with credentials, citations on data sources
+- [ ] `sameAs` links on Organization once social profiles are active
+- [ ] `mentions` and `about` fields on BlogPosting for entity linking
+- [ ] Structured answer blocks in blog content (short, citable paragraphs for AI extraction)
