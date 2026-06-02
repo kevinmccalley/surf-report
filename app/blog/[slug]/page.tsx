@@ -63,7 +63,7 @@ export default async function BlogPost({ params }: Props) {
         description: post.excerpt,
         url: `${BASE_URL}/blog/${slug}`,
         datePublished: post.publishedAt,
-        dateModified: post.publishedAt,
+        dateModified: post._updatedAt ?? post.publishedAt,
         author: post.author ? { '@type': 'Person', name: post.author.name } : undefined,
         image: coverSrc ?? undefined,
         publisher: { '@type': 'Organization', name: 'Groundswell', url: BASE_URL },

@@ -395,6 +395,7 @@ const es: Record<string, string> = {
   'nav.support': 'Soporte',
   'nav.accuracy': 'Precisión',
   'nav.blog': 'Blog',
+  'nav.faq': 'Preguntas frecuentes',
   'nav.lastUpdated': 'Última actualización',
   'nav.backToGroundswell': 'Volver a Groundswell',
 
@@ -585,6 +586,29 @@ const es: Record<string, string> = {
   'premium.teaser.footer': 'Suscríbete ahora para obtener acceso cuando Premium se lance — mismo precio, sin necesidad de actualizar.',
 
   'currency.code':          'EUR',
+
+  // FAQ page
+  'faq.meta.title':    'Preguntas frecuentes sobre surf — Groundswell',
+  'faq.meta.desc':     'Respuestas a preguntas comunes sobre pronósticos de surf, período de swell, altura de ola, viento offshore y cómo leer las condiciones del océano.',
+  'faq.heading':       'Preguntas Frecuentes',
+  'faq.subtitle':      'Preguntas comunes sobre pronósticos de surf y condiciones del océano.',
+  'faq.breadcrumb':    'Preguntas frecuentes',
+  'faq.q1': '¿Qué es el período de ola en el surf?',
+  'faq.a1': 'El período de ola es el tiempo en segundos entre dos crestas de ola sucesivas que pasan por un punto fijo. Los períodos más largos indican ondas más potentes y organizadas que han viajado más lejos desde la tormenta generadora. Un período superior a 14 segundos corresponde a un groundswell potente; entre 10 y 13 segundos es un swell sólido de rango medio; por debajo de 8 segundos es un wind swell de período corto con poca potencia. El período de swell es uno de los datos más importantes de un pronóstico de surf.',
+  'faq.q2': '¿Qué significa la altura significativa de ola (Hs)?',
+  'faq.a2': 'La altura significativa de ola (Hs) es la altura media del tercio más alto de las olas durante un período de tiempo determinado. Es la medida estándar en los pronósticos marinos y de surf. Las olas individuales más grandes pueden superar el valor de Hs entre un 20 y un 30 %. Los valores de Hs oceánico suelen ser inferiores a la cara de ola que ve el surfista en la playa, que depende de la batimetría local y del ángulo de rotura.',
+  'faq.q3': '¿Qué significa viento offshore en el surf?',
+  'faq.a3': 'El viento offshore sopla desde tierra hacia el mar, sosteniendo la cara de las olas que rompen y creando surf limpio, hueco y bien formado. Es lo contrario del viento onshore, que sopla hacia la cara de la ola y la hace derrumbarse. Los vientos offshore ligeros (por debajo de 15 km/h) son ideales para la mayoría de los spots. Los vientos cruzados soplan paralelos a la playa y tienen un efecto mixto según el ángulo.',
+  'faq.q4': '¿Cuál es la diferencia entre groundswell y wind swell?',
+  'faq.a4': 'El groundswell se genera en tormentas lejanas, a cientos o miles de kilómetros. Viaja largas distancias organizándose en olas de período largo (más de 14 segundos), potentes y bien espaciadas. El wind swell es creado por vientos locales cerca de la costa y produce olas de período corto (menos de 10 segundos), más caóticas y con menos potencia. El groundswell produce las condiciones de surf más deseadas y es lo que buscan los surfistas para las mejores sesiones.',
+  'faq.q5': '¿Cómo se lee un pronóstico de surf?',
+  'faq.a5': 'Un pronóstico de surf muestra la altura de ola (Hs), el período de swell, la dirección y las condiciones de viento. Para un buen surf busca: altura de ola superior a 0,5 m; período de swell de 10 segundos o más; dirección del swell alineada con tu spot; y viento offshore o cruzado ligero. La marea también importa: muchos spots rompen mejor en marea baja o media. La combinación de estos factores determina la calificación de calidad del surf.',
+  'faq.q6': '¿Qué es la climatología de surf?',
+  'faq.a6': 'La climatología de surf utiliza años de datos históricos de olas para identificar patrones estacionales en un spot. Muestra qué meses tienen la mayor altura media de swell, los períodos más largos y las condiciones más consistentes. Ayuda a planificar viajes de surf identificando la temporada alta —cuando las condiciones son regularmente buenas— frente a la temporada baja, cuando los swells son escasos o débiles.',
+  'faq.q7': '¿Cómo se mide la altura de ola en los pronósticos de surf?',
+  'faq.a7': 'Las alturas de ola de los pronósticos provienen de modelos oceánicos físicos que calculan cómo la energía del viento en el mar se convierte en olas. Los principales modelos globales son el ECMWF (Centro Europeo de Predicción Meteorológica) y el GFS (NOAA). Groundswell usa el modelo marino ECMWF de Open-Meteo para la Hs oceánica y, cuando está disponible, compara los resultados con mediciones en tiempo real de boyas NDBC de NOAA.',
+  'faq.q8': '¿Qué hace que un día sea bueno para surfear?',
+  'faq.a8': 'Un buen día de surf combina el tamaño de ola adecuado (0,5–1,5 m Hs es ideal para la mayoría), un período de swell de 10 segundos o más para olas potentes y organizadas, viento offshore o ligero, y una marea favorable para tu spot. La dirección del swell importa: el mismo swell puede ser perfecto en una playa y plano en otra a 5 km. Revisar todos estos factores juntos da una visión completa del día.',
 
   // Page metadata
   'meta.tagline':           'Informes de Surf en Todo el Mundo',

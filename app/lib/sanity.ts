@@ -41,6 +41,7 @@ export interface PostTranslations {
 export interface SanityPost {
   _id: string
   _createdAt: string
+  _updatedAt?: string
   title: string
   slug: { current: string }
   excerpt: string
@@ -97,7 +98,7 @@ export const ALL_POSTS_QUERY = `
 
 export const POST_BY_SLUG_QUERY = `
   *[_type == "post" && slug.current == $slug][0] {
-    _id, _createdAt, title, slug, excerpt, publishedAt, featured,
+    _id, _createdAt, _updatedAt, title, slug, excerpt, publishedAt, featured,
     coverImage { asset, alt, caption },
     author->{ name, slug, role, bio, avatar { asset, alt } },
     categories[]->{ title, slug },

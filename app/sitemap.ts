@@ -4,7 +4,8 @@ import { getAllSlugsWithDate } from '@/app/lib/sanity'
 
 // Dates that don't change with content — pinned to last significant update
 const STATIC_LAST_MODIFIED: Record<string, string> = {
-  '/': '2026-05-01',
+  '/': '2026-06-02',
+  '/faq': '2026-06-02',
   '/blog': '2026-05-01',
   '/accuracy': '2026-05-01',
   '/privacy': '2026-05-06',
@@ -16,7 +17,7 @@ const STATIC_LAST_MODIFIED: Record<string, string> = {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = 'https://groundswell.surf'
 
-  const staticPages = ['/', '/accuracy', '/privacy', '/terms', '/refund', '/support'].map(path => ({
+  const staticPages = ['/', '/faq', '/accuracy', '/privacy', '/terms', '/refund', '/support'].map(path => ({
     url: `${base}${path}`,
     lastModified: new Date(STATIC_LAST_MODIFIED[path] ?? '2026-05-01'),
     changeFrequency: 'monthly' as const,

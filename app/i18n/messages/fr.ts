@@ -395,6 +395,7 @@ const fr: Record<string, string> = {
   'nav.support': 'Assistance',
   'nav.accuracy': 'Précision',
   'nav.blog': 'Blog',
+  'nav.faq': 'FAQ',
   'nav.lastUpdated': 'Dernière mise à jour',
   'nav.backToGroundswell': 'Retour à Groundswell',
 
@@ -585,6 +586,29 @@ const fr: Record<string, string> = {
   'premium.teaser.footer': 'Abonnez-vous maintenant pour accéder au lancement de Premium — même prix, sans mise à niveau requise.',
 
   'currency.code':          'EUR',
+
+  // FAQ page
+  'faq.meta.title':    'FAQ sur les prévisions de surf — Groundswell',
+  'faq.meta.desc':     'Réponses aux questions fréquentes sur les prévisions de surf, la période de houle, la hauteur des vagues, le vent offshore et comment lire les conditions océaniques.',
+  'faq.heading':       'Questions Fréquentes',
+  'faq.subtitle':      'Questions fréquentes sur les prévisions de surf et les conditions océaniques.',
+  'faq.breadcrumb':    'FAQ',
+  'faq.q1': 'Qu\'est-ce que la période de houle en surf ?',
+  'faq.a1': 'La période de houle est le temps en secondes entre deux crêtes de vagues successives passant par un point fixe. Des périodes plus longues indiquent des vagues plus puissantes et organisées qui ont voyagé plus loin depuis la tempête génératrice. Une période supérieure à 14 secondes correspond à une houle puissante ; 10–13 secondes est une houle solide de gamme moyenne ; en dessous de 8 secondes, il s\'agit d\'une houle de vent de courte période avec peu de puissance. La période de houle est l\'un des chiffres les plus importants dans une prévision de surf.',
+  'faq.q2': 'Que signifie la hauteur significative des vagues (Hs) ?',
+  'faq.a2': 'La hauteur significative des vagues (Hs) est la hauteur moyenne du tiers le plus élevé des vagues sur une fenêtre de temps donnée. C\'est la mesure standard utilisée dans les prévisions marines et de surf. Les vagues individuelles les plus grandes peuvent dépasser la valeur Hs de 20 à 30 %. Les valeurs Hs au large sont généralement inférieures à la hauteur de face de vague qu\'un surfeur voit à la plage, qui est façonnée par la bathymétrie locale et l\'angle de déferlement.',
+  'faq.q3': 'Que signifie le vent offshore en surf ?',
+  'faq.a3': 'Le vent offshore souffle de la terre vers la mer, soutenant la face des vagues déferlantes et créant un surf propre, creux et bien formé. C\'est l\'opposé du vent onshore qui souffle dans la face des vagues et les fait s\'effondrer. Les vents offshore légers (moins de 15 km/h) sont idéaux pour la plupart des spots de surf. Les vents de travers soufflent parallèlement à la plage et ont un effet mixte selon l\'angle.',
+  'faq.q4': 'Quelle est la différence entre une houle de fond et une houle de vent ?',
+  'faq.a4': 'La houle de fond (groundswell) est générée par des tempêtes lointaines à des centaines ou milliers de kilomètres. Elle parcourt de longues distances, s\'organisant en vagues à longue période (14 secondes et plus), puissantes et régulièrement espacées. La houle de vent est créée par des vents locaux près des côtes et produit des vagues de période courte (moins de 10 secondes), plus chaotiques et moins puissantes. La houle de fond produit les meilleures conditions de surf.',
+  'faq.q5': 'Comment lire une prévision de surf ?',
+  'faq.a5': 'Une prévision de surf indique la hauteur des vagues (Hs), la période de houle, la direction et les conditions de vent. Pour un bon surf, recherchez : hauteur de vague supérieure à 0,5 m ; période de houle de 10 secondes ou plus ; direction de houle alignée avec votre spot ; et vent offshore ou léger de travers. La marée compte aussi — beaucoup de spots déferlent mieux à marée basse ou moyenne. La combinaison de ces facteurs détermine la qualité du surf.',
+  'faq.q6': 'Qu\'est-ce que la climatologie du surf ?',
+  'faq.a6': 'La climatologie du surf utilise des années de données historiques sur les vagues pour identifier les tendances saisonnières à un spot de surf. Elle indique quels mois ont la plus grande hauteur moyenne de houle, les périodes les plus longues et les conditions les plus constantes. Elle aide à planifier des voyages de surf en identifiant la haute saison — conditions régulièrement bonnes — par opposition à la basse saison où les houles sont rares ou faibles.',
+  'faq.q7': 'Comment mesure-t-on la hauteur des vagues dans les prévisions de surf ?',
+  'faq.a7': 'Les hauteurs de vagues des prévisions proviennent de modèles océaniques physiques qui calculent comment l\'énergie du vent en mer se transforme en vagues. Les principaux modèles mondiaux sont l\'ECMWF (Centre européen pour les prévisions météorologiques à moyen terme) et le GFS (NOAA). Groundswell utilise le modèle marin ECMWF d\'Open-Meteo pour la Hs au large et, lorsque disponible, compare les résultats avec les mesures en temps réel des bouées NDBC de la NOAA.',
+  'faq.q8': 'Qu\'est-ce qui fait une bonne journée de surf ?',
+  'faq.a8': 'Une bonne journée de surf combine la bonne taille de vague (0,5–1,5 m Hs est idéal pour la plupart des surfeurs), une période de houle de 10 secondes ou plus pour des vagues organisées et puissantes, un vent offshore ou léger et une marée adaptée à votre spot. La direction de la houle est importante — le même swell peut être parfait à une plage et plat à une autre à 5 km. Vérifier tous ces facteurs ensemble donne une image complète de la journée.',
 
   // Page metadata
   'meta.tagline':           'Rapports de Surf dans le Monde Entier',
