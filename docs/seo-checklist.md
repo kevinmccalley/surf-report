@@ -57,8 +57,13 @@ Last audited: 2026-06-02. Run `/seo audit` any time to refresh.
 ## GEO Roadmap (AI Search — future work)
 
 - [x] FAQ page (`/faq`) with FAQ schema — surf conditions vocabulary
-- [ ] HowTo schema on blog posts that describe processes ("How to read a swell forecast")
-- [ ] E-E-A-T improvements: author bios with credentials, citations on data sources
-- [ ] `sameAs` links on Organization once social profiles are active
-- [ ] `mentions` and `about` fields on BlogPosting for entity linking
-- [ ] Structured answer blocks in blog content (short, citable paragraphs for AI extraction)
+- [x] HowTo schema on blog posts — added `isHowTo` + `howToSteps` fields to Sanity post schema;
+  when enabled on a post, emits a `HowTo` node in the JSON-LD graph with numbered steps
+- [x] E-E-A-T improvements — author `credentials` field added to Sanity author schema; BlogPosting
+  now emits full `Person` schema (name, jobTitle, credentials/bio, avatar image); Organization
+  now has `description` and `knowsAbout` array (surf forecasting, ECMWF, NOAA, etc.)
+- [ ] `sameAs` links on Organization once social profiles are active *(shelved)*
+- [x] `mentions` and `about` fields on BlogPosting — `about` derived from post categories;
+  `mentions` derived from `surfSpots` slugs, resolved to full Place entities with geo coords
+- [ ] Structured answer blocks in blog content — content strategy, not code; write blog posts
+  with short citable paragraphs that directly answer a question before expanding on it

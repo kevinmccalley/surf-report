@@ -112,6 +112,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   '@id': 'https://groundswell.surf/#organization',
                   name: 'Groundswell',
                   url: 'https://groundswell.surf',
+                  description: 'Groundswell provides real-time surf reports, 10-day wave forecasts, and historical surf climatology for any surf spot on earth, powered by ECMWF and NOAA open-ocean data.',
+                  knowsAbout: [
+                    'Surf forecasting',
+                    'Ocean wave science',
+                    'Swell period and direction analysis',
+                    'Marine meteorology',
+                    'Tide prediction',
+                    'ERA5 reanalysis wave data',
+                    'ECMWF wave models',
+                    'NOAA NDBC buoy data',
+                    'Surf climatology',
+                  ],
                   logo: {
                     '@type': 'ImageObject',
                     url: 'https://groundswell.surf/icons/icon-192.png',

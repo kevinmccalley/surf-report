@@ -102,6 +102,32 @@ export default defineType({
       description: 'Overrides the excerpt as the meta description. Max 160 characters.',
       validation: (Rule) => Rule.max(160),
     }),
+    defineField({
+      name: 'isHowTo',
+      title: 'How-to article',
+      type: 'boolean',
+      group: 'seo',
+      description: 'Enable HowTo schema for step-by-step guides (boosts AI search extraction).',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'howToSteps',
+      title: 'How-to steps',
+      type: 'array',
+      group: 'seo',
+      hidden: ({ document }) => !(document as Record<string, unknown>)?.isHowTo,
+      description: 'Steps for the HowTo schema. Only shown when "How-to article" is enabled.',
+      of: [{
+        type: 'object',
+        name: 'step',
+        title: 'Step',
+        fields: [
+          defineField({ name: 'name', title: 'Step title', type: 'string', validation: (Rule) => Rule.required() }),
+          defineField({ name: 'text', title: 'Description', type: 'text', rows: 2 }),
+        ],
+        preview: { select: { title: 'name', subtitle: 'text' } },
+      }],
+    }),
 
     // ── Settings ──────────────────────────────────────────────
     defineField({

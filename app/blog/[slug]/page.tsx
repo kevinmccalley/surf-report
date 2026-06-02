@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getAllSlugs, urlFor } from '@/app/lib/sanity'
+import { findSpotBySlug, slugify } from '@/app/lib/surf-spots'
 import BlogPostContent from '@/app/components/blog/BlogPostContent'
 
 export const revalidate = 60
@@ -54,31 +55,66 @@ export default async function BlogPost({ params }: Props) {
     ? urlFor(post.author.avatar.asset).width(80).height(80).auto('format').url()
     : null
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'BlogPosting',
-        headline: post.title,
-        description: post.excerpt,
-        url: `${BASE_URL}/blog/${slug}`,
-        datePublished: post.publishedAt,
-        dateModified: post._updatedAt ?? post.publishedAt,
-        author: post.author ? { '@type': 'Person', name: post.author.name } : undefined,
-        image: coverSrc ?? undefined,
-        publisher: { '@type': 'Organization', name: 'Groundswell', url: BASE_URL },
-        keywords: post.categories?.map(c => c.title).join(', '),
+  const mentionedSpots = (post.surfSpots ?? [])
+    .map(s => findSpotBySlug(s))
+    .filter(Boolean)
+
+  const graph: object[] = [
+    {
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.excerpt,
+      url: `${BASE_URL}/blog/${slug}`,
+      datePublished: post.publishedAt,
+      dateModified: post._updatedAt ?? post.publishedAt,
+      author: post.author ? {
+        '@type': 'Person',
+        name: post.author.name,
+        jobTitle: post.author.role ?? undefined,
+        description: post.author.credentials ?? post.author.bio ?? undefined,
+        image: avatarSrc ?? undefined,
+      } : undefined,
+      image: coverSrc ?? undefined,
+      publisher: {
+        '@type': 'Organization',
+        '@id': `${BASE_URL}/#organization`,
+        name: 'Groundswell',
+        url: BASE_URL,
       },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Groundswell', item: BASE_URL },
-          { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
-          { '@type': 'ListItem', position: 3, name: post.title, item: `${BASE_URL}/blog/${slug}` },
-        ],
-      },
-    ],
+      keywords: post.categories?.map(c => c.title).join(', '),
+      about: post.categories?.map(c => ({ '@type': 'Thing', name: c.title })),
+      mentions: mentionedSpots.length ? mentionedSpots.map(s => ({
+        '@type': 'Place',
+        name: `${s!.name}, ${s!.country}`,
+        url: `${BASE_URL}/climatology/${slugify(s!.name)}`,
+        geo: { '@type': 'GeoCoordinates', latitude: s!.lat, longitude: s!.lon },
+      })) : undefined,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Groundswell', item: BASE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
+        { '@type': 'ListItem', position: 3, name: post.title, item: `${BASE_URL}/blog/${slug}` },
+      ],
+    },
+  ]
+
+  if (post.isHowTo && post.howToSteps?.length) {
+    graph.push({
+      '@type': 'HowTo',
+      name: post.title,
+      description: post.excerpt,
+      step: post.howToSteps.map((s, i) => ({
+        '@type': 'HowToStep',
+        position: i + 1,
+        name: s.name,
+        text: s.text ?? s.name,
+      })),
+    })
   }
+
+  const jsonLd = { '@context': 'https://schema.org', '@graph': graph }
 
   return (
     <>

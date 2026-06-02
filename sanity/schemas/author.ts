@@ -31,6 +31,12 @@ export default defineType({
       rows: 4,
     }),
     defineField({
+      name: 'credentials',
+      title: 'Credentials / Expertise',
+      type: 'string',
+      description: 'e.g. "20 years surfing, NSSIA Surf Instructor, surf writer since 2018" — used in structured data for E-E-A-T signals.',
+    }),
+    defineField({
       name: 'avatar',
       title: 'Avatar',
       type: 'image',

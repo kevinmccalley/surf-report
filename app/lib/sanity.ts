@@ -57,6 +57,7 @@ export interface SanityPost {
     slug: { current: string }
     role?: string
     bio?: string
+    credentials?: string
     avatar?: { asset: SanityImageSource; alt?: string }
   }
   categories?: Array<{ title: string; slug: { current: string } }>
@@ -64,6 +65,8 @@ export interface SanityPost {
   seoTitle?: string
   seoDescription?: string
   surfSpots?: string[]
+  isHowTo?: boolean
+  howToSteps?: Array<{ name: string; text?: string }>
   translations?: PostTranslations
 }
 
@@ -100,11 +103,12 @@ export const POST_BY_SLUG_QUERY = `
   *[_type == "post" && slug.current == $slug][0] {
     _id, _createdAt, _updatedAt, title, slug, excerpt, publishedAt, featured,
     coverImage { asset, alt, caption },
-    author->{ name, slug, role, bio, avatar { asset, alt } },
+    author->{ name, slug, role, bio, credentials, avatar { asset, alt } },
     categories[]->{ title, slug },
     body,
     seoTitle, seoDescription,
     surfSpots,
+    isHowTo, howToSteps[] { name, text },
     translations {
       es { title, excerpt, body, seoTitle, seoDescription },
       fr { title, excerpt, body, seoTitle, seoDescription },
