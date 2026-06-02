@@ -14,49 +14,49 @@ Last audited: 2026-06-02. Run `/seo audit` any time to refresh.
   AI engines (Perplexity, ChatGPT search, Google AI Overviews) need to understand what Groundswell
   IS. Added `SoftwareApplication` node to the root `@graph` in `layout.tsx`.
 
-- [ ] **#3 — No FAQ schema**
-  Biggest GEO opportunity remaining. Surfing vocabulary ("what is swell period?", "how is wave
-  height measured?") maps perfectly to FAQ schema that AI engines extract for direct answers.
-  Candidates: a `/faq` page, the blog, and the home page footer.
+- [x] **#3 — No FAQ schema**
+  Created `/faq` with 8 surf-vocabulary Q&As (swell period, Hs, offshore wind, groundswell vs
+  wind swell, reading a forecast, climatology, wave measurement, good surf day). FAQPage +
+  BreadcrumbList JSON-LD, hreflang for all 5 locales, fully SSR'd. Linked from footer nav.
 
 - [x] **#4 — hreflang missing on home page default state + static pages**
   Home page `/` (no spot selected) had no `alternates.languages`. Blog index also missing.
   Fixed both. Remaining static pages (`/accuracy`, `/terms`, `/privacy`, `/refund`, `/support`)
   are low-traffic utility pages — add hreflang if they get translated content.
 
-- [ ] **#5 — `dateModified` on BlogPosting always equals `publishedAt`**
-  Sanity exposes `_updatedAt` on every document. Wire it through `getAllSlugsWithDate` and
-  `getPostBySlug` queries, then use it as `dateModified` in the BlogPosting schema.
+- [x] **#5 — `dateModified` on BlogPosting always equals `publishedAt`**
+  Added `_updatedAt` to `SanityPost` interface and `POST_BY_SLUG_QUERY`. BlogPosting now uses
+  `post._updatedAt ?? post.publishedAt` for `dateModified`.
 
-- [ ] **#6 — Blog index page missing `twitter.title`, `twitter.description`, OG `alt`**
-  Minor but easy — three fields missing from `app/blog/page.tsx` metadata export.
+- [x] **#6 — Blog index page missing `twitter.title`, `twitter.description`, OG `alt`**
+  Fixed as part of #4 — all three fields added to `app/blog/page.tsx` metadata export.
 
 ## Medium
 
 - [x] **#8 — `robots.ts` allows everything including `/api/`, `/sign-in`, `/studio/`**
   Added `disallow` rules for API routes, auth pages, Sanity Studio, and debug endpoints.
 
-- [ ] **#7 — No `BreadcrumbList` on climatology pages**
-  Blog posts have breadcrumbs; spot climatology pages (`/climatology/[slug]`) don't. Add the
-  same `BreadcrumbList` pattern: Home → Climatology → [Spot Name].
+- [x] **#7 — No `BreadcrumbList` on climatology pages**
+  Added `BreadcrumbList` to the climatology page JSON-LD graph: Home → Surf Climatology → [Spot, Country].
 
-- [ ] **#9 — No `sameAs` on Organization schema**
+- [ ] **#9 — No `sameAs` on Organization schema** *(shelved — no social accounts yet)*
   Social profile URLs (Twitter/X, Instagram) on the `Organization` node boost entity clarity
-  for Google Knowledge Graph and AI engines. Add when social handles are confirmed.
+  for Google Knowledge Graph and AI engines. Revisit when social handles are live.
 
 ## Low
 
-- [ ] **#10 — `keywords` meta tag in root layout**
-  Google ignores it. Harmless dead weight — remove on next layout touch.
+- [x] **#10 — `keywords` meta tag in root layout**
+  Removed from `app/layout.tsx`.
 
-- [ ] **#11 — Sitemap `STATIC_LAST_MODIFIED` dates are hardcoded**
-  Minor freshness signal issue. Low impact; update when static pages change.
+- [x] **#11 — Sitemap `STATIC_LAST_MODIFIED` dates are hardcoded**
+  Added a comment in `app/sitemap.ts` to update the date for a route whenever you ship a
+  meaningful content change there. Updated `/`, `/faq`, and `/blog` to today.
 
 ---
 
 ## GEO Roadmap (AI Search — future work)
 
-- [ ] FAQ page (`/faq`) with FAQ schema — surf conditions vocabulary
+- [x] FAQ page (`/faq`) with FAQ schema — surf conditions vocabulary
 - [ ] HowTo schema on blog posts that describe processes ("How to read a swell forecast")
 - [ ] E-E-A-T improvements: author bios with credentials, citations on data sources
 - [ ] `sameAs` links on Organization once social profiles are active

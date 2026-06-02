@@ -2,11 +2,12 @@ import type { MetadataRoute } from 'next'
 import { getAllSpots, slugify } from '@/app/lib/surf-spots'
 import { getAllSlugsWithDate } from '@/app/lib/sanity'
 
-// Dates that don't change with content — pinned to last significant update
+// Pinned to the date each page last had a meaningful content change.
+// Update a date here whenever you ship a significant copy or feature change to that route.
 const STATIC_LAST_MODIFIED: Record<string, string> = {
   '/': '2026-06-02',
   '/faq': '2026-06-02',
-  '/blog': '2026-05-01',
+  '/blog': '2026-06-02',
   '/accuracy': '2026-05-01',
   '/privacy': '2026-05-06',
   '/terms': '2026-05-06',

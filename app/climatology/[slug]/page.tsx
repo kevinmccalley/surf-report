@@ -119,6 +119,14 @@ export default async function ClimatologyPage({ params }: Props) {
           url: BASE_URL,
         },
       },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Groundswell', item: BASE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Surf Climatology', item: `${BASE_URL}/climatology` },
+          { '@type': 'ListItem', position: 3, name: `${spot.name}, ${spot.country}`, item: spotUrl },
+        ],
+      },
     ],
   }
 

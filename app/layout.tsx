@@ -18,7 +18,6 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://groundswell.surf'),
   title: 'Groundswell — Surf Reports Worldwide',
   description: 'Real-time surf reports and 10-day forecasts for any spot on earth. Wave height, swell, wind, water temperature, and more.',
-  keywords: 'surf report, surf forecast, wave height, swell, wind, surf conditions, beach report',
   manifest: '/manifest.webmanifest',
   appleWebApp: {
     capable: true,
