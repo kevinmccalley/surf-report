@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: `${BASE_URL}/blog`,
     siteName: 'Groundswell',
-    images: [{ url: '/api/og', width: 1200, height: 630, alt: TITLE }],
+    images: [{ url: '/api/og?title=Surf+Reports+%26+Insights&subtitle=Wave+science%2C+forecasting+tips%2C+and+surf+stories', width: 1200, height: 630, alt: TITLE }],
   },
-  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/api/og'] },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/api/og?title=Surf+Reports+%26+Insights&subtitle=Wave+science%2C+forecasting+tips%2C+and+surf+stories'] },
 }
 
 export default async function BlogIndex() {

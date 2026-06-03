@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const ogImageUrl = post.coverImage?.asset
     ? urlFor(post.coverImage.asset).width(1200).height(630).auto('format').quality(85).url()
-    : `${BASE_URL}/api/og`
+    : `${BASE_URL}/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.excerpt ?? 'Groundswell Blog')}`
 
   return {
     title,

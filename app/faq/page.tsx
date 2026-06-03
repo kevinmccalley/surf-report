@@ -29,9 +29,9 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       url: canonical,
       siteName: 'Groundswell',
       type: 'website',
-      images: [{ url: '/api/og', width: 1200, height: 630, alt: title }],
+      images: [{ url: `/api/og?title=Surf+Forecast+FAQ&subtitle=Swell+periods+%C2%B7+wave+height+%C2%B7+reading+a+forecast`, width: 1200, height: 630, alt: title }],
     },
-    twitter: { card: 'summary_large_image', title, description, images: ['/api/og'] },
+    twitter: { card: 'summary_large_image', title, description, images: [`/api/og?title=Surf+Forecast+FAQ&subtitle=Swell+periods+%C2%B7+wave+height+%C2%B7+reading+a+forecast`] },
   }
 }
 
