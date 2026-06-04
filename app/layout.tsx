@@ -63,6 +63,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <ClerkProvider>
       <html lang={locale} suppressHydrationWarning className={inter.variable}>
+        <head>
+          <link rel="preconnect" href="https://clerk.groundswell.surf" crossOrigin="anonymous" />
+        </head>
         <body className="font-sans antialiased">
           <script
             type="application/ld+json"

@@ -3,32 +3,35 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { Menu, X, Lock } from 'lucide-react'
 import { useUser, useClerk } from '@clerk/nextjs'
-import PaywallModal from './PaywallModal'
 import type { Tier } from '@/app/page'
 import type { SurfReport, TideReport, TideUnavailable, GeoResult, BuoyReading, NearbySpot, SavedLocation } from '@/app/lib/types'
+import dynamic from 'next/dynamic'
 import SearchBar from './SearchBar'
-import HeroSection from './HeroSection'
-import ConditionCards from './ConditionCards'
-import WaveChart from './WaveChart'
-import ForecastGrid from './ForecastGrid'
-import ForecastTimeline from './ForecastTimeline'
-import TideSection from './TideSection'
-import TideSetupCard from './TideSetupCard'
-import ClimatologySection from './ClimatologySection'
 import LandingHero from './LandingHero'
 import MarketingLanding from './MarketingLanding'
 import AuthButton from './AuthButton'
 import ThemePicker from './ThemePicker'
-import LastYearCard from './LastYearCard'
-import BuoyCard from './BuoyCard'
-import MapPanel from './MapPanel'
-import NearbySpots from './NearbySpots'
-import EpicNowSection from './EpicNowSection'
-import ModelComparison from './ModelComparison'
-import SessionPlanner from './SessionPlanner'
 import LanguageSwitcher from './LanguageSwitcher'
 import SavedLocations from './SavedLocations'
 import type { ClimatologyMonth } from './ClimatologySection'
+
+// Lazy-load everything only needed after a surf spot is searched
+const HeroSection = dynamic(() => import('./HeroSection'))
+const ConditionCards = dynamic(() => import('./ConditionCards'))
+const WaveChart = dynamic(() => import('./WaveChart'))
+const ForecastGrid = dynamic(() => import('./ForecastGrid'))
+const ForecastTimeline = dynamic(() => import('./ForecastTimeline'))
+const TideSection = dynamic(() => import('./TideSection'))
+const TideSetupCard = dynamic(() => import('./TideSetupCard'))
+const ClimatologySection = dynamic(() => import('./ClimatologySection'))
+const LastYearCard = dynamic(() => import('./LastYearCard'))
+const BuoyCard = dynamic(() => import('./BuoyCard'))
+const MapPanel = dynamic(() => import('./MapPanel'))
+const NearbySpots = dynamic(() => import('./NearbySpots'))
+const EpicNowSection = dynamic(() => import('./EpicNowSection'))
+const ModelComparison = dynamic(() => import('./ModelComparison'))
+const SessionPlanner = dynamic(() => import('./SessionPlanner'))
+const PaywallModal = dynamic(() => import('./PaywallModal'))
 import { useLanguage } from '@/app/i18n/LanguageContext'
 
 type Units = { temp: 'c' | 'f'; height: 'ft' | 'm' }
