@@ -8,14 +8,14 @@ import type { SurfReport, TideReport, TideUnavailable, GeoResult, BuoyReading, N
 import dynamic from 'next/dynamic'
 import SearchBar from './SearchBar'
 import LandingHero from './LandingHero'
-import MarketingLanding from './MarketingLanding'
 import AuthButton from './AuthButton'
 import ThemePicker from './ThemePicker'
 import LanguageSwitcher from './LanguageSwitcher'
 import SavedLocations from './SavedLocations'
 import type { ClimatologyMonth } from './ClimatologySection'
 
-// Lazy-load everything only needed after a surf spot is searched
+// Lazy-load below-fold marketing section and everything only needed after a surf spot is searched
+const MarketingLanding = dynamic(() => import('./MarketingLanding'))
 const HeroSection = dynamic(() => import('./HeroSection'))
 const ConditionCards = dynamic(() => import('./ConditionCards'))
 const WaveChart = dynamic(() => import('./WaveChart'))

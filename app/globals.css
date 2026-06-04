@@ -433,8 +433,8 @@ body {
 }
 
 .wave-container { position: absolute; bottom: 0; left: 0; width: 200%; overflow: hidden; line-height: 0; }
-.wave-path-1 { animation: wave 22s linear infinite; opacity: 0.5; }
-.wave-path-2 { animation: wave 16s linear infinite reverse; opacity: 0.3; }
+.wave-path-1 { animation: wave 22s linear infinite; opacity: 0.5; will-change: transform; }
+.wave-path-2 { animation: wave 16s linear infinite reverse; opacity: 0.3; will-change: transform; }
 @keyframes wave { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 .forecast-scroll { scrollbar-width: thin; scrollbar-color: var(--scrollbar) transparent; }
