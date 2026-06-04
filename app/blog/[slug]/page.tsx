@@ -1,19 +1,15 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getPostBySlug, getAllSlugs, urlFor } from '@/app/lib/sanity'
+import { getPostBySlug, urlFor } from '@/app/lib/sanity'
 import { findSpotBySlug, slugify } from '@/app/lib/surf-spots'
 import BlogPostContent from '@/app/components/blog/BlogPostContent'
 
+// ISR: build on first request, refresh every 60 seconds — no static pre-generation needed.
 export const revalidate = 60
 
 const BASE_URL = 'https://groundswell.surf'
 
 type Props = { params: Promise<{ slug: string }> }
-
-export async function generateStaticParams() {
-  const slugs = await getAllSlugs()
-  return slugs.map(slug => ({ slug }))
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params

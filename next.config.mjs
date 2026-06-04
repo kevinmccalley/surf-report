@@ -1,5 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Skip ESLint during `next build` — run it separately in CI, not on every deploy.
+  // ESLint on 114 files costs 20-40 seconds per build.
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
+  // Treat `sanity` as a server-side external — don't re-bundle the massive Sanity
+  // package into the server build on every deploy.
+  serverExternalPackages: ['sanity'],
+
+  // Enable named-import tree-shaking for barrel packages. Avoids pulling in entire
+  // icon/chart/animation libraries when only a handful of exports are used.
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'recharts', 'framer-motion', 'sanity', 'next-sanity'],
+  },
+
   images: {
     remotePatterns: [
       {

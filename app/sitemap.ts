@@ -2,6 +2,9 @@ import type { MetadataRoute } from 'next'
 import { getAllSpots, slugify } from '@/app/lib/surf-spots'
 import { getAllSlugsWithDate } from '@/app/lib/sanity'
 
+// Regenerate once a day on first request — Sanity API call skipped at build time.
+export const revalidate = 86400
+
 // Pinned to the date each page last had a meaningful content change.
 // Update a date here whenever you ship a significant copy or feature change to that route.
 const STATIC_LAST_MODIFIED: Record<string, string> = {
