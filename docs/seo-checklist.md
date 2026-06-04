@@ -96,11 +96,22 @@ key pages: `/` (home), a spot page, `/faq`, and `/blog`.
 
 Targets: Performance ≥ 90 desktop / ≥ 70 mobile · SEO 100 · Accessibility ≥ 95 · Best Practices 100.
 
-- [ ] **Run Lighthouse on `/` (home)**
-  Record baseline scores. Flag any LCP > 2.5 s, TBT > 200 ms, or CLS > 0.1.
+- [x] **Run Lighthouse on `/` (home)**
+  Audited 2026-06-04 (mobile, simulated 4G). Scores: **Performance 77 · SEO 100 · Accessibility 100 · Best Practices 100**.
+  Key metrics: FCP 2.2 s · LCP 3.8 s · TBT 410 ms · CLS 0 · SI 2.2 s.
+  Issues found and resolved same session:
+  - Legacy JS polyfills (`Array.at`, `Object.hasOwn`, etc.) in chunk `0-w966uza5eby.js` → added `.browserslistrc` targeting last 2 browser versions; est. 14 KiB + 150 ms LCP saved.
+  - `MarketingLanding` was a static import in the main bundle (below-fold) → converted to `dynamic()`.
+  - Wave SVG animations missing `will-change: transform` → added; promotes to compositor layer before animation starts.
+  Re-run after next deploy to measure improvement. Target: Performance ≥ 70 mobile.
 
-- [ ] **Run Lighthouse on a spot page** (e.g. `/spots/pipeline`)
-  Spot pages are the highest-traffic entry point — they must be fast on mobile.
+- [x] **Run Lighthouse on a spot page** (e.g. `/spots/pipeline`)
+  Audited 2026-06-04 on `/?lat=21.6632&lon=-158.0523&name=Pipeline` (mobile, simulated 4G). Score: **Performance 66**.
+  Key metrics: TBT 1,270 ms · Main thread 9.3 s (Script Eval 4,659 ms · Style & Layout 1,100 ms · Rendering 927 ms).
+  Issues found and resolved:
+  - `ForecastTimeline` read `offsetWidth`/`offsetHeight` synchronously on mount (forced reflow ~70 ms + ~37 ms) → deferred both initial reads to `requestAnimationFrame`.
+  - `/spots/pipeline` returned 404 — no route existed → created `app/spots/[slug]/page.tsx` using the existing spot catalog; `generateStaticParams` pre-renders all ~100 spots; spot pages added to sitemap at priority 0.9.
+  Remaining: heavy Recharts chart initialisation (4 `ResponsiveContainer` instances load simultaneously when a report is fetched) drives most of the remaining TBT. Next step: replace `ResponsiveContainer` with fixed pixel heights to eliminate the concurrent layout-measurement burst.
 
 - [ ] **Run Lighthouse on `/faq`**
   Confirm SEO 100 and that FAQPage rich result is detectable (check "Additional items" in
