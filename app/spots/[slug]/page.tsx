@@ -3,15 +3,13 @@ import type { Metadata } from 'next'
 import { auth, clerkClient } from '@clerk/nextjs/server'
 import SurfApp from '@/app/components/SurfApp'
 import type { Tier } from '@/app/page'
-import { findSpotBySlug, getAllSpots, slugify } from '@/app/lib/surf-spots'
+import { findSpotBySlug, slugify } from '@/app/lib/surf-spots'
+
+export const dynamic = 'force-dynamic'
 
 type Props = { params: Promise<{ slug: string }> }
 
 const BASE_URL = 'https://groundswell.surf'
-
-export async function generateStaticParams() {
-  return getAllSpots().map(spot => ({ slug: slugify(spot.name) }))
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
