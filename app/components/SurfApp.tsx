@@ -45,9 +45,10 @@ interface ClimatologyData {
 
 export default function SurfApp({ tier, initialGeo }: { tier: Tier; initialGeo?: GeoResult }) {
   const { t, bcp47 } = useLanguage()
-  const { isSignedIn, user } = useUser()
+  const { isSignedIn, user, isLoaded: clerkLoaded } = useUser()
   const { openSignIn } = useClerk()
   const isSignedInRef = useRef(false)
+  const initialGeoFetched = useRef(false)
   useEffect(() => { isSignedInRef.current = !!isSignedIn }, [isSignedIn])
   const isPaid = tier !== 'free'
   const isPremium = tier === 'premium'
@@ -127,11 +128,19 @@ export default function SurfApp({ tier, initialGeo }: { tier: Tier; initialGeo?:
       return
     }
 
-    // No URL params — use initialGeo prop (e.g. /spots/pipeline pages)
-    if (initialGeo) {
-      fetchReport(initialGeo, false)
-    }
+    // No URL params — initialGeo (from /spots/* pages) is handled by the
+    // clerkLoaded effect below, which waits until auth state is known.
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // For /spots/[slug] pages: wait until Clerk has determined auth state, then
+  // auto-load the report. The mount effect runs before Clerk is ready, so we
+  // handle initialGeo here instead to ensure isSignedInRef is accurate first.
+  useEffect(() => {
+    if (!initialGeo || initialGeoFetched.current || lastGeoResult) return
+    if (!clerkLoaded) return
+    initialGeoFetched.current = true
+    fetchReport(initialGeo, false)
+  }, [clerkLoaded]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // After sign-in, navigate to any location the user was searching for
   useEffect(() => {
