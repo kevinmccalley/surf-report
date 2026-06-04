@@ -189,7 +189,10 @@ export default function SurfApp({ tier, initialGeo }: { tier: Tier; initialGeo?:
       })
 
       const surfRes = await fetch(`/api/surf?${qs}`)
-      if (!surfRes.ok) throw new Error('Failed to fetch surf data')
+      if (!surfRes.ok) {
+        const errData = await surfRes.json().catch(() => null)
+        throw new Error(errData?.error ?? 'Failed to fetch surf data')
+      }
       const surfJson: SurfReport = await surfRes.json()
 
       const tideParams = `lat=${result.lat}&lon=${result.lon}` +

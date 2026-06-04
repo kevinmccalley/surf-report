@@ -76,12 +76,26 @@ export async function GET(request: NextRequest) {
       forecastDays >= 15 ? fetch(omUrl(ncepMarineUrl), { next: { revalidate: 1800 } }) : Promise.resolve(null),
     ])
 
+    // Wrap json() calls so a non-JSON upstream response (e.g. HTML 502) doesn't
+    // throw an opaque parse error; instead it surfaces as error:true with the
+    // HTTP status, letting downstream logic handle it like any other API error.
     const [marine, weather, gfsMarineRaw, ncepMarineRaw] = await Promise.all([
-      marineRes.json(),
-      weatherRes.json(),
-      gfsMarineRes ? gfsMarineRes.json() : Promise.resolve(null),
-      ncepMarineRes ? ncepMarineRes.json() : Promise.resolve(null),
+      marineRes.json().catch(() => ({ error: true, reason: `marine HTTP ${marineRes.status}` })),
+      weatherRes.json().catch(() => ({ error: true, reason: `weather HTTP ${weatherRes.status}` })),
+      gfsMarineRes ? gfsMarineRes.json().catch(() => null) : Promise.resolve(null),
+      ncepMarineRes ? ncepMarineRes.json().catch(() => null) : Promise.resolve(null),
     ])
+
+    // If the weather API is unavailable, return 503 so clients can show a
+    // friendlier "try again" message instead of a generic error.
+    if (!weather.hourly) {
+      const reason = (weather as Record<string, unknown>).reason ?? `HTTP ${weatherRes.status}`
+      console.error('Weather API unavailable:', reason)
+      return NextResponse.json(
+        { error: 'Surf data temporarily unavailable — please try again in a moment' },
+        { status: 503 }
+      )
+    }
 
     // If the primary marine model has no valid wave heights (land-mask or model gap),
     // fetch the best_match model as a fallback — unless we already have it from above.
@@ -127,8 +141,7 @@ export async function GET(request: NextRequest) {
     // when timezone=auto isn't honoured, causing currentIdx to be wrong.
     const utcOffset = ((weather.utc_offset_seconds ?? effectiveMarine.utc_offset_seconds) as number) ?? 0
     const timezone = (weather.timezone as string | undefined) ?? (effectiveMarine.timezone as string | undefined) ?? 'UTC'
-    if (!weather.hourly) throw new Error(`Weather API error: ${(weather as Record<string, unknown>).reason ?? 'no hourly data'}`)
-    const currentIdx = findCurrentHourIndexByTz((weather.hourly as Record<string, unknown[]>).time as string[], timezone, utcOffset)
+    const currentIdx = findCurrentHourIndexByTz(weather.hourly.time, timezone, utcOffset)
 
     // Resolve facing direction for wind-quality scoring.
     // Calibrated spots already have it; for everything else check KV cache
