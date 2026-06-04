@@ -27,19 +27,19 @@ There are three signals to build emails for:
 
 ---
 
-## How to build an email automation ("Loop")
+## How to build an email automation
 
 Every automation in Loops follows the same structure:
 **Trigger → Wait (optional) → Send Email**
 
 Here's how to create one:
 
-1. In the left sidebar, click **Loops**
-2. Click **New Loop** (top right)
-3. Choose **Event-based** as the trigger type
-4. Type in the event name exactly as shown in the table above (e.g. `user_created`)
-5. Add your email steps (more on each one below)
-6. Click **Publish** when ready — unpublished Loops don't send anything
+1. In the left sidebar, click **Workflows**
+2. Click **New Workflow** (top right)
+3. Choose **Event** as the trigger type
+4. Type in the event name exactly as shown in the table above (e.g. `user_created`) — these are case-sensitive
+5. Add your email steps using the **+** button (more on each one below)
+6. Click **Publish** when ready — unpublished Workflows don't send anything
 
 ---
 
@@ -70,22 +70,82 @@ Example subject line: `{{spot1Name}} is looking {{spot1Rating}} this weekend �
 
 This fires the moment someone creates a Groundswell account. The goal is to get them to actually use the app and understand what it does.
 
-**Suggested structure (3 emails):**
-
-**Email 1 — send immediately**
-- Subject: Welcome to Groundswell, `{{firstName}}`
-- Content: What Groundswell is, how to search for a surf spot, one clear call to action ("Check your first surf report →")
-
-**Email 2 — send 2 days later**
-- Subject: Did you find your spot?
-- Content: Remind them how to save a location, highlight that conditions update throughout the day
-
-**Email 3 — send 5 days later**
-- Subject: Upgrade for unlimited spots + 7-day forecasts
-- Content: Soft pitch for the paid plan — what they get ($4/month Individual or $12/month Premium), link to groundswell.surf
+**Structure: 3 emails**
 
 **How to add the delay between emails:**
 After each email step in the Loop builder, click the **+** button and choose **Delay** — set it to 2 days, 5 days, etc.
+
+> **Variable note:** Use `{{firstName | "there"}}` (not `{{first_name}}`). The `| "there"` fallback means a blank name renders as "Hey there" instead of "Hey ,".
+
+---
+
+**Email 1 — send immediately (delay: 0 minutes)**
+
+Subject: `You're in 🌊`
+
+Body:
+Hey {{firstName | "there"}},
+
+Welcome to Groundswell. Really glad you found us.
+
+Here are three things worth trying right now:
+
+1. Search your local break and look at the accuracy rating — it's the number next to the forecast. That's us being honest about how confident the model is. No other app shows you this.
+2. Check the tide section — four data sources, NOAA-verified where available.
+3. Click through to the historical tab. You'll hit the upgrade prompt, but have a look at what's there — that's 3.5 years of swell data for any coastal coordinate on earth.
+
+The free tier stays free. No time limit, no pressure.
+
+If something feels off or you have a question, just reply — we both read every one.
+
+Kevin & Laura
+groundswell.surf
+
+---
+
+**Email 2 — send 2 days later**
+
+Subject: `How one surfer chose October over November`
+
+Body:
+> Hey {{firstName | "there"}},
+>
+> A surfer we know was planning a trip to the Maldives. Two possible windows: October or November. Both looked good on paper.
+>
+> He pulled up three years of historical swell data on Groundswell — wave height, period, wind — for the exact atolls he was considering. October came up consistently stronger, with cleaner wind angles. November had more swell variance and a higher percentage of onshore days.
+>
+> He went in October. It was the best surf trip of his life.
+>
+> That feature is sitting behind the upgrade prompt you saw on day one. The 7-day trial unlocks everything — no card required to start.
+>
+> If you're planning a trip and want to dig into the data before you book, that's exactly what it's there for.
+>
+> Kevin & Laura
+> groundswell.surf
+
+---
+
+**Email 3 — send 5 days later**
+
+Subject: `Worth it?`
+
+Body:
+> Hey {{firstName | "there"}},
+>
+> We built Groundswell because we were frustrated with the same apps you probably use. Forecasts buried under ads. Check limits designed to annoy you into paying. Prices that keep going up. No transparency about when the model is actually confident.
+>
+> So we built something different. No ads on any tier, ever. No check limits. Published accuracy stats — 400 days of real error data, per station. Historical swell data going back to 2022 for anywhere on earth. Five languages.
+>
+> It's $4 a month. $40 for the year.
+>
+> If you've found it useful this week, here's how to unlock everything. Seven-day trial, no card required — you only need to add payment details if you decide to stay.
+>
+> If $4 a month isn't worth it to you right now, that's genuinely fine. The free tier is yours to keep.
+>
+> [Unlock everything — start free trial]
+>
+> Kevin & Laura
+> groundswell.surf
 
 ---
 
@@ -118,19 +178,21 @@ This fires when someone cancels their paid subscription. The goal is not to beg 
 **Structure: 1 email, sent 1 hour after the event**
 (Add a 1-hour delay before the email so it doesn't feel robotic)
 
-- Subject idea: `Sorry to see you go, {{firstName}}`
-- Content: Keep it short. Acknowledge the cancellation, ask one simple question ("Was there something we could have done better?"), include a reply-to so you actually receive their answers. No discount. No hard sell.
+> **Reply-to:** Set the reply-to address to Kevin's email (kevinmccalley@gmail.com) so replies land directly with him — not in a shared inbox.
 
-**Example:**
-> Hey {{firstName}},
+Subject: `Did we get something wrong?`
+
+Body:
+> Hey {{firstName | "there"}},
 >
-> Your Groundswell subscription has been cancelled — no issue there.
+> We noticed you cancelled — that's completely fine, and we mean that.
 >
-> If you have a moment, I'd genuinely love to know: was there something that didn't work for you, or something we were missing?
+> But if there was something specific that didn't work for you, we'd genuinely like to know. A missing spot, a forecast that felt off, something confusing in the UI — Kevin reads every reply and it goes directly into what we build next.
 >
-> Just hit reply. I read every one.
+> No pressure to come back. Just an honest question from the two people who built this.
 >
-> — Kevin
+> Kevin & Laura
+> groundswell.surf
 
 ---
 

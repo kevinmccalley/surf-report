@@ -92,7 +92,7 @@ async function translateToLocale(
   const message = await anthropic.messages.create({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 8192,
-    system: 'You are a professional translator specializing in surf, ocean sports, and outdoor adventure content. You translate accurately, naturally, and preserve technical terminology.',
+    system: [{ type: 'text' as const, text: 'You are a professional translator specializing in surf, ocean sports, and outdoor adventure content. You translate accurately, naturally, and preserve technical terminology.', cache_control: { type: 'ephemeral' as const } }],
     messages: [{
       role: 'user',
       content: `Translate the following surf blog content from English to ${lang}.

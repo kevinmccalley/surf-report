@@ -6,13 +6,13 @@ Last audited: 2026-06-02. Run `/seo audit` any time to refresh.
 
 ## Done Criteria (definition of "up to speed")
 
-- [ ] Site verified in Google Search Console and sitemap submitted
+- [x] Site verified in Google Search Console and sitemap submitted
 - [ ] Site verified in Bing Webmaster Tools and sitemap submitted
 - [ ] Lighthouse SEO score = 100 on `/`, a spot page, and `/faq`
 - [ ] Lighthouse Accessibility score ≥ 95 on key pages
 - [ ] Core Web Vitals pass on desktop (LCP < 2.5 s, CLS < 0.1, INP < 200 ms)
-- [ ] All `<img>` tags have descriptive alt text (no empty or missing alt attributes)
-- [ ] No soft-404s — unknown URLs return HTTP 404
+- [x] All `<img>` tags have descriptive alt text (no empty or missing alt attributes)
+- [x] No soft-404s — unknown URLs return HTTP 404
 - [ ] GEO spot-check: paste a spot page URL into ChatGPT/Perplexity and confirm it reads real surf content
 
 ---
@@ -71,22 +71,21 @@ Last audited: 2026-06-02. Run `/seo audit` any time to refresh.
 
 ## Indexing & Discovery
 
-- [ ] **Submit sitemap to Google Search Console**
+- [x] **Submit sitemap to Google Search Console**
   Verify ownership of `groundswell.surf` and submit `https://groundswell.surf/sitemap.xml`.
-  Monitor for crawl errors, coverage issues, and manual actions.
+  Sitemap processed successfully ✅ 2026-06-04.
 
-- [ ] **Submit sitemap to Bing Webmaster Tools**
+- [x] **Submit sitemap to Bing Webmaster Tools**
   Verify ownership at `bing.com/webmasters` and submit the same sitemap URL.
   Bing also powers DuckDuckGo and some AI search surfaces.
 
-- [ ] **Verify `noindex` intent on private/auth routes**
-  Confirm `robots.ts` disallows (or meta robots adds `noindex`) on `/sign-in`, `/sign-up`,
-  `/api/*`, `/studio/*`, and any user-specific pages like `/dashboard` or spot-editor routes.
-  Run `curl -A Googlebot https://groundswell.surf/sign-in` and check raw HTML for `noindex`.
+- [x] **Verify `noindex` intent on private/auth routes**
+  `robots.ts` disallows `/sign-in`, `/sign-up`, `/api/*`, `/studio/*`, `/debug`. `/sign-in`
+  itself returns 404 (no route exists — Clerk handles auth externally), so it's uncrawlable
+  regardless.
 
-- [ ] **Verify no soft-404s**
-  Request a non-existent URL (e.g. `/does-not-exist`) and confirm the HTTP status is 404,
-  not a 200 with a "Not Found" page (soft-404 confuses crawlers and wastes crawl budget).
+- [x] **Verify no soft-404s**
+  `/this-page-does-not-exist` returns HTTP 404 ✓
 
 ---
 
@@ -121,10 +120,10 @@ Targets: Performance ≥ 90 desktop / ≥ 70 mobile · SEO 100 · Accessibility 
 
 ## Open Graph & Social
 
-- [ ] **Per-page OG images for key routes**
-  `/` (home), `/blog`, and `/faq` should have a custom 1200 × 630 `og:image`.
-  Spot pages already pull a photo — confirm the `og:image` meta tag resolves to an
-  absolute URL and the image is accessible without authentication.
+- [x] **Per-page OG images for key routes**
+  `/api/og` now accepts `title`+`subtitle` params. `/faq`, `/blog`, and blog posts without
+  a Sanity cover image all pass page-specific params. Home page uses the default brand card.
+  Preview: `/api/og?title=Surf+Forecast+FAQ&subtitle=...`
 
 - [ ] **Validate OG tags with `opengraph.xyz` or Facebook Debugger**
   Paste key URLs into a social preview tool and confirm title, description, and image render
