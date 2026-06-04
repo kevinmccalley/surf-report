@@ -262,7 +262,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
                 <p className="text-white font-semibold text-sm mb-1">{t('mktL.teaserLock')}</p>
                 <p className="text-slate-500 text-xs mb-4">{t('mktL.teaserPrice', { price333: format(3.33) })}</p>
                 <SignInButton mode="modal">
-                  <button className="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs transition-colors">
+                  <button className="px-4 py-2 rounded-lg bg-sky-700 hover:bg-sky-600 text-white font-semibold text-xs transition-colors">
                     {t('mktL.teaserCta')}
                   </button>
                 </SignInButton>
@@ -301,7 +301,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
 
             {/* Individual — highlighted */}
             <div className="flex flex-col rounded-2xl border border-teal-500/40 bg-teal-500/6 p-5 relative">
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[10px] font-semibold bg-teal-500 text-white whitespace-nowrap">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[10px] font-semibold bg-teal-700 text-white whitespace-nowrap">
                 {t('mktL.ind.badge')}
               </span>
               <p className="text-xs font-semibold text-teal-400 uppercase tracking-widest mb-1">{t('mktL.ind.tier')}</p>
@@ -322,7 +322,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
                 ))}
               </ul>
               <SignInButton mode="modal">
-                <button className="mt-6 w-full py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-white text-sm font-semibold transition-colors">
+                <button className="mt-6 w-full py-2.5 rounded-xl bg-teal-700 hover:bg-teal-600 text-white text-sm font-semibold transition-colors">
                   {t('mktL.ind.cta')}
                 </button>
               </SignInButton>
@@ -389,7 +389,7 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
               </div>
             </div>
             <SignInButton mode="modal">
-              <button className="w-full py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold transition-colors">
+              <button className="w-full py-3 rounded-xl bg-sky-700 hover:bg-sky-600 text-white font-semibold transition-colors">
                 {t('mktL.startTrial')}
               </button>
             </SignInButton>

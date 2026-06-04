@@ -352,7 +352,7 @@ export default function SurfApp({ tier }: { tier: Tier }) {
     <div className="theme-bg">
       <header className="sticky top-0 z-50 theme-header" ref={menuRef}>
         <div className="px-4 py-3 flex items-center gap-3">
-          <a href="/" className="flex items-center gap-2 shrink-0 hover:opacity-80 transition-opacity">
+          <a href="/" aria-label="Groundswell home" className="flex items-center gap-2 shrink-0 hover:opacity-80 transition-opacity">
             <WaveLogo />
             <span className="text-sm font-semibold tracking-wide text-white hidden sm:block">
               Groundswell
