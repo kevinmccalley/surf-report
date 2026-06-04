@@ -43,7 +43,7 @@ interface ClimatologyData {
   peakMonths: number[]
 }
 
-export default function SurfApp({ tier }: { tier: Tier }) {
+export default function SurfApp({ tier, initialGeo }: { tier: Tier; initialGeo?: GeoResult }) {
   const { t, bcp47 } = useLanguage()
   const { isSignedIn, user } = useUser()
   const { openSignIn } = useClerk()
@@ -113,16 +113,23 @@ export default function SurfApp({ tier }: { tier: Tier }) {
 
     const lat = parseFloat(params.get('lat') ?? '')
     const lon = parseFloat(params.get('lon') ?? '')
-    if (isNaN(lat) || isNaN(lon)) return
 
-    const name = params.get('name') ?? 'Location'
-    const country = params.get('country') ?? ''
-    const geo: GeoResult = { lat, lon, name, country, displayName: `${name}, ${country}` }
-    const date = params.get('date') ?? ''
-    if (date && /^\d{4}-\d{2}-\d{2}$/.test(date) && isPaid) {
-      fetchHistorical(date, geo)
-    } else {
-      fetchReport(geo, false)
+    if (!isNaN(lat) && !isNaN(lon)) {
+      const name = params.get('name') ?? 'Location'
+      const country = params.get('country') ?? ''
+      const geo: GeoResult = { lat, lon, name, country, displayName: `${name}, ${country}` }
+      const date = params.get('date') ?? ''
+      if (date && /^\d{4}-\d{2}-\d{2}$/.test(date) && isPaid) {
+        fetchHistorical(date, geo)
+      } else {
+        fetchReport(geo, false)
+      }
+      return
+    }
+
+    // No URL params — use initialGeo prop (e.g. /spots/pipeline pages)
+    if (initialGeo) {
+      fetchReport(initialGeo, false)
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 

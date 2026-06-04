@@ -137,24 +137,26 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly, 
   const showTide  = (tideByKey?.size ?? 0) > 0
 
   // ── Measurements ────────────────────────────────────────────────
+  // Reading offsetWidth/offsetHeight synchronously forces a layout flush; defer
+  // the initial read to the next animation frame so it stays off the critical path.
   useEffect(() => {
     const el = botRef.current
     if (!el) return
     const update = () => setVisibleWidth(el.offsetWidth)
-    update()
+    const raf = requestAnimationFrame(update)
     const ro = new ResizeObserver(update)
     ro.observe(el)
-    return () => ro.disconnect()
+    return () => { cancelAnimationFrame(raf); ro.disconnect() }
   }, [])
 
   useEffect(() => {
     const el = topAreaRef.current
     if (!el) return
     const update = () => setTopOffset(el.offsetHeight)
-    update()
+    const raf = requestAnimationFrame(update)
     const ro = new ResizeObserver(update)
     ro.observe(el)
-    return () => ro.disconnect()
+    return () => { cancelAnimationFrame(raf); ro.disconnect() }
   }, [])
 
   // ── Scroll sync ─────────────────────────────────────────────────

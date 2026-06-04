@@ -28,6 +28,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: path === '/' ? 1.0 : 0.5,
   }))
 
+  const spotPages = getAllSpots().map(spot => ({
+    url: `${base}/spots/${slugify(spot.name)}`,
+    lastModified: new Date('2026-06-04'),
+    changeFrequency: 'daily' as const,
+    priority: 0.9,
+  }))
+
   const climatologyPages = getAllSpots().map(spot => ({
     url: `${base}/climatology/${slugify(spot.name)}`,
     lastModified: new Date('2025-01-01'),
@@ -49,5 +56,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
-  return [...staticPages, blogIndex, ...blogPosts, ...climatologyPages]
+  return [...staticPages, blogIndex, ...blogPosts, ...spotPages, ...climatologyPages]
 }
