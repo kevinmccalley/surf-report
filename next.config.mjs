@@ -6,10 +6,6 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
 
-  // Treat `sanity` as a server-side external — don't re-bundle the massive Sanity
-  // package into the server build on every deploy.
-  serverExternalPackages: ['sanity'],
-
   // Enable named-import tree-shaking for barrel packages. Avoids pulling in entire
   // icon/chart/animation libraries when only a handful of exports are used.
   experimental: {
