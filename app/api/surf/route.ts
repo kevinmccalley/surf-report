@@ -85,12 +85,13 @@ export async function GET(request: NextRequest) {
 
     // If the primary marine model has no valid wave heights (land-mask or model gap),
     // fetch the best_match model as a fallback — unless we already have it from above.
+    // 5-second timeout prevents this sequential fallback from blowing the function budget.
     const nemoHasWaves = !marine.error &&
       ((marine.hourly as Record<string, unknown[]>)?.wave_height ?? [])
         .some(v => typeof v === 'number' && !isNaN(v))
     let gfsFallbackRaw: Record<string, unknown> | null = null
     if (!nemoHasWaves && !gfsMarineRaw) {
-      const r = await fetch(omUrl(gfsMarineUrl), { next: { revalidate: 1800 } }).catch(() => null)
+      const r = await fetch(omUrl(gfsMarineUrl), { next: { revalidate: 1800 }, signal: AbortSignal.timeout(5000) }).catch(() => null)
       gfsFallbackRaw = r ? await r.json().catch(() => null) : null
     }
     const gfsMarine = (() => {
@@ -126,7 +127,8 @@ export async function GET(request: NextRequest) {
     // when timezone=auto isn't honoured, causing currentIdx to be wrong.
     const utcOffset = ((weather.utc_offset_seconds ?? effectiveMarine.utc_offset_seconds) as number) ?? 0
     const timezone = (weather.timezone as string | undefined) ?? (effectiveMarine.timezone as string | undefined) ?? 'UTC'
-    const currentIdx = findCurrentHourIndexByTz(weather.hourly.time, timezone, utcOffset)
+    if (!weather.hourly) throw new Error(`Weather API error: ${(weather as Record<string, unknown>).reason ?? 'no hourly data'}`)
+    const currentIdx = findCurrentHourIndexByTz((weather.hourly as Record<string, unknown[]>).time as string[], timezone, utcOffset)
 
     // Resolve facing direction for wind-quality scoring.
     // Calibrated spots already have it; for everything else check KV cache
@@ -143,11 +145,10 @@ export async function GET(request: NextRequest) {
         if (cached !== null && cached !== undefined) {
           facingDirection = cached
         } else {
-          const inferred = await inferFacingDirection(latN, lonN)
-          if (inferred !== null) {
-            facingDirection = inferred
-            kv.set(kvKey, inferred, { ex: 365 * 24 * 3600 }).catch(() => {})
-          }
+          // Fire-and-forget: don't block the response; KV will have the value next time.
+          inferFacingDirection(latN, lonN).then(inferred => {
+            if (inferred !== null) kv.set(kvKey, inferred, { ex: 365 * 24 * 3600 }).catch(() => {})
+          }).catch(() => {})
         }
       } catch {
         // KV unavailable — proceed without facing direction (speed-only wind score)

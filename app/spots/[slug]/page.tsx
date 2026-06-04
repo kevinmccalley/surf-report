@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { auth, clerkClient } from '@clerk/nextjs/server'
 import SurfApp from '@/app/components/SurfApp'
 import type { Tier } from '@/app/page'
-import { findSpotBySlug, slugify } from '@/app/lib/surf-spots'
+import { findSpotBySlug } from '@/app/lib/surf-spots'
 
 export const dynamic = 'force-dynamic'
 

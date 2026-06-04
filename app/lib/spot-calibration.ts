@@ -1,4 +1,5 @@
 import type { SurfRating, SurfRatingLabel } from './types'
+import { omUrl } from './utils'
 
 export interface SpotCalibration {
   name: string
@@ -165,7 +166,8 @@ async function probeIsOcean(lat: number, lon: number): Promise<boolean> {
       `https://marine-api.open-meteo.com/v1/marine` +
       `?latitude=${lat.toFixed(5)}&longitude=${lon.toFixed(5)}` +
       `&hourly=wave_height&forecast_days=1&timezone=UTC`
-    const res = await fetch(url, { signal: AbortSignal.timeout(6000) })
+    // Use API key (omUrl) and cache results for 24 h — ocean topology is static.
+    const res = await fetch(omUrl(url), { next: { revalidate: 86400 }, signal: AbortSignal.timeout(6000) })
     if (!res.ok) return false
     const data = await res.json() as { hourly?: { wave_height?: (number | null)[] } }
     const first = data.hourly?.wave_height?.[0]
