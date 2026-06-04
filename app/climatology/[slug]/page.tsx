@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { findSpotBySlug, slugify, getAllSpots } from '@/app/lib/surf-spots'
+import { findSpotBySlug, slugify } from '@/app/lib/surf-spots'
 import { getClimatologyData } from '@/app/lib/climatology'
 import { getPostsForSpot } from '@/app/lib/sanity'
 import ClimatologySection from '@/app/components/ClimatologySection'
@@ -15,9 +15,7 @@ interface Props {
   searchParams?: Promise<{ lang?: string }>
 }
 
-export async function generateStaticParams() {
-  return getAllSpots().map(s => ({ slug: slugify(s.name) }))
-}
+export const revalidate = 86400 // 24 h ISR — re-render on first request after expiry
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { slug } = await params
@@ -136,7 +134,7 @@ export default async function ClimatologyPage({ params }: Props) {
       {/* Header */}
       <header className="theme-header sticky top-0 z-50">
         <div className="mx-auto max-w-4xl px-4 py-3 flex items-center gap-3">
-          <a href="/" className="flex items-center gap-2 shrink-0 hover:opacity-80 transition-opacity">
+          <a href="/" aria-label="Groundswell home" className="flex items-center gap-2 shrink-0 hover:opacity-80 transition-opacity">
             <WaveLogo />
             <span className="text-sm font-semibold tracking-wide text-white hidden sm:block">
               Groundswell
