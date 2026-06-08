@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { serverT } from '@/app/lib/server-t'
 import { getDirectorySpots } from '@/app/lib/spots-directory'
 import SpotsDirectoryClient from './SpotsDirectoryClient'
+import SiteHeader from '@/app/components/SiteHeader'
 
 const BASE_URL = 'https://groundswell.surf'
 const LOCALES = ['en', 'es', 'fr', 'pt-BR', 'pt-PT'] as const
@@ -30,7 +31,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       url: canonical,
       siteName: 'Groundswell',
       type: 'website',
-      images: [{ url: `/api/og?title=Surf+Spot+Directory&subtitle=220%2B+of+the+world%27s+best+breaks`, width: 1200, height: 630, alt: title }],
+      images: [{ url: `/api/og?title=Surf+Spot+Directory&subtitle=500%2B+of+the+world%27s+best+breaks`, width: 1200, height: 630, alt: title }],
     },
     twitter: { card: 'summary_large_image', title, description },
   }
@@ -88,14 +89,7 @@ export default async function SpotsDirectoryPage({ searchParams }: Props) {
       />
 
       <div className="theme-bg min-h-screen">
-        <header className="theme-header sticky top-0 z-50">
-          <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity shrink-0">
-              <WaveLogo />
-              <span className="text-sm font-semibold tracking-wide text-white hidden sm:block">Groundswell</span>
-            </Link>
-          </div>
-        </header>
+        <SiteHeader />
 
         <main className="mx-auto max-w-6xl px-4 py-12" id="main-content">
           <nav aria-label="breadcrumb" className="text-xs text-slate-400 mb-6">
@@ -117,14 +111,5 @@ export default async function SpotsDirectoryPage({ searchParams }: Props) {
         </main>
       </div>
     </>
-  )
-}
-
-function WaveLogo() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <path d="M2 18 C6 12, 10 22, 14 16 C18 10, 22 20, 26 14" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      <path d="M2 22 C6 16, 10 26, 14 20 C18 14, 22 24, 26 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.5" />
-    </svg>
   )
 }
