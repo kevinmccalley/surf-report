@@ -57,7 +57,7 @@ export default async function SpotsDirectoryPage({ searchParams }: Props) {
             '@type': 'ListItem',
             position: i + 1,
             name: spot.name,
-            url: `${BASE_URL}/spots/${spot.slug}`,
+            url: spot.href.startsWith('/') ? `${BASE_URL}${spot.href}` : spot.href,
             item: {
               '@type': 'SportsActivityLocation',
               name: spot.name,

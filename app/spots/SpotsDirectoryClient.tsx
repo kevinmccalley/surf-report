@@ -118,7 +118,7 @@ export default function SpotsDirectoryClient({ spots }: Props) {
           {filtered.map(spot => (
             <Link
               key={`${spot.slug}-${spot.lat}`}
-              href={`/spots/${spot.slug}`}
+              href={spot.href}
               className="group block h-full rounded-xl border border-teal-500/20 bg-teal-500/5 px-4 py-3 hover:bg-teal-500/10 hover:border-teal-500/40 transition-colors"
             >
               <div className="flex items-start justify-between gap-2 mb-2.5">
