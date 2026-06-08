@@ -4,7 +4,7 @@ import { serverT } from '@/app/lib/server-t'
 
 const BASE_URL = 'https://groundswell.surf'
 const LOCALES = ['en', 'es', 'fr', 'pt-BR', 'pt-PT'] as const
-const FAQ_COUNT = 8
+const FAQ_COUNT = 20
 
 type Props = { searchParams?: Promise<{ lang?: string }> }
 
