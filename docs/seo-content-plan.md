@@ -15,7 +15,7 @@
 
 ## Schema
 
-- [ ] Add `speakable` schema to spot pages and FAQ
+- [x] Add `speakable` schema to spot pages and FAQ
 
 ---
 
