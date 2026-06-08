@@ -91,19 +91,19 @@ export default async function SpotsDirectoryPage({ searchParams }: Props) {
       <div className="theme-bg min-h-screen">
         <SiteHeader />
 
-        <main className="mx-auto max-w-6xl px-4 py-12" id="main-content">
-          <nav aria-label="breadcrumb" className="text-xs text-slate-400 mb-6">
+        <main className="mx-auto max-w-6xl px-4 py-8 sm:py-12" id="main-content">
+          <nav aria-label="breadcrumb" className="text-xs text-slate-400 mb-5">
             <Link href="/" className="hover:text-slate-200 transition-colors">Groundswell</Link>
             <span className="mx-1">/</span>
             <span className="text-slate-200">{t('directory.breadcrumb')}</span>
           </nav>
 
-          <h1 className="text-3xl font-bold text-white mb-2">{t('directory.heading')}</h1>
-          <p className="text-slate-400 mb-10 text-base">{t('directory.subtitle')}</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">{t('directory.heading')}</h1>
+          <p className="text-slate-400 mb-6 sm:mb-10 text-sm sm:text-base">{t('directory.subtitle')}</p>
 
           <SpotsDirectoryClient spots={spots} />
 
-          <div className="mt-14 pt-8 border-t border-[var(--color-border)]">
+          <div className="mt-10 sm:mt-14 pt-8 border-t border-[var(--color-border)]">
             <Link href="/" className="text-sm text-slate-400 hover:text-slate-200 transition-colors">
               ← {t('nav.backToGroundswell')}
             </Link>

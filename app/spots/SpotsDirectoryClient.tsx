@@ -27,6 +27,26 @@ const REGION_I18N: Record<string, string> = {
   'Oceania & Pacific':'top100.region.oceania',
 }
 
+const WAVE_TYPE_I18N: Record<string, string> = {
+  'Reef Break':  'top100.waveType.reef',
+  'Beach Break': 'top100.waveType.beach',
+  'Point Break': 'top100.waveType.point',
+  'River Mouth': 'top100.waveType.river',
+  'Sand Bar':    'top100.waveType.sandbar',
+}
+
+const DIFFICULTY_I18N: Record<string, string> = {
+  'Beginner':     'top100.difficulty.beginner',
+  'Intermediate': 'top100.difficulty.intermediate',
+  'Advanced':     'top100.difficulty.advanced',
+  'Expert':       'top100.difficulty.expert',
+}
+
+const WSL_BADGE_I18N: Record<string, string> = {
+  'CT Stop':  'top100.badge.ct',
+  'Big Wave': 'top100.badge.bigwave',
+}
+
 const DIFFICULTY_STYLE: Record<string, string> = {
   'Beginner':     'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
   'Intermediate': 'text-sky-400    bg-sky-500/10     border-sky-500/30',
@@ -61,7 +81,7 @@ export default function SpotsDirectoryClient({ spots }: Props) {
   return (
     <div>
       {/* Search + sort */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-5">
+      <div className="flex flex-col sm:flex-row gap-2 mb-5">
         <input
           type="search"
           value={search}
@@ -71,14 +91,14 @@ export default function SpotsDirectoryClient({ spots }: Props) {
         />
         <button
           onClick={() => setSortAsc(v => !v)}
-          className="shrink-0 px-4 py-2 rounded-lg theme-inset text-sm text-slate-300 hover:border-teal-500/40 transition-colors"
+          className="sm:shrink-0 px-4 py-2 rounded-lg theme-inset text-sm text-slate-300 hover:border-teal-500/40 transition-colors"
           aria-label={sortAsc ? t('directory.sortZA') : t('directory.sortAZ')}
         >
           {sortAsc ? t('directory.sortAZ') : t('directory.sortZA')}
         </button>
       </div>
 
-      {/* Region chips */}
+      {/* Region chips — scrollable, flush to screen edges on mobile */}
       <div className="flex gap-2 overflow-x-auto pb-2 mb-5 -mx-4 px-4 scrollbar-none">
         <button
           onClick={() => setRegion('all')}
@@ -106,7 +126,7 @@ export default function SpotsDirectoryClient({ spots }: Props) {
       </div>
 
       {/* Count */}
-      <p className="text-xs text-slate-500 mb-5">
+      <p className="text-xs text-slate-500 mb-4">
         {t('directory.spotCount', { count: filtered.length })}
       </p>
 
@@ -130,7 +150,7 @@ export default function SpotsDirectoryClient({ spots }: Props) {
                 </div>
                 {spot.wslBadge && (
                   <span className="shrink-0 text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 whitespace-nowrap">
-                    {spot.wslBadge}
+                    {t(WSL_BADGE_I18N[spot.wslBadge] ?? '') || spot.wslBadge}
                   </span>
                 )}
               </div>
@@ -141,12 +161,12 @@ export default function SpotsDirectoryClient({ spots }: Props) {
                 </span>
                 {spot.waveType && (
                   <span className="text-xs px-2 py-0.5 rounded-full theme-inset text-slate-400">
-                    {spot.waveType}
+                    {t(WAVE_TYPE_I18N[spot.waveType] ?? '') || spot.waveType}
                   </span>
                 )}
                 {spot.difficulty && (
                   <span className={`text-xs px-2 py-0.5 rounded-full border ${DIFFICULTY_STYLE[spot.difficulty] ?? 'theme-inset text-slate-400'}`}>
-                    {spot.difficulty}
+                    {t(DIFFICULTY_I18N[spot.difficulty] ?? '') || spot.difficulty}
                   </span>
                 )}
                 {spot.bestSeason && (
