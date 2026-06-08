@@ -159,12 +159,6 @@ export default function SurfApp({ tier, initialGeo }: { tier: Tier; initialGeo?:
   }, [isSignedIn]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchReport = useCallback(async (result: GeoResult, updateUrl = true) => {
-    if (!isSignedInRef.current) {
-      const redirectUrl = `/?lat=${result.lat}&lon=${result.lon}&name=${encodeURIComponent(result.name)}&country=${encodeURIComponent(result.country)}`
-      sessionStorage.setItem('postSignInUrl', redirectUrl)
-      openSignIn()
-      return
-    }
     setLoading(true)
     setError(null)
     setTideData(null)
