@@ -30,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const spotPages = getAllSpots().map(spot => ({
     url: `${base}/spots/${slugify(spot.name)}`,
-    lastModified: new Date('2026-06-04'),
+    lastModified: new Date('2026-06-08'),
     changeFrequency: 'daily' as const,
     priority: 0.9,
   }))

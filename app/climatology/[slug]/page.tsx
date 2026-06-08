@@ -195,7 +195,7 @@ export default async function ClimatologyPage({ params }: Props) {
             Ready to check live conditions at {spot.name}?
           </p>
           <a
-            href="/"
+            href={`/spots/${slug}`}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-500/15 border border-sky-500/30 text-sky-300 hover:bg-sky-500/25 hover:text-sky-200 transition-colors text-sm font-medium"
           >
             Open live surf report
