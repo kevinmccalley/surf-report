@@ -67,11 +67,11 @@ export default function SpotsDirectoryClient({ spots }: Props) {
           value={search}
           onChange={e => setSearch(e.target.value)}
           placeholder={t('directory.searchPlaceholder')}
-          className="flex-1 bg-slate-800/60 border border-[var(--color-border)] rounded-lg px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-teal-500/50"
+          className="flex-1 search-input rounded-lg px-3 py-2 text-sm focus:outline-none"
         />
         <button
           onClick={() => setSortAsc(v => !v)}
-          className="shrink-0 px-4 py-2 rounded-lg bg-slate-800/60 border border-[var(--color-border)] text-sm text-slate-300 hover:text-white hover:border-teal-500/40 transition-colors"
+          className="shrink-0 px-4 py-2 rounded-lg theme-inset text-sm text-slate-300 hover:border-teal-500/40 transition-colors"
           aria-label={sortAsc ? t('directory.sortZA') : t('directory.sortAZ')}
         >
           {sortAsc ? t('directory.sortAZ') : t('directory.sortZA')}
@@ -85,7 +85,7 @@ export default function SpotsDirectoryClient({ spots }: Props) {
           className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors ${
             region === 'all'
               ? 'bg-teal-500 text-white'
-              : 'bg-slate-800/60 border border-[var(--color-border)] text-slate-400 hover:text-white'
+              : 'theme-inset text-slate-400 hover:border-teal-500/40'
           }`}
         >
           {t('directory.allRegions')}
@@ -97,7 +97,7 @@ export default function SpotsDirectoryClient({ spots }: Props) {
             className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors ${
               region === r
                 ? 'bg-teal-500 text-white'
-                : 'bg-slate-800/60 border border-[var(--color-border)] text-slate-400 hover:text-white'
+                : 'theme-inset text-slate-400 hover:border-teal-500/40'
             }`}
           >
             {t(REGION_I18N[r])}
@@ -136,21 +136,21 @@ export default function SpotsDirectoryClient({ spots }: Props) {
               </div>
 
               <div className="flex flex-wrap gap-1">
-                <span className="text-xs px-2 py-0.5 rounded-full bg-slate-700/60 text-slate-400 border border-slate-600/40">
+                <span className="text-xs px-2 py-0.5 rounded-full theme-inset text-slate-400">
                   {t(REGION_I18N[spot.region])}
                 </span>
                 {spot.waveType && (
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-slate-700/60 text-slate-400 border border-slate-600/40">
+                  <span className="text-xs px-2 py-0.5 rounded-full theme-inset text-slate-400">
                     {spot.waveType}
                   </span>
                 )}
                 {spot.difficulty && (
-                  <span className={`text-xs px-2 py-0.5 rounded-full border ${DIFFICULTY_STYLE[spot.difficulty] ?? 'text-slate-400 bg-slate-700/60 border-slate-600/40'}`}>
+                  <span className={`text-xs px-2 py-0.5 rounded-full border ${DIFFICULTY_STYLE[spot.difficulty] ?? 'theme-inset text-slate-400'}`}>
                     {spot.difficulty}
                   </span>
                 )}
                 {spot.bestSeason && (
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-slate-700/60 text-slate-400 border border-slate-600/40">
+                  <span className="text-xs px-2 py-0.5 rounded-full theme-inset text-slate-400">
                     {spot.bestSeason}
                   </span>
                 )}
