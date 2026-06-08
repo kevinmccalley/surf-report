@@ -64,6 +64,18 @@ function buildSpotJsonLd(spot: SurfSpot, slug: string) {
     '@context': 'https://schema.org',
     '@graph': [
       {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: `${spot.name} Surf Report — Groundswell`,
+        // speakable marks the H1 and the peak-season/best-conditions summary cards
+        // so Google AI Overviews and voice search can read the most useful content.
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['.speakable-heading', '.speakable-summary'],
+        },
+      },
+      {
         '@type': 'SportsActivityLocation',
         '@id': `${url}#place`,
         name: `${spot.name} Surf Spot`,
@@ -109,7 +121,7 @@ function SpotStaticSection({ spot, slug, calibration, peakSeasonText, nearbySpot
 
         {/* Heading */}
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white">
+          <h1 className="speakable-heading text-2xl sm:text-3xl font-bold text-white">
             {spot.name} Surf Report
           </h1>
           <p className="text-slate-400 mt-1 text-sm">
@@ -126,12 +138,12 @@ function SpotStaticSection({ spot, slug, calibration, peakSeasonText, nearbySpot
         <div className="grid sm:grid-cols-2 gap-4">
           <div className="glass-card rounded-xl px-4 py-3 border border-teal-500/20 bg-teal-500/5">
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-1">Peak Season</p>
-            <p className="text-sm text-teal-300 font-medium">{peakSeasonText}</p>
+            <p className="speakable-summary text-sm text-teal-300 font-medium">{peakSeasonText}</p>
           </div>
           {bestConditions && (
             <div className="glass-card rounded-xl px-4 py-3 border border-sky-500/20 bg-sky-500/5">
               <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-1">Best Conditions</p>
-              <p className="text-sm text-slate-300">{bestConditions}</p>
+              <p className="speakable-summary text-sm text-slate-300">{bestConditions}</p>
             </div>
           )}
         </div>

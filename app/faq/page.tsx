@@ -52,6 +52,10 @@ export default async function FaqPage({ searchParams }: Props) {
         '@id': `${BASE_URL}/faq#faqpage`,
         url: `${BASE_URL}/faq`,
         name: t('faq.heading'),
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['.faq-question', '.faq-answer'],
+        },
         mainEntity: questions.map(({ q, a }) => ({
           '@type': 'Question',
           name: q,
@@ -95,8 +99,8 @@ export default async function FaqPage({ searchParams }: Props) {
           <div className="space-y-8">
             {questions.map(({ q, a }, i) => (
               <section key={i} aria-labelledby={`faq-q${i + 1}`}>
-                <h2 id={`faq-q${i + 1}`} className="text-lg font-semibold text-white mb-2">{q}</h2>
-                <p className="text-slate-300 leading-relaxed">{a}</p>
+                <h2 id={`faq-q${i + 1}`} className="faq-question text-lg font-semibold text-white mb-2">{q}</h2>
+                <p className="faq-answer text-slate-300 leading-relaxed">{a}</p>
               </section>
             ))}
           </div>
