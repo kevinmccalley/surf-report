@@ -398,6 +398,9 @@ const fr: Record<string, string> = {
   'nav.faq': 'FAQ',
   'nav.lastUpdated': 'Dernière mise à jour',
   'nav.backToGroundswell': 'Retour à Groundswell',
+  'nav.spots':             'Spots de Surf',
+
+  'search.browseAll':      'Parcourir tous les spots de surf',
 
   // EpicNowSection
   'epicNow.title': 'Où est-ce épique en ce moment ?',

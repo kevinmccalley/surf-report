@@ -398,6 +398,9 @@ const ptBR: Record<string, string> = {
   'nav.faq': 'Perguntas frequentes',
   'nav.lastUpdated': 'Última atualização',
   'nav.backToGroundswell': 'Voltar ao Groundswell',
+  'nav.spots':             'Spots de Surf',
+
+  'search.browseAll':      'Ver todos os spots de surf',
 
   // EpicNowSection
   'epicNow.title': 'Onde está épico agora?',

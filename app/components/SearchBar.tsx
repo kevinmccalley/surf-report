@@ -146,8 +146,8 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
                 onMouseDown={() => handleSelect(r)}
                 className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors ${
                   i === activeIdx ? 'theme-row-active' : 'theme-row-hover'
-                } ${i < results.length - 1 ? 'border-b' : ''}`}
-                style={i < results.length - 1 ? { borderColor: 'var(--card-border)' } : undefined}
+                } border-b`}
+                style={{ borderColor: 'var(--card-border)' }}
               >
                 <MapPin size={14} className="shrink-0" style={{ color: 'var(--accent)' }} />
                 <div className="min-w-0 flex-1">
@@ -165,6 +165,15 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
               </button>
             )
           })}
+          <a
+            href="/spots"
+            className="w-full flex items-center justify-between px-4 py-2.5 transition-colors theme-row-hover"
+          >
+            <span className="text-xs theme-label">{t('search.browseAll')}</span>
+            <svg className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 16 16" strokeWidth={2} stroke="currentColor" style={{ color: 'var(--accent)' }} aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </a>
         </div>
       )}
     </div>
