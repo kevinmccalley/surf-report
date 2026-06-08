@@ -9,7 +9,8 @@
     "lint": "next lint",
     "test": "vitest",
     "test:run": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "postinstall": "node scripts/patch-date-fns.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.96.0",
@@ -23,16 +24,20 @@
     "ioredis": "^5.10.1",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.441.0",
-    "next": "16.2.6",
+    "next": "16.2.7",
     "next-sanity": "^12.4.5",
     "nodemailer": "^8.0.7",
     "react": "^18",
     "react-dom": "^18",
     "recharts": "^3.8.1",
-    "sanity": "^5.25.1",
+    "sanity": "5.25.1",
     "stripe": "^22.1.0",
     "styled-components": "^6.4.0"
   },
+  "overrides": {
+    "date-fns": "4.4.0"
+  },
+
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",
     "@types/leaflet": "^1.9.14",
