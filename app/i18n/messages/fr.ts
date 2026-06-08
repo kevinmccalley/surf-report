@@ -698,6 +698,19 @@ const fr: Record<string, string> = {
   'top100.region.indianOcean':         'Océan Indien',
   'top100.region.southeastAsia':       'Asie du Sud-Est',
   'top100.region.oceania':             'Océanie & Pacifique',
+
+  'directory.meta.title':              'Répertoire des Spots de Surf — Groundswell',
+  'directory.meta.desc':               "Parcourez plus de 220 des meilleurs spots de surf au monde. Filtrez par région, triez par nom et appuyez sur n'importe quel spot pour voir les prévisions en direct.",
+  'directory.heading':                 'Répertoire des Spots de Surf',
+  'directory.subtitle':                "Parcourez les meilleurs spots de surf au monde. Filtrez par région, triez par nom et appuyez sur n'importe quel spot pour accéder aux prévisions en direct.",
+  'directory.breadcrumb':              'Spots de Surf',
+  'directory.searchPlaceholder':       'Rechercher des spots…',
+  'directory.allRegions':              'Toutes les régions',
+  'directory.sortAZ':                  'A–Z',
+  'directory.sortZA':                  'Z–A',
+  'directory.spotCount':               '{count} spots',
+  'directory.noResults':               'Aucun spot ne correspond à vos filtres.',
+  'directory.viewForecast':            'Voir les prévisions',
 }
 
 export default fr

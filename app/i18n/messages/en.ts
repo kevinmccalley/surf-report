@@ -699,6 +699,19 @@ const en: Record<string, string> = {
   'top100.region.indianOcean':         'Indian Ocean',
   'top100.region.southeastAsia':       'Southeast Asia',
   'top100.region.oceania':             'Oceania & Pacific',
+
+  'directory.meta.title':              'Surf Spot Directory — Groundswell',
+  'directory.meta.desc':               "Browse 220+ of the world's best surf spots. Filter by region, sort by name, and tap any break for a live wave forecast.",
+  'directory.heading':                 'Surf Spot Directory',
+  'directory.subtitle':                "Browse the world's best surf spots. Filter by region, sort by name, then tap any spot for a live forecast.",
+  'directory.breadcrumb':              'Surf Spots',
+  'directory.searchPlaceholder':       'Search spots…',
+  'directory.allRegions':              'All Regions',
+  'directory.sortAZ':                  'A–Z',
+  'directory.sortZA':                  'Z–A',
+  'directory.spotCount':               '{count} spots',
+  'directory.noResults':               'No spots match your filters.',
+  'directory.viewForecast':            'View forecast',
 }
 
 export default en
