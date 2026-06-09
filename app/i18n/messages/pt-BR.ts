@@ -427,11 +427,11 @@ const ptBR: Record<string, string> = {
   'locations.clearAlert': 'Remover',
 
   // MarketingLanding — Hero
-  'mktL.badge': 'Cobertura global · Sem anúncios. Jamais.',
-  'mktL.h1.pre': 'Saiba ',
-  'mktL.h1.gradient': 'antes',
-  'mktL.h1.post': ' de pegar a onda. De verdade.',
-  'mktL.subtitle': 'O Groundswell oferece previsões de surf honestas e globais — com dados históricos reais, zero anúncios e a página de transparência de precisão que nenhum concorrente ousaria publicar. A partir de {price4} por mês.',
+  'mktL.badge': 'O único app de surf que publica seu próprio histórico de precisão',
+  'mktL.h1.pre': 'O oceano não mente. ',
+  'mktL.h1.gradient': 'Seu app de previsão',
+  'mktL.h1.post': ' deveria ser igual.',
+  'mktL.subtitle': 'Previsões de surf honestas e globais. 4+ anos de dados históricos. Zero anúncios em qualquer plano, sempre. A partir de {price4} por mês.',
   'mktL.ctaFree': 'Comece grátis — sem cartão',
   'mktL.ctaPricing': 'Ver como funciona ↓',
   'mktL.heroTrust': 'Teste grátis de 7 dias · Cancele a qualquer momento · Sem cartão de crédito',
@@ -449,31 +449,31 @@ const ptBR: Record<string, string> = {
   'mktL.trust.5label': 'em qualquer plano, sempre',
 
   // Como funciona
-  'mktL.howTitle': 'Como funciona',
-  'mktL.howSubtitle': 'Da busca à sessão em segundos.',
-  'mktL.step1.title': 'Busque qualquer spot',
-  'mktL.step1.desc': 'Digite qualquer praia, ponto ou recife em qualquer lugar do mundo. Sem necessidade de conta.',
-  'mktL.step2.title': 'Condições reais',
-  'mktL.step2.desc': 'Altura de onda, período e direção da ondulação, vento, marés e UV — atualizados a cada hora. Sem anúncios entre você e os dados.',
-  'mktL.step3.title': 'Planeje sua sessão',
-  'mktL.step3.desc': 'Previsão completa de 10 dias com ratings de surf. Veja exatamente quando a ondulação vai chegar — com dias de antecedência.',
+  'mktL.howTitle': 'Tire a dúvida em 30 segundos — vale acordar cedo?',
+  'mktL.howSubtitle': 'Da busca à sessão.',
+  'mktL.step1.title': 'Busque qualquer spot do mundo.',
+  'mktL.step1.desc': 'Digite qualquer praia, ponto ou recife — em qualquer lugar. Sem conta. Sem cadastro obrigatório. Só busque e veja.',
+  'mktL.step2.title': 'Condições honestas.',
+  'mktL.step2.desc': 'Altura de onda, período e direção da ondulação, vento, marés e UV — atualizados a cada hora. Sem anúncios entre você e os dados. Sem ratings de estrelas sem explicação.',
+  'mktL.step3.title': 'Planeje sua sessão — ou toda a sua viagem.',
+  'mktL.step3.desc': 'Previsão completa de 10 dias com ratings de surf. 4+ anos de dados históricos para qualquer coordenada costeira. Veja exatamente quando a ondulação vai atingir o pico. Saiba antes de ir ao aeroporto.',
 
   // Por que os surfistas mudam
-  'mktL.pain.title': 'Por que os surfistas mudam para o Groundswell',
-  'mktL.pain.1.heading': 'Os apps de previsão continuam aumentando os preços.',
-  'mktL.pain.1.body': 'Os grandes apps cobram $100+ por ano. Anúncios entre você e a previsão. Recursos bloqueados atrás de planos mais caros. E o preço continua subindo.',
-  'mktL.pain.1.answer': '$40/ano. Sem limites de consulta. Sem anúncios. Sem letras miúdas.',
+  'mktL.pain.title': 'Todos os outros apps de previsão foram feitos para te frustrar e te fazer pagar mais.',
+  'mktL.pain.1.heading': 'O Surfline aumentou os preços de novo.',
+  'mktL.pain.1.body': "$120 por ano. Limites de consulta. Um plano gratuito feito para parecer quebrado. Anúncios entre você e a previsão. E quando os 3 milhões de usuários do MSW precisavam de um novo lar, o Surfline os absorveu e apagou as luzes.",
+  'mktL.pain.1.answer': 'Groundswell: $40/ano. Sem limites de consulta. Sem anúncios. Sem truques. O mesmo oceano.',
   'mktL.pain.2.heading': 'O Magicseaweed acabou. Nada o substituiu.',
-  'mktL.pain.2.body': 'Três milhões de surfistas em 200 países perderam sua ferramenta de previsão da noite para o dia em 2023. Sem aviso, sem arquivo, sem migração. A maioria ainda não encontrou uma nova casa.',
-  'mktL.pain.2.answer': 'Cobertura global. Preços honestos. Isso é o que o MSW deveria ter se tornado.',
+  'mktL.pain.2.body': 'Três milhões de surfistas em 200 países perderam sua ferramenta de previsão da noite para o dia em maio de 2023. Sem aviso. Sem arquivo. Sem caminho de migração. A maioria ainda não encontrou um novo lar.',
+  'mktL.pain.2.answer': 'É isso que o MSW deveria ter se tornado. Cobertura global, preços honestos, interface bonita. $4 por mês.',
   'mktL.pain.3.heading': 'Todos os outros apps pensam em inglês.',
   'mktL.pain.3.body': "O Surfline foi feito para a Califórnia. O Surf-Forecast.com é apenas em inglês. Para a maioria dos 35 milhões de surfistas do mundo, nunca houve uma opção de qualidade no idioma nativo.",
-  'mktL.pain.3.answer': 'Totalmente disponível em inglês, português, espanhol e francês. Mais idiomas a caminho.',
+  'mktL.pain.3.answer': 'Totalmente disponível em inglês, português, espanhol e francês. Seu break, seu idioma.',
 
   // Seções de funcionalidades detalhadas
-  'mktL.feat1.label': 'Para o viajante de surf',
+  'mktL.feat1.label': 'Para cada viagem',
   'mktL.feat1.heading': '4+ anos de histórico de ondulação. Em qualquer costa do mundo.',
-  'mktL.feat1.body': 'Planejando uma viagem a Nazaré em outubro? Pensando nas Maldivas em novembro? Consulte anos de registros reais de ondas, vento e ondulação para qualquer coordenada costeira antes de reservar. Não são médias. Não são modelos. O que realmente aconteceu, semana a semana, desde janeiro de 2022. Nenhum outro app nesse preço oferece isso — e nada salva uma viagem de surf de $2.500 como saber como outubro realmente é.',
+  'mktL.feat1.body': 'Planejando uma viagem a Nazaré em outubro? As Maldivas em novembro? Consulte anos de registros reais de ondas, vento e ondulação para qualquer coordenada costeira antes de reservar. Não são médias. Não são modelos. O que realmente aconteceu — semana a semana, desde janeiro de 2022.',
   'mktL.feat2.label': 'Para esta manhã',
   'mktL.feat2.heading': '608 spots ao vivo. Atualizado a cada 3 horas.',
   'mktL.feat2.body': 'Veja quais breaks do mundo estão no melhor momento agora mesmo. Não uma notificação em massa sobre um swell regional — um painel global de condições em tempo real, a cada três horas. Encontre a janela. Entre na água.',
@@ -485,8 +485,8 @@ const ptBR: Record<string, string> = {
   'mktL.feat4.heading': 'Dados de maré em que você realmente pode confiar.',
   'mktL.feat4.body': 'O Groundswell obtém dados de maré da NOAA, DFO e do modelo oceânico global NEMO, e exibe a leitura de maior qualidade para sua localização — com um selo de verificação NOAA ao vivo. Marés precisas para breaks que outros apps erram.',
   'mktL.feat5.label': 'Isso é simples',
-  'mktL.feat5.heading': 'Consulte a previsão quantas vezes precisar.',
-  'mktL.feat5.body': 'Sem limites de consulta. Sem anúncios entre você e os dados. Sem plano premium projetado para fazer o gratuito parecer incompleto. O oceano não tem paywall. O Groundswell tem um plano que funciona, com preço honesto.',
+  'mktL.feat5.heading': 'Consulte quantas vezes precisar.',
+  'mktL.feat5.body': 'Sem limites de consulta. Sem «você usou 4 das 5 consultas da semana». Sem plano premium feito para fazer o gratuito parecer incompleto. O oceano muda — e você deve poder verificar sempre que ele mudar.',
 
   // Teaser
   'mktL.teaserTitle': 'Previsão de surf de 10 dias',
@@ -496,8 +496,8 @@ const ptBR: Record<string, string> = {
   'mktL.teaserCta': 'Iniciar teste gratuito',
 
   // Comparativo de planos
-  'mktL.featTitle': 'Tudo que você precisa',
-  'mktL.featSubtitle': 'Comece grátis. Faça upgrade quando quiser.',
+  'mktL.featTitle': 'Tudo que um surfista sério precisa.',
+  'mktL.featSubtitle': 'Nada feito para te irritar e te forçar a fazer upgrade.',
   'mktL.free.tier': 'Grátis',
   'mktL.free.note': 'Sempre grátis. Sem cartão, sem limite de tempo.',
   'mktL.free.f1': 'Previsão de 3 dias, em qualquer costa do mundo',
@@ -509,7 +509,7 @@ const ptBR: Record<string, string> = {
   'mktL.free.cta': 'Começar grátis',
   'mktL.ind.tier': 'Individual',
   'mktL.ind.badge': 'Mais popular',
-  'mktL.ind.billed': 'cobrado {price40}/ano · economize 17%',
+  'mktL.ind.billed': 'Cobrado como {price40}/ano · Pague 10 meses. Surfe 12.',
   'mktL.ind.f1': 'Tudo do plano Grátis',
   'mktL.ind.f2': 'Previsão completa de 10 dias',
   'mktL.ind.f3': '4+ anos de dados históricos de ondulação',
@@ -529,7 +529,7 @@ const ptBR: Record<string, string> = {
   'mktL.prem.cta': 'Me notificar',
 
   // Preços
-  'mktL.pricingTitle': 'Preços simples e honestos',
+  'mktL.pricingTitle': 'Menos que um café por mês. Mais que qualquer outro app de previsão a qualquer preço.',
   'mktL.pricingSubtitle': 'Sem taxas ocultas. Sem renovações surpresa. Cancele a qualquer momento.',
   'mktL.toggleMonthly': 'Mensal · {price4}',
   'mktL.toggleAnnual': 'Anual · {price40}',
@@ -544,10 +544,10 @@ const ptBR: Record<string, string> = {
   'mktL.signIn': 'Entrar',
 
   // CTA final e rodapé
-  'mktL.finalCta.heading': 'O oceano não mente. Seu app de previsão também não deveria.',
-  'mktL.finalCta.body': 'Experimente o Groundswell de graça — sem cartão. Se não valer {price4} por mês após 7 dias, o plano gratuito continua gratuito. Sem drama, sem complicação para cancelar.',
-  'mktL.finalTrust': 'Sem anúncios · Sem limites de consulta · Sem cartão para começar · Cancele a qualquer momento · Estatísticas de precisão publicadas · 5 idiomas',
-  'mktL.footer': 'Dados oceânicos da NOAA, ECMWF e Copernicus Marine. Atualizado a cada hora.',
+  'mktL.finalCta.heading': 'Seu app de previsão não deveria te irritar. Este não vai.',
+  'mktL.finalCta.body': 'Estamos tão confiantes porque também surfamos com esses dados. Se depois de 7 dias você não achar que o Groundswell é a ferramenta de previsão mais honesta que já usou, devolvemos tudo. O plano gratuito continua gratuito. Sem drama. Sem complicação para cancelar.',
+  'mktL.finalTrust': 'Sem anúncios · Sem limites de consulta · Sem cartão para começar · Cancele a qualquer momento · Estatísticas de precisão publicadas · 5 idiomas · Honesto por design',
+  'mktL.footer': 'Dados oceânicos da NOAA, ECMWF e Copernicus Marine. Atualizado a cada hora. Construído com honestidade.',
 
   // AccuracyPage — Data Sources section
   'accuracy.sourcesTitle': 'Fontes de dados',

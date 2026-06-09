@@ -427,11 +427,11 @@ const en: Record<string, string> = {
   'locations.clearAlert': 'Clear',
 
   // MarketingLanding — Hero
-  'mktL.badge': 'Global coverage · No ads. Ever.',
-  'mktL.h1.pre': 'Know ',
-  'mktL.h1.gradient': 'before',
-  'mktL.h1.post': ' you go. Actually know.',
-  'mktL.subtitle': 'Groundswell gives you honest, global surf forecasts — with real historical data, zero ads, and the accuracy transparency page no competitor will dare publish. From {price4} a month.',
+  'mktL.badge': 'The only surf forecast that publishes its own accuracy record',
+  'mktL.h1.pre': "The ocean doesn't lie. ",
+  'mktL.h1.gradient': 'Your forecast app',
+  'mktL.h1.post': ' should be the same.',
+  'mktL.subtitle': 'Honest global surf forecasts. 4+ years of historical data. Zero ads on any tier, ever. From {price4} a month.',
   'mktL.ctaFree': 'Start free — no card needed',
   'mktL.ctaPricing': 'See how it works ↓',
   'mktL.heroTrust': '7-day free trial · Cancel anytime · No credit card to start',
@@ -449,31 +449,31 @@ const en: Record<string, string> = {
   'mktL.trust.5label': 'on any tier, ever',
 
   // How it works
-  'mktL.howTitle': 'How it works',
-  'mktL.howSubtitle': 'From search to session in seconds.',
-  'mktL.step1.title': 'Search any spot',
-  'mktL.step1.desc': 'Type any beach, point break, or reef anywhere on Earth. No account needed.',
-  'mktL.step2.title': 'See real conditions',
-  'mktL.step2.desc': 'Wave height, swell period and direction, wind, tides, and UV — updated every hour. No ads between you and the data.',
-  'mktL.step3.title': 'Plan your session',
-  'mktL.step3.desc': 'Full 10-day forecast with surf ratings. See exactly when the swell peaks — days in advance.',
+  'mktL.howTitle': "30 seconds to know if it's worth getting up.",
+  'mktL.howSubtitle': 'From search to session.',
+  'mktL.step1.title': 'Search any spot on earth.',
+  'mktL.step1.desc': 'Type any beach, point break, or reef — anywhere. No account needed. No signup wall. Just type and see.',
+  'mktL.step2.title': 'See honest conditions.',
+  'mktL.step2.desc': 'Wave height, swell period and direction, wind, tides, and UV — updated every hour. No ads between you and the data. No star ratings without explanation.',
+  'mktL.step3.title': 'Plan your session — or your whole trip.',
+  'mktL.step3.desc': 'Full 10-day forecast with surf ratings. 4+ years of historical data for any coastal coordinate. See exactly when the swell peaks. Know before you go to the airport.',
 
   // Why surfers switch (pain point section)
-  'mktL.pain.title': 'Why surfers switch',
-  'mktL.pain.1.heading': 'Forecast apps keep raising prices.',
-  'mktL.pain.1.body': 'The big apps charge $100+ a year. Ads between you and the forecast. Features locked behind higher tiers. And the price keeps climbing.',
-  'mktL.pain.1.answer': '$40/year. No check limits. No ads. No fine print.',
+  'mktL.pain.title': 'Every other forecast app is designed to frustrate you into paying more.',
+  'mktL.pain.1.heading': 'Surfline raised their prices. Again.',
+  'mktL.pain.1.body': "$120 a year. Check limits. A free tier designed to feel broken. Ads between you and the forecast. And when MSW's 3 million users needed a home, Surfline absorbed it and turned off the lights.",
+  'mktL.pain.1.answer': 'Groundswell: $40/year. No check limits. No ads. No games. Same ocean.',
   'mktL.pain.2.heading': 'Magicseaweed is gone. Nothing replaced it.',
-  'mktL.pain.2.body': 'Three million surfers in 200 countries lost their forecast tool overnight in 2023. No warning, no archive, no migration. Most still haven\'t found a home.',
-  'mktL.pain.2.answer': 'Global coverage. Honest pricing. This is what MSW should have become.',
+  'mktL.pain.2.body': "Three million surfers in 200 countries lost their forecast tool overnight in May 2023. No warning. No archive. No migration path. Most still haven't found a home.",
+  'mktL.pain.2.answer': 'This is what MSW should have become. Global coverage, honest pricing, beautiful UI. $4 a month.',
   'mktL.pain.3.heading': 'Every other app thinks in English.',
   'mktL.pain.3.body': "Surfline is built for California. Surf-Forecast.com is English only. For the majority of the world's 35 million surfers, there's never been a quality native-language option.",
-  'mktL.pain.3.answer': 'Fully live in English, Portuguese, Spanish, and French. More coming.',
+  'mktL.pain.3.answer': 'Fully live in English, Portuguese, Spanish, and French. Your break, your language.',
 
   // Feature detail sections
-  'mktL.feat1.label': 'For the surf traveller',
+  'mktL.feat1.label': 'For every trip',
   'mktL.feat1.heading': '4+ years of swell history. Any coast on earth.',
-  'mktL.feat1.body': 'Planning a trip to Nazaré in October? Thinking about the Maldives in November? Pull up years of actual wave, wind, and swell records for any coastal coordinate before you book. Not averages. Not models. What actually happened, week by week, going back to January 2022. No other app at this price point offers this — and nothing saves a $2,500 surf trip like knowing what October really looks like.',
+  'mktL.feat1.body': 'Planning a trip to Nazaré in October? The Maldives in November? Pull up years of actual wave, wind, and swell records for any coastal coordinate before you book. Not averages. Not models. What actually happened — week by week, going back to January 2022.',
   'mktL.feat2.label': 'For this morning',
   'mktL.feat2.heading': '608 live spots. Updated every 3 hours.',
   'mktL.feat2.body': 'See which breaks on earth are going off right now. Not a push notification blast about a regional swell — a real-time global conditions board, every three hours. Find the window. Get in the water.',
@@ -484,9 +484,9 @@ const en: Record<string, string> = {
   'mktL.feat4.label': 'Multiple sources. One clean answer.',
   'mktL.feat4.heading': 'Tide data you can actually rely on.',
   'mktL.feat4.body': 'Groundswell pulls tide data from NOAA, DFO, and the NEMO global ocean model, then surfaces the highest-quality reading for your location — with a live NOAA verification badge so you always know what you\'re looking at. Accurate tides for breaks that other apps get wrong.',
-  'mktL.feat5.label': 'This one\'s simple',
-  'mktL.feat5.heading': 'Check the forecast as many times as you need.',
-  'mktL.feat5.body': 'No check limits. No ads between you and the data. No premium tier designed to make the free one feel broken. The ocean doesn\'t have a paywall. Groundswell has one tier that works, priced honestly.',
+  'mktL.feat5.label': "This one's simple",
+  'mktL.feat5.heading': 'Check it as many times as you need.',
+  'mktL.feat5.body': "No check limits. No \"you've used 4 of 5 checks this week.\" No premium tier designed to make the free one feel broken. The ocean changes — and you should be able to check it every time it does.",
 
   // Forecast teaser
   'mktL.teaserTitle': '10-day surf forecast',
@@ -496,8 +496,8 @@ const en: Record<string, string> = {
   'mktL.teaserCta': 'Start free trial',
 
   // Feature comparison (3 tiers)
-  'mktL.featTitle': 'Everything you need',
-  'mktL.featSubtitle': "Start free. Upgrade when you're ready.",
+  'mktL.featTitle': 'Everything a serious surfer needs.',
+  'mktL.featSubtitle': 'Nothing designed to annoy you into upgrading.',
   'mktL.free.tier': 'Free',
   'mktL.free.note': 'Always free. No card, no time limit.',
   'mktL.free.f1': '3-day forecast, any coast on earth',
@@ -509,7 +509,7 @@ const en: Record<string, string> = {
   'mktL.free.cta': 'Get started free',
   'mktL.ind.tier': 'Individual',
   'mktL.ind.badge': 'Most popular',
-  'mktL.ind.billed': 'billed {price40}/year · save 17%',
+  'mktL.ind.billed': 'Billed as {price40}/year · Pay for 10 months. Surf 12.',
   'mktL.ind.f1': 'Everything in Free',
   'mktL.ind.f2': 'Full 10-day forecast',
   'mktL.ind.f3': '4+ years of historical swell data',
@@ -529,7 +529,7 @@ const en: Record<string, string> = {
   'mktL.prem.cta': 'Notify me',
 
   // Pricing section
-  'mktL.pricingTitle': 'Simple, honest pricing',
+  'mktL.pricingTitle': 'Less than a coffee a month. More than every other forecast app at any price.',
   'mktL.pricingSubtitle': 'No hidden fees. No surprise renewals. Cancel anytime.',
   'mktL.toggleMonthly': 'Monthly · {price4}',
   'mktL.toggleAnnual': 'Annual · {price40}',
@@ -544,10 +544,10 @@ const en: Record<string, string> = {
   'mktL.signIn': 'Sign in',
 
   // Final CTA & footer
-  'mktL.finalCta.heading': "The ocean doesn't lie. Your forecast app shouldn't either.",
-  'mktL.finalCta.body': "Try Groundswell free — no card required. If it's not worth {price4} a month after 7 days, the free tier stays free. No hard feelings, no cancellation hoops.",
-  'mktL.finalTrust': 'No ads · No check limits · No card to start · Cancel anytime · Published accuracy stats · 5 languages',
-  'mktL.footer': 'Open ocean data from NOAA, ECMWF, and Copernicus Marine. Updated hourly.',
+  'mktL.finalCta.heading': "Your forecast app shouldn't make you angry. This one won't.",
+  'mktL.finalCta.body': "We're that confident because we've surfed on this data ourselves. If after 7 days you don't think Groundswell is the most honest forecast tool you've ever used, we'll refund every cent. The free tier stays free regardless. No hard feelings. No cancellation hoops.",
+  'mktL.finalTrust': 'No ads · No check limits · No card to start · Cancel anytime · Published accuracy stats · 5 languages · Honest by design',
+  'mktL.footer': 'Open ocean data from NOAA, ECMWF, and Copernicus Marine. Updated hourly. Built honest, on purpose.',
 
   // SessionPlanner (Premium)
   'sessions.title': 'Session Planner',
