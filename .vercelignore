@@ -1,6 +1,5 @@
 # Documentation — not needed in the build environment
 docs/
-images/
 
 # Blog post markdown drafts — these are editorial files, not Next.js routes
 app/blogPosts/
