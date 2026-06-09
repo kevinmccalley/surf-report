@@ -1,5 +1,3 @@
-import fs from 'fs'
-import path from 'path'
 import { auth, clerkClient } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { SPOTS } from '@/app/top100/spots-data'
@@ -48,14 +46,22 @@ export default async function GalleryPage() {
   const allowed = (process.env.BYPASS_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean)
   if (!allowed.includes(email)) redirect('/')
 
-  // ── Read images from public dir ─────────────────────────────────────────
-  const dir = path.join(process.cwd(), 'public', 'images', 'topSpots')
-  let imageFiles: string[] = []
-  try {
-    imageFiles = fs.readdirSync(dir)
-      .filter(f => /\.(jpe?g|png|webp|avif)$/i.test(f))
-      .sort()
-  } catch {}
+  // ── Image manifest ──────────────────────────────────────────────────────
+  // Vercel deploys public/ to the CDN, not the serverless function bundle,
+  // so fs.readdirSync doesn't work at runtime. Add new filenames here when
+  // committing a new image to public/images/topSpots/.
+  const imageFiles = [
+    'jbay.png',
+    'lower-trestles.png',
+    'padangPadang.png',
+    'peru-chicama.png',
+    'pipeline.png',
+    'raglan.png',
+    'skeleton-bay.png',
+    'sunset-hi.png',
+    'supertubos.png',
+    'teahopo.png',
+  ].sort()
 
   // ── Build tile list: matched image spots first, then remaining in rank order ──
   const spotsBySlug = new Map(SPOTS.map(s => [slugify(s.name), s]))
