@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "surf.groundswell.app",
+    "sha256_cert_fingerprints": [
+      "DB:21:0C:6B:85:F5:79:3B:B3:BD:DC:6C:DA:52:72:46:C9:BC:41:59:69:31:58:12:E5:B2:C9:DB:4B:04:0B:B0"
+    ]
+  }
+}]
