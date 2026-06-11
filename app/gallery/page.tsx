@@ -21,6 +21,7 @@ const LEGACY_FILENAME_MAP: Record<string, string> = {
   'sunset-hi':      'Sunset Beach',
   'teahopo':        "Teahupo'o",
   'pipeline':       'Banzai Pipeline',
+  'waimea':         'Waimea Bay',
   'lower-trestles': 'Trestles (Lowers)',
 }
 
@@ -61,6 +62,7 @@ export default async function GalleryPage() {
     'sunset-hi.png',
     'supertubos.png',
     'teahopo.png',
+    'waimea.png',
   ].sort()
 
   // ── Build tile list: matched image spots first, then remaining in rank order ──
