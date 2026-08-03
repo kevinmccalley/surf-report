@@ -123,7 +123,7 @@ export async function GET(request: NextRequest) {
       .slice(0, CANDIDATE_COUNT)
 
     if (candidates.length === 0) {
-      return NextResponse.json({ error: 'No NDBC buoys within range' }, { status: 404 })
+      return NextResponse.json({ available: false, reason: 'no_buoys_in_range' })
     }
 
     // Fetch realtime data for all candidates in parallel (5s timeout each)
@@ -149,7 +149,7 @@ export async function GET(request: NextRequest) {
     // Return nearest buoy that has wave data
     const reading = results.find(r => r !== null) ?? null
     if (!reading) {
-      return NextResponse.json({ error: 'No wave data from nearby buoys' }, { status: 404 })
+      return NextResponse.json({ available: false, reason: 'no_wave_data' })
     }
 
     // Add direction label for convenience

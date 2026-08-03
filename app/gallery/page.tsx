@@ -13,6 +13,7 @@ export const metadata = {
 
 // Legacy map for irregular filenames (predates slug convention)
 const LEGACY_FILENAME_MAP: Record<string, string> = {
+  'honolua':        'Honolua Bay',
   'jbay':           'Jeffreys Bay',
   'padangPadang':   'Padang Padang',
   'peru-chicama':   'Chicama',
@@ -52,6 +53,7 @@ export default async function GalleryPage() {
   // so fs.readdirSync doesn't work at runtime. Add new filenames here when
   // committing a new image to public/images/topSpots/.
   const imageFiles = [
+    'honolua.png',
     'jbay.png',
     'lower-trestles.png',
     'padangPadang.png',

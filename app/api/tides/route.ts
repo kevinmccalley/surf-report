@@ -155,7 +155,10 @@ async function tryNOAA(lat: number, lon: number, tz?: string): Promise<TideResul
       if (d < best.distanceKm) best = { station: s, distanceKm: d }
     }
 
-    if (best.distanceKm > 500) {
+    // 150 km ceiling: beyond this, island/coastal station tidal patterns diverge
+    // enough to cause >90 min timing errors (e.g. St. Lucia serving Barbados at 164 km).
+    // WorldTides harmonic fallback gives better results at these distances.
+    if (best.distanceKm > 150) {
       return {
         available: false,
         reason: 'out_of_range',
