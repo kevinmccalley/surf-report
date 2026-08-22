@@ -61,7 +61,7 @@ function regionFromCountry(country: string): Region {
   if (/\b(azores)\b/.test(c)) return 'Africa & Atlantic'
   if (/\b(morocco|taghazout|safi|south africa|jeffrey|durban|hout bay|george|western cape|namibia|walvis)\b/.test(c)) return 'Africa & Atlantic'
   if (/\b(maldives|malé|male|north mal|sri lanka|mauritius)\b/.test(c)) return 'Indian Ocean'
-  if (/\b(bali|uluwatu|bukit|gianyar|canggu|java|lombok|mentawai|nias|indonesia|japan|chiba)\b/.test(c)) return 'Southeast Asia'
+  if (/\b(bali|uluwatu|bukit|gianyar|canggu|java|lombok|mentawai|nias|indonesia|japan|chiba|philippines|siargao)\b/.test(c)) return 'Southeast Asia'
   if (/\b(australia|western australia|victoria|queensland|new south wales|tasmania|margaret river|yallingup|kalbarri|new zealand|waikato|auckland|fiji|tavarua|pacific harbour|namotu)\b/.test(c)) return 'Oceania & Pacific'
   if (/\bnsw\b/.test(c)) return 'Oceania & Pacific'
   return 'North America'

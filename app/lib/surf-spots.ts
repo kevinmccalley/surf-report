@@ -46,11 +46,15 @@ const SURF_SPOTS: SurfSpot[] = [
   { name: 'Makaha',                                                           country: 'Waianae, Oahu',           lat:  21.4663, lon: -158.2104 },
   { name: 'Sandy Beach',         aliases: ['Sandy\'s'],                      country: 'Honolulu, Oahu',          lat:  21.2857, lon: -157.6727 },
   { name: 'Ala Moana Bowls',     aliases: ['Bowls'],                         country: 'Honolulu, Oahu',          lat:  21.2804, lon: -157.8445 },
+  { name: 'Waikiki',             aliases: ['Waikiki Beach', 'Canoes', 'Queens'], country: 'Honolulu, Oahu',      lat:  21.2766, lon: -157.8248 },
   { name: 'Jaws',                aliases: ['Peahi', 'Pe\'ahi'],              country: 'Haiku, Maui',             lat:  20.9464, lon: -156.3014 },
   { name: 'Honolua Bay',                                                      country: 'Kapalua, Maui',           lat:  21.0145, lon: -156.6395 },
   { name: 'Hookipa',             aliases: ['Ho\'okipa'],                     country: 'Paia, Maui',              lat:  20.9352, lon: -156.3556 },
   { name: 'Hanalei Bay',                                                      country: 'Hanalei, Kauai',          lat:  22.2091, lon: -159.5068 },
   { name: 'Sunset Beach',        aliases: ['Sunset California', 'Sunset CA'], country: 'Huntington Beach, CA',  lat:  33.7271, lon: -118.0536 },
+
+  // ── Canada ───────────────────────────────────────────────────────────────────
+  { name: 'Tofino',              aliases: ['Chesterman Beach', 'Long Beach Tofino'], country: 'Vancouver Island, British Columbia', lat: 49.1225, lon: -125.9075 },
 
   // ── East Coast USA ───────────────────────────────────────────────────────────
   { name: 'Sebastian Inlet',                                                  country: 'Melbourne Beach, FL',    lat:  27.8603, lon:  -80.4473 },
@@ -75,11 +79,16 @@ const SURF_SPOTS: SurfSpot[] = [
 
   // ── Mexico ───────────────────────────────────────────────────────────────────
   { name: 'Puerto Escondido',    aliases: ['Zicatela', 'Mexican Pipeline'],  country: 'Puerto Escondido, Oaxaca', lat: 15.8581, lon:  -97.0686 },
+  { name: 'Salina Cruz',         aliases: ['La Punta Salina Cruz'],          country: 'Salina Cruz, Oaxaca',    lat:  16.1730, lon:  -95.2050 },
   { name: 'Punta de Mita',       aliases: ['El Anclote'],                    country: 'Punta de Mita, Nayarit', lat:  20.7795, lon: -105.5269 },
   { name: 'Pascuales',                                                         country: 'Tecoman, Colima',        lat:  18.5097, lon: -103.4628 },
   { name: 'La Ticla',                                                          country: 'La Ticla, Michoacán',    lat:  18.4544, lon: -103.5541 },
   { name: 'Scorpion Bay',        aliases: ['San Juanico'],                   country: 'San Juanico, Baja California Sur', lat: 26.2565, lon: -112.4850 },
+  { name: 'Los Cerritos',        aliases: ['Cerritos'],                      country: 'Todos Santos, Baja California Sur', lat: 23.4858, lon: -110.1319 },
+  { name: 'Punta Abreojos',      aliases: ['Abreojos'],                      country: 'Punta Abreojos, Baja California Sur', lat: 26.7169, lon: -113.5672 },
   { name: 'Todos Santos',        aliases: ['Killers', 'Isla Todos Santos'],  country: 'Ensenada, Baja California', lat: 31.7997, lon: -116.7889 },
+  { name: 'Punta Baja',                                                        country: 'El Rosario, Baja California', lat: 29.9581, lon: -115.7911 },
+  { name: 'San Miguel',          aliases: ['San Miguel Point'],              country: 'Ensenada, Baja California', lat: 31.9068, lon: -116.7273 },
   { name: 'La Saladita',                                                       country: 'Troncones, Guerrero',    lat:  17.9389, lon: -101.6753 },
   { name: 'K38',                 aliases: ['La Fonda'],                      country: 'Rosarito, Baja California', lat: 32.1800, lon: -117.0600 },
 
@@ -88,7 +97,9 @@ const SURF_SPOTS: SurfSpot[] = [
   { name: 'Ollie\'s Point',                                                   country: 'Guanacaste, Costa Rica', lat:  10.8379, lon:  -85.7051 },
   { name: 'Salsa Brava',                                                       country: 'Puerto Viejo, Costa Rica', lat: 9.6560, lon:  -82.7237 },
   { name: 'Pavones',                                                           country: 'Puntarenas, Costa Rica', lat:   8.3876, lon:  -83.1394 },
+  { name: 'Playa Hermosa',       aliases: ['Hermosa Costa Rica'],            country: 'Jacó, Costa Rica',       lat:   9.5811, lon:  -84.6206 },
   { name: 'Playa Dominical',     aliases: ['Dominical'],                     country: 'Dominical, Costa Rica',  lat:   9.2507, lon:  -83.8617 },
+  { name: 'Playa Guiones',       aliases: ['Guiones', 'Nosara'],             country: 'Nosara, Costa Rica',     lat:   9.9658, lon:  -85.6641 },
   { name: 'Playa Grande',                                                      country: 'Guanacaste, Costa Rica', lat:  10.3282, lon:  -85.8514 },
   { name: 'Punta Roca',                                                        country: 'La Libertad, El Salvador', lat: 13.4797, lon: -89.3265 },
   { name: 'Las Flores',          aliases: ['El Salvador Las Flores'],        country: 'La Unión, El Salvador',  lat:  13.3200, lon:  -87.9400 },
@@ -97,6 +108,7 @@ const SURF_SPOTS: SurfSpot[] = [
   { name: 'Chicama',             aliases: ['Puerto Malabrigo'],              country: 'La Libertad, Peru',      lat:  -7.7000, lon:  -79.4500 },
   { name: 'Lobitos',                                                           country: 'Talara, Peru',           lat:  -4.4528, lon:  -81.2777 },
   { name: 'Mancora',                                                           country: 'Piura, Peru',            lat:  -4.1067, lon:  -81.0516 },
+  { name: 'La Herradura',        aliases: ['Herradura Peru'],                country: 'Lima, Peru',             lat: -12.1654, lon:  -77.0286 },
   { name: 'Punta de Lobos',                                                    country: 'Pichilemu, Chile',       lat: -34.4000, lon:  -71.9167 },
   { name: 'Pichilemu',           aliases: ['Punta de Lobos'],                country: 'O\'Higgins, Chile',      lat: -34.3936, lon:  -72.0016 },
   { name: 'Arica',               aliases: ['El Gringo'],                     country: 'Arica, Chile',           lat: -18.4783, lon:  -70.3126 },
@@ -118,6 +130,7 @@ const SURF_SPOTS: SurfSpot[] = [
   { name: 'La Graviere',         aliases: ['Hossegor', 'La Grav'],           country: 'Hossegor, France',       lat:  43.6654, lon:   -1.4438 },
   { name: 'Les Culs Nuls',       aliases: ['Hossegor south'],                country: 'Hossegor, France',       lat:  43.6521, lon:   -1.4449 },
   { name: 'Biarritz',            aliases: ['Grande Plage'],                  country: 'Biarritz, France',       lat:  43.4832, lon:   -1.5586 },
+  { name: 'Cote des Basques',    aliases: ['Côte des Basques'],              country: 'Biarritz, France',       lat:  43.4785, lon:   -1.5680 },
   { name: 'Lacanau',                                                           country: 'Lacanau-Océan, France',  lat:  45.0004, lon:   -1.1918 },
   { name: 'Anglet',              aliases: ['Chambre d\'Amour'],              country: 'Anglet, France',         lat:  43.5183, lon:   -1.5386 },
 
@@ -132,6 +145,7 @@ const SURF_SPOTS: SurfSpot[] = [
   // ── UK & Ireland ─────────────────────────────────────────────────────────────
   { name: 'Fistral',             aliases: ['Fistral Beach'],                 country: 'Newquay, Cornwall, UK',  lat:  50.4150, lon:   -5.1000 },
   { name: 'Croyde',              aliases: ['Croyde Bay'],                    country: 'North Devon, UK',        lat:  51.1278, lon:   -4.2286 },
+  { name: 'Saunton Sands',       aliases: ['Saunton'],                       country: 'North Devon, UK',        lat:  51.1150, lon:   -4.2230 },
   { name: 'Porthleven',                                                        country: 'Cornwall, UK',           lat:  50.0837, lon:   -5.3218 },
   { name: 'Lynmouth',                                                          country: 'Devon, UK',              lat:  51.2307, lon:   -3.8293 },
   { name: 'Thurso East',         aliases: ['Thurso', 'Shit Pipe'],           country: 'Thurso, Scotland',       lat:  58.5928, lon:   -3.5062 },
@@ -154,6 +168,7 @@ const SURF_SPOTS: SurfSpot[] = [
   { name: 'New Pier',                                                          country: 'Durban, South Africa',   lat: -29.8600, lon:  31.0490 },
   { name: 'Elands Bay',                                                        country: 'Western Cape, South Africa', lat: -32.3000, lon:  18.3167 },
   { name: 'Victoria Bay',        aliases: ['Vic Bay'],                       country: 'George, South Africa',   lat: -34.0056, lon:  22.5931 },
+  { name: 'Muizenberg',          aliases: ['Muizenberg Beach', 'Surfers Corner'], country: 'Cape Town, South Africa', lat: -34.1083, lon: 18.4700 },
 
   // ── Namibia ──────────────────────────────────────────────────────────────────
   { name: 'Skeleton Bay',        aliases: ['Donkey Bay', 'Lagoa'],           country: 'Walvis Bay, Namibia',    lat: -22.9376, lon:  14.4175 },
@@ -178,6 +193,12 @@ const SURF_SPOTS: SurfSpot[] = [
   { name: 'Pasta Point',         aliases: ['Dhigu'],                         country: 'North Malé Atoll, Maldives', lat: 4.2833, lon: 73.5000 },
   { name: 'Sultans',             aliases: ['Honky\'s'],                      country: 'North Malé Atoll, Maldives', lat: 4.2597, lon: 73.4765 },
   { name: 'Chickens',                                                          country: 'North Malé Atoll, Maldives', lat: 4.2500, lon: 73.4700 },
+
+  // ── Sri Lanka ────────────────────────────────────────────────────────────────
+  { name: 'Arugam Bay',          aliases: ['A-Bay', 'Pottuvil Point'],       country: 'Pottuvil, Sri Lanka',    lat:  6.8402, lon:  81.8360 },
+
+  // ── Philippines ──────────────────────────────────────────────────────────────
+  { name: 'Cloud 9',             aliases: ['Cloud Nine'],                    country: 'Siargao, Philippines',   lat:  9.8578, lon: 126.0231 },
 
   // ── Reunion Island ───────────────────────────────────────────────────────────
   { name: 'St. Leu',             aliases: ['Saint-Leu'],                     country: 'Réunion Island, France', lat: -21.1664, lon:  55.2869 },
@@ -205,7 +226,9 @@ const SURF_SPOTS: SurfSpot[] = [
   { name: 'Wategos',             aliases: ['Watego\'s Beach'],               country: 'Byron Bay, NSW',         lat: -28.6406, lon: 153.6364 },
   { name: 'Lennox Head',         aliases: ['Lennox'],                        country: 'Lennox Head, NSW',       lat: -28.7917, lon: 153.5875 },
   { name: 'North Narrabeen',     aliases: ['Narrabeen', 'Narra'],            country: 'Sydney, NSW',            lat: -33.7094, lon: 151.2961 },
+  { name: 'Manly Beach',         aliases: ['Manly'],                         country: 'Sydney, NSW',            lat: -33.7969, lon: 151.2878 },
   { name: 'Bondi Beach',         aliases: ['Bondi'],                         country: 'Sydney, NSW',            lat: -33.8908, lon: 151.2743 },
+  { name: 'Maroubra',            aliases: ['Maroubra Beach'],                country: 'Sydney, NSW',            lat: -33.9500, lon: 151.2600 },
   { name: 'Cronulla',                                                          country: 'Sydney, NSW',            lat: -34.0566, lon: 151.1542 },
   { name: 'Shipsterns Bluff',    aliases: ['Shippies', 'Shipstern'],         country: 'Tasman Peninsula, Tasmania', lat: -43.0943, lon: 148.0058 },
   { name: 'Surfers Point',       aliases: ['Margaret River'],                country: 'Margaret River, WA',     lat: -33.9572, lon: 114.9833 },
