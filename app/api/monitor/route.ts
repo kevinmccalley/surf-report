@@ -567,6 +567,180 @@ async function checkWaveAccuracy(): Promise<Finding[]> {
   return findings
 }
 
+// ── SEO & structured-data drift ─────────────────────────────────────────────────
+
+async function fetchText(url: string, timeoutMs = 12000): Promise<string | null> {
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) })
+    if (!res.ok) return null
+    return await res.text()
+  } catch {
+    return null
+  }
+}
+
+function extractJsonLdTypes(html: string): Set<string> {
+  const types = new Set<string>()
+  const re = /<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g
+  let m
+  while ((m = re.exec(html))) {
+    try {
+      const data = JSON.parse(m[1])
+      const nodes = Array.isArray(data['@graph']) ? data['@graph'] : [data]
+      for (const n of nodes) {
+        if (n && typeof n === 'object' && typeof n['@type'] === 'string') types.add(n['@type'])
+      }
+    } catch { /* skip malformed block */ }
+  }
+  return types
+}
+
+async function checkSEO(): Promise<Finding[]> {
+  const findings: Finding[] = []
+  const base = 'https://groundswell.surf'
+
+  const sitemapXml = await fetchText(`${base}/sitemap.xml`)
+  if (!sitemapXml) {
+    findings.push({
+      source: 'SEO · sitemap.xml',
+      severity: 'critical',
+      title: 'sitemap.xml is unreachable or returning an error',
+      detail: `Fetching ${base}/sitemap.xml failed.`,
+      proposal: 'Check app/sitemap.ts for errors (e.g. a broken Sanity call) and verify the route builds.',
+      effort: '< 1 hour',
+    })
+  } else {
+    const urlCount = (sitemapXml.match(/<loc>/g) || []).length
+    const bucket = Math.round(urlCount / 10) * 10
+    if (urlCount === 0) {
+      findings.push({
+        source: 'SEO · sitemap.xml',
+        severity: 'critical',
+        title: 'sitemap.xml contains zero URLs',
+        detail: 'The sitemap returned successfully but has no <loc> entries.',
+        proposal: 'Check app/sitemap.ts — likely a failed data fetch (Sanity or surf-spots) returning an empty array.',
+        effort: '< 1 hour',
+      })
+    } else if (Math.abs(bucket - baseline.seo.sitemapUrlCountBucket) > 10) {
+      findings.push({
+        source: 'SEO · sitemap.xml',
+        severity: 'notable',
+        title: `Sitemap URL count changed (${baseline.seo.sitemapUrlCountBucket} → ${bucket})`,
+        detail: `Sitemap had ~${baseline.seo.sitemapUrlCountBucket} URLs, now ~${urlCount}.`,
+        proposal: 'Verify this matches an intentional content change (new blog posts, new spots) and not a broken data source.',
+        effort: '< 30 min',
+      })
+    }
+  }
+
+  const robotsTxt = await fetchText(`${base}/robots.txt`)
+  if (!robotsTxt) {
+    findings.push({
+      source: 'SEO · robots.txt',
+      severity: 'critical',
+      title: 'robots.txt is unreachable',
+      detail: `Fetching ${base}/robots.txt failed.`,
+      proposal: 'Check app/robots.ts for errors.',
+      effort: '< 1 hour',
+    })
+  } else {
+    if (!/sitemap:/i.test(robotsTxt)) {
+      findings.push({
+        source: 'SEO · robots.txt',
+        severity: 'notable',
+        title: 'robots.txt no longer references the sitemap',
+        detail: 'No "Sitemap:" line found in robots.txt.',
+        proposal: 'Check app/robots.ts — the sitemap field may have been removed.',
+        effort: '< 15 min',
+      })
+    }
+    for (const path of baseline.seo.robotsDisallowPaths as string[]) {
+      if (!robotsTxt.includes(path)) {
+        findings.push({
+          source: 'SEO · robots.txt',
+          severity: 'notable',
+          title: `robots.txt no longer disallows "${path}"`,
+          detail: `Expected disallow rule for ${path} is missing.`,
+          proposal: 'Check app/robots.ts — a disallow rule may have been accidentally removed.',
+          effort: '< 15 min',
+        })
+      }
+    }
+  }
+
+  const homeHtml = await fetchText(base)
+  if (!homeHtml) {
+    findings.push({
+      source: 'SEO · Homepage',
+      severity: 'critical',
+      title: 'Homepage is unreachable',
+      detail: `Fetching ${base} failed.`,
+      proposal: 'Check production deployment status on Vercel.',
+      effort: '< 1 hour',
+    })
+  } else {
+    if (!/<title>[^<]+<\/title>/i.test(homeHtml)) {
+      findings.push({ source: 'SEO · Homepage', severity: 'critical', title: 'Missing <title> tag', detail: 'No non-empty <title> element found on the homepage.', proposal: 'Check app/layout.tsx metadata export.', effort: '< 30 min' })
+    }
+    if (!/<meta[^>]*name="description"[^>]*>/i.test(homeHtml)) {
+      findings.push({ source: 'SEO · Homepage', severity: 'critical', title: 'Missing meta description', detail: 'No <meta name="description"> tag found.', proposal: 'Check app/layout.tsx metadata export.', effort: '< 30 min' })
+    }
+    if (!/<link[^>]*rel="canonical"[^>]*>/i.test(homeHtml)) {
+      findings.push({ source: 'SEO · Homepage', severity: 'notable', title: 'Missing canonical link', detail: 'No <link rel="canonical"> tag found.', proposal: 'Check app/layout.tsx metadata.alternates.canonical.', effort: '< 15 min' })
+    }
+    if (!/property="og:title"/i.test(homeHtml)) {
+      findings.push({ source: 'SEO · Homepage', severity: 'notable', title: 'Missing og:title', detail: 'No Open Graph title tag found.', proposal: 'Check app/layout.tsx metadata.openGraph.', effort: '< 15 min' })
+    }
+    if (!/property="og:image"/i.test(homeHtml)) {
+      findings.push({ source: 'SEO · Homepage', severity: 'notable', title: 'Missing og:image', detail: 'No Open Graph image tag found — social shares will have no preview image.', proposal: 'Check app/layout.tsx metadata.openGraph.images and /api/og route.', effort: '< 30 min' })
+    }
+    if (!/name="twitter:card"/i.test(homeHtml)) {
+      findings.push({ source: 'SEO · Homepage', severity: 'notable', title: 'Missing Twitter Card tag', detail: 'No twitter:card meta tag found.', proposal: 'Check app/layout.tsx metadata.twitter.', effort: '< 15 min' })
+    }
+
+    const types = extractJsonLdTypes(homeHtml)
+    for (const expected of baseline.seo.homepageSchemaTypes as string[]) {
+      if (!types.has(expected)) {
+        findings.push({
+          source: 'SEO · Homepage Schema',
+          severity: 'critical',
+          title: `"${expected}" JSON-LD schema is missing from the homepage`,
+          detail: `Previously present schema type "${expected}" was not found in the homepage's @graph.`,
+          proposal: 'Check app/layout.tsx — the JSON-LD @graph may have been edited or a build error may be suppressing it.',
+          effort: '1–2 hours',
+        })
+      }
+    }
+  }
+
+  const faqHtml = await fetchText(`${base}/faq`)
+  if (faqHtml) {
+    if (!extractJsonLdTypes(faqHtml).has('FAQPage')) {
+      findings.push({ source: 'SEO · FAQ Page', severity: 'critical', title: 'FAQPage schema missing from /faq', detail: 'The FAQ page no longer emits FAQPage JSON-LD — a significant GEO regression.', proposal: 'Check app/faq/page.tsx.', effort: '1 hour' })
+    }
+  } else {
+    findings.push({ source: 'SEO · FAQ Page', severity: 'critical', title: '/faq is unreachable', detail: `Fetching ${base}/faq failed.`, proposal: 'Check production deployment and app/faq/page.tsx for errors.', effort: '< 1 hour' })
+  }
+
+  const blogHtml = await fetchText(`${base}/blog`)
+  if (blogHtml) {
+    if (!extractJsonLdTypes(blogHtml).has('Blog')) {
+      findings.push({ source: 'SEO · Blog Index', severity: 'notable', title: 'Blog schema missing from /blog', detail: 'The blog index no longer emits Blog JSON-LD.', proposal: 'Check app/blog/page.tsx.', effort: '< 1 hour' })
+    }
+    const slugMatch = blogHtml.match(/href="\/blog\/([a-z0-9-]+)"/i)
+    if (slugMatch) {
+      const postHtml = await fetchText(`${base}/blog/${slugMatch[1]}`)
+      if (postHtml && !extractJsonLdTypes(postHtml).has('BlogPosting')) {
+        findings.push({ source: 'SEO · Blog Post', severity: 'critical', title: `BlogPosting schema missing from /blog/${slugMatch[1]}`, detail: 'A spot-checked blog post no longer emits BlogPosting JSON-LD.', proposal: 'Check app/blog/[slug]/page.tsx.', effort: '1 hour' })
+      }
+    }
+  } else {
+    findings.push({ source: 'SEO · Blog Index', severity: 'notable', title: '/blog is unreachable', detail: `Fetching ${base}/blog failed.`, proposal: 'Check production deployment.', effort: '< 1 hour' })
+  }
+
+  return findings
+}
+
 // ── Email ─────────────────────────────────────────────────────────────────────
 
 function severityEmoji(s: Finding['severity']): string {
@@ -655,18 +829,20 @@ export async function GET(request: NextRequest) {
 
   console.log('[monitor] Starting weekly check...')
 
-  const [openMeteoFindings, noaaFindings, dfoFindings, packageFindings, tideAccuracyFindings, waveAccuracyFindings] = await Promise.all([
+  const [openMeteoFindings, noaaFindings, dfoFindings, packageFindings, tideAccuracyFindings, waveAccuracyFindings, seoFindings] = await Promise.all([
     checkOpenMeteo(),
     checkNOAA(),
     checkDFO(),
     checkPackages(),
     checkTideAccuracy(),
     checkWaveAccuracy(),
+    checkSEO(),
   ])
 
   const allFindings = [
     ...openMeteoFindings,
     ...noaaFindings,
+    ...seoFindings,
     ...dfoFindings,
     ...packageFindings,
     ...tideAccuracyFindings,
