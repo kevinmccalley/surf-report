@@ -110,6 +110,7 @@ export default async function ClimatologyPage({ params }: Props) {
         },
         measurementTechnique: 'ERA5 reanalysis offshore significant wave height (Hs) via Open-Meteo',
         variableMeasured: 'Significant wave height in metres',
+        license: 'https://creativecommons.org/licenses/by/4.0/',
         creator: {
           '@type': 'Organization',
           '@id': 'https://groundswell.surf/#organization',
