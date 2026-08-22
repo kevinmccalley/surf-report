@@ -1,0 +1,85 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Groundswell//Blog Publishing Schedule//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:blog-best-time-to-surf-morocco@groundswell.surf
+DTSTAMP:20260822T000000Z
+DTSTART;VALUE=DATE:20260822
+DTEND;VALUE=DATE:20260823
+SUMMARY:Blog: Best Time of Year to Surf Morocco
+DESCRIPTION:Destination Guide — groundswell.surf/blog/best-time-to-surf-morocco
+END:VEVENT
+BEGIN:VEVENT
+UID:blog-best-time-to-surf-france@groundswell.surf
+DTSTAMP:20260822T000000Z
+DTSTART;VALUE=DATE:20260826
+DTEND;VALUE=DATE:20260827
+SUMMARY:Blog: Best Time of Year to Surf France
+DESCRIPTION:Destination Guide — groundswell.surf/blog/best-time-to-surf-france
+END:VEVENT
+BEGIN:VEVENT
+UID:blog-baja-offroad-surf-adventure@groundswell.surf
+DTSTAMP:20260822T000000Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Blog: Baja Offroad Surf Adventure: The Complete Guide
+DESCRIPTION:Destination Guide — groundswell.surf/blog/baja-offroad-surf-adventure
+END:VEVENT
+BEGIN:VEVENT
+UID:blog-surf-trip-indonesia@groundswell.surf
+DTSTAMP:20260822T000000Z
+DTSTART;VALUE=DATE:20260903
+DTEND;VALUE=DATE:20260904
+SUMMARY:Blog: The Indonesia Surf Trip Guide
+DESCRIPTION:Destination Guide — groundswell.surf/blog/surf-trip-indonesia
+END:VEVENT
+BEGIN:VEVENT
+UID:blog-eleven-best-rights-in-the-world@groundswell.surf
+DTSTAMP:20260822T000000Z
+DTSTART;VALUE=DATE:20260907
+DTEND;VALUE=DATE:20260908
+SUMMARY:Blog: The 11 Best Right-Hand Waves in the World
+DESCRIPTION:World's Best — groundswell.surf/blog/eleven-best-rights-in-the-world
+END:VEVENT
+BEGIN:VEVENT
+UID:blog-eleven-best-lefts-in-the-world@groundswell.surf
+DTSTAMP:20260822T000000Z
+DTSTART;VALUE=DATE:20260911
+DTEND;VALUE=DATE:20260912
+SUMMARY:Blog: The 11 Best Left-Hand Waves in the World
+DESCRIPTION:World's Best — groundswell.surf/blog/eleven-best-lefts-in-the-world
+END:VEVENT
+BEGIN:VEVENT
+UID:blog-eleven-best-beach-breaks-in-the-world@groundswell.surf
+DTSTAMP:20260822T000000Z
+DTSTART;VALUE=DATE:20260915
+DTEND;VALUE=DATE:20260916
+SUMMARY:Blog: The 11 Best Beach Breaks in the World
+DESCRIPTION:World's Best — groundswell.surf/blog/eleven-best-beach-breaks-in-the-world
+END:VEVENT
+BEGIN:VEVENT
+UID:blog-eleven-best-waves-for-longboarders@groundswell.surf
+DTSTAMP:20260822T000000Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:Blog: The 11 Best Waves for Longboarders
+DESCRIPTION:World's Best — groundswell.surf/blog/eleven-best-waves-for-longboarders
+END:VEVENT
+BEGIN:VEVENT
+UID:blog-eleven-best-waves-for-shortboarders@groundswell.surf
+DTSTAMP:20260822T000000Z
+DTSTART;VALUE=DATE:20260923
+DTEND;VALUE=DATE:20260924
+SUMMARY:Blog: The 11 Best Waves for Shortboarders
+DESCRIPTION:World's Best — groundswell.surf/blog/eleven-best-waves-for-shortboarders
+END:VEVENT
+BEGIN:VEVENT
+UID:blog-eleven-best-breaks-for-beginner-surfers@groundswell.surf
+DTSTAMP:20260822T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Blog: The 11 Best Breaks for Beginner Surfers
+DESCRIPTION:World's Best — groundswell.surf/blog/eleven-best-breaks-for-beginner-surfers
+END:VEVENT
+END:VCALENDAR
