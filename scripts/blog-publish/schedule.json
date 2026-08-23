@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "best-time-to-surf-morocco",
+    "title": "Best Time of Year to Surf Morocco",
+    "category": "Destination Guide",
+    "date": "2026-08-23",
+    "altText": "A surfer riding a wave at a right-hand point break near Taghazout, Morocco",
+    "featured": true,
+    "status": "published"
+  },
+  {
+    "slug": "best-time-to-surf-france",
+    "title": "Best Time of Year to Surf France",
+    "category": "Destination Guide",
+    "date": "2026-08-27",
+    "altText": "A surfer paddling out past a large barreling beach-break wave on the Landes coast, France",
+    "featured": false,
+    "status": "scheduled"
+  },
+  {
+    "slug": "baja-offroad-surf-adventure",
+    "title": "Baja Offroad Surf Adventure: The Complete Guide",
+    "category": "Destination Guide",
+    "date": "2026-08-31",
+    "altText": "A surfer riding a wave at a remote point break in Baja California, Mexico",
+    "featured": false,
+    "status": "scheduled"
+  },
+  {
+    "slug": "surf-trip-indonesia",
+    "title": "The Indonesia Surf Trip Guide: Bali, the Mentawais, and Beyond",
+    "category": "Destination Guide",
+    "date": "2026-09-04",
+    "altText": "A surfer riding a left-hand reef break wave in Indonesia",
+    "featured": false,
+    "status": "scheduled"
+  },
+  {
+    "slug": "eleven-best-rights-in-the-world",
+    "title": "Eleven of the Best Right-Hand Waves in the World",
+    "category": "World's Best",
+    "date": "2026-09-08",
+    "altText": "A surfer riding a barrel at Coolangatta, Queensland, Australia",
+    "featured": false,
+    "status": "scheduled"
+  },
+  {
+    "slug": "eleven-best-lefts-in-the-world",
+    "title": "Eleven of the Best Left-Hand Waves in the World",
+    "category": "World's Best",
+    "date": "2026-09-12",
+    "altText": "A surfer riding a large left-hand wave at Uluwatu, Bali",
+    "featured": false,
+    "status": "scheduled"
+  },
+  {
+    "slug": "eleven-best-beach-breaks-in-the-world",
+    "title": "Eleven of the Best Beach Breaks in the World",
+    "category": "World's Best",
+    "date": "2026-09-16",
+    "altText": "People at the shore of Playa Hermosa, Puntarenas, Costa Rica, with waves rolling in",
+    "featured": false,
+    "status": "scheduled"
+  },
+  {
+    "slug": "eleven-best-waves-for-longboarders",
+    "title": "Eleven of the Best Waves in the World for Longboarders",
+    "category": "World's Best",
+    "date": "2026-09-20",
+    "altText": "A longboarder nose-riding a wave",
+    "featured": false,
+    "status": "scheduled"
+  },
+  {
+    "slug": "eleven-best-waves-for-shortboarders",
+    "title": "Eleven of the Best Waves in the World for Shortboarders",
+    "category": "World's Best",
+    "date": "2026-09-24",
+    "altText": "A surfer riding deep inside a barrel on a shortboard",
+    "featured": false,
+    "status": "scheduled"
+  },
+  {
+    "slug": "eleven-best-breaks-for-beginner-surfers",
+    "title": "Eleven of the Best Breaks in the World for Beginner Surfers",
+    "category": "World's Best",
+    "date": "2026-09-28",
+    "altText": "A beginner surfer in a learning stance riding a wave",
+    "featured": false,
+    "status": "scheduled"
+  }
+]
