@@ -63,3 +63,4 @@ council-*.md
 lemonSqueezy.txt
 .claude/
 scripts/blog-publish/runner-log.txt
+scripts/run-logs/
