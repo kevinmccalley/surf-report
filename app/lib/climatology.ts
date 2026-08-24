@@ -108,9 +108,58 @@ export async function computeClimatology(lat: number, lon: number): Promise<Clim
   })
 }
 
+async function probeOceanPoint(lat: number, lon: number): Promise<boolean> {
+  const url =
+    `https://marine-api.open-meteo.com/v1/marine` +
+    `?latitude=${lat}&longitude=${lon}&hourly=wave_height&start_date=2024-06-01&end_date=2024-06-01`
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(10000) })
+    if (!res.ok) return false
+    const d = await res.json()
+    const values: (number | null)[] = d?.hourly?.wave_height ?? []
+    return values.some(v => v != null)
+  } catch {
+    return false
+  }
+}
+
+// The marine API grid is coarse enough that rounding a coastal spot's coordinates
+// (see the 0.5° rounding callers do before calling getClimatologyData) can snap
+// onto a land cell, even though the spot itself is a real break on open water.
+// Search outward in 0.25° rings for the nearest cell that actually has wave data.
+async function resolveOceanPoint(lat: number, lon: number): Promise<{ lat: number; lon: number } | null> {
+  const STEP = 0.25
+  const MAX_RING = 6 // up to 1.5° out (~165km)
+
+  if (await probeOceanPoint(lat, lon)) return { lat, lon }
+
+  for (let ring = 1; ring <= MAX_RING; ring++) {
+    const candidates: { lat: number; lon: number }[] = []
+    for (let i = -ring; i <= ring; i++) {
+      for (let j = -ring; j <= ring; j++) {
+        if (Math.max(Math.abs(i), Math.abs(j)) !== ring) continue // only the new outer ring
+        candidates.push({ lat: lat + i * STEP, lon: lon + j * STEP })
+      }
+    }
+    const hits = (
+      await Promise.all(candidates.map(async c => ((await probeOceanPoint(c.lat, c.lon)) ? c : null)))
+    ).filter((c): c is { lat: number; lon: number } => c !== null)
+
+    if (hits.length) {
+      hits.sort((a, b) => Math.hypot(a.lat - lat, a.lon - lon) - Math.hypot(b.lat - lat, b.lon - lon))
+      return hits[0]
+    }
+  }
+  return null
+}
+
 export function getClimatologyData(latR: number, lonR: number) {
   return unstable_cache(
-    () => computeClimatology(latR, lonR),
+    async () => {
+      const point = await resolveOceanPoint(latR, lonR)
+      if (!point) return []
+      return computeClimatology(point.lat, point.lon)
+    },
     [`climatology-${latR}-${lonR}`],
     { revalidate: 60 * 60 * 24 * 7 }
   )()
