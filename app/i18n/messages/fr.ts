@@ -715,6 +715,29 @@ const fr: Record<string, string> = {
   'directory.spotCount':               '{count} spots',
   'directory.noResults':               'Aucun spot ne correspond à vos filtres.',
   'directory.viewForecast':            'Voir les prévisions',
+
+  'nav.regions':                       'Régions',
+
+  'regions.meta.title':                'Régions de Surf — Groundswell',
+  'regions.meta.desc':                 'Explorez le monde par région de surf : Baja Sur, les Mentawai, le Pays basque et plus encore. Chaque région réunit ses meilleures vagues sur une seule carte.',
+  'regions.heading':                   'Régions de Surf',
+  'regions.subtitle':                  'Chaque région de surf sélectionnée, ses vagues réunies sur la carte. Ouvrez-en une pour la vue liste et carte.',
+  'regions.breadcrumb':                'Régions',
+  'regions.searchPlaceholder':         'Rechercher des régions…',
+  'regions.allContinents':             'Tous les continents',
+  'regions.regionCount':               '{count} régions',
+  'regions.noResults':                 'Aucune région ne correspond à vos filtres.',
+  'regions.flagshipBadge':             'Échantillon gratuit',
+  'regions.lockedBadge':               'Verrouillée',
+  'regions.detail.spotsHeading':       'Vagues de cette région',
+  'regions.detail.alsoKnownAs':        'Également recherchée comme',
+  'regions.detail.backToRegions':      'Toutes les régions',
+  'regions.detail.countryLink':        'Voir toutes les régions de {country}',
+  'regions.locked.title':              '{count} vagues à {region}',
+  'regions.locked.body':               'Débloquez la carte ajustée à la région et les prévisions en direct pour chaque vague.',
+  'regions.locked.cta':                'Passez à l’offre supérieure pour débloquer',
+  'regions.locked.freeNote':           'Deux régions phares sont entièrement ouvertes avec l’offre gratuite.',
+  'regions.country.subtitle':          'Toutes les régions de surf sélectionnées de {country}, réunies sur une carte.',
 }
 
 export default fr

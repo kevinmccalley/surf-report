@@ -634,6 +634,23 @@ const SURF_REGIONS: SurfRegion[] = [
   },
 ]
 
+// ─── Country display names ───────────────────────────────────────────────────
+// Only the ISO codes actually used by the regions above. English proper nouns —
+// not translated, like region names.
+
+const COUNTRY_NAMES: Record<string, string> = {
+  US: 'United States', CA: 'Canada', MX: 'Mexico', CR: 'Costa Rica', SV: 'El Salvador',
+  PR: 'Puerto Rico', PE: 'Peru', CL: 'Chile', BR: 'Brazil', PT: 'Portugal', ES: 'Spain',
+  FR: 'France', GB: 'United Kingdom', IE: 'Ireland', MA: 'Morocco', ZA: 'South Africa',
+  NA: 'Namibia', MV: 'Maldives', LK: 'Sri Lanka', RE: 'Réunion', ID: 'Indonesia',
+  PH: 'Philippines', AU: 'Australia', FJ: 'Fiji', PF: 'French Polynesia', NZ: 'New Zealand',
+  JP: 'Japan',
+}
+
+export function countryName(iso2: string): string {
+  return COUNTRY_NAMES[iso2.toUpperCase()] ?? iso2.toUpperCase()
+}
+
 // ─── Lookups ─────────────────────────────────────────────────────────────────
 
 /** slugify(name) → first matching SurfSpot, mirroring findSpotBySlug's first-wins. */

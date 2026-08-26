@@ -111,6 +111,9 @@ export default function SiteHeader() {
           <a href="/spots" className="text-xs text-slate-400 hover:text-slate-200 transition-colors px-2 py-1.5 rounded-lg hover:bg-white/5">
             {t('nav.spots')}
           </a>
+          <a href="/regions" className="text-xs text-slate-400 hover:text-slate-200 transition-colors px-2 py-1.5 rounded-lg hover:bg-white/5">
+            {t('nav.regions')}
+          </a>
           <LanguageSwitcher />
           <ThemePicker />
           <UserMenu />
@@ -131,6 +134,9 @@ export default function SiteHeader() {
         <div className="sm:hidden border-t border-white/5 px-4 py-2.5 flex items-center gap-1 flex-wrap">
           <a href="/spots" onClick={() => setShowMenu(false)} className="text-xs text-slate-400 hover:text-slate-200 transition-colors px-3 py-1.5 rounded-lg hover:bg-white/5">
             {t('nav.spots')}
+          </a>
+          <a href="/regions" onClick={() => setShowMenu(false)} className="text-xs text-slate-400 hover:text-slate-200 transition-colors px-3 py-1.5 rounded-lg hover:bg-white/5">
+            {t('nav.regions')}
           </a>
           <LanguageSwitcher align="left" />
           <ThemePicker align="left" />

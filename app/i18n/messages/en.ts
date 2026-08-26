@@ -716,6 +716,29 @@ const en: Record<string, string> = {
   'directory.spotCount':               '{count} spots',
   'directory.noResults':               'No spots match your filters.',
   'directory.viewForecast':            'View forecast',
+
+  'nav.regions':                       'Regions',
+
+  'regions.meta.title':                'Surf Regions — Groundswell',
+  'regions.meta.desc':                 'Explore the world by surf region — Baja Sur, the Mentawais, the Basque Country and more. Each region maps its best breaks together in one view.',
+  'regions.heading':                   'Surf Regions',
+  'regions.subtitle':                  'Every curated surf region, its breaks mapped together. Open one for the list-and-map view.',
+  'regions.breadcrumb':                'Regions',
+  'regions.searchPlaceholder':         'Search regions…',
+  'regions.allContinents':             'All continents',
+  'regions.regionCount':               '{count} regions',
+  'regions.noResults':                 'No regions match your filters.',
+  'regions.flagshipBadge':             'Free sample',
+  'regions.lockedBadge':               'Locked',
+  'regions.detail.spotsHeading':       'Breaks in this region',
+  'regions.detail.alsoKnownAs':        'Also searched as',
+  'regions.detail.backToRegions':      'All regions',
+  'regions.detail.countryLink':        'See every region in {country}',
+  'regions.locked.title':              '{count} breaks in {region}',
+  'regions.locked.body':               'Unlock the fit-to-region map and a live forecast for every break here.',
+  'regions.locked.cta':                'Upgrade to unlock',
+  'regions.locked.freeNote':           'Two flagship regions are fully open on the free plan.',
+  'regions.country.subtitle':          'Every curated surf region in {country}, mapped together.',
 }
 
 export default en

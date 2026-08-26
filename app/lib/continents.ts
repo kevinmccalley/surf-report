@@ -17,3 +17,18 @@ export const CONTINENTS = [
 ] as const
 
 export type Continent = typeof CONTINENTS[number]
+
+// i18n key per continent — shared by the spot directory chips and the regions
+// index chips. Typed as Record<Continent, …> so adding a continent above fails
+// the build until its key is added here too.
+export const CONTINENT_I18N: Record<Continent, string> = {
+  'Hawaii':            'top100.region.hawaii',
+  'North America':     'top100.region.northAmerica',
+  'Latin America':     'top100.region.latinAmerica',
+  'Europe':            'top100.region.europe',
+  'Africa & Atlantic': 'top100.region.africaAtlantic',
+  'Indian Ocean':      'top100.region.indianOcean',
+  'Southeast Asia':    'top100.region.southeastAsia',
+  'Oceania & Pacific': 'top100.region.oceania',
+  'Japan':             'top100.region.japan',
+}

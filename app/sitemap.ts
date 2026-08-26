@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getAllSpots, slugify } from '@/app/lib/surf-spots'
+import { getSurfRegions } from '@/app/lib/surf-regions'
 import { getAllSlugsWithDate } from '@/app/lib/sanity'
 
 // Regenerate once a day on first request — Sanity API call skipped at build time.

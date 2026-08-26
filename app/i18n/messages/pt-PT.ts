@@ -715,6 +715,29 @@ const ptPT: Record<string, string> = {
   'directory.spotCount':               '{count} spots',
   'directory.noResults':               'Nenhum spot corresponde aos seus filtros.',
   'directory.viewForecast':            'Ver previsão',
+
+  'nav.regions':                       'Regiões',
+
+  'regions.meta.title':                'Regiões de Surf — Groundswell',
+  'regions.meta.desc':                 'Explore o mundo por região de surf: Baja Sur, as Mentawai, o País Basco e mais. Cada região reúne as suas melhores ondas num só mapa.',
+  'regions.heading':                   'Regiões de Surf',
+  'regions.subtitle':                  'Cada região de surf selecionada, com as suas ondas reunidas no mapa. Abra uma para ver a lista e o mapa.',
+  'regions.breadcrumb':                'Regiões',
+  'regions.searchPlaceholder':         'Pesquisar regiões…',
+  'regions.allContinents':             'Todos os continentes',
+  'regions.regionCount':               '{count} regiões',
+  'regions.noResults':                 'Nenhuma região corresponde aos seus filtros.',
+  'regions.flagshipBadge':             'Amostra gratuita',
+  'regions.lockedBadge':               'Bloqueada',
+  'regions.detail.spotsHeading':       'Ondas desta região',
+  'regions.detail.alsoKnownAs':        'Também pesquisada como',
+  'regions.detail.backToRegions':      'Todas as regiões',
+  'regions.detail.countryLink':        'Ver todas as regiões de {country}',
+  'regions.locked.title':              '{count} ondas em {region}',
+  'regions.locked.body':               'Desbloqueie o mapa ajustado à região e a previsão em direto de cada onda.',
+  'regions.locked.cta':                'Faça upgrade para desbloquear',
+  'regions.locked.freeNote':           'Duas regiões de destaque estão totalmente abertas no plano gratuito.',
+  'regions.country.subtitle':          'Todas as regiões de surf selecionadas de {country}, reunidas num mapa.',
 }
 
 export default ptPT
