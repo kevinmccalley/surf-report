@@ -4,6 +4,7 @@ const ptPT: Record<string, string> = {
   'search.placeholderFull': 'Pesquisar praia, spot de surf ou cidade…',
   'search.ariaLabel': 'Pesquisar local de surf',
   'search.surfBadge': 'surf',
+  'search.regionBadge': 'região',
 
   // Month abbreviations
   'months.jan': 'Jan', 'months.feb': 'Fev', 'months.mar': 'Mar', 'months.apr': 'Abr',

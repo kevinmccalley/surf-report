@@ -7,6 +7,7 @@ import {
   getRegionSpots,
   getRegionMapPoints,
   getCountryAggregate,
+  searchSurfRegions,
 } from '../surf-regions'
 import { regionFitTarget } from '../region-map'
 import { CONTINENTS } from '../continents'
@@ -187,6 +188,57 @@ describe('getRegionMapPoints', () => {
       expect(p.lat).toBeLessThanOrEqual(n)
       expect(p.lon).toBeGreaterThanOrEqual(w)
       expect(p.lon).toBeLessThanOrEqual(e)
+    }
+  })
+})
+
+// ── searchSurfRegions ────────────────────────────────────────────────────────
+
+describe('searchSurfRegions', () => {
+  it('ignores queries shorter than 2 chars', () => {
+    expect(searchSurfRegions('a')).toEqual([])
+    expect(searchSurfRegions('')).toEqual([])
+  })
+
+  it('returns [] when nothing matches', () => {
+    expect(searchSurfRegions('zzzznope')).toEqual([])
+  })
+
+  it('matches a region by name', () => {
+    const r = searchSurfRegions('baja')
+    const slugs = r.map(x => x.slug)
+    expect(slugs).toContain('baja-norte')
+    expect(slugs).toContain('baja-sur')
+    expect(r.every(x => x.kind === 'region')).toBe(true)
+  })
+
+  it('matches a region by search alias', () => {
+    const r = searchSurfRegions('j-bay')
+    expect(r.some(x => x.slug === 'south-africa-eastern-cape')).toBe(true)
+  })
+
+  it('surfaces the country aggregate first for a country-name query', () => {
+    const r = searchSurfRegions('portugal')
+    expect(r[0].kind).toBe('country')
+    expect(r[0].slug).toBe('pt')
+    expect(r[0].href).toBe('/regions/country/pt')
+    expect(r[0].regionCount).toBeGreaterThanOrEqual(3)
+    // Portugal regions follow.
+    expect(r.some(x => x.kind === 'region' && x.slug.startsWith('portugal-'))).toBe(true)
+  })
+
+  it('does not emit a country aggregate for single-region countries', () => {
+    const r = searchSurfRegions('peru')
+    expect(r.every(x => x.kind === 'region')).toBe(true)
+  })
+
+  it('every result has a well-formed href and honours the limit', () => {
+    const r = searchSurfRegions('coast', 4) // matches several "… Coast" aliases
+    expect(r.length).toBeLessThanOrEqual(4)
+    expect(r.length).toBeGreaterThan(0)
+    for (const x of r) {
+      expect(x.href).toMatch(x.kind === 'country' ? /^\/regions\/country\/[a-z]{2}$/ : /^\/regions\/[a-z0-9-]+$/)
+      expect(x.spotCount).toBeGreaterThan(0)
     }
   })
 })

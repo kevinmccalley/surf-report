@@ -4,6 +4,7 @@ const fr: Record<string, string> = {
   'search.placeholderFull': 'Rechercher une plage, un spot de surf ou une ville…',
   'search.ariaLabel': 'Rechercher un spot de surf',
   'search.surfBadge': 'surf',
+  'search.regionBadge': 'région',
 
   // Month abbreviations
   'months.jan': 'Jan', 'months.feb': 'Fév', 'months.mar': 'Mar', 'months.apr': 'Avr',

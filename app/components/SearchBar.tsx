@@ -1,10 +1,16 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
-import { Search, MapPin, X, Loader2 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { Search, MapPin, X, Loader2, Waves } from 'lucide-react'
 import type { GeoResult } from '@/app/lib/types'
 import { searchSurfSpots } from '@/app/lib/surf-spots'
+import { searchSurfRegions, type RegionSearchResult } from '@/app/lib/surf-regions'
 import { useLanguage } from '@/app/i18n/LanguageContext'
+
+type SearchItem =
+  | { kind: 'geo'; geo: GeoResult }
+  | { kind: 'region'; region: RegionSearchResult }
 
 interface Props {
   onSelect: (result: GeoResult) => void
@@ -15,8 +21,10 @@ interface Props {
 
 export default function SearchBar({ onSelect, loading, compact, autoFocus }: Props) {
   const { t } = useLanguage()
+  const router = useRouter()
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<GeoResult[]>([])
+  const [regionResults, setRegionResults] = useState<RegionSearchResult[]>([])
   const [open, setOpen] = useState(false)
   const [searching, setSearching] = useState(false)
   const [activeIdx, setActiveIdx] = useState(-1)
@@ -42,11 +50,14 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
   }, [])
 
   const search = useCallback(async (q: string) => {
-    if (q.length < 2) { setResults([]); setOpen(false); return }
+    if (q.length < 2) { setResults([]); setRegionResults([]); setOpen(false); return }
     setSearching(true)
 
+    const regionMatches = searchSurfRegions(q)
+    setRegionResults(regionMatches)
+
     const spotResults = searchSurfSpots(q)
-    if (spotResults.length > 0) {
+    if (regionMatches.length > 0 || spotResults.length > 0) {
       setResults(spotResults)
       setOpen(true)
       setActiveIdx(-1)
@@ -65,12 +76,18 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
       ].slice(0, 8)
 
       setResults(combined)
-      setOpen(combined.length > 0)
+      setOpen(combined.length > 0 || regionMatches.length > 0)
       setActiveIdx(-1)
     } finally {
       setSearching(false)
     }
   }, [])
+
+  // Region / country matches lead the list, then spots + geocoded places.
+  const items = useMemo<SearchItem[]>(() => [
+    ...regionResults.map(region => ({ kind: 'region' as const, region })),
+    ...results.map(geo => ({ kind: 'geo' as const, geo })),
+  ], [regionResults, results])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const v = e.target.value
@@ -79,21 +96,31 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
     debounceRef.current = setTimeout(() => search(v), 300)
   }
 
-  const handleSelect = (result: GeoResult) => {
+  const handleSelectItem = (item: SearchItem) => {
+    if (item.kind === 'region') {
+      setQuery(item.region.name)
+      setOpen(false)
+      setResults([])
+      setRegionResults([])
+      router.push(item.region.href)
+      return
+    }
+    const result = item.geo
     setQuery(result.name + (result.country ? `, ${result.country}` : ''))
     setOpen(false)
     setResults([])
+    setRegionResults([])
     onSelect(result)
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!open) return
-    if (e.key === 'ArrowDown') { e.preventDefault(); setActiveIdx(i => Math.min(i + 1, results.length - 1)) }
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActiveIdx(i => Math.min(i + 1, items.length - 1)) }
     if (e.key === 'ArrowUp') { e.preventDefault(); setActiveIdx(i => Math.max(i - 1, -1)) }
     if (e.key === 'Enter') {
       e.preventDefault()
-      const target = activeIdx >= 0 ? results[activeIdx] : results[0]
-      if (target) handleSelect(target)
+      const target = activeIdx >= 0 ? items[activeIdx] : items[0]
+      if (target) handleSelectItem(target)
     }
     if (e.key === 'Escape') { setOpen(false) }
   }
@@ -101,6 +128,7 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
   const clear = () => {
     setQuery('')
     setResults([])
+    setRegionResults([])
     setOpen(false)
     inputRef.current?.focus()
   }
@@ -119,7 +147,7 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
           value={query}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-          onFocus={() => results.length > 0 && setOpen(true)}
+          onFocus={() => items.length > 0 && setOpen(true)}
           placeholder={compact ? t('search.placeholderCompact') : t('search.placeholderFull')}
           className={`w-full bg-transparent text-white placeholder-slate-500 pl-9 pr-9 focus:outline-none ${
             compact ? 'py-2 text-sm' : 'py-3.5 text-base'
@@ -136,17 +164,50 @@ export default function SearchBar({ onSelect, loading, compact, autoFocus }: Pro
         )}
       </div>
 
-      {open && results.length > 0 && (
+      {open && items.length > 0 && (
         <div className="absolute top-full left-0 right-0 mt-1 z-50 rounded-xl overflow-hidden shadow-2xl theme-panel">
-          {results.map((r, i) => {
+          {items.map((item, i) => {
+            const active = i === activeIdx
+            const rowCls = `w-full flex items-center gap-3 px-4 py-3 text-left transition-colors ${
+              active ? 'theme-row-active' : 'theme-row-hover'
+            } border-b`
+
+            if (item.kind === 'region') {
+              const r = item.region
+              const sub = r.kind === 'country'
+                ? t('regions.regionCount', { count: r.regionCount ?? 0 })
+                : r.continentKey ? t(r.continentKey) : ''
+              return (
+                <button
+                  key={`region-${r.slug}`}
+                  onMouseDown={() => handleSelectItem(item)}
+                  className={rowCls}
+                  style={{ borderColor: 'var(--card-border)' }}
+                >
+                  <Waves size={14} className="shrink-0" style={{ color: 'var(--accent)' }} />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-medium truncate" style={{ color: 'var(--text-base)' }}>{r.name}</p>
+                    <p className="text-xs truncate theme-label">
+                      {sub}{sub ? ' · ' : ''}{t('directory.spotCount', { count: r.spotCount })}
+                    </p>
+                  </div>
+                  <span
+                    className="shrink-0 text-[9px] font-semibold uppercase tracking-wide rounded px-1 py-0.5 border"
+                    style={{ color: 'var(--accent)', borderColor: 'var(--accent)', opacity: 0.75 }}
+                  >
+                    {t('search.regionBadge')}
+                  </span>
+                </button>
+              )
+            }
+
+            const r = item.geo
             const isSurfSpot = surfSpotKeys.has(`${r.lat},${r.lon}`)
             return (
               <button
                 key={`${r.lat}-${r.lon}`}
-                onMouseDown={() => handleSelect(r)}
-                className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors ${
-                  i === activeIdx ? 'theme-row-active' : 'theme-row-hover'
-                } border-b`}
+                onMouseDown={() => handleSelectItem(item)}
+                className={rowCls}
                 style={{ borderColor: 'var(--card-border)' }}
               >
                 <MapPin size={14} className="shrink-0" style={{ color: 'var(--accent)' }} />

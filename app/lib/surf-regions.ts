@@ -1,5 +1,5 @@
 import { getAllSpots, slugify, type SurfSpot } from './surf-spots'
-import type { Continent } from './continents'
+import { CONTINENT_I18N, type Continent } from './continents'
 import type { RegionMapPoint } from './region-map'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -716,6 +716,88 @@ export interface CountryAggregate {
   spotSlugs: string[]
   center: { lat: number; lon: number }
   bounds: [[number, number], [number, number]] | null
+}
+
+// ─── Search ──────────────────────────────────────────────────────────────────
+// Region + country matches for the search dropdown. Kept synchronous and
+// dependency-light so SearchBar can call it inline like `searchSurfSpots`.
+
+export interface RegionSearchResult {
+  kind: 'region' | 'country'
+  /** region slug, or lowercase ISO-2 for a country aggregate */
+  slug: string
+  /** proper-noun display name */
+  name: string
+  href: string
+  /** i18n key for the continent label — region results only */
+  continentKey?: string
+  spotCount: number
+  /** number of member regions — country results only */
+  regionCount?: number
+}
+
+export function searchSurfRegions(query: string, limit = 5): RegionSearchResult[] {
+  const q = query.toLowerCase().trim()
+  if (q.length < 2) return []
+  const tokens = q.replace(/[—–,]/g, ' ').split(/\s+/).filter(t => t.length > 1)
+  if (tokens.length === 0) return []
+
+  const matches = (haystack: string) => tokens.every(tk => haystack.includes(tk))
+
+  // Country aggregates first — only countries with an aggregate route (>1 region).
+  const byCountry = new Map<string, SurfRegion[]>()
+  for (const r of SURF_REGIONS) {
+    const arr = byCountry.get(r.country) ?? []
+    arr.push(r)
+    byCountry.set(r.country, arr)
+  }
+
+  const countryHits: { score: number; result: RegionSearchResult }[] = []
+  for (const [code, regions] of byCountry) {
+    if (regions.length < 2) continue
+    const name = countryName(code)
+    const hay = `${name} ${code}`.toLowerCase()
+    if (!matches(hay)) continue
+    countryHits.push({
+      score: hay.startsWith(q) ? 0 : 1,
+      result: {
+        kind: 'country',
+        slug: code.toLowerCase(),
+        name,
+        href: `/regions/country/${code.toLowerCase()}`,
+        spotCount: new Set(regions.flatMap(r => r.spotSlugs)).size,
+        regionCount: regions.length,
+      },
+    })
+  }
+
+  const regionHits: { score: number; result: RegionSearchResult }[] = []
+  for (const r of SURF_REGIONS) {
+    const aliases = r.searchAliases ?? []
+    const hay = [r.name, ...aliases, countryName(r.country), r.admin ?? '', r.continent].join(' ').toLowerCase()
+    if (!matches(hay)) continue
+    const nameL = r.name.toLowerCase()
+    const aliasExact = aliases.some(a => a.toLowerCase() === q)
+    regionHits.push({
+      score: nameL.startsWith(q) || aliasExact ? 0 : nameL.includes(q) ? 1 : 2,
+      result: {
+        kind: 'region',
+        slug: r.slug,
+        name: r.name,
+        href: `/regions/${r.slug}`,
+        continentKey: CONTINENT_I18N[r.continent],
+        spotCount: r.spotSlugs.length,
+      },
+    })
+  }
+
+  countryHits.sort((a, b) => a.score - b.score)
+  regionHits.sort((a, b) => a.score - b.score || a.result.name.localeCompare(b.result.name))
+
+  return [
+    ...countryHits.slice(0, 2).map(h => h.result),
+    ...regionHits.map(h => h.result),
+  ].slice(0, limit)
 }
 
 export function getCountryAggregate(iso2: string): CountryAggregate | null {
