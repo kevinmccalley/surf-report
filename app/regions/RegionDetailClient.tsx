@@ -55,7 +55,7 @@ export default function RegionDetailClient({
     <>
       {showPaywall && <PaywallModal onClose={() => setShowPaywall(false)} />}
 
-      <main id="main-content" className="relative min-h-0 flex-1">
+      <main id="main-content" className="relative isolate min-h-0 flex-1">
         {/* ── Full-bleed map (or lock CTA) ──────────────────────────── */}
         {locked ? (
           <div
