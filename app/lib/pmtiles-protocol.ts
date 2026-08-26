@@ -1,6 +1,6 @@
 import maplibregl from 'maplibre-gl'
 import { Protocol } from 'pmtiles'
-import { PMTILES_URL, USING_DEMO_PMTILES } from '@/app/lib/map-style'
+import { PMTILES_URL, USING_FALLBACK_PMTILES } from '@/app/lib/map-style'
 
 // Register the `pmtiles://` protocol on MapLibre GL exactly once, on the client.
 //
@@ -22,10 +22,10 @@ export function registerPmtilesProtocol(): void {
   maplibregl.addProtocol('pmtiles', protocol.tile)
   registered = true
 
-  if (USING_DEMO_PMTILES) {
+  if (USING_FALLBACK_PMTILES) {
     console.warn(
-      '[map] NEXT_PUBLIC_PMTILES_URL is unset — using the Protomaps demo archive ' +
-        `(${PMTILES_URL}). Rate-limited and not for production; host your own ` +
+      '[map] NEXT_PUBLIC_PMTILES_URL is unset — using the shared public Protomaps ' +
+        `archive (${PMTILES_URL}). Fine for dev; host your own for production ` +
         'per docs/pmtiles-basemap-setup.md.',
     )
   }

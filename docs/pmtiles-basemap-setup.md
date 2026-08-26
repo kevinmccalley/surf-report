@@ -18,15 +18,19 @@ planet archive and host it. ~15 min of work + a long download.
 
 | Env var | Purpose | Default when unset |
 |---|---|---|
-| `NEXT_PUBLIC_PMTILES_URL` | Public URL of the hosted `.pmtiles` archive | Protomaps **demo bucket** — rate-limited, dev only |
+| `NEXT_PUBLIC_PMTILES_URL` | Public URL of the hosted `.pmtiles` archive | Protomaps planet on **source.coop** — works, but shared/uncontrolled |
 | `NEXT_PUBLIC_MAP_ASSETS_URL` | Base URL for glyphs + sprites | `https://protomaps.github.io/basemaps-assets` (fine to keep) |
 
-Until `NEXT_PUBLIC_PMTILES_URL` is set, the site points at
-`https://demo-bucket.protomaps.com/v4.pmtiles`. Protomaps rate-limits that
-archive and it's not for production; it has also been unreliable (it was
-unreachable during this integration). Treat "no basemap on dev" as expected
-until you set the var to your own archive — the wiring is verified by the unit
-tests; the tiles just need a real host.
+Until `NEXT_PUBLIC_PMTILES_URL` is set, the site reads
+`https://data.source.coop/protomaps/openstreetmap/v4.pmtiles` — the Protomaps
+planet build hosted on source.coop (Radiant Earth's open-data host, CORS + range
+requests, ~135 GB, `pmtiles://` reads only the header + visible tiles). That's a
+genuine working basemap for dev and previews. It's still someone else's bucket
+with no SLA to you, so host your own for production — you control CORS, caching,
+and how often it refreshes.
+
+(The old `demo-bucket.protomaps.com` URL is dead — Protomaps moved public
+hosting to source.coop.)
 
 ### Service worker
 

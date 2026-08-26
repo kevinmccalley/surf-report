@@ -15,8 +15,10 @@ import { layers, LIGHT, DARK } from '@protomaps/basemaps'
 // dependency entirely.
 //
 // `NEXT_PUBLIC_PMTILES_URL` points at the hosted archive. When it's unset we
-// fall back to the Protomaps demo bucket — fine for local dev, rate-limited
-// and explicitly NOT for production.
+// fall back to the Protomaps planet archive on source.coop (Radiant Earth's
+// free open-data host — CORS + HTTP range requests, ~135 GB planet). That's a
+// real working basemap for dev and previews, but it's still someone else's
+// bucket: host your own for production (control over CORS, caching, retention).
 //
 // Glyphs + sprites are the small static asset bundle Protomaps publishes
 // (protomaps/basemaps-assets, served from GitHub Pages). They're a few hundred
@@ -24,14 +26,14 @@ import { layers, LIGHT, DARK } from '@protomaps/basemaps'
 // dynamic tile endpoint. Self-host them too if you want zero third-party calls
 // at runtime — set NEXT_PUBLIC_MAP_ASSETS_URL to your copy's base URL.
 
-const DEMO_PMTILES = 'https://demo-bucket.protomaps.com/v4.pmtiles'
+const FALLBACK_PMTILES = 'https://data.source.coop/protomaps/openstreetmap/v4.pmtiles'
 const DEFAULT_ASSETS = 'https://protomaps.github.io/basemaps-assets'
 
-/** Public URL of the hosted `.pmtiles` archive (falls back to the demo bucket). */
-export const PMTILES_URL = process.env.NEXT_PUBLIC_PMTILES_URL?.trim() || DEMO_PMTILES
+/** Public URL of the hosted `.pmtiles` archive (falls back to the source.coop planet). */
+export const PMTILES_URL = process.env.NEXT_PUBLIC_PMTILES_URL?.trim() || FALLBACK_PMTILES
 
-/** True when we're serving the rate-limited demo archive rather than our own. */
-export const USING_DEMO_PMTILES = PMTILES_URL === DEMO_PMTILES
+/** True when we're on the shared public archive rather than our own host. */
+export const USING_FALLBACK_PMTILES = PMTILES_URL === FALLBACK_PMTILES
 
 const ASSETS_URL = process.env.NEXT_PUBLIC_MAP_ASSETS_URL?.trim() || DEFAULT_ASSETS
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { mapStyle, PMTILES_URL, USING_DEMO_PMTILES } from '../map-style'
+import { mapStyle, PMTILES_URL, USING_FALLBACK_PMTILES } from '../map-style'
 
 describe('mapStyle', () => {
   it('builds a valid GL style v8 for both themes', () => {
@@ -33,9 +33,9 @@ describe('mapStyle', () => {
     expect(light).not.toBe(dark)
   })
 
-  it('falls back to the demo bucket when NEXT_PUBLIC_PMTILES_URL is unset', () => {
+  it('falls back to the shared public archive when NEXT_PUBLIC_PMTILES_URL is unset', () => {
     // No env var in the test environment.
-    expect(USING_DEMO_PMTILES).toBe(true)
+    expect(USING_FALLBACK_PMTILES).toBe(true)
     expect(PMTILES_URL).toMatch(/^https:\/\/.*\.pmtiles$/)
   })
 })
