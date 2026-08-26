@@ -1,12 +1,15 @@
 'use client'
 
 import 'leaflet/dist/leaflet.css'
+import 'maplibre-gl/dist/maplibre-gl.css'
 import L from 'leaflet'
+import '@maplibre/maplibre-gl-leaflet'
 import { useEffect, useRef } from 'react'
 import type { SurfReport, NearbySpot } from '@/app/lib/types'
 import { formatWaveHeight } from '@/app/lib/utils'
 import { useTheme } from '@/app/components/ThemeProvider'
 import { THEMES } from '@/app/lib/themes'
+import { mapStyle } from '@/app/lib/map-style'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Props {
@@ -204,16 +207,7 @@ export default function SurfMap({ report, units, highlightLayers, nearbySpots, o
     mapRef.current = map
     L.control.zoom({ position: 'bottomright' }).addTo(map)
 
-    L.tileLayer(
-      isDark
-        ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-        : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-      {
-        attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors © <a href="https://carto.com" target="_blank">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19,
-      },
-    ).addTo(map)
+    L.maplibreGL({ style: mapStyle(isDark) }).addTo(map)
 
     // Wind arcs — no land clipping needed, added immediately
     if (current.wind.speed > 2) {

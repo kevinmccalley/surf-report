@@ -1,10 +1,13 @@
 'use client'
 
 import 'leaflet/dist/leaflet.css'
+import 'maplibre-gl/dist/maplibre-gl.css'
 import L from 'leaflet'
+import '@maplibre/maplibre-gl-leaflet'
 import { useEffect, useRef } from 'react'
 import { useTheme } from '@/app/components/ThemeProvider'
 import { THEMES } from '@/app/lib/themes'
+import { mapStyle } from '@/app/lib/map-style'
 import { regionFitTarget, pointsKey, type RegionMapPoint } from '@/app/lib/region-map'
 
 interface Props {
@@ -22,11 +25,6 @@ interface Props {
   fitPadding?: number
   className?: string
 }
-
-const DARK_TILES = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-const LIGHT_TILES = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
-const TILE_ATTR =
-  '© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors © <a href="https://carto.com" target="_blank">CARTO</a>'
 
 function isDarkTheme(themeId: string): boolean {
   return THEMES.find(t => t.id === themeId)?.dark ?? true
@@ -64,7 +62,7 @@ export default function RegionMap({
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
-  const tileRef = useRef<L.TileLayer | null>(null)
+  const baseRef = useRef<L.Layer | null>(null)
   const markersRef = useRef<Map<string, { marker: L.Marker; index: number }>>(new Map())
   const colorRef = useRef<string>('#22d3ee')
   const fittedKeyRef = useRef<string>('')
@@ -92,11 +90,7 @@ export default function RegionMap({
     map.on('focus', () => map.scrollWheelZoom.enable())
     map.on('blur', () => map.scrollWheelZoom.disable())
 
-    tileRef.current = L.tileLayer(isDarkTheme(themeId) ? DARK_TILES : LIGHT_TILES, {
-      attribution: TILE_ATTR,
-      subdomains: 'abcd',
-      maxZoom: 18,
-    }).addTo(map)
+    baseRef.current = L.maplibreGL({ style: mapStyle(isDarkTheme(themeId)) }).addTo(map)
 
     // Flex/grid parents settle after paint — make sure Leaflet has real dimensions.
     const ro = new ResizeObserver(() => map.invalidateSize())
@@ -107,22 +101,18 @@ export default function RegionMap({
       ro.disconnect()
       map.remove()
       mapRef.current = null
-      tileRef.current = null
+      baseRef.current = null
       markersRef.current.clear()
       fittedKeyRef.current = ''
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // ── Swap the tile layer on theme change — no map remount. ────────────────
+  // ── Swap the basemap style on theme change — no map remount. ─────────────
   useEffect(() => {
     const map = mapRef.current
     if (!map) return
-    if (tileRef.current) tileRef.current.remove()
-    tileRef.current = L.tileLayer(isDarkTheme(themeId) ? DARK_TILES : LIGHT_TILES, {
-      attribution: TILE_ATTR,
-      subdomains: 'abcd',
-      maxZoom: 18,
-    }).addTo(map)
+    if (baseRef.current) baseRef.current.remove()
+    baseRef.current = L.maplibreGL({ style: mapStyle(isDarkTheme(themeId)) }).addTo(map)
     colorRef.current = accentColor()
     // Recolour existing markers to the new theme accent.
     for (const [slug, { marker, index }] of markersRef.current) {
