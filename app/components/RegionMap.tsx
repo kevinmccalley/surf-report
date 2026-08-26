@@ -8,6 +8,7 @@ import { useEffect, useRef } from 'react'
 import { useTheme } from '@/app/components/ThemeProvider'
 import { THEMES } from '@/app/lib/themes'
 import { mapStyle } from '@/app/lib/map-style'
+import { registerPmtilesProtocol } from '@/app/lib/pmtiles-protocol'
 import { regionFitTarget, pointsKey, type RegionMapPoint } from '@/app/lib/region-map'
 
 interface Props {
@@ -80,6 +81,7 @@ export default function RegionMap({
   // ── Create the map once. Never torn down until unmount. ──────────────────
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
+    registerPmtilesProtocol()
 
     const map = L.map(containerRef.current, {
       center: [20, 0],

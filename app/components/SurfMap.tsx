@@ -10,6 +10,7 @@ import { formatWaveHeight } from '@/app/lib/utils'
 import { useTheme } from '@/app/components/ThemeProvider'
 import { THEMES } from '@/app/lib/themes'
 import { mapStyle } from '@/app/lib/map-style'
+import { registerPmtilesProtocol } from '@/app/lib/pmtiles-protocol'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 
 interface Props {
@@ -197,6 +198,7 @@ export default function SurfMap({ report, units, highlightLayers, nearbySpots, o
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
+    registerPmtilesProtocol()
 
     const { lat, lon } = report.location
     const { current }  = report

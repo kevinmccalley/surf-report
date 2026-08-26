@@ -8,6 +8,7 @@ import { useEffect, useRef } from 'react'
 import { useTheme } from '@/app/components/ThemeProvider'
 import { THEMES } from '@/app/lib/themes'
 import { mapStyle } from '@/app/lib/map-style'
+import { registerPmtilesProtocol } from '@/app/lib/pmtiles-protocol'
 import type { RegionShape, WorldSpot } from '@/app/lib/region-hull'
 
 interface Props {
@@ -64,6 +65,7 @@ export default function WorldRegionsMap({
   // ── Create the map once. Never torn down until unmount. ─────────────────
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
+    registerPmtilesProtocol()
 
     const map = L.map(containerRef.current, {
       center: [18, 0],
