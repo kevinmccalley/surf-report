@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 import type { DirectorySpot } from '@/app/lib/spots-directory'
 
-const REGIONS = [
+const CONTINENTS = [
   'Hawaii',
   'North America',
   'Latin America',
@@ -16,7 +16,7 @@ const REGIONS = [
   'Oceania & Pacific',
 ] as const
 
-const REGION_I18N: Record<string, string> = {
+const CONTINENT_I18N: Record<string, string> = {
   'Hawaii':           'top100.region.hawaii',
   'North America':    'top100.region.northAmerica',
   'Latin America':    'top100.region.latinAmerica',
@@ -60,15 +60,15 @@ interface Props {
 
 export default function SpotsDirectoryClient({ spots }: Props) {
   const { t } = useLanguage()
-  const [search, setSearch]   = useState('')
-  const [region, setRegion]   = useState<string>('all')
-  const [sortAsc, setSortAsc] = useState(true)
+  const [search, setSearch]         = useState('')
+  const [continent, setContinent]   = useState<string>('all')
+  const [sortAsc, setSortAsc]       = useState(true)
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase()
     return spots
       .filter(s => {
-        if (region !== 'all' && s.region !== region) return false
+        if (continent !== 'all' && s.continent !== continent) return false
         if (q && !s.name.toLowerCase().includes(q) && !s.locality.toLowerCase().includes(q)) return false
         return true
       })
@@ -76,7 +76,7 @@ export default function SpotsDirectoryClient({ spots }: Props) {
         const cmp = a.name.localeCompare(b.name)
         return sortAsc ? cmp : -cmp
       })
-  }, [spots, search, region, sortAsc])
+  }, [spots, search, continent, sortAsc])
 
   return (
     <div>
@@ -98,29 +98,29 @@ export default function SpotsDirectoryClient({ spots }: Props) {
         </button>
       </div>
 
-      {/* Region chips — scrollable, flush to screen edges on mobile */}
+      {/* Continent chips — scrollable, flush to screen edges on mobile */}
       <div className="flex gap-2 overflow-x-auto pb-2 mb-5 -mx-4 px-4 scrollbar-none">
         <button
-          onClick={() => setRegion('all')}
+          onClick={() => setContinent('all')}
           className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-            region === 'all'
+            continent === 'all'
               ? 'bg-teal-500 text-white'
               : 'theme-inset text-slate-400 hover:border-teal-500/40'
           }`}
         >
           {t('directory.allRegions')}
         </button>
-        {REGIONS.map(r => (
+        {CONTINENTS.map(c => (
           <button
-            key={r}
-            onClick={() => setRegion(region === r ? 'all' : r)}
+            key={c}
+            onClick={() => setContinent(continent === c ? 'all' : c)}
             className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-              region === r
+              continent === c
                 ? 'bg-teal-500 text-white'
                 : 'theme-inset text-slate-400 hover:border-teal-500/40'
             }`}
           >
-            {t(REGION_I18N[r])}
+            {t(CONTINENT_I18N[c])}
           </button>
         ))}
       </div>
@@ -157,7 +157,7 @@ export default function SpotsDirectoryClient({ spots }: Props) {
 
               <div className="flex flex-wrap gap-1">
                 <span className="text-xs px-2 py-0.5 rounded-full theme-inset text-slate-400">
-                  {t(REGION_I18N[spot.region])}
+                  {t(CONTINENT_I18N[spot.continent])}
                 </span>
                 {spot.waveType && (
                   <span className="text-xs px-2 py-0.5 rounded-full theme-inset text-slate-400">

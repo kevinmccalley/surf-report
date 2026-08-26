@@ -3,7 +3,7 @@ import { SPOTS as TOP100 } from '../top100/spots-data'
 import type { Top100Spot } from '../top100/spots-data'
 import notableRaw from './notable-spots.json'
 
-export const REGIONS = [
+export const CONTINENTS = [
   'Hawaii',
   'North America',
   'Latin America',
@@ -14,14 +14,16 @@ export const REGIONS = [
   'Oceania & Pacific',
 ] as const
 
-export type Region = typeof REGIONS[number]
+// Continent-level grouping. NOT the same as the granular `SurfRegion`
+// concept (e.g. "Baja Sur", "North Shore, Oahu") — see docs/surf-regions-feature-spec.md.
+export type Continent = typeof CONTINENTS[number]
 export type WaveType = 'Reef Break' | 'Beach Break' | 'Point Break' | 'River Mouth' | 'Sand Bar'
 export type Difficulty = 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert'
 
 export interface DirectorySpot {
   name: string
   locality: string
-  region: Region
+  continent: Continent
   lat: number
   lon: number
   slug: string
@@ -44,9 +46,9 @@ function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): nu
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 }
 
-// ── Region lookup from country string (for surf-spots.ts entries) ────────────
+// ── Continent lookup from country string (for surf-spots.ts entries) ─────────
 
-function regionFromCountry(country: string): Region {
+function continentFromCountry(country: string): Continent {
   const c = country.toLowerCase()
   if (/\b(oahu|maui|kauai|molokai|hawaii)\b/.test(c)) return 'Hawaii'
   if (/, (ca|fl|nc|sc|ny|nj|ma|ct|me|va|ga)$/i.test(country)) return 'North America'
@@ -67,10 +69,10 @@ function regionFromCountry(country: string): Region {
   return 'North America'
 }
 
-// ── Locality + region from coordinates (for notable-spots entries) ───────────
-// Returns [locality string, Region]. Empty locality means unrecognised location.
+// ── Locality + continent from coordinates (for notable-spots entries) ────────
+// Returns [locality string, Continent]. Empty locality means unrecognised location.
 
-function localityAndRegion(lat: number, lon: number): [string, Region] {
+function localityAndContinent(lat: number, lon: number): [string, Continent] {
   // Hawaii
   if (lat >= 18 && lat <= 23 && lon >= -162 && lon <= -154) return ['Hawaii, USA', 'Hawaii']
   // Pacific Canada
@@ -148,7 +150,7 @@ export function getDirectorySpots(): DirectorySpot[] {
     const entry: DirectorySpot = {
       name: spot.name,
       locality: spot.country,
-      region: regionFromCountry(spot.country),
+      continent: continentFromCountry(spot.country),
       lat: spot.lat,
       lon: spot.lon,
       slug: slugify(spot.name),
@@ -165,7 +167,7 @@ export function getDirectorySpots(): DirectorySpot[] {
   })
 
   // ── Step 2: additional spots from notable-spots.json ────────────────────
-  // Filter clean names (skip mojibake), derive locality+region from coords,
+  // Filter clean names (skip mojibake), derive locality+continent from coords,
   // deduplicate against curated spots (3 km) and within themselves (1.5 km).
 
   const taken: { lat: number; lon: number }[] = curated.map(s => ({ lat: s.lat, lon: s.lon }))
@@ -179,14 +181,14 @@ export function getDirectorySpots(): DirectorySpot[] {
     const tooClose = taken.some(t => haversineKm(raw.lat, raw.lon, t.lat, t.lon) < 1.5)
     if (tooClose) continue
 
-    const [locality, region] = localityAndRegion(raw.lat, raw.lon)
+    const [locality, continent] = localityAndContinent(raw.lat, raw.lon)
     if (!locality) continue  // unrecognised location
 
     taken.push({ lat: raw.lat, lon: raw.lon })
     extras.push({
       name: raw.name,
       locality,
-      region,
+      continent,
       lat: raw.lat,
       lon: raw.lon,
       slug: slugify(raw.name),
