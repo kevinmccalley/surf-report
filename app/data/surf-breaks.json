@@ -1,0 +1,2629 @@
+[
+  {
+    "name": "Mavericks",
+    "aliases": [
+      "Mavs"
+    ],
+    "country": "Half Moon Bay, CA",
+    "lat": 37.492,
+    "lon": -122.5006,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Ghost Tree",
+    "aliases": [
+      "Pescadero Point"
+    ],
+    "country": "Pebble Beach, CA",
+    "lat": 36.5568,
+    "lon": -121.9618,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Steamer Lane",
+    "aliases": [
+      "Steamers"
+    ],
+    "country": "Santa Cruz, CA",
+    "lat": 36.9516,
+    "lon": -122.0251,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Pleasure Point",
+    "aliases": [
+      "Pleasure Point Santa Cruz"
+    ],
+    "country": "Santa Cruz, CA",
+    "lat": 36.9552,
+    "lon": -121.9688,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Ocean Beach",
+    "aliases": [
+      "OB San Francisco",
+      "SF Beach"
+    ],
+    "country": "San Francisco, CA",
+    "lat": 37.7592,
+    "lon": -122.5142,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Fort Point",
+    "aliases": [],
+    "country": "San Francisco, CA",
+    "lat": 37.8105,
+    "lon": -122.4769,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Rincon",
+    "aliases": [
+      "Rincon Point",
+      "Queen of the Coast"
+    ],
+    "country": "Carpinteria, CA",
+    "lat": 34.3666,
+    "lon": -119.475,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "C-Street",
+    "aliases": [
+      "California Street",
+      "Ventura Overhead"
+    ],
+    "country": "Ventura, CA",
+    "lat": 34.2742,
+    "lon": -119.229,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "First Point Malibu",
+    "aliases": [
+      "Surfrider Beach",
+      "Malibu"
+    ],
+    "country": "Malibu, CA",
+    "lat": 34.0372,
+    "lon": -118.6782,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "El Porto",
+    "aliases": [
+      "El Porto Manhattan Beach"
+    ],
+    "country": "Manhattan Beach, CA",
+    "lat": 33.905,
+    "lon": -118.4231,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Huntington Beach",
+    "aliases": [
+      "HB",
+      "Surf City USA"
+    ],
+    "country": "Huntington Beach, CA",
+    "lat": 33.6547,
+    "lon": -118.0046,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Salt Creek",
+    "aliases": [
+      "The Ranch"
+    ],
+    "country": "Dana Point, CA",
+    "lat": 33.4838,
+    "lon": -117.7285,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Lowers",
+    "aliases": [
+      "Lower Trestles",
+      "Trestles"
+    ],
+    "country": "San Clemente, CA",
+    "lat": 33.3836,
+    "lon": -117.5897,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Uppers",
+    "aliases": [
+      "Upper Trestles"
+    ],
+    "country": "San Clemente, CA",
+    "lat": 33.392,
+    "lon": -117.593,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "San Onofre",
+    "aliases": [
+      "San-O",
+      "Old Mans"
+    ],
+    "country": "San Clemente, CA",
+    "lat": 33.3742,
+    "lon": -117.5702,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Swamis",
+    "aliases": [],
+    "country": "Encinitas, CA",
+    "lat": 33.035,
+    "lon": -117.2917,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Blacks Beach",
+    "aliases": [
+      "Black's"
+    ],
+    "country": "La Jolla, CA",
+    "lat": 32.8925,
+    "lon": -117.2536,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Windansea",
+    "aliases": [
+      "Wind-n-Sea"
+    ],
+    "country": "La Jolla, CA",
+    "lat": 32.8312,
+    "lon": -117.2811,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Big Rock",
+    "aliases": [],
+    "country": "La Jolla, CA",
+    "lat": 32.8218,
+    "lon": -117.2792,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Pismo Beach",
+    "aliases": [],
+    "country": "Pismo Beach, CA",
+    "lat": 35.1402,
+    "lon": -120.6475,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Pipeline",
+    "aliases": [
+      "Banzai Pipeline",
+      "Pipe"
+    ],
+    "country": "North Shore, Oahu",
+    "lat": 21.6649,
+    "lon": -158.053,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Backdoor",
+    "aliases": [
+      "Backdoor Pipeline"
+    ],
+    "country": "North Shore, Oahu",
+    "lat": 21.6645,
+    "lon": -158.0528,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Off The Wall",
+    "aliases": [
+      "OTW",
+      "Kodak Reef"
+    ],
+    "country": "North Shore, Oahu",
+    "lat": 21.6625,
+    "lon": -158.0505,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Sunset Beach",
+    "aliases": [
+      "Sunset Hawaii",
+      "Sunset Oahu"
+    ],
+    "country": "North Shore, Oahu",
+    "lat": 21.6786,
+    "lon": -158.0404,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Waimea Bay",
+    "aliases": [],
+    "country": "Haleiwa, Oahu",
+    "lat": 21.6432,
+    "lon": -158.0638,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Laniakea",
+    "aliases": [
+      "Laniakea Beach",
+      "Turtle Beach"
+    ],
+    "country": "North Shore, Oahu",
+    "lat": 21.619,
+    "lon": -158.0852,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Rocky Point",
+    "aliases": [
+      "Rocky's"
+    ],
+    "country": "North Shore, Oahu",
+    "lat": 21.665,
+    "lon": -158.0505,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Haleiwa",
+    "aliases": [
+      "Haleiwa Ali'i Beach"
+    ],
+    "country": "Haleiwa, Oahu",
+    "lat": 21.5928,
+    "lon": -158.1034,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Makaha",
+    "aliases": [],
+    "country": "Waianae, Oahu",
+    "lat": 21.4785,
+    "lon": -158.222,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Sandy Beach",
+    "aliases": [
+      "Sandy's"
+    ],
+    "country": "Honolulu, Oahu",
+    "lat": 21.2857,
+    "lon": -157.6727,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Ala Moana Bowls",
+    "aliases": [
+      "Bowls"
+    ],
+    "country": "Honolulu, Oahu",
+    "lat": 21.2804,
+    "lon": -157.8445,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Waikiki",
+    "aliases": [
+      "Waikiki Beach",
+      "Canoes",
+      "Queens"
+    ],
+    "country": "Honolulu, Oahu",
+    "lat": 21.2766,
+    "lon": -157.8248,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Jaws",
+    "aliases": [
+      "Peahi",
+      "Pe'ahi"
+    ],
+    "country": "Haiku, Maui",
+    "lat": 20.9464,
+    "lon": -156.3014,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Honolua Bay",
+    "aliases": [],
+    "country": "Kapalua, Maui",
+    "lat": 21.0145,
+    "lon": -156.6395,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Hookipa",
+    "aliases": [
+      "Ho'okipa"
+    ],
+    "country": "Paia, Maui",
+    "lat": 20.9352,
+    "lon": -156.3556,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Hanalei Bay",
+    "aliases": [],
+    "country": "Hanalei, Kauai",
+    "lat": 22.2091,
+    "lon": -159.5068,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Sunset Beach",
+    "aliases": [
+      "Sunset California",
+      "Sunset CA"
+    ],
+    "country": "Huntington Beach, CA",
+    "lat": 33.7178,
+    "lon": -118.0725,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Tofino",
+    "aliases": [
+      "Chesterman Beach",
+      "Long Beach Tofino"
+    ],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 49.1225,
+    "lon": -125.9075,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Sebastian Inlet",
+    "aliases": [],
+    "country": "Melbourne Beach, FL",
+    "lat": 27.8603,
+    "lon": -80.4473,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Cocoa Beach",
+    "aliases": [],
+    "country": "Cocoa Beach, FL",
+    "lat": 28.32,
+    "lon": -80.6076,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "New Smyrna Beach",
+    "aliases": [
+      "NSB",
+      "Smyrna"
+    ],
+    "country": "New Smyrna Beach, FL",
+    "lat": 29.036,
+    "lon": -80.965,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Flagler Beach",
+    "aliases": [],
+    "country": "Flagler Beach, FL",
+    "lat": 29.4733,
+    "lon": -81.1289,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Cape Hatteras",
+    "aliases": [
+      "The Lighthouse"
+    ],
+    "country": "Buxton, NC",
+    "lat": 35.252,
+    "lon": -75.523,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Outer Banks",
+    "aliases": [
+      "OBX",
+      "Jennettes Pier"
+    ],
+    "country": "Kill Devil Hills, NC",
+    "lat": 36.0255,
+    "lon": -75.7141,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Folly Beach",
+    "aliases": [],
+    "country": "Folly Beach, SC",
+    "lat": 32.6558,
+    "lon": -79.9315,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Montauk",
+    "aliases": [
+      "The End",
+      "Ditch Plains"
+    ],
+    "country": "Montauk, NY",
+    "lat": 41.0402,
+    "lon": -71.9158,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Manasquan",
+    "aliases": [
+      "Squan Inlet"
+    ],
+    "country": "Manasquan, NJ",
+    "lat": 40.1137,
+    "lon": -74.0376,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Asbury Park",
+    "aliases": [],
+    "country": "Asbury Park, NJ",
+    "lat": 40.2197,
+    "lon": -73.9998,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Nantucket",
+    "aliases": [],
+    "country": "Nantucket, MA",
+    "lat": 41.2452,
+    "lon": -70.1242,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Nauset Beach",
+    "aliases": [],
+    "country": "Orleans, MA",
+    "lat": 41.7944,
+    "lon": -69.9352,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Rincon",
+    "aliases": [
+      "Rincon Puerto Rico",
+      "PR Rincon"
+    ],
+    "country": "Rincón, Puerto Rico",
+    "lat": 18.3628,
+    "lon": -67.273,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Maria's Beach",
+    "aliases": [
+      "Marias",
+      "Tres Palmas"
+    ],
+    "country": "Rincón, Puerto Rico",
+    "lat": 18.3507,
+    "lon": -67.2705,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Gas Chambers",
+    "aliases": [],
+    "country": "Rincón, Puerto Rico",
+    "lat": 18.3627,
+    "lon": -67.2765,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Wilderness",
+    "aliases": [],
+    "country": "Rincón, Puerto Rico",
+    "lat": 18.3668,
+    "lon": -67.2795,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Sandy Beach",
+    "aliases": [
+      "Sandy Beach PR"
+    ],
+    "country": "Rincón, Puerto Rico",
+    "lat": 18.3722,
+    "lon": -67.266,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Puerto Escondido",
+    "aliases": [
+      "Zicatela",
+      "Mexican Pipeline"
+    ],
+    "country": "Puerto Escondido, Oaxaca",
+    "lat": 15.8581,
+    "lon": -97.0686,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Salina Cruz",
+    "aliases": [
+      "La Punta Salina Cruz"
+    ],
+    "country": "Salina Cruz, Oaxaca",
+    "lat": 16.173,
+    "lon": -95.205,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Punta de Mita",
+    "aliases": [
+      "El Anclote"
+    ],
+    "country": "Punta de Mita, Nayarit",
+    "lat": 20.7679,
+    "lon": -105.52,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Pascuales",
+    "aliases": [],
+    "country": "Tecoman, Colima",
+    "lat": 18.8075,
+    "lon": -103.784,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "La Ticla",
+    "aliases": [],
+    "country": "La Ticla, Michoacán",
+    "lat": 18.4468,
+    "lon": -103.5615,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Scorpion Bay",
+    "aliases": [
+      "San Juanico"
+    ],
+    "country": "San Juanico, Baja California Sur",
+    "lat": 26.2555,
+    "lon": -112.478,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Los Cerritos",
+    "aliases": [
+      "Cerritos"
+    ],
+    "country": "Todos Santos, Baja California Sur",
+    "lat": 23.3268,
+    "lon": -110.1785,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Punta Abreojos",
+    "aliases": [
+      "Abreojos"
+    ],
+    "country": "Punta Abreojos, Baja California Sur",
+    "lat": 26.7169,
+    "lon": -113.5672,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Todos Santos",
+    "aliases": [
+      "Killers",
+      "Isla Todos Santos"
+    ],
+    "country": "Ensenada, Baja California",
+    "lat": 31.8112,
+    "lon": -116.7968,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Punta Baja",
+    "aliases": [],
+    "country": "El Rosario, Baja California",
+    "lat": 29.9581,
+    "lon": -115.7911,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "San Miguel",
+    "aliases": [
+      "San Miguel Point"
+    ],
+    "country": "Ensenada, Baja California",
+    "lat": 31.9018,
+    "lon": -116.7345,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "La Saladita",
+    "aliases": [],
+    "country": "Troncones, Guerrero",
+    "lat": 17.8395,
+    "lon": -101.7718,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "K38",
+    "aliases": [
+      "La Fonda"
+    ],
+    "country": "Rosarito, Baja California",
+    "lat": 32.18,
+    "lon": -117.06,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Witch's Rock",
+    "aliases": [
+      "Roca Bruja"
+    ],
+    "country": "Guanacaste, Costa Rica",
+    "lat": 10.8043,
+    "lon": -85.656,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Ollie's Point",
+    "aliases": [],
+    "country": "Guanacaste, Costa Rica",
+    "lat": 10.8598,
+    "lon": -85.7468,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Salsa Brava",
+    "aliases": [],
+    "country": "Puerto Viejo, Costa Rica",
+    "lat": 9.656,
+    "lon": -82.7237,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Pavones",
+    "aliases": [],
+    "country": "Puntarenas, Costa Rica",
+    "lat": 8.3876,
+    "lon": -83.1394,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Playa Hermosa",
+    "aliases": [
+      "Hermosa Costa Rica"
+    ],
+    "country": "Jacó, Costa Rica",
+    "lat": 9.5811,
+    "lon": -84.6206,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Playa Dominical",
+    "aliases": [
+      "Dominical"
+    ],
+    "country": "Dominical, Costa Rica",
+    "lat": 9.2507,
+    "lon": -83.8617,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Playa Guiones",
+    "aliases": [
+      "Guiones",
+      "Nosara"
+    ],
+    "country": "Nosara, Costa Rica",
+    "lat": 9.9658,
+    "lon": -85.6641,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Playa Grande",
+    "aliases": [],
+    "country": "Guanacaste, Costa Rica",
+    "lat": 10.3282,
+    "lon": -85.8514,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Punta Roca",
+    "aliases": [],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.4797,
+    "lon": -89.3265,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Las Flores",
+    "aliases": [
+      "El Salvador Las Flores"
+    ],
+    "country": "La Unión, El Salvador",
+    "lat": 13.172,
+    "lon": -88.0875,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Chicama",
+    "aliases": [
+      "Puerto Malabrigo"
+    ],
+    "country": "La Libertad, Peru",
+    "lat": -7.7,
+    "lon": -79.45,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Lobitos",
+    "aliases": [],
+    "country": "Talara, Peru",
+    "lat": -4.4528,
+    "lon": -81.2845,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Mancora",
+    "aliases": [],
+    "country": "Piura, Peru",
+    "lat": -4.103,
+    "lon": -81.056,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "La Herradura",
+    "aliases": [
+      "Herradura Peru"
+    ],
+    "country": "Lima, Peru",
+    "lat": -12.1654,
+    "lon": -77.0286,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Punta de Lobos",
+    "aliases": [],
+    "country": "Pichilemu, Chile",
+    "lat": -34.4315,
+    "lon": -72.0495,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Pichilemu",
+    "aliases": [
+      "Punta de Lobos"
+    ],
+    "country": "O'Higgins, Chile",
+    "lat": -34.3936,
+    "lon": -72.0016,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Arica",
+    "aliases": [
+      "El Gringo"
+    ],
+    "country": "Arica, Chile",
+    "lat": -18.4928,
+    "lon": -70.3283,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Iquique",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.2265,
+    "lon": -70.1525,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Fernando de Noronha",
+    "aliases": [],
+    "country": "Pernambuco, Brazil",
+    "lat": -3.8622,
+    "lon": -32.449,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Saquarema",
+    "aliases": [],
+    "country": "Rio de Janeiro, Brazil",
+    "lat": -22.9348,
+    "lon": -42.4875,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Florianopolis",
+    "aliases": [
+      "Joaquina"
+    ],
+    "country": "Santa Catarina, Brazil",
+    "lat": -27.5969,
+    "lon": -48.5495,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Praia do Rosa",
+    "aliases": [],
+    "country": "Imbituba, Brazil",
+    "lat": -28.1278,
+    "lon": -48.6405,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Supertubos",
+    "aliases": [
+      "Peniche",
+      "Portuguese Pipeline"
+    ],
+    "country": "Peniche, Portugal",
+    "lat": 39.3458,
+    "lon": -9.3883,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Praia do Norte",
+    "aliases": [
+      "Nazare",
+      "Nazaré"
+    ],
+    "country": "Nazaré, Portugal",
+    "lat": 39.6015,
+    "lon": -9.071,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Ribeira d'Ilhas",
+    "aliases": [
+      "Ericeira"
+    ],
+    "country": "Ericeira, Portugal",
+    "lat": 38.9878,
+    "lon": -9.4193,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Coxos",
+    "aliases": [],
+    "country": "Ericeira, Portugal",
+    "lat": 39.005,
+    "lon": -9.412,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Sagres",
+    "aliases": [
+      "Tonel"
+    ],
+    "country": "Sagres, Portugal",
+    "lat": 37.0076,
+    "lon": -8.9456,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Guincho",
+    "aliases": [],
+    "country": "Cascais, Portugal",
+    "lat": 38.7276,
+    "lon": -9.4761,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "La Graviere",
+    "aliases": [
+      "Hossegor",
+      "La Grav"
+    ],
+    "country": "Hossegor, France",
+    "lat": 43.6654,
+    "lon": -1.4438,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Les Culs Nuls",
+    "aliases": [
+      "Hossegor south"
+    ],
+    "country": "Hossegor, France",
+    "lat": 43.6521,
+    "lon": -1.4449,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Biarritz",
+    "aliases": [
+      "Grande Plage"
+    ],
+    "country": "Biarritz, France",
+    "lat": 43.4832,
+    "lon": -1.5586,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Cote des Basques",
+    "aliases": [
+      "Côte des Basques"
+    ],
+    "country": "Biarritz, France",
+    "lat": 43.4785,
+    "lon": -1.568,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Lacanau",
+    "aliases": [],
+    "country": "Lacanau-Océan, France",
+    "lat": 45.0004,
+    "lon": -1.1918,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Anglet",
+    "aliases": [
+      "Chambre d'Amour"
+    ],
+    "country": "Anglet, France",
+    "lat": 43.5183,
+    "lon": -1.5386,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Mundaka",
+    "aliases": [],
+    "country": "Basque Country, Spain",
+    "lat": 43.4078,
+    "lon": -2.6993,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Zarautz",
+    "aliases": [],
+    "country": "Basque Country, Spain",
+    "lat": 43.2835,
+    "lon": -2.1723,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Pantin",
+    "aliases": [],
+    "country": "Galicia, Spain",
+    "lat": 43.7128,
+    "lon": -7.8514,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "El Quemao",
+    "aliases": [
+      "Lanzarote"
+    ],
+    "country": "Lanzarote, Canary Islands",
+    "lat": 29.0997,
+    "lon": -13.5631,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Famara",
+    "aliases": [
+      "Las Dunas de Famara"
+    ],
+    "country": "Lanzarote, Canary Islands",
+    "lat": 29.1333,
+    "lon": -13.55,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "El Confital",
+    "aliases": [],
+    "country": "Gran Canaria, Canary Islands",
+    "lat": 28.1598,
+    "lon": -15.4394,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Fistral",
+    "aliases": [
+      "Fistral Beach"
+    ],
+    "country": "Newquay, Cornwall, UK",
+    "lat": 50.415,
+    "lon": -5.1,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Croyde",
+    "aliases": [
+      "Croyde Bay"
+    ],
+    "country": "North Devon, UK",
+    "lat": 51.1312,
+    "lon": -4.2415,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Saunton Sands",
+    "aliases": [
+      "Saunton"
+    ],
+    "country": "North Devon, UK",
+    "lat": 51.115,
+    "lon": -4.223,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Porthleven",
+    "aliases": [],
+    "country": "Cornwall, UK",
+    "lat": 50.0837,
+    "lon": -5.3218,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Lynmouth",
+    "aliases": [],
+    "country": "Devon, UK",
+    "lat": 51.2307,
+    "lon": -3.8293,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Thurso East",
+    "aliases": [
+      "Thurso",
+      "Shit Pipe"
+    ],
+    "country": "Thurso, Scotland",
+    "lat": 58.5968,
+    "lon": -3.5148,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Bundoran",
+    "aliases": [
+      "The Peak",
+      "Bundoran Peak"
+    ],
+    "country": "Donegal, Ireland",
+    "lat": 54.4766,
+    "lon": -8.286,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Mullaghmore",
+    "aliases": [
+      "Mullaghmore Head"
+    ],
+    "country": "Sligo, Ireland",
+    "lat": 54.4655,
+    "lon": -8.4495,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Lahinch",
+    "aliases": [
+      "Crab Island"
+    ],
+    "country": "County Clare, Ireland",
+    "lat": 52.935,
+    "lon": -9.352,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Anchor Point",
+    "aliases": [],
+    "country": "Taghazout, Morocco",
+    "lat": 30.545,
+    "lon": -9.7258,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Hash Point",
+    "aliases": [
+      "Taghazout"
+    ],
+    "country": "Taghazout, Morocco",
+    "lat": 30.5395,
+    "lon": -9.724,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Killer Point",
+    "aliases": [
+      "Killers Morocco"
+    ],
+    "country": "Taghazout, Morocco",
+    "lat": 30.5256,
+    "lon": -9.7192,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "La Source",
+    "aliases": [],
+    "country": "Taghazout, Morocco",
+    "lat": 30.5194,
+    "lon": -9.7133,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Safi",
+    "aliases": [
+      "Safi Right"
+    ],
+    "country": "Safi, Morocco",
+    "lat": 32.318,
+    "lon": -9.26,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Supertubes",
+    "aliases": [
+      "J-Bay",
+      "J Bay",
+      "Jeffrey's Bay",
+      "Jeffreys Bay",
+      "Jeffery's Bay",
+      "Jefferys Bay"
+    ],
+    "country": "Jeffrey's Bay, South Africa",
+    "lat": -34.0481,
+    "lon": 24.9313,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Boneyards",
+    "aliases": [
+      "Boneyard J-Bay",
+      "Jeffery's Bay"
+    ],
+    "country": "Jeffrey's Bay, South Africa",
+    "lat": -34.0439,
+    "lon": 24.9394,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Dungeons",
+    "aliases": [],
+    "country": "Hout Bay, South Africa",
+    "lat": -34.068,
+    "lon": 18.3275,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Cave Rock",
+    "aliases": [
+      "Bluff"
+    ],
+    "country": "Durban, South Africa",
+    "lat": -29.97,
+    "lon": 31.03,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "New Pier",
+    "aliases": [],
+    "country": "Durban, South Africa",
+    "lat": -29.86,
+    "lon": 31.049,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Elands Bay",
+    "aliases": [],
+    "country": "Western Cape, South Africa",
+    "lat": -32.3,
+    "lon": 18.3167,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Victoria Bay",
+    "aliases": [
+      "Vic Bay"
+    ],
+    "country": "George, South Africa",
+    "lat": -34.0056,
+    "lon": 22.5931,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Muizenberg",
+    "aliases": [
+      "Muizenberg Beach",
+      "Surfers Corner"
+    ],
+    "country": "Cape Town, South Africa",
+    "lat": -34.1083,
+    "lon": 18.47,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Skeleton Bay",
+    "aliases": [
+      "Donkey Bay",
+      "Lagoa"
+    ],
+    "country": "Walvis Bay, Namibia",
+    "lat": -22.9376,
+    "lon": 14.4175,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Uluwatu",
+    "aliases": [
+      "Ulu's"
+    ],
+    "country": "Uluwatu, Bali",
+    "lat": -8.8292,
+    "lon": 115.0849,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Padang Padang",
+    "aliases": [
+      "Padang"
+    ],
+    "country": "Uluwatu, Bali",
+    "lat": -8.811,
+    "lon": 115.0877,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Bingin",
+    "aliases": [
+      "Impossibles"
+    ],
+    "country": "Bukit Peninsula, Bali",
+    "lat": -8.803,
+    "lon": 115.092,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Keramas",
+    "aliases": [],
+    "country": "Gianyar, Bali",
+    "lat": -8.6558,
+    "lon": 115.2889,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Medewi",
+    "aliases": [],
+    "country": "West Bali, Indonesia",
+    "lat": -8.4722,
+    "lon": 114.6667,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Canggu",
+    "aliases": [
+      "Batu Bolong",
+      "Echo Beach"
+    ],
+    "country": "Canggu, Bali",
+    "lat": -8.6572,
+    "lon": 115.1275,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "G-Land",
+    "aliases": [
+      "Grajagan",
+      "Grajagan Bay"
+    ],
+    "country": "East Java, Indonesia",
+    "lat": -8.7245,
+    "lon": 114.344,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Desert Point",
+    "aliases": [
+      "Bangko Bangko"
+    ],
+    "country": "Lombok, Indonesia",
+    "lat": -8.7558,
+    "lon": 115.8139,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Lagundri Bay",
+    "aliases": [
+      "Nias",
+      "Sorake"
+    ],
+    "country": "Nias, Indonesia",
+    "lat": 0.572,
+    "lon": 97.735,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Macaronis",
+    "aliases": [
+      "Macas"
+    ],
+    "country": "Mentawai Islands, Indonesia",
+    "lat": -2.592,
+    "lon": 99.854,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Rifles",
+    "aliases": [
+      "Mentawai Rifles"
+    ],
+    "country": "Mentawai Islands, Indonesia",
+    "lat": -2.459,
+    "lon": 99.864,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Bank Vaults",
+    "aliases": [],
+    "country": "Mentawai Islands, Indonesia",
+    "lat": -2.442,
+    "lon": 99.873,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "HT's",
+    "aliases": [
+      "Lance's Right",
+      "Hollow Trees"
+    ],
+    "country": "Mentawai Islands, Indonesia",
+    "lat": -1.962,
+    "lon": 99.622,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "E-Bay",
+    "aliases": [
+      "Lance's Left"
+    ],
+    "country": "Mentawai Islands, Indonesia",
+    "lat": -2.021,
+    "lon": 99.631,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Pasta Point",
+    "aliases": [
+      "Dhigu"
+    ],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.2833,
+    "lon": 73.5,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Sultans",
+    "aliases": [
+      "Honky's"
+    ],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.2597,
+    "lon": 73.4765,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Chickens",
+    "aliases": [],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.25,
+    "lon": 73.47,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Arugam Bay",
+    "aliases": [
+      "A-Bay",
+      "Pottuvil Point"
+    ],
+    "country": "Pottuvil, Sri Lanka",
+    "lat": 6.8402,
+    "lon": 81.836,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Cloud 9",
+    "aliases": [
+      "Cloud Nine"
+    ],
+    "country": "Siargao, Philippines",
+    "lat": 9.8125,
+    "lon": 126.171,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "St. Leu",
+    "aliases": [
+      "Saint-Leu"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.1664,
+    "lon": 55.2869,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Trois Bassins",
+    "aliases": [],
+    "country": "Réunion Island, France",
+    "lat": -21.1,
+    "lon": 55.27,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Teahupo'o",
+    "aliases": [
+      "Chopes",
+      "Teahupoo",
+      "Tahiti"
+    ],
+    "country": "Tahiti, French Polynesia",
+    "lat": -17.849,
+    "lon": -149.2675,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Cloudbreak",
+    "aliases": [
+      "Tavarua"
+    ],
+    "country": "Tavarua, Fiji",
+    "lat": -17.8577,
+    "lon": 177.2018,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Restaurants",
+    "aliases": [
+      "Tavarua Inside"
+    ],
+    "country": "Tavarua, Fiji",
+    "lat": -17.856,
+    "lon": 177.203,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Frigates",
+    "aliases": [
+      "Frigates Passage"
+    ],
+    "country": "Pacific Harbour, Fiji",
+    "lat": -18.3333,
+    "lon": 178.0833,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Swimming Pools",
+    "aliases": [],
+    "country": "Namotu, Fiji",
+    "lat": -17.862,
+    "lon": 177.22,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Bells Beach",
+    "aliases": [
+      "Rincon of the South"
+    ],
+    "country": "Torquay, Victoria",
+    "lat": -38.3677,
+    "lon": 144.2829,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Jan Juc",
+    "aliases": [],
+    "country": "Torquay, Victoria",
+    "lat": -38.399,
+    "lon": 144.3121,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Snapper Rocks",
+    "aliases": [
+      "Superbank",
+      "Kirra Point"
+    ],
+    "country": "Gold Coast, Queensland",
+    "lat": -28.1575,
+    "lon": 153.5538,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Kirra",
+    "aliases": [],
+    "country": "Gold Coast, Queensland",
+    "lat": -28.1666,
+    "lon": 153.5313,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Burleigh Heads",
+    "aliases": [
+      "Burleigh"
+    ],
+    "country": "Gold Coast, Queensland",
+    "lat": -28.0972,
+    "lon": 153.459,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Duranbah",
+    "aliases": [
+      "D-Bah"
+    ],
+    "country": "Tweed Heads, NSW",
+    "lat": -28.1403,
+    "lon": 153.5428,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Coolangatta",
+    "aliases": [],
+    "country": "Gold Coast, Queensland",
+    "lat": -28.1697,
+    "lon": 153.5568,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Noosa",
+    "aliases": [
+      "Noosa Heads",
+      "Noosa National Park"
+    ],
+    "country": "Sunshine Coast, Queensland",
+    "lat": -26.3845,
+    "lon": 153.0939,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "The Pass",
+    "aliases": [
+      "Byron Bay"
+    ],
+    "country": "Byron Bay, NSW",
+    "lat": -28.6431,
+    "lon": 153.615,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Wategos",
+    "aliases": [
+      "Watego's Beach"
+    ],
+    "country": "Byron Bay, NSW",
+    "lat": -28.6406,
+    "lon": 153.6364,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Lennox Head",
+    "aliases": [
+      "Lennox"
+    ],
+    "country": "Lennox Head, NSW",
+    "lat": -28.7917,
+    "lon": 153.5875,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "North Narrabeen",
+    "aliases": [
+      "Narrabeen",
+      "Narra"
+    ],
+    "country": "Sydney, NSW",
+    "lat": -33.7094,
+    "lon": 151.2961,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Manly Beach",
+    "aliases": [
+      "Manly"
+    ],
+    "country": "Sydney, NSW",
+    "lat": -33.7969,
+    "lon": 151.2878,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Bondi Beach",
+    "aliases": [
+      "Bondi"
+    ],
+    "country": "Sydney, NSW",
+    "lat": -33.8918,
+    "lon": 151.2775,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "Maroubra",
+    "aliases": [
+      "Maroubra Beach"
+    ],
+    "country": "Sydney, NSW",
+    "lat": -33.95,
+    "lon": 151.26,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Cronulla",
+    "aliases": [],
+    "country": "Sydney, NSW",
+    "lat": -34.0566,
+    "lon": 151.1542,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Shipsterns Bluff",
+    "aliases": [
+      "Shippies",
+      "Shipstern"
+    ],
+    "country": "Tasman Peninsula, Tasmania",
+    "lat": -43.0943,
+    "lon": 148.0058,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Surfers Point",
+    "aliases": [
+      "Margaret River"
+    ],
+    "country": "Margaret River, WA",
+    "lat": -33.9572,
+    "lon": 114.9833,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "The Box",
+    "aliases": [],
+    "country": "Margaret River, WA",
+    "lat": -33.96,
+    "lon": 114.982,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Yallingup",
+    "aliases": [],
+    "country": "Yallingup, WA",
+    "lat": -33.6425,
+    "lon": 115.0165,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "ai-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  {
+    "name": "North Point",
+    "aliases": [],
+    "country": "Kalbarri, WA",
+    "lat": -27.699,
+    "lon": 114.167,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Raglan",
+    "aliases": [
+      "Manu Bay",
+      "Indicators",
+      "Whale Bay"
+    ],
+    "country": "Raglan, Waikato",
+    "lat": -37.8013,
+    "lon": 174.8777,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Piha",
+    "aliases": [
+      "Piha Beach"
+    ],
+    "country": "Auckland, New Zealand",
+    "lat": -36.954,
+    "lon": 174.471,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Tsurigasaki",
+    "aliases": [
+      "Shidashita",
+      "Ichinomiya Olympics"
+    ],
+    "country": "Chiba, Japan",
+    "lat": 35.3667,
+    "lon": 140.3667,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  },
+  {
+    "name": "Ichinomiya",
+    "aliases": [],
+    "country": "Chiba, Japan",
+    "lat": 35.373,
+    "lon": 140.3581,
+    "type": null,
+    "direction": null,
+    "confidence": "legacy",
+    "sources": [],
+    "verifiedOn": null
+  }
+]

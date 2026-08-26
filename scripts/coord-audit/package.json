@@ -1,0 +1,15 @@
+{
+  "name": "coord-audit",
+  "private": true,
+  "type": "module",
+  "description": "Offline coordinate-verification tooling for app/data/surf-breaks.json. Isolated from the app dependency graph on purpose — run `npm install` in THIS folder.",
+  "scripts": {
+    "audit": "node audit.mjs",
+    "xref": "node xref-surfline.mjs"
+  },
+  "dependencies": {
+    "@mapbox/vector-tile": "^2.0.3",
+    "pbf": "^4.0.1",
+    "pmtiles": "^4.5.0"
+  }
+}
