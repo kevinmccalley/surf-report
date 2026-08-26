@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { serverT } from '@/app/lib/server-t'
 import { getSubscriptionTier } from '@/app/lib/subscription'
@@ -112,50 +111,18 @@ export default async function CountryAggregatePage({ params, searchParams }: Pro
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <div className="theme-bg min-h-screen">
+      <div className="theme-bg flex h-[100dvh] flex-col overflow-hidden" style={{ minHeight: 0 }}>
         <SiteHeader />
 
-        <main className="mx-auto max-w-6xl px-4 py-8 sm:py-12" id="main-content">
-          <nav aria-label="breadcrumb" className="mb-5 text-xs text-slate-400">
-            <Link href="/" className="transition-colors hover:text-slate-200">Groundswell</Link>
-            <span className="mx-1">/</span>
-            <Link href="/regions" className="transition-colors hover:text-slate-200">{t('regions.breadcrumb')}</Link>
-            <span className="mx-1">/</span>
-            <span className="text-slate-200">{name}</span>
-          </nav>
-
-          <h1 className="mb-2 text-2xl font-bold text-white sm:text-3xl">{name}</h1>
-          <p className="mb-5 text-sm text-slate-400 sm:mb-6">
-            {t('regions.country.subtitle').replace('{country}', name)}
-          </p>
-
-          {/* Member regions */}
-          <div className="mb-6 flex flex-wrap gap-2 sm:mb-8">
-            {regions.map(r => (
-              <Link
-                key={r.slug}
-                href={`/regions/${r.slug}`}
-                className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-300 transition-colors hover:border-teal-500/40 hover:text-white"
-              >
-                {r.name}
-              </Link>
-            ))}
-          </div>
-
-          <RegionDetailClient
-            name={name}
-            points={points}
-            bounds={bounds}
-            locked={locked}
-            countryLink={null}
-          />
-
-          <div className="mt-10 border-t border-[var(--color-border)] pt-8 sm:mt-14">
-            <Link href="/regions" className="text-sm text-slate-400 transition-colors hover:text-slate-200">
-              ← {t('regions.detail.backToRegions')}
-            </Link>
-          </div>
-        </main>
+        <RegionDetailClient
+          name={name}
+          subtitle={t('regions.country.subtitle').replace('{country}', name)}
+          points={points}
+          bounds={bounds}
+          locked={locked}
+          memberRegions={regions.map(r => ({ slug: r.slug, name: r.name }))}
+          countryLink={null}
+        />
       </div>
     </>
   )
