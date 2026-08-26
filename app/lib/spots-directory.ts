@@ -12,6 +12,7 @@ export const CONTINENTS = [
   'Indian Ocean',
   'Southeast Asia',
   'Oceania & Pacific',
+  'Japan',
 ] as const
 
 // Continent-level grouping. NOT the same as the granular `SurfRegion`
@@ -63,7 +64,8 @@ function continentFromCountry(country: string): Continent {
   if (/\b(azores)\b/.test(c)) return 'Africa & Atlantic'
   if (/\b(morocco|taghazout|safi|south africa|jeffrey|durban|hout bay|george|western cape|namibia|walvis)\b/.test(c)) return 'Africa & Atlantic'
   if (/\b(maldives|malé|male|north mal|sri lanka|mauritius)\b/.test(c)) return 'Indian Ocean'
-  if (/\b(bali|uluwatu|bukit|gianyar|canggu|java|lombok|mentawai|nias|indonesia|japan|chiba|philippines|siargao)\b/.test(c)) return 'Southeast Asia'
+  if (/\b(japan|chiba|honshu|shikoku|kyushu|hokkaido)\b/.test(c)) return 'Japan'
+  if (/\b(bali|uluwatu|bukit|gianyar|canggu|java|lombok|mentawai|nias|indonesia|philippines|siargao)\b/.test(c)) return 'Southeast Asia'
   if (/\b(australia|western australia|victoria|queensland|new south wales|tasmania|margaret river|yallingup|kalbarri|new zealand|waikato|auckland|fiji|tavarua|pacific harbour|namotu)\b/.test(c)) return 'Oceania & Pacific'
   if (/\bnsw\b/.test(c)) return 'Oceania & Pacific'
   return 'North America'
@@ -121,7 +123,7 @@ function localityAndContinent(lat: number, lon: number): [string, Continent] {
   if (lat >= -1 && lat <= 8 && lon >= 72 && lon <= 75) return ['Maldives', 'Indian Ocean']
   // Southeast Asia
   if (lat >= -12 && lat <= 6 && lon >= 95 && lon <= 142) return ['Indonesia', 'Southeast Asia']
-  if (lat >= 24 && lat <= 46 && lon >= 122 && lon <= 148) return ['Japan', 'Southeast Asia']
+  if (lat >= 24 && lat <= 46 && lon >= 122 && lon <= 148) return ['Japan', 'Japan']
   // Oceania
   if (lat >= -44 && lat <= -10 && lon >= 140 && lon <= 155) return ['Australia', 'Oceania & Pacific']
   if (lat >= -36 && lat <= -20 && lon >= 112 && lon <= 130) return ['Western Australia', 'Oceania & Pacific']

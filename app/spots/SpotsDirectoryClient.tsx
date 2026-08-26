@@ -25,6 +25,7 @@ const CONTINENT_I18N: Record<string, string> = {
   'Indian Ocean':     'top100.region.indianOcean',
   'Southeast Asia':   'top100.region.southeastAsia',
   'Oceania & Pacific':'top100.region.oceania',
+  'Japan':            'top100.region.japan',
 }
 
 const WAVE_TYPE_I18N: Record<string, string> = {

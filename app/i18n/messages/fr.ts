@@ -701,6 +701,7 @@ const fr: Record<string, string> = {
   'top100.region.indianOcean':         'Océan Indien',
   'top100.region.southeastAsia':       'Asie du Sud-Est',
   'top100.region.oceania':             'Océanie & Pacifique',
+  'top100.region.japan':               'Japon',
 
   'directory.meta.title':              'Répertoire des Spots de Surf — Groundswell',
   'directory.meta.desc':               "Parcourez plus de 220 des meilleurs spots de surf au monde. Filtrez par région, triez par nom et appuyez sur n'importe quel spot pour voir les prévisions en direct.",

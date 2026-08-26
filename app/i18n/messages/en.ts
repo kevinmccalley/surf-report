@@ -702,6 +702,7 @@ const en: Record<string, string> = {
   'top100.region.indianOcean':         'Indian Ocean',
   'top100.region.southeastAsia':       'Southeast Asia',
   'top100.region.oceania':             'Oceania & Pacific',
+  'top100.region.japan':               'Japan',
 
   'directory.meta.title':              'Surf Spot Directory — Groundswell',
   'directory.meta.desc':               "Browse 220+ of the world's best surf spots. Filter by region, sort by name, and tap any break for a live wave forecast.",
