@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { serverT } from '@/app/lib/server-t'
-import { getSubscriptionTier } from '@/app/lib/subscription'
+import { getSubscriptionTier, getPickedRegions } from '@/app/lib/subscription'
 import {
   getSurfRegions,
   getSurfRegionBySlug,
@@ -55,8 +55,8 @@ export default async function RegionDetailPage({ params, searchParams }: Props) 
   const lang = (await searchParams)?.lang ?? 'en'
   const t = (key: string) => serverT(lang, key)
 
-  const tier = await getSubscriptionTier()
-  const locked = regionLockState(tier, region) === 'locked'
+  const [tier, picks] = await Promise.all([getSubscriptionTier(), getPickedRegions()])
+  const locked = regionLockState(tier, region, picks) === 'locked'
 
   const points: DetailPoint[] = getRegionMapPoints(region).map(p => ({
     ...p,
@@ -123,6 +123,9 @@ export default async function RegionDetailPage({ params, searchParams }: Props) 
           flagship={region.flagship}
           aliases={region.searchAliases}
           countryLink={countryLink}
+          regionSlug={region.slug}
+          tier={tier}
+          picks={picks}
         />
       </div>
     </>

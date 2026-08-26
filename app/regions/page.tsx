@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { serverT } from '@/app/lib/server-t'
-import { getSubscriptionTier } from '@/app/lib/subscription'
+import { getSubscriptionTier, getPickedRegions } from '@/app/lib/subscription'
 import { getSurfRegions } from '@/app/lib/surf-regions'
 import { regionLockState } from '@/app/lib/region-access'
 import SiteHeader from '@/app/components/SiteHeader'
@@ -38,7 +38,7 @@ export default async function RegionsIndexPage({ searchParams }: Props) {
   const lang = (await searchParams)?.lang ?? 'en'
   const t = (key: string) => serverT(lang, key)
 
-  const tier = await getSubscriptionTier()
+  const [tier, picks] = await Promise.all([getSubscriptionTier(), getPickedRegions()])
   const regions = getSurfRegions()
 
   const cards: RegionCard[] = regions.map(r => ({
@@ -47,7 +47,7 @@ export default async function RegionsIndexPage({ searchParams }: Props) {
     continent: r.continent,
     spotCount: r.spotSlugs.length,
     flagship: !!r.flagship,
-    locked: regionLockState(tier, r) === 'locked',
+    locked: regionLockState(tier, r, picks) === 'locked',
     aliases: r.searchAliases ?? [],
   }))
 
@@ -97,7 +97,7 @@ export default async function RegionsIndexPage({ searchParams }: Props) {
           <h1 className="mb-2 text-2xl font-bold text-white sm:text-3xl">{t('regions.heading')}</h1>
           <p className="mb-6 text-sm text-slate-400 sm:mb-10 sm:text-base">{t('regions.subtitle')}</p>
 
-          <RegionsIndexClient regions={cards} />
+          <RegionsIndexClient regions={cards} tier={tier} initialPicks={picks} />
 
           <div className="mt-10 border-t border-[var(--color-border)] pt-8 sm:mt-14">
             <Link href="/spots" className="text-sm text-slate-400 transition-colors hover:text-slate-200">

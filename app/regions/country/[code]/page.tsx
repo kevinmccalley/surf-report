@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { serverT } from '@/app/lib/server-t'
-import { getSubscriptionTier } from '@/app/lib/subscription'
+import { getSubscriptionTier, getPickedRegions } from '@/app/lib/subscription'
 import {
   getSurfRegions,
   getSurfRegionsByCountry,
@@ -63,8 +63,8 @@ export default async function CountryAggregatePage({ params, searchParams }: Pro
   const t = (key: string) => serverT(lang, key)
   const name = countryName(code)
 
-  const tier = await getSubscriptionTier()
-  const locked = countryLockState(tier, regions) === 'locked'
+  const [tier, picks] = await Promise.all([getSubscriptionTier(), getPickedRegions()])
+  const locked = countryLockState(tier, regions, picks) === 'locked'
 
   // Union every member region's spots, de-duplicated by slug, in region order.
   const seen = new Set<string>()

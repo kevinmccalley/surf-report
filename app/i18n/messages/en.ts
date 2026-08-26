@@ -740,6 +740,19 @@ const en: Record<string, string> = {
   'regions.locked.cta':                'Upgrade to unlock',
   'regions.locked.freeNote':           'Two flagship regions are fully open on the free plan.',
   'regions.country.subtitle':          'Every curated surf region in {country}, mapped together.',
+  'regions.picker.heading':            'My Regions',
+  'regions.picker.count':              '{count} of {max} unlocked',
+  'regions.picker.help':               'On the Individual plan you unlock any 5 regions. Swap them whenever you like.',
+  'regions.picker.empty':              'Pick regions below to unlock their map and forecasts.',
+  'regions.picker.remove':             'Remove {region}',
+  'regions.picker.error':              'Could not save — try again.',
+  'regions.picker.full':               'Remove one to pick another',
+  'regions.picker.pick':               'Unlock',
+  'regions.picker.unlocked':           'Unlocked',
+  'regions.picker.addCta':             'Add to My Regions',
+  'regions.picker.fullDetail':         'You have unlocked all 5 of your regions. Swap one on the Regions page to add this one.',
+  'regions.picker.manageCta':          'Manage My Regions',
+  'regions.picker.premiumCta':         'Go premium for every region',
 }
 
 export default en

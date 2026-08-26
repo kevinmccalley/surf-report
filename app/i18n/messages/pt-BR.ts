@@ -739,6 +739,19 @@ const ptBR: Record<string, string> = {
   'regions.locked.cta':                'Faça upgrade para desbloquear',
   'regions.locked.freeNote':           'Duas regiões destaque estão liberadas no plano grátis.',
   'regions.country.subtitle':          'Todas as regiões de surf selecionadas de {country}, reunidas em um mapa.',
+  'regions.picker.heading':            'Minhas regiões',
+  'regions.picker.count':              '{count} de {max} desbloqueadas',
+  'regions.picker.help':               'No plano Individual você desbloqueia 5 regiões à sua escolha. Troque quando quiser.',
+  'regions.picker.empty':              'Escolha regiões abaixo para desbloquear o mapa e as previsões.',
+  'regions.picker.remove':             'Remover {region}',
+  'regions.picker.error':              'Não foi possível salvar — tente de novo.',
+  'regions.picker.full':               'Remova uma para escolher outra',
+  'regions.picker.pick':               'Desbloquear',
+  'regions.picker.unlocked':           'Desbloqueada',
+  'regions.picker.addCta':             'Adicionar a Minhas regiões',
+  'regions.picker.fullDetail':         'Você já desbloqueou suas 5 regiões. Troque uma na página de Regiões para adicionar esta.',
+  'regions.picker.manageCta':          'Gerenciar Minhas regiões',
+  'regions.picker.premiumCta':         'Assine o premium para todas as regiões',
 }
 
 export default ptBR

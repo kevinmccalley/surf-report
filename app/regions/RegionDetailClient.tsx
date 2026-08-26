@@ -4,9 +4,12 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
+import { useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 import PaywallModal from '@/app/components/PaywallModal'
 import type { RegionMapPoint } from '@/app/lib/region-map'
+import type { SubscriptionTier } from '@/app/lib/subscription'
+import { MAX_PICKED_REGIONS } from '@/app/lib/region-picks'
 
 const RegionMap = dynamic(() => import('@/app/components/RegionMap'), {
   ssr: false,
@@ -33,6 +36,11 @@ interface Props {
   memberRegions?: { slug: string; name: string }[]
   /** Link to the country-aggregate route, when the country has more than one region. */
   countryLink?: { href: string; country: string } | null
+  /** Region slug — enables the individual-tier "add to My Regions" path on the lock panel. */
+  regionSlug?: string
+  tier?: SubscriptionTier
+  /** The viewer's current "My Regions" picks (individual tier). */
+  picks?: string[]
 }
 
 export default function RegionDetailClient({
@@ -45,11 +53,40 @@ export default function RegionDetailClient({
   aliases,
   memberRegions,
   countryLink,
+  regionSlug,
+  tier,
+  picks = [],
 }: Props) {
   const { t } = useLanguage()
   const router = useRouter()
+  const { user } = useUser()
   const [activeSlug, setActiveSlug] = useState<string | null>(null)
   const [showPaywall, setShowPaywall] = useState(false)
+  const [savingPick, setSavingPick] = useState(false)
+  const [pickError, setPickError] = useState(false)
+
+  const canPick = tier === 'individual' && !!regionSlug
+  const slotsLeft = MAX_PICKED_REGIONS - picks.length
+
+  async function addPick() {
+    if (!regionSlug || savingPick) return
+    setSavingPick(true)
+    setPickError(false)
+    try {
+      const res = await fetch('/api/regions/picks', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ picks: [...picks, regionSlug] }),
+      })
+      if (!res.ok) throw new Error(String(res.status))
+      await user?.reload()
+      router.refresh()
+    } catch {
+      setPickError(true)
+    } finally {
+      setSavingPick(false)
+    }
+  }
 
   return (
     <>
@@ -69,13 +106,50 @@ export default function RegionDetailClient({
               {t('regions.locked.title', { count: points.length, region: name })}
             </p>
             <p className="mt-1.5 max-w-sm text-sm text-slate-400">{t('regions.locked.body')}</p>
-            <button
-              onClick={() => setShowPaywall(true)}
-              className="mt-5 rounded-lg bg-teal-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-400"
-            >
-              {t('regions.locked.cta')}
-            </button>
-            <p className="mt-3 text-xs text-slate-500">{t('regions.locked.freeNote')}</p>
+
+            {canPick && slotsLeft > 0 ? (
+              <>
+                <button
+                  onClick={addPick}
+                  disabled={savingPick}
+                  className="mt-5 rounded-lg bg-teal-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-400 disabled:opacity-60"
+                >
+                  {t('regions.picker.addCta')}
+                </button>
+                <p className="mt-3 text-xs text-slate-500">
+                  {t('regions.picker.count', { count: picks.length, max: MAX_PICKED_REGIONS })}
+                </p>
+                {pickError && <p className="mt-1 text-xs text-rose-400">{t('regions.picker.error')}</p>}
+              </>
+            ) : canPick ? (
+              <>
+                <p className="mt-4 max-w-sm text-xs text-slate-500">{t('regions.picker.fullDetail')}</p>
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                  <Link
+                    href="/regions"
+                    className="rounded-lg bg-teal-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-400"
+                  >
+                    {t('regions.picker.manageCta')}
+                  </Link>
+                  <button
+                    onClick={() => setShowPaywall(true)}
+                    className="rounded-lg border border-white/15 px-4 py-2 text-sm font-medium text-slate-200 transition-colors hover:border-teal-500/50"
+                  >
+                    {t('regions.picker.premiumCta')}
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => setShowPaywall(true)}
+                  className="mt-5 rounded-lg bg-teal-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-400"
+                >
+                  {t('regions.locked.cta')}
+                </button>
+                <p className="mt-3 text-xs text-slate-500">{t('regions.locked.freeNote')}</p>
+              </>
+            )}
           </div>
         ) : (
           <div className="absolute inset-0">

@@ -26,6 +26,26 @@ export async function getSubscriptionTier(): Promise<SubscriptionTier> {
   }
 }
 
+/**
+ * The region slugs an `individual`-tier subscriber has chosen to unlock
+ * ("My Regions"). Stored on Clerk `publicMetadata.pickedRegions` — user-writable
+ * (via /api/regions/picks), same as saved locations. Returns `[]` for anon /
+ * free / on any error; callers still pass it through `regionLockState`, which
+ * only honours picks for the `individual` tier.
+ */
+export async function getPickedRegions(): Promise<string[]> {
+  try {
+    const { userId } = await auth()
+    if (!userId) return []
+    const client = await clerkClient()
+    const user = await client.users.getUser(userId)
+    const picks = (user.publicMetadata as { pickedRegions?: unknown }).pickedRegions
+    return Array.isArray(picks) ? picks.filter((s): s is string => typeof s === 'string') : []
+  } catch {
+    return []
+  }
+}
+
 export function isPremiumPriceId(priceId: string): boolean {
   return (
     priceId === process.env.STRIPE_PRICE_MONTHLY_PREMIUM ||

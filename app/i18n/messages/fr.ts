@@ -739,6 +739,19 @@ const fr: Record<string, string> = {
   'regions.locked.cta':                'Passez à l’offre supérieure pour débloquer',
   'regions.locked.freeNote':           'Deux régions phares sont entièrement ouvertes avec l’offre gratuite.',
   'regions.country.subtitle':          'Toutes les régions de surf sélectionnées de {country}, réunies sur une carte.',
+  'regions.picker.heading':            'Mes régions',
+  'regions.picker.count':              '{count} sur {max} débloquées',
+  'regions.picker.help':               'Avec la formule Individuelle, vous débloquez 5 régions au choix. Changez-les quand vous voulez.',
+  'regions.picker.empty':              'Choisissez des régions ci-dessous pour débloquer leur carte et leurs prévisions.',
+  'regions.picker.remove':             'Retirer {region}',
+  'regions.picker.error':              'Enregistrement impossible — réessayez.',
+  'regions.picker.full':               'Retirez-en une pour en choisir une autre',
+  'regions.picker.pick':               'Débloquer',
+  'regions.picker.unlocked':           'Débloquée',
+  'regions.picker.addCta':             'Ajouter à Mes régions',
+  'regions.picker.fullDetail':         'Vous avez débloqué vos 5 régions. Remplacez-en une sur la page Régions pour ajouter celle-ci.',
+  'regions.picker.manageCta':          'Gérer Mes régions',
+  'regions.picker.premiumCta':         'Passez à premium pour toutes les régions',
 }
 
 export default fr
