@@ -21,9 +21,21 @@ planet archive and host it. ~15 min of work + a long download.
 | `NEXT_PUBLIC_PMTILES_URL` | Public URL of the hosted `.pmtiles` archive | Protomaps **demo bucket** — rate-limited, dev only |
 | `NEXT_PUBLIC_MAP_ASSETS_URL` | Base URL for glyphs + sprites | `https://protomaps.github.io/basemaps-assets` (fine to keep) |
 
-Until `NEXT_PUBLIC_PMTILES_URL` is set, the site runs against
-`https://demo-bucket.protomaps.com/v4.pmtiles`. That works for local dev and
-preview, but Protomaps rate-limits it and it's not for production traffic.
+Until `NEXT_PUBLIC_PMTILES_URL` is set, the site points at
+`https://demo-bucket.protomaps.com/v4.pmtiles`. Protomaps rate-limits that
+archive and it's not for production; it has also been unreliable (it was
+unreachable during this integration). Treat "no basemap on dev" as expected
+until you set the var to your own archive — the wiring is verified by the unit
+tests; the tiles just need a real host.
+
+### Service worker
+
+`public/sw.js` now bails on any cross-origin request (`url.origin !==
+self.location.origin`). Before that fix it wrapped **every** GET in a
+network-first handler whose offline fallback returns the app shell (`/`) — so a
+cross-origin tile fetch that failed CORS came back as Groundswell's `index.html`,
+which MapLibre can't parse, and the basemap silently stayed blank. If you fork
+the SW, keep that guard.
 
 The glyph/sprite bundle (`basemaps-assets`) is a few hundred KB of static files
 on GitHub Pages' CDN — a totally different failure profile from a dynamic tile

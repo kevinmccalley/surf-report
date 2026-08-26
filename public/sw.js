@@ -1,4 +1,4 @@
-const CACHE = 'groundswell-v1'
+const CACHE = 'groundswell-v2'
 
 const PRECACHE = [
   '/',
@@ -30,9 +30,16 @@ self.addEventListener('fetch', (event) => {
   const { request } = event
   const url = new URL(request.url)
 
+  // Only ever manage same-origin GETs. Cross-origin requests (map tiles, the
+  // Protomaps PMTiles archive, font/sprite CDNs, analytics) must go straight to
+  // the network — the offline fallback below returns the app shell, which would
+  // otherwise be handed back as a bogus response for a failed tile fetch.
+  if (request.method !== 'GET' || url.origin !== self.location.origin) {
+    return
+  }
+
   // Never intercept Clerk, API routes, or non-GET requests
   if (
-    request.method !== 'GET' ||
     url.pathname.startsWith('/api/') ||
     url.hostname.includes('clerk') ||
     url.hostname.includes('stripe') ||
