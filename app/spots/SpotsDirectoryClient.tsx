@@ -4,19 +4,11 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/app/i18n/LanguageContext'
 import type { DirectorySpot } from '@/app/lib/spots-directory'
+import { CONTINENTS, type Continent } from '@/app/lib/continents'
 
-const CONTINENTS = [
-  'Hawaii',
-  'North America',
-  'Latin America',
-  'Europe',
-  'Africa & Atlantic',
-  'Indian Ocean',
-  'Southeast Asia',
-  'Oceania & Pacific',
-] as const
-
-const CONTINENT_I18N: Record<string, string> = {
+// Typed as Record<Continent, …> so adding a continent fails the build
+// until its i18n key is added here too.
+const CONTINENT_I18N: Record<Continent, string> = {
   'Hawaii':           'top100.region.hawaii',
   'North America':    'top100.region.northAmerica',
   'Latin America':    'top100.region.latinAmerica',

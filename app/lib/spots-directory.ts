@@ -2,22 +2,12 @@ import { getAllSpots, slugify } from './surf-spots'
 import { SPOTS as TOP100 } from '../top100/spots-data'
 import type { Top100Spot } from '../top100/spots-data'
 import notableRaw from './notable-spots.json'
+import type { Continent } from './continents'
 
-export const CONTINENTS = [
-  'Hawaii',
-  'North America',
-  'Latin America',
-  'Europe',
-  'Africa & Atlantic',
-  'Indian Ocean',
-  'Southeast Asia',
-  'Oceania & Pacific',
-  'Japan',
-] as const
+// Re-exported for back-compat with existing importers.
+export { CONTINENTS } from './continents'
+export type { Continent } from './continents'
 
-// Continent-level grouping. NOT the same as the granular `SurfRegion`
-// concept (e.g. "Baja Sur", "North Shore, Oahu") — see docs/surf-regions-feature-spec.md.
-export type Continent = typeof CONTINENTS[number]
 export type WaveType = 'Reef Break' | 'Beach Break' | 'Point Break' | 'River Mouth' | 'Sand Bar'
 export type Difficulty = 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert'
 
