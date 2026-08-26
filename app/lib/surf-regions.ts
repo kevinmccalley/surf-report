@@ -1,5 +1,6 @@
 import { getAllSpots, slugify, type SurfSpot } from './surf-spots'
 import type { Continent } from './continents'
+import type { RegionMapPoint } from './region-map'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SurfRegion — the granular "surf area" concept (Baja Sur, North Shore Oahu,
@@ -675,6 +676,17 @@ export function getRegionSpots(region: SurfRegion): SurfSpot[] {
     if (spot !== undefined) out.push(spot)
   }
   return out
+}
+
+/** Region spots shaped for <RegionMap> — slug, name, coords, locality. */
+export function getRegionMapPoints(region: SurfRegion): RegionMapPoint[] {
+  return getRegionSpots(region).map(spot => ({
+    slug: slugify(spot.name),
+    name: spot.name,
+    lat: spot.lat,
+    lon: spot.lon,
+    locality: spot.country,
+  }))
 }
 
 // ─── Country aggregate (derived, spec §3) ────────────────────────────────────

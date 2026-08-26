@@ -5,8 +5,10 @@ import {
   getSurfRegionsByContinent,
   getSurfRegionsByCountry,
   getRegionSpots,
+  getRegionMapPoints,
   getCountryAggregate,
 } from '../surf-regions'
+import { regionFitTarget } from '../region-map'
 import { CONTINENTS } from '../continents'
 import { getAllSpots, slugify } from '../surf-spots'
 
@@ -146,6 +148,45 @@ describe('getRegionSpots', () => {
     for (const s of spots) {
       expect(typeof s.lat).toBe('number')
       expect(typeof s.lon).toBe('number')
+    }
+  })
+})
+
+// ── getRegionMapPoints ───────────────────────────────────────────────────────
+
+describe('getRegionMapPoints', () => {
+  it('shapes every region spot as a map point with coords', () => {
+    for (const r of REGIONS) {
+      const pts = getRegionMapPoints(r)
+      expect(pts.length).toBe(r.spotSlugs.length)
+      for (const p of pts) {
+        expect(p.slug.length).toBeGreaterThan(0)
+        expect(p.name.length).toBeGreaterThan(0)
+        expect(Number.isFinite(p.lat)).toBe(true)
+        expect(Number.isFinite(p.lon)).toBe(true)
+      }
+    }
+  })
+
+  it('feeds regionFitTarget to a bounds/point view for every region', () => {
+    for (const r of REGIONS) {
+      const target = regionFitTarget(getRegionMapPoints(r), r.bounds)
+      expect(['bounds', 'point']).toContain(target.kind)
+    }
+  })
+
+  it('the fitted bbox for a multi-spot region encloses its spots', () => {
+    const socal = getSurfRegionBySlug('southern-california')!
+    const pts = getRegionMapPoints(socal)
+    const target = regionFitTarget(pts, socal.bounds)
+    expect(target.kind).toBe('bounds')
+    if (target.kind !== 'bounds') return
+    const [[s, w], [n, e]] = target.bounds
+    for (const p of pts) {
+      expect(p.lat).toBeGreaterThanOrEqual(s)
+      expect(p.lat).toBeLessThanOrEqual(n)
+      expect(p.lon).toBeGreaterThanOrEqual(w)
+      expect(p.lon).toBeLessThanOrEqual(e)
     }
   })
 })
