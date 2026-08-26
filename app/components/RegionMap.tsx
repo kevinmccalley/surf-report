@@ -66,6 +66,8 @@ export default function RegionMap({
   const markersRef = useRef<Map<string, { marker: L.Marker; index: number }>>(new Map())
   const colorRef = useRef<string>('#22d3ee')
   const fittedKeyRef = useRef<string>('')
+  // Latest camera-fit closure — re-run after the container settles to its real size.
+  const fitRef = useRef<() => void>(() => {})
 
   const { themeId } = useTheme()
 
@@ -92,12 +94,28 @@ export default function RegionMap({
 
     baseRef.current = L.maplibreGL({ style: mapStyle(isDarkTheme(themeId)) }).addTo(map)
 
-    // Flex/grid parents settle after paint — make sure Leaflet has real dimensions.
-    const ro = new ResizeObserver(() => map.invalidateSize())
+    // A full-bleed / flex container only reaches its real size after layout — and
+    // the MapLibre GL canvas won't paint (or the camera fit is computed against the
+    // wrong size) until it's nudged. Resize the Leaflet map *and* the GL map, then
+    // re-run the latest camera fit.
+    const settle = () => {
+      if (!mapRef.current) return
+      map.invalidateSize()
+      const glLayer = baseRef.current as unknown as { getMaplibreMap?: () => { resize: () => void; triggerRepaint: () => void } }
+      const gl = glLayer?.getMaplibreMap?.()
+      if (gl) {
+        gl.resize()
+        gl.triggerRepaint()
+      }
+      fitRef.current()
+    }
+    const ro = new ResizeObserver(settle)
     ro.observe(containerRef.current)
-    requestAnimationFrame(() => map.invalidateSize())
+    requestAnimationFrame(settle)
+    const t = setTimeout(settle, 250)
 
     return () => {
+      clearTimeout(t)
       ro.disconnect()
       map.remove()
       mapRef.current = null
@@ -145,21 +163,28 @@ export default function RegionMap({
       markersRef.current.set(p.slug, { marker, index })
     })
 
+    // Keep the fit as a closure so `settle` (on container resize) can re-apply it.
+    fitRef.current = () => {
+      const m = mapRef.current
+      if (!m) return
+      const target = regionFitTarget(points, bounds)
+      if (target.kind === 'empty') {
+        m.setView([20, 0], 2, { animate: false })
+      } else if (target.kind === 'point') {
+        m.setView([target.lat, target.lon], target.zoom, { animate: false })
+      } else {
+        m.fitBounds(L.latLngBounds(target.bounds[0], target.bounds[1]), {
+          padding: [fitPadding, fitPadding],
+          maxZoom: 12,
+          animate: false,
+        })
+      }
+    }
+
     const key = pointsKey(points) + '::' + (bounds ? JSON.stringify(bounds) : '')
     if (key === fittedKeyRef.current) return
     fittedKeyRef.current = key
-
-    const target = regionFitTarget(points, bounds)
-    if (target.kind === 'empty') {
-      map.setView([20, 0], 2)
-    } else if (target.kind === 'point') {
-      map.setView([target.lat, target.lon], target.zoom)
-    } else {
-      map.fitBounds(L.latLngBounds(target.bounds[0], target.bounds[1]), {
-        padding: [fitPadding, fitPadding],
-        maxZoom: 12,
-      })
-    }
+    fitRef.current()
   }, [pointsKey(points), bounds, fitPadding]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Move the emphasis without re-fitting or rebuilding. ──────────────────
