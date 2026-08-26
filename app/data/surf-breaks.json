@@ -2177,28 +2177,39 @@
   {
     "name": "St. Leu",
     "aliases": [
-      "Saint-Leu"
+      "Saint-Leu",
+      "La Gauche de Saint-Leu"
     ],
     "country": "Réunion Island, France",
-    "lat": -21.1664,
-    "lon": 55.2869,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -21.171,
+    "lon": 55.2808,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
   },
   {
     "name": "Trois Bassins",
-    "aliases": [],
+    "aliases": [
+      "3 Bassins",
+      "Trois-Bassins",
+      "Pointe des Trois Bassins"
+    ],
     "country": "Réunion Island, France",
-    "lat": -21.1,
-    "lon": 55.27,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -21.1107,
+    "lon": 55.2507,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-26"
   },
   {
     "name": "Teahupo'o",
