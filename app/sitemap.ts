@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getAllSpots, slugify } from '@/app/lib/surf-spots'
-import { getSurfRegions } from '@/app/lib/surf-regions'
+import { getSurfRegions, getSurfRegionsByCountry } from '@/app/lib/surf-regions'
 import { getAllSlugsWithDate } from '@/app/lib/sanity'
 
 // Regenerate once a day on first request — Sanity API call skipped at build time.
@@ -43,6 +43,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
+  const REGIONS_LAST_MODIFIED = new Date('2026-08-26')
+  const regionPages = [
+    { url: `${base}/regions`, changeFrequency: 'weekly' as const, priority: 0.8 },
+    { url: `${base}/regions/map`, changeFrequency: 'monthly' as const, priority: 0.7 },
+    ...getSurfRegions().map(r => ({
+      url: `${base}/regions/${r.slug}`,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    })),
+    // One country-aggregate route per country that has more than one region.
+    ...[...new Set(getSurfRegions().map(r => r.country))]
+      .filter(code => getSurfRegionsByCountry(code).length > 1)
+      .map(code => ({
+        url: `${base}/regions/country/${code.toLowerCase()}`,
+        changeFrequency: 'weekly' as const,
+        priority: 0.6,
+      })),
+  ].map(entry => ({ ...entry, lastModified: REGIONS_LAST_MODIFIED }))
+
   const blogPostsWithDate = await getAllSlugsWithDate()
   const blogIndex = {
     url: `${base}/blog`,
@@ -57,5 +76,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
-  return [...staticPages, blogIndex, ...blogPosts, ...spotPages, ...climatologyPages]
+  return [...staticPages, blogIndex, ...blogPosts, ...regionPages, ...spotPages, ...climatologyPages]
 }

@@ -752,6 +752,12 @@ const fr: Record<string, string> = {
   'regions.picker.fullDetail':         'Vous avez débloqué vos 5 régions. Remplacez-en une sur la page Régions pour ajouter celle-ci.',
   'regions.picker.manageCta':          'Gérer Mes régions',
   'regions.picker.premiumCta':         'Passez à premium pour toutes les régions',
+  'regions.map.linkCta':               'Explorer la carte du monde',
+  'regions.map.meta.title':            'Atlas du Surf — Groundswell',
+  'regions.map.meta.desc':             'Une carte zoomable de toutes les régions de surf sélectionnées. Survolez pour en éclairer une, ouvrez-la d’un clic, zoomez pour voir chaque spot.',
+  'regions.map.heading':               'Atlas du Surf',
+  'regions.map.stats':                 '{regions} régions · {spots} spots',
+  'regions.map.hint':                  'Survolez une région pour l’éclairer · cliquez pour l’ouvrir · zoomez pour les spots',
 }
 
 export default fr

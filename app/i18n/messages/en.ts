@@ -753,6 +753,12 @@ const en: Record<string, string> = {
   'regions.picker.fullDetail':         'You have unlocked all 5 of your regions. Swap one on the Regions page to add this one.',
   'regions.picker.manageCta':          'Manage My Regions',
   'regions.picker.premiumCta':         'Go premium for every region',
+  'regions.map.linkCta':               'Explore the world map',
+  'regions.map.meta.title':            'Surf Atlas — Groundswell',
+  'regions.map.meta.desc':             'A zoomable map of every curated surf region. Hover to light one up, open it in a click, zoom in for the individual breaks.',
+  'regions.map.heading':               'Surf Atlas',
+  'regions.map.stats':                 '{regions} regions · {spots} breaks',
+  'regions.map.hint':                  'Hover a region to light it up · click to open · zoom in for the breaks',
 }
 
 export default en

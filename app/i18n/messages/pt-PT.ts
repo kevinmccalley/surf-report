@@ -752,6 +752,12 @@ const ptPT: Record<string, string> = {
   'regions.picker.fullDetail':         'Já desbloqueaste as tuas 5 regiões. Troca uma na página de Regiões para adicionar esta.',
   'regions.picker.manageCta':          'Gerir As minhas regiões',
   'regions.picker.premiumCta':         'Muda para premium para todas as regiões',
+  'regions.map.linkCta':               'Explorar o mapa-múndi',
+  'regions.map.meta.title':            'Atlas do Surf — Groundswell',
+  'regions.map.meta.desc':             'Um mapa com zoom de todas as regiões de surf selecionadas. Passa o cursor para acender uma, abre-a com um clique e aproxima para veres cada pico.',
+  'regions.map.heading':               'Atlas do Surf',
+  'regions.map.stats':                 '{regions} regiões · {spots} picos',
+  'regions.map.hint':                  'Passa o cursor sobre uma região para a acender · clica para abrir · aproxima para veres os picos',
 }
 
 export default ptPT

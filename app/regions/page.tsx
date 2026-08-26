@@ -95,7 +95,20 @@ export default async function RegionsIndexPage({ searchParams }: Props) {
           </nav>
 
           <h1 className="mb-2 text-2xl font-bold text-white sm:text-3xl">{t('regions.heading')}</h1>
-          <p className="mb-6 text-sm text-slate-400 sm:mb-10 sm:text-base">{t('regions.subtitle')}</p>
+          <p className="mb-4 text-sm text-slate-400 sm:text-base">{t('regions.subtitle')}</p>
+
+          <Link
+            href="/regions/map"
+            className="mb-6 inline-flex items-center gap-2 rounded-lg border border-teal-500/30 bg-teal-500/10 px-3.5 py-2 text-sm font-medium text-teal-200 transition-colors hover:border-teal-400/60 hover:bg-teal-500/15 sm:mb-10"
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3M3.6 9h16.8M3.6 15h16.8" />
+            </svg>
+            {t('regions.map.linkCta')}
+            <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </Link>
 
           <RegionsIndexClient regions={cards} tier={tier} initialPicks={picks} />
 
