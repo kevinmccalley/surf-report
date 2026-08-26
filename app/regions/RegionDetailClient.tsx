@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
@@ -10,6 +10,8 @@ import PaywallModal from '@/app/components/PaywallModal'
 import type { RegionMapPoint } from '@/app/lib/region-map'
 import type { SubscriptionTier } from '@/app/lib/subscription'
 import { MAX_PICKED_REGIONS } from '@/app/lib/region-picks'
+import { ratingColor, type SpotConditions, type RegionConditionsSnapshot } from '@/app/lib/spot-conditions'
+import { formatWaveHeight } from '@/app/lib/utils'
 
 const RegionMap = dynamic(() => import('@/app/components/RegionMap'), {
   ssr: false,
@@ -64,9 +66,24 @@ export default function RegionDetailClient({
   const [showPaywall, setShowPaywall] = useState(false)
   const [savingPick, setSavingPick] = useState(false)
   const [pickError, setPickError] = useState(false)
+  const [conditions, setConditions] = useState<Record<string, SpotConditions>>()
 
   const canPick = tier === 'individual' && !!regionSlug
   const slotsLeft = MAX_PICKED_REGIONS - picks.length
+
+  // Premium: pull the live-conditions snapshot once and colour the map pins by
+  // rating. Skipped for other tiers and when the map isn't shown (locked).
+  useEffect(() => {
+    if (tier !== 'premium' || locked) return
+    let cancelled = false
+    fetch('/api/regions/conditions')
+      .then(res => (res.ok ? res.json() : null))
+      .then((data: RegionConditionsSnapshot | null) => {
+        if (!cancelled && data?.spots) setConditions(data.spots)
+      })
+      .catch(() => {})
+    return () => { cancelled = true }
+  }, [tier, locked])
 
   async function addPick() {
     if (!regionSlug || savingPick) return
@@ -157,6 +174,7 @@ export default function RegionDetailClient({
               points={points}
               bounds={bounds}
               activeSlug={activeSlug}
+              conditions={conditions}
               onHover={setActiveSlug}
               onSelect={slug => {
                 const p = points.find(pt => pt.slug === slug)
@@ -212,14 +230,28 @@ export default function RegionDetailClient({
 
             <ol className="flex flex-col gap-1.5">
               {points.map((p, i) => {
+                const cond = conditions?.[p.slug]
                 const inner = (
                   <>
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal-500/15 text-[11px] font-bold text-teal-300 tabular-nums">
+                    <span
+                      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-bold tabular-nums"
+                      style={
+                        cond
+                          ? { background: `${ratingColor(cond.ratingLabel) ?? '#14b8a6'}22`, color: ratingColor(cond.ratingLabel) ?? '#5eead4' }
+                          : { background: 'rgba(20,184,166,0.15)', color: '#5eead4' }
+                      }
+                    >
                       {i + 1}
                     </span>
                     <span className="min-w-0">
                       <span className="block truncate text-sm font-medium text-white">{p.name}</span>
-                      {p.locality && <span className="block truncate text-xs text-slate-500">{p.locality}</span>}
+                      {cond ? (
+                        <span className="block truncate text-xs tabular-nums" style={{ color: ratingColor(cond.ratingLabel) ?? '#94a3b8' }}>
+                          {formatWaveHeight(cond.waveHeight, 'ft')} · {Math.round(cond.wavePeriod)}s · {Math.round(cond.windSpeed)} km/h {cond.swellDirLabel}
+                        </span>
+                      ) : (
+                        p.locality && <span className="block truncate text-xs text-slate-500">{p.locality}</span>
+                      )}
                     </span>
                   </>
                 )

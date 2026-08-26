@@ -10,6 +10,8 @@ import { THEMES } from '@/app/lib/themes'
 import { mapStyle } from '@/app/lib/map-style'
 import { registerPmtilesProtocol } from '@/app/lib/pmtiles-protocol'
 import { regionFitTarget, pointsKey, type RegionMapPoint } from '@/app/lib/region-map'
+import { ratingColor, type SpotConditions } from '@/app/lib/spot-conditions'
+import { formatWaveHeight } from '@/app/lib/utils'
 
 interface Props {
   /** Spots to plot, in list order — the marker badge shows the 1-based index. */
@@ -24,6 +26,8 @@ interface Props {
   onHover?: (slug: string | null) => void
   /** Padding in px applied when fitting bounds. */
   fitPadding?: number
+  /** Premium live-conditions by break slug — colours pins by rating + enriches the tooltip. */
+  conditions?: Record<string, SpotConditions>
   className?: string
 }
 
@@ -59,6 +63,7 @@ export default function RegionMap({
   onSelect,
   onHover,
   fitPadding = 48,
+  conditions,
   className,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -71,6 +76,23 @@ export default function RegionMap({
   const fitRef = useRef<() => void>(() => {})
 
   const { themeId } = useTheme()
+
+  // Keep the freshest conditions in a ref so effects can read them without
+  // being in every dependency array.
+  const conditionsRef = useRef(conditions)
+  useEffect(() => { conditionsRef.current = conditions }, [conditions])
+
+  const nameFor = (slug: string) => points.find(p => p.slug === slug)?.name ?? slug
+  const pinColor = (slug: string) =>
+    ratingColor(conditionsRef.current?.[slug]?.ratingLabel) ?? colorRef.current
+  const tooltipFor = (slug: string) => {
+    const c = conditionsRef.current?.[slug]
+    if (!c) return nameFor(slug)
+    return (
+      `${nameFor(slug)} — ${formatWaveHeight(c.waveHeight, 'ft')} · ` +
+      `${Math.round(c.wavePeriod)}s · ${Math.round(c.windSpeed)} km/h ${c.swellDirLabel}`
+    )
+  }
 
   // Keep callbacks fresh without re-binding every marker.
   const onSelectRef = useRef(onSelect)
@@ -134,9 +156,9 @@ export default function RegionMap({
     if (baseRef.current) baseRef.current.remove()
     baseRef.current = L.maplibreGL({ style: mapStyle(isDarkTheme(themeId)) }).addTo(map)
     colorRef.current = accentColor()
-    // Recolour existing markers to the new theme accent.
+    // Recolour existing markers — rating colour wins over the theme accent.
     for (const [slug, { marker, index }] of markersRef.current) {
-      marker.setIcon(makeMarkerIcon(index, colorRef.current, slug === activeSlug))
+      marker.setIcon(makeMarkerIcon(index, pinColor(slug), slug === activeSlug))
     }
   }, [themeId]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -151,13 +173,13 @@ export default function RegionMap({
 
     points.forEach((p, index) => {
       const marker = L.marker([p.lat, p.lon], {
-        icon: makeMarkerIcon(index, colorRef.current, p.slug === activeSlug),
+        icon: makeMarkerIcon(index, pinColor(p.slug), p.slug === activeSlug),
         title: p.name,
         alt: p.name,
         riseOnHover: true,
         keyboard: true,
       })
-      marker.bindTooltip(p.name, { direction: 'top', offset: [0, -12], className: 'region-map-tip' })
+      marker.bindTooltip(tooltipFor(p.slug), { direction: 'top', offset: [0, -12], className: 'region-map-tip' })
       marker.on('click', () => onSelectRef.current?.(p.slug))
       marker.on('mouseover', () => onHoverRef.current?.(p.slug))
       marker.on('mouseout', () => onHoverRef.current?.(null))
@@ -193,10 +215,19 @@ export default function RegionMap({
   useEffect(() => {
     for (const [slug, { marker, index }] of markersRef.current) {
       const active = slug === activeSlug
-      marker.setIcon(makeMarkerIcon(index, colorRef.current, active))
+      marker.setIcon(makeMarkerIcon(index, pinColor(slug), active))
       marker.setZIndexOffset(active ? 1000 : 0)
     }
-  }, [activeSlug])
+  }, [activeSlug]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ── Live conditions arrived (or changed) — recolour pins + enrich tooltips,
+  //    no rebuild, no re-fit. ────────────────────────────────────────────────
+  useEffect(() => {
+    for (const [slug, { marker, index }] of markersRef.current) {
+      marker.setIcon(makeMarkerIcon(index, pinColor(slug), slug === activeSlug))
+      marker.setTooltipContent(tooltipFor(slug))
+    }
+  }, [conditions]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

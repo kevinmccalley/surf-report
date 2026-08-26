@@ -1,8 +1,22 @@
 # Surf Regions — Phase 8 scope: premium live-conditions layer
 
-Status: **scoping, not started.** Phases 1–7 are live. Spec §9 item 8 says to
-scope this one separately because it's "the biggest single chunk of net-new
-backend work in the whole spec" — this doc is that scope.
+Status: **built (MVP), on `dev`.** Decisions below resolved 2026-08-26.
+
+Decisions taken:
+
+1. **Standalone 6-hourly cron**, free tier — *not* folded into epic-now (the two
+   spot lists overlap on only 1 of 178, so folding in saves nothing) and *not*
+   the €29/mo Open-Meteo commercial plan. 3h refresh later = set
+   `OPEN_METEO_API_KEY`, no code change.
+2. **Region detail maps only.** The world-atlas break pins stay a free browse
+   layer.
+3. **Coloured pins + wave/period/wind tooltip**, plus the same compact line in
+   the panel's break list. No "best right now" sorted list (possible follow-up).
+4. Shipped as Phase 8 now.
+
+Follow-ups noted: respect the ft/m toggle in the tooltip (app has no persisted
+units pref today — using ft, the app-wide default); world-map pins; "best in
+region now" list.
 
 ## 1. What Phase 8 is (spec §7)
 
