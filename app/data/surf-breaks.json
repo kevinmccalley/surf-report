@@ -297,13 +297,17 @@
       "Pipe"
     ],
     "country": "North Shore, Oahu",
-    "lat": 21.6649,
-    "lon": -158.053,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 21.6641,
+    "lon": -158.0539,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "verified",
+    "sources": [
+      "wikipedia",
+      "latitude-to",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Backdoor",
@@ -313,11 +317,14 @@
     "country": "North Shore, Oahu",
     "lat": 21.6645,
     "lon": -158.0528,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Off The Wall",
@@ -328,11 +335,14 @@
     "country": "North Shore, Oahu",
     "lat": 21.6625,
     "lon": -158.0505,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Sunset Beach",
@@ -343,23 +353,30 @@
     "country": "North Shore, Oahu",
     "lat": 21.6786,
     "lon": -158.0404,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Waimea Bay",
     "aliases": [],
     "country": "Haleiwa, Oahu",
-    "lat": 21.6432,
-    "lon": -158.0638,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 21.642,
+    "lon": -158.0648,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Laniakea",
@@ -370,11 +387,14 @@
     "country": "North Shore, Oahu",
     "lat": 21.619,
     "lon": -158.0852,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Rocky Point",
@@ -384,14 +404,14 @@
     "country": "North Shore, Oahu",
     "lat": 21.665,
     "lon": -158.0505,
-    "type": null,
-    "direction": null,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "editorial-placement",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Haleiwa",
@@ -399,13 +419,16 @@
       "Haleiwa Ali'i Beach"
     ],
     "country": "Haleiwa, Oahu",
-    "lat": 21.5928,
-    "lon": -158.1034,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 21.5941,
+    "lon": -158.1082,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Makaha",
@@ -725,87 +748,96 @@
     "verifiedOn": null
   },
   {
-    "name": "Rincon",
+    "name": "Domes",
     "aliases": [
-      "Rincon Puerto Rico",
-      "PR Rincon"
+      "Rincon",
+      "Rincón",
+      "Domes Beach"
     ],
     "country": "Rincón, Puerto Rico",
-    "lat": 18.3628,
-    "lon": -67.273,
-    "type": null,
-    "direction": null,
+    "lat": 18.3641,
+    "lon": -67.2702,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wikipedia",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Maria's Beach",
     "aliases": [
       "Marias",
-      "Tres Palmas"
+      "Maria's"
     ],
     "country": "Rincón, Puerto Rico",
-    "lat": 18.3507,
-    "lon": -67.2705,
-    "type": null,
-    "direction": null,
+    "lat": 18.3574,
+    "lon": -67.2694,
+    "type": "reef",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Gas Chambers",
-    "aliases": [],
-    "country": "Rincón, Puerto Rico",
-    "lat": 18.3627,
-    "lon": -67.2765,
-    "type": null,
-    "direction": null,
+    "aliases": [
+      "Gas Chambers Aguadilla"
+    ],
+    "country": "Aguadilla, Puerto Rico",
+    "lat": 18.4602,
+    "lon": -67.1656,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Wilderness",
-    "aliases": [],
-    "country": "Rincón, Puerto Rico",
-    "lat": 18.3668,
-    "lon": -67.2795,
-    "type": null,
-    "direction": null,
+    "aliases": [
+      "Wilderness Aguadilla",
+      "Playa Brava"
+    ],
+    "country": "Aguadilla, Puerto Rico",
+    "lat": 18.4762,
+    "lon": -67.1692,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Sandy Beach",
     "aliases": [
-      "Sandy Beach PR"
+      "Sandy Beach PR",
+      "Playa Sandy Beach"
     ],
     "country": "Rincón, Puerto Rico",
-    "lat": 18.3722,
-    "lon": -67.266,
-    "type": null,
-    "direction": null,
+    "lat": 18.3707,
+    "lon": -67.2578,
+    "type": "beach",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "puerto-rico-beach-finder",
+      "discover-puerto-rico",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Puerto Escondido",
@@ -1905,13 +1937,16 @@
       "Ulu's"
     ],
     "country": "Uluwatu, Bali",
-    "lat": -8.8292,
-    "lon": 115.0849,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -8.8166,
+    "lon": 115.0863,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Padang Padang",
@@ -1919,51 +1954,64 @@
       "Padang"
     ],
     "country": "Uluwatu, Bali",
-    "lat": -8.811,
-    "lon": 115.0877,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -8.8111,
+    "lon": 115.1012,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Bingin",
-    "aliases": [
-      "Impossibles"
-    ],
+    "aliases": [],
     "country": "Bukit Peninsula, Bali",
-    "lat": -8.803,
-    "lon": 115.092,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -8.8041,
+    "lon": 115.1133,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Keramas",
     "aliases": [],
     "country": "Gianyar, Bali",
-    "lat": -8.6558,
-    "lon": 115.2889,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -8.5976,
+    "lon": 115.3391,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Medewi",
-    "aliases": [],
+    "aliases": [
+      "Medewi Point"
+    ],
     "country": "West Bali, Indonesia",
-    "lat": -8.4722,
-    "lon": 114.6667,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -8.4278,
+    "lon": 114.7905,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Canggu",
@@ -1974,14 +2022,14 @@
     "country": "Canggu, Bali",
     "lat": -8.6572,
     "lon": 115.1275,
-    "type": null,
-    "direction": null,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "G-Land",
@@ -2636,5 +2684,1245 @@
     "confidence": "legacy",
     "sources": [],
     "verifiedOn": null
+  },
+  {
+    "name": "Montara State Beach",
+    "aliases": [],
+    "country": "Montara, CA",
+    "lat": 37.556,
+    "lon": -122.517,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Rockaway Beach",
+    "aliases": [],
+    "country": "Pacifica, CA",
+    "lat": 37.6045,
+    "lon": -122.501,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Gray Whale Cove",
+    "aliases": [
+      "Devil's Slide"
+    ],
+    "country": "Montara, CA",
+    "lat": 37.5685,
+    "lon": -122.5175,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Bolinas",
+    "aliases": [
+      "The Patch"
+    ],
+    "country": "Bolinas, CA",
+    "lat": 37.9055,
+    "lon": -122.6835,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Stinson Beach",
+    "aliases": [],
+    "country": "Stinson Beach, CA",
+    "lat": 37.903,
+    "lon": -122.647,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Rodeo Beach",
+    "aliases": [
+      "Fort Cronkhite",
+      "Rodeo Cove"
+    ],
+    "country": "Marin Headlands, CA",
+    "lat": 37.8322,
+    "lon": -122.5405,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Cowell's",
+    "aliases": [
+      "Cowells",
+      "Cowell Beach"
+    ],
+    "country": "Santa Cruz, CA",
+    "lat": 36.962,
+    "lon": -122.0225,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "The Hook",
+    "aliases": [
+      "Hook",
+      "41st Avenue"
+    ],
+    "country": "Santa Cruz, CA",
+    "lat": 36.9588,
+    "lon": -121.9645,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "26th Avenue",
+    "aliases": [
+      "26th Ave"
+    ],
+    "country": "Santa Cruz, CA",
+    "lat": 36.957,
+    "lon": -121.982,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Davenport Landing",
+    "aliases": [
+      "Davenport"
+    ],
+    "country": "Davenport, CA",
+    "lat": 37.018,
+    "lon": -122.2028,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Scott Creek",
+    "aliases": [],
+    "country": "Davenport, CA",
+    "lat": 37.0415,
+    "lon": -122.232,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Waddell Creek",
+    "aliases": [
+      "Waddell Creek Beach"
+    ],
+    "country": "Santa Cruz County, CA",
+    "lat": 37.096,
+    "lon": -122.2775,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Four Mile",
+    "aliases": [
+      "Four Mile Beach"
+    ],
+    "country": "Santa Cruz, CA",
+    "lat": 36.9846,
+    "lon": -122.1572,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Natural Bridges",
+    "aliases": [
+      "Natural Bridges State Beach"
+    ],
+    "country": "Santa Cruz, CA",
+    "lat": 36.9495,
+    "lon": -122.0595,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Capitola",
+    "aliases": [
+      "Capitola Jetty"
+    ],
+    "country": "Capitola, CA",
+    "lat": 36.9715,
+    "lon": -121.949,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Manresa State Beach",
+    "aliases": [
+      "Manresa"
+    ],
+    "country": "La Selva Beach, CA",
+    "lat": 36.919,
+    "lon": -121.856,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Asilomar",
+    "aliases": [
+      "Asilomar State Beach"
+    ],
+    "country": "Pacific Grove, CA",
+    "lat": 36.619,
+    "lon": -121.9425,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Carmel Beach",
+    "aliases": [],
+    "country": "Carmel-by-the-Sea, CA",
+    "lat": 36.5545,
+    "lon": -121.9315,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Point Arena",
+    "aliases": [],
+    "country": "Point Arena, CA",
+    "lat": 38.913,
+    "lon": -123.711,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Salmon Creek",
+    "aliases": [
+      "Salmon Creek Beach"
+    ],
+    "country": "Bodega Bay, CA",
+    "lat": 38.353,
+    "lon": -123.0695,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Dillon Beach",
+    "aliases": [],
+    "country": "Dillon Beach, CA",
+    "lat": 38.249,
+    "lon": -122.9725,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Jalama",
+    "aliases": [
+      "Jalama Beach"
+    ],
+    "country": "Lompoc, CA",
+    "lat": 34.5127,
+    "lon": -120.501,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Sandspit",
+    "aliases": [
+      "Santa Barbara Sandspit"
+    ],
+    "country": "Santa Barbara, CA",
+    "lat": 34.4033,
+    "lon": -119.6912,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Campus Point",
+    "aliases": [
+      "UCSB",
+      "Campus"
+    ],
+    "country": "Goleta, CA",
+    "lat": 34.4085,
+    "lon": -119.8435,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Hammond's",
+    "aliases": [
+      "Hammonds",
+      "Hammonds Reef"
+    ],
+    "country": "Montecito, CA",
+    "lat": 34.4187,
+    "lon": -119.6295,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Pitas Point",
+    "aliases": [
+      "Faria",
+      "Rincon Island"
+    ],
+    "country": "Ventura, CA",
+    "lat": 34.33,
+    "lon": -119.402,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "County Line",
+    "aliases": [
+      "Neptune's Net"
+    ],
+    "country": "Ventura County, CA",
+    "lat": 34.053,
+    "lon": -118.964,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Point Dume",
+    "aliases": [
+      "Little Dume"
+    ],
+    "country": "Malibu, CA",
+    "lat": 34.0,
+    "lon": -118.806,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Topanga",
+    "aliases": [
+      "Topanga Point"
+    ],
+    "country": "Topanga, CA",
+    "lat": 34.0388,
+    "lon": -118.5825,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Lunada Bay",
+    "aliases": [],
+    "country": "Palos Verdes Estates, CA",
+    "lat": 33.7773,
+    "lon": -118.4265,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Torrance Beach",
+    "aliases": [
+      "Rat Beach"
+    ],
+    "country": "Torrance, CA",
+    "lat": 33.8085,
+    "lon": -118.394,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "The Wedge",
+    "aliases": [
+      "Wedge"
+    ],
+    "country": "Newport Beach, CA",
+    "lat": 33.593,
+    "lon": -117.882,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Doheny",
+    "aliases": [
+      "Doheny State Beach"
+    ],
+    "country": "Dana Point, CA",
+    "lat": 33.461,
+    "lon": -117.686,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Oceanside Pier",
+    "aliases": [
+      "Oceanside"
+    ],
+    "country": "Oceanside, CA",
+    "lat": 33.193,
+    "lon": -117.386,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Cardiff Reef",
+    "aliases": [
+      "Cardiff",
+      "Cardiff-by-the-Sea"
+    ],
+    "country": "Cardiff-by-the-Sea, CA",
+    "lat": 33.017,
+    "lon": -117.281,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Scripps",
+    "aliases": [
+      "La Jolla Shores",
+      "Scripps Pier"
+    ],
+    "country": "La Jolla, CA",
+    "lat": 32.867,
+    "lon": -117.2545,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Sunset Cliffs",
+    "aliases": [
+      "Ab",
+      "Garbage"
+    ],
+    "country": "San Diego, CA",
+    "lat": 32.716,
+    "lon": -117.256,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Garrapata",
+    "aliases": [
+      "Garrapata State Park",
+      "Garrapata Beach"
+    ],
+    "country": "Big Sur, CA",
+    "lat": 36.464,
+    "lon": -121.944,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Andrew Molera",
+    "aliases": [
+      "Big Sur Rivermouth",
+      "Molera"
+    ],
+    "country": "Big Sur, CA",
+    "lat": 36.2855,
+    "lon": -121.863,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Sand Dollar Beach",
+    "aliases": [
+      "Sand Dollar"
+    ],
+    "country": "Big Sur, CA",
+    "lat": 35.921,
+    "lon": -121.47,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Moonstone Beach",
+    "aliases": [
+      "Cambria",
+      "Moonstone"
+    ],
+    "country": "Cambria, CA",
+    "lat": 35.572,
+    "lon": -121.117,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Cayucos Pier",
+    "aliases": [
+      "Cayucos"
+    ],
+    "country": "Cayucos, CA",
+    "lat": 35.443,
+    "lon": -120.903,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Morro Strand",
+    "aliases": [
+      "Morro Strand State Beach",
+      "Studio Drive"
+    ],
+    "country": "Morro Bay, CA",
+    "lat": 35.403,
+    "lon": -120.869,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Pirate's Cove",
+    "aliases": [
+      "Shell Beach",
+      "Pirates Cove"
+    ],
+    "country": "Shell Beach, CA",
+    "lat": 35.159,
+    "lon": -120.679,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Point Sal",
+    "aliases": [
+      "Point Sal State Beach"
+    ],
+    "country": "Santa Barbara County, CA",
+    "lat": 34.902,
+    "lon": -120.669,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Carcavelos",
+    "aliases": [
+      "Praia de Carcavelos"
+    ],
+    "country": "Carcavelos, Portugal",
+    "lat": 38.6783,
+    "lon": -9.3352,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Sao Juliao",
+    "aliases": [
+      "São Julião",
+      "Praia de São Julião"
+    ],
+    "country": "Ericeira, Portugal",
+    "lat": 38.8515,
+    "lon": -9.4275,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Foz do Lizandro",
+    "aliases": [
+      "Foz Lizandro"
+    ],
+    "country": "Ericeira, Portugal",
+    "lat": 38.9423,
+    "lon": -9.417,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Baleal",
+    "aliases": [
+      "Praia do Baleal",
+      "Baleal Norte"
+    ],
+    "country": "Peniche, Portugal",
+    "lat": 39.3735,
+    "lon": -9.3342,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Molhe Leste",
+    "aliases": [
+      "Peniche Molhe Leste",
+      "East Jetty"
+    ],
+    "country": "Peniche, Portugal",
+    "lat": 39.3505,
+    "lon": -9.3722,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Costa da Caparica",
+    "aliases": [
+      "Caparica",
+      "CDS"
+    ],
+    "country": "Costa da Caparica, Portugal",
+    "lat": 38.6455,
+    "lon": -9.243,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Matosinhos",
+    "aliases": [
+      "Praia de Matosinhos"
+    ],
+    "country": "Porto, Portugal",
+    "lat": 41.177,
+    "lon": -8.7015,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Espinho",
+    "aliases": [
+      "Praia de Espinho"
+    ],
+    "country": "Espinho, Portugal",
+    "lat": 41.0075,
+    "lon": -8.647,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Cabedelo",
+    "aliases": [
+      "Cabedelo de Viana",
+      "Praia do Cabedelo"
+    ],
+    "country": "Viana do Castelo, Portugal",
+    "lat": 41.676,
+    "lon": -8.833,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Arrifana",
+    "aliases": [
+      "Praia da Arrifana"
+    ],
+    "country": "Aljezur, Portugal",
+    "lat": 37.2944,
+    "lon": -8.8713,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Praia do Amado",
+    "aliases": [
+      "Amado",
+      "Carrapateira"
+    ],
+    "country": "Aljezur, Portugal",
+    "lat": 37.1667,
+    "lon": -8.904,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Zavial",
+    "aliases": [
+      "Praia do Zavial"
+    ],
+    "country": "Vila do Bispo, Portugal",
+    "lat": 37.0457,
+    "lon": -8.8705,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "La Nord",
+    "aliases": [
+      "Hossegor La Nord"
+    ],
+    "country": "Hossegor, France",
+    "lat": 43.677,
+    "lon": -1.4445,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "La Sud",
+    "aliases": [
+      "Hossegor La Sud"
+    ],
+    "country": "Hossegor, France",
+    "lat": 43.66,
+    "lon": -1.4465,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Les Bourdaines",
+    "aliases": [
+      "Bourdaines",
+      "Seignosse Les Bourdaines"
+    ],
+    "country": "Seignosse, France",
+    "lat": 43.682,
+    "lon": -1.4432,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Les Estagnots",
+    "aliases": [
+      "Estagnots",
+      "Seignosse Les Estagnots"
+    ],
+    "country": "Seignosse, France",
+    "lat": 43.6862,
+    "lon": -1.4408,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "La Piste",
+    "aliases": [
+      "Capbreton La Piste",
+      "Le Prevent"
+    ],
+    "country": "Capbreton, France",
+    "lat": 43.6455,
+    "lon": -1.4485,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Les Cavaliers",
+    "aliases": [
+      "Cavaliers",
+      "Anglet Les Cavaliers"
+    ],
+    "country": "Anglet, France",
+    "lat": 43.531,
+    "lon": -1.527,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Les Sables d'Or",
+    "aliases": [
+      "Sables d'Or",
+      "Anglet Sables d'Or"
+    ],
+    "country": "Anglet, France",
+    "lat": 43.5265,
+    "lon": -1.5335,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Parlementia",
+    "aliases": [
+      "Guethary",
+      "Parlementia Guethary"
+    ],
+    "country": "Guethary, France",
+    "lat": 43.4278,
+    "lon": -1.613,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Avalanche",
+    "aliases": [
+      "Guethary Avalanche"
+    ],
+    "country": "Guethary, France",
+    "lat": 43.426,
+    "lon": -1.615,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Cenitz",
+    "aliases": [
+      "Cenitz Guethary"
+    ],
+    "country": "Guethary, France",
+    "lat": 43.4185,
+    "lon": -1.638,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Lafitenia",
+    "aliases": [
+      "Lafitenia Bay",
+      "Saint-Jean-de-Luz"
+    ],
+    "country": "Saint-Jean-de-Luz, France",
+    "lat": 43.4075,
+    "lon": -1.6555,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Hendaye",
+    "aliases": [
+      "Plage d'Hendaye",
+      "Hendaye Plage"
+    ],
+    "country": "Hendaye, France",
+    "lat": 43.376,
+    "lon": -1.787,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "La Torche",
+    "aliases": [
+      "Pointe de la Torche"
+    ],
+    "country": "La Torche, France",
+    "lat": 47.8395,
+    "lon": -4.352,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Vieux-Boucau",
+    "aliases": [
+      "Plage des Sableres",
+      "Vieux Boucau"
+    ],
+    "country": "Vieux-Boucau, France",
+    "lat": 43.791,
+    "lon": -1.4095,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Moliets",
+    "aliases": [
+      "Plage de Moliets",
+      "Moliets-et-Maa"
+    ],
+    "country": "Moliets, France",
+    "lat": 43.856,
+    "lon": -1.3935,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   }
 ]
