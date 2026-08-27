@@ -725,87 +725,96 @@
     "verifiedOn": null
   },
   {
-    "name": "Rincon",
+    "name": "Domes",
     "aliases": [
-      "Rincon Puerto Rico",
-      "PR Rincon"
+      "Rincon",
+      "Rincón",
+      "Domes Beach"
     ],
     "country": "Rincón, Puerto Rico",
-    "lat": 18.3628,
-    "lon": -67.273,
-    "type": null,
-    "direction": null,
+    "lat": 18.3641,
+    "lon": -67.2702,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wikipedia",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Maria's Beach",
     "aliases": [
       "Marias",
-      "Tres Palmas"
+      "Maria's"
     ],
     "country": "Rincón, Puerto Rico",
-    "lat": 18.3507,
-    "lon": -67.2705,
-    "type": null,
-    "direction": null,
+    "lat": 18.3574,
+    "lon": -67.2694,
+    "type": "reef",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Gas Chambers",
-    "aliases": [],
-    "country": "Rincón, Puerto Rico",
-    "lat": 18.3627,
-    "lon": -67.2765,
-    "type": null,
-    "direction": null,
+    "aliases": [
+      "Gas Chambers Aguadilla"
+    ],
+    "country": "Aguadilla, Puerto Rico",
+    "lat": 18.4602,
+    "lon": -67.1656,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Wilderness",
-    "aliases": [],
-    "country": "Rincón, Puerto Rico",
-    "lat": 18.3668,
-    "lon": -67.2795,
-    "type": null,
-    "direction": null,
+    "aliases": [
+      "Wilderness Aguadilla",
+      "Playa Brava"
+    ],
+    "country": "Aguadilla, Puerto Rico",
+    "lat": 18.4762,
+    "lon": -67.1692,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Sandy Beach",
     "aliases": [
-      "Sandy Beach PR"
+      "Sandy Beach PR",
+      "Playa Sandy Beach"
     ],
     "country": "Rincón, Puerto Rico",
-    "lat": 18.3722,
-    "lon": -67.266,
-    "type": null,
-    "direction": null,
+    "lat": 18.3707,
+    "lon": -67.2578,
+    "type": "beach",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "puerto-rico-beach-finder",
+      "discover-puerto-rico",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Puerto Escondido",
