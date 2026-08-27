@@ -2055,13 +2055,16 @@
       "Bangko Bangko"
     ],
     "country": "Lombok, Indonesia",
-    "lat": -8.7558,
-    "lon": 115.8139,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -8.751,
+    "lon": 115.8227,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf.com (8°45.059'S 115°49.361'E, approx)",
+      "surf-forecast.com/breaks/Desert-Point-Bangko-Bangko (8.77°S 115.83°E)"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Lagundri Bay",
@@ -2087,39 +2090,49 @@
       "Macas"
     ],
     "country": "Mentawai Islands, Indonesia",
-    "lat": -2.592,
-    "lon": 99.854,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -2.7887,
+    "lon": 99.9919,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf.com (2°47.324'S 99°59.514'E, approx)",
+      "surf-forecast.com/breaks/Macaronis (2.79°S 99.98°E)"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Rifles",
     "aliases": [
-      "Mentawai Rifles"
+      "Mentawai Rifles",
+      "Kandui Right"
     ],
     "country": "Mentawai Islands, Indonesia",
-    "lat": -2.459,
-    "lon": 99.864,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -1.9207,
+    "lon": 99.3194,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf.com (1°55.242'S 99°19.165'E, approx)",
+      "surf-forecast.com/breaks/Rifles / Kandui Right (1.92°S 99.32°E)"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Bank Vaults",
     "aliases": [],
     "country": "Mentawai Islands, Indonesia",
-    "lat": -2.442,
-    "lon": 99.873,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -1.8521,
+    "lon": 99.2447,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf.com (1°51.125'S 99°14.684'E, approx)",
+      "surf-forecast.com/breaks/Bankvaults (1.85°S 99.24°E)"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "HT's",
@@ -2128,27 +2141,33 @@
       "Hollow Trees"
     ],
     "country": "Mentawai Islands, Indonesia",
-    "lat": -1.962,
-    "lon": 99.622,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -2.3756,
+    "lon": 99.8596,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf.com (2°22.538'S 99°51.573'E, approx)",
+      "surf-forecast.com/breaks/Lances-Right (2.40°S 99.86°E)"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "E-Bay",
     "aliases": [
-      "Lance's Left"
+      "Ebay"
     ],
     "country": "Mentawai Islands, Indonesia",
-    "lat": -2.021,
-    "lon": 99.631,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -1.8289,
+    "lon": 99.2543,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf.com (1°49.735'S 99°15.256'E, approx)",
+      "surf-forecast.com/breaks/E-Bay (1.83°S 99.25°E)"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Pasta Point",
@@ -3142,7 +3161,7 @@
       "Little Dume"
     ],
     "country": "Malibu, CA",
-    "lat": 34.0,
+    "lat": 34,
     "lon": -118.806,
     "type": "reef",
     "direction": "both",
