@@ -2645,5 +2645,351 @@
     "confidence": "legacy",
     "sources": [],
     "verifiedOn": null
+  },
+  {
+    "name": "Montara State Beach",
+    "aliases": [],
+    "country": "Montara, CA",
+    "lat": 37.556,
+    "lon": -122.517,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Rockaway Beach",
+    "aliases": [],
+    "country": "Pacifica, CA",
+    "lat": 37.6045,
+    "lon": -122.501,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Gray Whale Cove",
+    "aliases": [
+      "Devil's Slide"
+    ],
+    "country": "Montara, CA",
+    "lat": 37.5685,
+    "lon": -122.5175,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Bolinas",
+    "aliases": [
+      "The Patch"
+    ],
+    "country": "Bolinas, CA",
+    "lat": 37.9055,
+    "lon": -122.6835,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Stinson Beach",
+    "aliases": [],
+    "country": "Stinson Beach, CA",
+    "lat": 37.903,
+    "lon": -122.647,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Rodeo Beach",
+    "aliases": [
+      "Fort Cronkhite",
+      "Rodeo Cove"
+    ],
+    "country": "Marin Headlands, CA",
+    "lat": 37.8322,
+    "lon": -122.5405,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Cowell's",
+    "aliases": [
+      "Cowells",
+      "Cowell Beach"
+    ],
+    "country": "Santa Cruz, CA",
+    "lat": 36.962,
+    "lon": -122.0225,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "The Hook",
+    "aliases": [
+      "Hook",
+      "41st Avenue"
+    ],
+    "country": "Santa Cruz, CA",
+    "lat": 36.9588,
+    "lon": -121.9645,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "26th Avenue",
+    "aliases": [
+      "26th Ave"
+    ],
+    "country": "Santa Cruz, CA",
+    "lat": 36.957,
+    "lon": -121.982,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Davenport Landing",
+    "aliases": [
+      "Davenport"
+    ],
+    "country": "Davenport, CA",
+    "lat": 37.018,
+    "lon": -122.2028,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Scott Creek",
+    "aliases": [],
+    "country": "Davenport, CA",
+    "lat": 37.0415,
+    "lon": -122.232,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Waddell Creek",
+    "aliases": [
+      "Waddell Creek Beach"
+    ],
+    "country": "Santa Cruz County, CA",
+    "lat": 37.096,
+    "lon": -122.2775,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Four Mile",
+    "aliases": [
+      "Four Mile Beach"
+    ],
+    "country": "Santa Cruz, CA",
+    "lat": 36.9846,
+    "lon": -122.1572,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Natural Bridges",
+    "aliases": [
+      "Natural Bridges State Beach"
+    ],
+    "country": "Santa Cruz, CA",
+    "lat": 36.9495,
+    "lon": -122.0595,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Capitola",
+    "aliases": [
+      "Capitola Jetty"
+    ],
+    "country": "Capitola, CA",
+    "lat": 36.9715,
+    "lon": -121.949,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Manresa State Beach",
+    "aliases": [
+      "Manresa"
+    ],
+    "country": "La Selva Beach, CA",
+    "lat": 36.919,
+    "lon": -121.856,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Asilomar",
+    "aliases": [
+      "Asilomar State Beach"
+    ],
+    "country": "Pacific Grove, CA",
+    "lat": 36.619,
+    "lon": -121.9425,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Carmel Beach",
+    "aliases": [],
+    "country": "Carmel-by-the-Sea, CA",
+    "lat": 36.5545,
+    "lon": -121.9315,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Point Arena",
+    "aliases": [],
+    "country": "Point Arena, CA",
+    "lat": 38.913,
+    "lon": -123.711,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Salmon Creek",
+    "aliases": [
+      "Salmon Creek Beach"
+    ],
+    "country": "Bodega Bay, CA",
+    "lat": 38.353,
+    "lon": -123.0695,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Dillon Beach",
+    "aliases": [],
+    "country": "Dillon Beach, CA",
+    "lat": 38.249,
+    "lon": -122.9725,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   }
 ]
