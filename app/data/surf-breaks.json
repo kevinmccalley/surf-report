@@ -1937,13 +1937,16 @@
       "Ulu's"
     ],
     "country": "Uluwatu, Bali",
-    "lat": -8.8292,
-    "lon": 115.0849,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -8.8166,
+    "lon": 115.0863,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Padang Padang",
@@ -1951,51 +1954,64 @@
       "Padang"
     ],
     "country": "Uluwatu, Bali",
-    "lat": -8.811,
-    "lon": 115.0877,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -8.8111,
+    "lon": 115.1012,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Bingin",
-    "aliases": [
-      "Impossibles"
-    ],
+    "aliases": [],
     "country": "Bukit Peninsula, Bali",
-    "lat": -8.803,
-    "lon": 115.092,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -8.8041,
+    "lon": 115.1133,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Keramas",
     "aliases": [],
     "country": "Gianyar, Bali",
-    "lat": -8.6558,
-    "lon": 115.2889,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -8.5976,
+    "lon": 115.3391,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Medewi",
-    "aliases": [],
+    "aliases": [
+      "Medewi Point"
+    ],
     "country": "West Bali, Indonesia",
-    "lat": -8.4722,
-    "lon": 114.6667,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -8.4278,
+    "lon": 114.7905,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Canggu",
@@ -2006,14 +2022,14 @@
     "country": "Canggu, Bali",
     "lat": -8.6572,
     "lon": 115.1275,
-    "type": null,
-    "direction": null,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "G-Land",
