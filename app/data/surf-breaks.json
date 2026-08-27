@@ -3267,5 +3267,146 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Garrapata",
+    "aliases": [
+      "Garrapata State Park",
+      "Garrapata Beach"
+    ],
+    "country": "Big Sur, CA",
+    "lat": 36.464,
+    "lon": -121.944,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Andrew Molera",
+    "aliases": [
+      "Big Sur Rivermouth",
+      "Molera"
+    ],
+    "country": "Big Sur, CA",
+    "lat": 36.2855,
+    "lon": -121.863,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Sand Dollar Beach",
+    "aliases": [
+      "Sand Dollar"
+    ],
+    "country": "Big Sur, CA",
+    "lat": 35.921,
+    "lon": -121.47,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Moonstone Beach",
+    "aliases": [
+      "Cambria",
+      "Moonstone"
+    ],
+    "country": "Cambria, CA",
+    "lat": 35.572,
+    "lon": -121.117,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Cayucos Pier",
+    "aliases": [
+      "Cayucos"
+    ],
+    "country": "Cayucos, CA",
+    "lat": 35.443,
+    "lon": -120.903,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Morro Strand",
+    "aliases": [
+      "Morro Strand State Beach",
+      "Studio Drive"
+    ],
+    "country": "Morro Bay, CA",
+    "lat": 35.403,
+    "lon": -120.869,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Pirate's Cove",
+    "aliases": [
+      "Shell Beach",
+      "Pirates Cove"
+    ],
+    "country": "Shell Beach, CA",
+    "lat": 35.159,
+    "lon": -120.679,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Point Sal",
+    "aliases": [
+      "Point Sal State Beach"
+    ],
+    "country": "Santa Barbara County, CA",
+    "lat": 34.902,
+    "lon": -120.669,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   }
 ]
