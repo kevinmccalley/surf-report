@@ -3943,5 +3943,202 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Boilers",
+    "aliases": [
+      "Boiler Point",
+      "Les Boilers"
+    ],
+    "country": "Taghazout, Morocco",
+    "lat": 30.6245,
+    "lon": -9.8783,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Mystery Point",
+    "aliases": [
+      "Mysteries",
+      "Mystic"
+    ],
+    "country": "Taghazout, Morocco",
+    "lat": 30.5475,
+    "lon": -9.7292,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Panorama",
+    "aliases": [
+      "Panoramas",
+      "Panorama Beach"
+    ],
+    "country": "Taghazout, Morocco",
+    "lat": 30.5436,
+    "lon": -9.7205,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Devil's Rock",
+    "aliases": [
+      "Devils Rock"
+    ],
+    "country": "Tamraght, Morocco",
+    "lat": 30.5089,
+    "lon": -9.6877,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Cro Cro",
+    "aliases": [
+      "Crocro",
+      "Croco"
+    ],
+    "country": "Tamraght, Morocco",
+    "lat": 30.5151,
+    "lon": -9.689,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Banana Point",
+    "aliases": [
+      "Banana Beach",
+      "Banana"
+    ],
+    "country": "Aourir, Morocco",
+    "lat": 30.5021,
+    "lon": -9.6848,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Anza",
+    "aliases": [],
+    "country": "Agadir, Morocco",
+    "lat": 30.4503,
+    "lon": -9.6631,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Imsouane Bay",
+    "aliases": [
+      "Imessouane",
+      "The Bay",
+      "Imsouane"
+    ],
+    "country": "Imsouane, Morocco",
+    "lat": 30.8377,
+    "lon": -9.8192,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Cathedral Point",
+    "aliases": [
+      "La Cathédrale",
+      "La Cathedrale",
+      "Imsouane Cathedral"
+    ],
+    "country": "Imsouane, Morocco",
+    "lat": 30.8439,
+    "lon": -9.824,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Tamri",
+    "aliases": [
+      "Tamri Beach"
+    ],
+    "country": "Tamri, Morocco",
+    "lat": 30.708,
+    "lon": -9.861,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Sidi Kaouki",
+    "aliases": [
+      "Kaouki"
+    ],
+    "country": "Sidi Kaouki, Morocco",
+    "lat": 31.3648,
+    "lon": -9.8046,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   }
 ]
