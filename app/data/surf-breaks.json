@@ -2991,5 +2991,281 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Jalama",
+    "aliases": [
+      "Jalama Beach"
+    ],
+    "country": "Lompoc, CA",
+    "lat": 34.5127,
+    "lon": -120.501,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Sandspit",
+    "aliases": [
+      "Santa Barbara Sandspit"
+    ],
+    "country": "Santa Barbara, CA",
+    "lat": 34.4033,
+    "lon": -119.6912,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Campus Point",
+    "aliases": [
+      "UCSB",
+      "Campus"
+    ],
+    "country": "Goleta, CA",
+    "lat": 34.4085,
+    "lon": -119.8435,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Hammond's",
+    "aliases": [
+      "Hammonds",
+      "Hammonds Reef"
+    ],
+    "country": "Montecito, CA",
+    "lat": 34.4187,
+    "lon": -119.6295,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Pitas Point",
+    "aliases": [
+      "Faria",
+      "Rincon Island"
+    ],
+    "country": "Ventura, CA",
+    "lat": 34.33,
+    "lon": -119.402,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "County Line",
+    "aliases": [
+      "Neptune's Net"
+    ],
+    "country": "Ventura County, CA",
+    "lat": 34.053,
+    "lon": -118.964,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Point Dume",
+    "aliases": [
+      "Little Dume"
+    ],
+    "country": "Malibu, CA",
+    "lat": 34.0,
+    "lon": -118.806,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Topanga",
+    "aliases": [
+      "Topanga Point"
+    ],
+    "country": "Topanga, CA",
+    "lat": 34.0388,
+    "lon": -118.5825,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Lunada Bay",
+    "aliases": [],
+    "country": "Palos Verdes Estates, CA",
+    "lat": 33.7773,
+    "lon": -118.4265,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Torrance Beach",
+    "aliases": [
+      "Rat Beach"
+    ],
+    "country": "Torrance, CA",
+    "lat": 33.8085,
+    "lon": -118.394,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "The Wedge",
+    "aliases": [
+      "Wedge"
+    ],
+    "country": "Newport Beach, CA",
+    "lat": 33.593,
+    "lon": -117.882,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Doheny",
+    "aliases": [
+      "Doheny State Beach"
+    ],
+    "country": "Dana Point, CA",
+    "lat": 33.461,
+    "lon": -117.686,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Oceanside Pier",
+    "aliases": [
+      "Oceanside"
+    ],
+    "country": "Oceanside, CA",
+    "lat": 33.193,
+    "lon": -117.386,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Cardiff Reef",
+    "aliases": [
+      "Cardiff",
+      "Cardiff-by-the-Sea"
+    ],
+    "country": "Cardiff-by-the-Sea, CA",
+    "lat": 33.017,
+    "lon": -117.281,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Scripps",
+    "aliases": [
+      "La Jolla Shores",
+      "Scripps Pier"
+    ],
+    "country": "La Jolla, CA",
+    "lat": 32.867,
+    "lon": -117.2545,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Sunset Cliffs",
+    "aliases": [
+      "Ab",
+      "Garbage"
+    ],
+    "country": "San Diego, CA",
+    "lat": 32.716,
+    "lon": -117.256,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   }
 ]
