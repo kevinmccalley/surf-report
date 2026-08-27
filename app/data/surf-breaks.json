@@ -297,13 +297,17 @@
       "Pipe"
     ],
     "country": "North Shore, Oahu",
-    "lat": 21.6649,
-    "lon": -158.053,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 21.6641,
+    "lon": -158.0539,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "verified",
+    "sources": [
+      "wikipedia",
+      "latitude-to",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Backdoor",
@@ -313,11 +317,14 @@
     "country": "North Shore, Oahu",
     "lat": 21.6645,
     "lon": -158.0528,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Off The Wall",
@@ -328,11 +335,14 @@
     "country": "North Shore, Oahu",
     "lat": 21.6625,
     "lon": -158.0505,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Sunset Beach",
@@ -343,23 +353,30 @@
     "country": "North Shore, Oahu",
     "lat": 21.6786,
     "lon": -158.0404,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Waimea Bay",
     "aliases": [],
     "country": "Haleiwa, Oahu",
-    "lat": 21.6432,
-    "lon": -158.0638,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 21.642,
+    "lon": -158.0648,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Laniakea",
@@ -370,11 +387,14 @@
     "country": "North Shore, Oahu",
     "lat": 21.619,
     "lon": -158.0852,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Rocky Point",
@@ -384,14 +404,14 @@
     "country": "North Shore, Oahu",
     "lat": 21.665,
     "lon": -158.0505,
-    "type": null,
-    "direction": null,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "editorial-placement",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Haleiwa",
@@ -399,13 +419,16 @@
       "Haleiwa Ali'i Beach"
     ],
     "country": "Haleiwa, Oahu",
-    "lat": 21.5928,
-    "lon": -158.1034,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 21.5941,
+    "lon": -158.1082,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   },
   {
     "name": "Makaha",
