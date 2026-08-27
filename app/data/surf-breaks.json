@@ -3659,5 +3659,270 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "La Nord",
+    "aliases": [
+      "Hossegor La Nord"
+    ],
+    "country": "Hossegor, France",
+    "lat": 43.677,
+    "lon": -1.4445,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "La Sud",
+    "aliases": [
+      "Hossegor La Sud"
+    ],
+    "country": "Hossegor, France",
+    "lat": 43.66,
+    "lon": -1.4465,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Les Bourdaines",
+    "aliases": [
+      "Bourdaines",
+      "Seignosse Les Bourdaines"
+    ],
+    "country": "Seignosse, France",
+    "lat": 43.682,
+    "lon": -1.4432,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Les Estagnots",
+    "aliases": [
+      "Estagnots",
+      "Seignosse Les Estagnots"
+    ],
+    "country": "Seignosse, France",
+    "lat": 43.6862,
+    "lon": -1.4408,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "La Piste",
+    "aliases": [
+      "Capbreton La Piste",
+      "Le Prevent"
+    ],
+    "country": "Capbreton, France",
+    "lat": 43.6455,
+    "lon": -1.4485,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Les Cavaliers",
+    "aliases": [
+      "Cavaliers",
+      "Anglet Les Cavaliers"
+    ],
+    "country": "Anglet, France",
+    "lat": 43.531,
+    "lon": -1.527,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Les Sables d'Or",
+    "aliases": [
+      "Sables d'Or",
+      "Anglet Sables d'Or"
+    ],
+    "country": "Anglet, France",
+    "lat": 43.5265,
+    "lon": -1.5335,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Parlementia",
+    "aliases": [
+      "Guethary",
+      "Parlementia Guethary"
+    ],
+    "country": "Guethary, France",
+    "lat": 43.4278,
+    "lon": -1.613,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Avalanche",
+    "aliases": [
+      "Guethary Avalanche"
+    ],
+    "country": "Guethary, France",
+    "lat": 43.426,
+    "lon": -1.615,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Cenitz",
+    "aliases": [
+      "Cenitz Guethary"
+    ],
+    "country": "Guethary, France",
+    "lat": 43.4185,
+    "lon": -1.638,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Lafitenia",
+    "aliases": [
+      "Lafitenia Bay",
+      "Saint-Jean-de-Luz"
+    ],
+    "country": "Saint-Jean-de-Luz, France",
+    "lat": 43.4075,
+    "lon": -1.6555,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Hendaye",
+    "aliases": [
+      "Plage d'Hendaye",
+      "Hendaye Plage"
+    ],
+    "country": "Hendaye, France",
+    "lat": 43.376,
+    "lon": -1.787,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "La Torche",
+    "aliases": [
+      "Pointe de la Torche"
+    ],
+    "country": "La Torche, France",
+    "lat": 47.8395,
+    "lon": -4.352,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Vieux-Boucau",
+    "aliases": [
+      "Plage des Sableres",
+      "Vieux Boucau"
+    ],
+    "country": "Vieux-Boucau, France",
+    "lat": 43.791,
+    "lon": -1.4095,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Moliets",
+    "aliases": [
+      "Plage de Moliets",
+      "Moliets-et-Maa"
+    ],
+    "country": "Moliets, France",
+    "lat": 43.856,
+    "lon": -1.3935,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   }
 ]
