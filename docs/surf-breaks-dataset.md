@@ -90,6 +90,14 @@ Growth and cleanup happen in batches (a region or ~30–50 breaks at a time):
 ~10 km). Those 50 were re-placed and water-audited → `provisional`. Remaining
 132 are `legacy` and untouched. `MAX_LEGACY = 132`.
 
+## Batch log
+
+| date | commit | batch | effect |
+|---|---|---|---|
+| 2026-08-26 | `c31c7e4` | seed | 182 breaks, 50 gross-error fixes → `provisional`. `MAX_LEGACY` 132. |
+| 2026-08-27 | `da6f52f` | Réunion | St. Leu + Trois Bassins (the original bug report) re-placed onto the reef via WannaSurf + surf-forecast. `MAX_LEGACY` 132 → 130. |
+| 2026-08-27 | `b549894` | Rincón / Aguadilla PR cluster | 5 `ai-placement` spots cross-checked. Gas Chambers + Wilderness were the wrong town (~14 km — moved Rincón → Aguadilla). Maria's Beach ~750 m off; "Rincon" (name-collided with Carpinteria) → "Domes". type/direction filled, real sources. No `legacy` cleared. |
+
 ## Roadmap
 
 - **To ~500 breaks:** keep every existing spot, add well-known breaks ranked by
