@@ -3431,5 +3431,217 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Carcavelos",
+    "aliases": [
+      "Praia de Carcavelos"
+    ],
+    "country": "Carcavelos, Portugal",
+    "lat": 38.6783,
+    "lon": -9.3352,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Sao Juliao",
+    "aliases": [
+      "São Julião",
+      "Praia de São Julião"
+    ],
+    "country": "Ericeira, Portugal",
+    "lat": 38.8515,
+    "lon": -9.4275,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Foz do Lizandro",
+    "aliases": [
+      "Foz Lizandro"
+    ],
+    "country": "Ericeira, Portugal",
+    "lat": 38.9423,
+    "lon": -9.417,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Baleal",
+    "aliases": [
+      "Praia do Baleal",
+      "Baleal Norte"
+    ],
+    "country": "Peniche, Portugal",
+    "lat": 39.3735,
+    "lon": -9.3342,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Molhe Leste",
+    "aliases": [
+      "Peniche Molhe Leste",
+      "East Jetty"
+    ],
+    "country": "Peniche, Portugal",
+    "lat": 39.3505,
+    "lon": -9.3722,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Costa da Caparica",
+    "aliases": [
+      "Caparica",
+      "CDS"
+    ],
+    "country": "Costa da Caparica, Portugal",
+    "lat": 38.6455,
+    "lon": -9.243,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Matosinhos",
+    "aliases": [
+      "Praia de Matosinhos"
+    ],
+    "country": "Porto, Portugal",
+    "lat": 41.177,
+    "lon": -8.7015,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Espinho",
+    "aliases": [
+      "Praia de Espinho"
+    ],
+    "country": "Espinho, Portugal",
+    "lat": 41.0075,
+    "lon": -8.647,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Cabedelo",
+    "aliases": [
+      "Cabedelo de Viana",
+      "Praia do Cabedelo"
+    ],
+    "country": "Viana do Castelo, Portugal",
+    "lat": 41.676,
+    "lon": -8.833,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Arrifana",
+    "aliases": [
+      "Praia da Arrifana"
+    ],
+    "country": "Aljezur, Portugal",
+    "lat": 37.2944,
+    "lon": -8.8713,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Praia do Amado",
+    "aliases": [
+      "Amado",
+      "Carrapateira"
+    ],
+    "country": "Aljezur, Portugal",
+    "lat": 37.1667,
+    "lon": -8.904,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Zavial",
+    "aliases": [
+      "Praia do Zavial"
+    ],
+    "country": "Vila do Bispo, Portugal",
+    "lat": 37.0457,
+    "lon": -8.8705,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-27"
   }
 ]
