@@ -1182,46 +1182,54 @@
   {
     "name": "Chicama",
     "aliases": [
-      "Puerto Malabrigo"
+      "Puerto Malabrigo",
+      "Puerto Chicama"
     ],
     "country": "La Libertad, Peru",
-    "lat": -7.7,
-    "lon": -79.45,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -7.705,
+    "lon": -79.4523,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
   },
   {
     "name": "Lobitos",
     "aliases": [],
     "country": "Talara, Peru",
-    "lat": -4.4528,
-    "lon": -81.2845,
-    "type": null,
-    "direction": null,
+    "lat": -4.4518,
+    "lon": -81.2862,
+    "type": "reef",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-28"
   },
   {
     "name": "Mancora",
-    "aliases": [],
+    "aliases": [
+      "Máncora"
+    ],
     "country": "Piura, Peru",
     "lat": -4.103,
     "lon": -81.056,
-    "type": null,
-    "direction": null,
+    "type": "point",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-28"
   },
   {
     "name": "La Herradura",
@@ -1229,74 +1237,88 @@
       "Herradura Peru"
     ],
     "country": "Lima, Peru",
-    "lat": -12.1654,
-    "lon": -77.0286,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -12.1803,
+    "lon": -77.0378,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
   },
   {
     "name": "Punta de Lobos",
     "aliases": [],
     "country": "Pichilemu, Chile",
-    "lat": -34.4315,
-    "lon": -72.0495,
-    "type": null,
-    "direction": null,
+    "lat": -34.4237,
+    "lon": -72.0478,
+    "type": "point",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-28"
   },
   {
-    "name": "Pichilemu",
+    "name": "La Puntilla",
     "aliases": [
-      "Punta de Lobos"
+      "Pichilemu",
+      "Punta de Pichilemu"
     ],
     "country": "O'Higgins, Chile",
-    "lat": -34.3936,
-    "lon": -72.0016,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
-  },
-  {
-    "name": "Arica",
-    "aliases": [
-      "El Gringo"
-    ],
-    "country": "Arica, Chile",
-    "lat": -18.4928,
-    "lon": -70.3283,
-    "type": null,
-    "direction": null,
+    "lat": -34.3797,
+    "lon": -72.0133,
+    "type": "point",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-28"
   },
   {
-    "name": "Iquique",
-    "aliases": [],
+    "name": "El Gringo",
+    "aliases": [
+      "Arica",
+      "Chilean Pipeline"
+    ],
+    "country": "Arica, Chile",
+    "lat": -18.4813,
+    "lon": -70.3329,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "El Colegio",
+    "aliases": [
+      "Iquique",
+      "Punta Uno"
+    ],
     "country": "Iquique, Chile",
     "lat": -20.2265,
     "lon": -70.1525,
-    "type": null,
-    "direction": null,
+    "type": "reef",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-28"
   },
   {
     "name": "Fernando de Noronha",
