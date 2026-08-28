@@ -1182,46 +1182,54 @@
   {
     "name": "Chicama",
     "aliases": [
-      "Puerto Malabrigo"
+      "Puerto Malabrigo",
+      "Puerto Chicama"
     ],
     "country": "La Libertad, Peru",
-    "lat": -7.7,
-    "lon": -79.45,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -7.705,
+    "lon": -79.4523,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
   },
   {
     "name": "Lobitos",
     "aliases": [],
     "country": "Talara, Peru",
-    "lat": -4.4528,
-    "lon": -81.2845,
-    "type": null,
-    "direction": null,
+    "lat": -4.4518,
+    "lon": -81.2862,
+    "type": "reef",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-28"
   },
   {
     "name": "Mancora",
-    "aliases": [],
+    "aliases": [
+      "Máncora"
+    ],
     "country": "Piura, Peru",
     "lat": -4.103,
     "lon": -81.056,
-    "type": null,
-    "direction": null,
+    "type": "point",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-28"
   },
   {
     "name": "La Herradura",
@@ -1229,74 +1237,88 @@
       "Herradura Peru"
     ],
     "country": "Lima, Peru",
-    "lat": -12.1654,
-    "lon": -77.0286,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -12.1803,
+    "lon": -77.0378,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
   },
   {
     "name": "Punta de Lobos",
     "aliases": [],
     "country": "Pichilemu, Chile",
-    "lat": -34.4315,
-    "lon": -72.0495,
-    "type": null,
-    "direction": null,
+    "lat": -34.4237,
+    "lon": -72.0478,
+    "type": "point",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-28"
   },
   {
-    "name": "Pichilemu",
+    "name": "La Puntilla",
     "aliases": [
-      "Punta de Lobos"
+      "Pichilemu",
+      "Punta de Pichilemu"
     ],
     "country": "O'Higgins, Chile",
-    "lat": -34.3936,
-    "lon": -72.0016,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
-  },
-  {
-    "name": "Arica",
-    "aliases": [
-      "El Gringo"
-    ],
-    "country": "Arica, Chile",
-    "lat": -18.4928,
-    "lon": -70.3283,
-    "type": null,
-    "direction": null,
+    "lat": -34.3797,
+    "lon": -72.0133,
+    "type": "point",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-28"
   },
   {
-    "name": "Iquique",
-    "aliases": [],
+    "name": "El Gringo",
+    "aliases": [
+      "Arica",
+      "Chilean Pipeline"
+    ],
+    "country": "Arica, Chile",
+    "lat": -18.4813,
+    "lon": -70.3329,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "El Colegio",
+    "aliases": [
+      "Iquique",
+      "Punta Uno"
+    ],
     "country": "Iquique, Chile",
     "lat": -20.2265,
     "lon": -70.1525,
-    "type": null,
-    "direction": null,
+    "type": "reef",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-28"
   },
   {
     "name": "Fernando de Noronha",
@@ -1526,13 +1548,16 @@
     "name": "Mundaka",
     "aliases": [],
     "country": "Basque Country, Spain",
-    "lat": 43.4078,
-    "lon": -2.6993,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 43.4075,
+    "lon": -2.6941,
+    "type": "rivermouth",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+        "wannasurf",
+        "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
   },
   {
     "name": "Zarautz",
@@ -1545,6 +1570,225 @@
     "confidence": "legacy",
     "sources": [],
     "verifiedOn": null
+  },
+  {
+    "name": "Bakio",
+    "aliases": [],
+    "country": "Basque Country, Spain",
+    "lat": 43.4323,
+    "lon": -2.805,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Sopelana",
+    "aliases": [
+      "Sopela",
+      "Atxabiribil"
+    ],
+    "country": "Basque Country, Spain",
+    "lat": 43.3892,
+    "lon": -2.9945,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "La Salvaje",
+    "aliases": [
+      "Barinatxe"
+    ],
+    "country": "Basque Country, Spain",
+    "lat": 43.3844,
+    "lon": -3.0067,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Orrua",
+    "aliases": [
+      "Roka Puta"
+    ],
+    "country": "Basque Country, Spain",
+    "lat": 43.3051,
+    "lon": -2.2398,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Zurriola",
+    "aliases": [
+      "Playa de Gros",
+      "La Zurriola"
+    ],
+    "country": "Basque Country, Spain",
+    "lat": 43.3268,
+    "lon": -1.9759,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Somo",
+    "aliases": [
+      "Playa de Somo"
+    ],
+    "country": "Cantabria, Spain",
+    "lat": 43.457,
+    "lon": -3.7444,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Liencres",
+    "aliases": [
+      "Playa de Valdearenas"
+    ],
+    "country": "Cantabria, Spain",
+    "lat": 43.4536,
+    "lon": -3.9621,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Los Locos",
+    "aliases": [
+      "Suances"
+    ],
+    "country": "Cantabria, Spain",
+    "lat": 43.4387,
+    "lon": -4.0477,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "El Brusco",
+    "aliases": [],
+    "country": "Cantabria, Spain",
+    "lat": 43.4703,
+    "lon": -3.4826,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Rodiles",
+    "aliases": [],
+    "country": "Asturias, Spain",
+    "lat": 43.5339,
+    "lon": -5.3838,
+    "type": "rivermouth",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Salinas",
+    "aliases": [
+      "San Juan"
+    ],
+    "country": "Asturias, Spain",
+    "lat": 43.5824,
+    "lon": -5.9493,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Razo",
+    "aliases": [
+      "Playa de Razo",
+      "Baldaio"
+    ],
+    "country": "Galicia, Spain",
+    "lat": 43.2912,
+    "lon": -8.7026,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Doniños",
+    "aliases": [
+      "Doninos",
+      "Ferrol"
+    ],
+    "country": "Galicia, Spain",
+    "lat": 43.4915,
+    "lon": -8.3216,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
   },
   {
     "name": "Pantin",
