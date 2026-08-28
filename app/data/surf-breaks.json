@@ -1569,6 +1569,225 @@
     "verifiedOn": null
   },
   {
+    "name": "Bakio",
+    "aliases": [],
+    "country": "Basque Country, Spain",
+    "lat": 43.4323,
+    "lon": -2.805,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Sopelana",
+    "aliases": [
+      "Sopela",
+      "Atxabiribil"
+    ],
+    "country": "Basque Country, Spain",
+    "lat": 43.3892,
+    "lon": -2.9945,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "La Salvaje",
+    "aliases": [
+      "Barinatxe"
+    ],
+    "country": "Basque Country, Spain",
+    "lat": 43.3844,
+    "lon": -3.0067,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Orrua",
+    "aliases": [
+      "Roka Puta"
+    ],
+    "country": "Basque Country, Spain",
+    "lat": 43.3051,
+    "lon": -2.2398,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Zurriola",
+    "aliases": [
+      "Playa de Gros",
+      "La Zurriola"
+    ],
+    "country": "Basque Country, Spain",
+    "lat": 43.3268,
+    "lon": -1.9759,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Somo",
+    "aliases": [
+      "Playa de Somo"
+    ],
+    "country": "Cantabria, Spain",
+    "lat": 43.457,
+    "lon": -3.7444,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Liencres",
+    "aliases": [
+      "Playa de Valdearenas"
+    ],
+    "country": "Cantabria, Spain",
+    "lat": 43.4536,
+    "lon": -3.9621,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Los Locos",
+    "aliases": [
+      "Suances"
+    ],
+    "country": "Cantabria, Spain",
+    "lat": 43.4387,
+    "lon": -4.0477,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "El Brusco",
+    "aliases": [],
+    "country": "Cantabria, Spain",
+    "lat": 43.4703,
+    "lon": -3.4826,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Rodiles",
+    "aliases": [],
+    "country": "Asturias, Spain",
+    "lat": 43.5339,
+    "lon": -5.3838,
+    "type": "rivermouth",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Salinas",
+    "aliases": [
+      "San Juan"
+    ],
+    "country": "Asturias, Spain",
+    "lat": 43.5824,
+    "lon": -5.9493,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Razo",
+    "aliases": [
+      "Playa de Razo",
+      "Baldaio"
+    ],
+    "country": "Galicia, Spain",
+    "lat": 43.2912,
+    "lon": -8.7026,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
+    "name": "Doniños",
+    "aliases": [
+      "Doninos",
+      "Ferrol"
+    ],
+    "country": "Galicia, Spain",
+    "lat": 43.4915,
+    "lon": -8.3216,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-28"
+  },
+  {
     "name": "Pantin",
     "aliases": [],
     "country": "Galicia, Spain",
