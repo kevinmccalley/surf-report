@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { serverT } from '@/app/lib/server-t'
+import { getServerLocale } from '@/app/lib/server-locale'
 import { getSubscriptionTier, getPickedRegions } from '@/app/lib/subscription'
 import {
   getSurfRegions,
@@ -32,7 +33,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const region = getSurfRegionBySlug(slug)
   if (!region) return {}
 
-  const lang = (await searchParams)?.lang ?? 'en'
+  const lang = await getServerLocale((await searchParams)?.lang)
   const count = region.spotSlugs.length
   const title = `${region.name} — ${serverT(lang, 'regions.meta.title')}`
   const description = `${region.name}: ${count} curated surf breaks mapped together, each with a live forecast on Groundswell.`
@@ -52,7 +53,7 @@ export default async function RegionDetailPage({ params, searchParams }: Props) 
   const region = getSurfRegionBySlug(slug)
   if (!region) notFound()
 
-  const lang = (await searchParams)?.lang ?? 'en'
+  const lang = await getServerLocale((await searchParams)?.lang)
   const t = (key: string) => serverT(lang, key)
 
   const [tier, picks] = await Promise.all([getSubscriptionTier(), getPickedRegions()])

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { serverT } from '@/app/lib/server-t'
+import { getServerLocale } from '@/app/lib/server-locale'
 
 const BASE_URL = 'https://groundswell.surf'
 const LOCALES = ['en', 'es', 'fr', 'pt-BR', 'pt-PT'] as const
@@ -9,7 +10,7 @@ const FAQ_COUNT = 20
 type Props = { searchParams?: Promise<{ lang?: string }> }
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-  const lang = (await searchParams)?.lang ?? 'en'
+  const lang = await getServerLocale((await searchParams)?.lang)
   const title = serverT(lang, 'faq.meta.title')
   const description = serverT(lang, 'faq.meta.desc')
   const canonical = `${BASE_URL}/faq`
@@ -36,7 +37,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 }
 
 export default async function FaqPage({ searchParams }: Props) {
-  const lang = (await searchParams)?.lang ?? 'en'
+  const lang = await getServerLocale((await searchParams)?.lang)
   const t = (key: string) => serverT(lang, key)
 
   const questions = Array.from({ length: FAQ_COUNT }, (_, i) => ({

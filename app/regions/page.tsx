@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { serverT } from '@/app/lib/server-t'
+import { getServerLocale } from '@/app/lib/server-locale'
 import { getSubscriptionTier, getPickedRegions } from '@/app/lib/subscription'
 import { getSurfRegions } from '@/app/lib/surf-regions'
 import { regionLockState } from '@/app/lib/region-access'
@@ -15,7 +16,7 @@ const LOCALES = ['en', 'es', 'fr', 'pt-BR', 'pt-PT'] as const
 type Props = { searchParams?: Promise<{ lang?: string }> }
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-  const lang = (await searchParams)?.lang ?? 'en'
+  const lang = await getServerLocale((await searchParams)?.lang)
   const title = serverT(lang, 'regions.meta.title')
   const description = serverT(lang, 'regions.meta.desc')
   const canonical = `${BASE_URL}/regions`
@@ -35,7 +36,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 }
 
 export default async function RegionsIndexPage({ searchParams }: Props) {
-  const lang = (await searchParams)?.lang ?? 'en'
+  const lang = await getServerLocale((await searchParams)?.lang)
   const t = (key: string) => serverT(lang, key)
 
   const [tier, picks] = await Promise.all([getSubscriptionTier(), getPickedRegions()])
