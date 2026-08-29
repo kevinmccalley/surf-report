@@ -2624,29 +2624,38 @@
   {
     "name": "Snapper Rocks",
     "aliases": [
-      "Superbank",
-      "Kirra Point"
+      "Superbank"
     ],
     "country": "Gold Coast, Queensland",
-    "lat": -28.1575,
-    "lon": 153.5538,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -28.162,
+    "lon": 153.5502,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Kirra",
-    "aliases": [],
+    "aliases": [
+      "Kirra Point"
+    ],
     "country": "Gold Coast, Queensland",
     "lat": -28.1666,
     "lon": 153.5313,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Burleigh Heads",
@@ -2654,30 +2663,34 @@
       "Burleigh"
     ],
     "country": "Gold Coast, Queensland",
-    "lat": -28.0972,
-    "lon": 153.459,
-    "type": null,
-    "direction": null,
+    "lat": -28.0884,
+    "lon": 153.4539,
+    "type": "point",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Duranbah",
     "aliases": [
-      "D-Bah"
+      "D-Bah",
+      "Duranbah Beach"
     ],
     "country": "Tweed Heads, NSW",
-    "lat": -28.1403,
-    "lon": 153.5428,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -28.1632,
+    "lon": 153.5516,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Coolangatta",
@@ -2712,16 +2725,20 @@
   {
     "name": "The Pass",
     "aliases": [
-      "Byron Bay"
+      "Byron Bay",
+      "Byron Pass"
     ],
     "country": "Byron Bay, NSW",
-    "lat": -28.6431,
-    "lon": 153.615,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -28.6328,
+    "lon": 153.6266,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Wategos",
@@ -2740,16 +2757,20 @@
   {
     "name": "Lennox Head",
     "aliases": [
-      "Lennox"
+      "Lennox",
+      "Lennox Point"
     ],
     "country": "Lennox Head, NSW",
-    "lat": -28.7917,
-    "lon": 153.5875,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -28.8023,
+    "lon": 153.6005,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "North Narrabeen",
