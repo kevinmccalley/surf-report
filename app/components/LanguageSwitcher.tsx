@@ -21,8 +21,8 @@ export default function LanguageSwitcher({ align = 'right' }: { align?: 'left' |
   }, [open])
 
   function select(code: Locale) {
-    setLocale(code)
     setOpen(false)
+
     // Mirror selected language into the URL so server-rendered <title> tags are localised
     const params = new URLSearchParams(window.location.search)
     if (code === 'en') {
@@ -32,6 +32,11 @@ export default function LanguageSwitcher({ align = 'right' }: { align?: 'left' |
     }
     const query = params.toString()
     window.history.replaceState(null, '', `${window.location.pathname}${query ? '?' + query : ''}`)
+
+    // Writes the groundswell_locale cookie + client context, then re-renders Server
+    // Components (page <h1>, subtitle, map CTA, <title>…) so they pick up the new
+    // locale. Without the refresh they keep the language from the initial load.
+    setLocale(code)
   }
 
   return (

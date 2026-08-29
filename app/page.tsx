@@ -3,6 +3,7 @@ import { auth, clerkClient } from '@clerk/nextjs/server'
 import Stripe from 'stripe'
 import SurfApp from './components/SurfApp'
 import { serverT } from '@/app/lib/server-t'
+import { getServerLocale } from '@/app/lib/server-locale'
 
 export type Tier = 'free' | 'individual' | 'premium'
 
@@ -14,7 +15,7 @@ const LOCALES = ['en', 'es', 'fr', 'pt-BR', 'pt-PT'] as const
 export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
   const params = await searchParams
   const { name, country, lat, lon } = params
-  const lang = params.lang ?? 'en'
+  const lang = await getServerLocale(params.lang)
 
   if (!name) {
     const tagline = serverT(lang, 'meta.tagline')

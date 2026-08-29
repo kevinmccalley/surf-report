@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { serverT } from '@/app/lib/server-t'
+import { getServerLocale } from '@/app/lib/server-locale'
 import { getDirectorySpots } from '@/app/lib/spots-directory'
 import SpotsDirectoryClient from './SpotsDirectoryClient'
 import SiteHeader from '@/app/components/SiteHeader'
@@ -11,7 +12,7 @@ const LOCALES = ['en', 'es', 'fr', 'pt-BR', 'pt-PT'] as const
 type Props = { searchParams?: Promise<{ lang?: string }> }
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-  const lang = (await searchParams)?.lang ?? 'en'
+  const lang = await getServerLocale((await searchParams)?.lang)
   const title = serverT(lang, 'directory.meta.title')
   const description = serverT(lang, 'directory.meta.desc')
   const canonical = `${BASE_URL}/spots`
@@ -38,7 +39,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 }
 
 export default async function SpotsDirectoryPage({ searchParams }: Props) {
-  const lang = (await searchParams)?.lang ?? 'en'
+  const lang = await getServerLocale((await searchParams)?.lang)
   const t = (key: string) => serverT(lang, key)
   const spots = getDirectorySpots()
 

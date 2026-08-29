@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { serverT } from '@/app/lib/server-t'
+import { getServerLocale } from '@/app/lib/server-locale'
 import { getSubscriptionTier, getPickedRegions } from '@/app/lib/subscription'
 import {
   getSurfRegions,
@@ -37,7 +38,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const regions = getSurfRegionsByCountry(code)
   if (regions.length < 2) return {}
 
-  const lang = (await searchParams)?.lang ?? 'en'
+  const lang = await getServerLocale((await searchParams)?.lang)
   const name = countryName(code)
   const title = `${name} — ${serverT(lang, 'regions.meta.title')}`
   const description = serverT(lang, 'regions.country.subtitle').replace('{country}', name)
@@ -59,7 +60,7 @@ export default async function CountryAggregatePage({ params, searchParams }: Pro
   // otherwise the single region's own page is the canonical view.
   if (regions.length < 2) notFound()
 
-  const lang = (await searchParams)?.lang ?? 'en'
+  const lang = await getServerLocale((await searchParams)?.lang)
   const t = (key: string) => serverT(lang, key)
   const name = countryName(code)
 

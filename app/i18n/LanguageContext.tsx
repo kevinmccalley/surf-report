@@ -1,6 +1,7 @@
 'use client'
 
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 import type { ReactNode } from 'react'
 import en from './messages/en'
 
@@ -30,14 +31,14 @@ export type TFn = (key: string, vars?: Record<string, string | number>) => strin
 interface LanguageContextValue {
   locale: Locale
   bcp47: string
-  setLocale: (locale: Locale) => void
+  setLocale: (locale: Locale) => Promise<void>
   t: TFn
 }
 
 const LanguageContext = createContext<LanguageContextValue>({
   locale: 'en',
   bcp47: 'en-US',
-  setLocale: () => {},
+  setLocale: async () => {},
   t: (k) => k,
 })
 
@@ -55,7 +56,16 @@ const loaders: Record<Locale, () => Promise<Record<string, string>>> = {
   'pt-PT': () => import('./messages/pt-PT').then(m => m.default),
 }
 
+function readLocaleCookie(): string | null {
+  try {
+    return document.cookie.match(/(?:^|;\s*)groundswell_locale=([^;]+)/)?.[1] ?? null
+  } catch {
+    return null
+  }
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
+  const router = useRouter()
   const [locale, setLocaleState] = useState<Locale>('en')
   const [messages, setMessages]   = useState<Record<string, string>>(en)
 
@@ -86,14 +96,20 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [locale])
 
   const loadLocale = useCallback(async (next: Locale) => {
+    // If the server rendered a different locale than the one we're switching to,
+    // its Server Components (page <h1>, <title>, etc.) need to be re-fetched.
+    const serverMismatch = readLocaleCookie() !== next
+
     const msgs = await loaders[next]()
     setMessages(msgs)
     setLocaleState(next)
-    try {
-      localStorage.setItem(STORAGE_KEY, next)
-      document.cookie = `groundswell_locale=${next};path=/;max-age=31536000;SameSite=Lax`
-    } catch {}
-  }, [])
+    // Cookie drives server-rendered text (see app/lib/server-locale.ts) — write it
+    // independently so a failing localStorage (private mode) can't skip it.
+    try { document.cookie = `groundswell_locale=${next};path=/;max-age=31536000;SameSite=Lax` } catch {}
+    try { localStorage.setItem(STORAGE_KEY, next) } catch {}
+
+    if (serverMismatch) router.refresh()
+  }, [router])
 
   const t = useCallback<TFn>((key, vars) => {
     const raw = messages[key] ?? en[key] ?? key

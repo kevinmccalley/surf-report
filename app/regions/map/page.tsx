@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { serverT } from '@/app/lib/server-t'
+import { getServerLocale } from '@/app/lib/server-locale'
 import { getSurfRegions } from '@/app/lib/surf-regions'
 import { getRegionShapes, getWorldSpots } from '@/app/lib/region-hull'
 import SiteHeader from '@/app/components/SiteHeader'
@@ -11,7 +12,7 @@ const LOCALES = ['en', 'es', 'fr', 'pt-BR', 'pt-PT'] as const
 type Props = { searchParams?: Promise<{ lang?: string }> }
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-  const lang = (await searchParams)?.lang ?? 'en'
+  const lang = await getServerLocale((await searchParams)?.lang)
   const title = serverT(lang, 'regions.map.meta.title')
   const description = serverT(lang, 'regions.map.meta.desc')
   const canonical = `${BASE_URL}/regions/map`
@@ -31,7 +32,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 }
 
 export default async function RegionsMapPage({ searchParams }: Props) {
-  const lang = (await searchParams)?.lang ?? 'en'
+  const lang = await getServerLocale((await searchParams)?.lang)
   const t = (key: string) => serverT(lang, key)
 
   const shapes = getRegionShapes()
