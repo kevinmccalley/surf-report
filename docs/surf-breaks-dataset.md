@@ -11,6 +11,85 @@ extend.
 - **Integrity guard (CI):** `app/lib/__tests__/surf-breaks-data.test.ts`
 - **Verification tooling:** `scripts/coord-audit/` (isolated — its own `npm install`)
 
+## Groundtruthing — the practice
+
+The dataset is maintained by a recurring job called **the groundtruth pass**.
+"Ground truth" is the mapping term for checking data against physical reality —
+which is exactly what half of this job does. It runs in alternating modes:
+
+- **Groundtruth · Verify** (MODE A) — check pins we already have against reality.
+- **Groundtruth · Grow** (MODE B) — add new pins, held to the same reality check.
+
+### The trust ladder every break sits on
+
+| Rung | In plain terms |
+|---|---|
+| **legacy** | A pin we inherited and have *never checked*. Could be perfect, could be a kilometre inland. |
+| **provisional** | We've put eyes on it: found it in an outside reference, dropped the pin there, and a script confirmed the pin actually lands on water. |
+| **verified** | Two or more *independent* maps agree on the spot within ~150 m, and the water check passes. |
+
+The whole practice is about moving breaks *up* this ladder and never letting them
+slip down.
+
+### What one run does
+
+Runs alternate — one grows, the next verifies.
+
+**Grow run (MODE B):**
+
+1. Pick a stretch of coast that shows only a few breaks today.
+2. Write down 8–15 famous breaks there that we're missing.
+3. Look up each one's coordinates in outside sources — WannaSurf, Wikipedia,
+   surf-forecast.
+4. Run every candidate through the **water audit**: a script that checks the pin
+   against OpenStreetMap's water layer and asks "is this point actually in the
+   ocean?" Every run includes a known-good control point (Pipeline reef). If the
+   control comes back dry, the map tiles didn't load — the whole run is thrown
+   away rather than trusted.
+5. Keep only pins that land in water (or within ~40 m of shore). Drop the rest.
+6. Check for collisions — no duplicate name, nothing within 25 m of a break we
+   already have.
+7. Add the survivors as **provisional**, stamped with today's date and which
+   sources were used.
+
+**Verify run (MODE A):**
+
+1. Take a cluster of 5–8 existing pins in one region — especially the oldest
+   **legacy** ones.
+2. Pull up each break's location in 2–3 independent references.
+3. Compare to our pin. Move it *only* if a reference clearly contradicts us —
+   wrong town, more than ~300 m off, or the water check says it's on land. A
+   40–150 m difference on a messy coastline is left alone; that's within noise.
+4. Fix wrong labels and bad aliases; fill in missing wave type (reef/point/beach)
+   and direction (left/right).
+5. Promote to **verified** only if ≥2 sources agree within ~150 m *and* the water
+   check passes. Otherwise it stays provisional, but now with real sources
+   attached instead of a guess.
+6. If any **legacy** pins got cleared, tighten the ratchet (see below).
+
+### Guardrails that run automatically on every push
+
+- A **CI test** (`surf-breaks-data.test.ts`) fails the build if: a coordinate is
+  missing decimals, two breaks sit on top of each other, a name won't turn into a
+  URL, or a provisional/verified row has no source or date.
+- The **legacy ratchet** (`MAX_LEGACY`): the test records the count of
+  never-checked pins and fails if that number ever goes *up*. It's a one-way
+  valve — the pool of unverified data can only shrink.
+- Only the data file, its test, and this doc are ever committed — never a blind
+  `git add -A`.
+- Every change lands on **dev** first, waits for CI to go green, and only reaches
+  production when the maintainer says so.
+- Every run appends a row to the **batch log** below, so the same cluster never
+  gets re-vetted by mistake.
+
+### Why this grows the data intelligently
+
+It never trusts one source (agreement between independent maps is the bar), it
+never trusts itself (a machine check confirms every pin is physically on water),
+and it can't quietly rot (the ratchet guarantees the unverified pile only gets
+smaller). Half of each run's effort extends reach into new coastline; the other
+half deepens confidence in what's already there.
+
 ## Record schema
 
 ```jsonc
