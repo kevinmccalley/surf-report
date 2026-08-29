@@ -4384,5 +4384,153 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-27"
+  },
+  {
+    "name": "Currumbin Alley",
+    "aliases": [
+      "The Alley",
+      "Currumbin"
+    ],
+    "country": "Gold Coast, Queensland",
+    "lat": -28.1255,
+    "lon": 153.486,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Rainbow Bay",
+    "aliases": [],
+    "country": "Gold Coast, Queensland",
+    "lat": -28.1638,
+    "lon": 153.5464,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Angourie",
+    "aliases": [
+      "Angourie Point"
+    ],
+    "country": "Angourie, NSW",
+    "lat": -29.4822,
+    "lon": 153.3661,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Broken Head",
+    "aliases": [],
+    "country": "Byron Bay, NSW",
+    "lat": -28.7044,
+    "lon": 153.6167,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Cabarita Beach",
+    "aliases": [
+      "Norries Head",
+      "Bogangar"
+    ],
+    "country": "Cabarita Beach, NSW",
+    "lat": -28.3337,
+    "lon": 153.5744,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Crescent Head",
+    "aliases": [],
+    "country": "Crescent Head, NSW",
+    "lat": -31.1834,
+    "lon": 152.9777,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Dee Why",
+    "aliases": [
+      "Dee Why Point"
+    ],
+    "country": "Sydney, NSW",
+    "lat": -33.7546,
+    "lon": 151.2995,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Freshwater",
+    "aliases": [
+      "Freshwater Beach",
+      "Freshie"
+    ],
+    "country": "Sydney, NSW",
+    "lat": -33.7778,
+    "lon": 151.2955,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Curl Curl",
+    "aliases": [],
+    "country": "Sydney, NSW",
+    "lat": -33.772,
+    "lon": 151.2951,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   }
 ]
