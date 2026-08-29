@@ -4553,5 +4553,246 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Nahoon Reef",
+    "aliases": [],
+    "country": "East London, South Africa",
+    "lat": -32.9964,
+    "lon": 27.9533,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Seal Point",
+    "aliases": [],
+    "country": "Cape St Francis, South Africa",
+    "lat": -34.2073,
+    "lon": 24.8365,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Bruce's Beauties",
+    "aliases": [
+      "Cape St Francis"
+    ],
+    "country": "Cape St Francis, South Africa",
+    "lat": -34.1875,
+    "lon": 24.8595,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Kalk Bay Reef",
+    "aliases": [
+      "Kalk Bay"
+    ],
+    "country": "Cape Town, South Africa",
+    "lat": -34.1258,
+    "lon": 18.4523,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Kitchen Windows",
+    "aliases": [],
+    "country": "Jeffrey's Bay, South Africa",
+    "lat": -34.0583,
+    "lon": 24.9271,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Magna Tubes",
+    "aliases": [
+      "Magnatubes"
+    ],
+    "country": "Jeffrey's Bay, South Africa",
+    "lat": -34.0382,
+    "lon": 24.933,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Long Beach",
+    "aliases": [
+      "Long Beach Kommetjie"
+    ],
+    "country": "Kommetjie, South Africa",
+    "lat": -34.1362,
+    "lon": 18.3268,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Outer Kom",
+    "aliases": [],
+    "country": "Kommetjie, South Africa",
+    "lat": -34.1453,
+    "lon": 18.3163,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Llandudno",
+    "aliases": [],
+    "country": "Cape Town, South Africa",
+    "lat": -34.0066,
+    "lon": 18.34,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Dunes",
+    "aliases": [
+      "Noordhoek"
+    ],
+    "country": "Noordhoek, South Africa",
+    "lat": -34.1083,
+    "lon": 18.3515,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Scarborough",
+    "aliases": [],
+    "country": "Cape Town, South Africa",
+    "lat": -34.2016,
+    "lon": 18.3705,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Big Bay",
+    "aliases": [
+      "Bloubergstrand"
+    ],
+    "country": "Bloubergstrand, South Africa",
+    "lat": -33.7923,
+    "lon": 18.4511,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Mdumbi",
+    "aliases": [
+      "Umdumbi"
+    ],
+    "country": "Wild Coast, South Africa",
+    "lat": -31.938,
+    "lon": 29.2197,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Coffee Bay",
+    "aliases": [],
+    "country": "Wild Coast, South Africa",
+    "lat": -31.987,
+    "lon": 29.1555,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Outer Pool",
+    "aliases": [
+      "Mossel Bay"
+    ],
+    "country": "Mossel Bay, South Africa",
+    "lat": -34.181,
+    "lon": 22.1579,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   }
 ]
