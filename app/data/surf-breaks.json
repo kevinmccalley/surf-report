@@ -5307,5 +5307,212 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Shipwreck Bay",
+    "aliases": [
+      "Shipwrecks Bay",
+      "Ahipara"
+    ],
+    "country": "Ahipara, New Zealand",
+    "lat": -35.1776,
+    "lon": 173.1193,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Mount Maunganui",
+    "aliases": [
+      "The Mount"
+    ],
+    "country": "Bay of Plenty, New Zealand",
+    "lat": -37.6335,
+    "lon": 176.1855,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Whangamata Bar",
+    "aliases": [
+      "Whangamata"
+    ],
+    "country": "Coromandel, New Zealand",
+    "lat": -37.209,
+    "lon": 175.8875,
+    "type": "rivermouth",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Wainui Beach",
+    "aliases": [
+      "Wainui"
+    ],
+    "country": "Gisborne, New Zealand",
+    "lat": -38.6853,
+    "lon": 178.0783,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Makorori Point",
+    "aliases": [
+      "Makarori Point",
+      "Makorori"
+    ],
+    "country": "Gisborne, New Zealand",
+    "lat": -38.6634,
+    "lon": 178.1077,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Fitzroy Beach",
+    "aliases": [
+      "Fitzroy"
+    ],
+    "country": "New Plymouth, New Zealand",
+    "lat": -39.0431,
+    "lon": 174.0966,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Stent Road",
+    "aliases": [],
+    "country": "Taranaki, New Zealand",
+    "lat": -39.2269,
+    "lon": 173.7745,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Lyall Bay",
+    "aliases": [
+      "The Wall"
+    ],
+    "country": "Wellington, New Zealand",
+    "lat": -41.335,
+    "lon": 174.8035,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Mangamaunu",
+    "aliases": [
+      "Mangamaunu Bay"
+    ],
+    "country": "Kaikoura, New Zealand",
+    "lat": -42.3047,
+    "lon": 173.7521,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Taylors Mistake",
+    "aliases": [],
+    "country": "Christchurch, New Zealand",
+    "lat": -43.5827,
+    "lon": 172.7771,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "St Clair",
+    "aliases": [
+      "St Clair Beach"
+    ],
+    "country": "Dunedin, New Zealand",
+    "lat": -45.9125,
+    "lon": 170.4892,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Tauranga Bay",
+    "aliases": [
+      "Cape Foulwind"
+    ],
+    "country": "Westport, New Zealand",
+    "lat": -41.762,
+    "lon": 171.455,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   }
 ]
