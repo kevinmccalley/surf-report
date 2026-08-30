@@ -2618,25 +2618,31 @@
       "Rincon of the South"
     ],
     "country": "Torquay, Victoria",
-    "lat": -38.3677,
-    "lon": 144.2829,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -38.3718,
+    "lon": 144.2811,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Jan Juc",
     "aliases": [],
     "country": "Torquay, Victoria",
-    "lat": -38.399,
-    "lon": 144.3121,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -38.3465,
+    "lon": 144.3102,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Snapper Rocks",
@@ -2713,13 +2719,17 @@
     "name": "Coolangatta",
     "aliases": [],
     "country": "Gold Coast, Queensland",
-    "lat": -28.1697,
-    "lon": 153.5568,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -28.1656,
+    "lon": 153.5399,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Noosa",
@@ -2763,13 +2773,16 @@
       "Watego's Beach"
     ],
     "country": "Byron Bay, NSW",
-    "lat": -28.6406,
-    "lon": 153.6364,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -28.6355,
+    "lon": 153.6342,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Lennox Head",
@@ -2796,13 +2809,16 @@
       "Narra"
     ],
     "country": "Sydney, NSW",
-    "lat": -33.7094,
-    "lon": 151.2961,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -33.7039,
+    "lon": 151.3094,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Manly Beach",
@@ -2810,13 +2826,16 @@
       "Manly"
     ],
     "country": "Sydney, NSW",
-    "lat": -33.7969,
-    "lon": 151.2878,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -33.7977,
+    "lon": 151.29,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Bondi Beach",
@@ -2826,14 +2845,14 @@
     "country": "Sydney, NSW",
     "lat": -33.8918,
     "lon": 151.2775,
-    "type": null,
-    "direction": null,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "osm",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Maroubra",
@@ -2841,25 +2860,31 @@
       "Maroubra Beach"
     ],
     "country": "Sydney, NSW",
-    "lat": -33.95,
-    "lon": 151.26,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -33.9495,
+    "lon": 151.2574,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Cronulla",
     "aliases": [],
     "country": "Sydney, NSW",
-    "lat": -34.0566,
-    "lon": 151.1542,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -34.0524,
+    "lon": 151.1583,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Shipsterns Bluff",
@@ -5006,6 +5031,263 @@
     "confidence": "provisional",
     "sources": [
       "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "La Santa",
+    "aliases": [
+      "La Santa Left"
+    ],
+    "country": "Lanzarote, Canary Islands",
+    "lat": 29.1116,
+    "lon": -13.6648,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Morro Negro",
+    "aliases": [
+      "La Santa Right"
+    ],
+    "country": "Lanzarote, Canary Islands",
+    "lat": 29.1143,
+    "lon": -13.662,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "San Juan",
+    "aliases": [
+      "San Juan de la Costa"
+    ],
+    "country": "Lanzarote, Canary Islands",
+    "lat": 29.127,
+    "lon": -13.5736,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Los Lobos",
+    "aliases": [
+      "Isla de Lobos",
+      "Lobos"
+    ],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.7488,
+    "lon": -13.8357,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "The Bubble",
+    "aliases": [
+      "La Burbuja",
+      "Punta Elena"
+    ],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.7421,
+    "lon": -13.9515,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Punta Blanca",
+    "aliases": [],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.726,
+    "lon": -13.9902,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Majanicho",
+    "aliases": [],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.744,
+    "lon": -13.936,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "El Muelle",
+    "aliases": [
+      "Corralejo Harbour"
+    ],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.7425,
+    "lon": -13.863,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Spew Pits",
+    "aliases": [],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.7026,
+    "lon": -14.0252,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Cotillo Beach",
+    "aliases": [
+      "El Cotillo",
+      "Piedra Playa"
+    ],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.674,
+    "lon": -14.01,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "El Frontón",
+    "aliases": [
+      "El Fronton",
+      "Gáldar"
+    ],
+    "country": "Gran Canaria, Canary Islands",
+    "lat": 28.1656,
+    "lon": -15.6548,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "La Cícer",
+    "aliases": [
+      "Las Canteras",
+      "La Cicer"
+    ],
+    "country": "Gran Canaria, Canary Islands",
+    "lat": 28.131,
+    "lon": -15.4478,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "El Socorro",
+    "aliases": [
+      "Playa del Socorro",
+      "Los Realejos"
+    ],
+    "country": "Tenerife, Canary Islands",
+    "lat": 28.3953,
+    "lon": -16.6024,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Martiánez",
+    "aliases": [
+      "Puerto de la Cruz",
+      "Martianez"
+    ],
+    "country": "Tenerife, Canary Islands",
+    "lat": 28.4175,
+    "lon": -16.5411,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "La Izquierda",
+    "aliases": [
+      "Spanish Left",
+      "Las Américas"
+    ],
+    "country": "Tenerife, Canary Islands",
+    "lat": 28.063,
+    "lon": -16.7347,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-30"
