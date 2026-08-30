@@ -5034,5 +5034,262 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "La Santa",
+    "aliases": [
+      "La Santa Left"
+    ],
+    "country": "Lanzarote, Canary Islands",
+    "lat": 29.1116,
+    "lon": -13.6648,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Morro Negro",
+    "aliases": [
+      "La Santa Right"
+    ],
+    "country": "Lanzarote, Canary Islands",
+    "lat": 29.1143,
+    "lon": -13.662,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "San Juan",
+    "aliases": [
+      "San Juan de la Costa"
+    ],
+    "country": "Lanzarote, Canary Islands",
+    "lat": 29.127,
+    "lon": -13.5736,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Los Lobos",
+    "aliases": [
+      "Isla de Lobos",
+      "Lobos"
+    ],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.7488,
+    "lon": -13.8357,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "The Bubble",
+    "aliases": [
+      "La Burbuja",
+      "Punta Elena"
+    ],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.7421,
+    "lon": -13.9515,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Punta Blanca",
+    "aliases": [],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.726,
+    "lon": -13.9902,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Majanicho",
+    "aliases": [],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.744,
+    "lon": -13.936,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "El Muelle",
+    "aliases": [
+      "Corralejo Harbour"
+    ],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.7425,
+    "lon": -13.863,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Spew Pits",
+    "aliases": [],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.7026,
+    "lon": -14.0252,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Cotillo Beach",
+    "aliases": [
+      "El Cotillo",
+      "Piedra Playa"
+    ],
+    "country": "Fuerteventura, Canary Islands",
+    "lat": 28.674,
+    "lon": -14.01,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "El Frontón",
+    "aliases": [
+      "El Fronton",
+      "Gáldar"
+    ],
+    "country": "Gran Canaria, Canary Islands",
+    "lat": 28.1656,
+    "lon": -15.6548,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "La Cícer",
+    "aliases": [
+      "Las Canteras",
+      "La Cicer"
+    ],
+    "country": "Gran Canaria, Canary Islands",
+    "lat": 28.131,
+    "lon": -15.4478,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "El Socorro",
+    "aliases": [
+      "Playa del Socorro",
+      "Los Realejos"
+    ],
+    "country": "Tenerife, Canary Islands",
+    "lat": 28.3953,
+    "lon": -16.6024,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Martiánez",
+    "aliases": [
+      "Puerto de la Cruz",
+      "Martianez"
+    ],
+    "country": "Tenerife, Canary Islands",
+    "lat": 28.4175,
+    "lon": -16.5411,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "La Izquierda",
+    "aliases": [
+      "Spanish Left",
+      "Las Américas"
+    ],
+    "country": "Tenerife, Canary Islands",
+    "lat": 28.063,
+    "lon": -16.7347,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   }
 ]
