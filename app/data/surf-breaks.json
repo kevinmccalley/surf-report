@@ -1386,13 +1386,17 @@
       "Portuguese Pipeline"
     ],
     "country": "Peniche, Portugal",
-    "lat": 39.3458,
-    "lon": -9.3883,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 39.3448,
+    "lon": -9.3645,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Praia do Norte",
@@ -1401,13 +1405,16 @@
       "Nazaré"
     ],
     "country": "Nazaré, Portugal",
-    "lat": 39.6015,
-    "lon": -9.071,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 39.6119,
+    "lon": -9.0856,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Ribeira d'Ilhas",
@@ -1417,23 +1424,29 @@
     "country": "Ericeira, Portugal",
     "lat": 38.9878,
     "lon": -9.4193,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Coxos",
     "aliases": [],
     "country": "Ericeira, Portugal",
-    "lat": 39.005,
-    "lon": -9.412,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 39.0006,
+    "lon": -9.4269,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "Sagres",
@@ -1455,11 +1468,14 @@
     "country": "Cascais, Portugal",
     "lat": 38.7276,
     "lon": -9.4761,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   },
   {
     "name": "La Graviere",
