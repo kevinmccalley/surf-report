@@ -4811,5 +4811,203 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Hikkaduwa",
+    "aliases": [],
+    "country": "Hikkaduwa, Sri Lanka",
+    "lat": 6.1395,
+    "lon": 80.0985,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Weligama Bay",
+    "aliases": [
+      "Weligama"
+    ],
+    "country": "Weligama, Sri Lanka",
+    "lat": 5.97,
+    "lon": 80.427,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Lazy Left",
+    "aliases": [
+      "Midigama Left"
+    ],
+    "country": "Midigama, Sri Lanka",
+    "lat": 5.964,
+    "lon": 80.3905,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Rams Right",
+    "aliases": [
+      "Midigama Right",
+      "Ram's Right"
+    ],
+    "country": "Midigama, Sri Lanka",
+    "lat": 5.9628,
+    "lon": 80.388,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Coconuts",
+    "aliases": [
+      "Coconut Point"
+    ],
+    "country": "Midigama, Sri Lanka",
+    "lat": 5.9647,
+    "lon": 80.3818,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Kabalana",
+    "aliases": [
+      "The Rock"
+    ],
+    "country": "Ahangama, Sri Lanka",
+    "lat": 5.9662,
+    "lon": 80.3668,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Mirissa",
+    "aliases": [],
+    "country": "Mirissa, Sri Lanka",
+    "lat": 5.9428,
+    "lon": 80.4598,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Unawatuna",
+    "aliases": [],
+    "country": "Unawatuna, Sri Lanka",
+    "lat": 6.0078,
+    "lon": 80.2468,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Dewata",
+    "aliases": [
+      "Dewata Beach",
+      "Galle"
+    ],
+    "country": "Galle, Sri Lanka",
+    "lat": 6.0295,
+    "lon": 80.2385,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Madiha",
+    "aliases": [
+      "Medawatta"
+    ],
+    "country": "Matara, Sri Lanka",
+    "lat": 5.9358,
+    "lon": 80.5075,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Hiriketiya",
+    "aliases": [],
+    "country": "Dickwella, Sri Lanka",
+    "lat": 5.96,
+    "lon": 80.709,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Peanut Farm",
+    "aliases": [],
+    "country": "Arugam Bay, Sri Lanka",
+    "lat": 6.7952,
+    "lon": 81.8215,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   }
 ]
