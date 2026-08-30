@@ -1554,8 +1554,8 @@
     "direction": "left",
     "confidence": "provisional",
     "sources": [
-        "wannasurf",
-        "osm-water-audit"
+      "wannasurf",
+      "osm-water-audit"
     ],
     "verifiedOn": "2026-08-28"
   },
@@ -2047,36 +2047,40 @@
   {
     "name": "Supertubes",
     "aliases": [
+      "Supers",
       "J-Bay",
-      "J Bay",
-      "Jeffrey's Bay",
-      "Jeffreys Bay",
-      "Jeffery's Bay",
-      "Jefferys Bay"
+      "Jeffreys Bay"
     ],
     "country": "Jeffrey's Bay, South Africa",
-    "lat": -34.0481,
-    "lon": 24.9313,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -34.0332,
+    "lon": 24.9352,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Boneyards",
     "aliases": [
-      "Boneyard J-Bay",
-      "Jeffery's Bay"
+      "Boneyard J-Bay"
     ],
     "country": "Jeffrey's Bay, South Africa",
-    "lat": -34.0439,
-    "lon": 24.9394,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -34.0351,
+    "lon": 24.9343,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "osm",
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Dungeons",
@@ -2099,25 +2103,31 @@
       "Bluff"
     ],
     "country": "Durban, South Africa",
-    "lat": -29.97,
-    "lon": 31.03,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -29.934,
+    "lon": 31.0141,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "New Pier",
     "aliases": [],
     "country": "Durban, South Africa",
-    "lat": -29.86,
-    "lon": 31.049,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -29.8597,
+    "lon": 31.0419,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Elands Bay",
@@ -2137,13 +2147,17 @@
       "Vic Bay"
     ],
     "country": "George, South Africa",
-    "lat": -34.0056,
-    "lon": 22.5931,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -34.0078,
+    "lon": 22.55,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Muizenberg",
@@ -2154,11 +2168,14 @@
     "country": "Cape Town, South Africa",
     "lat": -34.1083,
     "lon": 18.47,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Skeleton Bay",
@@ -4553,5 +4570,444 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Nahoon Reef",
+    "aliases": [],
+    "country": "East London, South Africa",
+    "lat": -32.9964,
+    "lon": 27.9533,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Seal Point",
+    "aliases": [],
+    "country": "Cape St Francis, South Africa",
+    "lat": -34.2073,
+    "lon": 24.8365,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Bruce's Beauties",
+    "aliases": [
+      "Cape St Francis"
+    ],
+    "country": "Cape St Francis, South Africa",
+    "lat": -34.1875,
+    "lon": 24.8595,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Kalk Bay Reef",
+    "aliases": [
+      "Kalk Bay"
+    ],
+    "country": "Cape Town, South Africa",
+    "lat": -34.1258,
+    "lon": 18.4523,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Kitchen Windows",
+    "aliases": [],
+    "country": "Jeffrey's Bay, South Africa",
+    "lat": -34.0583,
+    "lon": 24.9271,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Magna Tubes",
+    "aliases": [
+      "Magnatubes"
+    ],
+    "country": "Jeffrey's Bay, South Africa",
+    "lat": -34.0382,
+    "lon": 24.933,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Long Beach",
+    "aliases": [
+      "Long Beach Kommetjie"
+    ],
+    "country": "Kommetjie, South Africa",
+    "lat": -34.1362,
+    "lon": 18.3268,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Outer Kom",
+    "aliases": [],
+    "country": "Kommetjie, South Africa",
+    "lat": -34.1453,
+    "lon": 18.3163,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Llandudno",
+    "aliases": [],
+    "country": "Cape Town, South Africa",
+    "lat": -34.0066,
+    "lon": 18.34,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Dunes",
+    "aliases": [
+      "Noordhoek"
+    ],
+    "country": "Noordhoek, South Africa",
+    "lat": -34.1083,
+    "lon": 18.3515,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Scarborough",
+    "aliases": [],
+    "country": "Cape Town, South Africa",
+    "lat": -34.2016,
+    "lon": 18.3705,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Big Bay",
+    "aliases": [
+      "Bloubergstrand"
+    ],
+    "country": "Bloubergstrand, South Africa",
+    "lat": -33.7923,
+    "lon": 18.4511,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Mdumbi",
+    "aliases": [
+      "Umdumbi"
+    ],
+    "country": "Wild Coast, South Africa",
+    "lat": -31.938,
+    "lon": 29.2197,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Coffee Bay",
+    "aliases": [],
+    "country": "Wild Coast, South Africa",
+    "lat": -31.987,
+    "lon": 29.1555,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Outer Pool",
+    "aliases": [
+      "Mossel Bay"
+    ],
+    "country": "Mossel Bay, South Africa",
+    "lat": -34.181,
+    "lon": 22.1579,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
+  },
+  {
+    "name": "Hikkaduwa",
+    "aliases": [],
+    "country": "Hikkaduwa, Sri Lanka",
+    "lat": 6.1395,
+    "lon": 80.0985,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Weligama Bay",
+    "aliases": [
+      "Weligama"
+    ],
+    "country": "Weligama, Sri Lanka",
+    "lat": 5.97,
+    "lon": 80.427,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Lazy Left",
+    "aliases": [
+      "Midigama Left"
+    ],
+    "country": "Midigama, Sri Lanka",
+    "lat": 5.964,
+    "lon": 80.3905,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Rams Right",
+    "aliases": [
+      "Midigama Right",
+      "Ram's Right"
+    ],
+    "country": "Midigama, Sri Lanka",
+    "lat": 5.9628,
+    "lon": 80.388,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Coconuts",
+    "aliases": [
+      "Coconut Point"
+    ],
+    "country": "Midigama, Sri Lanka",
+    "lat": 5.9647,
+    "lon": 80.3818,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Kabalana",
+    "aliases": [
+      "The Rock"
+    ],
+    "country": "Ahangama, Sri Lanka",
+    "lat": 5.9662,
+    "lon": 80.3668,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Mirissa",
+    "aliases": [],
+    "country": "Mirissa, Sri Lanka",
+    "lat": 5.9428,
+    "lon": 80.4598,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Unawatuna",
+    "aliases": [],
+    "country": "Unawatuna, Sri Lanka",
+    "lat": 6.0078,
+    "lon": 80.2468,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Dewata",
+    "aliases": [
+      "Dewata Beach",
+      "Galle"
+    ],
+    "country": "Galle, Sri Lanka",
+    "lat": 6.0295,
+    "lon": 80.2385,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Madiha",
+    "aliases": [
+      "Medawatta"
+    ],
+    "country": "Matara, Sri Lanka",
+    "lat": 5.9358,
+    "lon": 80.5075,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Hiriketiya",
+    "aliases": [],
+    "country": "Dickwella, Sri Lanka",
+    "lat": 5.96,
+    "lon": 80.709,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Peanut Farm",
+    "aliases": [],
+    "country": "Arugam Bay, Sri Lanka",
+    "lat": 6.7952,
+    "lon": 81.8215,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
   }
 ]
