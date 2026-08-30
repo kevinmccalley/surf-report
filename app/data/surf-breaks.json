@@ -1554,8 +1554,8 @@
     "direction": "left",
     "confidence": "provisional",
     "sources": [
-        "wannasurf",
-        "osm-water-audit"
+      "wannasurf",
+      "osm-water-audit"
     ],
     "verifiedOn": "2026-08-28"
   },
@@ -2047,36 +2047,40 @@
   {
     "name": "Supertubes",
     "aliases": [
+      "Supers",
       "J-Bay",
-      "J Bay",
-      "Jeffrey's Bay",
-      "Jeffreys Bay",
-      "Jeffery's Bay",
-      "Jefferys Bay"
+      "Jeffreys Bay"
     ],
     "country": "Jeffrey's Bay, South Africa",
-    "lat": -34.0481,
-    "lon": 24.9313,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -34.0332,
+    "lon": 24.9352,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Boneyards",
     "aliases": [
-      "Boneyard J-Bay",
-      "Jeffery's Bay"
+      "Boneyard J-Bay"
     ],
     "country": "Jeffrey's Bay, South Africa",
-    "lat": -34.0439,
-    "lon": 24.9394,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -34.0351,
+    "lon": 24.9343,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "osm",
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Dungeons",
@@ -2099,25 +2103,31 @@
       "Bluff"
     ],
     "country": "Durban, South Africa",
-    "lat": -29.97,
-    "lon": 31.03,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -29.934,
+    "lon": 31.0141,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "New Pier",
     "aliases": [],
     "country": "Durban, South Africa",
-    "lat": -29.86,
-    "lon": 31.049,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -29.8597,
+    "lon": 31.0419,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Elands Bay",
@@ -2137,13 +2147,17 @@
       "Vic Bay"
     ],
     "country": "George, South Africa",
-    "lat": -34.0056,
-    "lon": 22.5931,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -34.0078,
+    "lon": 22.55,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Muizenberg",
@@ -2154,11 +2168,14 @@
     "country": "Cape Town, South Africa",
     "lat": -34.1083,
     "lon": 18.47,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-29"
   },
   {
     "name": "Skeleton Bay",
