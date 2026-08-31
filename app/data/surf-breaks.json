@@ -5542,5 +5542,182 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Onjuku",
+    "aliases": [],
+    "country": "Chiba, Japan",
+    "lat": 35.1863,
+    "lon": 140.352,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Taito",
+    "aliases": [],
+    "country": "Chiba, Japan",
+    "lat": 35.33,
+    "lon": 140.4005,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Kugenuma",
+    "aliases": [
+      "Kugenuma Kaigan"
+    ],
+    "country": "Kanagawa, Japan",
+    "lat": 35.3145,
+    "lon": 139.4686,
+    "type": "rivermouth",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Shichirigahama",
+    "aliases": [],
+    "country": "Kanagawa, Japan",
+    "lat": 35.3048,
+    "lon": 139.5117,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Inamuragasaki",
+    "aliases": [
+      "Inamura"
+    ],
+    "country": "Kanagawa, Japan",
+    "lat": 35.3015,
+    "lon": 139.5254,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Omaezaki",
+    "aliases": [],
+    "country": "Shizuoka, Japan",
+    "lat": 34.6002,
+    "lon": 138.2053,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Shizunami",
+    "aliases": [],
+    "country": "Shizuoka, Japan",
+    "lat": 34.7321,
+    "lon": 138.2339,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Sendai Shinko",
+    "aliases": [
+      "Sendai New Port"
+    ],
+    "country": "Miyagi, Japan",
+    "lat": 38.2599,
+    "lon": 141.0232,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Aoshima",
+    "aliases": [],
+    "country": "Miyazaki, Japan",
+    "lat": 31.8051,
+    "lon": 131.4672,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Kisakihama",
+    "aliases": [
+      "Kisaki Beach",
+      "Kizakihama"
+    ],
+    "country": "Miyazaki, Japan",
+    "lat": 31.8326,
+    "lon": 131.453,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Okuragahama",
+    "aliases": [
+      "Hyuga",
+      "Okura Beach"
+    ],
+    "country": "Miyazaki, Japan",
+    "lat": 32.3988,
+    "lon": 131.6418,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   }
 ]
