@@ -7,11 +7,14 @@
     "country": "Half Moon Bay, CA",
     "lat": 37.492,
     "lon": -122.5006,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Ghost Tree",
@@ -35,11 +38,14 @@
     "country": "Santa Cruz, CA",
     "lat": 36.9516,
     "lon": -122.0251,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Pleasure Point",
@@ -49,11 +55,14 @@
     "country": "Santa Cruz, CA",
     "lat": 36.9552,
     "lon": -121.9688,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Ocean Beach",
@@ -92,28 +101,37 @@
       "Queen of the Coast"
     ],
     "country": "Carpinteria, CA",
-    "lat": 34.3666,
-    "lon": -119.475,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 34.373,
+    "lon": -119.4782,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "C-Street",
     "aliases": [
       "California Street",
+      "Ventura Point",
       "Ventura Overhead"
     ],
     "country": "Ventura, CA",
-    "lat": 34.2742,
-    "lon": -119.229,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 34.2734,
+    "lon": -119.3048,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "First Point Malibu",
@@ -225,15 +243,21 @@
   },
   {
     "name": "Swamis",
-    "aliases": [],
+    "aliases": [
+      "Swami's"
+    ],
     "country": "Encinitas, CA",
-    "lat": 33.035,
-    "lon": -117.2917,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 33.0345,
+    "lon": -117.2923,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Blacks Beach",
@@ -257,11 +281,15 @@
     "country": "La Jolla, CA",
     "lat": 32.8312,
     "lon": -117.2811,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Big Rock",
