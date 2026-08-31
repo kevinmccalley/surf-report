@@ -7,11 +7,14 @@
     "country": "Half Moon Bay, CA",
     "lat": 37.492,
     "lon": -122.5006,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Ghost Tree",
@@ -35,11 +38,14 @@
     "country": "Santa Cruz, CA",
     "lat": 36.9516,
     "lon": -122.0251,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Pleasure Point",
@@ -49,11 +55,14 @@
     "country": "Santa Cruz, CA",
     "lat": 36.9552,
     "lon": -121.9688,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Ocean Beach",
@@ -92,28 +101,37 @@
       "Queen of the Coast"
     ],
     "country": "Carpinteria, CA",
-    "lat": 34.3666,
-    "lon": -119.475,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 34.373,
+    "lon": -119.4782,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "C-Street",
     "aliases": [
       "California Street",
+      "Ventura Point",
       "Ventura Overhead"
     ],
     "country": "Ventura, CA",
-    "lat": 34.2742,
-    "lon": -119.229,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 34.2734,
+    "lon": -119.3048,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "First Point Malibu",
@@ -225,15 +243,21 @@
   },
   {
     "name": "Swamis",
-    "aliases": [],
+    "aliases": [
+      "Swami's"
+    ],
     "country": "Encinitas, CA",
-    "lat": 33.035,
-    "lon": -117.2917,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 33.0345,
+    "lon": -117.2923,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Blacks Beach",
@@ -257,11 +281,15 @@
     "country": "La Jolla, CA",
     "lat": 32.8312,
     "lon": -117.2811,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Big Rock",
@@ -5307,5 +5335,389 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Shipwreck Bay",
+    "aliases": [
+      "Shipwrecks Bay",
+      "Ahipara"
+    ],
+    "country": "Ahipara, New Zealand",
+    "lat": -35.1776,
+    "lon": 173.1193,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Mount Maunganui",
+    "aliases": [
+      "The Mount"
+    ],
+    "country": "Bay of Plenty, New Zealand",
+    "lat": -37.6335,
+    "lon": 176.1855,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Whangamata Bar",
+    "aliases": [
+      "Whangamata"
+    ],
+    "country": "Coromandel, New Zealand",
+    "lat": -37.209,
+    "lon": 175.8875,
+    "type": "rivermouth",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Wainui Beach",
+    "aliases": [
+      "Wainui"
+    ],
+    "country": "Gisborne, New Zealand",
+    "lat": -38.6853,
+    "lon": 178.0783,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Makorori Point",
+    "aliases": [
+      "Makarori Point",
+      "Makorori"
+    ],
+    "country": "Gisborne, New Zealand",
+    "lat": -38.6634,
+    "lon": 178.1077,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Fitzroy Beach",
+    "aliases": [
+      "Fitzroy"
+    ],
+    "country": "New Plymouth, New Zealand",
+    "lat": -39.0431,
+    "lon": 174.0966,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Stent Road",
+    "aliases": [],
+    "country": "Taranaki, New Zealand",
+    "lat": -39.2269,
+    "lon": 173.7745,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Lyall Bay",
+    "aliases": [
+      "The Wall"
+    ],
+    "country": "Wellington, New Zealand",
+    "lat": -41.335,
+    "lon": 174.8035,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Mangamaunu",
+    "aliases": [
+      "Mangamaunu Bay"
+    ],
+    "country": "Kaikoura, New Zealand",
+    "lat": -42.3047,
+    "lon": 173.7521,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Taylors Mistake",
+    "aliases": [],
+    "country": "Christchurch, New Zealand",
+    "lat": -43.5827,
+    "lon": 172.7771,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "St Clair",
+    "aliases": [
+      "St Clair Beach"
+    ],
+    "country": "Dunedin, New Zealand",
+    "lat": -45.9125,
+    "lon": 170.4892,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Tauranga Bay",
+    "aliases": [
+      "Cape Foulwind"
+    ],
+    "country": "Westport, New Zealand",
+    "lat": -41.762,
+    "lon": 171.455,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-30"
+  },
+  {
+    "name": "Onjuku",
+    "aliases": [],
+    "country": "Chiba, Japan",
+    "lat": 35.1863,
+    "lon": 140.352,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Taito",
+    "aliases": [],
+    "country": "Chiba, Japan",
+    "lat": 35.33,
+    "lon": 140.4005,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Kugenuma",
+    "aliases": [
+      "Kugenuma Kaigan"
+    ],
+    "country": "Kanagawa, Japan",
+    "lat": 35.3145,
+    "lon": 139.4686,
+    "type": "rivermouth",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Shichirigahama",
+    "aliases": [],
+    "country": "Kanagawa, Japan",
+    "lat": 35.3048,
+    "lon": 139.5117,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Inamuragasaki",
+    "aliases": [
+      "Inamura"
+    ],
+    "country": "Kanagawa, Japan",
+    "lat": 35.3015,
+    "lon": 139.5254,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Omaezaki",
+    "aliases": [],
+    "country": "Shizuoka, Japan",
+    "lat": 34.6002,
+    "lon": 138.2053,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Shizunami",
+    "aliases": [],
+    "country": "Shizuoka, Japan",
+    "lat": 34.7321,
+    "lon": 138.2339,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Sendai Shinko",
+    "aliases": [
+      "Sendai New Port"
+    ],
+    "country": "Miyagi, Japan",
+    "lat": 38.2599,
+    "lon": 141.0232,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Aoshima",
+    "aliases": [],
+    "country": "Miyazaki, Japan",
+    "lat": 31.8051,
+    "lon": 131.4672,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Kisakihama",
+    "aliases": [
+      "Kisaki Beach",
+      "Kizakihama"
+    ],
+    "country": "Miyazaki, Japan",
+    "lat": 31.8326,
+    "lon": 131.453,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Okuragahama",
+    "aliases": [
+      "Hyuga",
+      "Okura Beach"
+    ],
+    "country": "Miyazaki, Japan",
+    "lat": 32.3988,
+    "lon": 131.6418,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   }
 ]
