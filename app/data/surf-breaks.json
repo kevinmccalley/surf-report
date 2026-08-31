@@ -505,13 +505,16 @@
       "Sandy's"
     ],
     "country": "Honolulu, Oahu",
-    "lat": 21.2857,
-    "lon": -157.6727,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 21.2853,
+    "lon": -157.6723,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Ala Moana Bowls",
@@ -521,11 +524,14 @@
     "country": "Honolulu, Oahu",
     "lat": 21.2804,
     "lon": -157.8445,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Waikiki",
@@ -535,13 +541,16 @@
       "Queens"
     ],
     "country": "Honolulu, Oahu",
-    "lat": 21.2766,
+    "lat": 21.2748,
     "lon": -157.8248,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Jaws",
@@ -552,11 +561,14 @@
     "country": "Haiku, Maui",
     "lat": 20.9464,
     "lon": -156.3014,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Honolua Bay",
@@ -564,11 +576,15 @@
     "country": "Kapalua, Maui",
     "lat": 21.0145,
     "lon": -156.6395,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Hookipa",
@@ -576,13 +592,17 @@
       "Ho'okipa"
     ],
     "country": "Paia, Maui",
-    "lat": 20.9352,
-    "lon": -156.3556,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 20.9339,
+    "lon": -156.3579,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Hanalei Bay",
@@ -590,11 +610,14 @@
     "country": "Hanalei, Kauai",
     "lat": 22.2091,
     "lon": -159.5068,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Sunset Beach",
