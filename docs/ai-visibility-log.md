@@ -9,6 +9,93 @@ has enough traffic/reviews for it to mean anything.
 
 ---
 
+## 2026-08-31 — Second run (scheduled, unattended)
+
+**Pages checked:** Homepage (`/`), `/faq`, `/blog`, one recent post (`/blog/best-time-to-surf-morocco`,
+pub 2026-08-23), `/spots`, `/climatology/pipeline`, plus the `/regions` route group (new since the
+last run). Raw HTML fetched via `curl -A ClaudeBot` (no JS execution).
+
+**1. Raw-HTML crawlability — PASS.** Server-delivered HTML carries the real answerable content on
+every page: FAQ answer text ("swell period" ×40), full blog article body (Taghazout ×44, Anchor
+Point ×24, "Morocco surfs year-round" ×7), spot names on `/spots` (Uluwatu/Pipeline/Cloudbreak/
+Jeffreys Bay), climatology data on `/climatology/pipeline` (ERA5 ×8, "significant wave height" ×7,
+"peak season" ×10, month names), and all 59 region names on `/regions` (h2 per card). Counts done
+with `grep -o … | wc -l`, not `grep -c` (Next.js HTML is one line).
+
+**2. JSON-LD structured data — PASS.** Correct schema per page type, all live:
+`WebSite`+`Organization`+`SoftwareApplication`+`ContactPoint` sitewide; `FAQPage`+`Question`/`Answer`
+×20 + `SpeakableSpecification` + `BreadcrumbList` on `/faq`; `Blog`+`BlogPosting` ×8 on the index;
+`BlogPosting`+`Person`+`Place`/`GeoCoordinates` ×5 + `BreadcrumbList` on the post; `ItemList`+
+`SportsActivityLocation`+`GeoCoordinates` on `/spots`; `Place`+`GeoCoordinates`+`Dataset`+
+`BreadcrumbList` on `/climatology/pipeline`; `ItemList` (`numberOfItems` 59, matches 59 region
+`ListItem`s + 2 breadcrumb) + `BreadcrumbList` on `/regions`. **Speakable cross-reference checked:**
+`.faq-question` / `.faq-answer` from the `SpeakableSpecification.cssSelector` do exist on real
+rendered elements (`class="faq-question text-lg font-semibold …"`), not only inside the JSON-LD.
+
+**3. sitemap.xml + llms.txt sync — FIXED (llms.txt).** Sitemap healthy: 745 URLs (up from 378 last
+run — the `/regions` index + `/regions/map` + 59 `/regions/{slug}` + `/regions/country/{code}` all
+present), `<lastmod>` values real (newest 2026-08-27, matches the France post). **`llms.txt` gap:**
+the entire `/regions` feature (live, 60+ crawlable pages, in the sitemap) was missing from the "Key
+pages" section — exactly the "new route shipped, nobody updated llms.txt" case. Added a `Surf
+Regions` entry (with the `/regions/map` world atlas and `/regions/country/{code}` roll-ups noted
+inline). Committed locally.
+
+**4. Meta fundamentals — one gap FIXED.** `<title>`, meta description, and canonical present and
+correct on all 7 page types. OG/Twitter: home, `/faq`, `/blog`, the post, `/spots`, and
+`/climatology` all carry a full `og:image` (via `/api/og`) + `twitter:card`. **The `/regions` route
+group had no `og:image` / `twitter:image`** — all 4 metadata files (`app/regions/page.tsx`,
+`[slug]/page.tsx`, `country/[code]/page.tsx`, `map/page.tsx`) built an `openGraph` block that
+omitted `images`, so ~65 live URLs shipped social/AI cards with no image. Added
+`images: [{ url: ogImageUrl, width: 1200, height: 630, alt: title }]` + `twitter.images` to each,
+using the existing `/api/og?title=…&subtitle=…` pattern copied verbatim from `app/blog/[slug]/page.tsx`.
+No new user-visible strings — the OG URL reuses the already-localized `title`/`description` vars.
+Committed locally.
+
+**5. First ~150 words of extractable text — PASS, one minor note.** Homepage opens with the same
+specific copy as last run. `/regions` opens with h1 "Surf Regions" + "Every curated surf region,
+its breaks mapped together. Open one for the list-and-map view." — clear and not filler, but thin
+for GEO (no mention of forecasts, spot counts, or what opening a region gets you). Logged as an
+open judgment-call item below, not fixed (translated copy — needs a human + 5 locale files).
+
+**6. robots.txt — PASS.** Byte-identical to last run: `Allow: /` with the four narrow disallows
+(`/api/`, `/sign-in`, `/sign-up`, `/studio/`, `/debug`), sitemap referenced. No bot-specific blocks.
+
+**7. Traditional/AI search presence — no material change.** "what is swell period surf forecast"
+still does not surface groundswell.surf; surf-forecast.com, SurfSpotGuide, Cornish Wave, Lapoint
+rank. Identical to the 2026-08-23 baseline — not an actionable finding.
+
+**Checked and explicitly NOT findings:** `/top100` and `/gallery` return 404 to signed-out
+crawlers — this is deliberate (`robots: { index:false, follow:false }` + `redirect('/sign-in')` /
+bypass-email gate in both `page.tsx`; `/top100` is an internal ops view). `Organization` JSON-LD
+still has no `sameAs` — unchanged pre-existing item, shelved pending real social accounts (see
+`project_seo_geo.md`).
+
+**Open items needing a human judgment call:**
+1. **`/regions` detail meta description is hardcoded English, bypassing `t()`.**
+   `app/regions/[slug]/page.tsx:39` — `` `${region.name}: ${count} curated surf breaks mapped
+   together, each with a live forecast on Groundswell.` `` is user-facing copy not going through the
+   i18n system (violates CLAUDE.md). Needs a new `regions.meta.detailDesc` key + proper translations
+   in all 5 locale files. Not safe to do unattended.
+2. **`/regions` index intro is thin for answer engines.** "Every curated surf region, its breaks
+   mapped together…" is accurate but doesn't state the value (live forecast per break, ~59 regions,
+   world atlas). A richer localized intro paragraph would help GEO extraction. Translated copy —
+   human + 5 locales.
+
+**Fixed and committed locally this run** (branch `dev` per repo workflow, awaiting Kevin's review +
+push):
+- `seo(regions): add og:image + llms.txt entry for the /regions route group` — adds
+  `openGraph.images` + `twitter.images` to all 4 `app/regions/**/page.tsx` metadata blocks
+  (`/api/og` dynamic card, matching the blog-post pattern); adds a `Surf Regions` entry to
+  `public/llms.txt` Key pages.
+
+**Housekeeping:** this unattended run left scratch fetch files `/.aiv_*.html` and `/.aiv_*.xml` in
+the repo root (untracked, NOT staged) — the run's tool policy blocked file deletion. Safe to
+`rm .aiv_*` on review.
+
+**Overall:** clean pass on 5 of 7 items; 2 mechanical fixes committed locally (regions OG images,
+llms.txt entry), both driven by the `/regions` feature having shipped between runs without its
+AI-visibility surface being updated. Two translated-copy improvements left for a human.
+
 ## 2026-08-23 — First run (interactive, manual)
 
 **Pages checked:** Homepage (`/`), `/faq`, `/blog`, one blog post (`/blog/what-is-swell-period`),
