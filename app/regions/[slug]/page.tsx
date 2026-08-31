@@ -38,13 +38,21 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const title = `${region.name} — ${serverT(lang, 'regions.meta.title')}`
   const description = `${region.name}: ${count} curated surf breaks mapped together, each with a live forecast on Groundswell.`
   const canonical = `${BASE_URL}/regions/${slug}`
+  const ogImageUrl = `${BASE_URL}/api/og?title=${encodeURIComponent(region.name)}&subtitle=${encodeURIComponent(description)}`
 
   return {
     title,
     description,
     alternates: { canonical },
-    openGraph: { title, description, url: canonical, siteName: 'Groundswell', type: 'website' },
-    twitter: { card: 'summary_large_image', title, description },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: 'Groundswell',
+      type: 'website',
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: title }],
+    },
+    twitter: { card: 'summary_large_image', title, description, images: [ogImageUrl] },
   }
 }
 

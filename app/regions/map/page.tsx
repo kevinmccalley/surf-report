@@ -16,6 +16,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const title = serverT(lang, 'regions.map.meta.title')
   const description = serverT(lang, 'regions.map.meta.desc')
   const canonical = `${BASE_URL}/regions/map`
+  const ogImageUrl = `${BASE_URL}/api/og?title=${encodeURIComponent(title)}&subtitle=${encodeURIComponent(description)}`
 
   const languages: Record<string, string> = { 'x-default': canonical }
   for (const locale of LOCALES) {
@@ -26,8 +27,15 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     title,
     description,
     alternates: { canonical, languages },
-    openGraph: { title, description, url: canonical, siteName: 'Groundswell', type: 'website' },
-    twitter: { card: 'summary_large_image', title, description },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: 'Groundswell',
+      type: 'website',
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: title }],
+    },
+    twitter: { card: 'summary_large_image', title, description, images: [ogImageUrl] },
   }
 }
 
