@@ -22,13 +22,16 @@
       "Pescadero Point"
     ],
     "country": "Pebble Beach, CA",
-    "lat": 36.5568,
-    "lon": -121.9618,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 36.5608,
+    "lon": -121.9516,
+    "type": "slab",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Steamer Lane",
@@ -159,11 +162,14 @@
     "country": "Manhattan Beach, CA",
     "lat": 33.905,
     "lon": -118.4231,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Huntington Beach",
@@ -174,11 +180,14 @@
     "country": "Huntington Beach, CA",
     "lat": 33.6547,
     "lon": -118.0046,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Salt Creek",
@@ -206,11 +215,14 @@
     "country": "San Clemente, CA",
     "lat": 33.3836,
     "lon": -117.5897,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Uppers",
@@ -218,13 +230,16 @@
       "Upper Trestles"
     ],
     "country": "San Clemente, CA",
-    "lat": 33.392,
-    "lon": -117.593,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 33.3856,
+    "lon": -117.5944,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "San Onofre",
@@ -233,13 +248,17 @@
       "Old Mans"
     ],
     "country": "San Clemente, CA",
-    "lat": 33.3742,
-    "lon": -117.5702,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 33.3725,
+    "lon": -117.5658,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Swamis",
@@ -265,13 +284,16 @@
       "Black's"
     ],
     "country": "La Jolla, CA",
-    "lat": 32.8925,
-    "lon": -117.2536,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 32.88916,
+    "lon": -117.25316,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Windansea",
@@ -295,13 +317,17 @@
     "name": "Big Rock",
     "aliases": [],
     "country": "La Jolla, CA",
-    "lat": 32.8218,
-    "lon": -117.2792,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 32.8251,
+    "lon": -117.2815,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   },
   {
     "name": "Pismo Beach",
@@ -5711,6 +5737,196 @@
     "country": "Miyazaki, Japan",
     "lat": 32.3988,
     "lon": 131.6418,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Popoyo",
+    "aliases": [],
+    "country": "Tola, Nicaragua",
+    "lat": 11.45142,
+    "lon": -86.10632,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Playa Maderas",
+    "aliases": [
+      "Maderas"
+    ],
+    "country": "San Juan del Sur, Nicaragua",
+    "lat": 11.2833,
+    "lon": -85.90412,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Playa Colorado",
+    "aliases": [
+      "Colorado",
+      "Colorados"
+    ],
+    "country": "Tola, Nicaragua",
+    "lat": 11.4056,
+    "lon": -86.0493,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Playa Santana",
+    "aliases": [
+      "Santana",
+      "Rancho Santana",
+      "Perfect Peak"
+    ],
+    "country": "Tola, Nicaragua",
+    "lat": 11.4366,
+    "lon": -86.0858,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Aserradores",
+    "aliases": [
+      "The Boom",
+      "Boom Huevos"
+    ],
+    "country": "Chinandega, Nicaragua",
+    "lat": 12.6244,
+    "lon": -87.3557,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Astillero",
+    "aliases": [],
+    "country": "Rivas, Nicaragua",
+    "lat": 11.5117,
+    "lon": -86.173,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Playa Venao",
+    "aliases": [
+      "Venao",
+      "Playa Venado"
+    ],
+    "country": "Pedasí, Panama",
+    "lat": 7.4267,
+    "lon": -80.1962,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Playa Teta",
+    "aliases": [
+      "Tetas"
+    ],
+    "country": "San Carlos, Panama",
+    "lat": 8.5059,
+    "lon": -79.9174,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Santa Catalina",
+    "aliases": [
+      "Catalina"
+    ],
+    "country": "Santa Catalina, Panama",
+    "lat": 7.65282,
+    "lon": -81.29342,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Silverback",
+    "aliases": [
+      "Silver Back",
+      "Silverbacks"
+    ],
+    "country": "Bocas del Toro, Panama",
+    "lat": 9.36112,
+    "lon": -82.20472,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Playa Bluff",
+    "aliases": [
+      "Bluff",
+      "The Bluff"
+    ],
+    "country": "Bocas del Toro, Panama",
+    "lat": 9.42385,
+    "lon": -82.25617,
     "type": "beach",
     "direction": "both",
     "confidence": "provisional",
