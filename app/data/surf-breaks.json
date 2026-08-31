@@ -5745,5 +5745,195 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Popoyo",
+    "aliases": [],
+    "country": "Tola, Nicaragua",
+    "lat": 11.45142,
+    "lon": -86.10632,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Playa Maderas",
+    "aliases": [
+      "Maderas"
+    ],
+    "country": "San Juan del Sur, Nicaragua",
+    "lat": 11.2833,
+    "lon": -85.90412,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Playa Colorado",
+    "aliases": [
+      "Colorado",
+      "Colorados"
+    ],
+    "country": "Tola, Nicaragua",
+    "lat": 11.4056,
+    "lon": -86.0493,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Playa Santana",
+    "aliases": [
+      "Santana",
+      "Rancho Santana",
+      "Perfect Peak"
+    ],
+    "country": "Tola, Nicaragua",
+    "lat": 11.4366,
+    "lon": -86.0858,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Aserradores",
+    "aliases": [
+      "The Boom",
+      "Boom Huevos"
+    ],
+    "country": "Chinandega, Nicaragua",
+    "lat": 12.6244,
+    "lon": -87.3557,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Astillero",
+    "aliases": [],
+    "country": "Rivas, Nicaragua",
+    "lat": 11.5117,
+    "lon": -86.173,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Playa Venao",
+    "aliases": [
+      "Venao",
+      "Playa Venado"
+    ],
+    "country": "Pedasí, Panama",
+    "lat": 7.4267,
+    "lon": -80.1962,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Playa Teta",
+    "aliases": [
+      "Tetas"
+    ],
+    "country": "San Carlos, Panama",
+    "lat": 8.5059,
+    "lon": -79.9174,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Santa Catalina",
+    "aliases": [
+      "Catalina"
+    ],
+    "country": "Santa Catalina, Panama",
+    "lat": 7.65282,
+    "lon": -81.29342,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Silverback",
+    "aliases": [
+      "Silver Back",
+      "Silverbacks"
+    ],
+    "country": "Bocas del Toro, Panama",
+    "lat": 9.36112,
+    "lon": -82.20472,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Playa Bluff",
+    "aliases": [
+      "Bluff",
+      "The Bluff"
+    ],
+    "country": "Bocas del Toro, Panama",
+    "lat": 9.42385,
+    "lon": -82.25617,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-08-31"
   }
 ]
