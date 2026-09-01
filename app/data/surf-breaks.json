@@ -1152,25 +1152,32 @@
     "name": "Salsa Brava",
     "aliases": [],
     "country": "Puerto Viejo, Costa Rica",
-    "lat": 9.656,
-    "lon": -82.7237,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 9.655583,
+    "lon": -82.756067,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Pavones",
     "aliases": [],
     "country": "Puntarenas, Costa Rica",
-    "lat": 8.3876,
-    "lon": -83.1394,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 8.39285,
+    "lon": -83.139367,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Playa Hermosa",
@@ -1178,13 +1185,17 @@
       "Hermosa Costa Rica"
     ],
     "country": "Jacó, Costa Rica",
-    "lat": 9.5811,
-    "lon": -84.6206,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 9.575183,
+    "lon": -84.606567,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Playa Dominical",
@@ -1192,13 +1203,16 @@
       "Dominical"
     ],
     "country": "Dominical, Costa Rica",
-    "lat": 9.2507,
-    "lon": -83.8617,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 9.2486,
+    "lon": -83.861733,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Playa Guiones",
@@ -1207,25 +1221,32 @@
       "Nosara"
     ],
     "country": "Nosara, Costa Rica",
-    "lat": 9.9658,
-    "lon": -85.6641,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 9.94725,
+    "lon": -85.673517,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Playa Grande",
     "aliases": [],
     "country": "Guanacaste, Costa Rica",
-    "lat": 10.3282,
-    "lon": -85.8514,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 10.31635,
+    "lon": -85.841583,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Punta Roca",
