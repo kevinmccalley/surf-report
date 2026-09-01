@@ -1563,11 +1563,14 @@
     "country": "Hossegor, France",
     "lat": 43.6654,
     "lon": -1.4438,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Les Culs Nuls",
@@ -1577,11 +1580,14 @@
     "country": "Hossegor, France",
     "lat": 43.6521,
     "lon": -1.4449,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Biarritz",
@@ -1589,13 +1595,16 @@
       "Grande Plage"
     ],
     "country": "Biarritz, France",
-    "lat": 43.4832,
-    "lon": -1.5586,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 43.485467,
+    "lon": -1.5592,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Cote des Basques",
@@ -1605,23 +1614,29 @@
     "country": "Biarritz, France",
     "lat": 43.4785,
     "lon": -1.568,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Lacanau",
     "aliases": [],
     "country": "Lacanau-Océan, France",
-    "lat": 45.0004,
-    "lon": -1.1918,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 45.00335,
+    "lon": -1.204467,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Anglet",
@@ -1629,13 +1644,16 @@
       "Chambre d'Amour"
     ],
     "country": "Anglet, France",
-    "lat": 43.5183,
-    "lon": -1.5386,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 43.494583,
+    "lon": -1.547783,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Mundaka",
