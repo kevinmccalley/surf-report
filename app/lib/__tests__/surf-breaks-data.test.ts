@@ -26,7 +26,7 @@ const DIRECTIONS = ['left', 'right', 'both']
 
 // Ratchet: the number of never-verified `legacy` rows must only ever go DOWN.
 // Lower this each time a verification batch lands. See the dataset doc.
-const MAX_LEGACY = 62
+const MAX_LEGACY = 50
 
 const R = 6371000
 const rad = (d: number) => (d * Math.PI) / 180

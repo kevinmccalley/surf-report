@@ -1152,25 +1152,32 @@
     "name": "Salsa Brava",
     "aliases": [],
     "country": "Puerto Viejo, Costa Rica",
-    "lat": 9.656,
-    "lon": -82.7237,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 9.655583,
+    "lon": -82.756067,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Pavones",
     "aliases": [],
     "country": "Puntarenas, Costa Rica",
-    "lat": 8.3876,
-    "lon": -83.1394,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 8.39285,
+    "lon": -83.139367,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Playa Hermosa",
@@ -1178,13 +1185,17 @@
       "Hermosa Costa Rica"
     ],
     "country": "Jacó, Costa Rica",
-    "lat": 9.5811,
-    "lon": -84.6206,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 9.575183,
+    "lon": -84.606567,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Playa Dominical",
@@ -1192,13 +1203,16 @@
       "Dominical"
     ],
     "country": "Dominical, Costa Rica",
-    "lat": 9.2507,
-    "lon": -83.8617,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 9.2486,
+    "lon": -83.861733,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Playa Guiones",
@@ -1207,25 +1221,32 @@
       "Nosara"
     ],
     "country": "Nosara, Costa Rica",
-    "lat": 9.9658,
-    "lon": -85.6641,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 9.94725,
+    "lon": -85.673517,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Playa Grande",
     "aliases": [],
     "country": "Guanacaste, Costa Rica",
-    "lat": 10.3282,
-    "lon": -85.8514,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 10.31635,
+    "lon": -85.841583,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Punta Roca",
@@ -1563,11 +1584,14 @@
     "country": "Hossegor, France",
     "lat": 43.6654,
     "lon": -1.4438,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Les Culs Nuls",
@@ -1577,11 +1601,14 @@
     "country": "Hossegor, France",
     "lat": 43.6521,
     "lon": -1.4449,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Biarritz",
@@ -1589,13 +1616,16 @@
       "Grande Plage"
     ],
     "country": "Biarritz, France",
-    "lat": 43.4832,
-    "lon": -1.5586,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 43.485467,
+    "lon": -1.5592,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Cote des Basques",
@@ -1605,23 +1635,29 @@
     "country": "Biarritz, France",
     "lat": 43.4785,
     "lon": -1.568,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Lacanau",
     "aliases": [],
     "country": "Lacanau-Océan, France",
-    "lat": 45.0004,
-    "lon": -1.1918,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 45.00335,
+    "lon": -1.204467,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Anglet",
@@ -1629,13 +1665,16 @@
       "Chambre d'Amour"
     ],
     "country": "Anglet, France",
-    "lat": 43.5183,
-    "lon": -1.5386,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 43.494583,
+    "lon": -1.547783,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Mundaka",
@@ -6121,5 +6160,424 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Lakey Peak",
+    "aliases": [],
+    "country": "Sumbawa, Indonesia",
+    "lat": -8.8253,
+    "lon": 118.3805,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Periscopes",
+    "aliases": [],
+    "country": "Sumbawa, Indonesia",
+    "lat": -8.78465,
+    "lon": 118.355717,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Scar Reef",
+    "aliases": [],
+    "country": "Sumbawa, Indonesia",
+    "lat": -8.8625,
+    "lon": 116.75555,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Yo Yos",
+    "aliases": [
+      "Yo-Yos",
+      "Yoyos"
+    ],
+    "country": "Sumbawa, Indonesia",
+    "lat": -8.971933,
+    "lon": 116.726467,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Mawi",
+    "aliases": [],
+    "country": "Lombok, Indonesia",
+    "lat": -8.88775,
+    "lon": 116.1607,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Gerupuk",
+    "aliases": [
+      "Grupuk",
+      "Gerupak"
+    ],
+    "country": "Lombok, Indonesia",
+    "lat": -8.925767,
+    "lon": 116.352083,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Tanjung Aan",
+    "aliases": [
+      "Pantai Aan"
+    ],
+    "country": "Lombok, Indonesia",
+    "lat": -8.918233,
+    "lon": 116.322733,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Ekas",
+    "aliases": [],
+    "country": "Lombok, Indonesia",
+    "lat": -8.88355,
+    "lon": 116.450617,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Batu Karas",
+    "aliases": [],
+    "country": "West Java, Indonesia",
+    "lat": -7.74825,
+    "lon": 108.502183,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Cimaja",
+    "aliases": [],
+    "country": "West Java, Indonesia",
+    "lat": -6.9629,
+    "lon": 106.479517,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Pacitan",
+    "aliases": [
+      "Teleng Ria",
+      "Pantai Teleng Ria"
+    ],
+    "country": "East Java, Indonesia",
+    "lat": -8.230983,
+    "lon": 111.101517,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Barra de la Cruz",
+    "aliases": [
+      "La Jolla"
+    ],
+    "country": "Barra de la Cruz, Oaxaca",
+    "lat": 15.87515,
+    "lon": -95.7771,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "La Punta",
+    "aliases": [
+      "La Punta Zicatela"
+    ],
+    "country": "Puerto Escondido, Oaxaca",
+    "lat": 15.830567,
+    "lon": -97.046767,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Carrizalillo",
+    "aliases": [],
+    "country": "Puerto Escondido, Oaxaca",
+    "lat": 15.858683,
+    "lon": -97.079,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Rio Nexpa",
+    "aliases": [
+      "Nexpa",
+      "Barra de Nexpa"
+    ],
+    "country": "Michoacán",
+    "lat": 18.085517,
+    "lon": -102.791133,
+    "type": "rivermouth",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Troncones Point",
+    "aliases": [
+      "Manzanillo Bay"
+    ],
+    "country": "Troncones, Guerrero",
+    "lat": 17.794417,
+    "lon": -101.747533,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "La Lancha",
+    "aliases": [],
+    "country": "Punta de Mita, Nayarit",
+    "lat": 20.748333,
+    "lon": -105.441967,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "San Pancho",
+    "aliases": [
+      "San Francisco"
+    ],
+    "country": "San Pancho, Nayarit",
+    "lat": 20.900767,
+    "lon": -105.41715,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Las Islitas",
+    "aliases": [
+      "Matanchén Bay",
+      "Bahía de Matanchén"
+    ],
+    "country": "San Blas, Nayarit",
+    "lat": 21.5158,
+    "lon": -105.24705,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Sayulita",
+    "aliases": [],
+    "country": "Sayulita, Nayarit",
+    "lat": 20.874533,
+    "lon": -105.45275,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Zippers",
+    "aliases": [
+      "Costa Azul"
+    ],
+    "country": "San José del Cabo, Baja California Sur",
+    "lat": 23.0293,
+    "lon": -109.714083,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Old Man's",
+    "aliases": [
+      "Acapulquito"
+    ],
+    "country": "San José del Cabo, Baja California Sur",
+    "lat": 23.023933,
+    "lon": -109.715867,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Monuments",
+    "aliases": [],
+    "country": "Cabo San Lucas, Baja California Sur",
+    "lat": 22.898167,
+    "lon": -109.870317,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Shipwrecks",
+    "aliases": [],
+    "country": "East Cape, Baja California Sur",
+    "lat": 23.11945,
+    "lon": -109.528067,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Salsipuedes",
+    "aliases": [],
+    "country": "Ensenada, Baja California",
+    "lat": 31.976833,
+    "lon": -116.790583,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Baja Malibu",
+    "aliases": [],
+    "country": "Tijuana, Baja California",
+    "lat": 32.4195,
+    "lon": -117.09735,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   }
 ]
