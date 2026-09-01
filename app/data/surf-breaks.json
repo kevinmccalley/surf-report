@@ -923,27 +923,35 @@
       "Mexican Pipeline"
     ],
     "country": "Puerto Escondido, Oaxaca",
-    "lat": 15.8581,
-    "lon": -97.0686,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 15.847167,
+    "lon": -97.055117,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Salina Cruz",
     "aliases": [
-      "La Punta Salina Cruz"
+      "La Punta Salina Cruz",
+      "Bamba",
+      "Punta Bamba"
     ],
     "country": "Salina Cruz, Oaxaca",
-    "lat": 16.173,
-    "lon": -95.205,
+    "lat": 16.153683,
+    "lon": -95.237567,
     "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Punta de Mita",
@@ -966,31 +974,32 @@
     "name": "Pascuales",
     "aliases": [],
     "country": "Tecoman, Colima",
-    "lat": 18.8075,
-    "lon": -103.784,
-    "type": null,
-    "direction": null,
+    "lat": 18.855,
+    "lon": -103.9628,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surf-forecast",
+      "wikipedia",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "La Ticla",
     "aliases": [],
     "country": "La Ticla, Michoacán",
-    "lat": 18.4468,
-    "lon": -103.5615,
-    "type": null,
-    "direction": null,
+    "lat": 18.45415,
+    "lon": -103.558567,
+    "type": "point",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Scorpion Bay",
@@ -998,16 +1007,16 @@
       "San Juanico"
     ],
     "country": "San Juanico, Baja California Sur",
-    "lat": 26.2555,
-    "lon": -112.478,
-    "type": null,
-    "direction": null,
+    "lat": 26.233833,
+    "lon": -112.485417,
+    "type": "point",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Los Cerritos",
@@ -1032,13 +1041,17 @@
       "Abreojos"
     ],
     "country": "Punta Abreojos, Baja California Sur",
-    "lat": 26.7169,
+    "lat": 26.7151,
     "lon": -113.5672,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Todos Santos",
@@ -1064,11 +1077,14 @@
     "country": "El Rosario, Baja California",
     "lat": 29.9581,
     "lon": -115.7911,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "San Miguel",
@@ -1108,13 +1124,16 @@
       "La Fonda"
     ],
     "country": "Rosarito, Baja California",
-    "lat": 32.18,
-    "lon": -117.06,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 32.258933,
+    "lon": -116.98635,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Witch's Rock",
