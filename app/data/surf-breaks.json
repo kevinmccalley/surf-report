@@ -6336,5 +6336,248 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Barra de la Cruz",
+    "aliases": [
+      "La Jolla"
+    ],
+    "country": "Barra de la Cruz, Oaxaca",
+    "lat": 15.87515,
+    "lon": -95.7771,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "La Punta",
+    "aliases": [
+      "La Punta Zicatela"
+    ],
+    "country": "Puerto Escondido, Oaxaca",
+    "lat": 15.830567,
+    "lon": -97.046767,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Carrizalillo",
+    "aliases": [],
+    "country": "Puerto Escondido, Oaxaca",
+    "lat": 15.858683,
+    "lon": -97.079,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Rio Nexpa",
+    "aliases": [
+      "Nexpa",
+      "Barra de Nexpa"
+    ],
+    "country": "Michoacán",
+    "lat": 18.085517,
+    "lon": -102.791133,
+    "type": "rivermouth",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Troncones Point",
+    "aliases": [
+      "Manzanillo Bay"
+    ],
+    "country": "Troncones, Guerrero",
+    "lat": 17.794417,
+    "lon": -101.747533,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "La Lancha",
+    "aliases": [],
+    "country": "Punta de Mita, Nayarit",
+    "lat": 20.748333,
+    "lon": -105.441967,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "San Pancho",
+    "aliases": [
+      "San Francisco"
+    ],
+    "country": "San Pancho, Nayarit",
+    "lat": 20.900767,
+    "lon": -105.41715,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Las Islitas",
+    "aliases": [
+      "Matanchén Bay",
+      "Bahía de Matanchén"
+    ],
+    "country": "San Blas, Nayarit",
+    "lat": 21.5158,
+    "lon": -105.24705,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Sayulita",
+    "aliases": [],
+    "country": "Sayulita, Nayarit",
+    "lat": 20.874533,
+    "lon": -105.45275,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Zippers",
+    "aliases": [
+      "Costa Azul"
+    ],
+    "country": "San José del Cabo, Baja California Sur",
+    "lat": 23.0293,
+    "lon": -109.714083,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Old Man's",
+    "aliases": [
+      "Acapulquito"
+    ],
+    "country": "San José del Cabo, Baja California Sur",
+    "lat": 23.023933,
+    "lon": -109.715867,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Monuments",
+    "aliases": [],
+    "country": "Cabo San Lucas, Baja California Sur",
+    "lat": 22.898167,
+    "lon": -109.870317,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Shipwrecks",
+    "aliases": [],
+    "country": "East Cape, Baja California Sur",
+    "lat": 23.11945,
+    "lon": -109.528067,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Salsipuedes",
+    "aliases": [],
+    "country": "Ensenada, Baja California",
+    "lat": 31.976833,
+    "lon": -116.790583,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Baja Malibu",
+    "aliases": [],
+    "country": "Tijuana, Baja California",
+    "lat": 32.4195,
+    "lon": -117.09735,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   }
 ]
