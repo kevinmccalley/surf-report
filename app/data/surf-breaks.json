@@ -6139,5 +6139,181 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-08-31"
+  },
+  {
+    "name": "Lakey Peak",
+    "aliases": [],
+    "country": "Sumbawa, Indonesia",
+    "lat": -8.8253,
+    "lon": 118.3805,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Periscopes",
+    "aliases": [],
+    "country": "Sumbawa, Indonesia",
+    "lat": -8.78465,
+    "lon": 118.355717,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Scar Reef",
+    "aliases": [],
+    "country": "Sumbawa, Indonesia",
+    "lat": -8.8625,
+    "lon": 116.75555,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Yo Yos",
+    "aliases": [
+      "Yo-Yos",
+      "Yoyos"
+    ],
+    "country": "Sumbawa, Indonesia",
+    "lat": -8.971933,
+    "lon": 116.726467,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Mawi",
+    "aliases": [],
+    "country": "Lombok, Indonesia",
+    "lat": -8.88775,
+    "lon": 116.1607,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Gerupuk",
+    "aliases": [
+      "Grupuk",
+      "Gerupak"
+    ],
+    "country": "Lombok, Indonesia",
+    "lat": -8.925767,
+    "lon": 116.352083,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Tanjung Aan",
+    "aliases": [
+      "Pantai Aan"
+    ],
+    "country": "Lombok, Indonesia",
+    "lat": -8.918233,
+    "lon": 116.322733,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Ekas",
+    "aliases": [],
+    "country": "Lombok, Indonesia",
+    "lat": -8.88355,
+    "lon": 116.450617,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Batu Karas",
+    "aliases": [],
+    "country": "West Java, Indonesia",
+    "lat": -7.74825,
+    "lon": 108.502183,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Cimaja",
+    "aliases": [],
+    "country": "West Java, Indonesia",
+    "lat": -6.9629,
+    "lon": 106.479517,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Pacitan",
+    "aliases": [
+      "Teleng Ria",
+      "Pantai Teleng Ria"
+    ],
+    "country": "East Java, Indonesia",
+    "lat": -8.230983,
+    "lon": 111.101517,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   }
 ]
