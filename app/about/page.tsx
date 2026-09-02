@@ -53,6 +53,7 @@ export default function AboutPage() {
         '@id': `${BASE_URL}/#organization`,
         name: 'Groundswell',
         url: BASE_URL,
+        sameAs: ['https://www.instagram.com/ground.swell.surf/'],
         description:
           'Groundswell provides real-time surf reports, 10-day wave forecasts, and historical surf climatology for any surf spot on earth, powered by ECMWF and ERA5 open ocean data.',
         founder: { '@type': 'Person', name: 'Kevin McCalley' },

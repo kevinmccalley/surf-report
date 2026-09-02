@@ -36,7 +36,7 @@ function getContent(locale: string) {
             heading: 'Quién está detrás de Groundswell',
             body: <>
               <p>Groundswell lo desarrolla y opera Kevin McCalley, un desarrollador independiente. No tiene financiación de capital riesgo ni inversores.</p>
-              <p>¿Comentarios o preguntas? Escribe a <a href="/support" className="text-sky-400 hover:text-sky-300 transition-colors">Soporte</a>.</p>
+              <p>Síguenos en <a href="https://www.instagram.com/ground.swell.surf/" rel="me" className="text-sky-400 hover:text-sky-300 transition-colors">Instagram</a>. ¿Comentarios o preguntas? Escribe a <a href="/support" className="text-sky-400 hover:text-sky-300 transition-colors">Soporte</a>.</p>
             </>,
           },
         ],
@@ -72,7 +72,7 @@ function getContent(locale: string) {
             heading: 'Qui est derrière Groundswell',
             body: <>
               <p>Groundswell est développé et exploité par Kevin McCalley, développeur indépendant. Ni capital-risque, ni investisseurs.</p>
-              <p>Un retour ou une question ? Écrivez au <a href="/support" className="text-sky-400 hover:text-sky-300 transition-colors">Support</a>.</p>
+              <p>Suivez-nous sur <a href="https://www.instagram.com/ground.swell.surf/" rel="me" className="text-sky-400 hover:text-sky-300 transition-colors">Instagram</a>. Un retour ou une question ? Écrivez au <a href="/support" className="text-sky-400 hover:text-sky-300 transition-colors">Support</a>.</p>
             </>,
           },
         ],
@@ -108,7 +108,7 @@ function getContent(locale: string) {
             heading: 'Quem está por trás do Groundswell',
             body: <>
               <p>O Groundswell é desenvolvido e operado por Kevin McCalley, um desenvolvedor independente. Sem capital de risco, sem investidores.</p>
-              <p>Comentários ou dúvidas? Escreva para o <a href="/support" className="text-sky-400 hover:text-sky-300 transition-colors">Suporte</a>.</p>
+              <p>Acompanhe no <a href="https://www.instagram.com/ground.swell.surf/" rel="me" className="text-sky-400 hover:text-sky-300 transition-colors">Instagram</a>. Comentários ou dúvidas? Escreva para o <a href="/support" className="text-sky-400 hover:text-sky-300 transition-colors">Suporte</a>.</p>
             </>,
           },
         ],
@@ -144,7 +144,7 @@ function getContent(locale: string) {
             heading: 'Quem está por trás do Groundswell',
             body: <>
               <p>O Groundswell é desenvolvido e operado por Kevin McCalley, um programador independente. Sem capital de risco, sem investidores.</p>
-              <p>Comentários ou questões? Escreva para o <a href="/support" className="text-sky-400 hover:text-sky-300 transition-colors">Suporte</a>.</p>
+              <p>Segue-nos no <a href="https://www.instagram.com/ground.swell.surf/" rel="me" className="text-sky-400 hover:text-sky-300 transition-colors">Instagram</a>. Comentários ou questões? Escreva para o <a href="/support" className="text-sky-400 hover:text-sky-300 transition-colors">Suporte</a>.</p>
             </>,
           },
         ],
@@ -180,7 +180,7 @@ function getContent(locale: string) {
             heading: 'Who is behind Groundswell',
             body: <>
               <p>Groundswell is built and operated by Kevin McCalley, an independent developer. No venture capital, no investors.</p>
-              <p>Feedback or questions? Write to <a href="/support" className="text-sky-400 hover:text-sky-300 transition-colors">Support</a>.</p>
+              <p>Follow along on <a href="https://www.instagram.com/ground.swell.surf/" rel="me" className="text-sky-400 hover:text-sky-300 transition-colors">Instagram</a>. Feedback or questions? Write to <a href="/support" className="text-sky-400 hover:text-sky-300 transition-colors">Support</a>.</p>
             </>,
           },
         ],
