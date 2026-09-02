@@ -6830,5 +6830,210 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Jacking Horse",
+    "aliases": [
+      "Jacking Horses"
+    ],
+    "country": "Siargao, Philippines",
+    "lat": 9.81545,
+    "lon": 126.164033,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Rock Island",
+    "aliases": [],
+    "country": "Siargao, Philippines",
+    "lat": 9.791783,
+    "lon": 126.170517,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Cemetery",
+    "aliases": [
+      "Cemeteries"
+    ],
+    "country": "Siargao, Philippines",
+    "lat": 9.79,
+    "lon": 126.1745,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Stimpy's",
+    "aliases": [],
+    "country": "Siargao, Philippines",
+    "lat": 9.843683,
+    "lon": 126.157383,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Pacifico",
+    "aliases": [
+      "Pacifico Beach"
+    ],
+    "country": "Siargao, Philippines",
+    "lat": 9.943,
+    "lon": 126.1075,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "San Juan Point",
+    "aliases": [
+      "Monaliza Point",
+      "The Point"
+    ],
+    "country": "La Union, Philippines",
+    "lat": 16.65795,
+    "lon": 120.320467,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Urbiztondo",
+    "aliases": [
+      "Urbiztondo Beach"
+    ],
+    "country": "La Union, Philippines",
+    "lat": 16.6517,
+    "lon": 120.31535,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Sabang Beach",
+    "aliases": [
+      "Baler"
+    ],
+    "country": "Baler, Philippines",
+    "lat": 15.753933,
+    "lon": 121.567833,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Cemento Reef",
+    "aliases": [
+      "Cobra Reef"
+    ],
+    "country": "Baler, Philippines",
+    "lat": 15.763433,
+    "lon": 121.599433,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Crystal Beach",
+    "aliases": [
+      "Crystal Beach Break"
+    ],
+    "country": "Zambales, Philippines",
+    "lat": 15.014767,
+    "lon": 120.063833,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Puraran",
+    "aliases": [
+      "Majestics",
+      "The Majestic",
+      "Puraran Bay"
+    ],
+    "country": "Catanduanes, Philippines",
+    "lat": 13.692183,
+    "lon": 124.3976,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Lanuza Rivermouth",
+    "aliases": [
+      "Doot Poktoy",
+      "Lanuza"
+    ],
+    "country": "Surigao del Sur, Philippines",
+    "lat": 9.24,
+    "lon": 126.06,
+    "type": "rivermouth",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   }
 ]
