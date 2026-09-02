@@ -1,5 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
-import { NextResponse } from 'next/server'
+import { NextResponse, type NextRequest, type NextFetchEvent } from 'next/server'
 
 const isPublicRoute = createRouteMatcher([
   '/',
@@ -64,13 +64,7 @@ const isCacheableContent = createRouteMatcher([
 ])
 const CACHEABLE_CONTENT_CC = 'public, s-maxage=3600, stale-while-revalidate=86400'
 
-export default clerkMiddleware(async (auth, req) => {
-  if (req.method === 'GET' && isCacheableContent(req)) {
-    const res = NextResponse.next()
-    res.headers.set('Cache-Control', CACHEABLE_CONTENT_CC)
-    return res
-  }
-
+const clerk = clerkMiddleware(async (auth, req) => {
   if (!isPublicRoute(req)) {
     const { userId } = await auth()
     if (!userId) {
@@ -82,6 +76,18 @@ export default clerkMiddleware(async (auth, req) => {
     }
   }
 })
+
+export default function middleware(req: NextRequest, event: NextFetchEvent) {
+  // Cacheable content bypasses Clerk entirely — clerkMiddleware unconditionally
+  // stamps `Cache-Control: no-store` on any response it wraps, so the only way
+  // to let the edge cache these pages is to never hand them to Clerk.
+  if (req.method === 'GET' && isCacheableContent(req)) {
+    const res = NextResponse.next()
+    res.headers.set('Cache-Control', CACHEABLE_CONTENT_CC)
+    return res
+  }
+  return clerk(req, event)
+}
 
 export const config = {
   matcher: ['/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest|xml|txt)).*)'],
