@@ -723,8 +723,9 @@ const es: Record<string, string> = {
 
   'regions.meta.title':                'Regiones de Surf — Groundswell',
   'regions.meta.desc':                 'Explora el mundo por región de surf: Baja Sur, las Mentawai, el País Vasco y más. Cada región reúne sus mejores olas en un solo mapa.',
+  'regions.meta.detailDesc':           '{region}: {count} rompientes de surf seleccionadas y reunidas en un mapa, cada una con un pronóstico en vivo en Groundswell.',
   'regions.heading':                   'Regiones de Surf',
-  'regions.subtitle':                  'Cada región de surf seleccionada, con sus olas reunidas en el mapa. Abre una para ver la lista y el mapa.',
+  'regions.subtitle':                  'Cada región de surf seleccionada, con sus rompientes reunidas en un solo mapa y un pronóstico en vivo para cada una. Casi 60 regiones —North Shore de Oahu, las Mentawai, el País Vasco y más—, además de un atlas mundial del surf a pantalla completa.',
   'regions.breadcrumb':                'Regiones',
   'regions.searchPlaceholder':         'Buscar regiones…',
   'regions.allContinents':             'Todos los continentes',

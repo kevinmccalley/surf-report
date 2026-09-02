@@ -724,8 +724,9 @@ const en: Record<string, string> = {
 
   'regions.meta.title':                'Surf Regions — Groundswell',
   'regions.meta.desc':                 'Explore the world by surf region — Baja Sur, the Mentawais, the Basque Country and more. Each region maps its best breaks together in one view.',
+  'regions.meta.detailDesc':           '{region}: {count} curated surf breaks mapped together, each with a live forecast on Groundswell.',
   'regions.heading':                   'Surf Regions',
-  'regions.subtitle':                  'Every curated surf region, its breaks mapped together. Open one for the list-and-map view.',
+  'regions.subtitle':                  'Every curated surf region with its breaks mapped into one view, each break carrying a live forecast. Nearly 60 regions — North Shore Oahu, the Mentawais, the Basque Country and more — plus a full-screen world surf atlas.',
   'regions.breadcrumb':                'Regions',
   'regions.searchPlaceholder':         'Search regions…',
   'regions.allContinents':             'All continents',
