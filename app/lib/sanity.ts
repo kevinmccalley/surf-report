@@ -78,6 +78,31 @@ export interface SanityPostStub {
   coverImage?: { asset: SanityImageSource; alt?: string }
 }
 
+// ── Blog i18n helpers ─────────────────────────────────────────────────────
+// Site locale codes that a post can be translated into (English is the source).
+export const BLOG_TRANSLATION_LOCALES = ['es', 'fr', 'pt-BR', 'pt-PT'] as const
+
+// Site locale code → Sanity field key (no hyphens allowed in field names).
+export function translationFieldKey(locale: string): keyof PostTranslations | null {
+  const map: Record<string, keyof PostTranslations> = {
+    es: 'es', fr: 'fr', 'pt-BR': 'ptBR', 'pt-PT': 'ptPT',
+  }
+  return map[locale] ?? null
+}
+
+// Given a post and a raw ?lang= value, resolve the locale to actually render:
+// falls back to 'en' unless the post has a translation with a title for that lang.
+export function resolvePostLocale(post: SanityPost, langParam: string | undefined | null) {
+  const available = BLOG_TRANSLATION_LOCALES.filter(l => {
+    const k = translationFieldKey(l)
+    return !!(k && post.translations?.[k]?.title)
+  })
+  const lang = langParam && (available as readonly string[]).includes(langParam) ? langParam : 'en'
+  const key = lang === 'en' ? null : translationFieldKey(lang)
+  const tx = key ? post.translations?.[key] : undefined
+  return { lang, tx, available }
+}
+
 // ── GROQ queries ──────────────────────────────────────────────────────────
 
 export const ALL_POSTS_QUERY = `
@@ -148,7 +173,13 @@ export const ALL_SLUGS_WITH_DATE_QUERY = `
     && publishedAt <= now()
   ] | order(publishedAt desc) {
     "slug": slug.current,
-    "date": coalesce(_updatedAt, publishedAt)
+    "date": coalesce(_updatedAt, publishedAt),
+    "langs": [
+      select(defined(translations.es.title) => "es"),
+      select(defined(translations.fr.title) => "fr"),
+      select(defined(translations.ptBR.title) => "pt-BR"),
+      select(defined(translations.ptPT.title) => "pt-PT")
+    ][@ != null]
   }
 `
 
@@ -194,14 +225,15 @@ export async function getPostsForSpot(slug: string): Promise<SanityPostStub[]> {
   }
 }
 
-export async function getAllSlugsWithDate(): Promise<Array<{ slug: string; date: string }>> {
+export async function getAllSlugsWithDate(): Promise<Array<{ slug: string; date: string; langs: string[] }>> {
   if (!isSanityConfigured) return []
   try {
-    return await sanityClient.fetch<Array<{ slug: string; date: string }>>(
+    const rows = await sanityClient.fetch<Array<{ slug: string; date: string; langs?: string[] }>>(
       ALL_SLUGS_WITH_DATE_QUERY,
       {},
       { next: { revalidate: 3600 } },
     )
+    return rows.map(r => ({ ...r, langs: r.langs ?? [] }))
   } catch {
     return []
   }

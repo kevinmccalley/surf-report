@@ -71,6 +71,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     try {
+      // A ?lang= in the URL is an explicit signal (a shared link, or an hreflang
+      // result from a search engine) — it wins over a saved preference and, like
+      // the switcher, persists via loadLocale's cookie/localStorage writes. The
+      // server already resolves locale from this param (see app/lib/server-locale.ts);
+      // this keeps the client in sync so ?lang= URLs don't flip back on hydration.
+      const urlLang = new URLSearchParams(window.location.search).get('lang')
+      if (urlLang && urlLang in loaders) { loadLocale(urlLang as Locale); return }
+
       // Explicit user choice always wins
       const stored = localStorage.getItem(STORAGE_KEY) as Locale | null
       if (stored && stored in loaders) { loadLocale(stored); return }

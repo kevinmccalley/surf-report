@@ -70,12 +70,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }
-  const blogPosts = blogPostsWithDate.map(({ slug, date }) => ({
-    url: `${base}/blog/${slug}`,
-    lastModified: new Date(date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
+  const blogPosts = blogPostsWithDate.map(({ slug, date, langs }) => {
+    const url = `${base}/blog/${slug}`
+    const entry = {
+      url,
+      lastModified: new Date(date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }
+    // Declare the localised variants Google should also crawl.
+    if (langs && langs.length > 0) {
+      const languages: Record<string, string> = { en: url }
+      for (const l of langs) languages[l] = `${url}?lang=${l}`
+      return { ...entry, alternates: { languages } }
+    }
+    return entry
+  })
 
   return [...staticPages, blogIndex, ...blogPosts, ...regionPages, ...spotPages, ...climatologyPages]
 }
