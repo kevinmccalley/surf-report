@@ -27,6 +27,7 @@ const isPublicRoute = createRouteMatcher([
   '/api/cron/swell-alert-check(.*)',
   '/api/clerk-webhook(.*)',
   '/api/model-comparison(.*)',
+  '/about(.*)',
   '/accuracy(.*)',
   '/climatology(.*)',
   '/terms(.*)',

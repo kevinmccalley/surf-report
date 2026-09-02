@@ -448,20 +448,24 @@ export default function SurfApp({ tier, initialGeo }: { tier: Tier; initialGeo?:
       )}
 
       <main id="main-content">
-        {!report && !loading && !error && (
+        {/* On /spots/* and /climatology-linked pages `initialGeo` is set and a
+            forecast fetch fires on mount — don't flash the marketing landing (and
+            its <h1>) into the SSR HTML; the page's own <SpotStaticSection> owns
+            the heading there. */}
+        {!report && !loading && !error && !initialGeo && (
           isSignedIn
             ? <LandingHero onSelect={fetchReport} />
             : <MarketingLanding onSearch={fetchReport} />
         )}
 
-        {isPaid && isSignedIn && !report && !loading && !error && (
+        {isPaid && isSignedIn && !report && !loading && !error && !initialGeo && (
           <EpicNowSection units={units} onSelect={fetchReport} />
         )}
-        {!isPaid && isSignedIn && !report && !loading && !error && (
+        {!isPaid && isSignedIn && !report && !loading && !error && !initialGeo && (
           <UpgradeTeaser onUpgrade={() => setShowPaywall(true)} />
         )}
 
-        {!report && !loading && !error && (
+        {!report && !loading && !error && !initialGeo && (
           <footer className="text-center text-xs text-slate-600 pb-8 pt-4">
             <SiteFooterLinks />
           </footer>
@@ -807,6 +811,7 @@ function SiteFooterLinks() {
       <a href="/spots"    className="hover:text-slate-300 transition-colors">{t('nav.spots')}</a>
       <a href="/blog"     className="hover:text-slate-300 transition-colors">{t('nav.blog')}</a>
       <a href="/faq"      className="hover:text-slate-300 transition-colors">{t('nav.faq')}</a>
+      <a href="/about"    className="hover:text-slate-300 transition-colors">{t('nav.about')}</a>
       <a href="/terms"    className="hover:text-slate-300 transition-colors">{t('nav.terms')}</a>
       <a href="/privacy"  className="hover:text-slate-300 transition-colors">{t('nav.privacy')}</a>
       <a href="/refund"   className="hover:text-slate-300 transition-colors">{t('nav.refund')}</a>

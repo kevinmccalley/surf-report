@@ -13,6 +13,7 @@ export const dynamic = 'force-dynamic'
 type Props = { params: Promise<{ slug: string }> }
 
 const BASE_URL = 'https://groundswell.surf'
+const LOCALES = ['en', 'es', 'fr', 'pt-BR', 'pt-PT'] as const
 const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 // ── Pure helpers ──────────────────────────────────────────────────────────────
@@ -199,10 +200,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = `Live surf conditions and 10-day forecast for ${spot.name}, ${spot.country}. Wave height, swell period and direction, wind, water temperature, and tides — updated hourly from open ocean data.`
   const canonical = `${BASE_URL}/spots/${slug}`
 
+  // hreflang: the app serves this route in all five locales via ?lang=
+  const languages: Record<string, string> = { 'x-default': canonical }
+  for (const locale of LOCALES) {
+    languages[locale] = locale === 'en' ? canonical : `${canonical}?lang=${locale}`
+  }
+
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates: { canonical, languages },
     openGraph: {
       title,
       description,

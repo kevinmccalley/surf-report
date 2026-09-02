@@ -36,7 +36,9 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const lang = await getServerLocale((await searchParams)?.lang)
   const count = region.spotSlugs.length
   const title = `${region.name} — ${serverT(lang, 'regions.meta.title')}`
-  const description = `${region.name}: ${count} curated surf breaks mapped together, each with a live forecast on Groundswell.`
+  const description = serverT(lang, 'regions.meta.detailDesc')
+    .replace('{region}', region.name)
+    .replace('{count}', String(count))
   const canonical = `${BASE_URL}/regions/${slug}`
   const ogImageUrl = `${BASE_URL}/api/og?title=${encodeURIComponent(region.name)}&subtitle=${encodeURIComponent(description)}`
 

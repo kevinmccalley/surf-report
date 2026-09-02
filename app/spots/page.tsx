@@ -53,8 +53,13 @@ export default async function SpotsDirectoryPage({ searchParams }: Props) {
         description: t('directory.meta.desc'),
         url: `${BASE_URL}/spots`,
         numberOfItems: spots.length,
+        // Representative sample only — emitting a SportsActivityLocation + geo for
+        // every one of the ~600 spots added ~150 KB of JSON-LD to every page load.
+        // numberOfItems still reports the true total; the full directory is in the
+        // crawlable DOM list below.
         itemListElement: [...spots]
           .sort((a, b) => a.name.localeCompare(b.name))
+          .slice(0, 100)
           .map((spot, i) => ({
             '@type': 'ListItem',
             position: i + 1,

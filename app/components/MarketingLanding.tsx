@@ -100,6 +100,10 @@ export default function MarketingLanding({ onSearch }: { onSearch: (r: GeoResult
             <span className="text-white">{t('mktL.h1.post')}</span>
           </h1>
 
+          <p className="text-slate-300 text-base sm:text-lg mb-3 max-w-xl mx-auto leading-relaxed">
+            {t('mktL.lede')}
+          </p>
+
           <p className="text-slate-400 text-lg sm:text-xl mb-8 max-w-lg mx-auto leading-relaxed">
             {t('mktL.subtitle', { price4: format(4) })}
           </p>

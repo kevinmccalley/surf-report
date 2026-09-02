@@ -116,6 +116,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   '@id': 'https://groundswell.surf/#organization',
                   name: 'Groundswell',
                   url: 'https://groundswell.surf',
+                  sameAs: ['https://www.instagram.com/ground.swell.surf/'],
                   description: 'Groundswell provides real-time surf reports, 10-day wave forecasts, and historical surf climatology for any surf spot on earth, powered by ECMWF and NOAA open-ocean data.',
                   knowsAbout: [
                     'Surf forecasting',

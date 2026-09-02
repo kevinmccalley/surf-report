@@ -9,8 +9,9 @@ export const revalidate = 86400
 // Pinned to the date each page last had a meaningful content change.
 // Update a date here whenever you ship a significant copy or feature change to that route.
 const STATIC_LAST_MODIFIED: Record<string, string> = {
-  '/': '2026-06-02',
-  '/faq': '2026-06-02',
+  '/': '2026-08-28',
+  '/about': '2026-09-02',
+  '/faq': '2026-08-23',
   '/blog': '2026-06-02',
   '/accuracy': '2026-05-01',
   '/privacy': '2026-05-06',
@@ -22,7 +23,7 @@ const STATIC_LAST_MODIFIED: Record<string, string> = {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = 'https://groundswell.surf'
 
-  const staticPages = ['/', '/faq', '/accuracy', '/privacy', '/terms', '/refund', '/support'].map(path => ({
+  const staticPages = ['/', '/about', '/faq', '/accuracy', '/privacy', '/terms', '/refund', '/support'].map(path => ({
     url: `${base}${path}`,
     lastModified: new Date(STATIC_LAST_MODIFIED[path] ?? '2026-05-01'),
     changeFrequency: 'monthly' as const,
