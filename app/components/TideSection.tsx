@@ -238,7 +238,10 @@ export default function TideSection({
 
           <div className="overflow-x-auto forecast-scroll rounded-lg" style={{ cursor: 'grab' }}>
             <div style={{ width: '167%', height: 284 }}>
-              <ResponsiveContainer width="100%" height="100%">
+              {/* Fixed pixel height — the wrapper is already 284px, so this lets
+                  ResponsiveContainer skip its height measurement on mount (it
+                  still tracks width). */}
+              <ResponsiveContainer width="100%" height={284}>
                 <AreaChart data={chartData} margin={{ top: 56, right: 20, left: -18, bottom: 44 }}>
                   <defs>
                     <linearGradient id="tideAreaGrad" x1="0" y1="0" x2="0" y2="1">
