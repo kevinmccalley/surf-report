@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { getPostBySlug, urlFor, resolvePostLocale } from '@/app/lib/sanity'
 import { findSpotBySlug, slugify } from '@/app/lib/surf-spots'
 import BlogPostContent from '@/app/components/blog/BlogPostContent'
+import type { Locale } from '@/app/i18n/LanguageContext'
 
 // ISR: build on first request, refresh every 60 seconds — no static pre-generation needed.
 export const revalidate = 60
@@ -141,7 +142,12 @@ export default async function BlogPost({ params, searchParams }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <BlogPostContent post={post} coverSrc={coverSrc} avatarSrc={avatarSrc} />
+      <BlogPostContent
+        post={post}
+        coverSrc={coverSrc}
+        avatarSrc={avatarSrc}
+        initialLocale={lang === 'en' ? undefined : (lang as Locale)}
+      />
     </>
   )
 }
