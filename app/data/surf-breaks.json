@@ -656,40 +656,53 @@
     "name": "Sebastian Inlet",
     "aliases": [],
     "country": "Melbourne Beach, FL",
-    "lat": 27.8603,
-    "lon": -80.4473,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 27.863,
+    "lon": -80.4465,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Cocoa Beach",
-    "aliases": [],
+    "aliases": [
+      "Cocoa Beach Pier"
+    ],
     "country": "Cocoa Beach, FL",
-    "lat": 28.32,
-    "lon": -80.6076,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 28.3676,
+    "lon": -80.6013,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "New Smyrna Beach",
     "aliases": [
       "NSB",
-      "Smyrna"
+      "Smyrna",
+      "Ponce Inlet"
     ],
     "country": "New Smyrna Beach, FL",
-    "lat": 29.036,
-    "lon": -80.965,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 29.0745,
+    "lon": -80.919,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Flagler Beach",
@@ -697,11 +710,14 @@
     "country": "Flagler Beach, FL",
     "lat": 29.4733,
     "lon": -81.1289,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Cape Hatteras",
@@ -711,14 +727,14 @@
     "country": "Buxton, NC",
     "lat": 35.252,
     "lon": -75.523,
-    "type": null,
-    "direction": null,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "editorial-placement",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Outer Banks",
@@ -726,29 +742,34 @@
       "OBX",
       "Jennettes Pier"
     ],
-    "country": "Kill Devil Hills, NC",
-    "lat": 36.0255,
-    "lon": -75.7141,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "country": "Nags Head, NC",
+    "lat": 35.9098,
+    "lon": -75.5928,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Folly Beach",
-    "aliases": [],
+    "aliases": [
+      "The Washout"
+    ],
     "country": "Folly Beach, SC",
-    "lat": 32.6558,
-    "lon": -79.9315,
-    "type": null,
-    "direction": null,
+    "lat": 32.656,
+    "lon": -79.925,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "editorial-placement",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Montauk",
