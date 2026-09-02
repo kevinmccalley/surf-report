@@ -923,27 +923,35 @@
       "Mexican Pipeline"
     ],
     "country": "Puerto Escondido, Oaxaca",
-    "lat": 15.8581,
-    "lon": -97.0686,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 15.847167,
+    "lon": -97.055117,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Salina Cruz",
     "aliases": [
-      "La Punta Salina Cruz"
+      "La Punta Salina Cruz",
+      "Bamba",
+      "Punta Bamba"
     ],
     "country": "Salina Cruz, Oaxaca",
-    "lat": 16.173,
-    "lon": -95.205,
+    "lat": 16.153683,
+    "lon": -95.237567,
     "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Punta de Mita",
@@ -966,31 +974,32 @@
     "name": "Pascuales",
     "aliases": [],
     "country": "Tecoman, Colima",
-    "lat": 18.8075,
-    "lon": -103.784,
-    "type": null,
-    "direction": null,
+    "lat": 18.855,
+    "lon": -103.9628,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surf-forecast",
+      "wikipedia",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "La Ticla",
     "aliases": [],
     "country": "La Ticla, Michoacán",
-    "lat": 18.4468,
-    "lon": -103.5615,
-    "type": null,
-    "direction": null,
+    "lat": 18.45415,
+    "lon": -103.558567,
+    "type": "point",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Scorpion Bay",
@@ -998,16 +1007,16 @@
       "San Juanico"
     ],
     "country": "San Juanico, Baja California Sur",
-    "lat": 26.2555,
-    "lon": -112.478,
-    "type": null,
-    "direction": null,
+    "lat": 26.233833,
+    "lon": -112.485417,
+    "type": "point",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Los Cerritos",
@@ -1032,13 +1041,17 @@
       "Abreojos"
     ],
     "country": "Punta Abreojos, Baja California Sur",
-    "lat": 26.7169,
+    "lat": 26.7151,
     "lon": -113.5672,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Todos Santos",
@@ -1064,11 +1077,14 @@
     "country": "El Rosario, Baja California",
     "lat": 29.9581,
     "lon": -115.7911,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "San Miguel",
@@ -1108,13 +1124,16 @@
       "La Fonda"
     ],
     "country": "Rosarito, Baja California",
-    "lat": 32.18,
-    "lon": -117.06,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 32.258933,
+    "lon": -116.98635,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-01"
   },
   {
     "name": "Witch's Rock",
@@ -1940,13 +1959,16 @@
       "Lanzarote"
     ],
     "country": "Lanzarote, Canary Islands",
-    "lat": 29.0997,
-    "lon": -13.5631,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 29.109883,
+    "lon": -13.666633,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Famara",
@@ -1956,11 +1978,15 @@
     "country": "Lanzarote, Canary Islands",
     "lat": 29.1333,
     "lon": -13.55,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "El Confital",
@@ -1968,11 +1994,14 @@
     "country": "Gran Canaria, Canary Islands",
     "lat": 28.1598,
     "lon": -15.4394,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Fistral",
@@ -2113,11 +2142,14 @@
     "country": "Taghazout, Morocco",
     "lat": 30.545,
     "lon": -9.7258,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Hash Point",
@@ -2125,13 +2157,16 @@
       "Taghazout"
     ],
     "country": "Taghazout, Morocco",
-    "lat": 30.5395,
-    "lon": -9.724,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 30.5443,
+    "lon": -9.711783,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Killer Point",
@@ -2139,25 +2174,31 @@
       "Killers Morocco"
     ],
     "country": "Taghazout, Morocco",
-    "lat": 30.5256,
-    "lon": -9.7192,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 30.547567,
+    "lon": -9.74255,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "La Source",
     "aliases": [],
     "country": "Taghazout, Morocco",
-    "lat": 30.5194,
-    "lon": -9.7133,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 30.54885,
+    "lon": -9.7332,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Safi",
@@ -6579,5 +6620,215 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Short Sands",
+    "aliases": [
+      "Shorty's"
+    ],
+    "country": "Oswald West, Oregon",
+    "lat": 45.759917,
+    "lon": -123.9682,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Cannon Beach",
+    "aliases": [],
+    "country": "Cannon Beach, Oregon",
+    "lat": 45.910583,
+    "lon": -123.96925,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Seaside Cove",
+    "aliases": [],
+    "country": "Seaside, Oregon",
+    "lat": 45.977967,
+    "lon": -123.94115,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Cape Lookout",
+    "aliases": [],
+    "country": "Netarts, Oregon",
+    "lat": 45.335083,
+    "lon": -123.973733,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Pacific City",
+    "aliases": [
+      "Cape Kiwanda"
+    ],
+    "country": "Pacific City, Oregon",
+    "lat": 45.214,
+    "lon": -123.974,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Otter Rock",
+    "aliases": [],
+    "country": "Otter Rock, Oregon",
+    "lat": 44.775933,
+    "lon": -124.0758,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Nelscott Reef",
+    "aliases": [
+      "Nelscott"
+    ],
+    "country": "Lincoln City, Oregon",
+    "lat": 44.949667,
+    "lon": -124.026333,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Lincoln City",
+    "aliases": [],
+    "country": "Lincoln City, Oregon",
+    "lat": 44.973783,
+    "lon": -124.0187,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Bastendorff Beach",
+    "aliases": [
+      "Bastendorff"
+    ],
+    "country": "Coos Bay, Oregon",
+    "lat": 43.346033,
+    "lon": -124.350383,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Half Moon Bay",
+    "aliases": [
+      "The Cove"
+    ],
+    "country": "Westport, Washington",
+    "lat": 46.905517,
+    "lon": -124.123367,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "The Groins",
+    "aliases": [],
+    "country": "Westport, Washington",
+    "lat": 46.91135,
+    "lon": -124.115117,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "La Push",
+    "aliases": [
+      "First Beach"
+    ],
+    "country": "La Push, Washington",
+    "lat": 47.901217,
+    "lon": -124.632083,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Hobuck Beach",
+    "aliases": [
+      "Hobuck"
+    ],
+    "country": "Neah Bay, Washington",
+    "lat": 48.328167,
+    "lon": -124.66135,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   }
 ]
