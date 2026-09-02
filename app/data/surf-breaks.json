@@ -6598,5 +6598,215 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-01"
+  },
+  {
+    "name": "Short Sands",
+    "aliases": [
+      "Shorty's"
+    ],
+    "country": "Oswald West, Oregon",
+    "lat": 45.759917,
+    "lon": -123.9682,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Cannon Beach",
+    "aliases": [],
+    "country": "Cannon Beach, Oregon",
+    "lat": 45.910583,
+    "lon": -123.96925,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Seaside Cove",
+    "aliases": [],
+    "country": "Seaside, Oregon",
+    "lat": 45.977967,
+    "lon": -123.94115,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Cape Lookout",
+    "aliases": [],
+    "country": "Netarts, Oregon",
+    "lat": 45.335083,
+    "lon": -123.973733,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Pacific City",
+    "aliases": [
+      "Cape Kiwanda"
+    ],
+    "country": "Pacific City, Oregon",
+    "lat": 45.214,
+    "lon": -123.974,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Otter Rock",
+    "aliases": [],
+    "country": "Otter Rock, Oregon",
+    "lat": 44.775933,
+    "lon": -124.0758,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Nelscott Reef",
+    "aliases": [
+      "Nelscott"
+    ],
+    "country": "Lincoln City, Oregon",
+    "lat": 44.949667,
+    "lon": -124.026333,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Lincoln City",
+    "aliases": [],
+    "country": "Lincoln City, Oregon",
+    "lat": 44.973783,
+    "lon": -124.0187,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Bastendorff Beach",
+    "aliases": [
+      "Bastendorff"
+    ],
+    "country": "Coos Bay, Oregon",
+    "lat": 43.346033,
+    "lon": -124.350383,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Half Moon Bay",
+    "aliases": [
+      "The Cove"
+    ],
+    "country": "Westport, Washington",
+    "lat": 46.905517,
+    "lon": -124.123367,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "The Groins",
+    "aliases": [],
+    "country": "Westport, Washington",
+    "lat": 46.91135,
+    "lon": -124.115117,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "La Push",
+    "aliases": [
+      "First Beach"
+    ],
+    "country": "La Push, Washington",
+    "lat": 47.901217,
+    "lon": -124.632083,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Hobuck Beach",
+    "aliases": [
+      "Hobuck"
+    ],
+    "country": "Neah Bay, Washington",
+    "lat": 48.328167,
+    "lon": -124.66135,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   }
 ]
