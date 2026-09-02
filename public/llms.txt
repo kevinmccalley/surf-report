@@ -14,7 +14,7 @@ The site targets surfers planning local sessions and international surf trips. P
 - [Surf Spot Directory](https://groundswell.surf/spots): Browse 220+ of the world's best surf spots, filterable by region, each linking to a live wave forecast.
 - [Surf Regions](https://groundswell.surf/regions): Curated surf regions (North Shore Oahu, the Mentawais, the Basque Country, Baja Sur, and ~55 more), each showing its breaks mapped together with a list-and-map view. Includes a fullscreen world surf atlas at https://groundswell.surf/regions/map and per-country roll-ups at https://groundswell.surf/regions/country/{code}.
 - [Surf Climatology](https://groundswell.surf/climatology/pipeline): Monthly swell averages, peak surf season, and dominant swell direction for hundreds of surf spots worldwide. Each page covers a specific named break. Example spots: Pipeline (Hawaii), Jeffreys Bay (South Africa), Hossegor (France), Uluwatu (Indonesia).
-- [Blog](https://groundswell.surf/blog): Articles on surf travel, wave science, swell forecasting, and surf spot guides.
+- [Blog](https://groundswell.surf/blog): Articles on surf travel, wave science, swell forecasting, and surf spot guides. Evergreen guides are translated into Spanish, French and Portuguese — append ?lang=es, ?lang=fr, ?lang=pt-BR or ?lang=pt-PT to a post URL.
 - [Surf Forecast FAQ](https://groundswell.surf/faq): Direct answers to common surf-forecasting questions — what swell period means, how wave height is measured, offshore vs. onshore wind, groundswell vs. windswell, and how to read a forecast.
 - [Forecast Accuracy](https://groundswell.surf/accuracy): Explanation of data sources, model accuracy, and how Groundswell's composite surf rating is calculated.
 
@@ -28,5 +28,6 @@ The site targets surfers planning local sessions and international surf trips. P
 
 ## Content index
 
+- [Full reference](https://groundswell.surf/llms-full.txt): This file expanded with the complete surf-forecasting FAQ and the forecast-accuracy methodology in one fetch
 - [Sitemap](https://groundswell.surf/sitemap.xml): Full URL list of all forecast, climatology, and blog pages
 - [RSS Feed](https://groundswell.surf/blog/rss.xml): Blog posts in RSS 2.0 format
