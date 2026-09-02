@@ -12,6 +12,7 @@ import AuthButton from './AuthButton'
 import ThemePicker from './ThemePicker'
 import LanguageSwitcher from './LanguageSwitcher'
 import SavedLocations from './SavedLocations'
+import DeferredMount from './DeferredMount'
 import type { ClimatologyMonth } from './ClimatologySection'
 
 // Lazy-load below-fold marketing section and everything only needed after a surf spot is searched
@@ -546,7 +547,12 @@ export default function SurfApp({ tier, initialGeo }: { tier: Tier; initialGeo?:
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
                   {report.historical ? t('app.hourlyWave') : t('app.48hOutlook')}
                 </h2>
-                <WaveChart hourly={report.hourly} heightUnit={units.height} />
+                <DeferredMount
+                  strategy="idle"
+                  placeholder={<div className="h-64 sm:h-72 rounded-xl bg-white/[0.03] animate-pulse" />}
+                >
+                  <WaveChart hourly={report.hourly} heightUnit={units.height} />
+                </DeferredMount>
               </section>
             )}
 
@@ -592,22 +598,27 @@ export default function SurfApp({ tier, initialGeo }: { tier: Tier; initialGeo?:
                   {t('app.tides')}
                 </h2>
                 {tideData?.available ? (
-                  <TideSection
-                    extremes={(tideData as TideReport).extremes}
-                    hourly={(tideData as TideReport).hourly}
-                    heightUnit={units.height}
-                    source={(tideData as TideReport).source}
-                    estimated={(tideData as TideReport).estimated}
-                    timeFormat={(tideData as TideReport).timeFormat}
-                    stationName={(tideData as TideReport).stationName}
-                    stationDistanceKm={(tideData as TideReport).stationDistanceKm}
-                    timezoneLabel={(tideData as TideReport).timezoneLabel}
-                    qualityWarning={(tideData as TideReport).qualityWarning}
-                    observedOffset={(tideData as TideReport).observedOffset}
-                    observedAt={(tideData as TideReport).observedAt}
-                    tier={tier}
-                    onUpgrade={() => setShowPaywall(true)}
-                  />
+                  <DeferredMount
+                    strategy="visible"
+                    placeholder={<div className="h-72 rounded-xl bg-white/[0.03] animate-pulse" />}
+                  >
+                    <TideSection
+                      extremes={(tideData as TideReport).extremes}
+                      hourly={(tideData as TideReport).hourly}
+                      heightUnit={units.height}
+                      source={(tideData as TideReport).source}
+                      estimated={(tideData as TideReport).estimated}
+                      timeFormat={(tideData as TideReport).timeFormat}
+                      stationName={(tideData as TideReport).stationName}
+                      stationDistanceKm={(tideData as TideReport).stationDistanceKm}
+                      timezoneLabel={(tideData as TideReport).timezoneLabel}
+                      qualityWarning={(tideData as TideReport).qualityWarning}
+                      observedOffset={(tideData as TideReport).observedOffset}
+                      observedAt={(tideData as TideReport).observedAt}
+                      tier={tier}
+                      onUpgrade={() => setShowPaywall(true)}
+                    />
+                  </DeferredMount>
                 ) : (
                   <TideSetupCard reason={(tideData as TideUnavailable | null)?.reason} />
                 )}
@@ -663,11 +674,16 @@ export default function SurfApp({ tier, initialGeo }: { tier: Tier; initialGeo?:
             )}
 
             {isPremium && !report.historical && report.isCoastal && (
-              <ModelComparison
-                lat={report.location.lat}
-                lon={report.location.lon}
-                units={units}
-              />
+              <DeferredMount
+                strategy="visible"
+                placeholder={<div className="h-72 rounded-2xl bg-white/[0.03] animate-pulse" />}
+              >
+                <ModelComparison
+                  lat={report.location.lat}
+                  lon={report.location.lon}
+                  units={units}
+                />
+              </DeferredMount>
             )}
 
             {isPremium && !report.historical && report.isCoastal && (
