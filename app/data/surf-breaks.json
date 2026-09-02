@@ -7053,5 +7053,240 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Woolacombe",
+    "aliases": [],
+    "country": "North Devon, UK",
+    "lat": 51.17,
+    "lon": -4.213,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Sennen Cove",
+    "aliases": [
+      "Whitesand Bay"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.0785,
+    "lon": -5.7055,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Perranporth",
+    "aliases": [
+      "Perran Beach"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.3487,
+    "lon": -5.16,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Watergate Bay",
+    "aliases": [],
+    "country": "Cornwall, UK",
+    "lat": 50.47,
+    "lon": -5.055,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Praa Sands",
+    "aliases": [],
+    "country": "Cornwall, UK",
+    "lat": 50.1005,
+    "lon": -5.3865,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Bantham",
+    "aliases": [],
+    "country": "South Devon, UK",
+    "lat": 50.2795,
+    "lon": -3.8805,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Polzeath",
+    "aliases": [],
+    "country": "Cornwall, UK",
+    "lat": 50.5745,
+    "lon": -4.9165,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Gwithian",
+    "aliases": [
+      "Godrevy",
+      "Gwithian Towans"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.227,
+    "lon": -5.4015,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Freshwater West",
+    "aliases": [],
+    "country": "Pembrokeshire, Wales",
+    "lat": 51.658,
+    "lon": -5.066,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Brims Ness",
+    "aliases": [
+      "Brimms Ness"
+    ],
+    "country": "Caithness, Scotland",
+    "lat": 58.6205,
+    "lon": -3.6495,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Easky Right",
+    "aliases": [
+      "Easkey Right",
+      "Easky"
+    ],
+    "country": "County Sligo, Ireland",
+    "lat": 54.2953,
+    "lon": -8.95,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Strandhill",
+    "aliases": [],
+    "country": "County Sligo, Ireland",
+    "lat": 54.2695,
+    "lon": -8.6105,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Rossnowlagh",
+    "aliases": [],
+    "country": "County Donegal, Ireland",
+    "lat": 54.545,
+    "lon": -8.2315,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Portrush",
+    "aliases": [
+      "East Strand"
+    ],
+    "country": "Antrim, Northern Ireland",
+    "lat": 55.2085,
+    "lon": -6.643,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   }
 ]
