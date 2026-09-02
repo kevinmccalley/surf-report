@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 import { portableTextComponents } from '@/app/components/blog/PortableTextComponents'
 import { findSpotBySlug } from '@/app/lib/surf-spots'
-import { useLanguage } from '@/app/i18n/LanguageContext'
+import { useLanguage, LOCALE_BCP47 } from '@/app/i18n/LanguageContext'
 import type { SanityPost, PostTranslations } from '@/app/lib/sanity'
 import type { Locale } from '@/app/i18n/LanguageContext'
 
@@ -25,12 +25,19 @@ interface Props {
   post: SanityPost
   coverSrc: string | null
   avatarSrc: string | null
+  // Locale resolved server-side from ?lang= (see resolvePostLocale). Used for the
+  // first render so a non-JS crawler gets the translated <h1>/body, not just the
+  // translated <head>. Once LanguageProvider catches up (it reads ?lang= on mount)
+  // `locale` takes over.
+  initialLocale?: Locale
 }
 
-export default function BlogPostContent({ post, coverSrc, avatarSrc }: Props) {
-  const { locale, bcp47, t } = useLanguage()
+export default function BlogPostContent({ post, coverSrc, avatarSrc, initialLocale }: Props) {
+  const { locale, t } = useLanguage()
 
-  const key = translationKey(locale)
+  const activeLocale: Locale = locale === 'en' ? (initialLocale ?? 'en') : locale
+  const bcp47 = LOCALE_BCP47[activeLocale]
+  const key = translationKey(activeLocale)
   const tx  = key ? post.translations?.[key] : undefined
 
   const title   = tx?.title   ?? post.title
