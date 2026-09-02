@@ -2009,13 +2009,16 @@
       "Fistral Beach"
     ],
     "country": "Newquay, Cornwall, UK",
-    "lat": 50.415,
-    "lon": -5.1,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 50.4165,
+    "lon": -5.1024,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Croyde",
@@ -2042,23 +2045,29 @@
     "country": "North Devon, UK",
     "lat": 51.115,
     "lon": -4.223,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Porthleven",
     "aliases": [],
     "country": "Cornwall, UK",
-    "lat": 50.0837,
-    "lon": -5.3218,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 50.082,
+    "lon": -5.32123,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Lynmouth",
@@ -2066,11 +2075,14 @@
     "country": "Devon, UK",
     "lat": 51.2307,
     "lon": -3.8293,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Thurso East",
@@ -2097,13 +2109,16 @@
       "Bundoran Peak"
     ],
     "country": "Donegal, Ireland",
-    "lat": 54.4766,
-    "lon": -8.286,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 54.4817,
+    "lon": -8.2864,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Mullaghmore",
@@ -2111,13 +2126,16 @@
       "Mullaghmore Head"
     ],
     "country": "Sligo, Ireland",
-    "lat": 54.4655,
-    "lon": -8.4495,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 54.4753,
+    "lon": -8.452,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
   },
   {
     "name": "Lahinch",
