@@ -44,7 +44,33 @@ const isPublicRoute = createRouteMatcher([
   '/regions(.*)',
 ])
 
+// Public, non-personalised content that is safe to sit on the CDN. `cookies()` in
+// the root layout forces every route into dynamic rendering, so Next sends
+// `Cache-Control: private, no-store` on all HTML — defeating ISR/edge caching on
+// hundreds of essentially-static pages (climatology per spot, blog, legal, about).
+// None of these read auth server-side, and their SSR output does not vary by
+// cookie: the legal/about pages apply locale client-side, and blog/climatology
+// take locale from the `?lang=` URL param (cached per-URL). Overriding the header
+// here in middleware lets the edge cache them; `s-maxage` is shared-CDN only, the
+// browser still revalidates.
+const isCacheableContent = createRouteMatcher([
+  '/about(.*)',
+  '/terms(.*)',
+  '/privacy(.*)',
+  '/refund(.*)',
+  '/support(.*)',
+  '/blog(.*)',
+  '/climatology(.*)',
+])
+const CACHEABLE_CONTENT_CC = 'public, s-maxage=3600, stale-while-revalidate=86400'
+
 export default clerkMiddleware(async (auth, req) => {
+  if (req.method === 'GET' && isCacheableContent(req)) {
+    const res = NextResponse.next()
+    res.headers.set('Cache-Control', CACHEABLE_CONTENT_CC)
+    return res
+  }
+
   if (!isPublicRoute(req)) {
     const { userId } = await auth()
     if (!userId) {
@@ -58,12 +84,5 @@ export default clerkMiddleware(async (auth, req) => {
 })
 
 export const config = {
-  // Clerk's middleware stamps `Cache-Control: private, no-store` on every response
-  // it touches, which defeats CDN/ISR caching for otherwise-static content. The
-  // routes listed after `_next` below never call `auth()` / `currentUser()` /
-  // `clerkClient()` server-side (verified) and `<ClerkProvider>` is static, so
-  // they can skip Clerk entirely and let Next's own cache headers reach the edge.
-  // Anything that reads auth (`/`, `/spots/*`, `/regions/*`, `/accuracy`, ops
-  // pages) MUST stay matched.
-  matcher: ['/((?!_next|about|blog|climatology|faq|terms|privacy|refund|support|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest|xml|txt)).*)'],
+  matcher: ['/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest|xml|txt)).*)'],
 }
