@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
-import { cookies } from 'next/headers'
 import ThemeProvider from './components/ThemeProvider'
 import { LanguageProvider } from './i18n/LanguageContext'
 import ServiceWorkerRegistrar from './components/ServiceWorkerRegistrar'
@@ -54,16 +53,14 @@ export const viewport: Viewport = {
   themeColor: '#020917',
 }
 
-const VALID_LOCALES = new Set(['en', 'es', 'fr', 'pt-BR', 'pt-PT'])
-
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const cookieStore = await cookies()
-  const rawLocale = cookieStore.get('groundswell_locale')?.value ?? 'en'
-  const locale = VALID_LOCALES.has(rawLocale) ? rawLocale : 'en'
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
-      <html lang={locale} suppressHydrationWarning className={inter.variable}>
+      {/* lang is corrected client-side once LanguageProvider resolves the visitor's
+          locale (see the `document.documentElement.lang = locale` effect in
+          app/i18n/LanguageContext.tsx). Reading the locale cookie here would opt
+          the entire route tree into dynamic rendering. */}
+      <html lang="en" suppressHydrationWarning className={inter.variable}>
         <head>
           <link rel="preconnect" href="https://clerk.groundswell.surf" crossOrigin="anonymous" />
         </head>
