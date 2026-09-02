@@ -9,6 +9,40 @@ has enough traffic/reviews for it to mean anything.
 
 ---
 
+## 2026-09-02 — Third run (interactive) — full SEO + AI-visibility audit, then P0–P3 execution
+
+Ran as the GoodStockPress-pattern audit (two design-crafted checklist artifacts: SEO 🌊
+`claude.ai/code/artifact/ef540def-6a83-4265-8304-0a1b5fbb3106`, AI Visibility 🤖
+`.../8656014b-37e0-45dc-a186-aebd77efcbef`), both scored **B–**, then executed P0/P1/P2/P3.
+
+**7-point checklist:** 1 raw-HTML crawlability PASS (SSR content on every page type). 2 JSON-LD
+PASS — added `AboutPage`+`Organization`(founder/foundingDate)+`BreadcrumbList` on the new `/about`,
+`BlogPosting.inLanguage` on translated posts. 3 sitemap/llms sync — **`llms-full.txt` created**
+(full FAQ + accuracy methodology, one fetch); `llms.txt` now references it + notes blog `?lang=`
+variants; sitemap emits per-post hreflang alternates. 4 meta fundamentals — spot pages gained
+5-locale hreflang + a single topical `<h1>` (was two); `/regions/[slug]` meta description moved
+into i18n; blog posts got `?lang=`-aware `<title>`/canonical/hreflang/og:locale. 5 answer-clarity
+— homepage now leads with a plain "Groundswell is a surf-forecast service: …" lede; `/regions`
+index intro rewritten to state value. 6 robots.txt PASS (unchanged). 7 retrievability — no
+material change (brand + answered category queries still return only competitors; expected).
+
+**Shipped:** P0 (`d063626` regions og:image + llms.txt entry) promoted to production `7ef8222`.
+P1 + P2/P3 batch promoted to production `8a7d4cb` (spot H1+hreflang, `/about`, homepage lede,
+`Organization.sameAs` = the real Instagram `@ground.swell.surf`, www→apex 301, security headers,
+`/api/og` immutable cache, `/regions` i18n, `/spots` JSON-LD trim 1.13 MB→749 KB, sitemap dates).
+Blog `?lang=` indexing on `dev` `9d59df0` (Kevin translated the evergreen guides in Studio).
+`llms-full.txt` + this entry: `dev`, pending promotion.
+
+**Diagnosed, not fixed:** every HTML response is `Cache-Control: no-store` — root cause is
+`cookies()` in `app/layout.tsx` forcing whole-tree dynamic rendering (NOT Clerk). Handed to a
+scheduled cloud routine that opens a PR. **Still open:** Recharts fixed-heights + Lighthouse
+re-run; Google Rich Results test (manual).
+
+**Housekeeping:** earlier unattended runs left `/.aiv_*.html` / `.aiv_*.xml` scratch files in the
+repo root (untracked) — still safe to `rm .aiv_*`.
+
+---
+
 ## 2026-08-31 — Second run (scheduled, unattended)
 
 **Pages checked:** Homepage (`/`), `/faq`, `/blog`, one recent post (`/blog/best-time-to-surf-morocco`,
