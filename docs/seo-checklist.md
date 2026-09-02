@@ -97,6 +97,9 @@ key pages: `/` (home), a spot page, `/faq`, and `/blog`.
 Targets: Performance ≥ 90 desktop / ≥ 70 mobile · SEO 100 · Accessibility ≥ 95 · Best Practices 100.
 
 - [x] **Run Lighthouse on `/` (home)**
+  **Re-run 2026-09-02 (prod `d71a1fa`, mobile throttled): Performance 64 ↓ · SEO 100 · Accessibility 96 · Best Practices 100.**
+  Metrics: FCP 2.2 s · LCP 4.2 s · TBT 830 ms · CLS 0.024 · SI 2.6 s. Perf regressed from 77 — FCP is TTFB-bound (`no-store` cold render, no edge cache) and TBT doubled (heavier client bundle). Levers: the edge-caching refactor (scheduled routine) for TTFB; a JS diet for TBT.
+  ---
   Audited 2026-06-04 (mobile, simulated 4G). Scores: **Performance 77 · SEO 100 · Accessibility 100 · Best Practices 100**.
   Key metrics: FCP 2.2 s · LCP 3.8 s · TBT 410 ms · CLS 0 · SI 2.2 s.
   Issues found and resolved same session:
@@ -106,6 +109,9 @@ Targets: Performance ≥ 90 desktop / ≥ 70 mobile · SEO 100 · Accessibility 
   Re-run after next deploy to measure improvement. Target: Performance ≥ 70 mobile.
 
 - [x] **Run Lighthouse on a spot page** (e.g. `/spots/pipeline`)
+  **Re-run 2026-09-02 (prod `d71a1fa`, mobile throttled): Performance 37 ↓↓ · SEO 100 · Accessibility 96 · Best Practices 100.**
+  Metrics: FCP 2.3 s · **LCP 9.3 s** · **TBT 2,430 ms** · CLS 0 · SI 7.2 s. CLS is now 0 (the fixed chart heights helped there) but perf fell from 66 — the spot page loads SurfApp + Recharts ×4 + Leaflet/MapLibre + Clerk + Framer Motion and mounts them together when the forecast resolves. The `ResponsiveContainer` fixed-height tweak (tide chart, `68c3b48`) did not move TBT. **Real fixes: (1) edge caching / faster TTFB [scheduled routine]; (2) lazy-load the map, stagger chart mounts, split the SurfApp bundle. Separate performance workstream.**
+  ---
   Audited 2026-06-04 on `/?lat=21.6632&lon=-158.0523&name=Pipeline` (mobile, simulated 4G). Score: **Performance 66**.
   Key metrics: TBT 1,270 ms · Main thread 9.3 s (Script Eval 4,659 ms · Style & Layout 1,100 ms · Rendering 927 ms).
   Issues found and resolved:
@@ -113,9 +119,9 @@ Targets: Performance ≥ 90 desktop / ≥ 70 mobile · SEO 100 · Accessibility 
   - `/spots/pipeline` returned 404 — no route existed → created `app/spots/[slug]/page.tsx` using the existing spot catalog; `generateStaticParams` pre-renders all ~100 spots; spot pages added to sitemap at priority 0.9.
   Remaining: heavy Recharts chart initialisation (4 `ResponsiveContainer` instances load simultaneously when a report is fetched) drives most of the remaining TBT. Next step: replace `ResponsiveContainer` with fixed pixel heights to eliminate the concurrent layout-measurement burst.
 
-- [ ] **Run Lighthouse on `/faq`**
-  Confirm SEO 100 and that FAQPage rich result is detectable (check "Additional items" in
-  Google Rich Results Test at `search.google.com/test/rich-results`).
+- [x] **Run Lighthouse on `/faq`**
+  2026-09-02 (prod `d71a1fa`, mobile throttled): **Performance 69 · SEO 100 · Accessibility 95 · Best Practices 100.**
+  Metrics: FCP 2.2 s · LCP 3.5 s · TBT 860 ms · CLS 0. FAQPage + Speakable + BreadcrumbList JSON-LD validated on the live page (20 Q&A, all required properties, no errors).
 
 - [ ] **Image optimization — convert to WebP and add responsive sizes**
   Any JPEG/PNG hero images or OG images should be converted to WebP.
