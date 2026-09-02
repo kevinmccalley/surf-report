@@ -28,6 +28,7 @@ const isPublicRoute = createRouteMatcher([
   '/api/cron/swell-alert-check(.*)',
   '/api/clerk-webhook(.*)',
   '/api/model-comparison(.*)',
+  '/about(.*)',
   '/accuracy(.*)',
   '/climatology(.*)',
   '/terms(.*)',
@@ -57,5 +58,12 @@ export default clerkMiddleware(async (auth, req) => {
 })
 
 export const config = {
-  matcher: ['/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest|xml|txt)).*)'],
+  // Clerk's middleware stamps `Cache-Control: private, no-store` on every response
+  // it touches, which defeats CDN/ISR caching for otherwise-static content. The
+  // routes listed after `_next` below never call `auth()` / `currentUser()` /
+  // `clerkClient()` server-side (verified) and `<ClerkProvider>` is static, so
+  // they can skip Clerk entirely and let Next's own cache headers reach the edge.
+  // Anything that reads auth (`/`, `/spots/*`, `/regions/*`, `/accuracy`, ops
+  // pages) MUST stay matched.
+  matcher: ['/((?!_next|about|blog|climatology|faq|terms|privacy|refund|support|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest|xml|txt)).*)'],
 }

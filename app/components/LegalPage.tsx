@@ -51,6 +51,7 @@ export default function LegalPage({ title, subtitle, lastUpdated, sections }: Pr
           <Link href="/privacy" className="hover:text-slate-300 transition-colors">{t('nav.privacy')}</Link>
           <Link href="/refund"  className="hover:text-slate-300 transition-colors">{t('nav.refund')}</Link>
           <Link href="/support" className="hover:text-slate-300 transition-colors">{t('nav.support')}</Link>
+          <Link href="/about"   className="hover:text-slate-300 transition-colors">{t('nav.about')}</Link>
           <Link href="/"        className="hover:text-slate-300 transition-colors ml-auto">{t('nav.backToGroundswell')}</Link>
         </footer>
       </main>
