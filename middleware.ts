@@ -1,5 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
-import { NextResponse, type NextRequest, type NextFetchEvent } from 'next/server'
+import { NextResponse } from 'next/server'
 
 const isPublicRoute = createRouteMatcher([
   '/',
@@ -44,27 +44,7 @@ const isPublicRoute = createRouteMatcher([
   '/regions(.*)',
 ])
 
-// Public, non-personalised content that is safe to sit on the CDN. `cookies()` in
-// the root layout forces every route into dynamic rendering, so Next sends
-// `Cache-Control: private, no-store` on all HTML — defeating ISR/edge caching on
-// hundreds of essentially-static pages (climatology per spot, blog, legal, about).
-// None of these read auth server-side, and their SSR output does not vary by
-// cookie: the legal/about pages apply locale client-side, and blog/climatology
-// take locale from the `?lang=` URL param (cached per-URL). Overriding the header
-// here in middleware lets the edge cache them; `s-maxage` is shared-CDN only, the
-// browser still revalidates.
-const isCacheableContent = createRouteMatcher([
-  '/about(.*)',
-  '/terms(.*)',
-  '/privacy(.*)',
-  '/refund(.*)',
-  '/support(.*)',
-  '/blog(.*)',
-  '/climatology(.*)',
-])
-const CACHEABLE_CONTENT_CC = 'public, s-maxage=3600, stale-while-revalidate=86400'
-
-const clerk = clerkMiddleware(async (auth, req) => {
+export default clerkMiddleware(async (auth, req) => {
   if (!isPublicRoute(req)) {
     const { userId } = await auth()
     if (!userId) {
@@ -76,18 +56,6 @@ const clerk = clerkMiddleware(async (auth, req) => {
     }
   }
 })
-
-export default function middleware(req: NextRequest, event: NextFetchEvent) {
-  // Cacheable content bypasses Clerk entirely — clerkMiddleware unconditionally
-  // stamps `Cache-Control: no-store` on any response it wraps, so the only way
-  // to let the edge cache these pages is to never hand them to Clerk.
-  if (req.method === 'GET' && isCacheableContent(req)) {
-    const res = NextResponse.next()
-    res.headers.set('Cache-Control', CACHEABLE_CONTENT_CC)
-    return res
-  }
-  return clerk(req, event)
-}
 
 export const config = {
   matcher: ['/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest|xml|txt)).*)'],
