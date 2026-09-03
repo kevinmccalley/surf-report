@@ -7557,5 +7557,223 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Ma'alaea",
+    "aliases": [
+      "Freight Trains",
+      "Maalaea"
+    ],
+    "country": "Maalaea, Maui",
+    "lat": 20.791317,
+    "lon": -156.50905,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Lahaina Breakwall",
+    "aliases": [
+      "Breakwall",
+      "Lahaina Harbor"
+    ],
+    "country": "Lahaina, Maui",
+    "lat": 20.869517,
+    "lon": -156.679333,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Launiupoko",
+    "aliases": [
+      "Launiupoko Beach Park"
+    ],
+    "country": "Lahaina, Maui",
+    "lat": 20.843083,
+    "lon": -156.653017,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Olowalu",
+    "aliases": [],
+    "country": "Olowalu, Maui",
+    "lat": 20.809233,
+    "lon": -156.6152,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Windmills",
+    "aliases": [],
+    "country": "Honolua, Maui",
+    "lat": 21.025383,
+    "lon": -156.62625,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Paia Bay",
+    "aliases": [
+      "Pāʻia Bay"
+    ],
+    "country": "Paia, Maui",
+    "lat": 20.916517,
+    "lon": -156.38475,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Slaughterhouse",
+    "aliases": [
+      "Mokuleia Bay",
+      "Mokule'ia Bay"
+    ],
+    "country": "Kapalua, Maui",
+    "lat": 21.012133,
+    "lon": -156.642717,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Honomanu Bay",
+    "aliases": [],
+    "country": "Keanae, Maui",
+    "lat": 20.862533,
+    "lon": -156.1655,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Kihei Cove",
+    "aliases": [
+      "The Cove",
+      "Kalama Park"
+    ],
+    "country": "Kihei, Maui",
+    "lat": 20.727767,
+    "lon": -156.4504,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "La Perouse Bay",
+    "aliases": [
+      "La Pérouse Bay",
+      "Keoneʻōʻio"
+    ],
+    "country": "Makena, Maui",
+    "lat": 20.593217,
+    "lon": -156.41445,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Mala Wharf",
+    "aliases": [
+      "Mala Ramp"
+    ],
+    "country": "Lahaina, Maui",
+    "lat": 20.883633,
+    "lon": -156.689083,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Puamana",
+    "aliases": [],
+    "country": "Lahaina, Maui",
+    "lat": 20.858683,
+    "lon": -156.669883,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Kanaha",
+    "aliases": [
+      "Kanaha Beach Park"
+    ],
+    "country": "Kahului, Maui",
+    "lat": 20.9058,
+    "lon": -156.440167,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
   }
 ]
