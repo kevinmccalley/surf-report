@@ -7784,5 +7784,231 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "1st Street Jetty",
+    "aliases": [
+      "Virginia Beach",
+      "ECSC"
+    ],
+    "country": "Virginia Beach, VA",
+    "lat": 36.830417,
+    "lon": -75.967767,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Rehoboth Beach",
+    "aliases": [],
+    "country": "Rehoboth Beach, DE",
+    "lat": 38.7175,
+    "lon": -75.074,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Indian River Inlet",
+    "aliases": [
+      "IRI",
+      "The Coke Ovens"
+    ],
+    "country": "Delaware Seashore, DE",
+    "lat": 38.608433,
+    "lon": -75.059283,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Ocean City",
+    "aliases": [
+      "48th Street",
+      "OCMD"
+    ],
+    "country": "Ocean City, MD",
+    "lat": 38.373233,
+    "lon": -75.06695,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Belmar",
+    "aliases": [
+      "16th Avenue"
+    ],
+    "country": "Belmar, NJ",
+    "lat": 40.172,
+    "lon": -74.0138,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Ocean City",
+    "aliases": [
+      "7th Street",
+      "OCNJ"
+    ],
+    "country": "Ocean City, NJ",
+    "lat": 39.275433,
+    "lon": -74.5662,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Gilgo Beach",
+    "aliases": [
+      "Gilgo"
+    ],
+    "country": "Long Island, NY",
+    "lat": 40.616817,
+    "lon": -73.397433,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Rockaway Beach",
+    "aliases": [
+      "Beach 90th Street",
+      "92nd Street"
+    ],
+    "country": "Queens, NY",
+    "lat": 40.583333,
+    "lon": -73.81205,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Narragansett Town Beach",
+    "aliases": [
+      "Narragansett",
+      "The Wall"
+    ],
+    "country": "Narragansett, RI",
+    "lat": 41.437317,
+    "lon": -71.45165,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Point Judith",
+    "aliases": [
+      "K39",
+      "The Light"
+    ],
+    "country": "Narragansett, RI",
+    "lat": 41.360517,
+    "lon": -71.480483,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Ruggles",
+    "aliases": [
+      "Ruggles Avenue"
+    ],
+    "country": "Newport, RI",
+    "lat": 41.468017,
+    "lon": -71.296233,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Coast Guard Beach",
+    "aliases": [],
+    "country": "Eastham, MA",
+    "lat": 41.8462,
+    "lon": -69.9472,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Wrightsville Beach",
+    "aliases": [
+      "Crystal Pier",
+      "The South End"
+    ],
+    "country": "Wrightsville Beach, NC",
+    "lat": 34.2016,
+    "lon": -77.7935,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
   }
 ]
