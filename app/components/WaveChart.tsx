@@ -123,8 +123,10 @@ export default function WaveChart({ hourly: hourlyAll, heightUnit, tideHeights }
         {hasTide && <LegendDot color="#2dd4bf" label={t('chart.tideHeight')} />}
       </div>
 
-      <div className="w-full h-52 sm:h-60">
-        <ResponsiveContainer width="100%" height="100%">
+      {/* Fixed pixel height lets ResponsiveContainer skip its mount-time height
+          measurement (width is still tracked) — same fix as TideSection (68c3b48). */}
+      <div className="w-full h-60">
+        <ResponsiveContainer width="100%" height={240}>
           <ComposedChart data={data} margin={{ top: 8, right: hasTide ? 48 : 8, left: -18, bottom: 0 }}>
             <defs>
               <linearGradient id="waveGrad2" x1="0" y1="0" x2="0" y2="1">
