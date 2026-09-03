@@ -70,32 +70,35 @@
   {
     "name": "Ocean Beach",
     "aliases": [
-      "OB San Francisco",
-      "SF Beach"
+      "OB",
+      "Ocean Beach SF"
     ],
     "country": "San Francisco, CA",
     "lat": 37.7592,
     "lon": -122.5142,
-    "type": null,
-    "direction": null,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wikipedia",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Fort Point",
     "aliases": [],
     "country": "San Francisco, CA",
-    "lat": 37.8105,
-    "lon": -122.4769,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 37.81056,
+    "lon": -122.47722,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Rincon",
@@ -140,19 +143,21 @@
     "name": "First Point Malibu",
     "aliases": [
       "Surfrider Beach",
-      "Malibu"
+      "Malibu",
+      "Malibu Point"
     ],
     "country": "Malibu, CA",
-    "lat": 34.0372,
-    "lon": -118.6782,
-    "type": null,
-    "direction": null,
+    "lat": 34.03578,
+    "lon": -118.67668,
+    "type": "point",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surfline",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "El Porto",
@@ -192,19 +197,19 @@
   {
     "name": "Salt Creek",
     "aliases": [
-      "The Ranch"
+      "Middles"
     ],
     "country": "Dana Point, CA",
     "lat": 33.4838,
     "lon": -117.7285,
-    "type": null,
-    "direction": null,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Lowers",
@@ -331,18 +336,20 @@
   },
   {
     "name": "Pismo Beach",
-    "aliases": [],
+    "aliases": [
+      "Pismo Pier"
+    ],
     "country": "Pismo Beach, CA",
     "lat": 35.1402,
-    "lon": -120.6475,
-    "type": null,
-    "direction": null,
+    "lon": -120.6458,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surfline",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Pipeline",
@@ -626,16 +633,16 @@
       "Sunset CA"
     ],
     "country": "Huntington Beach, CA",
-    "lat": 33.7178,
-    "lon": -118.0725,
-    "type": null,
-    "direction": null,
+    "lat": 33.717,
+    "lon": -118.0735,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wikipedia",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Tofino",
