@@ -70,32 +70,35 @@
   {
     "name": "Ocean Beach",
     "aliases": [
-      "OB San Francisco",
-      "SF Beach"
+      "OB",
+      "Ocean Beach SF"
     ],
     "country": "San Francisco, CA",
     "lat": 37.7592,
     "lon": -122.5142,
-    "type": null,
-    "direction": null,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wikipedia",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Fort Point",
     "aliases": [],
     "country": "San Francisco, CA",
-    "lat": 37.8105,
-    "lon": -122.4769,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 37.81056,
+    "lon": -122.47722,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Rincon",
@@ -140,19 +143,21 @@
     "name": "First Point Malibu",
     "aliases": [
       "Surfrider Beach",
-      "Malibu"
+      "Malibu",
+      "Malibu Point"
     ],
     "country": "Malibu, CA",
-    "lat": 34.0372,
-    "lon": -118.6782,
-    "type": null,
-    "direction": null,
+    "lat": 34.03578,
+    "lon": -118.67668,
+    "type": "point",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surfline",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "El Porto",
@@ -192,19 +197,19 @@
   {
     "name": "Salt Creek",
     "aliases": [
-      "The Ranch"
+      "Middles"
     ],
     "country": "Dana Point, CA",
     "lat": 33.4838,
     "lon": -117.7285,
-    "type": null,
-    "direction": null,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surf-forecast",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Lowers",
@@ -331,18 +336,20 @@
   },
   {
     "name": "Pismo Beach",
-    "aliases": [],
+    "aliases": [
+      "Pismo Pier"
+    ],
     "country": "Pismo Beach, CA",
     "lat": 35.1402,
-    "lon": -120.6475,
-    "type": null,
-    "direction": null,
+    "lon": -120.6458,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surfline",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Pipeline",
@@ -626,16 +633,16 @@
       "Sunset CA"
     ],
     "country": "Huntington Beach, CA",
-    "lat": 33.7178,
-    "lon": -118.0725,
-    "type": null,
-    "direction": null,
+    "lat": 33.717,
+    "lon": -118.0735,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wikipedia",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Tofino",
@@ -7306,6 +7313,247 @@
     "sources": [
       "wikipedia",
       "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Point Panic",
+    "aliases": [
+      "Panics"
+    ],
+    "country": "Honolulu, Oahu",
+    "lat": 21.2905,
+    "lon": -157.8628,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Kewalos",
+    "aliases": [
+      "Kewalo Basin"
+    ],
+    "country": "Honolulu, Oahu",
+    "lat": 21.2901,
+    "lon": -157.8593,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Ala Moana Courts",
+    "aliases": [
+      "Courts",
+      "Concessions"
+    ],
+    "country": "Honolulu, Oahu",
+    "lat": 21.2907,
+    "lon": -157.8541,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Kaisers",
+    "aliases": [
+      "Kaiser Bowls"
+    ],
+    "country": "Honolulu, Oahu",
+    "lat": 21.2801,
+    "lon": -157.8408,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Populars",
+    "aliases": [
+      "Pops"
+    ],
+    "country": "Honolulu, Oahu",
+    "lat": 21.2762,
+    "lon": -157.83,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Threes",
+    "aliases": [
+      "Waikiki Threes"
+    ],
+    "country": "Honolulu, Oahu",
+    "lat": 21.2732,
+    "lon": -157.8373,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Tongg's",
+    "aliases": [
+      "Tonggs"
+    ],
+    "country": "Honolulu, Oahu",
+    "lat": 21.265,
+    "lon": -157.8225,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Diamond Head Cliffs",
+    "aliases": [
+      "Cliffs"
+    ],
+    "country": "Honolulu, Oahu",
+    "lat": 21.2525,
+    "lon": -157.8041,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "China Walls",
+    "aliases": [
+      "Koko Head"
+    ],
+    "country": "Honolulu, Oahu",
+    "lat": 21.2638,
+    "lon": -157.7118,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Makapuu",
+    "aliases": [
+      "Makapu'u"
+    ],
+    "country": "Waimanalo, Oahu",
+    "lat": 21.3103,
+    "lon": -157.6562,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Tracks",
+    "aliases": [
+      "Nanakuli Tracks",
+      "Kahe Point"
+    ],
+    "country": "Waianae, Oahu",
+    "lat": 21.3615,
+    "lon": -158.1328,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Yokohama Bay",
+    "aliases": [
+      "Keawa'ula"
+    ],
+    "country": "Waianae, Oahu",
+    "lat": 21.5455,
+    "lon": -158.2418,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Chun's Reef",
+    "aliases": [
+      "Chuns"
+    ],
+    "country": "Haleiwa, Oahu",
+    "lat": 21.6242,
+    "lon": -158.0815,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Velzyland",
+    "aliases": [
+      "V-Land",
+      "Velzy Land"
+    ],
+    "country": "North Shore, Oahu",
+    "lat": 21.6843,
+    "lon": -158.0323,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-02"
