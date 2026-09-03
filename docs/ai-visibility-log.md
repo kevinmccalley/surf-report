@@ -41,6 +41,23 @@ re-run; Google Rich Results test (manual).
 **Housekeeping:** earlier unattended runs left `/.aiv_*.html` / `.aiv_*.xml` scratch files in the
 repo root (untracked) — still safe to `rm .aiv_*`.
 
+### 2026-09-03 addendum — the two overnight routine PRs merged + promoted (master `b6c7b61`)
+
+- **PR #56 (edge-caching):** removed `cookies()` from `app/layout.tsx`. `/about`, `/terms`,
+  `/privacy`, `/support`, `/blog` are now prerendered + edge-cached on prod
+  (`X-Nextjs-Prerender: 1`, `X-Vercel-Cache: HIT`). **Open:** `/climatology/[slug]` +
+  `/blog/[slug]` (~600 URLs) stay `no-store` — Next.js won't ISR-cache a route that reads
+  `searchParams`, and both read `?lang=` for hreflang. Needs a locale-strategy call (drop
+  server `?lang=` there / Partial Prerendering / middleware rewrite).
+- **PR #57 (spot-page bundle):** `DeferredMount` defers the 3 spot-page Recharts charts;
+  WaveChart fixed height. Local TBT −38%. **Ceiling found:** the biggest main-thread cost is a
+  framework/vendor chunk on *every* route — separate bundle investigation. Spot-page LCP is a
+  JS-gated hero heading (needs SSR'd initial report / layout hoist).
+- **Next:** re-run this checklist + the full SEO/AI-visibility audit ~early Oct 2026. Watch
+  retrievability (still zero for brand + answered category queries), whether the translated blog
+  posts get indexed as separate localized results, and GSC coverage of `/climatology/*` once
+  cacheable. Do the GEO spot-check (paste spot/climatology/blog URLs into ChatGPT + Perplexity).
+
 ---
 
 ## 2026-08-31 — Second run (scheduled, unattended)
