@@ -785,60 +785,66 @@
       "Ditch Plains"
     ],
     "country": "Montauk, NY",
-    "lat": 41.0402,
-    "lon": -71.9158,
-    "type": null,
-    "direction": null,
+    "lat": 41.03875,
+    "lon": -71.913783,
+    "type": "reef",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Manasquan",
     "aliases": [
-      "Squan Inlet"
+      "Squan Inlet",
+      "Manasquan Inlet"
     ],
     "country": "Manasquan, NJ",
-    "lat": 40.1137,
-    "lon": -74.0376,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 40.102667,
+    "lon": -74.03275,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Asbury Park",
     "aliases": [],
     "country": "Asbury Park, NJ",
-    "lat": 40.2197,
-    "lon": -73.9998,
-    "type": null,
-    "direction": null,
+    "lat": 40.228133,
+    "lon": -73.9953,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
-    "name": "Nantucket",
-    "aliases": [],
+    "name": "Cisco Beach",
+    "aliases": [
+      "Nantucket"
+    ],
     "country": "Nantucket, MA",
-    "lat": 41.2452,
-    "lon": -70.1242,
-    "type": null,
-    "direction": null,
+    "lat": 41.2524,
+    "lon": -70.156717,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Nauset Beach",
@@ -846,11 +852,14 @@
     "country": "Orleans, MA",
     "lat": 41.7944,
     "lon": -69.9352,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Domes",
