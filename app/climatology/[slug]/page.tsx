@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { findSpotBySlug, slugify } from '@/app/lib/surf-spots'
+import { findSpotBySlug, getAllSpots, slugify } from '@/app/lib/surf-spots'
 import { getClimatologyData } from '@/app/lib/climatology'
 import { getPostsForSpot } from '@/app/lib/sanity'
 import ClimatologySection from '@/app/components/ClimatologySection'
@@ -12,19 +12,34 @@ const LOCALES = ['en', 'es', 'fr', 'pt-BR', 'pt-PT'] as const
 
 interface Props {
   params: Promise<{ slug: string }>
-  searchParams?: Promise<{ lang?: string }>
 }
 
 export const revalidate = 86400 // 24 h ISR — re-render on first request after expiry
+export const dynamicParams = true // any slug not pre-built below is generated on-demand and then cached
 
-export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
+// Climatology data/prose is English-only regardless of `?lang=` — the client
+// LanguageContext localizes the visible chrome after hydration from the URL
+// param, so SSR can render the default locale and stay statically cacheable.
+//
+// Pre-building all ~590 spots would mean ~590 build-time calls to the
+// Open-Meteo marine API (each with its own ocean-point ring search), which is
+// too slow/flaky for CI. Pre-build a small slice and let `dynamicParams`
+// generate + cache the rest on first request.
+const PRERENDER_COUNT = 24
+
+export async function generateStaticParams() {
+  return getAllSpots()
+    .slice(0, PRERENDER_COUNT)
+    .map(spot => ({ slug: slugify(spot.name) }))
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const lang = (await searchParams)?.lang ?? 'en'
   const spot = findSpotBySlug(slug)
   if (!spot) return { title: 'Surf Climatology' }
 
-  const climatologyLabel = serverT(lang, 'meta.surfClimatology')
-  const bestTimeLabel = serverT(lang, 'meta.bestTimeToSurf')
+  const climatologyLabel = serverT('en', 'meta.surfClimatology')
+  const bestTimeLabel = serverT('en', 'meta.bestTimeToSurf')
   const title = `${spot.name} ${climatologyLabel} — ${bestTimeLabel} — Groundswell`
   const description =
     `Monthly swell averages, peak season, and dominant direction at ${spot.name}, ${spot.country}. ` +
