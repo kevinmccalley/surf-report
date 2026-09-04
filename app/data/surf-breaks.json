@@ -3135,66 +3135,83 @@
       "Shipstern"
     ],
     "country": "Tasman Peninsula, Tasmania",
-    "lat": -43.0943,
-    "lon": 148.0058,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -43.211,
+    "lon": 147.752,
+    "type": "slab",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Surfers Point",
     "aliases": [
-      "Margaret River"
+      "Margaret River",
+      "Main Break"
     ],
     "country": "Margaret River, WA",
-    "lat": -33.9572,
-    "lon": 114.9833,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -33.977,
+    "lon": 114.9805,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "The Box",
     "aliases": [],
     "country": "Margaret River, WA",
-    "lat": -33.96,
-    "lon": 114.982,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -33.972,
+    "lon": 114.979,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Yallingup",
     "aliases": [],
     "country": "Yallingup, WA",
-    "lat": -33.6425,
-    "lon": 115.0165,
-    "type": null,
-    "direction": null,
+    "lat": -33.638753,
+    "lon": 115.02247,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surfline",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "North Point",
     "aliases": [],
-    "country": "Kalbarri, WA",
-    "lat": -27.699,
-    "lon": 114.167,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "country": "Gracetown, WA",
+    "lat": -33.8596,
+    "lon": 114.9843,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "surfline",
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Raglan",
