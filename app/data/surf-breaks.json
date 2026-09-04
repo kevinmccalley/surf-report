@@ -8024,5 +8024,185 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Namotu Left",
+    "aliases": [
+      "Namotu Lefts"
+    ],
+    "country": "Namotu, Fiji",
+    "lat": -17.8467,
+    "lon": 177.1767,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Wilkes Pass",
+    "aliases": [
+      "Wilkes",
+      "Wilkes Passage"
+    ],
+    "country": "Namotu, Fiji",
+    "lat": -17.8428,
+    "lon": 177.169,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Desperations",
+    "aliases": [],
+    "country": "Mamanuca, Fiji",
+    "lat": -17.82,
+    "lon": 177.13,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "King Kong Left",
+    "aliases": [],
+    "country": "Nagigia Island, Fiji",
+    "lat": -19.14611111,
+    "lon": 177.9677778,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Vesi Passage",
+    "aliases": [],
+    "country": "Kadavu, Fiji",
+    "lat": -19.0521,
+    "lon": 178.462,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Serua Rights",
+    "aliases": [],
+    "country": "Serua, Fiji",
+    "lat": -18.2973,
+    "lon": 177.933,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Waidroka Lefts",
+    "aliases": [
+      "Waidroka"
+    ],
+    "country": "Serua, Fiji",
+    "lat": -18.2908,
+    "lon": 177.909,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Hideaway",
+    "aliases": [],
+    "country": "Korotogo, Fiji",
+    "lat": -18.2031,
+    "lon": 177.658,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Natadola",
+    "aliases": [
+      "Natadola Beach"
+    ],
+    "country": "Viti Levu, Fiji",
+    "lat": -18.1162,
+    "lon": 177.306,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Sigatoka Rivermouth",
+    "aliases": [
+      "Sigatoka"
+    ],
+    "country": "Sigatoka, Fiji",
+    "lat": -18.1742,
+    "lon": 177.501,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Momi Bay",
+    "aliases": [
+      "Momi"
+    ],
+    "country": "Viti Levu, Fiji",
+    "lat": -17.9163,
+    "lon": 177.262,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   }
 ]
