@@ -8528,5 +8528,151 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Honkeys",
+    "aliases": [
+      "Honkey's"
+    ],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.3128,
+    "lon": 73.5838,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Cokes",
+    "aliases": [
+      "Coke's",
+      "Cola's"
+    ],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.37037,
+    "lon": 73.65508,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Ninjas",
+    "aliases": [],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.34357,
+    "lon": 73.61295,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Jails",
+    "aliases": [
+      "Jailbreaks"
+    ],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.30765,
+    "lon": 73.57827,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Lohis",
+    "aliases": [
+      "Lohi's"
+    ],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.34795,
+    "lon": 73.61783,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Riptides",
+    "aliases": [],
+    "country": "South Malé Atoll, Maldives",
+    "lat": 3.894,
+    "lon": 73.46593,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Villingili",
+    "aliases": [],
+    "country": "Malé, Maldives",
+    "lat": 4.1692,
+    "lon": 73.48733,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Kandooma Right",
+    "aliases": [],
+    "country": "South Malé Atoll, Maldives",
+    "lat": 3.90428,
+    "lon": 73.4756,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Gurus",
+    "aliases": [],
+    "country": "South Malé Atoll, Maldives",
+    "lat": 3.98952,
+    "lon": 73.51975,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   }
 ]
