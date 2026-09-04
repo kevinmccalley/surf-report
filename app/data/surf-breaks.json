@@ -3220,22 +3220,6 @@
     "verifiedOn": "2026-09-04"
   },
   {
-    "name": "Raglan",
-    "aliases": [
-      "Manu Bay",
-      "Indicators",
-      "Whale Bay"
-    ],
-    "country": "Raglan, Waikato",
-    "lat": -37.8013,
-    "lon": 174.8777,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
-  },
-  {
     "name": "Piha",
     "aliases": [
       "Piha Beach"
@@ -3243,11 +3227,14 @@
     "country": "Auckland, New Zealand",
     "lat": -36.954,
     "lon": 174.471,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Tsurigasaki",
@@ -5607,7 +5594,8 @@
     "sources": [
       "surf-forecast",
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "osm"
     ],
     "verifiedOn": "2026-08-30"
   },
@@ -8667,6 +8655,51 @@
     "lat": 3.98952,
     "lon": 73.51975,
     "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Manu Bay",
+    "aliases": [],
+    "country": "Raglan, Waikato",
+    "lat": -37.82132,
+    "lon": 174.81445,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Whale Bay",
+    "aliases": [],
+    "country": "Raglan, Waikato",
+    "lat": -37.823,
+    "lon": 174.79883,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Indicators",
+    "aliases": [],
+    "country": "Raglan, Waikato",
+    "lat": -37.8229,
+    "lon": 174.79292,
+    "type": "point",
     "direction": "left",
     "confidence": "provisional",
     "sources": [
