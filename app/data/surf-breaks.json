@@ -2792,13 +2792,17 @@
       "Tavarua"
     ],
     "country": "Tavarua, Fiji",
-    "lat": -17.8577,
-    "lon": 177.2018,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -17.88595,
+    "lon": 177.18645,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Restaurants",
@@ -2808,37 +2812,47 @@
     "country": "Tavarua, Fiji",
     "lat": -17.856,
     "lon": 177.203,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Frigates",
     "aliases": [
-      "Frigates Passage"
+      "Frigates Passage",
+      "Frigate Pass"
     ],
     "country": "Pacific Harbour, Fiji",
-    "lat": -18.3333,
-    "lon": 178.0833,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -18.471111,
+    "lon": 177.929444,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Swimming Pools",
     "aliases": [],
     "country": "Namotu, Fiji",
-    "lat": -17.862,
-    "lon": 177.22,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -17.8525,
+    "lon": 177.1835,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Bells Beach",
