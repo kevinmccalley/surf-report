@@ -476,7 +476,7 @@ const fr: Record<string, string> = {
   // Sections de fonctionnalités détaillées
   'mktL.feat1.label': 'Pour chaque voyage',
   'mktL.feat1.heading': "4+ ans d'historique de houle. Sur toutes les côtes du monde.",
-  'mktL.feat1.body': "Vous planifiez un voyage à Nazaré en octobre ? Les Maldives en novembre ? Consultez des années d'archives réelles de vagues, de vent et de houle pour n'importe quelle coordonnée côtière avant de réserver. Pas des moyennes. Pas des modèles. Ce qui s'est vraiment passé — semaine après semaine, depuis janvier 2022.",
+  'mktL.feat1.body': "Vous planifiez un voyage à Nazaré en octobre ? Les Maldives en novembre ? Consultez des années d'archives réelles de vagues, de vent et de houle pour n'importe quelle coordonnée côtière avant de réserver. Pas des moyennes. Pas des modèles. Ce qui s'est passé — semaine après semaine, depuis janvier 2022.",
   'mktL.feat2.label': 'Pour ce matin',
   'mktL.feat2.heading': '608 spots en direct. Mis à jour toutes les 3 heures.',
   'mktL.feat2.body': 'Voir quels spots dans le monde sont au mieux en ce moment. Pas une notification de masse sur une houle régionale — un tableau mondial des conditions en temps réel, toutes les trois heures. Trouvez la fenêtre. Allez à l\'eau.',
@@ -485,7 +485,7 @@ const fr: Record<string, string> = {
   'mktL.feat3.body': 'Chaque prévision se trompe parfois. Groundswell est la seule appli de surf qui vous montre exactement à quelle fréquence — par station, sur 400 jours. Pas parce que nous sommes parfaits. Parce que vous méritez de surfer sur des informations fiables, et la confiance commence par l\'honnêteté. Consultez la page de précision avant de vous engager dans une session.',
   'mktL.feat3.cta': 'Voir notre bilan de précision →',
   'mktL.feat4.label': 'Plusieurs sources. Une réponse claire.',
-  'mktL.feat4.heading': 'Des données de marées sur lesquelles vous pouvez vraiment compter.',
+  'mktL.feat4.heading': 'Des données de marées sur lesquelles vous pouvez compter.',
   'mktL.feat4.body': 'Groundswell extrait les données de marées de NOAA, DFO et du modèle océanique mondial NEMO, puis affiche la lecture de meilleure qualité pour votre emplacement — avec un badge de vérification NOAA en direct. Des marées précises pour les spots que d\'autres applis ratent.',
   'mktL.feat5.label': "C'est simple",
   'mktL.feat5.heading': 'Consultez autant de fois que vous en avez besoin.',

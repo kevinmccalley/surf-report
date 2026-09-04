@@ -476,7 +476,7 @@ const en: Record<string, string> = {
   // Feature detail sections
   'mktL.feat1.label': 'For every trip',
   'mktL.feat1.heading': '4+ years of swell history. Any coast on earth.',
-  'mktL.feat1.body': 'Planning a trip to Nazaré in October? The Maldives in November? Pull up years of actual wave, wind, and swell records for any coastal coordinate before you book. Not averages. Not models. What actually happened — week by week, going back to January 2022.',
+  'mktL.feat1.body': 'Planning a trip to Nazaré in October? The Maldives in November? Pull up years of actual wave, wind, and swell records for any coastal coordinate before you book. Not averages. Not models. What happened — week by week, going back to January 2022.',
   'mktL.feat2.label': 'For this morning',
   'mktL.feat2.heading': '608 live spots. Updated every 3 hours.',
   'mktL.feat2.body': 'See which breaks on earth are going off right now. Not a push notification blast about a regional swell — a real-time global conditions board, every three hours. Find the window. Get in the water.',
@@ -485,7 +485,7 @@ const en: Record<string, string> = {
   'mktL.feat3.body': 'Every forecast gets it wrong sometimes. Groundswell is the only surf app that shows you exactly how often — broken down by station, going back 400 days. Not because we\'re perfect. Because you deserve to surf on information you can trust, and trust starts with honesty. Check the accuracy page before you commit to a session.',
   'mktL.feat3.cta': 'See our accuracy record →',
   'mktL.feat4.label': 'Multiple sources. One clean answer.',
-  'mktL.feat4.heading': 'Tide data you can actually rely on.',
+  'mktL.feat4.heading': 'Tide data you can rely on.',
   'mktL.feat4.body': 'Groundswell pulls tide data from NOAA, DFO, and the NEMO global ocean model, then surfaces the highest-quality reading for your location — with a live NOAA verification badge so you always know what you\'re looking at. Accurate tides for breaks that other apps get wrong.',
   'mktL.feat5.label': "This one's simple",
   'mktL.feat5.heading': 'Check it as many times as you need.',
