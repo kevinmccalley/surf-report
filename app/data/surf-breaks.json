@@ -8221,5 +8221,306 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Margaret Rivermouth",
+    "aliases": [],
+    "country": "Margaret River, WA",
+    "lat": -33.9704,
+    "lon": 114.9852,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Gas Bay",
+    "aliases": [
+      "Gnarabup"
+    ],
+    "country": "Margaret River, WA",
+    "lat": -33.978325,
+    "lon": 114.9863667,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Grunters",
+    "aliases": [],
+    "country": "Margaret River, WA",
+    "lat": -34.0095,
+    "lon": 114.9916,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Redgate",
+    "aliases": [],
+    "country": "Margaret River, WA",
+    "lat": -34.0428,
+    "lon": 115.0002,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "South Point",
+    "aliases": [],
+    "country": "Gracetown, WA",
+    "lat": -33.8627,
+    "lon": 114.9757,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Huzzas",
+    "aliases": [
+      "Huzzawouie"
+    ],
+    "country": "Gracetown, WA",
+    "lat": -33.8657,
+    "lon": 114.9814,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Lefthanders",
+    "aliases": [
+      "Lefties"
+    ],
+    "country": "Gracetown, WA",
+    "lat": -33.8874,
+    "lon": 114.9829,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Cowaramup Bombie",
+    "aliases": [
+      "Cow Bombie",
+      "The Bommie"
+    ],
+    "country": "Gracetown, WA",
+    "lat": -33.8533,
+    "lon": 114.9862,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "The Womb",
+    "aliases": [],
+    "country": "Gracetown, WA",
+    "lat": -33.8954,
+    "lon": 114.9852,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Rabbit Hill",
+    "aliases": [
+      "Rabbits"
+    ],
+    "country": "Yallingup, WA",
+    "lat": -33.6331,
+    "lon": 115.0274,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Injidup Point",
+    "aliases": [],
+    "country": "Yallingup, WA",
+    "lat": -33.6976,
+    "lon": 114.9765,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Smiths Beach",
+    "aliases": [],
+    "country": "Yallingup, WA",
+    "lat": -33.657056,
+    "lon": 115.01457,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Three Bears",
+    "aliases": [
+      "Kabbijgup"
+    ],
+    "country": "Cape Naturaliste, WA",
+    "lat": -33.5711,
+    "lon": 115.007,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Jakes Point",
+    "aliases": [],
+    "country": "Kalbarri, WA",
+    "lat": -27.7342,
+    "lon": 114.1454,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Tombstones",
+    "aliases": [],
+    "country": "Gnaraloo, WA",
+    "lat": -23.8813,
+    "lon": 113.4877,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Red Bluff",
+    "aliases": [],
+    "country": "Quobba, WA",
+    "lat": -24.031,
+    "lon": 113.439,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Trigg Beach",
+    "aliases": [],
+    "country": "Perth, WA",
+    "lat": -31.878352,
+    "lon": 115.75125,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Scarborough Beach",
+    "aliases": [],
+    "country": "Perth, WA",
+    "lat": -31.891406,
+    "lon": 115.75388,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Cottesloe",
+    "aliases": [],
+    "country": "Perth, WA",
+    "lat": -32.007275,
+    "lon": 115.75131,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   }
 ]
