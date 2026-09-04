@@ -785,60 +785,66 @@
       "Ditch Plains"
     ],
     "country": "Montauk, NY",
-    "lat": 41.0402,
-    "lon": -71.9158,
-    "type": null,
-    "direction": null,
+    "lat": 41.03875,
+    "lon": -71.913783,
+    "type": "reef",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Manasquan",
     "aliases": [
-      "Squan Inlet"
+      "Squan Inlet",
+      "Manasquan Inlet"
     ],
     "country": "Manasquan, NJ",
-    "lat": 40.1137,
-    "lon": -74.0376,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 40.102667,
+    "lon": -74.03275,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Asbury Park",
     "aliases": [],
     "country": "Asbury Park, NJ",
-    "lat": 40.2197,
-    "lon": -73.9998,
-    "type": null,
-    "direction": null,
+    "lat": 40.228133,
+    "lon": -73.9953,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
-    "name": "Nantucket",
-    "aliases": [],
+    "name": "Cisco Beach",
+    "aliases": [
+      "Nantucket"
+    ],
     "country": "Nantucket, MA",
-    "lat": 41.2452,
-    "lon": -70.1242,
-    "type": null,
-    "direction": null,
+    "lat": 41.2524,
+    "lon": -70.156717,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Nauset Beach",
@@ -846,11 +852,14 @@
     "country": "Orleans, MA",
     "lat": 41.7944,
     "lon": -69.9352,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
   },
   {
     "name": "Domes",
@@ -7557,5 +7566,449 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-02"
+  },
+  {
+    "name": "Ma'alaea",
+    "aliases": [
+      "Freight Trains",
+      "Maalaea"
+    ],
+    "country": "Maalaea, Maui",
+    "lat": 20.791317,
+    "lon": -156.50905,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Lahaina Breakwall",
+    "aliases": [
+      "Breakwall",
+      "Lahaina Harbor"
+    ],
+    "country": "Lahaina, Maui",
+    "lat": 20.869517,
+    "lon": -156.679333,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Launiupoko",
+    "aliases": [
+      "Launiupoko Beach Park"
+    ],
+    "country": "Lahaina, Maui",
+    "lat": 20.843083,
+    "lon": -156.653017,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Olowalu",
+    "aliases": [],
+    "country": "Olowalu, Maui",
+    "lat": 20.809233,
+    "lon": -156.6152,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Windmills",
+    "aliases": [],
+    "country": "Honolua, Maui",
+    "lat": 21.025383,
+    "lon": -156.62625,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Paia Bay",
+    "aliases": [
+      "Pāʻia Bay"
+    ],
+    "country": "Paia, Maui",
+    "lat": 20.916517,
+    "lon": -156.38475,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Slaughterhouse",
+    "aliases": [
+      "Mokuleia Bay",
+      "Mokule'ia Bay"
+    ],
+    "country": "Kapalua, Maui",
+    "lat": 21.012133,
+    "lon": -156.642717,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Honomanu Bay",
+    "aliases": [],
+    "country": "Keanae, Maui",
+    "lat": 20.862533,
+    "lon": -156.1655,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Kihei Cove",
+    "aliases": [
+      "The Cove",
+      "Kalama Park"
+    ],
+    "country": "Kihei, Maui",
+    "lat": 20.727767,
+    "lon": -156.4504,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "La Perouse Bay",
+    "aliases": [
+      "La Pérouse Bay",
+      "Keoneʻōʻio"
+    ],
+    "country": "Makena, Maui",
+    "lat": 20.593217,
+    "lon": -156.41445,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Mala Wharf",
+    "aliases": [
+      "Mala Ramp"
+    ],
+    "country": "Lahaina, Maui",
+    "lat": 20.883633,
+    "lon": -156.689083,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Puamana",
+    "aliases": [],
+    "country": "Lahaina, Maui",
+    "lat": 20.858683,
+    "lon": -156.669883,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Kanaha",
+    "aliases": [
+      "Kanaha Beach Park"
+    ],
+    "country": "Kahului, Maui",
+    "lat": 20.9058,
+    "lon": -156.440167,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "1st Street Jetty",
+    "aliases": [
+      "Virginia Beach",
+      "ECSC"
+    ],
+    "country": "Virginia Beach, VA",
+    "lat": 36.830417,
+    "lon": -75.967767,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Rehoboth Beach",
+    "aliases": [],
+    "country": "Rehoboth Beach, DE",
+    "lat": 38.7175,
+    "lon": -75.074,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Indian River Inlet",
+    "aliases": [
+      "IRI",
+      "The Coke Ovens"
+    ],
+    "country": "Delaware Seashore, DE",
+    "lat": 38.608433,
+    "lon": -75.059283,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Ocean City",
+    "aliases": [
+      "48th Street",
+      "OCMD"
+    ],
+    "country": "Ocean City, MD",
+    "lat": 38.373233,
+    "lon": -75.06695,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Belmar",
+    "aliases": [
+      "16th Avenue"
+    ],
+    "country": "Belmar, NJ",
+    "lat": 40.172,
+    "lon": -74.0138,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Ocean City",
+    "aliases": [
+      "7th Street",
+      "OCNJ"
+    ],
+    "country": "Ocean City, NJ",
+    "lat": 39.275433,
+    "lon": -74.5662,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Gilgo Beach",
+    "aliases": [
+      "Gilgo"
+    ],
+    "country": "Long Island, NY",
+    "lat": 40.616817,
+    "lon": -73.397433,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Rockaway Beach",
+    "aliases": [
+      "Beach 90th Street",
+      "92nd Street"
+    ],
+    "country": "Queens, NY",
+    "lat": 40.583333,
+    "lon": -73.81205,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Narragansett Town Beach",
+    "aliases": [
+      "Narragansett",
+      "The Wall"
+    ],
+    "country": "Narragansett, RI",
+    "lat": 41.437317,
+    "lon": -71.45165,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Point Judith",
+    "aliases": [
+      "K39",
+      "The Light"
+    ],
+    "country": "Narragansett, RI",
+    "lat": 41.360517,
+    "lon": -71.480483,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Ruggles",
+    "aliases": [
+      "Ruggles Avenue"
+    ],
+    "country": "Newport, RI",
+    "lat": 41.468017,
+    "lon": -71.296233,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Coast Guard Beach",
+    "aliases": [],
+    "country": "Eastham, MA",
+    "lat": 41.8462,
+    "lon": -69.9472,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Wrightsville Beach",
+    "aliases": [
+      "Crystal Pier",
+      "The South End"
+    ],
+    "country": "Wrightsville Beach, NC",
+    "lat": 34.2016,
+    "lon": -77.7935,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-03"
   }
 ]
