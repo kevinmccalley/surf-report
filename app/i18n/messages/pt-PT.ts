@@ -476,7 +476,7 @@ const ptPT: Record<string, string> = {
   // Secções de funcionalidades detalhadas
   'mktL.feat1.label': 'Para cada viagem',
   'mktL.feat1.heading': '4+ anos de histórico de ondulação. Em qualquer costa do mundo.',
-  'mktL.feat1.body': 'A planear uma viagem a Nazaré em outubro? As Maldivas em novembro? Consulte anos de registos reais de ondas, vento e ondulação para qualquer coordenada costeira antes de reservar. Não são médias. Não são modelos. O que realmente aconteceu — semana a semana, desde janeiro de 2022.',
+  'mktL.feat1.body': 'A planear uma viagem a Nazaré em outubro? As Maldivas em novembro? Consulte anos de registos reais de ondas, vento e ondulação para qualquer coordenada costeira antes de reservar. Não são médias. Não são modelos. O que aconteceu — semana a semana, desde janeiro de 2022.',
   'mktL.feat2.label': 'Para esta manhã',
   'mktL.feat2.heading': '608 spots ao vivo. Atualizado a cada 3 horas.',
   'mktL.feat2.body': 'Veja quais breaks do mundo estão no melhor momento agora mesmo. Não uma notificação em massa sobre um swell regional — um painel global de condições em tempo real, a cada três horas. Encontre a janela. Entre na água.',
@@ -485,7 +485,7 @@ const ptPT: Record<string, string> = {
   'mktL.feat3.body': 'Toda previsão falha às vezes. O Groundswell é a única app de surf que mostra exatamente com que frequência — por estação, nos últimos 400 dias. Não porque somos perfeitos. Porque merece surfar com base em informações fiáveis, e a confiança começa pela honestidade. Consulte a página de precisão antes de se comprometer com uma sessão.',
   'mktL.feat3.cta': 'Ver o nosso historial de precisão →',
   'mktL.feat4.label': 'Múltiplas fontes. Uma resposta clara.',
-  'mktL.feat4.heading': 'Dados de maré em que realmente pode confiar.',
+  'mktL.feat4.heading': 'Dados de maré em que pode confiar.',
   'mktL.feat4.body': 'O Groundswell obtém dados de maré da NOAA, DFO e do modelo oceânico global NEMO, e apresenta a leitura de maior qualidade para a sua localização — com um selo de verificação NOAA ao vivo. Marés precisas para breaks que outras apps erram.',
   'mktL.feat5.label': 'Isto é simples',
   'mktL.feat5.heading': 'Consulte quantas vezes precisar.',

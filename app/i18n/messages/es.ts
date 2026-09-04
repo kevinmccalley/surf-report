@@ -476,7 +476,7 @@ const es: Record<string, string> = {
   // Secciones de funciones detalladas
   'mktL.feat1.label': 'Para cada viaje',
   'mktL.feat1.heading': '4+ años de historial de oleaje. En cualquier costa del mundo.',
-  'mktL.feat1.body': '¿Planeas un viaje a Nazaré en octubre? ¿Las Maldivas en noviembre? Consulta años de registros reales de olas, viento y swell para cualquier coordenada costera antes de reservar. No son promedios. No son modelos. Lo que realmente ocurrió — semana a semana, desde enero de 2022.',
+  'mktL.feat1.body': '¿Planeas un viaje a Nazaré en octubre? ¿Las Maldivas en noviembre? Consulta años de registros reales de olas, viento y swell para cualquier coordenada costera antes de reservar. No son promedios. No son modelos. Lo que ocurrió — semana a semana, desde enero de 2022.',
   'mktL.feat2.label': 'Para esta mañana',
   'mktL.feat2.heading': '608 spots en vivo. Actualizado cada 3 horas.',
   'mktL.feat2.body': 'Ve qué breaks del mundo están en su mejor momento ahora mismo. No una notificación masiva sobre un swell regional — un tablero global de condiciones en tiempo real, cada tres horas. Encuentra la ventana. Métete al agua.',
@@ -485,7 +485,7 @@ const es: Record<string, string> = {
   'mktL.feat3.body': "Todo pronóstico se equivoca a veces. Groundswell es la única app de surf que te muestra exactamente con qué frecuencia — desglosado por estación, remontándose 400 días atrás. No porque seamos perfectos. Porque mereces surfear con información en la que puedes confiar, y la confianza empieza por la honestidad. Consulta la página de precisión antes de comprometerte con una sesión.",
   'mktL.feat3.cta': 'Ver nuestro historial de precisión →',
   'mktL.feat4.label': 'Múltiples fuentes. Una respuesta clara.',
-  'mktL.feat4.heading': 'Datos de mareas en los que realmente puedes confiar.',
+  'mktL.feat4.heading': 'Datos de mareas en los que puedes confiar.',
   'mktL.feat4.body': 'Groundswell obtiene datos de mareas de NOAA, DFO y el modelo oceánico global NEMO, y muestra la lectura de mayor calidad para tu ubicación — con una insignia de verificación NOAA en vivo para que siempre sepas qué estás viendo. Mareas precisas para breaks que otras apps no aciertan.',
   'mktL.feat5.label': 'Esto es sencillo',
   'mktL.feat5.heading': 'Consúltalo tantas veces como necesites.',
