@@ -8707,5 +8707,135 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Asu",
+    "aliases": [],
+    "country": "Nias, Indonesia",
+    "lat": 0.867367,
+    "lon": 97.33235,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "Bawa",
+    "aliases": [],
+    "country": "Nias, Indonesia",
+    "lat": 0.812533,
+    "lon": 97.3472,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "T-Land",
+    "aliases": [
+      "Nembrala"
+    ],
+    "country": "Rote, Indonesia",
+    "lat": -10.893483,
+    "lon": 122.811817,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "T-Land Bommie",
+    "aliases": [],
+    "country": "Rote, Indonesia",
+    "lat": -10.8805,
+    "lon": 122.813133,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "Boa",
+    "aliases": [
+      "Bo'a"
+    ],
+    "country": "Rote, Indonesia",
+    "lat": -10.940333,
+    "lon": 122.840017,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "Sucky Mamas",
+    "aliases": [
+      "Suckies",
+      "Sukanamon"
+    ],
+    "country": "Rote, Indonesia",
+    "lat": -10.8467,
+    "lon": 122.817517,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "Occy's Left",
+    "aliases": [
+      "Nihiwatu"
+    ],
+    "country": "Sumba, Indonesia",
+    "lat": -9.781433,
+    "lon": 119.373067,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "Miller's Right",
+    "aliases": [],
+    "country": "Sumba, Indonesia",
+    "lat": -9.954317,
+    "lon": 119.90135,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
   }
 ]
