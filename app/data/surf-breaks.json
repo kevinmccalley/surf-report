@@ -3257,25 +3257,32 @@
       "Ichinomiya Olympics"
     ],
     "country": "Chiba, Japan",
-    "lat": 35.3667,
-    "lon": 140.3667,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 35.3824913,
+    "lon": 140.3923496,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Ichinomiya",
     "aliases": [],
     "country": "Chiba, Japan",
-    "lat": 35.373,
-    "lon": 140.3581,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 35.386,
+    "lon": 140.3919,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Montara State Beach",
