@@ -1475,48 +1475,55 @@
     "verifiedOn": "2026-08-28"
   },
   {
-    "name": "Fernando de Noronha",
-    "aliases": [],
-    "country": "Pernambuco, Brazil",
-    "lat": -3.8622,
-    "lon": -32.449,
-    "type": null,
-    "direction": null,
-    "confidence": "provisional",
-    "sources": [
-      "ai-placement",
-      "osm-water-audit"
-    ],
-    "verifiedOn": "2026-08-26"
-  },
-  {
-    "name": "Saquarema",
-    "aliases": [],
-    "country": "Rio de Janeiro, Brazil",
-    "lat": -22.9348,
-    "lon": -42.4875,
-    "type": null,
-    "direction": null,
-    "confidence": "provisional",
-    "sources": [
-      "ai-placement",
-      "osm-water-audit"
-    ],
-    "verifiedOn": "2026-08-26"
-  },
-  {
-    "name": "Florianopolis",
+    "name": "Cacimba do Padre",
     "aliases": [
-      "Joaquina"
+      "Fernando de Noronha"
     ],
-    "country": "Santa Catarina, Brazil",
-    "lat": -27.5969,
-    "lon": -48.5495,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "country": "Fernando de Noronha, Brazil",
+    "lat": -3.84895,
+    "lon": -32.439533,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Itaúna Beach",
+    "aliases": [
+      "Saquarema"
+    ],
+    "country": "Saquarema, Brazil",
+    "lat": -22.938317,
+    "lon": -42.479983,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Praia Brava",
+    "aliases": [
+      "Brava"
+    ],
+    "country": "Florianópolis, Brazil",
+    "lat": -27.4008,
+    "lon": -48.4134,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Praia do Rosa",
@@ -1524,14 +1531,14 @@
     "country": "Imbituba, Brazil",
     "lat": -28.1278,
     "lon": -48.6405,
-    "type": null,
-    "direction": null,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Supertubos",
@@ -6127,12 +6134,13 @@
     "lon": -43.19165,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
+      "wikipedia",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Prainha",
@@ -6206,12 +6214,13 @@
     "lon": -48.432583,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
+      "wikipedia",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Joaquina",
