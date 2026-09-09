@@ -9007,5 +9007,215 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "El Buey",
+    "aliases": [],
+    "country": "Arica, Chile",
+    "lat": -18.488683,
+    "lon": -70.329067,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "El Brazo",
+    "aliases": [],
+    "country": "Arica, Chile",
+    "lat": -18.479917,
+    "lon": -70.329267,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Las Machas",
+    "aliases": [],
+    "country": "Arica, Chile",
+    "lat": -18.452333,
+    "lon": -70.305033,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Cavancha",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.228567,
+    "lon": -70.148717,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Intendencia",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.218983,
+    "lon": -70.157117,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Las Urracas",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.224317,
+    "lon": -70.153,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Punta 1",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.22735,
+    "lon": -70.149817,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Punta 2",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.21785,
+    "lon": -70.158617,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "La Bestia",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.234233,
+    "lon": -70.155017,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Baul",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.275733,
+    "lon": -70.133033,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Barrancon",
+    "aliases": [],
+    "country": "Tocopilla, Chile",
+    "lat": -21.826183,
+    "lon": -70.144033,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Hornito",
+    "aliases": [],
+    "country": "Mejillones, Chile",
+    "lat": -22.863567,
+    "lon": -70.296617,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "La Cupula",
+    "aliases": [],
+    "country": "Antofagasta, Chile",
+    "lat": -23.7166,
+    "lon": -70.436633,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Playa Blanca",
+    "aliases": [],
+    "country": "Chañaral, Chile",
+    "lat": -26.2363,
+    "lon": -70.65445,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
   }
 ]
