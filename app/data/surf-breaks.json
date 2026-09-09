@@ -1758,13 +1758,16 @@
     "name": "Zarautz",
     "aliases": [],
     "country": "Basque Country, Spain",
-    "lat": 43.2835,
-    "lon": -2.1723,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 43.289133,
+    "lon": -2.16955,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Bakio",
@@ -1989,13 +1992,17 @@
     "name": "Pantin",
     "aliases": [],
     "country": "Galicia, Spain",
-    "lat": 43.7128,
-    "lon": -7.8514,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 43.64025,
+    "lon": -8.11353,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "wikidata",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "El Quemao",
