@@ -8846,5 +8846,159 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "Puertecillo",
+    "aliases": [],
+    "country": "Navidad, Chile",
+    "lat": -34.0871,
+    "lon": -71.96355,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Matanzas",
+    "aliases": [],
+    "country": "Navidad, Chile",
+    "lat": -33.960867,
+    "lon": -71.879367,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "La Boca",
+    "aliases": [
+      "La Boca de Concón"
+    ],
+    "country": "Concón, Chile",
+    "lat": -32.917133,
+    "lon": -71.51335,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Buchupureo",
+    "aliases": [],
+    "country": "Cobquecura, Chile",
+    "lat": -36.077367,
+    "lon": -72.798883,
+    "type": "rivermouth",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Cobquecura",
+    "aliases": [
+      "La Rinconada"
+    ],
+    "country": "Cobquecura, Chile",
+    "lat": -36.1802,
+    "lon": -72.8176,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Reñaca",
+    "aliases": [],
+    "country": "Viña del Mar, Chile",
+    "lat": -32.96415,
+    "lon": -71.54825,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Maitencillo",
+    "aliases": [],
+    "country": "Puchuncaví, Chile",
+    "lat": -32.6428,
+    "lon": -71.433583,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Ritoque",
+    "aliases": [],
+    "country": "Quintero, Chile",
+    "lat": -32.829483,
+    "lon": -71.52615,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Quintay",
+    "aliases": [],
+    "country": "Casablanca, Chile",
+    "lat": -33.173783,
+    "lon": -71.6847,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Los Molles",
+    "aliases": [],
+    "country": "La Ligua, Chile",
+    "lat": -32.272617,
+    "lon": -71.475333,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
   }
 ]
