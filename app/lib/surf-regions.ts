@@ -175,7 +175,7 @@ const SURF_REGIONS: SurfRegion[] = [
     country: 'US',
     admin: 'MA',
     center: { lat: 41.6, lon: -70.0 },
-    spotSlugs: ['nantucket', 'nauset-beach'],
+    spotSlugs: ['cisco-beach', 'nauset-beach'],
     searchAliases: ['Cape Cod', 'Massachusetts', 'Rhode Island'],
   },
   {
@@ -271,8 +271,8 @@ const SURF_REGIONS: SurfRegion[] = [
     continent: 'Latin America',
     country: 'CL',
     center: { lat: -28.0, lon: -71.3 },
-    spotSlugs: ['punta-de-lobos', 'pichilemu', 'arica', 'iquique'],
-    searchAliases: ['Pichilemu', 'Punta de Lobos', 'Arica', 'El Gringo'],
+    spotSlugs: ['punta-de-lobos', 'la-puntilla', 'el-gringo', 'el-colegio'],
+    searchAliases: ['Pichilemu', 'Punta de Lobos', 'Arica', 'El Gringo', 'Iquique'],
   },
   {
     slug: 'brazil-southeast',
@@ -690,7 +690,18 @@ export function getRegionSpots(region: SurfRegion): SurfSpot[] {
   const out: SurfSpot[] = []
   for (const slug of region.spotSlugs) {
     const spot = map.get(slug)
-    if (spot !== undefined) out.push(spot)
+    if (spot !== undefined) {
+      out.push(spot)
+    } else if (process.env.NODE_ENV !== 'production') {
+      // A slug that doesn't resolve is silently dropped in prod (thin region
+      // page + undercounted ItemList schema). Surface it everywhere else — the
+      // test suite also asserts every slug resolves, but this catches a bad
+      // edit the moment it's made locally. Fix: point it at a real
+      // slugify(SurfSpot.name).
+      console.warn(
+        `[surf-regions] region "${region.slug}" references unknown spot slug "${slug}" — dropped.`
+      )
+    }
   }
   return out
 }
