@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { findSpotBySlug, getAllSpots, slugify } from '@/app/lib/surf-spots'
+import { findSpotBySlug, slugify } from '@/app/lib/surf-spots'
 import { getClimatologyData } from '@/app/lib/climatology'
 import { getPostsForSpot } from '@/app/lib/sanity'
 import ClimatologySection from '@/app/components/ClimatologySection'
@@ -16,21 +16,22 @@ interface Props {
 
 export const revalidate = 86400 // 24 h ISR — re-render on first request after expiry
 export const dynamicParams = true // any slug not pre-built below is generated on-demand and then cached
+// The on-demand render does an ocean-point ring search plus three years of
+// marine-API pulls; give it well past the default so a slow Open-Meteo response
+// finishes the render instead of failing it. Vercel clamps this to the plan ceiling.
+export const maxDuration = 60
 
 // Climatology data/prose is English-only regardless of `?lang=` — the client
 // LanguageContext localizes the visible chrome after hydration from the URL
 // param, so SSR can render the default locale and stay statically cacheable.
 //
-// Pre-building all ~590 spots would mean ~590 build-time calls to the
-// Open-Meteo marine API (each with its own ocean-point ring search), which is
-// too slow/flaky for CI. Pre-build a small slice and let `dynamicParams`
-// generate + cache the rest on first request.
-const PRERENDER_COUNT = 24
-
+// Nothing is prerendered at build time. Each page does an ocean-point ring
+// search plus three years of Open-Meteo marine pulls; even a 24-spot slice was
+// enough to get the API to rate-limit CI and fail the build. `dynamicParams`
+// renders every slug on first request instead, and from then on it's served by
+// ISR (`revalidate` above) and the edge cache (`s-maxage` in next.config).
 export async function generateStaticParams() {
-  return getAllSpots()
-    .slice(0, PRERENDER_COUNT)
-    .map(spot => ({ slug: slugify(spot.name) }))
+  return []
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -78,20 +79,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ClimatologyPage({ params }: Props) {
   const { slug } = await params
   const spot = findSpotBySlug(slug)
+  // A slug that maps to no known spot is the only genuine 404 on this route.
   if (!spot) notFound()
 
   const latR = Math.round(spot.lat * 2) / 2
   const lonR = Math.round(spot.lon * 2) / 2
 
-  let months, peakMonths
-  try {
-    months = await getClimatologyData(latR, lonR)
-    if (months.every(m => m.sampleSize === 0)) notFound()
-    const sorted = [...months].sort((a, b) => b.score - a.score)
-    peakMonths = sorted.slice(0, 2).map(m => m.month).sort((a, b) => a - b)
-  } catch {
-    notFound()
-  }
+  // getClimatologyData throws on a failed/empty marine-API pull rather than
+  // returning [] (which unstable_cache would then serve for its 7-day TTL).
+  // Letting it throw renders a 500 — Google retries a 5xx on the next crawl,
+  // whereas the old notFound() here turned a momentary Open-Meteo hiccup into a
+  // hard 404 that stuck in the index for weeks. Nothing is prerendered at build
+  // time (see generateStaticParams), so this only ever runs at request time.
+  const months = await getClimatologyData(latR, lonR)
+  const sorted = [...months].sort((a, b) => b.score - a.score)
+  const peakMonths = sorted.slice(0, 2).map(m => m.month).sort((a, b) => a - b)
 
   const relatedPosts = await getPostsForSpot(slug)
 
