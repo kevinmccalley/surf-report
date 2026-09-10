@@ -1308,13 +1308,16 @@
     "name": "Punta Roca",
     "aliases": [],
     "country": "La Libertad, El Salvador",
-    "lat": 13.4797,
-    "lon": -89.3265,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 13.480033,
+    "lon": -89.327567,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   },
   {
     "name": "Las Flores",
@@ -9439,6 +9442,215 @@
     "sources": [
       "wannasurf",
       "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "El Sunzal",
+    "aliases": [
+      "Zunzal",
+      "Sunzal"
+    ],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.492167,
+    "lon": -89.38995,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "La Bocana",
+    "aliases": [],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.492333,
+    "lon": -89.381683,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "El Zonte",
+    "aliases": [],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.49465,
+    "lon": -89.43855,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "El Zonte Rivermouth",
+    "aliases": [],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.493067,
+    "lon": -89.439933,
+    "type": "rivermouth",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "K59",
+    "aliases": [
+      "K 59",
+      "Kilometro 59"
+    ],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.499117,
+    "lon": -89.473583,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Palmarcito",
+    "aliases": [
+      "El Palmarcito"
+    ],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.4932,
+    "lon": -89.422167,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Mizata",
+    "aliases": [],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.510033,
+    "lon": -89.595917,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Restaurants",
+    "aliases": [
+      "Restaurantes"
+    ],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.486433,
+    "lon": -89.324733,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Cemetery",
+    "aliases": [
+      "Cementerio"
+    ],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.483033,
+    "lon": -89.323983,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Playa El Cocal",
+    "aliases": [
+      "El Cocal"
+    ],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.48345,
+    "lon": -89.352183,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "El Pimental",
+    "aliases": [],
+    "country": "La Paz, El Salvador",
+    "lat": 13.3831,
+    "lon": -89.090317,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Punta Mango",
+    "aliases": [],
+    "country": "El Cuco, El Salvador",
+    "lat": 13.160117,
+    "lon": -88.208717,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Barra de Santiago",
+    "aliases": [],
+    "country": "Barra de Santiago, El Salvador",
+    "lat": 13.70415,
+    "lon": -90.039367,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-10"
