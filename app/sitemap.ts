@@ -37,11 +37,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }))
 
+  // Lower priority than the live /spots/ pages (0.9): these render on demand from
+  // a slow marine API, so we don't want Google working through the full ~480-URL
+  // set ahead of the forecast pages that actually change daily.
   const climatologyPages = getAllSpots().map(spot => ({
     url: `${base}/climatology/${slugify(spot.name)}`,
     lastModified: new Date('2025-01-01'),
     changeFrequency: 'yearly' as const,
-    priority: 0.7,
+    priority: 0.4,
   }))
 
   const REGIONS_LAST_MODIFIED = new Date('2026-08-26')

@@ -157,8 +157,21 @@ export function getClimatologyData(latR: number, lonR: number) {
   return unstable_cache(
     async () => {
       const point = await resolveOceanPoint(latR, lonR)
-      if (!point) return []
-      return computeClimatology(point.lat, point.lon)
+      if (!point) {
+        // The ocean-point probe found nothing — almost always Open-Meteo being
+        // slow or rate-limited mid-request, not a genuinely landlocked spot.
+        // Throw instead of returning []: unstable_cache stores a resolved value
+        // (an empty array included) for the full 7-day TTL, but it does not store
+        // a rejection, so throwing lets the very next request retry.
+        throw new Error(`climatology: no ocean point resolved near ${latR},${lonR}`)
+      }
+      const months = await computeClimatology(point.lat, point.lon)
+      if (months.every(m => m.sampleSize === 0)) {
+        // Ocean point resolved but all three year-pulls came back empty — same
+        // transient-failure story, same reason not to let it get cached.
+        throw new Error(`climatology: no samples returned for ${latR},${lonR}`)
+      }
+      return months
     },
     [`climatology-${latR}-${lonR}`],
     { revalidate: 60 * 60 * 24 * 7 }
