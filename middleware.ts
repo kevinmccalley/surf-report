@@ -1,6 +1,17 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 
+// Permanent redirects for spot/climatology URLs that Google has indexed but that
+// no longer resolve — a renamed or removed break. Keep this list tiny; it's for
+// pages with real search impressions, not every historical slug.
+//   nantucket -> cisco-beach : "Nantucket" was never a catalog slug (the break
+//   is Cisco Beach, Nantucket MA); the /climatology/nantucket page still pulls
+//   GSC impressions. See docs/seo-audit-2026-09-10.md.
+const PERMANENT_REDIRECTS: Record<string, string> = {
+  '/spots/nantucket': '/spots/cisco-beach',
+  '/climatology/nantucket': '/climatology/cisco-beach',
+}
+
 const isPublicRoute = createRouteMatcher([
   '/',
   '/sitemap.xml',
@@ -45,6 +56,13 @@ const isPublicRoute = createRouteMatcher([
 ])
 
 export default clerkMiddleware(async (auth, req) => {
+  const redirectTo = PERMANENT_REDIRECTS[req.nextUrl.pathname]
+  if (redirectTo) {
+    const url = req.nextUrl.clone()
+    url.pathname = redirectTo
+    return NextResponse.redirect(url, 301)
+  }
+
   if (!isPublicRoute(req)) {
     const { userId } = await auth()
     if (!userId) {
