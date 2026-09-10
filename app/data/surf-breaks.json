@@ -2721,16 +2721,38 @@
     "name": "Arugam Bay",
     "aliases": [
       "A-Bay",
-      "Pottuvil Point"
+      "Main Point",
+      "Arugam Bay Point"
+    ],
+    "country": "Arugam Bay, Sri Lanka",
+    "lat": 6.8398,
+    "lon": 81.8399,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Pottuvil Point",
+    "aliases": [
+      "Pothuvil Point"
     ],
     "country": "Pottuvil, Sri Lanka",
-    "lat": 6.8402,
-    "lon": 81.836,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 6.8985,
+    "lon": 81.8492,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   },
   {
     "name": "Cloud 9",
