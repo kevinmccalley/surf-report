@@ -9224,5 +9224,201 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Cabo Blanco",
+    "aliases": [],
+    "country": "Talara, Peru",
+    "lat": -4.250333,
+    "lon": -81.235833,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Los Órganos",
+    "aliases": [],
+    "country": "Piura, Peru",
+    "lat": -4.177833,
+    "lon": -81.141433,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "El Ñuro",
+    "aliases": [],
+    "country": "Piura, Peru",
+    "lat": -4.20185,
+    "lon": -81.16305,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Pacasmayo",
+    "aliases": [],
+    "country": "La Libertad, Peru",
+    "lat": -7.41345,
+    "lon": -79.589683,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Huanchaco",
+    "aliases": [],
+    "country": "La Libertad, Peru",
+    "lat": -8.081917,
+    "lon": -79.124917,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Pico Alto",
+    "aliases": [],
+    "country": "Punta Hermosa, Peru",
+    "lat": -12.334067,
+    "lon": -76.833033,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Playa Norte",
+    "aliases": [],
+    "country": "Punta Hermosa, Peru",
+    "lat": -12.335083,
+    "lon": -76.830617,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Caballeros",
+    "aliases": [],
+    "country": "Punta Hermosa, Peru",
+    "lat": -12.324917,
+    "lon": -76.8382,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Señoritas",
+    "aliases": [],
+    "country": "Punta Hermosa, Peru",
+    "lat": -12.328683,
+    "lon": -76.83555,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "La Isla",
+    "aliases": [],
+    "country": "Punta Hermosa, Peru",
+    "lat": -12.340417,
+    "lon": -76.822583,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Punta Rocas",
+    "aliases": [],
+    "country": "Punta Negra, Peru",
+    "lat": -12.35325,
+    "lon": -76.81795,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "San Bartolo",
+    "aliases": [],
+    "country": "San Bartolo, Peru",
+    "lat": -12.386533,
+    "lon": -76.78345,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Cerro Azul",
+    "aliases": [],
+    "country": "Cañete, Peru",
+    "lat": -13.0274,
+    "lon": -76.48485,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   }
 ]
