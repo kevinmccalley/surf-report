@@ -651,13 +651,16 @@
       "Long Beach Tofino"
     ],
     "country": "Vancouver Island, British Columbia",
-    "lat": 49.1225,
-    "lon": -125.9075,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 49.1115,
+    "lon": -125.89,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   },
   {
     "name": "Sebastian Inlet",
@@ -1618,13 +1621,16 @@
       "Tonel"
     ],
     "country": "Sagres, Portugal",
-    "lat": 37.0076,
-    "lon": -8.9456,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 37.006383,
+    "lon": -8.948217,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   },
   {
     "name": "Guincho",
@@ -2378,13 +2384,16 @@
     "name": "Elands Bay",
     "aliases": [],
     "country": "Western Cape, South Africa",
-    "lat": -32.3,
-    "lon": 18.3167,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -32.31405,
+    "lon": 18.328967,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   },
   {
     "name": "Victoria Bay",
@@ -2431,11 +2440,14 @@
     "country": "Walvis Bay, Namibia",
     "lat": -22.9376,
     "lon": 14.4175,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   },
   {
     "name": "Uluwatu",
