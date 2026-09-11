@@ -9666,5 +9666,190 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Montañita",
+    "aliases": [],
+    "country": "Santa Elena, Ecuador",
+    "lat": -1.819483,
+    "lon": -80.7574,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Olón",
+    "aliases": [],
+    "country": "Santa Elena, Ecuador",
+    "lat": -1.7959,
+    "lon": -80.7641,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Ayampe",
+    "aliases": [],
+    "country": "Manabí, Ecuador",
+    "lat": -1.6799,
+    "lon": -80.815767,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Las Tunas",
+    "aliases": [],
+    "country": "Manabí, Ecuador",
+    "lat": -1.660333,
+    "lon": -80.8225,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Río Chico",
+    "aliases": [],
+    "country": "Puerto López, Ecuador",
+    "lat": -1.625583,
+    "lon": -80.844183,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "San Mateo",
+    "aliases": [],
+    "country": "Manta, Ecuador",
+    "lat": -0.952867,
+    "lon": -80.813683,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "El Escondido",
+    "aliases": [
+      "Manta El Escondido"
+    ],
+    "country": "Manta, Ecuador",
+    "lat": -0.938267,
+    "lon": -80.730367,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Canoa",
+    "aliases": [],
+    "country": "Manabí, Ecuador",
+    "lat": -0.460283,
+    "lon": -80.4565,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Mompiche",
+    "aliases": [],
+    "country": "Esmeraldas, Ecuador",
+    "lat": 0.50975,
+    "lon": -80.02875,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Engabao",
+    "aliases": [],
+    "country": "Playas, Ecuador",
+    "lat": -2.5594,
+    "lon": -80.5125,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Punta Carnero",
+    "aliases": [],
+    "country": "Salinas, Ecuador",
+    "lat": -2.29045,
+    "lon": -80.91465,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "La Chocolatera",
+    "aliases": [],
+    "country": "Salinas, Ecuador",
+    "lat": -2.185167,
+    "lon": -80.9873,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
   }
 ]
