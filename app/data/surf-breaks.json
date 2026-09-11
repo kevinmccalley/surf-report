@@ -10052,5 +10052,95 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Waikiki",
+    "aliases": [],
+    "country": "Miraflores, Peru",
+    "lat": -12.1296,
+    "lon": -77.0375,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Makaha",
+    "aliases": [],
+    "country": "Miraflores, Peru",
+    "lat": -12.130433,
+    "lon": -77.036783,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "La Pampilla",
+    "aliases": [],
+    "country": "Miraflores, Peru",
+    "lat": -12.124267,
+    "lon": -77.041317,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Redondo",
+    "aliases": [],
+    "country": "Miraflores, Peru",
+    "lat": -12.132067,
+    "lon": -77.034517,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Punta Roquitas",
+    "aliases": [],
+    "country": "Miraflores, Peru",
+    "lat": -12.122367,
+    "lon": -77.045983,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Las Orishas",
+    "aliases": [],
+    "country": "Miraflores, Peru",
+    "lat": -12.124517,
+    "lon": -77.0403,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
   }
 ]
