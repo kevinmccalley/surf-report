@@ -128,7 +128,10 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly, 
   const teaserW   = hasTeaser ? DAY_W : 0
   const totalW    = days.length * DAY_W + teaserW
   const visibleHourly = hourly.filter(h => days.some(d => d.date === h.time.slice(0, 10)))
-  const maxWave = Math.max(...visibleHourly.map(h => h.waveHeight), 0.5)
+  // Swell height, not total Hs — matches the rating colour these bars are
+  // painted with (computed off swell, since wind chop doesn't create
+  // surfable waves) and the headline number next to the selected hour.
+  const maxWave = Math.max(...visibleHourly.map(h => h.swellHeight), 0.5)
   const maxWind = Math.max(...visibleHourly.map(h => h.windSpeed),  1)
 
   const tideVals  = tideHourly?.map(t => t.height) ?? []
@@ -473,7 +476,7 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly, 
                       </span>
                     )}
                     <span className="text-[12px] font-semibold shrink-0" style={{ color: 'var(--text-base)' }}>
-                      {formatWaveHeight(activeHour.waveHeight, units.height)}
+                      {formatWaveHeight(activeHour.swellHeight, units.height)}
                     </span>
                     {activeHour.swellHeight > 0 && (
                       <>
@@ -526,21 +529,22 @@ export default function ForecastTimeline({ forecast, hourly, units, tideHourly, 
                onScroll={() => handlePaneScroll('bot')}>
             <div style={{ minWidth: totalW, position: 'relative' }}>
 
-              {/* Wave bars */}
+              {/* Wave bars — height/colour/tooltip all read swell height, not
+                  total Hs (see maxWave above). */}
               {barRow(
                 WAVE_H,
                 (di, hi) => {
-                  const wh = (hourlyByDay.get(days[di]?.date ?? '') ?? [])[hi]?.waveHeight ?? 0
+                  const wh = (hourlyByDay.get(days[di]?.date ?? '') ?? [])[hi]?.swellHeight ?? 0
                   return Math.max(Math.round((wh / maxWave) * (WAVE_H - 4)), wh > 0 ? 2 : 0)
                 },
                 (di, hi) => {
                   const day = days[di]
-                  const wh  = (hourlyByDay.get(day?.date ?? '') ?? [])[hi]?.waveHeight ?? 0
+                  const wh  = (hourlyByDay.get(day?.date ?? '') ?? [])[hi]?.swellHeight ?? 0
                   return day?.hasMarineData && wh > 0 ? day.rating.color : 'rgba(100,116,139,0.08)'
                 },
                 barOpacity,
                 (di, hi) => {
-                  const wh = (hourlyByDay.get(days[di]?.date ?? '') ?? [])[hi]?.waveHeight
+                  const wh = (hourlyByDay.get(days[di]?.date ?? '') ?? [])[hi]?.swellHeight
                   return wh ? formatWaveHeight(wh, units.height) : undefined
                 },
               )}
