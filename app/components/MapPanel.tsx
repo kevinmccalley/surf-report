@@ -72,7 +72,7 @@ export default function MapPanel({ report, units, onClose, nearbySpots, onSpotSe
               {t('rating.' + current.rating.label.replace(/ /g, '_'))}
             </span>
             <span className="text-white font-semibold tabular-nums">
-              {formatWaveHeight(current.waveHeight, units.height)}
+              {formatWaveHeight(current.primarySwell.height, units.height)}
             </span>
             {current.wavePeriod > 0 && (
               <span className="text-slate-500 text-sm">{current.wavePeriod.toFixed(0)}s period</span>

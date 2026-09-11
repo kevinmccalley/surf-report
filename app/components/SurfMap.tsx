@@ -218,8 +218,9 @@ export default function SurfMap({ report, units, highlightLayers, nearbySpots, o
       })
     }
 
-    // Spot marker + popup
-    const waveStr   = formatWaveHeight(current.waveHeight, units.height)
+    // Spot marker + popup — headline is swell height, matching the rating
+    // (computed off swell, not total Hs) and the main spot page's hero number.
+    const waveStr   = formatWaveHeight(current.primarySwell.height, units.height)
     const periodStr = current.wavePeriod > 0 ? `${current.wavePeriod.toFixed(0)}s` : '—'
     const swellDir  = t('dir.' + current.primarySwell.directionLabel)
     const swellStr  = formatWaveHeight(current.primarySwell.height, units.height) + ` · ${swellDir} · ${periodStr}`
