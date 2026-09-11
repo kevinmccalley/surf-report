@@ -44,6 +44,12 @@ function isDarkTheme(themeId: string): boolean {
   return THEMES.find(t => t.id === themeId)?.dark ?? true
 }
 
+function secondaryDotStyle(active: boolean): L.CircleMarkerOptions {
+  return active
+    ? { radius: 7, color: '#fff', weight: 2, opacity: 0.9, fillColor: '#2dd4bf', fillOpacity: 0.95 }
+    : { radius: 4, color: '#fff', weight: 1, opacity: 0.5, fillColor: '#94a3b8', fillOpacity: 0.75 }
+}
+
 function accentColor(): string {
   if (typeof document === 'undefined') return '#22d3ee'
   return getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#22d3ee'
@@ -81,7 +87,7 @@ export default function RegionMap({
   const mapRef = useRef<L.Map | null>(null)
   const baseRef = useRef<L.Layer | null>(null)
   const markersRef = useRef<Map<string, { marker: L.Marker; index: number }>>(new Map())
-  const secondaryMarkersRef = useRef<L.CircleMarker[]>([])
+  const secondaryMarkersRef = useRef<Map<string, L.CircleMarker>>(new Map())
   const colorRef = useRef<string>('#22d3ee')
   const fittedKeyRef = useRef<string>('')
   // Latest camera-fit closure — re-run after the container settles to its real size.
@@ -159,7 +165,7 @@ export default function RegionMap({
       mapRef.current = null
       baseRef.current = null
       markersRef.current.clear()
-      secondaryMarkersRef.current = []
+      secondaryMarkersRef.current.clear()
       fittedKeyRef.current = ''
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -233,22 +239,17 @@ export default function RegionMap({
     const map = mapRef.current
     if (!map) return
 
-    for (const m of secondaryMarkersRef.current) m.remove()
-    secondaryMarkersRef.current = []
+    for (const m of secondaryMarkersRef.current.values()) m.remove()
+    secondaryMarkersRef.current.clear()
 
     for (const p of secondaryPoints ?? []) {
-      const dot = L.circleMarker([p.lat, p.lon], {
-        radius: 4,
-        color: '#fff',
-        weight: 1,
-        opacity: 0.5,
-        fillColor: '#94a3b8',
-        fillOpacity: 0.75,
-      })
+      const dot = L.circleMarker([p.lat, p.lon], secondaryDotStyle(p.slug === activeSlug))
       dot.bindTooltip(p.name, { direction: 'top', offset: [0, -6], className: 'region-map-tip region-map-tip--secondary' })
       dot.on('click', () => onSelectSecondaryRef.current?.(p.slug))
+      dot.on('mouseover', () => onHoverRef.current?.(p.slug))
+      dot.on('mouseout', () => onHoverRef.current?.(null))
       dot.addTo(map)
-      secondaryMarkersRef.current.push(dot)
+      secondaryMarkersRef.current.set(p.slug, dot)
     }
   }, [pointsKey(secondaryPoints ?? [])]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -258,6 +259,11 @@ export default function RegionMap({
       const active = slug === activeSlug
       marker.setIcon(makeMarkerIcon(index, pinColor(slug), active))
       marker.setZIndexOffset(active ? 1000 : 0)
+    }
+    for (const [slug, dot] of secondaryMarkersRef.current) {
+      const active = slug === activeSlug
+      dot.setStyle(secondaryDotStyle(active))
+      if (active) dot.bringToFront()
     }
   }, [activeSlug]) // eslint-disable-line react-hooks/exhaustive-deps
 

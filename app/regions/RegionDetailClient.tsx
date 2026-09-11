@@ -305,8 +305,17 @@ export default function RegionDetailClient({
                     <Link
                       key={p.slug}
                       href={p.href}
-                      className="rounded-full border border-white/8 px-2.5 py-1 text-[11px] text-slate-300 transition-colors hover:border-teal-500/40 hover:text-white"
+                      className={
+                        'rounded-full border px-2.5 py-1 text-[11px] transition-colors ' +
+                        (activeSlug === p.slug
+                          ? 'border-teal-500/50 bg-teal-500/10 text-white'
+                          : 'border-white/8 text-slate-300 hover:border-teal-500/40 hover:text-white')
+                      }
                       title={t('regions.detail.distanceAway', { dist: String(p.distanceKm) })}
+                      onMouseEnter={() => setActiveSlug(p.slug)}
+                      onMouseLeave={() => setActiveSlug(null)}
+                      onFocus={() => setActiveSlug(p.slug)}
+                      onBlur={() => setActiveSlug(null)}
                     >
                       {p.name}
                     </Link>
