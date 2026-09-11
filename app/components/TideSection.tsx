@@ -98,9 +98,15 @@ export default function TideSection({
   const heights = chartDataBase.map(d => d.height)
   const minH = Math.min(...heights)
   const maxH = Math.max(...heights)
-  const pad = Math.max((maxH - minH) * 0.12, 0.2)
-  const yMin = Math.floor((minH - pad) * 10) / 10
-  const yMax = Math.ceil((maxH + pad) * 10) / 10
+  const range = maxH - minH
+  // Asymmetric padding: the low-tide callout box below each trough (drawn by
+  // the custom `dot` renderer below) reaches ~46px under its point, and that
+  // space has to fit above the x-axis line *and* leave room for the date
+  // labels under it — so troughs need more headroom than peaks do.
+  const padTop = Math.max(range * 0.12, 0.2)
+  const padBottom = Math.max(range * 0.4, 0.7)
+  const yMin = Math.floor((minH - padBottom) * 10) / 10
+  const yMax = Math.ceil((maxH + padTop) * 10) / 10
 
   const extremeAtIndex = new Map<number, TideExtreme>()
   if (chartDataBase.length > 0) {
@@ -242,7 +248,7 @@ export default function TideSection({
                   ResponsiveContainer skip its height measurement on mount (it
                   still tracks width). */}
               <ResponsiveContainer width="100%" height={284}>
-                <AreaChart data={chartData} margin={{ top: 56, right: 20, left: -18, bottom: 44 }}>
+                <AreaChart data={chartData} margin={{ top: 56, right: 20, left: -18, bottom: 58 }}>
                   <defs>
                     <linearGradient id="tideAreaGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#2dd4bf" stopOpacity={estimated ? 0.18 : 0.28} />
