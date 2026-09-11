@@ -9499,12 +9499,13 @@
     "lon": -89.43855,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "osm"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-11"
   },
   {
     "name": "El Zonte Rivermouth",
@@ -9532,12 +9533,13 @@
     "lon": -89.473583,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "osm"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-11"
   },
   {
     "name": "Palmarcito",
@@ -9564,12 +9566,13 @@
     "lon": -89.595917,
     "type": "point",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "osm"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-11"
   },
   {
     "name": "Restaurants",
