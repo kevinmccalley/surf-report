@@ -651,13 +651,16 @@
       "Long Beach Tofino"
     ],
     "country": "Vancouver Island, British Columbia",
-    "lat": 49.1225,
-    "lon": -125.9075,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 49.1115,
+    "lon": -125.89,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   },
   {
     "name": "Sebastian Inlet",
@@ -1308,13 +1311,16 @@
     "name": "Punta Roca",
     "aliases": [],
     "country": "La Libertad, El Salvador",
-    "lat": 13.4797,
-    "lon": -89.3265,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 13.480033,
+    "lon": -89.327567,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   },
   {
     "name": "Las Flores",
@@ -1475,48 +1481,55 @@
     "verifiedOn": "2026-08-28"
   },
   {
-    "name": "Fernando de Noronha",
-    "aliases": [],
-    "country": "Pernambuco, Brazil",
-    "lat": -3.8622,
-    "lon": -32.449,
-    "type": null,
-    "direction": null,
-    "confidence": "provisional",
-    "sources": [
-      "ai-placement",
-      "osm-water-audit"
-    ],
-    "verifiedOn": "2026-08-26"
-  },
-  {
-    "name": "Saquarema",
-    "aliases": [],
-    "country": "Rio de Janeiro, Brazil",
-    "lat": -22.9348,
-    "lon": -42.4875,
-    "type": null,
-    "direction": null,
-    "confidence": "provisional",
-    "sources": [
-      "ai-placement",
-      "osm-water-audit"
-    ],
-    "verifiedOn": "2026-08-26"
-  },
-  {
-    "name": "Florianopolis",
+    "name": "Cacimba do Padre",
     "aliases": [
-      "Joaquina"
+      "Fernando de Noronha"
     ],
-    "country": "Santa Catarina, Brazil",
-    "lat": -27.5969,
-    "lon": -48.5495,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "country": "Fernando de Noronha, Brazil",
+    "lat": -3.84895,
+    "lon": -32.439533,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Itaúna Beach",
+    "aliases": [
+      "Saquarema"
+    ],
+    "country": "Saquarema, Brazil",
+    "lat": -22.938317,
+    "lon": -42.479983,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Praia Brava",
+    "aliases": [
+      "Brava"
+    ],
+    "country": "Florianópolis, Brazil",
+    "lat": -27.4008,
+    "lon": -48.4134,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Praia do Rosa",
@@ -1524,14 +1537,14 @@
     "country": "Imbituba, Brazil",
     "lat": -28.1278,
     "lon": -48.6405,
-    "type": null,
-    "direction": null,
+    "type": "beach",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Supertubos",
@@ -1608,13 +1621,16 @@
       "Tonel"
     ],
     "country": "Sagres, Portugal",
-    "lat": 37.0076,
-    "lon": -8.9456,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 37.006383,
+    "lon": -8.948217,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   },
   {
     "name": "Guincho",
@@ -1751,13 +1767,16 @@
     "name": "Zarautz",
     "aliases": [],
     "country": "Basque Country, Spain",
-    "lat": 43.2835,
-    "lon": -2.1723,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 43.289133,
+    "lon": -2.16955,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Bakio",
@@ -1982,13 +2001,17 @@
     "name": "Pantin",
     "aliases": [],
     "country": "Galicia, Spain",
-    "lat": 43.7128,
-    "lon": -7.8514,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 43.64025,
+    "lon": -8.11353,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "wikidata",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "El Quemao",
@@ -2361,13 +2384,16 @@
     "name": "Elands Bay",
     "aliases": [],
     "country": "Western Cape, South Africa",
-    "lat": -32.3,
-    "lon": 18.3167,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -32.31405,
+    "lon": 18.328967,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   },
   {
     "name": "Victoria Bay",
@@ -2414,11 +2440,14 @@
     "country": "Walvis Bay, Namibia",
     "lat": -22.9376,
     "lon": 14.4175,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   },
   {
     "name": "Uluwatu",
@@ -2660,58 +2689,85 @@
   },
   {
     "name": "Pasta Point",
-    "aliases": [
-      "Dhigu"
-    ],
+    "aliases": [],
     "country": "North Malé Atoll, Maldives",
-    "lat": 4.2833,
-    "lon": 73.5,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 4.3167667,
+    "lon": 73.5902833,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Sultans",
-    "aliases": [
-      "Honky's"
-    ],
+    "aliases": [],
     "country": "North Malé Atoll, Maldives",
-    "lat": 4.2597,
-    "lon": 73.4765,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 4.3127167,
+    "lon": 73.5851,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Chickens",
     "aliases": [],
     "country": "North Malé Atoll, Maldives",
-    "lat": 4.25,
-    "lon": 73.47,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 4.37525,
+    "lon": 73.6639333,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Arugam Bay",
     "aliases": [
       "A-Bay",
-      "Pottuvil Point"
+      "Main Point",
+      "Arugam Bay Point"
+    ],
+    "country": "Arugam Bay, Sri Lanka",
+    "lat": 6.8398,
+    "lon": 81.8399,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Pottuvil Point",
+    "aliases": [
+      "Pothuvil Point"
     ],
     "country": "Pottuvil, Sri Lanka",
-    "lat": 6.8402,
-    "lon": 81.836,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 6.8985,
+    "lon": 81.8492,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
   },
   {
     "name": "Cloud 9",
@@ -2792,13 +2848,17 @@
       "Tavarua"
     ],
     "country": "Tavarua, Fiji",
-    "lat": -17.8577,
-    "lon": 177.2018,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -17.88595,
+    "lon": 177.18645,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Restaurants",
@@ -2808,37 +2868,48 @@
     "country": "Tavarua, Fiji",
     "lat": -17.856,
     "lon": 177.203,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Frigates",
     "aliases": [
-      "Frigates Passage"
+      "Frigates Passage",
+      "Frigate Pass"
     ],
     "country": "Pacific Harbour, Fiji",
-    "lat": -18.3333,
-    "lon": 178.0833,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -18.471111,
+    "lon": 177.929444,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Swimming Pools",
     "aliases": [],
     "country": "Namotu, Fiji",
-    "lat": -17.862,
-    "lon": 177.22,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -17.8525,
+    "lon": 177.1835,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Bells Beach",
@@ -3121,82 +3192,83 @@
       "Shipstern"
     ],
     "country": "Tasman Peninsula, Tasmania",
-    "lat": -43.0943,
-    "lon": 148.0058,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -43.211,
+    "lon": 147.752,
+    "type": "slab",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Surfers Point",
     "aliases": [
-      "Margaret River"
+      "Margaret River",
+      "Main Break"
     ],
     "country": "Margaret River, WA",
-    "lat": -33.9572,
-    "lon": 114.9833,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -33.977,
+    "lon": 114.9805,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "The Box",
     "aliases": [],
     "country": "Margaret River, WA",
-    "lat": -33.96,
-    "lon": 114.982,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": -33.972,
+    "lon": 114.979,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Yallingup",
     "aliases": [],
     "country": "Yallingup, WA",
-    "lat": -33.6425,
-    "lon": 115.0165,
-    "type": null,
-    "direction": null,
+    "lat": -33.638753,
+    "lon": 115.02247,
+    "type": "reef",
+    "direction": "both",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "surfline",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "North Point",
     "aliases": [],
-    "country": "Kalbarri, WA",
-    "lat": -27.699,
-    "lon": 114.167,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
-  },
-  {
-    "name": "Raglan",
-    "aliases": [
-      "Manu Bay",
-      "Indicators",
-      "Whale Bay"
+    "country": "Gracetown, WA",
+    "lat": -33.8596,
+    "lon": 114.9843,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "surfline",
+      "wannasurf",
+      "osm-water-audit"
     ],
-    "country": "Raglan, Waikato",
-    "lat": -37.8013,
-    "lon": 174.8777,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Piha",
@@ -3206,11 +3278,14 @@
     "country": "Auckland, New Zealand",
     "lat": -36.954,
     "lon": 174.471,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
   },
   {
     "name": "Tsurigasaki",
@@ -3219,25 +3294,32 @@
       "Ichinomiya Olympics"
     ],
     "country": "Chiba, Japan",
-    "lat": 35.3667,
-    "lon": 140.3667,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 35.3824913,
+    "lon": 140.3923496,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Ichinomiya",
     "aliases": [],
     "country": "Chiba, Japan",
-    "lat": 35.373,
-    "lon": 140.3581,
-    "type": null,
-    "direction": null,
-    "confidence": "legacy",
-    "sources": [],
-    "verifiedOn": null
+    "lat": 35.386,
+    "lon": 140.3919,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Montara State Beach",
@@ -5570,7 +5652,8 @@
     "sources": [
       "surf-forecast",
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "osm"
     ],
     "verifiedOn": "2026-08-30"
   },
@@ -6102,12 +6185,13 @@
     "lon": -43.19165,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
+      "wikipedia",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Prainha",
@@ -6181,12 +6265,13 @@
     "lon": -48.432583,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
+      "wikipedia",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-09-09"
   },
   {
     "name": "Joaquina",
@@ -8010,5 +8095,1884 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-03"
+  },
+  {
+    "name": "Namotu Left",
+    "aliases": [
+      "Namotu Lefts"
+    ],
+    "country": "Namotu, Fiji",
+    "lat": -17.8467,
+    "lon": 177.1767,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Wilkes Pass",
+    "aliases": [
+      "Wilkes",
+      "Wilkes Passage"
+    ],
+    "country": "Namotu, Fiji",
+    "lat": -17.8428,
+    "lon": 177.169,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Desperations",
+    "aliases": [],
+    "country": "Mamanuca, Fiji",
+    "lat": -17.82,
+    "lon": 177.13,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surf-forecast",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "King Kong Left",
+    "aliases": [],
+    "country": "Nagigia Island, Fiji",
+    "lat": -19.14611111,
+    "lon": 177.9677778,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Vesi Passage",
+    "aliases": [],
+    "country": "Kadavu, Fiji",
+    "lat": -19.0521,
+    "lon": 178.462,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Serua Rights",
+    "aliases": [],
+    "country": "Serua, Fiji",
+    "lat": -18.2973,
+    "lon": 177.933,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Waidroka Lefts",
+    "aliases": [
+      "Waidroka"
+    ],
+    "country": "Serua, Fiji",
+    "lat": -18.2908,
+    "lon": 177.909,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Hideaway",
+    "aliases": [],
+    "country": "Korotogo, Fiji",
+    "lat": -18.2031,
+    "lon": 177.658,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Natadola",
+    "aliases": [
+      "Natadola Beach"
+    ],
+    "country": "Viti Levu, Fiji",
+    "lat": -18.1162,
+    "lon": 177.306,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Sigatoka Rivermouth",
+    "aliases": [
+      "Sigatoka"
+    ],
+    "country": "Sigatoka, Fiji",
+    "lat": -18.1742,
+    "lon": 177.501,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Momi Bay",
+    "aliases": [
+      "Momi"
+    ],
+    "country": "Viti Levu, Fiji",
+    "lat": -17.9163,
+    "lon": 177.262,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Margaret Rivermouth",
+    "aliases": [],
+    "country": "Margaret River, WA",
+    "lat": -33.9704,
+    "lon": 114.9852,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Gas Bay",
+    "aliases": [
+      "Gnarabup"
+    ],
+    "country": "Margaret River, WA",
+    "lat": -33.978325,
+    "lon": 114.9863667,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Grunters",
+    "aliases": [],
+    "country": "Margaret River, WA",
+    "lat": -34.0095,
+    "lon": 114.9916,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Redgate",
+    "aliases": [],
+    "country": "Margaret River, WA",
+    "lat": -34.0428,
+    "lon": 115.0002,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "South Point",
+    "aliases": [],
+    "country": "Gracetown, WA",
+    "lat": -33.8627,
+    "lon": 114.9757,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Huzzas",
+    "aliases": [
+      "Huzzawouie"
+    ],
+    "country": "Gracetown, WA",
+    "lat": -33.8657,
+    "lon": 114.9814,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Lefthanders",
+    "aliases": [
+      "Lefties"
+    ],
+    "country": "Gracetown, WA",
+    "lat": -33.8874,
+    "lon": 114.9829,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Cowaramup Bombie",
+    "aliases": [
+      "Cow Bombie",
+      "The Bommie"
+    ],
+    "country": "Gracetown, WA",
+    "lat": -33.8533,
+    "lon": 114.9862,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "The Womb",
+    "aliases": [],
+    "country": "Gracetown, WA",
+    "lat": -33.8954,
+    "lon": 114.9852,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Rabbit Hill",
+    "aliases": [
+      "Rabbits"
+    ],
+    "country": "Yallingup, WA",
+    "lat": -33.6331,
+    "lon": 115.0274,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Injidup Point",
+    "aliases": [],
+    "country": "Yallingup, WA",
+    "lat": -33.6976,
+    "lon": 114.9765,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Smiths Beach",
+    "aliases": [],
+    "country": "Yallingup, WA",
+    "lat": -33.657056,
+    "lon": 115.01457,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Three Bears",
+    "aliases": [
+      "Kabbijgup"
+    ],
+    "country": "Cape Naturaliste, WA",
+    "lat": -33.5711,
+    "lon": 115.007,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Jakes Point",
+    "aliases": [],
+    "country": "Kalbarri, WA",
+    "lat": -27.7342,
+    "lon": 114.1454,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Tombstones",
+    "aliases": [],
+    "country": "Gnaraloo, WA",
+    "lat": -23.8813,
+    "lon": 113.4877,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Red Bluff",
+    "aliases": [],
+    "country": "Quobba, WA",
+    "lat": -24.031,
+    "lon": 113.439,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Trigg Beach",
+    "aliases": [],
+    "country": "Perth, WA",
+    "lat": -31.878352,
+    "lon": 115.75125,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Scarborough Beach",
+    "aliases": [],
+    "country": "Perth, WA",
+    "lat": -31.891406,
+    "lon": 115.75388,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Cottesloe",
+    "aliases": [],
+    "country": "Perth, WA",
+    "lat": -32.007275,
+    "lon": 115.75131,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Honkeys",
+    "aliases": [
+      "Honkey's"
+    ],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.3128,
+    "lon": 73.5838,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Cokes",
+    "aliases": [
+      "Coke's",
+      "Cola's"
+    ],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.37037,
+    "lon": 73.65508,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Ninjas",
+    "aliases": [],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.34357,
+    "lon": 73.61295,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Jails",
+    "aliases": [
+      "Jailbreaks"
+    ],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.30765,
+    "lon": 73.57827,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Lohis",
+    "aliases": [
+      "Lohi's"
+    ],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.34795,
+    "lon": 73.61783,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Riptides",
+    "aliases": [],
+    "country": "South Malé Atoll, Maldives",
+    "lat": 3.894,
+    "lon": 73.46593,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Villingili",
+    "aliases": [],
+    "country": "Malé, Maldives",
+    "lat": 4.1692,
+    "lon": 73.48733,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Kandooma Right",
+    "aliases": [],
+    "country": "South Malé Atoll, Maldives",
+    "lat": 3.90428,
+    "lon": 73.4756,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Gurus",
+    "aliases": [],
+    "country": "South Malé Atoll, Maldives",
+    "lat": 3.98952,
+    "lon": 73.51975,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Manu Bay",
+    "aliases": [],
+    "country": "Raglan, Waikato",
+    "lat": -37.82132,
+    "lon": 174.81445,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Whale Bay",
+    "aliases": [],
+    "country": "Raglan, Waikato",
+    "lat": -37.823,
+    "lon": 174.79883,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Indicators",
+    "aliases": [],
+    "country": "Raglan, Waikato",
+    "lat": -37.8229,
+    "lon": 174.79292,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-04"
+  },
+  {
+    "name": "Asu",
+    "aliases": [],
+    "country": "Nias, Indonesia",
+    "lat": 0.867367,
+    "lon": 97.33235,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "Bawa",
+    "aliases": [],
+    "country": "Nias, Indonesia",
+    "lat": 0.812533,
+    "lon": 97.3472,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "T-Land",
+    "aliases": [
+      "Nembrala"
+    ],
+    "country": "Rote, Indonesia",
+    "lat": -10.893483,
+    "lon": 122.811817,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "T-Land Bommie",
+    "aliases": [],
+    "country": "Rote, Indonesia",
+    "lat": -10.8805,
+    "lon": 122.813133,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "Boa",
+    "aliases": [
+      "Bo'a"
+    ],
+    "country": "Rote, Indonesia",
+    "lat": -10.940333,
+    "lon": 122.840017,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "Sucky Mamas",
+    "aliases": [
+      "Suckies",
+      "Sukanamon"
+    ],
+    "country": "Rote, Indonesia",
+    "lat": -10.8467,
+    "lon": 122.817517,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "Occy's Left",
+    "aliases": [
+      "Nihiwatu"
+    ],
+    "country": "Sumba, Indonesia",
+    "lat": -9.781433,
+    "lon": 119.373067,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "Miller's Right",
+    "aliases": [],
+    "country": "Sumba, Indonesia",
+    "lat": -9.954317,
+    "lon": 119.90135,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-05"
+  },
+  {
+    "name": "Puertecillo",
+    "aliases": [],
+    "country": "Navidad, Chile",
+    "lat": -34.0871,
+    "lon": -71.96355,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Matanzas",
+    "aliases": [],
+    "country": "Navidad, Chile",
+    "lat": -33.960867,
+    "lon": -71.879367,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "La Boca",
+    "aliases": [
+      "La Boca de Concón"
+    ],
+    "country": "Concón, Chile",
+    "lat": -32.917133,
+    "lon": -71.51335,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Buchupureo",
+    "aliases": [],
+    "country": "Cobquecura, Chile",
+    "lat": -36.077367,
+    "lon": -72.798883,
+    "type": "rivermouth",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Cobquecura",
+    "aliases": [
+      "La Rinconada"
+    ],
+    "country": "Cobquecura, Chile",
+    "lat": -36.1802,
+    "lon": -72.8176,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Reñaca",
+    "aliases": [],
+    "country": "Viña del Mar, Chile",
+    "lat": -32.96415,
+    "lon": -71.54825,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Maitencillo",
+    "aliases": [],
+    "country": "Puchuncaví, Chile",
+    "lat": -32.6428,
+    "lon": -71.433583,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Ritoque",
+    "aliases": [],
+    "country": "Quintero, Chile",
+    "lat": -32.829483,
+    "lon": -71.52615,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Quintay",
+    "aliases": [],
+    "country": "Casablanca, Chile",
+    "lat": -33.173783,
+    "lon": -71.6847,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Los Molles",
+    "aliases": [],
+    "country": "La Ligua, Chile",
+    "lat": -32.272617,
+    "lon": -71.475333,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "El Buey",
+    "aliases": [],
+    "country": "Arica, Chile",
+    "lat": -18.488683,
+    "lon": -70.329067,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "El Brazo",
+    "aliases": [],
+    "country": "Arica, Chile",
+    "lat": -18.479917,
+    "lon": -70.329267,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Las Machas",
+    "aliases": [],
+    "country": "Arica, Chile",
+    "lat": -18.452333,
+    "lon": -70.305033,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Cavancha",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.228567,
+    "lon": -70.148717,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Intendencia",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.218983,
+    "lon": -70.157117,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Las Urracas",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.224317,
+    "lon": -70.153,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Punta 1",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.22735,
+    "lon": -70.149817,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Punta 2",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.21785,
+    "lon": -70.158617,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "La Bestia",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.234233,
+    "lon": -70.155017,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Baul",
+    "aliases": [],
+    "country": "Iquique, Chile",
+    "lat": -20.275733,
+    "lon": -70.133033,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Barrancon",
+    "aliases": [],
+    "country": "Tocopilla, Chile",
+    "lat": -21.826183,
+    "lon": -70.144033,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Hornito",
+    "aliases": [],
+    "country": "Mejillones, Chile",
+    "lat": -22.863567,
+    "lon": -70.296617,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "La Cupula",
+    "aliases": [],
+    "country": "Antofagasta, Chile",
+    "lat": -23.7166,
+    "lon": -70.436633,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Playa Blanca",
+    "aliases": [],
+    "country": "Chañaral, Chile",
+    "lat": -26.2363,
+    "lon": -70.65445,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-09"
+  },
+  {
+    "name": "Cabo Blanco",
+    "aliases": [],
+    "country": "Talara, Peru",
+    "lat": -4.250333,
+    "lon": -81.235833,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Los Órganos",
+    "aliases": [],
+    "country": "Piura, Peru",
+    "lat": -4.177833,
+    "lon": -81.141433,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "El Ñuro",
+    "aliases": [],
+    "country": "Piura, Peru",
+    "lat": -4.20185,
+    "lon": -81.16305,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Pacasmayo",
+    "aliases": [],
+    "country": "La Libertad, Peru",
+    "lat": -7.41345,
+    "lon": -79.589683,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Huanchaco",
+    "aliases": [],
+    "country": "La Libertad, Peru",
+    "lat": -8.081917,
+    "lon": -79.124917,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Pico Alto",
+    "aliases": [],
+    "country": "Punta Hermosa, Peru",
+    "lat": -12.334067,
+    "lon": -76.833033,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Playa Norte",
+    "aliases": [],
+    "country": "Punta Hermosa, Peru",
+    "lat": -12.335083,
+    "lon": -76.830617,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Caballeros",
+    "aliases": [],
+    "country": "Punta Hermosa, Peru",
+    "lat": -12.324917,
+    "lon": -76.8382,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Señoritas",
+    "aliases": [],
+    "country": "Punta Hermosa, Peru",
+    "lat": -12.328683,
+    "lon": -76.83555,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "La Isla",
+    "aliases": [],
+    "country": "Punta Hermosa, Peru",
+    "lat": -12.340417,
+    "lon": -76.822583,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Punta Rocas",
+    "aliases": [],
+    "country": "Punta Negra, Peru",
+    "lat": -12.35325,
+    "lon": -76.81795,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "San Bartolo",
+    "aliases": [],
+    "country": "San Bartolo, Peru",
+    "lat": -12.386533,
+    "lon": -76.78345,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Cerro Azul",
+    "aliases": [],
+    "country": "Cañete, Peru",
+    "lat": -13.0274,
+    "lon": -76.48485,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "El Sunzal",
+    "aliases": [
+      "Zunzal",
+      "Sunzal"
+    ],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.492167,
+    "lon": -89.38995,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "La Bocana",
+    "aliases": [],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.492333,
+    "lon": -89.381683,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "El Zonte",
+    "aliases": [],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.49465,
+    "lon": -89.43855,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "osm"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "El Zonte Rivermouth",
+    "aliases": [],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.493067,
+    "lon": -89.439933,
+    "type": "rivermouth",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "K59",
+    "aliases": [
+      "K 59",
+      "Kilometro 59"
+    ],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.499117,
+    "lon": -89.473583,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "osm"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Palmarcito",
+    "aliases": [
+      "El Palmarcito"
+    ],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.4932,
+    "lon": -89.422167,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Mizata",
+    "aliases": [],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.510033,
+    "lon": -89.595917,
+    "type": "point",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "osm"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Restaurants",
+    "aliases": [
+      "Restaurantes"
+    ],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.486433,
+    "lon": -89.324733,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Cemetery",
+    "aliases": [
+      "Cementerio"
+    ],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.483033,
+    "lon": -89.323983,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Playa El Cocal",
+    "aliases": [
+      "El Cocal"
+    ],
+    "country": "La Libertad, El Salvador",
+    "lat": 13.48345,
+    "lon": -89.352183,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "El Pimental",
+    "aliases": [],
+    "country": "La Paz, El Salvador",
+    "lat": 13.3831,
+    "lon": -89.090317,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Punta Mango",
+    "aliases": [],
+    "country": "El Cuco, El Salvador",
+    "lat": 13.160117,
+    "lon": -88.208717,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Barra de Santiago",
+    "aliases": [],
+    "country": "Barra de Santiago, El Salvador",
+    "lat": 13.70415,
+    "lon": -90.039367,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-10"
+  },
+  {
+    "name": "Montañita",
+    "aliases": [],
+    "country": "Santa Elena, Ecuador",
+    "lat": -1.819483,
+    "lon": -80.7574,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Olón",
+    "aliases": [],
+    "country": "Santa Elena, Ecuador",
+    "lat": -1.7959,
+    "lon": -80.7641,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Ayampe",
+    "aliases": [],
+    "country": "Manabí, Ecuador",
+    "lat": -1.6799,
+    "lon": -80.815767,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Las Tunas",
+    "aliases": [],
+    "country": "Manabí, Ecuador",
+    "lat": -1.6489808,
+    "lon": -80.8276366,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Río Chico",
+    "aliases": [],
+    "country": "Puerto López, Ecuador",
+    "lat": -1.625583,
+    "lon": -80.844183,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "San Mateo",
+    "aliases": [],
+    "country": "Manta, Ecuador",
+    "lat": -0.952867,
+    "lon": -80.813683,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "El Escondido",
+    "aliases": [
+      "Manta El Escondido"
+    ],
+    "country": "Manta, Ecuador",
+    "lat": -0.938267,
+    "lon": -80.730367,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Canoa",
+    "aliases": [],
+    "country": "Manabí, Ecuador",
+    "lat": -0.460283,
+    "lon": -80.4565,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Mompiche",
+    "aliases": [],
+    "country": "Esmeraldas, Ecuador",
+    "lat": 0.50975,
+    "lon": -80.02875,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Engabao",
+    "aliases": [],
+    "country": "Playas, Ecuador",
+    "lat": -2.5594,
+    "lon": -80.5125,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Punta Carnero",
+    "aliases": [],
+    "country": "Salinas, Ecuador",
+    "lat": -2.29045,
+    "lon": -80.91465,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "La Chocolatera",
+    "aliases": [],
+    "country": "Salinas, Ecuador",
+    "lat": -2.185167,
+    "lon": -80.9873,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Ocean Beach",
+    "aliases": [],
+    "country": "Denmark, Western Australia",
+    "lat": -35.025217,
+    "lon": 117.33845,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Nanarup Beach",
+    "aliases": [],
+    "country": "Albany, Western Australia",
+    "lat": -34.998067,
+    "lon": 118.063333,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Middleton Beach",
+    "aliases": [],
+    "country": "Albany, Western Australia",
+    "lat": -35.02361,
+    "lon": 117.9195,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Salmon Holes",
+    "aliases": [],
+    "country": "Albany, Western Australia",
+    "lat": -35.102961,
+    "lon": 117.968273,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Cosy Corner",
+    "aliases": [],
+    "country": "Albany, Western Australia",
+    "lat": -35.06232,
+    "lon": 117.644691,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Lucky Bay",
+    "aliases": [],
+    "country": "Esperance, Western Australia",
+    "lat": -33.99455,
+    "lon": 122.242983,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "West Beach",
+    "aliases": [],
+    "country": "Esperance, Western Australia",
+    "lat": -33.877433,
+    "lon": 121.878,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Lovers Cove",
+    "aliases": [],
+    "country": "Esperance, Western Australia",
+    "lat": -33.926483,
+    "lon": 122.0909,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
   }
 ]
