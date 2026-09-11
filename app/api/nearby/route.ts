@@ -137,7 +137,7 @@ async function fetchSpotConditions(
   const base = `latitude=${spot.lat}&longitude=${spot.lon}`
   const marineUrl =
     `https://marine-api.open-meteo.com/v1/marine?${base}` +
-    `&hourly=wave_height,wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,sea_surface_temperature` +
+    `&hourly=wave_period,swell_wave_height,swell_wave_direction,swell_wave_period,sea_surface_temperature` +
     `&timezone=auto&forecast_days=1`
   const weatherUrl =
     `https://api.open-meteo.com/v1/forecast?${base}` +
@@ -156,8 +156,11 @@ async function fetchSpotConditions(
     const mh = marine.hourly as Record<string, unknown[]>
     const wh = weather.hourly as Record<string, unknown[]>
 
-    const waveHeight   = val(mh.wave_height, idx)
     const wavePeriod   = val(mh.wave_period, idx)
+    // Displayed "surf size" is swell height, not total Hs — matches the main
+    // spot page (HeroSection reads current.primarySwell.height) and the
+    // rating computed below, which also rates on swell height because wind
+    // chop doesn't create surfable waves.
     const swellHeight  = val(mh.swell_wave_height, idx)
     const swellPeriod  = val(mh.swell_wave_period, idx)
     const swellDir     = val(mh.swell_wave_direction, idx)
@@ -176,7 +179,7 @@ async function fetchSpotConditions(
       lat:                 spot.lat,
       lon:                 spot.lon,
       distanceKm:          Math.round(haversineKm(originLat, originLon, spot.lat, spot.lon)),
-      waveHeight,
+      waveHeight:          swellHeight,
       wavePeriod,
       swellDirection:      swellDir,
       swellDirectionLabel: getDirectionLabel(swellDir),
