@@ -9719,14 +9719,14 @@
     "name": "Las Tunas",
     "aliases": [],
     "country": "Manabí, Ecuador",
-    "lat": -1.660333,
-    "lon": -80.8225,
+    "lat": -1.6489808,
+    "lon": -80.8276366,
     "type": "beach",
     "direction": "both",
     "confidence": "provisional",
     "sources": [
       "wannasurf",
-      "editorial-placement",
+      "osm",
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-11"
