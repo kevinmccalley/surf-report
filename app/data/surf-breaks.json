@@ -9974,5 +9974,81 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Avenida del Mar",
+    "aliases": [],
+    "country": "La Serena, Chile",
+    "lat": -29.9185,
+    "lon": -71.2767,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Punta Choros",
+    "aliases": [],
+    "country": "Punta Choros, Chile",
+    "lat": -29.243,
+    "lon": -71.464817,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Totoralillo",
+    "aliases": [],
+    "country": "Coquimbo, Chile",
+    "lat": -30.071767,
+    "lon": -71.376833,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Teniente",
+    "aliases": [],
+    "country": "Los Vilos, Chile",
+    "lat": -31.002483,
+    "lon": -71.6352,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Chigualoco",
+    "aliases": [],
+    "country": "Los Vilos, Chile",
+    "lat": -31.753517,
+    "lon": -71.51525,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
   }
 ]
