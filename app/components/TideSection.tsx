@@ -193,7 +193,7 @@ export default function TideSection({
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-6">
         <div className="lg:col-span-2 flex flex-col">
           <p className="text-xs text-slate-500 uppercase tracking-widest mb-3 shrink-0">{t('tides.upcoming')}</p>
-          <div className="overflow-y-auto forecast-scroll space-y-1.5 lg:max-h-[284px] pr-0.5">
+          <div className="overflow-y-auto forecast-scroll space-y-1.5 lg:max-h-[320px] pr-0.5">
           {upcomingExtremes.length === 0 && (
             <p className="text-xs text-slate-600 px-3">{t('tides.noExtremes')}</p>
           )}
@@ -243,12 +243,12 @@ export default function TideSection({
           </div>
 
           <div className="overflow-x-auto forecast-scroll rounded-lg" style={{ cursor: 'grab' }}>
-            <div style={{ width: '167%', height: 284 }}>
-              {/* Fixed pixel height — the wrapper is already 284px, so this lets
+            <div style={{ width: '167%', height: 320 }}>
+              {/* Fixed pixel height — the wrapper is already 320px, so this lets
                   ResponsiveContainer skip its height measurement on mount (it
                   still tracks width). */}
-              <ResponsiveContainer width="100%" height={284}>
-                <AreaChart data={chartData} margin={{ top: 56, right: 20, left: -18, bottom: 58 }}>
+              <ResponsiveContainer width="100%" height={320}>
+                <AreaChart data={chartData} margin={{ top: 56, right: 20, left: -18, bottom: 30 }}>
                   <defs>
                     <linearGradient id="tideAreaGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#2dd4bf" stopOpacity={estimated ? 0.18 : 0.28} />
