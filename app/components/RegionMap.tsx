@@ -16,12 +16,21 @@ import { formatWaveHeight } from '@/app/lib/utils'
 interface Props {
   /** Spots to plot, in list order — the marker badge shows the 1-based index. */
   points: RegionMapPoint[]
+  /**
+   * Extra, non-curated spots nearby (from the wider Surfline directory) —
+   * plotted as small dim dots underneath the numbered pins, not counted in
+   * the camera fit. Lets a region page show "everything nearby", not just
+   * the hand-picked featured set.
+   */
+  secondaryPoints?: RegionMapPoint[]
   /** Optional curated bbox override (a region's `bounds`). */
   bounds?: [[number, number], [number, number]] | null
   /** Slug of the spot to emphasise — keeps the map in sync with a list hover/selection. */
   activeSlug?: string | null
   /** Marker click. */
   onSelect?: (slug: string) => void
+  /** Secondary-dot click. */
+  onSelectSecondary?: (slug: string) => void
   /** Marker hover in / out (null on out) — for two-way list ↔ map highlighting. */
   onHover?: (slug: string | null) => void
   /** Padding in px applied when fitting bounds. */
@@ -58,9 +67,11 @@ function makeMarkerIcon(index: number, color: string, active: boolean): L.DivIco
 
 export default function RegionMap({
   points,
+  secondaryPoints,
   bounds,
   activeSlug,
   onSelect,
+  onSelectSecondary,
   onHover,
   fitPadding = 48,
   conditions,
@@ -70,6 +81,7 @@ export default function RegionMap({
   const mapRef = useRef<L.Map | null>(null)
   const baseRef = useRef<L.Layer | null>(null)
   const markersRef = useRef<Map<string, { marker: L.Marker; index: number }>>(new Map())
+  const secondaryMarkersRef = useRef<L.CircleMarker[]>([])
   const colorRef = useRef<string>('#22d3ee')
   const fittedKeyRef = useRef<string>('')
   // Latest camera-fit closure — re-run after the container settles to its real size.
@@ -96,8 +108,10 @@ export default function RegionMap({
 
   // Keep callbacks fresh without re-binding every marker.
   const onSelectRef = useRef(onSelect)
+  const onSelectSecondaryRef = useRef(onSelectSecondary)
   const onHoverRef = useRef(onHover)
   useEffect(() => { onSelectRef.current = onSelect }, [onSelect])
+  useEffect(() => { onSelectSecondaryRef.current = onSelectSecondary }, [onSelectSecondary])
   useEffect(() => { onHoverRef.current = onHover }, [onHover])
 
   // ── Create the map once. Never torn down until unmount. ──────────────────
@@ -145,6 +159,7 @@ export default function RegionMap({
       mapRef.current = null
       baseRef.current = null
       markersRef.current.clear()
+      secondaryMarkersRef.current = []
       fittedKeyRef.current = ''
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -211,6 +226,32 @@ export default function RegionMap({
     fitRef.current()
   }, [pointsKey(points), bounds, fitPadding]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ── Rebuild the dim secondary-spot dots when that set changes. Independent
+  //    of the curated markers/camera fit above — these are "more to explore
+  //    nearby", not part of the region's numbered/framed set. ──────────────
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map) return
+
+    for (const m of secondaryMarkersRef.current) m.remove()
+    secondaryMarkersRef.current = []
+
+    for (const p of secondaryPoints ?? []) {
+      const dot = L.circleMarker([p.lat, p.lon], {
+        radius: 4,
+        color: '#fff',
+        weight: 1,
+        opacity: 0.5,
+        fillColor: '#94a3b8',
+        fillOpacity: 0.75,
+      })
+      dot.bindTooltip(p.name, { direction: 'top', offset: [0, -6], className: 'region-map-tip region-map-tip--secondary' })
+      dot.on('click', () => onSelectSecondaryRef.current?.(p.slug))
+      dot.addTo(map)
+      secondaryMarkersRef.current.push(dot)
+    }
+  }, [pointsKey(secondaryPoints ?? [])]) // eslint-disable-line react-hooks/exhaustive-deps
+
   // ── Move the emphasis without re-fitting or rebuilding. ──────────────────
   useEffect(() => {
     for (const [slug, { marker, index }] of markersRef.current) {
@@ -246,6 +287,11 @@ export default function RegionMap({
           padding: 5px 9px !important;
         }
         .region-map-tip::before { display: none !important; }
+        .region-map-tip--secondary {
+          font-size: 11px !important;
+          font-weight: 500 !important;
+          color: var(--panel-label, #94a3b8) !important;
+        }
 
         .region-map-container .leaflet-control-zoom a {
           background: var(--panel-bg, #0f172a) !important;

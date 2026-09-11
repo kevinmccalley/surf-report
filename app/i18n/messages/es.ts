@@ -737,6 +737,8 @@ const es: Record<string, string> = {
   'regions.detail.alsoKnownAs':        'También se busca como',
   'regions.detail.backToRegions':      'Todas las regiones',
   'regions.detail.countryLink':        'Ver todas las regiones de {country}',
+  'regions.detail.moreSpotsHeading':   'Más olas cerca',
+  'regions.detail.distanceAway':       'a {dist} km',
   'regions.locked.title':              '{count} olas en {region}',
   'regions.locked.body':               'Desbloquea el mapa ajustado a la región y el pronóstico en vivo de cada ola.',
   'regions.locked.cta':                'Mejora tu plan para desbloquear',

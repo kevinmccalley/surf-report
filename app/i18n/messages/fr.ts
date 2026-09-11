@@ -737,6 +737,8 @@ const fr: Record<string, string> = {
   'regions.detail.alsoKnownAs':        'Également recherchée comme',
   'regions.detail.backToRegions':      'Toutes les régions',
   'regions.detail.countryLink':        'Voir toutes les régions de {country}',
+  'regions.detail.moreSpotsHeading':   'Plus de vagues à proximité',
+  'regions.detail.distanceAway':       'à {dist} km',
   'regions.locked.title':              '{count} vagues à {region}',
   'regions.locked.body':               'Débloquez la carte ajustée à la région et les prévisions en direct pour chaque vague.',
   'regions.locked.cta':                'Passez à l’offre supérieure pour débloquer',

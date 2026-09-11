@@ -22,12 +22,19 @@ export interface DetailPoint extends RegionMapPoint {
   href: string
 }
 
+export interface SecondaryDetailPoint extends RegionMapPoint {
+  href: string
+  distanceKm: number
+}
+
 interface Props {
   /** Region or country display name (proper noun, not translated). */
   name: string
   /** Pre-composed context line: "Europe · Portugal · CA" or the country subtitle sentence. */
   subtitle: string
   points: DetailPoint[]
+  /** Wider, non-curated spots nearby (Surfline directory) — dimmer map dots + a secondary list. */
+  secondaryPoints?: SecondaryDetailPoint[]
   bounds?: [[number, number], [number, number]] | null
   locked: boolean
   /** Region only — shows the "Free sample" badge. */
@@ -49,6 +56,7 @@ export default function RegionDetailClient({
   name,
   subtitle,
   points,
+  secondaryPoints,
   bounds,
   locked,
   flagship,
@@ -172,12 +180,17 @@ export default function RegionDetailClient({
           <div className="absolute inset-0">
             <RegionMap
               points={points}
+              secondaryPoints={secondaryPoints}
               bounds={bounds}
               activeSlug={activeSlug}
               conditions={conditions}
               onHover={setActiveSlug}
               onSelect={slug => {
                 const p = points.find(pt => pt.slug === slug)
+                if (p) router.push(p.href)
+              }}
+              onSelectSecondary={slug => {
+                const p = secondaryPoints?.find(pt => pt.slug === slug)
                 if (p) router.push(p.href)
               }}
             />
@@ -281,6 +294,26 @@ export default function RegionDetailClient({
                 )
               })}
             </ol>
+
+            {!locked && secondaryPoints && secondaryPoints.length > 0 && (
+              <>
+                <h2 className="mb-2 mt-4 text-xs font-semibold uppercase tracking-widest text-slate-500">
+                  {t('regions.detail.moreSpotsHeading')}
+                </h2>
+                <div className="flex flex-wrap gap-1.5">
+                  {secondaryPoints.map(p => (
+                    <Link
+                      key={p.slug}
+                      href={p.href}
+                      className="rounded-full border border-white/8 px-2.5 py-1 text-[11px] text-slate-300 transition-colors hover:border-teal-500/40 hover:text-white"
+                      title={t('regions.detail.distanceAway', { dist: String(p.distanceKm) })}
+                    >
+                      {p.name}
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
 
             {aliases && aliases.length > 0 && (
               <p className="mt-4 text-xs text-slate-500">

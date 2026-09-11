@@ -737,6 +737,8 @@ const ptBR: Record<string, string> = {
   'regions.detail.alsoKnownAs':        'Também buscada como',
   'regions.detail.backToRegions':      'Todas as regiões',
   'regions.detail.countryLink':        'Ver todas as regiões de {country}',
+  'regions.detail.moreSpotsHeading':   'Mais picos por perto',
+  'regions.detail.distanceAway':       'a {dist} km',
   'regions.locked.title':              '{count} picos em {region}',
   'regions.locked.body':               'Desbloqueie o mapa ajustado à região e a previsão ao vivo de cada pico.',
   'regions.locked.cta':                'Faça upgrade para desbloquear',
