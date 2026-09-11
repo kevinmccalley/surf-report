@@ -9908,10 +9908,11 @@
     "lon": 117.968273,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "osm"
     ],
     "verifiedOn": "2026-09-11"
   },
@@ -9953,10 +9954,11 @@
     "lon": 121.878,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "osm"
     ],
     "verifiedOn": "2026-09-11"
   },
