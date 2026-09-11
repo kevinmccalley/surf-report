@@ -280,7 +280,7 @@ const SURF_REGIONS: SurfRegion[] = [
     continent: 'Latin America',
     country: 'BR',
     center: { lat: -22.93, lon: -42.51 },
-    spotSlugs: ['saquarema'],
+    spotSlugs: ['ita-na-beach', 'arpoador', 'prainha'],
     searchAliases: ['Rio de Janeiro', 'Saquarema', 'Maricá', 'Itacoatiara'],
   },
   {
@@ -289,7 +289,7 @@ const SURF_REGIONS: SurfRegion[] = [
     continent: 'Latin America',
     country: 'BR',
     center: { lat: -27.8, lon: -48.62 },
-    spotSlugs: ['florianopolis', 'praia-do-rosa'],
+    spotSlugs: ['praia-mole', 'joaquina', 'praia-do-rosa'],
     searchAliases: ['Florianópolis', 'Santa Catarina', 'Floripa', 'Imbituba', 'Joaquina'],
   },
   {
@@ -298,7 +298,7 @@ const SURF_REGIONS: SurfRegion[] = [
     continent: 'Latin America',
     country: 'BR',
     center: { lat: -3.85, lon: -32.42 },
-    spotSlugs: ['fernando-de-noronha'],
+    spotSlugs: ['cacimba-do-padre'],
     searchAliases: ['Noronha', 'Pernambuco'],
   },
 
@@ -617,7 +617,7 @@ const SURF_REGIONS: SurfRegion[] = [
     continent: 'Oceania & Pacific',
     country: 'NZ',
     center: { lat: -37.4, lon: 174.7 },
-    spotSlugs: ['raglan', 'piha'],
+    spotSlugs: ['manu-bay', 'whale-bay', 'piha'],
     searchAliases: ['Aotearoa', 'Raglan', 'Manu Bay', 'Piha'],
   },
 

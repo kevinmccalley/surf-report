@@ -14,6 +14,10 @@
       "schedule": "0 */3 * * *"
     },
     {
+      "path": "/api/cron/region-conditions",
+      "schedule": "30 */6 * * *"
+    },
+    {
       "path": "/api/cron/swell-alert",
       "schedule": "0 8 * * 0"
     },

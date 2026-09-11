@@ -11,9 +11,10 @@ import {
   countryName,
 } from '@/app/lib/surf-regions'
 import { regionLockState } from '@/app/lib/region-access'
+import { getRegionSecondarySpots } from '@/app/lib/region-nearby'
 import { CONTINENT_I18N } from '@/app/lib/continents'
 import SiteHeader from '@/app/components/SiteHeader'
-import RegionDetailClient, { type DetailPoint } from '../RegionDetailClient'
+import RegionDetailClient, { type DetailPoint, type SecondaryDetailPoint } from '../RegionDetailClient'
 
 export const dynamic = 'force-dynamic'
 
@@ -74,6 +75,15 @@ export default async function RegionDetailPage({ params, searchParams }: Props) 
     href: `/spots/${p.slug}`,
   }))
 
+  // Wider, non-curated spots nearby (Surfline directory) — these don't have
+  // their own curated /spots/[slug] page, so link to the live forecast for
+  // their raw coordinates instead (same pattern as the spots directory's
+  // "extra" entries).
+  const secondaryPoints: SecondaryDetailPoint[] = getRegionSecondarySpots(region).map(p => ({
+    ...p,
+    href: `/?lat=${p.lat}&lon=${p.lon}&name=${encodeURIComponent(p.name)}&country=${encodeURIComponent(region.name)}`,
+  }))
+
   const siblingRegions = getSurfRegionsByCountry(region.country)
   const countryLink =
     siblingRegions.length > 1
@@ -129,6 +139,7 @@ export default async function RegionDetailPage({ params, searchParams }: Props) 
           name={region.name}
           subtitle={subtitle}
           points={points}
+          secondaryPoints={secondaryPoints}
           bounds={region.bounds ?? null}
           locked={locked}
           flagship={region.flagship}

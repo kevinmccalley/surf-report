@@ -737,6 +737,8 @@ const ptPT: Record<string, string> = {
   'regions.detail.alsoKnownAs':        'Também pesquisada como',
   'regions.detail.backToRegions':      'Todas as regiões',
   'regions.detail.countryLink':        'Ver todas as regiões de {country}',
+  'regions.detail.moreSpotsHeading':   'Mais ondas perto',
+  'regions.detail.distanceAway':       'a {dist} km',
   'regions.locked.title':              '{count} ondas em {region}',
   'regions.locked.body':               'Desbloqueie o mapa ajustado à região e a previsão em direto de cada onda.',
   'regions.locked.cta':                'Faça upgrade para desbloquear',

@@ -10,25 +10,44 @@ import { THEMES } from '@/app/lib/themes'
 import { mapStyle } from '@/app/lib/map-style'
 import { registerPmtilesProtocol } from '@/app/lib/pmtiles-protocol'
 import { regionFitTarget, pointsKey, type RegionMapPoint } from '@/app/lib/region-map'
+import { ratingColor, type SpotConditions } from '@/app/lib/spot-conditions'
+import { formatWaveHeight } from '@/app/lib/utils'
 
 interface Props {
   /** Spots to plot, in list order — the marker badge shows the 1-based index. */
   points: RegionMapPoint[]
+  /**
+   * Extra, non-curated spots nearby (from the wider Surfline directory) —
+   * plotted as small dim dots underneath the numbered pins, not counted in
+   * the camera fit. Lets a region page show "everything nearby", not just
+   * the hand-picked featured set.
+   */
+  secondaryPoints?: RegionMapPoint[]
   /** Optional curated bbox override (a region's `bounds`). */
   bounds?: [[number, number], [number, number]] | null
   /** Slug of the spot to emphasise — keeps the map in sync with a list hover/selection. */
   activeSlug?: string | null
   /** Marker click. */
   onSelect?: (slug: string) => void
+  /** Secondary-dot click. */
+  onSelectSecondary?: (slug: string) => void
   /** Marker hover in / out (null on out) — for two-way list ↔ map highlighting. */
   onHover?: (slug: string | null) => void
   /** Padding in px applied when fitting bounds. */
   fitPadding?: number
+  /** Premium live-conditions by break slug — colours pins by rating + enriches the tooltip. */
+  conditions?: Record<string, SpotConditions>
   className?: string
 }
 
 function isDarkTheme(themeId: string): boolean {
   return THEMES.find(t => t.id === themeId)?.dark ?? true
+}
+
+function secondaryDotStyle(active: boolean): L.CircleMarkerOptions {
+  return active
+    ? { radius: 7, color: '#fff', weight: 2, opacity: 0.9, fillColor: '#2dd4bf', fillOpacity: 0.95 }
+    : { radius: 4, color: '#fff', weight: 1, opacity: 0.5, fillColor: '#94a3b8', fillOpacity: 0.75 }
 }
 
 function accentColor(): string {
@@ -54,17 +73,21 @@ function makeMarkerIcon(index: number, color: string, active: boolean): L.DivIco
 
 export default function RegionMap({
   points,
+  secondaryPoints,
   bounds,
   activeSlug,
   onSelect,
+  onSelectSecondary,
   onHover,
   fitPadding = 48,
+  conditions,
   className,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
   const baseRef = useRef<L.Layer | null>(null)
   const markersRef = useRef<Map<string, { marker: L.Marker; index: number }>>(new Map())
+  const secondaryMarkersRef = useRef<Map<string, L.CircleMarker>>(new Map())
   const colorRef = useRef<string>('#22d3ee')
   const fittedKeyRef = useRef<string>('')
   // Latest camera-fit closure — re-run after the container settles to its real size.
@@ -72,10 +95,29 @@ export default function RegionMap({
 
   const { themeId } = useTheme()
 
+  // Keep the freshest conditions in a ref so effects can read them without
+  // being in every dependency array.
+  const conditionsRef = useRef(conditions)
+  useEffect(() => { conditionsRef.current = conditions }, [conditions])
+
+  const nameFor = (slug: string) => points.find(p => p.slug === slug)?.name ?? slug
+  const pinColor = (slug: string) =>
+    ratingColor(conditionsRef.current?.[slug]?.ratingLabel) ?? colorRef.current
+  const tooltipFor = (slug: string) => {
+    const c = conditionsRef.current?.[slug]
+    if (!c) return nameFor(slug)
+    return (
+      `${nameFor(slug)} — ${formatWaveHeight(c.waveHeight, 'ft')} · ` +
+      `${Math.round(c.wavePeriod)}s · ${Math.round(c.windSpeed)} km/h ${c.swellDirLabel}`
+    )
+  }
+
   // Keep callbacks fresh without re-binding every marker.
   const onSelectRef = useRef(onSelect)
+  const onSelectSecondaryRef = useRef(onSelectSecondary)
   const onHoverRef = useRef(onHover)
   useEffect(() => { onSelectRef.current = onSelect }, [onSelect])
+  useEffect(() => { onSelectSecondaryRef.current = onSelectSecondary }, [onSelectSecondary])
   useEffect(() => { onHoverRef.current = onHover }, [onHover])
 
   // ── Create the map once. Never torn down until unmount. ──────────────────
@@ -123,6 +165,7 @@ export default function RegionMap({
       mapRef.current = null
       baseRef.current = null
       markersRef.current.clear()
+      secondaryMarkersRef.current.clear()
       fittedKeyRef.current = ''
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -134,9 +177,9 @@ export default function RegionMap({
     if (baseRef.current) baseRef.current.remove()
     baseRef.current = L.maplibreGL({ style: mapStyle(isDarkTheme(themeId)) }).addTo(map)
     colorRef.current = accentColor()
-    // Recolour existing markers to the new theme accent.
+    // Recolour existing markers — rating colour wins over the theme accent.
     for (const [slug, { marker, index }] of markersRef.current) {
-      marker.setIcon(makeMarkerIcon(index, colorRef.current, slug === activeSlug))
+      marker.setIcon(makeMarkerIcon(index, pinColor(slug), slug === activeSlug))
     }
   }, [themeId]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -151,13 +194,13 @@ export default function RegionMap({
 
     points.forEach((p, index) => {
       const marker = L.marker([p.lat, p.lon], {
-        icon: makeMarkerIcon(index, colorRef.current, p.slug === activeSlug),
+        icon: makeMarkerIcon(index, pinColor(p.slug), p.slug === activeSlug),
         title: p.name,
         alt: p.name,
         riseOnHover: true,
         keyboard: true,
       })
-      marker.bindTooltip(p.name, { direction: 'top', offset: [0, -12], className: 'region-map-tip' })
+      marker.bindTooltip(tooltipFor(p.slug), { direction: 'top', offset: [0, -12], className: 'region-map-tip' })
       marker.on('click', () => onSelectRef.current?.(p.slug))
       marker.on('mouseover', () => onHoverRef.current?.(p.slug))
       marker.on('mouseout', () => onHoverRef.current?.(null))
@@ -189,14 +232,49 @@ export default function RegionMap({
     fitRef.current()
   }, [pointsKey(points), bounds, fitPadding]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ── Rebuild the dim secondary-spot dots when that set changes. Independent
+  //    of the curated markers/camera fit above — these are "more to explore
+  //    nearby", not part of the region's numbered/framed set. ──────────────
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map) return
+
+    for (const m of secondaryMarkersRef.current.values()) m.remove()
+    secondaryMarkersRef.current.clear()
+
+    for (const p of secondaryPoints ?? []) {
+      const dot = L.circleMarker([p.lat, p.lon], secondaryDotStyle(p.slug === activeSlug))
+      dot.bindTooltip(p.name, { direction: 'top', offset: [0, -6], className: 'region-map-tip region-map-tip--secondary' })
+      dot.on('click', () => onSelectSecondaryRef.current?.(p.slug))
+      dot.on('mouseover', () => onHoverRef.current?.(p.slug))
+      dot.on('mouseout', () => onHoverRef.current?.(null))
+      dot.addTo(map)
+      secondaryMarkersRef.current.set(p.slug, dot)
+    }
+  }, [pointsKey(secondaryPoints ?? [])]) // eslint-disable-line react-hooks/exhaustive-deps
+
   // ── Move the emphasis without re-fitting or rebuilding. ──────────────────
   useEffect(() => {
     for (const [slug, { marker, index }] of markersRef.current) {
       const active = slug === activeSlug
-      marker.setIcon(makeMarkerIcon(index, colorRef.current, active))
+      marker.setIcon(makeMarkerIcon(index, pinColor(slug), active))
       marker.setZIndexOffset(active ? 1000 : 0)
     }
-  }, [activeSlug])
+    for (const [slug, dot] of secondaryMarkersRef.current) {
+      const active = slug === activeSlug
+      dot.setStyle(secondaryDotStyle(active))
+      if (active) dot.bringToFront()
+    }
+  }, [activeSlug]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ── Live conditions arrived (or changed) — recolour pins + enrich tooltips,
+  //    no rebuild, no re-fit. ────────────────────────────────────────────────
+  useEffect(() => {
+    for (const [slug, { marker, index }] of markersRef.current) {
+      marker.setIcon(makeMarkerIcon(index, pinColor(slug), slug === activeSlug))
+      marker.setTooltipContent(tooltipFor(slug))
+    }
+  }, [conditions]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -215,6 +293,11 @@ export default function RegionMap({
           padding: 5px 9px !important;
         }
         .region-map-tip::before { display: none !important; }
+        .region-map-tip--secondary {
+          font-size: 11px !important;
+          font-weight: 500 !important;
+          color: var(--panel-label, #94a3b8) !important;
+        }
 
         .region-map-container .leaflet-control-zoom a {
           background: var(--panel-bg, #0f172a) !important;

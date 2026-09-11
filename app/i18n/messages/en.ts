@@ -738,6 +738,8 @@ const en: Record<string, string> = {
   'regions.detail.alsoKnownAs':        'Also searched as',
   'regions.detail.backToRegions':      'All regions',
   'regions.detail.countryLink':        'See every region in {country}',
+  'regions.detail.moreSpotsHeading':   'More spots nearby',
+  'regions.detail.distanceAway':       '{dist} km away',
   'regions.locked.title':              '{count} breaks in {region}',
   'regions.locked.body':               'Unlock the fit-to-region map and a live forecast for every break here.',
   'regions.locked.cta':                'Upgrade to unlock',
