@@ -9854,5 +9854,125 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Ocean Beach",
+    "aliases": [],
+    "country": "Denmark, Western Australia",
+    "lat": -35.025217,
+    "lon": 117.33845,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Nanarup Beach",
+    "aliases": [],
+    "country": "Albany, Western Australia",
+    "lat": -34.998067,
+    "lon": 118.063333,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Middleton Beach",
+    "aliases": [],
+    "country": "Albany, Western Australia",
+    "lat": -35.02361,
+    "lon": 117.9195,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Salmon Holes",
+    "aliases": [],
+    "country": "Albany, Western Australia",
+    "lat": -35.102961,
+    "lon": 117.968273,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Cosy Corner",
+    "aliases": [],
+    "country": "Albany, Western Australia",
+    "lat": -35.06232,
+    "lon": 117.644691,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Lucky Bay",
+    "aliases": [],
+    "country": "Esperance, Western Australia",
+    "lat": -33.99455,
+    "lon": 122.242983,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "West Beach",
+    "aliases": [],
+    "country": "Esperance, Western Australia",
+    "lat": -33.877433,
+    "lon": 121.878,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Lovers Cove",
+    "aliases": [],
+    "country": "Esperance, Western Australia",
+    "lat": -33.926483,
+    "lon": 122.0909,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
   }
 ]
