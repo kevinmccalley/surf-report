@@ -10257,5 +10257,50 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Cuatro Casas",
+    "aliases": [],
+    "country": "Colonet, Baja California",
+    "lat": 30.9335,
+    "lon": -116.242217,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Punta Cabras",
+    "aliases": [],
+    "country": "Erendira, Baja California",
+    "lat": 31.34755,
+    "lon": -116.4574,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Punta San Carlos",
+    "aliases": [],
+    "country": "El Rosario, Baja California",
+    "lat": 29.61425,
+    "lon": -115.499733,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
   }
 ]
