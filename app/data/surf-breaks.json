@@ -10302,5 +10302,99 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Meeru Reef",
+    "aliases": [],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.453733,
+    "lon": 73.718233,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Bodu Kanmathi",
+    "aliases": [],
+    "country": "Lhaviyani Atoll, Maldives",
+    "lat": 5.330817,
+    "lon": 73.464933,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Kudas",
+    "aliases": [
+      "Kudahuvadhoo"
+    ],
+    "country": "Dhaalu Atoll, Maldives",
+    "lat": 2.666733,
+    "lon": 72.903283,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Tigerstripes",
+    "aliases": [],
+    "country": "Huvadhoo Atoll, Maldives",
+    "lat": 0.283133,
+    "lon": 73.452517,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Antiques",
+    "aliases": [],
+    "country": "Huvadhoo Atoll, Maldives",
+    "lat": 0.281867,
+    "lon": 73.445983,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Two Ways",
+    "aliases": [],
+    "country": "Huvadhoo Atoll, Maldives",
+    "lat": 0.25975,
+    "lon": 73.3637,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
   }
 ]
