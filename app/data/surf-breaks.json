@@ -1100,16 +1100,16 @@
       "Isla Todos Santos"
     ],
     "country": "Ensenada, Baja California",
-    "lat": 31.8112,
-    "lon": -116.7968,
-    "type": null,
-    "direction": null,
+    "lat": 31.80895,
+    "lon": -116.809683,
+    "type": "reef",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-12"
   },
   {
     "name": "Punta Baja",
