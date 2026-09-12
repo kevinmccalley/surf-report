@@ -10142,5 +10142,69 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Elephant Rock",
+    "aliases": [
+      "Crocodile Rock"
+    ],
+    "country": "Arugam Bay, Sri Lanka",
+    "lat": 6.8109,
+    "lon": 81.823983,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Whiskey Point",
+    "aliases": [],
+    "country": "Arugam Bay, Sri Lanka",
+    "lat": 6.9054,
+    "lon": 81.844983,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Baby Point",
+    "aliases": [],
+    "country": "Arugam Bay, Sri Lanka",
+    "lat": 6.8402435,
+    "lon": 81.8362394,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Okanda",
+    "aliases": [],
+    "country": "Okanda, Sri Lanka",
+    "lat": 6.646917,
+    "lon": 81.77755,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
   }
 ]
