@@ -10208,5 +10208,52 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "San Juan de Alima",
+    "aliases": [],
+    "country": "San Juan de Alima, Michoacán",
+    "lat": 18.5825661,
+    "lon": -103.6708788,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Las Peñas",
+    "aliases": [],
+    "country": "Las Peñas, Michoacán",
+    "lat": 18.0180042,
+    "lon": -102.5015016,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Maruata",
+    "aliases": [],
+    "country": "Maruata, Michoacán",
+    "lat": 18.2677908,
+    "lon": -103.3492786,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
   }
 ]
