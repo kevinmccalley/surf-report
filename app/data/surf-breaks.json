@@ -10656,5 +10656,35 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Avatoru Pass",
+    "aliases": [],
+    "country": "Rangiroa, French Polynesia",
+    "lat": -14.9363,
+    "lon": -147.710067,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Faaite",
+    "aliases": [],
+    "country": "Faaite, French Polynesia",
+    "lat": -16.695083,
+    "lon": -145.351433,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
   }
 ]
