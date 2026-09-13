@@ -1100,16 +1100,16 @@
       "Isla Todos Santos"
     ],
     "country": "Ensenada, Baja California",
-    "lat": 31.8112,
-    "lon": -116.7968,
-    "type": null,
-    "direction": null,
+    "lat": 31.80895,
+    "lon": -116.809683,
+    "type": "reef",
+    "direction": "right",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-12"
   },
   {
     "name": "Punta Baja",
@@ -2831,16 +2831,16 @@
       "Tahiti"
     ],
     "country": "Tahiti, French Polynesia",
-    "lat": -17.849,
-    "lon": -149.2675,
-    "type": null,
-    "direction": null,
+    "lat": -17.866733,
+    "lon": -149.253817,
+    "type": "reef",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-13"
   },
   {
     "name": "Cloudbreak",
@@ -9405,10 +9405,11 @@
     "lon": -76.822583,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-10"
   },
@@ -9420,10 +9421,11 @@
     "lon": -76.81795,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-10"
   },
@@ -9908,10 +9910,11 @@
     "lon": 117.968273,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "osm"
     ],
     "verifiedOn": "2026-09-11"
   },
@@ -9953,10 +9956,11 @@
     "lon": 121.878,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "osm"
     ],
     "verifiedOn": "2026-09-11"
   },
@@ -9974,5 +9978,622 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Avenida del Mar",
+    "aliases": [],
+    "country": "La Serena, Chile",
+    "lat": -29.9185,
+    "lon": -71.2767,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Punta Choros",
+    "aliases": [],
+    "country": "Punta Choros, Chile",
+    "lat": -29.243,
+    "lon": -71.464817,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Totoralillo",
+    "aliases": [],
+    "country": "Coquimbo, Chile",
+    "lat": -30.071767,
+    "lon": -71.376833,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Teniente",
+    "aliases": [],
+    "country": "Los Vilos, Chile",
+    "lat": -31.002483,
+    "lon": -71.6352,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Chigualoco",
+    "aliases": [],
+    "country": "Los Vilos, Chile",
+    "lat": -31.753517,
+    "lon": -71.51525,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Waikiki",
+    "aliases": [],
+    "country": "Miraflores, Peru",
+    "lat": -12.1296,
+    "lon": -77.0375,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Makaha",
+    "aliases": [],
+    "country": "Miraflores, Peru",
+    "lat": -12.130433,
+    "lon": -77.036783,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "La Pampilla",
+    "aliases": [],
+    "country": "Miraflores, Peru",
+    "lat": -12.124267,
+    "lon": -77.041317,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "osm"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Redondo",
+    "aliases": [],
+    "country": "Miraflores, Peru",
+    "lat": -12.132067,
+    "lon": -77.034517,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "osm"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Punta Roquitas",
+    "aliases": [],
+    "country": "Miraflores, Peru",
+    "lat": -12.122367,
+    "lon": -77.045983,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Las Orishas",
+    "aliases": [],
+    "country": "Miraflores, Peru",
+    "lat": -12.124517,
+    "lon": -77.0403,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-11"
+  },
+  {
+    "name": "Elephant Rock",
+    "aliases": [
+      "Crocodile Rock"
+    ],
+    "country": "Arugam Bay, Sri Lanka",
+    "lat": 6.8109,
+    "lon": 81.823983,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Whiskey Point",
+    "aliases": [],
+    "country": "Arugam Bay, Sri Lanka",
+    "lat": 6.9054,
+    "lon": 81.844983,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Baby Point",
+    "aliases": [],
+    "country": "Arugam Bay, Sri Lanka",
+    "lat": 6.8402435,
+    "lon": 81.8362394,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Okanda",
+    "aliases": [],
+    "country": "Okanda, Sri Lanka",
+    "lat": 6.646917,
+    "lon": 81.77755,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "San Juan de Alima",
+    "aliases": [],
+    "country": "San Juan de Alima, Michoacán",
+    "lat": 18.5825661,
+    "lon": -103.6708788,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Las Peñas",
+    "aliases": [],
+    "country": "Las Peñas, Michoacán",
+    "lat": 18.0180042,
+    "lon": -102.5015016,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Maruata",
+    "aliases": [],
+    "country": "Maruata, Michoacán",
+    "lat": 18.2677908,
+    "lon": -103.3492786,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "osm",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Cuatro Casas",
+    "aliases": [],
+    "country": "Colonet, Baja California",
+    "lat": 30.9335,
+    "lon": -116.242217,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Punta Cabras",
+    "aliases": [],
+    "country": "Erendira, Baja California",
+    "lat": 31.34755,
+    "lon": -116.4574,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Punta San Carlos",
+    "aliases": [],
+    "country": "El Rosario, Baja California",
+    "lat": 29.61425,
+    "lon": -115.499733,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Meeru Reef",
+    "aliases": [],
+    "country": "North Malé Atoll, Maldives",
+    "lat": 4.453733,
+    "lon": 73.718233,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Bodu Kanmathi",
+    "aliases": [],
+    "country": "Lhaviyani Atoll, Maldives",
+    "lat": 5.330817,
+    "lon": 73.464933,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Kudas",
+    "aliases": [
+      "Kudahuvadhoo"
+    ],
+    "country": "Dhaalu Atoll, Maldives",
+    "lat": 2.666733,
+    "lon": 72.903283,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Tigerstripes",
+    "aliases": [],
+    "country": "Huvadhoo Atoll, Maldives",
+    "lat": 0.283133,
+    "lon": 73.452517,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Antiques",
+    "aliases": [],
+    "country": "Huvadhoo Atoll, Maldives",
+    "lat": 0.281867,
+    "lon": 73.445983,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Two Ways",
+    "aliases": [],
+    "country": "Huvadhoo Atoll, Maldives",
+    "lat": 0.25975,
+    "lon": 73.3637,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "editorial-placement",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Revolcadero",
+    "aliases": [
+      "Punto Muerto"
+    ],
+    "country": "Acapulco, Guerrero",
+    "lat": 16.787617,
+    "lon": -99.8204,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Barra Vieja",
+    "aliases": [],
+    "country": "Acapulco, Guerrero",
+    "lat": 16.688233,
+    "lon": -99.629817,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Playa Linda",
+    "aliases": [],
+    "country": "Ixtapa, Guerrero",
+    "lat": 17.663883,
+    "lon": -101.653083,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Las Gatas",
+    "aliases": [],
+    "country": "Zihuatanejo, Guerrero",
+    "lat": 17.62045,
+    "lon": -101.553517,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "osm"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Taapuna",
+    "aliases": [],
+    "country": "Tahiti, French Polynesia",
+    "lat": -17.603633,
+    "lon": -149.622367,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Papenoo",
+    "aliases": [],
+    "country": "Tahiti, French Polynesia",
+    "lat": -17.508833,
+    "lon": -149.431333,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Maraa",
+    "aliases": [],
+    "country": "Tahiti, French Polynesia",
+    "lat": -17.75,
+    "lon": -149.581083,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Vairao",
+    "aliases": [],
+    "country": "Tahiti, French Polynesia",
+    "lat": -17.8014,
+    "lon": -149.313333,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Point Venus",
+    "aliases": [],
+    "country": "Tahiti, French Polynesia",
+    "lat": -17.495183,
+    "lon": -149.50105,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Haapiti",
+    "aliases": [],
+    "country": "Moorea, French Polynesia",
+    "lat": -17.572683,
+    "lon": -149.878667,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Temae",
+    "aliases": [],
+    "country": "Moorea, French Polynesia",
+    "lat": -17.490833,
+    "lon": -149.7537,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Papetoai",
+    "aliases": [],
+    "country": "Moorea, French Polynesia",
+    "lat": -17.4861,
+    "lon": -149.8645,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Cook Bay Left",
+    "aliases": [],
+    "country": "Moorea, French Polynesia",
+    "lat": -17.477667,
+    "lon": -149.827167,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
   }
 ]
