@@ -10535,5 +10535,65 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Haapiti",
+    "aliases": [],
+    "country": "Moorea, French Polynesia",
+    "lat": -17.572683,
+    "lon": -149.878667,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Temae",
+    "aliases": [],
+    "country": "Moorea, French Polynesia",
+    "lat": -17.490833,
+    "lon": -149.7537,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Papetoai",
+    "aliases": [],
+    "country": "Moorea, French Polynesia",
+    "lat": -17.4861,
+    "lon": -149.8645,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Cook Bay Left",
+    "aliases": [],
+    "country": "Moorea, French Polynesia",
+    "lat": -17.477667,
+    "lon": -149.827167,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
   }
 ]
