@@ -2831,16 +2831,16 @@
       "Tahiti"
     ],
     "country": "Tahiti, French Polynesia",
-    "lat": -17.849,
-    "lon": -149.2675,
-    "type": null,
-    "direction": null,
+    "lat": -17.866733,
+    "lon": -149.253817,
+    "type": "reef",
+    "direction": "left",
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-13"
   },
   {
     "name": "Cloudbreak",
