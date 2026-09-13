@@ -10397,5 +10397,67 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-12"
+  },
+  {
+    "name": "Revolcadero",
+    "aliases": [
+      "Punto Muerto"
+    ],
+    "country": "Acapulco, Guerrero",
+    "lat": 16.787617,
+    "lon": -99.8204,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Barra Vieja",
+    "aliases": [],
+    "country": "Acapulco, Guerrero",
+    "lat": 16.688233,
+    "lon": -99.629817,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Playa Linda",
+    "aliases": [],
+    "country": "Ixtapa, Guerrero",
+    "lat": 17.663883,
+    "lon": -101.653083,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Las Gatas",
+    "aliases": [],
+    "country": "Zihuatanejo, Guerrero",
+    "lat": 17.62045,
+    "lon": -101.553517,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
   }
 ]
