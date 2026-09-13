@@ -10596,5 +10596,65 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Fare",
+    "aliases": [],
+    "country": "Huahine, French Polynesia",
+    "lat": -16.7125,
+    "lon": -151.0459,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Fare Right",
+    "aliases": [],
+    "country": "Huahine, French Polynesia",
+    "lat": -16.708183,
+    "lon": -151.043883,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Fitii",
+    "aliases": [],
+    "country": "Huahine, French Polynesia",
+    "lat": -16.723583,
+    "lon": -151.049567,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Motu Mahara",
+    "aliases": [],
+    "country": "Huahine, French Polynesia",
+    "lat": -16.7215,
+    "lon": -150.976317,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
   }
 ]
