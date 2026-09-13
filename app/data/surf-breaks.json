@@ -10460,5 +10460,80 @@
       "osm"
     ],
     "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Taapuna",
+    "aliases": [],
+    "country": "Tahiti, French Polynesia",
+    "lat": -17.603633,
+    "lon": -149.622367,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Papenoo",
+    "aliases": [],
+    "country": "Tahiti, French Polynesia",
+    "lat": -17.508833,
+    "lon": -149.431333,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Maraa",
+    "aliases": [],
+    "country": "Tahiti, French Polynesia",
+    "lat": -17.75,
+    "lon": -149.581083,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Vairao",
+    "aliases": [],
+    "country": "Tahiti, French Polynesia",
+    "lat": -17.8014,
+    "lon": -149.313333,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Point Venus",
+    "aliases": [],
+    "country": "Tahiti, French Polynesia",
+    "lat": -17.495183,
+    "lon": -149.50105,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
   }
 ]
