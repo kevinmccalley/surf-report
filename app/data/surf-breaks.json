@@ -10957,5 +10957,67 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Cox Bay",
+    "aliases": [],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 49.101967,
+    "lon": -125.880317,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Chesterman Beach",
+    "aliases": [
+      "North Chesterman"
+    ],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 49.117767,
+    "lon": -125.899283,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Long Beach",
+    "aliases": [],
+    "country": "Pacific Rim National Park, British Columbia",
+    "lat": 49.070917,
+    "lon": -125.765217,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Florencia Bay",
+    "aliases": [],
+    "country": "Pacific Rim National Park, British Columbia",
+    "lat": 48.99385,
+    "lon": -125.636217,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
   }
 ]
