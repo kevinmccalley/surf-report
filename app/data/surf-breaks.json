@@ -9105,12 +9105,13 @@
     "lon": -70.148717,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-09"
+    "verifiedOn": "2026-09-14"
   },
   {
     "name": "Intendencia",
@@ -9180,12 +9181,13 @@
     "lon": -70.155017,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-09"
+    "verifiedOn": "2026-09-14"
   },
   {
     "name": "Baul",
