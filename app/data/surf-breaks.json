@@ -10845,5 +10845,114 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Rest Bay",
+    "aliases": [],
+    "country": "Porthcawl, Wales",
+    "lat": 51.4885,
+    "lon": -3.724933,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Freshwater East",
+    "aliases": [],
+    "country": "Pembrokeshire, Wales",
+    "lat": 51.644817,
+    "lon": -4.860383,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Whitesands",
+    "aliases": [],
+    "country": "Pembrokeshire, Wales",
+    "lat": 51.895767,
+    "lon": -5.299867,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Rhossili Bay",
+    "aliases": [
+      "Llangennith"
+    ],
+    "country": "Gower, Wales",
+    "lat": 51.569046,
+    "lon": -4.293213,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "White Rocks",
+    "aliases": [],
+    "country": "Antrim, Northern Ireland",
+    "lat": 55.206517,
+    "lon": -6.6121,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Castlerock",
+    "aliases": [],
+    "country": "Londonderry, Northern Ireland",
+    "lat": 55.167317,
+    "lon": -6.7859,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Portstewart",
+    "aliases": [
+      "Portstewart Strand"
+    ],
+    "country": "Londonderry, Northern Ireland",
+    "lat": 55.171617,
+    "lon": -6.744067,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
   }
 ]
