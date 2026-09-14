@@ -10753,16 +10753,19 @@
   },
   {
     "name": "PK's",
-    "aliases": [],
+    "aliases": [
+      "Centers"
+    ],
     "country": "Poipu, Kauai",
     "lat": 21.880767,
     "lon": -159.475633,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-14"
   }
