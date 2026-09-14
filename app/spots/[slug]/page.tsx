@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { auth, clerkClient } from '@clerk/nextjs/server'
 import SurfApp from '@/app/components/SurfApp'
 import type { Tier } from '@/app/page'
-import { findSpotBySlug, getAllSpots, slugify, type SurfSpot } from '@/app/lib/surf-spots'
+import { findSpotBySlug, getAllSpots, getSpotSlug, type SurfSpot } from '@/app/lib/surf-spots'
 import { findCalibration, type SpotCalibration } from '@/app/lib/spot-calibration'
 import { getClimatologyData, directionLabel } from '@/app/lib/climatology'
 
@@ -34,7 +34,7 @@ function computeNearbySpots(target: SurfSpot, limit: number): NearbySpot[] {
     .filter(s => !(Math.abs(s.lat - target.lat) < 0.0001 && Math.abs(s.lon - target.lon) < 0.0001))
     .map(s => ({
       name: s.name,
-      slug: slugify(s.name),
+      slug: getSpotSlug(s),
       country: s.country,
       distanceKm: Math.round(haversineKm(target.lat, target.lon, s.lat, s.lon)),
     }))

@@ -76,8 +76,60 @@ export function slugify(name: string): string {
     .replace(/^-|-$/g, '')
 }
 
+// A handful of names (e.g. "Waikiki", "Makaha", "Restaurants") repeat across
+// unrelated countries. plain slugify(name) collides for those, and every
+// caller that built a /spots/ or /climatology/ href straight from
+// slugify(spot.name) was silently routing to whichever spot happened to sit
+// first in the array — the other spot's page was unreachable (or, worse,
+// showed the wrong spot's live conditions under its own name/title).
+//
+// getSpotSlug() is the one canonical slug per spot: the first spot to claim a
+// base slug (array order — earlier-added, longest-standing spots keep their
+// existing, already-indexed URL unchanged) keeps the plain slug; every later
+// collision gets a locality suffix (from the last comma-separated segment of
+// `country`), with a numeric fallback in the vanishingly rare case that still
+// collides. Computed once at module load; every link-building call site
+// should use this instead of calling slugify(spot.name) directly.
+function localitySlug(country: string): string {
+  const parts = country.split(',').map(s => s.trim()).filter(Boolean)
+  return slugify(parts[parts.length - 1] ?? country)
+}
+
+function buildSlugMaps(): { slugToSpot: Map<string, SurfSpot>; spotToSlug: Map<SurfSpot, string> } {
+  const slugToSpot = new Map<string, SurfSpot>()
+  const spotToSlug = new Map<SurfSpot, string>()
+  const seenCount = new Map<string, number>()
+
+  for (const spot of SURF_SPOTS) {
+    const base = slugify(spot.name)
+    const seenBefore = seenCount.get(base) ?? 0
+    seenCount.set(base, seenBefore + 1)
+
+    let candidate = base
+    if (seenBefore > 0) {
+      candidate = `${base}-${localitySlug(spot.country)}`
+      let n = 2
+      while (slugToSpot.has(candidate)) {
+        candidate = `${base}-${localitySlug(spot.country)}-${n}`
+        n++
+      }
+    }
+    slugToSpot.set(candidate, spot)
+    spotToSlug.set(spot, candidate)
+  }
+  return { slugToSpot, spotToSlug }
+}
+
+const { slugToSpot: SLUG_TO_SPOT, spotToSlug: SPOT_TO_SLUG } = buildSlugMaps()
+
+/** The canonical, guaranteed-unique slug for a spot. Use this to build any
+ *  /spots/ or /climatology/ link — never slugify(spot.name) directly. */
+export function getSpotSlug(spot: SurfSpot): string {
+  return SPOT_TO_SLUG.get(spot) ?? slugify(spot.name)
+}
+
 export function findSpotBySlug(slug: string): SurfSpot | undefined {
-  return SURF_SPOTS.find(s => slugify(s.name) === slug)
+  return SLUG_TO_SPOT.get(slug)
 }
 
 export function getAllSpots(): SurfSpot[] {

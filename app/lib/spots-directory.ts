@@ -1,4 +1,4 @@
-import { getAllSpots, slugify } from './surf-spots'
+import { getAllSpots, getSpotSlug, slugify } from './surf-spots'
 import { SPOTS as TOP100 } from '../top100/spots-data'
 import type { Top100Spot } from '../top100/spots-data'
 import notableRaw from './notable-spots.json'
@@ -145,8 +145,8 @@ export function getDirectorySpots(): DirectorySpot[] {
       continent: continentFromCountry(spot.country),
       lat: spot.lat,
       lon: spot.lon,
-      slug: slugify(spot.name),
-      href: `/spots/${slugify(spot.name)}`,
+      slug: getSpotSlug(spot),
+      href: `/spots/${getSpotSlug(spot)}`,
     }
     if (bestMatch !== null) {
       entry.waveType = bestMatch.waveType

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { getAllSpots, slugify } from '@/app/lib/surf-spots'
+import { getAllSpots, getSpotSlug } from '@/app/lib/surf-spots'
 import { getSurfRegions, getSurfRegionsByCountry } from '@/app/lib/surf-regions'
 import { getAllSlugsWithDate } from '@/app/lib/sanity'
 
@@ -31,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   const spotPages = getAllSpots().map(spot => ({
-    url: `${base}/spots/${slugify(spot.name)}`,
+    url: `${base}/spots/${getSpotSlug(spot)}`,
     lastModified: new Date('2026-06-08'),
     changeFrequency: 'daily' as const,
     priority: 0.9,
@@ -41,7 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // a slow marine API, so we don't want Google working through the full ~480-URL
   // set ahead of the forecast pages that actually change daily.
   const climatologyPages = getAllSpots().map(spot => ({
-    url: `${base}/climatology/${slugify(spot.name)}`,
+    url: `${base}/climatology/${getSpotSlug(spot)}`,
     lastModified: new Date('2025-01-01'),
     changeFrequency: 'yearly' as const,
     priority: 0.4,

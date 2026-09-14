@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { findSpotBySlug, slugify } from '@/app/lib/surf-spots'
+import { findSpotBySlug, getSpotSlug } from '@/app/lib/surf-spots'
 import { getClimatologyData } from '@/app/lib/climatology'
 import { getPostsForSpot } from '@/app/lib/sanity'
 import ClimatologySection from '@/app/components/ClimatologySection'
@@ -101,7 +101,7 @@ export default async function ClimatologyPage({ params }: Props) {
     .map(m => ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m - 1])
     .join(' & ')
 
-  const spotUrl = `${BASE_URL}/climatology/${slugify(spot.name)}`
+  const spotUrl = `${BASE_URL}/climatology/${getSpotSlug(spot)}`
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
