@@ -7399,17 +7399,17 @@
       "East Strand"
     ],
     "country": "Antrim, Northern Ireland",
-    "lat": 55.2085,
-    "lon": -6.643,
+    "lat": 55.20915,
+    "lon": -6.642267,
     "type": "beach",
     "direction": "both",
     "confidence": "provisional",
     "sources": [
       "wikipedia",
-      "editorial-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-14"
   },
   {
     "name": "Point Panic",
@@ -10869,10 +10869,11 @@
     "lon": -4.860383,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-14"
   },
@@ -10884,10 +10885,11 @@
     "lon": -5.299867,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-14"
   },
@@ -10916,10 +10918,11 @@
     "lon": -6.6121,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-14"
   },
