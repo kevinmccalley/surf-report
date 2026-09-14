@@ -10688,5 +10688,82 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Pakala",
+    "aliases": [
+      "Infinities"
+    ],
+    "country": "Kekaha, Kauai",
+    "lat": 21.93385,
+    "lon": -159.651,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Kalihiwai Point",
+    "aliases": [],
+    "country": "Kalihiwai, Kauai",
+    "lat": 22.2201,
+    "lon": -159.4262,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Tunnels",
+    "aliases": [],
+    "country": "Haena, Kauai",
+    "lat": 22.2284,
+    "lon": -159.563133,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Inside Poipu",
+    "aliases": [],
+    "country": "Poipu, Kauai",
+    "lat": 21.874917,
+    "lon": -159.45945,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "PK's",
+    "aliases": [],
+    "country": "Poipu, Kauai",
+    "lat": 21.880767,
+    "lon": -159.475633,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
   }
 ]
