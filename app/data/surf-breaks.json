@@ -10768,5 +10768,80 @@
       "surfline"
     ],
     "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Kalapaki Beach",
+    "aliases": [],
+    "country": "Lihue, Kauai",
+    "lat": 21.957633,
+    "lon": -159.350067,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Kealia",
+    "aliases": [],
+    "country": "Kapaa, Kauai",
+    "lat": 22.09945,
+    "lon": -159.3041,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Polihale State Park",
+    "aliases": [],
+    "country": "Waimea, Kauai",
+    "lat": 22.075617,
+    "lon": -159.76945,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Cannons",
+    "aliases": [],
+    "country": "Haena, Kauai",
+    "lat": 22.224533,
+    "lon": -159.57125,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Anini Beach-Wires",
+    "aliases": [],
+    "country": "Kalihiwai, Kauai",
+    "lat": 22.227783,
+    "lon": -159.448667,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
   }
 ]
