@@ -11024,5 +11024,67 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Sandbridge",
+    "aliases": [],
+    "country": "Virginia Beach, VA",
+    "lat": 36.694167,
+    "lon": -75.922283,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Assateague",
+    "aliases": [],
+    "country": "Assateague Island, MD",
+    "lat": 38.2069,
+    "lon": -75.14675,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Bethany Hollywood St",
+    "aliases": [
+      "Bethany Beach"
+    ],
+    "country": "Bethany Beach, DE",
+    "lat": 38.537483,
+    "lon": -75.053333,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Fenwick Island",
+    "aliases": [],
+    "country": "Fenwick Island, DE",
+    "lat": 38.46105,
+    "lon": -75.048683,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
   }
 ]
