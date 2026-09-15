@@ -1315,12 +1315,13 @@
     "lon": -89.327567,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Las Flores",
@@ -9473,12 +9474,13 @@
     "lon": -89.38995,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "La Bocana",
@@ -9488,12 +9490,13 @@
     "lon": -89.381683,
     "type": "rivermouth",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "El Zonte",
@@ -9519,12 +9522,13 @@
     "lon": -89.439933,
     "type": "rivermouth",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "K59",
@@ -9555,12 +9559,13 @@
     "lon": -89.422167,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Mizata",
