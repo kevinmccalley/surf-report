@@ -26,12 +26,13 @@
     "lon": -121.9516,
     "type": "slab",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wikipedia",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Steamer Lane",
@@ -187,12 +188,13 @@
     "lon": -118.0046,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "surf-forecast",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Salt Creek",
@@ -257,13 +259,14 @@
     "lon": -117.5658,
     "type": "point",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
       "surf-forecast",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Swamis",
@@ -3849,12 +3852,13 @@
     "lon": -117.882,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Doheny",
@@ -3866,12 +3870,13 @@
     "lon": -117.686,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Oceanside Pier",
