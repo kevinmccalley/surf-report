@@ -11091,5 +11091,95 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "29th Street",
+    "aliases": [],
+    "country": "Vancouver, British Columbia",
+    "lat": 49.334967,
+    "lon": -123.194733,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Ambleside Park",
+    "aliases": [],
+    "country": "West Vancouver, British Columbia",
+    "lat": 49.325017,
+    "lon": -123.151717,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Bowie Seamount",
+    "aliases": [],
+    "country": "Haida Gwaii, British Columbia",
+    "lat": 53.307083,
+    "lon": -135.659867,
+    "type": "reef",
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "China Beach",
+    "aliases": [],
+    "country": "Port Renfrew, British Columbia",
+    "lat": 48.433433,
+    "lon": -124.093583,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Christopher Point",
+    "aliases": [],
+    "country": "Metchosin, British Columbia",
+    "lat": 48.309236,
+    "lon": -123.560868,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm-nominatim",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Jordan River",
+    "aliases": [],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 48.419867,
+    "lon": -124.056217,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
   }
 ]
