@@ -132,6 +132,36 @@ export function findSpotBySlug(slug: string): SurfSpot | undefined {
   return SLUG_TO_SPOT.get(slug)
 }
 
+// A spot's `name` can change during the groundtruth-verification pass (e.g.
+// "Pichilemu" -> "La Puntilla", old name kept only as an alias — see
+// docs/surf-breaks-dataset.md). getSpotSlug() always reflects the *current*
+// name, so a rename silently orphans any URL Google already indexed under
+// the old slug (a real 404 with no redirect). This map lets /spots/ and
+// /climatology/ routes 301 those old slugs to the new canonical one instead.
+function buildAliasSlugMap(): Map<string, string> {
+  const aliasToCanonical = new Map<string, string>()
+  for (const spot of SURF_SPOTS) {
+    const canonical = getSpotSlug(spot)
+    for (const alias of spot.aliases ?? []) {
+      const aliasSlug = slugify(alias)
+      if (!aliasSlug || aliasSlug === canonical) continue
+      // Never let a former name shadow another spot's real, current URL.
+      if (SLUG_TO_SPOT.has(aliasSlug)) continue
+      if (!aliasToCanonical.has(aliasSlug)) aliasToCanonical.set(aliasSlug, canonical)
+    }
+  }
+  return aliasToCanonical
+}
+
+const ALIAS_SLUG_TO_CANONICAL = buildAliasSlugMap()
+
+/** If `slug` is a former spot name (kept as an alias after a rename) rather
+ *  than any spot's current URL, returns the canonical slug to redirect to.
+ *  Returns undefined for a genuinely unknown slug. */
+export function findCanonicalSlugForAlias(slug: string): string | undefined {
+  return ALIAS_SLUG_TO_CANONICAL.get(slug)
+}
+
 export function getAllSpots(): SurfSpot[] {
   return SURF_SPOTS
 }

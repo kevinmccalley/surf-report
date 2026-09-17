@@ -1,10 +1,10 @@
-import { notFound } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { auth, clerkClient } from '@clerk/nextjs/server'
 import SurfApp from '@/app/components/SurfApp'
 import type { Tier } from '@/app/page'
-import { findSpotBySlug, getAllSpots, getSpotSlug, type SurfSpot } from '@/app/lib/surf-spots'
+import { findSpotBySlug, findCanonicalSlugForAlias, getAllSpots, getSpotSlug, type SurfSpot } from '@/app/lib/surf-spots'
 import { findCalibration, type SpotCalibration } from '@/app/lib/spot-calibration'
 import { getClimatologyData, directionLabel } from '@/app/lib/climatology'
 
@@ -232,7 +232,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function SpotPage({ params }: Props) {
   const { slug } = await params
   const spot = findSpotBySlug(slug)
-  if (!spot) notFound()
+  if (!spot) {
+    // The slug may be a former name a groundtruth-pass rename orphaned —
+    // redirect those instead of 404ing a URL Google may already have
+    // indexed. See findCanonicalSlugForAlias / docs/surf-breaks-dataset.md.
+    const canonical = findCanonicalSlugForAlias(slug)
+    if (canonical) permanentRedirect(`/spots/${canonical}`)
+    notFound()
+  }
 
   // Tier detection (unchanged)
   let tier: Tier = 'free'

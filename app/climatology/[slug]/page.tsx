@@ -1,7 +1,7 @@
-import { notFound } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { findSpotBySlug, getSpotSlug } from '@/app/lib/surf-spots'
+import { findSpotBySlug, findCanonicalSlugForAlias, getSpotSlug } from '@/app/lib/surf-spots'
 import { getClimatologyData } from '@/app/lib/climatology'
 import { getPostsForSpot } from '@/app/lib/sanity'
 import ClimatologySection from '@/app/components/ClimatologySection'
@@ -79,8 +79,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ClimatologyPage({ params }: Props) {
   const { slug } = await params
   const spot = findSpotBySlug(slug)
-  // A slug that maps to no known spot is the only genuine 404 on this route.
-  if (!spot) notFound()
+  if (!spot) {
+    // The slug may be a former name a groundtruth-pass rename orphaned
+    // (see findCanonicalSlugForAlias) — redirect those instead of 404ing a
+    // URL Google may already have indexed. A slug that matches neither the
+    // current nor any former name is the only genuine 404 on this route.
+    const canonical = findCanonicalSlugForAlias(slug)
+    if (canonical) permanentRedirect(`/climatology/${canonical}`)
+    notFound()
+  }
 
   const latR = Math.round(spot.lat * 2) / 2
   const lonR = Math.round(spot.lon * 2) / 2
