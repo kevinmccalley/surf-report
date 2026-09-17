@@ -11182,5 +11182,119 @@
       "surfline"
     ],
     "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Sombrio Beach",
+    "aliases": [
+      "Chickens",
+      "Firsts",
+      "Seconds",
+      "Waterfalls"
+    ],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 48.4942,
+    "lon": -124.29623,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Port Renfrew",
+    "aliases": [],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 48.56735,
+    "lon": -124.410033,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Sooke Harbour",
+    "aliases": [
+      "Whiffin Spit"
+    ],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 48.3590024,
+    "lon": -123.7145659,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm-nominatim",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Raft Cove",
+    "aliases": [],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 50.5865,
+    "lon": -128.237567,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Wickaninnish Beach",
+    "aliases": [
+      "Wickaninish"
+    ],
+    "country": "Pacific Rim National Park, British Columbia",
+    "lat": 49.0240921,
+    "lon": -125.6815053,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm-nominatim",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Nootka Island",
+    "aliases": [],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 49.658983,
+    "lon": -126.844333,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Witty's Lagoon",
+    "aliases": [],
+    "country": "Metchosin, British Columbia",
+    "lat": 48.382867,
+    "lon": -123.51375,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
   }
 ]
