@@ -831,6 +831,7 @@ function SiteFooterLinks() {
   return (
     <nav className="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-1">
       <a href="/spots"    className="hover:text-slate-300 transition-colors">{t('nav.spots')}</a>
+      <a href="/regions"  className="hover:text-slate-300 transition-colors">{t('nav.regions')}</a>
       <a href="/blog"     className="hover:text-slate-300 transition-colors">{t('nav.blog')}</a>
       <a href="/faq"      className="hover:text-slate-300 transition-colors">{t('nav.faq')}</a>
       <a href="/about"    className="hover:text-slate-300 transition-colors">{t('nav.about')}</a>
