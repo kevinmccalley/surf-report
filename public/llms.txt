@@ -17,6 +17,7 @@ The site targets surfers planning local sessions and international surf trips. P
 - [Blog](https://groundswell.surf/blog): Articles on surf travel, wave science, swell forecasting, and surf spot guides. Evergreen guides are translated into Spanish, French and Portuguese — append ?lang=es, ?lang=fr, ?lang=pt-BR or ?lang=pt-PT to a post URL.
 - [Surf Forecast FAQ](https://groundswell.surf/faq): Direct answers to common surf-forecasting questions — what swell period means, how wave height is measured, offshore vs. onshore wind, groundswell vs. windswell, and how to read a forecast.
 - [Forecast Accuracy](https://groundswell.surf/accuracy): Explanation of data sources, model accuracy, and how Groundswell's composite surf rating is calculated.
+- [About Groundswell](https://groundswell.surf/about): What Groundswell is, where its forecast data comes from (Open-Meteo, ECMWF, ERA5), and who builds it — independent developer Kevin McCalley.
 
 ## Data sources
 

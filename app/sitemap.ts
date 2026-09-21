@@ -30,6 +30,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: path === '/' ? 1.0 : 0.5,
   }))
 
+  // The /spots directory index itself (the per-spot pages below are its children).
+  const spotsIndex = {
+    url: `${base}/spots`,
+    lastModified: new Date('2026-09-02'),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }
+
   const spotPages = getAllSpots().map(spot => ({
     url: `${base}/spots/${getSpotSlug(spot)}`,
     lastModified: new Date('2026-06-08'),
@@ -90,5 +98,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return entry
   })
 
-  return [...staticPages, blogIndex, ...blogPosts, ...regionPages, ...spotPages, ...climatologyPages]
+  return [...staticPages, blogIndex, ...blogPosts, ...regionPages, spotsIndex, ...spotPages, ...climatologyPages]
 }
