@@ -11480,5 +11480,88 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Katagai",
+    "aliases": [
+      "Katagai Gyoko"
+    ],
+    "country": "Chiba, Japan",
+    "lat": 35.53342,
+    "lon": 140.46123,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Habushiura",
+    "aliases": [
+      "Niijima",
+      "Habushi Beach"
+    ],
+    "country": "Niijima, Japan",
+    "lat": 34.3761,
+    "lon": 139.27663,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Ikumi",
+    "aliases": [],
+    "country": "Kochi, Japan",
+    "lat": 33.52777,
+    "lon": 134.28495,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Shishikui",
+    "aliases": [],
+    "country": "Tokushima, Japan",
+    "lat": 33.56668,
+    "lon": 134.31067,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Kaifu Rivermouth",
+    "aliases": [
+      "Kaifu",
+      "Kaifugawa"
+    ],
+    "country": "Tokushima, Japan",
+    "lat": 33.5945,
+    "lon": 134.3638,
+    "type": "rivermouth",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
   }
 ]
