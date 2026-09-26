@@ -11302,5 +11302,108 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Puerto Sandino",
+    "aliases": [
+      "Sandino"
+    ],
+    "country": "León, Nicaragua",
+    "lat": 12.1897,
+    "lon": -86.80298,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Las Peñitas",
+    "aliases": [
+      "Las Penitas",
+      "Poneloya"
+    ],
+    "country": "León, Nicaragua",
+    "lat": 12.37003,
+    "lon": -87.0367,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Pochomil",
+    "aliases": [],
+    "country": "San Rafael del Sur, Nicaragua",
+    "lat": 11.77173,
+    "lon": -86.5104,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Pie de Gigante",
+    "aliases": [
+      "Gigante Point",
+      "Pie de Gigante Point"
+    ],
+    "country": "Tola, Nicaragua",
+    "lat": 11.38387,
+    "lon": -86.03712,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Playa Amarillo",
+    "aliases": [
+      "Amarillo"
+    ],
+    "country": "Tola, Nicaragua",
+    "lat": 11.39808,
+    "lon": -86.03813,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Playa Remanso",
+    "aliases": [
+      "El Remanso",
+      "Remanso"
+    ],
+    "country": "San Juan del Sur, Nicaragua",
+    "lat": 11.22083,
+    "lon": -85.84872,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
   }
 ]
