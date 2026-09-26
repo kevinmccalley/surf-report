@@ -11409,5 +11409,73 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Cambutal",
+    "aliases": [
+      "Playa Cambutal"
+    ],
+    "country": "Tonosí, Panama",
+    "lat": 7.24967,
+    "lon": -80.4885,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Playa Guánico",
+    "aliases": [
+      "Guanico"
+    ],
+    "country": "Tonosí, Panama",
+    "lat": 7.27223,
+    "lon": -80.42027,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Wizard Beach",
+    "aliases": [
+      "Playa Primera"
+    ],
+    "country": "Bocas del Toro, Panama",
+    "lat": 9.3505,
+    "lon": -82.19593,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "María Chiquita",
+    "aliases": [
+      "Maria Chiquita"
+    ],
+    "country": "Colón, Panama",
+    "lat": 9.45187,
+    "lon": -79.74702,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
   }
 ]
