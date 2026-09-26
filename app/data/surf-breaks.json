@@ -2957,13 +2957,14 @@
     "lon": 153.5502,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wikipedia",
       "surf-forecast",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-29"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Kirra",
@@ -3150,12 +3151,13 @@
     "lon": 151.2775,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "osm",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Maroubra",
@@ -3167,12 +3169,13 @@
     "lon": 151.2574,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Cronulla",
@@ -4775,12 +4778,13 @@
     "lon": 153.486,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-29"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Rainbow Bay",
@@ -4790,12 +4794,13 @@
     "lon": 153.5464,
     "type": "beach",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-29"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Angourie",
@@ -4807,12 +4812,13 @@
     "lon": 153.3661,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-29"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Broken Head",
