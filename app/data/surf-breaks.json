@@ -11568,5 +11568,85 @@
       "surfline"
     ],
     "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Kuta Reef",
+    "aliases": [],
+    "country": "Kuta, Bali",
+    "lat": -8.73048,
+    "lon": 115.15588,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Dreamland",
+    "aliases": [],
+    "country": "Bukit Peninsula, Bali",
+    "lat": -8.79908,
+    "lon": 115.11708,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Balangan",
+    "aliases": [
+      "Ballangan"
+    ],
+    "country": "Bukit Peninsula, Bali",
+    "lat": -8.79225,
+    "lon": 115.11982,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Impossibles",
+    "aliases": [],
+    "country": "Bukit Peninsula, Bali",
+    "lat": -8.80745,
+    "lon": 115.1085,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Hyatt Reef",
+    "aliases": [
+      "Sanur Reef",
+      "Sanur"
+    ],
+    "country": "Sanur, Bali",
+    "lat": -8.66992,
+    "lon": 115.26412,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
   }
 ]
