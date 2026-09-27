@@ -2099,12 +2099,13 @@
     "lon": -4.2415,
     "type": null,
     "direction": null,
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "ai-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Saunton Sands",
@@ -2131,12 +2132,13 @@
     "lon": -5.32123,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Lynmouth",
@@ -11781,10 +11783,11 @@
     "lon": -4.00023,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-27"
   },
@@ -11796,10 +11799,11 @@
     "lon": -2.744,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-27"
   },
@@ -11831,10 +11835,11 @@
     "lon": -3.27745,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-27"
   }
