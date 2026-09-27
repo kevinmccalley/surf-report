@@ -2496,12 +2496,13 @@
     "lon": 115.1133,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Keramas",
@@ -2511,12 +2512,13 @@
     "lon": 115.3391,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Medewi",
@@ -11592,10 +11594,11 @@
     "lon": 115.11708,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-27"
   },
@@ -11624,10 +11627,11 @@
     "lon": 115.1085,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-27"
   },
