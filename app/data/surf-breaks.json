@@ -11652,5 +11652,101 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Thirteenth Beach",
+    "aliases": [
+      "13th Beach"
+    ],
+    "country": "Barwon Heads, Victoria",
+    "lat": -38.28535,
+    "lon": 144.46163,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Torquay Point",
+    "aliases": [],
+    "country": "Torquay, Victoria",
+    "lat": -38.34193,
+    "lon": 144.32225,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Point Addis",
+    "aliases": [],
+    "country": "Anglesea, Victoria",
+    "lat": -38.39415,
+    "lon": 144.25405,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Lorne Point",
+    "aliases": [
+      "Lorne"
+    ],
+    "country": "Lorne, Victoria",
+    "lat": -38.54648,
+    "lon": 143.98613,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Gunnamatta",
+    "aliases": [],
+    "country": "Mornington Peninsula, Victoria",
+    "lat": -38.44848,
+    "lon": 144.85525,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Portsea Back Beach",
+    "aliases": [
+      "Portsea"
+    ],
+    "country": "Mornington Peninsula, Victoria",
+    "lat": -38.33512,
+    "lon": 144.7044,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
   }
 ]
