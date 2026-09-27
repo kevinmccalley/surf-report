@@ -11753,5 +11753,89 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Torrisdale Bay",
+    "aliases": [
+      "Torrisdale"
+    ],
+    "country": "Sutherland, Scotland",
+    "lat": 58.52548,
+    "lon": -4.25137,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Strathy Bay",
+    "aliases": [
+      "Strathy"
+    ],
+    "country": "Sutherland, Scotland",
+    "lat": 58.56837,
+    "lon": -4.00023,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Sandend",
+    "aliases": [],
+    "country": "Aberdeenshire, Scotland",
+    "lat": 57.68258,
+    "lon": -2.744,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Fraserburgh",
+    "aliases": [
+      "Fraserburgh Beach"
+    ],
+    "country": "Aberdeenshire, Scotland",
+    "lat": 57.68185,
+    "lon": -1.99693,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Lossiemouth East Beach",
+    "aliases": [
+      "Lossiemouth",
+      "Lossie"
+    ],
+    "country": "Moray, Scotland",
+    "lat": 57.71782,
+    "lon": -3.27745,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
   }
 ]
