@@ -674,12 +674,13 @@
     "lon": -80.4465,
     "type": "beach",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Cocoa Beach",
@@ -691,12 +692,13 @@
     "lon": -80.6013,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "New Smyrna Beach",
@@ -814,12 +816,13 @@
     "lon": -74.03275,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Asbury Park",
@@ -7909,12 +7912,13 @@
     "lon": -75.967767,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Rehoboth Beach",
@@ -7978,12 +7982,13 @@
     "lon": -74.0138,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Ocean City",
