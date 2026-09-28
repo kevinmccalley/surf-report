@@ -12154,5 +12154,90 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "S-Turns",
+    "aliases": [
+      "S Turns"
+    ],
+    "country": "Rodanthe, NC",
+    "lat": 35.60783,
+    "lon": -75.4649,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Rodanthe Pier",
+    "aliases": [
+      "Rodanthe"
+    ],
+    "country": "Rodanthe, NC",
+    "lat": 35.58533,
+    "lon": -75.46095,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Frisco Pier",
+    "aliases": [
+      "Frisco"
+    ],
+    "country": "Frisco, NC",
+    "lat": 35.22488,
+    "lon": -75.6361,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Kitty Hawk Pier",
+    "aliases": [
+      "Kitty Hawk"
+    ],
+    "country": "Kitty Hawk, NC",
+    "lat": 36.10168,
+    "lon": -75.71117,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Isle of Palms Pier",
+    "aliases": [
+      "Isle of Palms"
+    ],
+    "country": "Isle of Palms, SC",
+    "lat": 32.7867,
+    "lon": -79.77757,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
   }
 ]
