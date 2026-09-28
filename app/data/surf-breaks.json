@@ -2035,12 +2035,13 @@
     "lon": -13.666633,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Famara",
@@ -5415,12 +5416,13 @@
     "lon": -13.5736,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Los Lobos",
@@ -12096,10 +12098,11 @@
     "lon": -67.07742,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-27"
   },
@@ -12114,10 +12117,11 @@
     "lon": -67.16427,
     "type": null,
     "direction": null,
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-27"
   },
