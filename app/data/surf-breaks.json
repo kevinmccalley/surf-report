@@ -2210,9 +2210,7 @@
   },
   {
     "name": "Lahinch",
-    "aliases": [
-      "Crab Island"
-    ],
+    "aliases": [],
     "country": "County Clare, Ireland",
     "lat": 52.935,
     "lon": -9.352,
@@ -11840,6 +11838,134 @@
       "wannasurf",
       "osm-water-audit",
       "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Aileens",
+    "aliases": [
+      "Aill na Searrach"
+    ],
+    "country": "County Clare, Ireland",
+    "lat": 52.9841,
+    "lon": -9.43893,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Crab Island",
+    "aliases": [],
+    "country": "County Clare, Ireland",
+    "lat": 53.01562,
+    "lon": -9.41512,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Doolin Point",
+    "aliases": [
+      "Doolin"
+    ],
+    "country": "County Clare, Ireland",
+    "lat": 53.01287,
+    "lon": -9.4068,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Spanish Point",
+    "aliases": [
+      "Spanish Point Reefs"
+    ],
+    "country": "County Clare, Ireland",
+    "lat": 52.8455,
+    "lon": -9.44245,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Brandon Bay",
+    "aliases": [],
+    "country": "County Kerry, Ireland",
+    "lat": 52.28942,
+    "lon": -10.03277,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Garretstown",
+    "aliases": [],
+    "country": "County Cork, Ireland",
+    "lat": 51.64195,
+    "lon": -8.57758,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Inchydoney",
+    "aliases": [],
+    "country": "County Cork, Ireland",
+    "lat": 51.59222,
+    "lon": -8.8627,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Tramore",
+    "aliases": [
+      "Tramore Strand"
+    ],
+    "country": "County Waterford, Ireland",
+    "lat": 52.15077,
+    "lon": -7.11193,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
     ],
     "verifiedOn": "2026-09-27"
   }
