@@ -11973,5 +11973,99 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Clifton Beach",
+    "aliases": [
+      "Clifton"
+    ],
+    "country": "Hobart, Tasmania",
+    "lat": -42.99363,
+    "lon": 147.52578,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Park Beach",
+    "aliases": [],
+    "country": "Hobart, Tasmania",
+    "lat": -42.86828,
+    "lon": 147.61398,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Eaglehawk Neck",
+    "aliases": [
+      "Pirates Bay"
+    ],
+    "country": "Tasman Peninsula, Tasmania",
+    "lat": -43.0166,
+    "lon": 147.9272,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Roaring Beach",
+    "aliases": [],
+    "country": "Tasman Peninsula, Tasmania",
+    "lat": -43.08805,
+    "lon": 147.6725,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Marion Bay",
+    "aliases": [],
+    "country": "East Coast, Tasmania",
+    "lat": -42.7949,
+    "lon": 147.87288,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Friendly Beaches",
+    "aliases": [],
+    "country": "East Coast, Tasmania",
+    "lat": -41.99255,
+    "lon": 148.28623,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
   }
 ]
