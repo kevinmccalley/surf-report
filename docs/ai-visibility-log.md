@@ -9,6 +9,82 @@ has enough traffic/reviews for it to mean anything.
 
 ---
 
+## 2026-09-28 — Fifth run (scheduled, unattended)
+
+**Pages checked:** `/`, `/faq`, `/blog`, one recent post (`/blog/eleven-best-waves-for-shortboarders`,
+2026-09-24), `/spots`, `/climatology/pipeline`, plus `robots.txt`, `sitemap.xml`, `blog/rss.xml`.
+Raw HTML fetched via `curl -A ClaudeBot` into `%TEMP%\aiv\` (no scratch files written to the repo);
+counts done with JS `match(/…/g).length`, not `grep -c`.
+
+**1. Raw-HTML crawlability — PASS.** Homepage lede + "10-day" ×19; FAQ answers present (swell
+period ×52, offshore ×42, `.faq-question`/`.faq-answer` ×42 each); `/blog` lists all 14 posts;
+shortboarders post body fully SSR'd (~2,100 words, Pipeline ×23, barrel ×58); `/spots` spot names
+present (Uluwatu, Pipeline, Mavericks, Cloudbreak; 994 spots); climatology data present (ERA5 ×8,
+"significant wave height" ×9, all 12 monthly rows).
+
+**2. JSON-LD — PASS.** Unchanged from last run: `FAQPage`+`Speakable`+`BreadcrumbList` on `/faq`;
+`Blog`+`BlogPosting` on `/blog`; `BlogPosting`+`Person`+`Place`+`GeoCoordinates`+`BreadcrumbList`
+on the post; `ItemList`+`SportsActivityLocation`+`GeoCoordinates` on `/spots`; `Place`+`Dataset`+
+`BreadcrumbList` on climatology; `WebSite`+`Organization`+`SoftwareApplication` sitewide.
+
+**3. sitemap.xml + llms.txt sync — 1 NEW OPEN ITEM (not fixed), llms.txt OK.**
+- `llms.txt` Key pages still match the top-level public routes in `app/` (home, spots, regions,
+  climatology, blog, faq, accuracy, about). `/top100` and `/gallery` remain intentionally gated
+  (see 2026-09-02 entry); legal/support pages are fine to omit. No edit needed.
+- **Production `sitemap.xml` is frozen at 2026-09-21 06:31:22Z** (`Last-Modified` header,
+  `Age: 604,8xx`, `X-Vercel-Cache: HIT`) even though `app/sitemap.ts` has `revalidate = 86400`.
+  Five requests over ~2 min (ClaudeBot + Googlebot UAs, with and without a query string) did **not**
+  trigger regeneration. Consequence: the two newest posts — `eleven-best-waves-for-longboarders`
+  (09-20) and `eleven-best-waves-for-shortboarders` (09-24) — are **not in the sitemap** (12 of 14
+  posts). Last run's "should self-heal" hypothesis is therefore wrong: this is page-level ISR not
+  revalidating, not just a stale 1 h data-cache entry. By contrast `blog/rss.xml` (route handler,
+  `revalidate = 3600`) **did** regenerate on the first request this run (Age 42 → now lists all
+  14). Needs a human session: check Vercel's ISR/function logs for `/sitemap.xml`, and consider
+  whether the metadata-route sitemap is being treated as fully static in Next 16 (docs:
+  "`sitemap.js` is … cached by default unless it uses a Request-time API or dynamic config") —
+  possible fixes are an on-demand `revalidatePath('/sitemap.xml')` from the blog-publish flow /
+  Sanity webhook, or a Cache-Control'd dynamic route. Not changed unattended because it can't be
+  verified without a prod deploy.
+- Last run's fix `9ca67fa` (`/spots` index in sitemap) is on `origin/dev` but **not on master**
+  (master = `8c9dfad`, 2026-09-13), so `/spots` is still absent from the live sitemap. Expected —
+  it ships with the next dev→master promotion.
+- `<lastmod>` values: still the pinned constants; spot pages 2026-06-08 and climatology
+  2025-01-01 ×682 each are getting old but are honest "last meaningful change" dates.
+
+**4. Meta fundamentals — PASS.** title, meta description, canonical, `og:title/description/image/
+site_name`, `twitter:card` on all 6 pages. Climatology `og:image` still the generic `/api/og`
+(open item 2 below, unchanged).
+
+**5. First ~150 words — PASS with notes.** Homepage, `/faq`, `/blog`, post and `/spots` openings all
+state plainly what the page is. Climatology opener unchanged (data label, no summary sentence —
+open item 2).
+
+**6. robots.txt — PASS.** Unchanged: `Allow: /` + `/api/`, `/sign-in`, `/sign-up`, `/studio/`,
+`/debug` disallows, sitemap referenced, no bot-specific blocks.
+
+**7. Search presence — IMPROVED (informational).** Brand query "groundswell.surf surf forecast" now
+returns the homepage (`Groundswell — Surf Reports Worldwide`) and the search engine's summary quotes
+the homepage lede almost verbatim ("live conditions and a 10-day wave forecast for any surf spot on
+earth, plus 4+ years of swell history") — evidence the 09-02 lede rewrite is being extracted as
+intended. Category query "what is swell period surf forecast": not present (expected at this age).
+
+**Open items needing a human judgment call (nothing edited):**
+1. **NEW — sitemap ISR not revalidating on prod** (details in §3). Highest priority of the three:
+   every new blog post is invisible to sitemap-driven crawlers until the next deploy.
+2. **Spot-count claims (carried over, now worse).** Homepage says "**608** spots live", `/spots`
+   meta description + `llms.txt` say "**220+**", `/spots` OG subtitle says "**500+**", `/spots`
+   page + `ItemList.numberOfItems` say **994**, and `llms.txt` "Data sources" says "~6,900". Four
+   different numbers. Derive from data where possible, put through `t()` in all 5 locales, then
+   update `llms.txt` to match.
+3. **`/climatology/[slug]` opening text + per-spot OG card** (carried over, unchanged).
+
+**Fixed and committed locally:** nothing — clean pass apart from the open items above.
+
+**Housekeeping:** the untracked `/.aiv_*.html` / `.aiv_*.xml` scratch files from earlier runs are
+still in the repo root (safe to `rm .aiv_*`); this run wrote none.
+
+---
+
 ## 2026-09-21 — Fourth run (scheduled, unattended)
 
 **Pages checked:** `/`, `/faq`, `/blog`, one recent post (`/blog/eleven-best-beach-breaks-in-the-world`),
