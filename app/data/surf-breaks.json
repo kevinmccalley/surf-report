@@ -12072,5 +12072,83 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Tres Palmas",
+    "aliases": [],
+    "country": "Rincón, Puerto Rico",
+    "lat": 18.34492,
+    "lon": -67.26193,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Jobos",
+    "aliases": [],
+    "country": "Isabela, Puerto Rico",
+    "lat": 18.51448,
+    "lon": -67.07742,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Crash Boat",
+    "aliases": [
+      "Crashboats",
+      "Crash Boats"
+    ],
+    "country": "Aguadilla, Puerto Rico",
+    "lat": 18.45728,
+    "lon": -67.16427,
+    "type": null,
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Pine Grove",
+    "aliases": [],
+    "country": "Carolina, Puerto Rico",
+    "lat": 18.44445,
+    "lon": -66.01117,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "La Selva",
+    "aliases": [],
+    "country": "Fajardo, Puerto Rico",
+    "lat": 18.36895,
+    "lon": -65.69342,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
   }
 ]
