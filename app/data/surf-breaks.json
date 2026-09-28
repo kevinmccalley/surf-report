@@ -4110,12 +4110,13 @@
     "lon": -9.3352,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Sao Juliao",
@@ -4270,12 +4271,13 @@
     "lon": -8.8713,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Praia do Amado",
@@ -4288,12 +4290,13 @@
     "lon": -8.904,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Zavial",
@@ -11866,10 +11869,11 @@
     "lon": -9.41512,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-27"
   },
@@ -11900,10 +11904,11 @@
     "lon": -9.44245,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-27"
   },
