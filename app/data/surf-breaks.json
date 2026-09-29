@@ -12242,5 +12242,69 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Barra de Navidad",
+    "aliases": [
+      "Barra"
+    ],
+    "country": "Barra de Navidad, Jalisco",
+    "lat": 19.20467,
+    "lon": -104.69267,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Arroyo Seco",
+    "aliases": [],
+    "country": "La Huerta, Jalisco",
+    "lat": 19.31722,
+    "lon": -104.94572,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "El Tecuán",
+    "aliases": [
+      "El Tecuan"
+    ],
+    "country": "Cabo Corrientes, Jalisco",
+    "lat": 20.23765,
+    "lon": -105.57383,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Chacala",
+    "aliases": [],
+    "country": "Chacala, Nayarit",
+    "lat": 21.18757,
+    "lon": -105.22988,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
   }
 ]
