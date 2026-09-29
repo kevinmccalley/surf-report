@@ -6575,12 +6575,13 @@
     "lon": -97.046767,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Carrizalillo",
@@ -6590,12 +6591,13 @@
     "lon": -97.079,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Rio Nexpa",
@@ -6657,12 +6659,13 @@
     "lon": -105.41715,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Las Islitas",
@@ -6675,12 +6678,13 @@
     "lon": -105.24705,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Sayulita",
@@ -12300,10 +12304,11 @@
     "lon": -105.22988,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-27"
   }
