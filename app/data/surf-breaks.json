@@ -12331,5 +12331,101 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Pease Bay",
+    "aliases": [],
+    "country": "Scottish Borders, Scotland",
+    "lat": 55.93247,
+    "lon": -2.33322,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Coldingham Bay",
+    "aliases": [
+      "Coldingham"
+    ],
+    "country": "Scottish Borders, Scotland",
+    "lat": 55.89255,
+    "lon": -2.13048,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "South Shields",
+    "aliases": [],
+    "country": "Tyne and Wear, UK",
+    "lat": 54.99543,
+    "lon": -1.4035,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Aberdeen Beach",
+    "aliases": [
+      "Aberdeen"
+    ],
+    "country": "Aberdeen, Scotland",
+    "lat": 57.16463,
+    "lon": -2.07933,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "St Andrews",
+    "aliases": [
+      "East Sands"
+    ],
+    "country": "Fife, Scotland",
+    "lat": 56.33648,
+    "lon": -2.78122,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Kingsbarns",
+    "aliases": [],
+    "country": "Fife, Scotland",
+    "lat": 56.29773,
+    "lon": -2.63528,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
   }
 ]
