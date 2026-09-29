@@ -12311,5 +12311,22 @@
       "surfline"
     ],
     "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "The Ranch",
+    "aliases": [
+      "El Rancho"
+    ],
+    "country": "Troncones, Guerrero",
+    "lat": 17.91645,
+    "lon": -101.86905,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
   }
 ]
