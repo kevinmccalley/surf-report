@@ -12429,5 +12429,129 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Soup Bowl",
+    "aliases": [
+      "Bathsheba"
+    ],
+    "country": "Bathsheba, Barbados",
+    "lat": 13.21437,
+    "lon": -59.52258,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Freights Bay",
+    "aliases": [
+      "Freights"
+    ],
+    "country": "Oistins, Barbados",
+    "lat": 13.05875,
+    "lon": -59.53808,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "South Point",
+    "aliases": [],
+    "country": "Christ Church, Barbados",
+    "lat": 13.04512,
+    "lon": -59.52887,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Duppies",
+    "aliases": [],
+    "country": "St. Lucy, Barbados",
+    "lat": 13.31553,
+    "lon": -59.64435,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Maycocks",
+    "aliases": [],
+    "country": "St. Lucy, Barbados",
+    "lat": 13.28228,
+    "lon": -59.64988,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Tropicana",
+    "aliases": [],
+    "country": "St. James, Barbados",
+    "lat": 13.21912,
+    "lon": -59.64248,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Sandy Lane",
+    "aliases": [],
+    "country": "St. James, Barbados",
+    "lat": 13.17258,
+    "lon": -59.63777,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Crane Beach",
+    "aliases": [],
+    "country": "St. Philip, Barbados",
+    "lat": 13.09975,
+    "lon": -59.44993,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
   }
 ]
