@@ -2235,12 +2235,13 @@
     "lon": -9.7258,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-04"
   },
   {
     "name": "Hash Point",
@@ -4742,12 +4743,13 @@
     "lon": -9.824,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-10-04"
   },
   {
     "name": "Tamri",
