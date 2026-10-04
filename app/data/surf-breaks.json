@@ -12340,12 +12340,13 @@
     "lon": -2.33322,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-27"
+    "verifiedOn": "2026-10-04"
   },
   {
     "name": "Coldingham Bay",
@@ -12357,12 +12358,13 @@
     "lon": -2.13048,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-27"
+    "verifiedOn": "2026-10-04"
   },
   {
     "name": "South Shields",
