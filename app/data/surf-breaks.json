@@ -1111,12 +1111,13 @@
     "lon": -116.809683,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-12"
+    "verifiedOn": "2026-10-05"
   },
   {
     "name": "Punta Baja",
@@ -6778,12 +6779,13 @@
     "lon": -116.790583,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-10-05"
   },
   {
     "name": "Baja Malibu",
@@ -6810,12 +6812,13 @@
     "lon": -123.9682,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-05"
   },
   {
     "name": "Cannon Beach",
