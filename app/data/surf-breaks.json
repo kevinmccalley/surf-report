@@ -12845,5 +12845,169 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Santa Bárbara",
+    "aliases": [
+      "Areias",
+      "Praia de Santa Barbara",
+      "Santa Barbara"
+    ],
+    "country": "São Miguel, Azores",
+    "lat": 37.81778,
+    "lon": -25.54853,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Rabo de Peixe",
+    "aliases": [],
+    "country": "São Miguel, Azores",
+    "lat": 37.81682,
+    "lon": -25.59042,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Mosteiros",
+    "aliases": [
+      "Ponta dos Mosteiros"
+    ],
+    "country": "São Miguel, Azores",
+    "lat": 37.88833,
+    "lon": -25.82515,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Pópulo",
+    "aliases": [
+      "Populo",
+      "Praia do Pópulo"
+    ],
+    "country": "São Miguel, Azores",
+    "lat": 37.74993,
+    "lon": -25.62393,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Praia Formosa",
+    "aliases": [],
+    "country": "Santa Maria, Azores",
+    "lat": 36.95107,
+    "lon": -25.09837,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Anjos",
+    "aliases": [],
+    "country": "Santa Maria, Azores",
+    "lat": 37.00542,
+    "lon": -25.15657,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Fajã da Caldeira de Santo Cristo",
+    "aliases": [
+      "Faja da Caldeira",
+      "Santo Cristo"
+    ],
+    "country": "São Jorge, Azores",
+    "lat": 38.62817,
+    "lon": -27.92747,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Fajã dos Cubres",
+    "aliases": [
+      "Faja dos Cubres"
+    ],
+    "country": "São Jorge, Azores",
+    "lat": 38.64293,
+    "lon": -27.96337,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Contendas",
+    "aliases": [],
+    "country": "Terceira, Azores",
+    "lat": 38.6457,
+    "lon": -27.078,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Vila Nova",
+    "aliases": [],
+    "country": "Terceira, Azores",
+    "lat": 38.79128,
+    "lon": -27.12752,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
   }
 ]
