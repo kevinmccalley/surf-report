@@ -12908,10 +12908,11 @@
     "lon": -25.62393,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-10-05"
   },
@@ -12988,10 +12989,11 @@
     "lon": -27.078,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-10-05"
   },
