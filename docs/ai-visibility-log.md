@@ -9,6 +9,92 @@ has enough traffic/reviews for it to mean anything.
 
 ---
 
+## 2026-10-05 — Sixth run (scheduled, unattended)
+
+**Pages checked:** `/`, `/faq`, `/blog`, one recent post (`/blog/eleven-best-breaks-for-beginner-surfers`,
+2026-09-28), `/spots`, `/climatology/pipeline`, plus `robots.txt`, `sitemap.xml`, `blog/rss.xml`,
+`llms.txt`, `llms-full.txt`. Raw HTML fetched with a `ClaudeBot` user-agent (Node `fetch`, no JS
+execution) into `%TEMP%\aiv-1005\` — no scratch files written to the repo; counts done with JS
+`match(/…/g).length`, not `grep -c`.
+
+**1. Raw-HTML crawlability — PASS.** Homepage lede + "10-day" ×19; FAQ answers present (swell
+period ×52, offshore ×42); `/blog` links all 15 posts; beginner-surfers post body fully SSR'd
+(~2,300 visible words, "beginner" ×89, Waikiki ×13); `/spots` spot names present (Uluwatu,
+Pipeline, Mavericks; 994 spots); climatology data present (ERA5 ×8, "significant wave height" ×9,
+all 12 monthly rows).
+
+**2. JSON-LD — PASS.** Unchanged: `FAQPage` (20 Q/A) + `SpeakableSpecification` + `BreadcrumbList`
+on `/faq` — `.faq-question` / `.faq-answer` each exist on 20 real elements (last run's "×42"
+counted the string, including the JSON-LD/RSC payload; 20 is the `class="…"` attribute count and
+matches the 20 questions); `Blog`+`BlogPosting` ×10 on `/blog`; `BlogPosting`+`Person`+`Place` ×10+
+`GeoCoordinates`+`BreadcrumbList` on the post (`datePublished`/`dateModified` both 2026-09-28);
+`ItemList` (`numberOfItems` 994)+`SportsActivityLocation` ×100 on `/spots`; `Place`+`Dataset`+
+`BreadcrumbList` on climatology; `WebSite`+`Organization`+`SoftwareApplication` sitewide.
+
+**3. sitemap.xml + llms.txt sync — OPEN ITEM 1 STILL OPEN AND WORSE, llms.txt OK.**
+- `llms.txt` Key pages still match the top-level public routes in `app/` (no new route dirs since
+  last run). Live `llms.txt` differs from the repo only by the `/about` line (`9ca67fa`, on `dev`,
+  not yet on master). No edit needed.
+- **Production `sitemap.xml` now omits the 3 newest posts** (12 of 15): `…-for-longboarders`
+  (09-20), `…-for-shortboarders` (09-24), `…-for-beginner-surfers` (09-28). Content is identical
+  to the 09-21 and 09-28 fetches (1,457 URLs, newest blog `<lastmod>` 2026-09-16). New evidence
+  for whoever picks this up:
+  - There has been **no production deploy since 2026-09-13** (`8c9dfad`, per GitHub deployments),
+    yet the sitemap contains the 09-16 post — so it *did* regenerate once after the build (on or
+    before 09-21) and has not picked up anything published since.
+  - This run's first request was an edge `MISS` (`Age: 0`); a second request 66 s later was an
+    edge `HIT` with the same 12-post body. Last run saw `Age ≈ 604,800` = the edge had held the
+    previous run's copy for a full week. So the edge keeps whatever the origin hands it for 7+
+    days, and the origin copy is itself ≥2 weeks stale — `revalidate = 86400` is not producing a
+    daily refresh in practice.
+  - `blog/rss.xml` behaved correctly again: first request `X-Vercel-Cache: PRERENDER` with a stale
+    12-item body, second request 15 items. Same Sanity filter, so the data is fine — it's the
+    sitemap route's caching.
+  - Working hypothesis (unverified): each rare sitemap regeneration reads `getAllSlugsWithDate()`
+    from the 1 h fetch data-cache stale-while-revalidate, so it bakes in the *previous* fetch's
+    result, and regenerations are rare because the edge shields the origin. Either way the fix
+    is the same as proposed last run: on-demand `revalidatePath('/sitemap.xml')` from
+    `scripts/blog-publish` / a Sanity webhook, or serve the sitemap dynamically with an explicit
+    `s-maxage`. Not changed unattended — can't be verified without a prod deploy.
+- `/spots` index still absent from the live sitemap (fix `9ca67fa` is on `dev`; master is still
+  `8c9dfad`, now 259 commits behind `origin/dev`). Ships with the next dev→master promotion.
+- `<lastmod>` values: pinned constants, unchanged (spot pages 2026-06-08, climatology 2025-01-01).
+
+**4. Meta fundamentals — PASS.** title, meta description, canonical, `og:title/description/image/
+site_name`, `twitter:card`, single `<h1>` on all 6 pages. Climatology `og:image` still the generic
+`/api/og` (open item 3).
+
+**5. First ~150 words — PASS with notes.** Homepage, `/faq`, `/blog`, post and `/spots` openings
+state plainly what the page is. Climatology opener unchanged (data labels, no summary sentence —
+open item 3).
+
+**6. robots.txt — PASS.** Unchanged: `Allow: /` + `/api/`, `/sign-in`, `/sign-up`, `/studio/`,
+`/debug` disallows, sitemap referenced, no bot-specific blocks.
+
+**7. Search presence — no material change (informational).** Brand query "groundswell.surf surf
+forecast" still returns the homepage, and the engine summary again quotes the lede ("live
+conditions and a 10-day wave forecast for any surf spot on earth, plus 4+ years of swell
+history") — and also quotes "608 spots live", so the inconsistent spot count (open item 2) is now
+being repeated by answer engines. Category query "what is swell period surf forecast": not present
+(expected).
+
+**Open items needing a human judgment call (nothing edited):**
+1. **Sitemap not refreshing on prod** (§3) — carried over, now 3 posts missing. Highest priority.
+2. **Spot-count claims** — carried over, unchanged: homepage "608 spots live", `/spots` meta
+   description + `llms.txt` "220+", `/spots` OG subtitle "500+", `/spots` page + `ItemList` 994,
+   `llms.txt` Data sources "~6,900". In-app copy → needs `t()` ×5 locales, then `llms.txt`.
+3. **`/climatology/[slug]` opening text + per-spot OG card** — carried over, unchanged.
+4. **dev→master promotion is overdue for SEO purposes** — `/spots` in the sitemap and `/about` in
+   `llms.txt` have been waiting on `dev` since 09-21.
+
+**Fixed and committed locally:** nothing in app/SEO files — no mechanical fix was available this
+run. Only this log entry is committed.
+
+**Housekeeping:** the untracked `/.aiv_*.html` / `.aiv_*.xml` scratch files from earlier runs are
+still in the repo root (safe to `rm .aiv_*`); this run wrote none.
+
+---
+
 ## 2026-09-28 — Fifth run (scheduled, unattended)
 
 **Pages checked:** `/`, `/faq`, `/blog`, one recent post (`/blog/eleven-best-waves-for-shortboarders`,
