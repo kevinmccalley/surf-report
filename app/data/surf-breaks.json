@@ -12555,5 +12555,153 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Cactus",
+    "aliases": [
+      "Cactus Beach",
+      "Point Sinclair"
+    ],
+    "country": "Penong, South Australia",
+    "lat": -32.09558,
+    "lon": 132.99573,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Granites",
+    "aliases": [],
+    "country": "Streaky Bay, South Australia",
+    "lat": -32.87878,
+    "lon": 134.08217,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Blackfellows",
+    "aliases": [
+      "Blacks"
+    ],
+    "country": "Elliston, South Australia",
+    "lat": -33.61998,
+    "lon": 134.83053,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Daly Heads",
+    "aliases": [
+      "Daly Head"
+    ],
+    "country": "Yorke Peninsula, South Australia",
+    "lat": -35.03285,
+    "lon": 136.93372,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Middleton Point",
+    "aliases": [],
+    "country": "Middleton, South Australia",
+    "lat": -35.515,
+    "lon": 138.70848,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Knights Beach",
+    "aliases": [
+      "Knights"
+    ],
+    "country": "Port Elliot, South Australia",
+    "lat": -35.53332,
+    "lon": 138.68932,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Waitpinga",
+    "aliases": [
+      "Waitpinga Beach"
+    ],
+    "country": "Fleurieu Peninsula, South Australia",
+    "lat": -35.63442,
+    "lon": 138.49803,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Parsons Beach",
+    "aliases": [
+      "Parsons"
+    ],
+    "country": "Fleurieu Peninsula, South Australia",
+    "lat": -35.63217,
+    "lon": 138.47343,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Pennington Bay",
+    "aliases": [],
+    "country": "Kangaroo Island, South Australia",
+    "lat": -35.854,
+    "lon": 137.74487,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
   }
 ]
