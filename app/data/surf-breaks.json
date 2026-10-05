@@ -12705,5 +12705,142 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Jardim do Mar",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.73767,
+    "lon": -17.21323,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Paul do Mar",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.7597,
+    "lon": -17.23232,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Ponta Pequena",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.7465,
+    "lon": -17.22065,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Lugar de Baixo",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.67875,
+    "lon": -17.08773,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Achadas da Cruz",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.85107,
+    "lon": -17.22008,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Ribeira da Janela",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.85102,
+    "lon": -17.15012,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Contreira",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.8418,
+    "lon": -17.14032,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "São Vicente",
+    "aliases": [
+      "Sao Vicente"
+    ],
+    "country": "Madeira, Portugal",
+    "lat": 32.80882,
+    "lon": -17.05007,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Porto da Cruz",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.76868,
+    "lon": -16.82097,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
   }
 ]
