@@ -13011,5 +13011,105 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "N'Gor Right",
+    "aliases": [
+      "Ngor Right",
+      "Ngor Rights"
+    ],
+    "country": "Dakar, Senegal",
+    "lat": 14.7541,
+    "lon": -17.51725,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "N'Gor Left",
+    "aliases": [
+      "Ngor Left"
+    ],
+    "country": "Dakar, Senegal",
+    "lat": 14.75615,
+    "lon": -17.51118,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Ouakam",
+    "aliases": [],
+    "country": "Dakar, Senegal",
+    "lat": 14.71385,
+    "lon": -17.49175,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Club Med",
+    "aliases": [],
+    "country": "Dakar, Senegal",
+    "lat": 14.7406,
+    "lon": -17.52812,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Yoff",
+    "aliases": [
+      "Yoff Beach",
+      "Yoff Plage"
+    ],
+    "country": "Dakar, Senegal",
+    "lat": 14.76243,
+    "lon": -17.46312,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Yenne",
+    "aliases": [
+      "Yene"
+    ],
+    "country": "Petite Côte, Senegal",
+    "lat": 14.64835,
+    "lon": -17.18468,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
   }
 ]
