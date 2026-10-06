@@ -13115,5 +13115,82 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Ponta Preta",
+    "aliases": [],
+    "country": "Sal, Cape Verde",
+    "lat": 16.6125,
+    "lon": -22.93258,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Palmeira",
+    "aliases": [],
+    "country": "Sal, Cape Verde",
+    "lat": 16.75212,
+    "lon": -22.9791,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Sandy Beach",
+    "aliases": [],
+    "country": "São Vicente, Cape Verde",
+    "lat": 16.86337,
+    "lon": -24.87905,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Santa Mónica",
+    "aliases": [
+      "Santa Monica"
+    ],
+    "country": "Boa Vista, Cape Verde",
+    "lat": 15.99367,
+    "lon": -22.89482,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Cidade Velha",
+    "aliases": [],
+    "country": "Santiago, Cape Verde",
+    "lat": 14.91503,
+    "lon": -23.60955,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
   }
 ]
