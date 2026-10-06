@@ -13401,5 +13401,142 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Capo Mannu",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 40.03005,
+    "lon": 8.3834,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Mini Capo",
+    "aliases": [
+      "Minicapo"
+    ],
+    "country": "Sardinia, Italy",
+    "lat": 40.02938,
+    "lon": 8.39218,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Sa Mesa Longa",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 40.04758,
+    "lon": 8.39878,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "S'Archittu",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 40.08788,
+    "lon": 8.49085,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Buggerru",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 39.4045,
+    "lon": 8.40132,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Chia",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 38.8945,
+    "lon": 8.87902,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Porto Ferro",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 40.6848,
+    "lon": 8.20302,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Racca Point",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 39.20545,
+    "lon": 9.31272,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Badesi",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 40.9821,
+    "lon": 8.8536,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
   }
 ]
