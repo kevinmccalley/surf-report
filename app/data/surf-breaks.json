@@ -2732,12 +2732,13 @@
     "lon": 73.5851,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Chickens",
@@ -2958,12 +2959,13 @@
     "lon": 144.3102,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Snapper Rocks",
@@ -4949,12 +4951,13 @@
     "lon": 27.9533,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-29"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Seal Point",
@@ -5225,13 +5228,14 @@
     "lon": 80.3905,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "surf-forecast",
       "osm",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Rams Right",
@@ -5738,12 +5742,13 @@
     "lon": 174.0966,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Stent Road",
