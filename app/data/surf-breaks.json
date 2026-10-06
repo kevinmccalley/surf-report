@@ -13196,5 +13196,101 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Tamarin Bay",
+    "aliases": [
+      "Tamarin"
+    ],
+    "country": "Tamarin, Mauritius",
+    "lat": -20.3277,
+    "lon": 57.3746,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Black Rocks",
+    "aliases": [],
+    "country": "Tamarin, Mauritius",
+    "lat": -20.31838,
+    "lon": 57.36752,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "One Eye",
+    "aliases": [
+      "One Eyes"
+    ],
+    "country": "Le Morne, Mauritius",
+    "lat": -20.45247,
+    "lon": 57.31022,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Le Morne",
+    "aliases": [],
+    "country": "Le Morne, Mauritius",
+    "lat": -20.44407,
+    "lon": 57.30795,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Darne",
+    "aliases": [],
+    "country": "Mahébourg, Mauritius",
+    "lat": -20.45133,
+    "lon": 57.70927,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Grand Sancho",
+    "aliases": [
+      "Ilot Sancho"
+    ],
+    "country": "Souillac, Mauritius",
+    "lat": -20.50712,
+    "lon": 57.44935,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
   }
 ]
