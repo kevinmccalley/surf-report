@@ -1410,12 +1410,13 @@
     "lon": -77.0378,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-28"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Punta de Lobos",
@@ -1463,13 +1464,14 @@
     "lon": -70.3329,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
       "surf-forecast",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-28"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "El Colegio",
@@ -1499,12 +1501,13 @@
     "lon": -32.439533,
     "type": "beach",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-09"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Itaúna Beach",
@@ -6370,12 +6373,13 @@
     "lon": -38.982933,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Lakey Peak",
