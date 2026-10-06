@@ -13297,5 +13297,101 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Unstad",
+    "aliases": [],
+    "country": "Lofoten, Norway",
+    "lat": 68.27193,
+    "lon": 13.57498,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Hoddevik",
+    "aliases": [],
+    "country": "Stad, Norway",
+    "lat": 62.1246,
+    "lon": 5.15877,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Flø",
+    "aliases": [
+      "Flo"
+    ],
+    "country": "Ulsteinvik, Norway",
+    "lat": 62.40655,
+    "lon": 5.85267,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Farstad",
+    "aliases": [
+      "Farstadstranda"
+    ],
+    "country": "Hustadvika, Norway",
+    "lat": 62.98378,
+    "lon": 7.15055,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Hellestø",
+    "aliases": [
+      "Hellesto"
+    ],
+    "country": "Jæren, Norway",
+    "lat": 58.8461,
+    "lon": 5.55982,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Sele",
+    "aliases": [],
+    "country": "Jæren, Norway",
+    "lat": 58.81367,
+    "lon": 5.54207,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
   }
 ]
