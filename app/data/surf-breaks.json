@@ -1837,12 +1837,13 @@
     "lon": -3.0067,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-28"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Orrua",
@@ -1923,12 +1924,13 @@
     "lon": -4.0477,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-28"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "El Brusco",
@@ -5563,12 +5565,13 @@
     "lon": -15.6548,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "La Cícer",
@@ -5581,12 +5584,13 @@
     "lon": -15.4478,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "El Socorro",
@@ -7273,13 +7277,14 @@
     "lon": -5.16,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wikipedia",
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Watergate Bay",
@@ -7409,12 +7414,13 @@
     "lon": -8.95,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Strandhill",
