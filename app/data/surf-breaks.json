@@ -13646,5 +13646,163 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Jinzun Harbour",
+    "aliases": [
+      "Jinzun",
+      "Jinzun Harbor"
+    ],
+    "country": "Taitung, Taiwan",
+    "lat": 22.95438,
+    "lon": 121.29613,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Donghe Rivermouth",
+    "aliases": [
+      "Donghe"
+    ],
+    "country": "Taitung, Taiwan",
+    "lat": 22.97572,
+    "lon": 121.31368,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Chenggong",
+    "aliases": [
+      "Cheng-Gong"
+    ],
+    "country": "Taitung, Taiwan",
+    "lat": 23.09603,
+    "lon": 121.3687,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Jialeshui",
+    "aliases": [
+      "Jia Le Shui",
+      "Jialeshuei"
+    ],
+    "country": "Kenting, Taiwan",
+    "lat": 21.98735,
+    "lon": 120.84583,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Nanwan",
+    "aliases": [
+      "Nan Wan",
+      "South Bay"
+    ],
+    "country": "Kenting, Taiwan",
+    "lat": 21.95828,
+    "lon": 120.76033,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Fulong",
+    "aliases": [
+      "Fulong Beach"
+    ],
+    "country": "New Taipei, Taiwan",
+    "lat": 25.0219,
+    "lon": 121.94627,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Daxi",
+    "aliases": [
+      "Dashi",
+      "Honeymoon Bay"
+    ],
+    "country": "Yilan, Taiwan",
+    "lat": 24.93237,
+    "lon": 121.88642,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Wushi Harbor",
+    "aliases": [
+      "Wushi",
+      "Wu-Shi Harbor"
+    ],
+    "country": "Yilan, Taiwan",
+    "lat": 24.87243,
+    "lon": 121.84232,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Wai-ao",
+    "aliases": [
+      "Waiao"
+    ],
+    "country": "Yilan, Taiwan",
+    "lat": 24.7169,
+    "lon": 121.84387,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
   }
 ]
