@@ -13573,10 +13573,11 @@
     "lon": -68.53623,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-10-07"
   },
@@ -13588,10 +13589,11 @@
     "lon": -69.6317,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-10-07"
   },
@@ -13622,10 +13624,11 @@
     "lon": -70.18883,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-10-07"
   },
