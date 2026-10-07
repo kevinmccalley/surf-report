@@ -13545,5 +13545,103 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Encuentro",
+    "aliases": [
+      "Playa Encuentro"
+    ],
+    "country": "Cabarete, Dominican Republic",
+    "lat": 19.7825,
+    "lon": -70.44778,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Macao",
+    "aliases": [
+      "Playa Macao"
+    ],
+    "country": "Punta Cana, Dominican Republic",
+    "lat": 18.77388,
+    "lon": -68.53623,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "La Boya",
+    "aliases": [],
+    "country": "Juan Dolio, Dominican Republic",
+    "lat": 18.43295,
+    "lon": -69.6317,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Guibia",
+    "aliases": [
+      "Güibia"
+    ],
+    "country": "Santo Domingo, Dominican Republic",
+    "lat": 18.45837,
+    "lon": -69.9057,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Patho",
+    "aliases": [
+      "Patho Beach"
+    ],
+    "country": "Baní, Dominican Republic",
+    "lat": 18.22897,
+    "lon": -70.18883,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "San Rafael",
+    "aliases": [],
+    "country": "Barahona, Dominican Republic",
+    "lat": 18.02982,
+    "lon": -71.1372,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
   }
 ]
