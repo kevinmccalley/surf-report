@@ -13810,5 +13810,126 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Boucan Canot",
+    "aliases": [
+      "Boucan"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.02695,
+    "lon": 55.22512,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Aigrettes",
+    "aliases": [
+      "Les Aigrettes"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.03447,
+    "lon": 55.21807,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "L'Hermitage",
+    "aliases": [
+      "Hermitage",
+      "Passe de l’Hermitage"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.08588,
+    "lon": 55.2231,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Kélonia",
+    "aliases": [
+      "Kelonia",
+      "La Ferme Corail"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.15433,
+    "lon": 55.27823,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Étang-Salé",
+    "aliases": [
+      "Etang-Sale",
+      "Etang Sale"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.26382,
+    "lon": 55.32843,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Le Jetty",
+    "aliases": [
+      "Saint-Pierre",
+      "Jetty St Pierre"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.34692,
+    "lon": 55.47643,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Manapany",
+    "aliases": [],
+    "country": "Réunion Island, France",
+    "lat": -21.37362,
+    "lon": 55.58752,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
   }
 ]
