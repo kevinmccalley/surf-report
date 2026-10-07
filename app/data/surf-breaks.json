@@ -7079,12 +7079,13 @@
     "lon": 126.157383,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Pacifico",
@@ -7202,12 +7203,13 @@
     "lon": 124.3976,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Lanuza Rivermouth",
@@ -8643,12 +8645,13 @@
     "lon": 73.5838,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Cokes",
@@ -8693,13 +8696,14 @@
     "lon": 73.57827,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Lohis",
@@ -8757,12 +8761,13 @@
     "lon": 73.4756,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Gurus",
@@ -13728,10 +13733,11 @@
     "lon": 120.76033,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-10-07"
   },
