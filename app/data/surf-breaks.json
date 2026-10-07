@@ -13937,5 +13937,103 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Salani Right",
+    "aliases": [
+      "Salani"
+    ],
+    "country": "Upolu, Samoa",
+    "lat": -14.03997,
+    "lon": -171.61525,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Salani Left",
+    "aliases": [],
+    "country": "Upolu, Samoa",
+    "lat": -14.0425,
+    "lon": -171.61253,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Devils Island",
+    "aliases": [
+      "Nu'usafe'e",
+      "Nu'usafee Island"
+    ],
+    "country": "Upolu, Samoa",
+    "lat": -14.05117,
+    "lon": -171.69035,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Tiavea",
+    "aliases": [
+      "Tiavea Bay",
+      "Tiavea Rivermouth"
+    ],
+    "country": "Upolu, Samoa",
+    "lat": -13.96985,
+    "lon": -171.46792,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Waterfalls",
+    "aliases": [],
+    "country": "Upolu, Samoa",
+    "lat": -13.86223,
+    "lon": -171.66493,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Aganoa",
+    "aliases": [],
+    "country": "Savai'i, Samoa",
+    "lat": -13.77508,
+    "lon": -172.28722,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
   }
 ]
