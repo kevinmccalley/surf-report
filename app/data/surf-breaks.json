@@ -7725,12 +7725,13 @@
     "lon": -156.50905,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Lahaina Breakwall",
@@ -7743,12 +7744,13 @@
     "lon": -156.679333,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Launiupoko",
@@ -7760,12 +7762,13 @@
     "lon": -156.653017,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Olowalu",
@@ -8828,12 +8831,13 @@
     "lon": 174.79292,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Asu",
@@ -10550,12 +10554,13 @@
     "lon": -149.622367,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-13"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Papenoo",
@@ -10580,12 +10585,13 @@
     "lon": -149.581083,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-13"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Vairao",
@@ -10595,12 +10601,13 @@
     "lon": -149.313333,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-13"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Point Venus",
