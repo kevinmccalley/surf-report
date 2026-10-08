@@ -3,8 +3,11 @@ import { getAllSpots, getSpotSlug } from '@/app/lib/surf-spots'
 import { getSurfRegions, getSurfRegionsByCountry } from '@/app/lib/surf-regions'
 import { getAllSlugsWithDate } from '@/app/lib/sanity'
 
-// Regenerate once a day on first request — Sanity API call skipped at build time.
-export const revalidate = 86400
+// Rendered per request, never prerendered or ISR-cached. With `revalidate = 86400` the
+// route was hit so rarely (crawlers only) that every regeneration served and re-baked
+// stale blog data, and new posts stayed out of the sitemap for weeks. One uncached
+// Sanity query per crawler visit is cheap; the Sanity call is still skipped at build time.
+export const dynamic = 'force-dynamic'
 
 // Pinned to the date each page last had a meaningful content change.
 // Update a date here whenever you ship a significant copy or feature change to that route.
