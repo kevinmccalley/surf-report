@@ -14397,5 +14397,106 @@
       "surfline"
     ],
     "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Tamarindo",
+    "aliases": [
+      "Playa Tamarindo"
+    ],
+    "country": "Guanacaste, Costa Rica",
+    "lat": 10.30192,
+    "lon": -85.84232,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Playa Langosta",
+    "aliases": [
+      "Langosta"
+    ],
+    "country": "Guanacaste, Costa Rica",
+    "lat": 10.28612,
+    "lon": -85.85137,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Avellanas",
+    "aliases": [
+      "Playa Avellanas",
+      "Avellana"
+    ],
+    "country": "Guanacaste, Costa Rica",
+    "lat": 10.22807,
+    "lon": -85.83757,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Playa Negra",
+    "aliases": [],
+    "country": "Guanacaste, Costa Rica",
+    "lat": 10.19587,
+    "lon": -85.83228,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Junquillal",
+    "aliases": [
+      "Playa Junquillal"
+    ],
+    "country": "Guanacaste, Costa Rica",
+    "lat": 10.16832,
+    "lon": -85.81353,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Camaronal",
+    "aliases": [
+      "Playa Camaronal"
+    ],
+    "country": "Guanacaste, Costa Rica",
+    "lat": 9.8622,
+    "lon": -85.44418,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
   }
 ]
