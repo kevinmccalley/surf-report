@@ -390,6 +390,9 @@ export default function SurfApp({ tier, initialGeo }: { tier: Tier; initialGeo?:
             <a href="/spots" className="text-xs text-slate-400 hover:text-slate-200 transition-colors px-2 py-1.5 rounded-lg hover:bg-white/5">
               {t('nav.spots')}
             </a>
+            <a href="/regions" className="text-xs text-slate-400 hover:text-slate-200 transition-colors px-2 py-1.5 rounded-lg hover:bg-white/5">
+              {t('nav.regions')}
+            </a>
             <LanguageSwitcher />
             <ThemePicker />
             {isSignedIn && (
@@ -425,6 +428,9 @@ export default function SurfApp({ tier, initialGeo }: { tier: Tier; initialGeo?:
             )}
             <a href="/spots" onClick={() => setShowMenu(false)} className="text-xs text-slate-400 hover:text-slate-200 transition-colors px-3 py-1.5 rounded-lg hover:bg-white/5">
               {t('nav.spots')}
+            </a>
+            <a href="/regions" onClick={() => setShowMenu(false)} className="text-xs text-slate-400 hover:text-slate-200 transition-colors px-3 py-1.5 rounded-lg hover:bg-white/5">
+              {t('nav.regions')}
             </a>
             <LanguageSwitcher align="left" />
             <ThemePicker align="left" />
@@ -825,6 +831,7 @@ function SiteFooterLinks() {
   return (
     <nav className="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-1">
       <a href="/spots"    className="hover:text-slate-300 transition-colors">{t('nav.spots')}</a>
+      <a href="/regions"  className="hover:text-slate-300 transition-colors">{t('nav.regions')}</a>
       <a href="/blog"     className="hover:text-slate-300 transition-colors">{t('nav.blog')}</a>
       <a href="/faq"      className="hover:text-slate-300 transition-colors">{t('nav.faq')}</a>
       <a href="/about"    className="hover:text-slate-300 transition-colors">{t('nav.about')}</a>

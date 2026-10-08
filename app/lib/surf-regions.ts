@@ -1,4 +1,4 @@
-import { getAllSpots, slugify, type SurfSpot } from './surf-spots'
+import { getAllSpots, getSpotSlug, slugify, type SurfSpot } from './surf-spots'
 import { CONTINENT_I18N, type Continent } from './continents'
 import type { RegionMapPoint } from './region-map'
 
@@ -709,7 +709,7 @@ export function getRegionSpots(region: SurfRegion): SurfSpot[] {
 /** Region spots shaped for <RegionMap> — slug, name, coords, locality. */
 export function getRegionMapPoints(region: SurfRegion): RegionMapPoint[] {
   return getRegionSpots(region).map(spot => ({
-    slug: slugify(spot.name),
+    slug: getSpotSlug(spot),
     name: spot.name,
     lat: spot.lat,
     lon: spot.lon,

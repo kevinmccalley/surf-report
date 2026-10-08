@@ -26,12 +26,13 @@
     "lon": -121.9516,
     "type": "slab",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wikipedia",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Steamer Lane",
@@ -187,12 +188,13 @@
     "lon": -118.0046,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "surf-forecast",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Salt Creek",
@@ -257,13 +259,14 @@
     "lon": -117.5658,
     "type": "point",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
       "surf-forecast",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Swamis",
@@ -380,12 +383,13 @@
     "lon": -158.0528,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wikipedia",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Off The Wall",
@@ -670,12 +674,13 @@
     "lon": -80.4465,
     "type": "beach",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Cocoa Beach",
@@ -687,12 +692,13 @@
     "lon": -80.6013,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "New Smyrna Beach",
@@ -810,12 +816,13 @@
     "lon": -74.03275,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Asbury Park",
@@ -1104,12 +1111,13 @@
     "lon": -116.809683,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-12"
+    "verifiedOn": "2026-10-05"
   },
   {
     "name": "Punta Baja",
@@ -1315,12 +1323,13 @@
     "lon": -89.327567,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Las Flores",
@@ -1401,12 +1410,13 @@
     "lon": -77.0378,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-28"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Punta de Lobos",
@@ -1454,13 +1464,14 @@
     "lon": -70.3329,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
       "surf-forecast",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-28"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "El Colegio",
@@ -1490,12 +1501,13 @@
     "lon": -32.439533,
     "type": "beach",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-09"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Itaúna Beach",
@@ -1692,12 +1704,13 @@
     "lon": -1.5592,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Cote des Basques",
@@ -1709,12 +1722,13 @@
     "lon": -1.568,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Lacanau",
@@ -1756,12 +1770,13 @@
     "lon": -2.6941,
     "type": "rivermouth",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-28"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Zarautz",
@@ -1771,12 +1786,13 @@
     "lon": -2.16955,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-09"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Bakio",
@@ -1821,12 +1837,13 @@
     "lon": -3.0067,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-28"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Orrua",
@@ -1907,12 +1924,13 @@
     "lon": -4.0477,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-28"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "El Brusco",
@@ -2023,12 +2041,13 @@
     "lon": -13.666633,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Famara",
@@ -2090,12 +2109,13 @@
     "lon": -4.2415,
     "type": null,
     "direction": null,
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "ai-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Saunton Sands",
@@ -2122,12 +2142,13 @@
     "lon": -5.32123,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Lynmouth",
@@ -2199,9 +2220,7 @@
   },
   {
     "name": "Lahinch",
-    "aliases": [
-      "Crab Island"
-    ],
+    "aliases": [],
     "country": "County Clare, Ireland",
     "lat": 52.935,
     "lon": -9.352,
@@ -2222,12 +2241,13 @@
     "lon": -9.7258,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-04"
   },
   {
     "name": "Hash Point",
@@ -2491,12 +2511,13 @@
     "lon": 115.1133,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Keramas",
@@ -2506,12 +2527,13 @@
     "lon": 115.3391,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Medewi",
@@ -2630,12 +2652,13 @@
     "lon": 99.3194,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf.com (1°55.242'S 99°19.165'E, approx)",
-      "surf-forecast.com/breaks/Rifles / Kandui Right (1.92°S 99.32°E)"
+      "surf-forecast.com/breaks/Rifles / Kandui Right (1.92°S 99.32°E)",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Bank Vaults",
@@ -2680,12 +2703,13 @@
     "lon": 99.2543,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf.com (1°49.735'S 99°15.256'E, approx)",
-      "surf-forecast.com/breaks/E-Bay (1.83°S 99.25°E)"
+      "surf-forecast.com/breaks/E-Bay (1.83°S 99.25°E)",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Pasta Point",
@@ -2710,12 +2734,13 @@
     "lon": 73.5851,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Chickens",
@@ -2936,12 +2961,13 @@
     "lon": 144.3102,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Snapper Rocks",
@@ -2953,13 +2979,14 @@
     "lon": 153.5502,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wikipedia",
       "surf-forecast",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-29"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Kirra",
@@ -3146,12 +3173,13 @@
     "lon": 151.2775,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "osm",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Maroubra",
@@ -3163,12 +3191,13 @@
     "lon": 151.2574,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Cronulla",
@@ -3848,12 +3877,13 @@
     "lon": -117.882,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Doheny",
@@ -3865,12 +3895,13 @@
     "lon": -117.686,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Oceanside Pier",
@@ -4094,12 +4125,13 @@
     "lon": -9.3352,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Sao Juliao",
@@ -4254,12 +4286,13 @@
     "lon": -8.8713,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Praia do Amado",
@@ -4272,12 +4305,13 @@
     "lon": -8.904,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Zavial",
@@ -4323,12 +4357,13 @@
     "lon": -1.4465,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Les Bourdaines",
@@ -4716,12 +4751,13 @@
     "lon": -9.824,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-10-04"
   },
   {
     "name": "Tamri",
@@ -4769,12 +4805,13 @@
     "lon": 153.486,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-29"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Rainbow Bay",
@@ -4784,12 +4821,13 @@
     "lon": 153.5464,
     "type": "beach",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-29"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Angourie",
@@ -4801,12 +4839,13 @@
     "lon": 153.3661,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-29"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Broken Head",
@@ -4914,12 +4953,13 @@
     "lon": 27.9533,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-29"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Seal Point",
@@ -5190,13 +5230,14 @@
     "lon": 80.3905,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "surf-forecast",
       "osm",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Rams Right",
@@ -5389,12 +5430,13 @@
     "lon": -13.5736,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Los Lobos",
@@ -5523,12 +5565,13 @@
     "lon": -15.6548,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "La Cícer",
@@ -5541,12 +5584,13 @@
     "lon": -15.4478,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "El Socorro",
@@ -5702,12 +5746,13 @@
     "lon": 174.0966,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-30"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Stent Road",
@@ -5865,12 +5910,13 @@
     "lon": 139.5117,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Inamuragasaki",
@@ -6152,12 +6198,13 @@
     "lon": -82.20472,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Playa Bluff",
@@ -6335,12 +6382,13 @@
     "lon": -38.982933,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Lakey Peak",
@@ -6493,12 +6541,13 @@
     "lon": 106.479517,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Pacitan",
@@ -6545,12 +6594,13 @@
     "lon": -97.046767,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Carrizalillo",
@@ -6560,12 +6610,13 @@
     "lon": -97.079,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Rio Nexpa",
@@ -6627,12 +6678,13 @@
     "lon": -105.41715,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Las Islitas",
@@ -6645,12 +6697,13 @@
     "lon": -105.24705,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Sayulita",
@@ -6739,12 +6792,13 @@
     "lon": -116.790583,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-01"
+    "verifiedOn": "2026-10-05"
   },
   {
     "name": "Baja Malibu",
@@ -6771,12 +6825,13 @@
     "lon": -123.9682,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-05"
   },
   {
     "name": "Cannon Beach",
@@ -7028,12 +7083,13 @@
     "lon": 126.157383,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Pacifico",
@@ -7151,12 +7207,13 @@
     "lon": 124.3976,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Lanuza Rivermouth",
@@ -7220,13 +7277,14 @@
     "lon": -5.16,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wikipedia",
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Watergate Bay",
@@ -7356,12 +7414,13 @@
     "lon": -8.95,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Strandhill",
@@ -7399,17 +7458,17 @@
       "East Strand"
     ],
     "country": "Antrim, Northern Ireland",
-    "lat": 55.2085,
-    "lon": -6.643,
+    "lat": 55.20915,
+    "lon": -6.642267,
     "type": "beach",
     "direction": "both",
     "confidence": "provisional",
     "sources": [
       "wikipedia",
-      "editorial-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-14"
   },
   {
     "name": "Point Panic",
@@ -7421,12 +7480,13 @@
     "lon": -157.8628,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Kewalos",
@@ -7541,12 +7601,13 @@
     "lon": -157.8041,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "China Walls",
@@ -7645,12 +7706,13 @@
     "lon": -158.0323,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-09-26"
   },
   {
     "name": "Ma'alaea",
@@ -7663,12 +7725,13 @@
     "lon": -156.50905,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Lahaina Breakwall",
@@ -7681,12 +7744,13 @@
     "lon": -156.679333,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Launiupoko",
@@ -7698,12 +7762,13 @@
     "lon": -156.653017,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Olowalu",
@@ -7881,12 +7946,13 @@
     "lon": -75.967767,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Rehoboth Beach",
@@ -7950,12 +8016,13 @@
     "lon": -74.0138,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-09-27"
   },
   {
     "name": "Ocean City",
@@ -8587,12 +8654,13 @@
     "lon": 73.5838,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Cokes",
@@ -8637,13 +8705,14 @@
     "lon": 73.57827,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
       "editorial-placement",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Lohis",
@@ -8701,12 +8770,13 @@
     "lon": 73.4756,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-07"
   },
   {
     "name": "Gurus",
@@ -8761,12 +8831,13 @@
     "lon": 174.79292,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Asu",
@@ -8906,12 +8977,13 @@
     "lon": -71.96355,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-09"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Matanzas",
@@ -8921,12 +8993,13 @@
     "lon": -71.879367,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-09"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "La Boca",
@@ -9075,12 +9148,13 @@
     "lon": -70.329267,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-09"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Las Machas",
@@ -9090,12 +9164,13 @@
     "lon": -70.305033,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-09"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Cavancha",
@@ -9105,12 +9180,13 @@
     "lon": -70.148717,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-09"
+    "verifiedOn": "2026-09-14"
   },
   {
     "name": "Intendencia",
@@ -9180,12 +9256,13 @@
     "lon": -70.155017,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-09"
+    "verifiedOn": "2026-09-14"
   },
   {
     "name": "Baul",
@@ -9471,12 +9548,13 @@
     "lon": -89.38995,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "La Bocana",
@@ -9486,12 +9564,13 @@
     "lon": -89.381683,
     "type": "rivermouth",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "El Zonte",
@@ -9517,12 +9596,13 @@
     "lon": -89.439933,
     "type": "rivermouth",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "K59",
@@ -9553,12 +9633,13 @@
     "lon": -89.422167,
     "type": "point",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-09-15"
   },
   {
     "name": "Mizata",
@@ -9710,12 +9791,13 @@
     "lon": -80.815767,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-11"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Las Tunas",
@@ -9835,12 +9917,13 @@
     "lon": -80.91465,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-11"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "La Chocolatera",
@@ -9850,12 +9933,13 @@
     "lon": -80.9873,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-11"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Ocean Beach",
@@ -10017,12 +10101,13 @@
     "lon": -71.376833,
     "type": "point",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-11"
+    "verifiedOn": "2026-10-06"
   },
   {
     "name": "Teniente",
@@ -10469,12 +10554,13 @@
     "lon": -149.622367,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-13"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Papenoo",
@@ -10499,12 +10585,13 @@
     "lon": -149.581083,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-13"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Vairao",
@@ -10514,12 +10601,13 @@
     "lon": -149.313333,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-13"
+    "verifiedOn": "2026-10-08"
   },
   {
     "name": "Point Venus",
@@ -10544,10 +10632,11 @@
     "lon": -149.878667,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-09-13"
   },
@@ -10595,5 +10684,3574 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Fare",
+    "aliases": [],
+    "country": "Huahine, French Polynesia",
+    "lat": -16.7125,
+    "lon": -151.0459,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Fare Right",
+    "aliases": [],
+    "country": "Huahine, French Polynesia",
+    "lat": -16.708183,
+    "lon": -151.043883,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Fitii",
+    "aliases": [],
+    "country": "Huahine, French Polynesia",
+    "lat": -16.723583,
+    "lon": -151.049567,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Motu Mahara",
+    "aliases": [],
+    "country": "Huahine, French Polynesia",
+    "lat": -16.7215,
+    "lon": -150.976317,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Avatoru Pass",
+    "aliases": [],
+    "country": "Rangiroa, French Polynesia",
+    "lat": -14.9363,
+    "lon": -147.710067,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Faaite",
+    "aliases": [],
+    "country": "Faaite, French Polynesia",
+    "lat": -16.695083,
+    "lon": -145.351433,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-13"
+  },
+  {
+    "name": "Pakala",
+    "aliases": [
+      "Infinities"
+    ],
+    "country": "Kekaha, Kauai",
+    "lat": 21.93385,
+    "lon": -159.651,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Kalihiwai Point",
+    "aliases": [],
+    "country": "Kalihiwai, Kauai",
+    "lat": 22.2201,
+    "lon": -159.4262,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Tunnels",
+    "aliases": [],
+    "country": "Haena, Kauai",
+    "lat": 22.2284,
+    "lon": -159.563133,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Inside Poipu",
+    "aliases": [],
+    "country": "Poipu, Kauai",
+    "lat": 21.874917,
+    "lon": -159.45945,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "PK's",
+    "aliases": [
+      "Centers"
+    ],
+    "country": "Poipu, Kauai",
+    "lat": 21.880767,
+    "lon": -159.475633,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Kalapaki Beach",
+    "aliases": [],
+    "country": "Lihue, Kauai",
+    "lat": 21.957633,
+    "lon": -159.350067,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Kealia",
+    "aliases": [],
+    "country": "Kapaa, Kauai",
+    "lat": 22.09945,
+    "lon": -159.3041,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Polihale State Park",
+    "aliases": [],
+    "country": "Waimea, Kauai",
+    "lat": 22.075617,
+    "lon": -159.76945,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Cannons",
+    "aliases": [],
+    "country": "Haena, Kauai",
+    "lat": 22.224533,
+    "lon": -159.57125,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Anini Beach-Wires",
+    "aliases": [],
+    "country": "Kalihiwai, Kauai",
+    "lat": 22.227783,
+    "lon": -159.448667,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Rest Bay",
+    "aliases": [],
+    "country": "Porthcawl, Wales",
+    "lat": 51.4885,
+    "lon": -3.724933,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Freshwater East",
+    "aliases": [],
+    "country": "Pembrokeshire, Wales",
+    "lat": 51.644817,
+    "lon": -4.860383,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Whitesands",
+    "aliases": [],
+    "country": "Pembrokeshire, Wales",
+    "lat": 51.895767,
+    "lon": -5.299867,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Rhossili Bay",
+    "aliases": [
+      "Llangennith"
+    ],
+    "country": "Gower, Wales",
+    "lat": 51.569046,
+    "lon": -4.293213,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wikipedia",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "White Rocks",
+    "aliases": [],
+    "country": "Antrim, Northern Ireland",
+    "lat": 55.206517,
+    "lon": -6.6121,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Castlerock",
+    "aliases": [],
+    "country": "Londonderry, Northern Ireland",
+    "lat": 55.167317,
+    "lon": -6.7859,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Portstewart",
+    "aliases": [
+      "Portstewart Strand"
+    ],
+    "country": "Londonderry, Northern Ireland",
+    "lat": 55.171617,
+    "lon": -6.744067,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Cox Bay",
+    "aliases": [],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 49.101967,
+    "lon": -125.880317,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Chesterman Beach",
+    "aliases": [
+      "North Chesterman"
+    ],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 49.117767,
+    "lon": -125.899283,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Long Beach",
+    "aliases": [],
+    "country": "Pacific Rim National Park, British Columbia",
+    "lat": 49.070917,
+    "lon": -125.765217,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Florencia Bay",
+    "aliases": [],
+    "country": "Pacific Rim National Park, British Columbia",
+    "lat": 48.99385,
+    "lon": -125.636217,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-14"
+  },
+  {
+    "name": "Sandbridge",
+    "aliases": [],
+    "country": "Virginia Beach, VA",
+    "lat": 36.694167,
+    "lon": -75.922283,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Assateague",
+    "aliases": [],
+    "country": "Assateague Island, MD",
+    "lat": 38.2069,
+    "lon": -75.14675,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Bethany Hollywood St",
+    "aliases": [
+      "Bethany Beach"
+    ],
+    "country": "Bethany Beach, DE",
+    "lat": 38.537483,
+    "lon": -75.053333,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Fenwick Island",
+    "aliases": [],
+    "country": "Fenwick Island, DE",
+    "lat": 38.46105,
+    "lon": -75.048683,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "29th Street",
+    "aliases": [],
+    "country": "Vancouver, British Columbia",
+    "lat": 49.334967,
+    "lon": -123.194733,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Ambleside Park",
+    "aliases": [],
+    "country": "West Vancouver, British Columbia",
+    "lat": 49.325017,
+    "lon": -123.151717,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Bowie Seamount",
+    "aliases": [],
+    "country": "Haida Gwaii, British Columbia",
+    "lat": 53.307083,
+    "lon": -135.659867,
+    "type": "reef",
+    "direction": null,
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "China Beach",
+    "aliases": [],
+    "country": "Port Renfrew, British Columbia",
+    "lat": 48.433433,
+    "lon": -124.093583,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Christopher Point",
+    "aliases": [],
+    "country": "Metchosin, British Columbia",
+    "lat": 48.309236,
+    "lon": -123.560868,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm-nominatim",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Jordan River",
+    "aliases": [],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 48.419867,
+    "lon": -124.056217,
+    "type": "point",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-15"
+  },
+  {
+    "name": "Sombrio Beach",
+    "aliases": [
+      "Chickens",
+      "Firsts",
+      "Seconds",
+      "Waterfalls"
+    ],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 48.4942,
+    "lon": -124.29623,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Port Renfrew",
+    "aliases": [],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 48.56735,
+    "lon": -124.410033,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Sooke Harbour",
+    "aliases": [
+      "Whiffin Spit"
+    ],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 48.3590024,
+    "lon": -123.7145659,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm-nominatim",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Raft Cove",
+    "aliases": [],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 50.5865,
+    "lon": -128.237567,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Wickaninnish Beach",
+    "aliases": [
+      "Wickaninish"
+    ],
+    "country": "Pacific Rim National Park, British Columbia",
+    "lat": 49.0240921,
+    "lon": -125.6815053,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "osm-nominatim",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Nootka Island",
+    "aliases": [],
+    "country": "Vancouver Island, British Columbia",
+    "lat": 49.658983,
+    "lon": -126.844333,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Witty's Lagoon",
+    "aliases": [],
+    "country": "Metchosin, British Columbia",
+    "lat": 48.382867,
+    "lon": -123.51375,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-17"
+  },
+  {
+    "name": "Puerto Sandino",
+    "aliases": [
+      "Sandino"
+    ],
+    "country": "León, Nicaragua",
+    "lat": 12.1897,
+    "lon": -86.80298,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Las Peñitas",
+    "aliases": [
+      "Las Penitas",
+      "Poneloya"
+    ],
+    "country": "León, Nicaragua",
+    "lat": 12.37003,
+    "lon": -87.0367,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Pochomil",
+    "aliases": [],
+    "country": "San Rafael del Sur, Nicaragua",
+    "lat": 11.77173,
+    "lon": -86.5104,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Pie de Gigante",
+    "aliases": [
+      "Gigante Point",
+      "Pie de Gigante Point"
+    ],
+    "country": "Tola, Nicaragua",
+    "lat": 11.38387,
+    "lon": -86.03712,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Playa Amarillo",
+    "aliases": [
+      "Amarillo"
+    ],
+    "country": "Tola, Nicaragua",
+    "lat": 11.39808,
+    "lon": -86.03813,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Playa Remanso",
+    "aliases": [
+      "El Remanso",
+      "Remanso"
+    ],
+    "country": "San Juan del Sur, Nicaragua",
+    "lat": 11.22083,
+    "lon": -85.84872,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Cambutal",
+    "aliases": [
+      "Playa Cambutal"
+    ],
+    "country": "Tonosí, Panama",
+    "lat": 7.24967,
+    "lon": -80.4885,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Playa Guánico",
+    "aliases": [
+      "Guanico"
+    ],
+    "country": "Tonosí, Panama",
+    "lat": 7.27223,
+    "lon": -80.42027,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Wizard Beach",
+    "aliases": [
+      "Playa Primera"
+    ],
+    "country": "Bocas del Toro, Panama",
+    "lat": 9.3505,
+    "lon": -82.19593,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "María Chiquita",
+    "aliases": [
+      "Maria Chiquita"
+    ],
+    "country": "Colón, Panama",
+    "lat": 9.45187,
+    "lon": -79.74702,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-26"
+  },
+  {
+    "name": "Katagai",
+    "aliases": [
+      "Katagai Gyoko"
+    ],
+    "country": "Chiba, Japan",
+    "lat": 35.53342,
+    "lon": 140.46123,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Habushiura",
+    "aliases": [
+      "Niijima",
+      "Habushi Beach"
+    ],
+    "country": "Niijima, Japan",
+    "lat": 34.3761,
+    "lon": 139.27663,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Ikumi",
+    "aliases": [],
+    "country": "Kochi, Japan",
+    "lat": 33.52777,
+    "lon": 134.28495,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Shishikui",
+    "aliases": [],
+    "country": "Tokushima, Japan",
+    "lat": 33.56668,
+    "lon": 134.31067,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Kaifu Rivermouth",
+    "aliases": [
+      "Kaifu",
+      "Kaifugawa"
+    ],
+    "country": "Tokushima, Japan",
+    "lat": 33.5945,
+    "lon": 134.3638,
+    "type": "rivermouth",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Kuta Reef",
+    "aliases": [],
+    "country": "Kuta, Bali",
+    "lat": -8.73048,
+    "lon": 115.15588,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Dreamland",
+    "aliases": [],
+    "country": "Bukit Peninsula, Bali",
+    "lat": -8.79908,
+    "lon": 115.11708,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Balangan",
+    "aliases": [
+      "Ballangan"
+    ],
+    "country": "Bukit Peninsula, Bali",
+    "lat": -8.79225,
+    "lon": 115.11982,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Impossibles",
+    "aliases": [],
+    "country": "Bukit Peninsula, Bali",
+    "lat": -8.80745,
+    "lon": 115.1085,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Hyatt Reef",
+    "aliases": [
+      "Sanur Reef",
+      "Sanur"
+    ],
+    "country": "Sanur, Bali",
+    "lat": -8.66992,
+    "lon": 115.26412,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Thirteenth Beach",
+    "aliases": [
+      "13th Beach"
+    ],
+    "country": "Barwon Heads, Victoria",
+    "lat": -38.28535,
+    "lon": 144.46163,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Torquay Point",
+    "aliases": [],
+    "country": "Torquay, Victoria",
+    "lat": -38.34193,
+    "lon": 144.32225,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Point Addis",
+    "aliases": [],
+    "country": "Anglesea, Victoria",
+    "lat": -38.39415,
+    "lon": 144.25405,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Lorne Point",
+    "aliases": [
+      "Lorne"
+    ],
+    "country": "Lorne, Victoria",
+    "lat": -38.54648,
+    "lon": 143.98613,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Gunnamatta",
+    "aliases": [],
+    "country": "Mornington Peninsula, Victoria",
+    "lat": -38.44848,
+    "lon": 144.85525,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Portsea Back Beach",
+    "aliases": [
+      "Portsea"
+    ],
+    "country": "Mornington Peninsula, Victoria",
+    "lat": -38.33512,
+    "lon": 144.7044,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Torrisdale Bay",
+    "aliases": [
+      "Torrisdale"
+    ],
+    "country": "Sutherland, Scotland",
+    "lat": 58.52548,
+    "lon": -4.25137,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Strathy Bay",
+    "aliases": [
+      "Strathy"
+    ],
+    "country": "Sutherland, Scotland",
+    "lat": 58.56837,
+    "lon": -4.00023,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Sandend",
+    "aliases": [],
+    "country": "Aberdeenshire, Scotland",
+    "lat": 57.68258,
+    "lon": -2.744,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Fraserburgh",
+    "aliases": [
+      "Fraserburgh Beach"
+    ],
+    "country": "Aberdeenshire, Scotland",
+    "lat": 57.68185,
+    "lon": -1.99693,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Lossiemouth East Beach",
+    "aliases": [
+      "Lossiemouth",
+      "Lossie"
+    ],
+    "country": "Moray, Scotland",
+    "lat": 57.71782,
+    "lon": -3.27745,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Aileens",
+    "aliases": [
+      "Aill na Searrach"
+    ],
+    "country": "County Clare, Ireland",
+    "lat": 52.9841,
+    "lon": -9.43893,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Crab Island",
+    "aliases": [],
+    "country": "County Clare, Ireland",
+    "lat": 53.01562,
+    "lon": -9.41512,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Doolin Point",
+    "aliases": [
+      "Doolin"
+    ],
+    "country": "County Clare, Ireland",
+    "lat": 53.01287,
+    "lon": -9.4068,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Spanish Point",
+    "aliases": [
+      "Spanish Point Reefs"
+    ],
+    "country": "County Clare, Ireland",
+    "lat": 52.8455,
+    "lon": -9.44245,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Brandon Bay",
+    "aliases": [],
+    "country": "County Kerry, Ireland",
+    "lat": 52.28942,
+    "lon": -10.03277,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Garretstown",
+    "aliases": [],
+    "country": "County Cork, Ireland",
+    "lat": 51.64195,
+    "lon": -8.57758,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Inchydoney",
+    "aliases": [],
+    "country": "County Cork, Ireland",
+    "lat": 51.59222,
+    "lon": -8.8627,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Tramore",
+    "aliases": [
+      "Tramore Strand"
+    ],
+    "country": "County Waterford, Ireland",
+    "lat": 52.15077,
+    "lon": -7.11193,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Clifton Beach",
+    "aliases": [
+      "Clifton"
+    ],
+    "country": "Hobart, Tasmania",
+    "lat": -42.99363,
+    "lon": 147.52578,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Park Beach",
+    "aliases": [],
+    "country": "Hobart, Tasmania",
+    "lat": -42.86828,
+    "lon": 147.61398,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Eaglehawk Neck",
+    "aliases": [
+      "Pirates Bay"
+    ],
+    "country": "Tasman Peninsula, Tasmania",
+    "lat": -43.0166,
+    "lon": 147.9272,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Roaring Beach",
+    "aliases": [],
+    "country": "Tasman Peninsula, Tasmania",
+    "lat": -43.08805,
+    "lon": 147.6725,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Marion Bay",
+    "aliases": [],
+    "country": "East Coast, Tasmania",
+    "lat": -42.7949,
+    "lon": 147.87288,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Friendly Beaches",
+    "aliases": [],
+    "country": "East Coast, Tasmania",
+    "lat": -41.99255,
+    "lon": 148.28623,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Tres Palmas",
+    "aliases": [],
+    "country": "Rincón, Puerto Rico",
+    "lat": 18.34492,
+    "lon": -67.26193,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Jobos",
+    "aliases": [],
+    "country": "Isabela, Puerto Rico",
+    "lat": 18.51448,
+    "lon": -67.07742,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Crash Boat",
+    "aliases": [
+      "Crashboats",
+      "Crash Boats"
+    ],
+    "country": "Aguadilla, Puerto Rico",
+    "lat": 18.45728,
+    "lon": -67.16427,
+    "type": null,
+    "direction": null,
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Pine Grove",
+    "aliases": [],
+    "country": "Carolina, Puerto Rico",
+    "lat": 18.44445,
+    "lon": -66.01117,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "La Selva",
+    "aliases": [],
+    "country": "Fajardo, Puerto Rico",
+    "lat": 18.36895,
+    "lon": -65.69342,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "S-Turns",
+    "aliases": [
+      "S Turns"
+    ],
+    "country": "Rodanthe, NC",
+    "lat": 35.60783,
+    "lon": -75.4649,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Rodanthe Pier",
+    "aliases": [
+      "Rodanthe"
+    ],
+    "country": "Rodanthe, NC",
+    "lat": 35.58533,
+    "lon": -75.46095,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Frisco Pier",
+    "aliases": [
+      "Frisco"
+    ],
+    "country": "Frisco, NC",
+    "lat": 35.22488,
+    "lon": -75.6361,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Kitty Hawk Pier",
+    "aliases": [
+      "Kitty Hawk"
+    ],
+    "country": "Kitty Hawk, NC",
+    "lat": 36.10168,
+    "lon": -75.71117,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Isle of Palms Pier",
+    "aliases": [
+      "Isle of Palms"
+    ],
+    "country": "Isle of Palms, SC",
+    "lat": 32.7867,
+    "lon": -79.77757,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Barra de Navidad",
+    "aliases": [
+      "Barra"
+    ],
+    "country": "Barra de Navidad, Jalisco",
+    "lat": 19.20467,
+    "lon": -104.69267,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Arroyo Seco",
+    "aliases": [],
+    "country": "La Huerta, Jalisco",
+    "lat": 19.31722,
+    "lon": -104.94572,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "El Tecuán",
+    "aliases": [
+      "El Tecuan"
+    ],
+    "country": "Cabo Corrientes, Jalisco",
+    "lat": 20.23765,
+    "lon": -105.57383,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Chacala",
+    "aliases": [],
+    "country": "Chacala, Nayarit",
+    "lat": 21.18757,
+    "lon": -105.22988,
+    "type": "point",
+    "direction": "left",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "The Ranch",
+    "aliases": [
+      "El Rancho"
+    ],
+    "country": "Troncones, Guerrero",
+    "lat": 17.91645,
+    "lon": -101.86905,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Pease Bay",
+    "aliases": [],
+    "country": "Scottish Borders, Scotland",
+    "lat": 55.93247,
+    "lon": -2.33322,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Coldingham Bay",
+    "aliases": [
+      "Coldingham"
+    ],
+    "country": "Scottish Borders, Scotland",
+    "lat": 55.89255,
+    "lon": -2.13048,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "South Shields",
+    "aliases": [],
+    "country": "Tyne and Wear, UK",
+    "lat": 54.99543,
+    "lon": -1.4035,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Aberdeen Beach",
+    "aliases": [
+      "Aberdeen"
+    ],
+    "country": "Aberdeen, Scotland",
+    "lat": 57.16463,
+    "lon": -2.07933,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "St Andrews",
+    "aliases": [
+      "East Sands"
+    ],
+    "country": "Fife, Scotland",
+    "lat": 56.33648,
+    "lon": -2.78122,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Kingsbarns",
+    "aliases": [],
+    "country": "Fife, Scotland",
+    "lat": 56.29773,
+    "lon": -2.63528,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-09-27"
+  },
+  {
+    "name": "Soup Bowl",
+    "aliases": [
+      "Bathsheba"
+    ],
+    "country": "Bathsheba, Barbados",
+    "lat": 13.21437,
+    "lon": -59.52258,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Freights Bay",
+    "aliases": [
+      "Freights"
+    ],
+    "country": "Oistins, Barbados",
+    "lat": 13.05875,
+    "lon": -59.53808,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "South Point",
+    "aliases": [],
+    "country": "Christ Church, Barbados",
+    "lat": 13.04512,
+    "lon": -59.52887,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Duppies",
+    "aliases": [],
+    "country": "St. Lucy, Barbados",
+    "lat": 13.31553,
+    "lon": -59.64435,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Maycocks",
+    "aliases": [],
+    "country": "St. Lucy, Barbados",
+    "lat": 13.28228,
+    "lon": -59.64988,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Tropicana",
+    "aliases": [],
+    "country": "St. James, Barbados",
+    "lat": 13.21912,
+    "lon": -59.64248,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Sandy Lane",
+    "aliases": [],
+    "country": "St. James, Barbados",
+    "lat": 13.17258,
+    "lon": -59.63777,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Crane Beach",
+    "aliases": [],
+    "country": "St. Philip, Barbados",
+    "lat": 13.09975,
+    "lon": -59.44993,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-04"
+  },
+  {
+    "name": "Cactus",
+    "aliases": [
+      "Cactus Beach",
+      "Point Sinclair"
+    ],
+    "country": "Penong, South Australia",
+    "lat": -32.09558,
+    "lon": 132.99573,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Granites",
+    "aliases": [],
+    "country": "Streaky Bay, South Australia",
+    "lat": -32.87878,
+    "lon": 134.08217,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Blackfellows",
+    "aliases": [
+      "Blacks"
+    ],
+    "country": "Elliston, South Australia",
+    "lat": -33.61998,
+    "lon": 134.83053,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Daly Heads",
+    "aliases": [
+      "Daly Head"
+    ],
+    "country": "Yorke Peninsula, South Australia",
+    "lat": -35.03285,
+    "lon": 136.93372,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Middleton Point",
+    "aliases": [],
+    "country": "Middleton, South Australia",
+    "lat": -35.515,
+    "lon": 138.70848,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Knights Beach",
+    "aliases": [
+      "Knights"
+    ],
+    "country": "Port Elliot, South Australia",
+    "lat": -35.53332,
+    "lon": 138.68932,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Waitpinga",
+    "aliases": [
+      "Waitpinga Beach"
+    ],
+    "country": "Fleurieu Peninsula, South Australia",
+    "lat": -35.63442,
+    "lon": 138.49803,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Parsons Beach",
+    "aliases": [
+      "Parsons"
+    ],
+    "country": "Fleurieu Peninsula, South Australia",
+    "lat": -35.63217,
+    "lon": 138.47343,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Pennington Bay",
+    "aliases": [],
+    "country": "Kangaroo Island, South Australia",
+    "lat": -35.854,
+    "lon": 137.74487,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Jardim do Mar",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.73767,
+    "lon": -17.21323,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Paul do Mar",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.7597,
+    "lon": -17.23232,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Ponta Pequena",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.7465,
+    "lon": -17.22065,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Lugar de Baixo",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.67875,
+    "lon": -17.08773,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Achadas da Cruz",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.85107,
+    "lon": -17.22008,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Ribeira da Janela",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.85102,
+    "lon": -17.15012,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Contreira",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.8418,
+    "lon": -17.14032,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "São Vicente",
+    "aliases": [
+      "Sao Vicente"
+    ],
+    "country": "Madeira, Portugal",
+    "lat": 32.80882,
+    "lon": -17.05007,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Porto da Cruz",
+    "aliases": [],
+    "country": "Madeira, Portugal",
+    "lat": 32.76868,
+    "lon": -16.82097,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Santa Bárbara",
+    "aliases": [
+      "Areias",
+      "Praia de Santa Barbara",
+      "Santa Barbara"
+    ],
+    "country": "São Miguel, Azores",
+    "lat": 37.81778,
+    "lon": -25.54853,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Rabo de Peixe",
+    "aliases": [],
+    "country": "São Miguel, Azores",
+    "lat": 37.81682,
+    "lon": -25.59042,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Mosteiros",
+    "aliases": [
+      "Ponta dos Mosteiros"
+    ],
+    "country": "São Miguel, Azores",
+    "lat": 37.88833,
+    "lon": -25.82515,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Pópulo",
+    "aliases": [
+      "Populo",
+      "Praia do Pópulo"
+    ],
+    "country": "São Miguel, Azores",
+    "lat": 37.74993,
+    "lon": -25.62393,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Praia Formosa",
+    "aliases": [],
+    "country": "Santa Maria, Azores",
+    "lat": 36.95107,
+    "lon": -25.09837,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Anjos",
+    "aliases": [],
+    "country": "Santa Maria, Azores",
+    "lat": 37.00542,
+    "lon": -25.15657,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Fajã da Caldeira de Santo Cristo",
+    "aliases": [
+      "Faja da Caldeira",
+      "Santo Cristo"
+    ],
+    "country": "São Jorge, Azores",
+    "lat": 38.62817,
+    "lon": -27.92747,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Fajã dos Cubres",
+    "aliases": [
+      "Faja dos Cubres"
+    ],
+    "country": "São Jorge, Azores",
+    "lat": 38.64293,
+    "lon": -27.96337,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Contendas",
+    "aliases": [],
+    "country": "Terceira, Azores",
+    "lat": 38.6457,
+    "lon": -27.078,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Vila Nova",
+    "aliases": [],
+    "country": "Terceira, Azores",
+    "lat": 38.79128,
+    "lon": -27.12752,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "N'Gor Right",
+    "aliases": [
+      "Ngor Right",
+      "Ngor Rights"
+    ],
+    "country": "Dakar, Senegal",
+    "lat": 14.7541,
+    "lon": -17.51725,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "N'Gor Left",
+    "aliases": [
+      "Ngor Left"
+    ],
+    "country": "Dakar, Senegal",
+    "lat": 14.75615,
+    "lon": -17.51118,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Ouakam",
+    "aliases": [],
+    "country": "Dakar, Senegal",
+    "lat": 14.71385,
+    "lon": -17.49175,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Club Med",
+    "aliases": [],
+    "country": "Dakar, Senegal",
+    "lat": 14.7406,
+    "lon": -17.52812,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Yoff",
+    "aliases": [
+      "Yoff Beach",
+      "Yoff Plage"
+    ],
+    "country": "Dakar, Senegal",
+    "lat": 14.76243,
+    "lon": -17.46312,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Yenne",
+    "aliases": [
+      "Yene"
+    ],
+    "country": "Petite Côte, Senegal",
+    "lat": 14.64835,
+    "lon": -17.18468,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-05"
+  },
+  {
+    "name": "Ponta Preta",
+    "aliases": [],
+    "country": "Sal, Cape Verde",
+    "lat": 16.6125,
+    "lon": -22.93258,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Palmeira",
+    "aliases": [],
+    "country": "Sal, Cape Verde",
+    "lat": 16.75212,
+    "lon": -22.9791,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Sandy Beach",
+    "aliases": [],
+    "country": "São Vicente, Cape Verde",
+    "lat": 16.86337,
+    "lon": -24.87905,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Santa Mónica",
+    "aliases": [
+      "Santa Monica"
+    ],
+    "country": "Boa Vista, Cape Verde",
+    "lat": 15.99367,
+    "lon": -22.89482,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Cidade Velha",
+    "aliases": [],
+    "country": "Santiago, Cape Verde",
+    "lat": 14.91503,
+    "lon": -23.60955,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Tamarin Bay",
+    "aliases": [
+      "Tamarin"
+    ],
+    "country": "Tamarin, Mauritius",
+    "lat": -20.3277,
+    "lon": 57.3746,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Black Rocks",
+    "aliases": [],
+    "country": "Tamarin, Mauritius",
+    "lat": -20.31838,
+    "lon": 57.36752,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "One Eye",
+    "aliases": [
+      "One Eyes"
+    ],
+    "country": "Le Morne, Mauritius",
+    "lat": -20.45247,
+    "lon": 57.31022,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Le Morne",
+    "aliases": [],
+    "country": "Le Morne, Mauritius",
+    "lat": -20.44407,
+    "lon": 57.30795,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Darne",
+    "aliases": [],
+    "country": "Mahébourg, Mauritius",
+    "lat": -20.45133,
+    "lon": 57.70927,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Grand Sancho",
+    "aliases": [
+      "Ilot Sancho"
+    ],
+    "country": "Souillac, Mauritius",
+    "lat": -20.50712,
+    "lon": 57.44935,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Unstad",
+    "aliases": [],
+    "country": "Lofoten, Norway",
+    "lat": 68.27193,
+    "lon": 13.57498,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Hoddevik",
+    "aliases": [],
+    "country": "Stad, Norway",
+    "lat": 62.1246,
+    "lon": 5.15877,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Flø",
+    "aliases": [
+      "Flo"
+    ],
+    "country": "Ulsteinvik, Norway",
+    "lat": 62.40655,
+    "lon": 5.85267,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Farstad",
+    "aliases": [
+      "Farstadstranda"
+    ],
+    "country": "Hustadvika, Norway",
+    "lat": 62.98378,
+    "lon": 7.15055,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Hellestø",
+    "aliases": [
+      "Hellesto"
+    ],
+    "country": "Jæren, Norway",
+    "lat": 58.8461,
+    "lon": 5.55982,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Sele",
+    "aliases": [],
+    "country": "Jæren, Norway",
+    "lat": 58.81367,
+    "lon": 5.54207,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Capo Mannu",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 40.03005,
+    "lon": 8.3834,
+    "type": "point",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Mini Capo",
+    "aliases": [
+      "Minicapo"
+    ],
+    "country": "Sardinia, Italy",
+    "lat": 40.02938,
+    "lon": 8.39218,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Sa Mesa Longa",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 40.04758,
+    "lon": 8.39878,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "S'Archittu",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 40.08788,
+    "lon": 8.49085,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Buggerru",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 39.4045,
+    "lon": 8.40132,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Chia",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 38.8945,
+    "lon": 8.87902,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Porto Ferro",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 40.6848,
+    "lon": 8.20302,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Racca Point",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 39.20545,
+    "lon": 9.31272,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Badesi",
+    "aliases": [],
+    "country": "Sardinia, Italy",
+    "lat": 40.9821,
+    "lon": 8.8536,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  {
+    "name": "Encuentro",
+    "aliases": [
+      "Playa Encuentro"
+    ],
+    "country": "Cabarete, Dominican Republic",
+    "lat": 19.7825,
+    "lon": -70.44778,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Macao",
+    "aliases": [
+      "Playa Macao"
+    ],
+    "country": "Punta Cana, Dominican Republic",
+    "lat": 18.77388,
+    "lon": -68.53623,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "La Boya",
+    "aliases": [],
+    "country": "Juan Dolio, Dominican Republic",
+    "lat": 18.43295,
+    "lon": -69.6317,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Guibia",
+    "aliases": [
+      "Güibia"
+    ],
+    "country": "Santo Domingo, Dominican Republic",
+    "lat": 18.45837,
+    "lon": -69.9057,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Patho",
+    "aliases": [
+      "Patho Beach"
+    ],
+    "country": "Baní, Dominican Republic",
+    "lat": 18.22897,
+    "lon": -70.18883,
+    "type": "point",
+    "direction": "left",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "San Rafael",
+    "aliases": [],
+    "country": "Barahona, Dominican Republic",
+    "lat": 18.02982,
+    "lon": -71.1372,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Jinzun Harbour",
+    "aliases": [
+      "Jinzun",
+      "Jinzun Harbor"
+    ],
+    "country": "Taitung, Taiwan",
+    "lat": 22.95438,
+    "lon": 121.29613,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Donghe Rivermouth",
+    "aliases": [
+      "Donghe"
+    ],
+    "country": "Taitung, Taiwan",
+    "lat": 22.97572,
+    "lon": 121.31368,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Chenggong",
+    "aliases": [
+      "Cheng-Gong"
+    ],
+    "country": "Taitung, Taiwan",
+    "lat": 23.09603,
+    "lon": 121.3687,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Jialeshui",
+    "aliases": [
+      "Jia Le Shui",
+      "Jialeshuei"
+    ],
+    "country": "Kenting, Taiwan",
+    "lat": 21.98735,
+    "lon": 120.84583,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Nanwan",
+    "aliases": [
+      "Nan Wan",
+      "South Bay"
+    ],
+    "country": "Kenting, Taiwan",
+    "lat": 21.95828,
+    "lon": 120.76033,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Fulong",
+    "aliases": [
+      "Fulong Beach"
+    ],
+    "country": "New Taipei, Taiwan",
+    "lat": 25.0219,
+    "lon": 121.94627,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Daxi",
+    "aliases": [
+      "Dashi",
+      "Honeymoon Bay"
+    ],
+    "country": "Yilan, Taiwan",
+    "lat": 24.93237,
+    "lon": 121.88642,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Wushi Harbor",
+    "aliases": [
+      "Wushi",
+      "Wu-Shi Harbor"
+    ],
+    "country": "Yilan, Taiwan",
+    "lat": 24.87243,
+    "lon": 121.84232,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Wai-ao",
+    "aliases": [
+      "Waiao"
+    ],
+    "country": "Yilan, Taiwan",
+    "lat": 24.7169,
+    "lon": 121.84387,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Boucan Canot",
+    "aliases": [
+      "Boucan"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.02695,
+    "lon": 55.22512,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Aigrettes",
+    "aliases": [
+      "Les Aigrettes"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.03447,
+    "lon": 55.21807,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "L'Hermitage",
+    "aliases": [
+      "Hermitage",
+      "Passe de l’Hermitage"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.08588,
+    "lon": 55.2231,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Kélonia",
+    "aliases": [
+      "Kelonia",
+      "La Ferme Corail"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.15433,
+    "lon": 55.27823,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Étang-Salé",
+    "aliases": [
+      "Etang-Sale",
+      "Etang Sale"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.26382,
+    "lon": 55.32843,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Le Jetty",
+    "aliases": [
+      "Saint-Pierre",
+      "Jetty St Pierre"
+    ],
+    "country": "Réunion Island, France",
+    "lat": -21.34692,
+    "lon": 55.47643,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Manapany",
+    "aliases": [],
+    "country": "Réunion Island, France",
+    "lat": -21.37362,
+    "lon": 55.58752,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Salani Right",
+    "aliases": [
+      "Salani"
+    ],
+    "country": "Upolu, Samoa",
+    "lat": -14.03997,
+    "lon": -171.61525,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Salani Left",
+    "aliases": [],
+    "country": "Upolu, Samoa",
+    "lat": -14.0425,
+    "lon": -171.61253,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Devils Island",
+    "aliases": [
+      "Nu'usafe'e",
+      "Nu'usafee Island"
+    ],
+    "country": "Upolu, Samoa",
+    "lat": -14.05117,
+    "lon": -171.69035,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Tiavea",
+    "aliases": [
+      "Tiavea Bay",
+      "Tiavea Rivermouth"
+    ],
+    "country": "Upolu, Samoa",
+    "lat": -13.96985,
+    "lon": -171.46792,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Waterfalls",
+    "aliases": [],
+    "country": "Upolu, Samoa",
+    "lat": -13.86223,
+    "lon": -171.66493,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Aganoa",
+    "aliases": [],
+    "country": "Savai'i, Samoa",
+    "lat": -13.77508,
+    "lon": -172.28722,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "verified",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Pango Point",
+    "aliases": [
+      "Pango"
+    ],
+    "country": "Efate, Vanuatu",
+    "lat": -17.78438,
+    "lon": 168.28397,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Breakas",
+    "aliases": [],
+    "country": "Efate, Vanuatu",
+    "lat": -17.77833,
+    "lon": 168.29592,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Lenakel",
+    "aliases": [
+      "Lenakil"
+    ],
+    "country": "Tanna, Vanuatu",
+    "lat": -19.53658,
+    "lon": 169.26447,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Varazze",
+    "aliases": [],
+    "country": "Liguria, Italy",
+    "lat": 44.35827,
+    "lon": 8.57763,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Recco",
+    "aliases": [],
+    "country": "Liguria, Italy",
+    "lat": 44.35995,
+    "lon": 9.1412,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Bogliasco",
+    "aliases": [],
+    "country": "Liguria, Italy",
+    "lat": 44.37738,
+    "lon": 9.06922,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Levanto",
+    "aliases": [],
+    "country": "Liguria, Italy",
+    "lat": 44.17028,
+    "lon": 9.60757,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Chiavari",
+    "aliases": [
+      "Entella"
+    ],
+    "country": "Liguria, Italy",
+    "lat": 44.30997,
+    "lon": 9.3313,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Tre Ponti",
+    "aliases": [
+      "Sanremo"
+    ],
+    "country": "Liguria, Italy",
+    "lat": 43.82218,
+    "lon": 7.81387,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Lillatro",
+    "aliases": [],
+    "country": "Tuscany, Italy",
+    "lat": 43.3798,
+    "lon": 10.43493,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Forte dei Marmi",
+    "aliases": [
+      "Pontile"
+    ],
+    "country": "Tuscany, Italy",
+    "lat": 43.95707,
+    "lon": 10.16533,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Santa Marinella",
+    "aliases": [
+      "Porto di Santa Marinella",
+      "Porto"
+    ],
+    "country": "Lazio, Italy",
+    "lat": 42.0365,
+    "lon": 11.87547,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Banzai",
+    "aliases": [],
+    "country": "Lazio, Italy",
+    "lat": 42.02837,
+    "lon": 11.83935,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
   }
 ]

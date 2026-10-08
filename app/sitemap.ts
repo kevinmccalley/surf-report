@@ -1,10 +1,13 @@
 import type { MetadataRoute } from 'next'
-import { getAllSpots, slugify } from '@/app/lib/surf-spots'
+import { getAllSpots, getSpotSlug } from '@/app/lib/surf-spots'
 import { getSurfRegions, getSurfRegionsByCountry } from '@/app/lib/surf-regions'
 import { getAllSlugsWithDate } from '@/app/lib/sanity'
 
-// Regenerate once a day on first request — Sanity API call skipped at build time.
-export const revalidate = 86400
+// Rendered per request, never prerendered or ISR-cached. With `revalidate = 86400` the
+// route was hit so rarely (crawlers only) that every regeneration served and re-baked
+// stale blog data, and new posts stayed out of the sitemap for weeks. One uncached
+// Sanity query per crawler visit is cheap; the Sanity call is still skipped at build time.
+export const dynamic = 'force-dynamic'
 
 // Pinned to the date each page last had a meaningful content change.
 // Update a date here whenever you ship a significant copy or feature change to that route.
@@ -30,8 +33,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: path === '/' ? 1.0 : 0.5,
   }))
 
+  // The /spots directory index itself (the per-spot pages below are its children).
+  const spotsIndex = {
+    url: `${base}/spots`,
+    lastModified: new Date('2026-09-02'),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }
+
   const spotPages = getAllSpots().map(spot => ({
-    url: `${base}/spots/${slugify(spot.name)}`,
+    url: `${base}/spots/${getSpotSlug(spot)}`,
     lastModified: new Date('2026-06-08'),
     changeFrequency: 'daily' as const,
     priority: 0.9,
@@ -41,7 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // a slow marine API, so we don't want Google working through the full ~480-URL
   // set ahead of the forecast pages that actually change daily.
   const climatologyPages = getAllSpots().map(spot => ({
-    url: `${base}/climatology/${slugify(spot.name)}`,
+    url: `${base}/climatology/${getSpotSlug(spot)}`,
     lastModified: new Date('2025-01-01'),
     changeFrequency: 'yearly' as const,
     priority: 0.4,
@@ -90,5 +101,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return entry
   })
 
-  return [...staticPages, blogIndex, ...blogPosts, ...regionPages, ...spotPages, ...climatologyPages]
+  return [...staticPages, blogIndex, ...blogPosts, ...regionPages, spotsIndex, ...spotPages, ...climatologyPages]
 }

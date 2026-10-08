@@ -225,13 +225,15 @@ export async function getPostsForSpot(slug: string): Promise<SanityPostStub[]> {
   }
 }
 
+// Uncached on purpose: the only caller is the sitemap, which is rendered per request.
+// A cached read here hands a rarely-hit route week-old data (stale-while-revalidate).
 export async function getAllSlugsWithDate(): Promise<Array<{ slug: string; date: string; langs: string[] }>> {
   if (!isSanityConfigured) return []
   try {
     const rows = await sanityClient.fetch<Array<{ slug: string; date: string; langs?: string[] }>>(
       ALL_SLUGS_WITH_DATE_QUERY,
       {},
-      { next: { revalidate: 3600 } },
+      { cache: 'no-store' },
     )
     return rows.map(r => ({ ...r, langs: r.langs ?? [] }))
   } catch {

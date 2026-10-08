@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { slugify, findSpotBySlug, searchSurfSpots, getAllSpots } from '../surf-spots'
+import { slugify, findSpotBySlug, searchSurfSpots, getAllSpots, getSpotSlug } from '../surf-spots'
 
 // ── slugify ──────────────────────────────────────────────────────────────────
 
@@ -77,10 +77,37 @@ describe('getAllSpots', () => {
     }
   })
 
-  it('slug collisions are fewer than 5 (some spots share a name across countries)', () => {
+  it('plain slugify(name) can still collide (some spots share a name across countries) — that is what getSpotSlug exists to fix', () => {
     const slugs = getAllSpots().map(s => slugify(s.name))
     const unique = new Set(slugs)
-    expect(slugs.length - unique.size).toBeLessThan(5)
+    // Not a hard bound — just documents that the raw-name collision this
+    // suite guards against below is a real, expected, and growing thing in a
+    // global break catalog (Waikiki, Makaha, Restaurants, Ocean Beach, ...).
+    expect(slugs.length - unique.size).toBeGreaterThanOrEqual(0)
+  })
+
+  it('getSpotSlug never collides across the whole catalog, even when plain names do', () => {
+    const spots = getAllSpots()
+    const slugs = spots.map(s => getSpotSlug(s))
+    expect(new Set(slugs).size).toBe(spots.length)
+  })
+
+  it('every getSpotSlug resolves back to the exact same spot via findSpotBySlug', () => {
+    for (const spot of getAllSpots()) {
+      expect(findSpotBySlug(getSpotSlug(spot))).toBe(spot)
+    }
+  })
+
+  it('a plain-name collision keeps the first spot on the plain slug and disambiguates the rest', () => {
+    // Waikiki (Oahu) is added well before Waikiki (Miraflores, Peru) in the
+    // catalog, so it should keep the unqualified slug.
+    const oahu = getAllSpots().find(s => s.name === 'Waikiki' && s.country.includes('Oahu'))
+    const peru = getAllSpots().find(s => s.name === 'Waikiki' && s.country.includes('Peru'))
+    expect(oahu).toBeDefined()
+    expect(peru).toBeDefined()
+    expect(getSpotSlug(oahu!)).toBe('waikiki')
+    expect(getSpotSlug(peru!)).not.toBe('waikiki')
+    expect(findSpotBySlug('waikiki')).toBe(oahu)
   })
 })
 

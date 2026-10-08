@@ -9,6 +9,240 @@ has enough traffic/reviews for it to mean anything.
 
 ---
 
+## 2026-10-05 — Sixth run (scheduled, unattended)
+
+**Pages checked:** `/`, `/faq`, `/blog`, one recent post (`/blog/eleven-best-breaks-for-beginner-surfers`,
+2026-09-28), `/spots`, `/climatology/pipeline`, plus `robots.txt`, `sitemap.xml`, `blog/rss.xml`,
+`llms.txt`, `llms-full.txt`. Raw HTML fetched with a `ClaudeBot` user-agent (Node `fetch`, no JS
+execution) into `%TEMP%\aiv-1005\` — no scratch files written to the repo; counts done with JS
+`match(/…/g).length`, not `grep -c`.
+
+**1. Raw-HTML crawlability — PASS.** Homepage lede + "10-day" ×19; FAQ answers present (swell
+period ×52, offshore ×42); `/blog` links all 15 posts; beginner-surfers post body fully SSR'd
+(~2,300 visible words, "beginner" ×89, Waikiki ×13); `/spots` spot names present (Uluwatu,
+Pipeline, Mavericks; 994 spots); climatology data present (ERA5 ×8, "significant wave height" ×9,
+all 12 monthly rows).
+
+**2. JSON-LD — PASS.** Unchanged: `FAQPage` (20 Q/A) + `SpeakableSpecification` + `BreadcrumbList`
+on `/faq` — `.faq-question` / `.faq-answer` each exist on 20 real elements (last run's "×42"
+counted the string, including the JSON-LD/RSC payload; 20 is the `class="…"` attribute count and
+matches the 20 questions); `Blog`+`BlogPosting` ×10 on `/blog`; `BlogPosting`+`Person`+`Place` ×10+
+`GeoCoordinates`+`BreadcrumbList` on the post (`datePublished`/`dateModified` both 2026-09-28);
+`ItemList` (`numberOfItems` 994)+`SportsActivityLocation` ×100 on `/spots`; `Place`+`Dataset`+
+`BreadcrumbList` on climatology; `WebSite`+`Organization`+`SoftwareApplication` sitewide.
+
+**3. sitemap.xml + llms.txt sync — OPEN ITEM 1 STILL OPEN AND WORSE, llms.txt OK.**
+- `llms.txt` Key pages still match the top-level public routes in `app/` (no new route dirs since
+  last run). Live `llms.txt` differs from the repo only by the `/about` line (`9ca67fa`, on `dev`,
+  not yet on master). No edit needed.
+- **Production `sitemap.xml` now omits the 3 newest posts** (12 of 15): `…-for-longboarders`
+  (09-20), `…-for-shortboarders` (09-24), `…-for-beginner-surfers` (09-28). Content is identical
+  to the 09-21 and 09-28 fetches (1,457 URLs, newest blog `<lastmod>` 2026-09-16). New evidence
+  for whoever picks this up:
+  - There has been **no production deploy since 2026-09-13** (`8c9dfad`, per GitHub deployments),
+    yet the sitemap contains the 09-16 post — so it *did* regenerate once after the build (on or
+    before 09-21) and has not picked up anything published since.
+  - This run's first request was an edge `MISS` (`Age: 0`); a second request 66 s later was an
+    edge `HIT` with the same 12-post body. Last run saw `Age ≈ 604,800` = the edge had held the
+    previous run's copy for a full week. So the edge keeps whatever the origin hands it for 7+
+    days, and the origin copy is itself ≥2 weeks stale — `revalidate = 86400` is not producing a
+    daily refresh in practice.
+  - `blog/rss.xml` behaved correctly again: first request `X-Vercel-Cache: PRERENDER` with a stale
+    12-item body, second request 15 items. Same Sanity filter, so the data is fine — it's the
+    sitemap route's caching.
+  - Working hypothesis (unverified): each rare sitemap regeneration reads `getAllSlugsWithDate()`
+    from the 1 h fetch data-cache stale-while-revalidate, so it bakes in the *previous* fetch's
+    result, and regenerations are rare because the edge shields the origin. Either way the fix
+    is the same as proposed last run: on-demand `revalidatePath('/sitemap.xml')` from
+    `scripts/blog-publish` / a Sanity webhook, or serve the sitemap dynamically with an explicit
+    `s-maxage`. Not changed unattended — can't be verified without a prod deploy.
+- `/spots` index still absent from the live sitemap (fix `9ca67fa` is on `dev`; master is still
+  `8c9dfad`, now 259 commits behind `origin/dev`). Ships with the next dev→master promotion.
+- `<lastmod>` values: pinned constants, unchanged (spot pages 2026-06-08, climatology 2025-01-01).
+
+**4. Meta fundamentals — PASS.** title, meta description, canonical, `og:title/description/image/
+site_name`, `twitter:card`, single `<h1>` on all 6 pages. Climatology `og:image` still the generic
+`/api/og` (open item 3).
+
+**5. First ~150 words — PASS with notes.** Homepage, `/faq`, `/blog`, post and `/spots` openings
+state plainly what the page is. Climatology opener unchanged (data labels, no summary sentence —
+open item 3).
+
+**6. robots.txt — PASS.** Unchanged: `Allow: /` + `/api/`, `/sign-in`, `/sign-up`, `/studio/`,
+`/debug` disallows, sitemap referenced, no bot-specific blocks.
+
+**7. Search presence — no material change (informational).** Brand query "groundswell.surf surf
+forecast" still returns the homepage, and the engine summary again quotes the lede ("live
+conditions and a 10-day wave forecast for any surf spot on earth, plus 4+ years of swell
+history") — and also quotes "608 spots live", so the inconsistent spot count (open item 2) is now
+being repeated by answer engines. Category query "what is swell period surf forecast": not present
+(expected).
+
+**Open items needing a human judgment call (nothing edited):**
+1. **Sitemap not refreshing on prod** (§3) — carried over, now 3 posts missing. Highest priority.
+2. **Spot-count claims** — carried over, unchanged: homepage "608 spots live", `/spots` meta
+   description + `llms.txt` "220+", `/spots` OG subtitle "500+", `/spots` page + `ItemList` 994,
+   `llms.txt` Data sources "~6,900". In-app copy → needs `t()` ×5 locales, then `llms.txt`.
+3. **`/climatology/[slug]` opening text + per-spot OG card** — carried over, unchanged.
+4. **dev→master promotion is overdue for SEO purposes** — `/spots` in the sitemap and `/about` in
+   `llms.txt` have been waiting on `dev` since 09-21.
+
+**Fixed and committed locally:** nothing in app/SEO files — no mechanical fix was available this
+run. Only this log entry is committed.
+
+**Housekeeping:** the untracked `/.aiv_*.html` / `.aiv_*.xml` scratch files from earlier runs are
+still in the repo root (safe to `rm .aiv_*`); this run wrote none.
+
+---
+
+## 2026-09-28 — Fifth run (scheduled, unattended)
+
+**Pages checked:** `/`, `/faq`, `/blog`, one recent post (`/blog/eleven-best-waves-for-shortboarders`,
+2026-09-24), `/spots`, `/climatology/pipeline`, plus `robots.txt`, `sitemap.xml`, `blog/rss.xml`.
+Raw HTML fetched via `curl -A ClaudeBot` into `%TEMP%\aiv\` (no scratch files written to the repo);
+counts done with JS `match(/…/g).length`, not `grep -c`.
+
+**1. Raw-HTML crawlability — PASS.** Homepage lede + "10-day" ×19; FAQ answers present (swell
+period ×52, offshore ×42, `.faq-question`/`.faq-answer` ×42 each); `/blog` lists all 14 posts;
+shortboarders post body fully SSR'd (~2,100 words, Pipeline ×23, barrel ×58); `/spots` spot names
+present (Uluwatu, Pipeline, Mavericks, Cloudbreak; 994 spots); climatology data present (ERA5 ×8,
+"significant wave height" ×9, all 12 monthly rows).
+
+**2. JSON-LD — PASS.** Unchanged from last run: `FAQPage`+`Speakable`+`BreadcrumbList` on `/faq`;
+`Blog`+`BlogPosting` on `/blog`; `BlogPosting`+`Person`+`Place`+`GeoCoordinates`+`BreadcrumbList`
+on the post; `ItemList`+`SportsActivityLocation`+`GeoCoordinates` on `/spots`; `Place`+`Dataset`+
+`BreadcrumbList` on climatology; `WebSite`+`Organization`+`SoftwareApplication` sitewide.
+
+**3. sitemap.xml + llms.txt sync — 1 NEW OPEN ITEM (not fixed), llms.txt OK.**
+- `llms.txt` Key pages still match the top-level public routes in `app/` (home, spots, regions,
+  climatology, blog, faq, accuracy, about). `/top100` and `/gallery` remain intentionally gated
+  (see 2026-09-02 entry); legal/support pages are fine to omit. No edit needed.
+- **Production `sitemap.xml` is frozen at 2026-09-21 06:31:22Z** (`Last-Modified` header,
+  `Age: 604,8xx`, `X-Vercel-Cache: HIT`) even though `app/sitemap.ts` has `revalidate = 86400`.
+  Five requests over ~2 min (ClaudeBot + Googlebot UAs, with and without a query string) did **not**
+  trigger regeneration. Consequence: the two newest posts — `eleven-best-waves-for-longboarders`
+  (09-20) and `eleven-best-waves-for-shortboarders` (09-24) — are **not in the sitemap** (12 of 14
+  posts). Last run's "should self-heal" hypothesis is therefore wrong: this is page-level ISR not
+  revalidating, not just a stale 1 h data-cache entry. By contrast `blog/rss.xml` (route handler,
+  `revalidate = 3600`) **did** regenerate on the first request this run (Age 42 → now lists all
+  14). Needs a human session: check Vercel's ISR/function logs for `/sitemap.xml`, and consider
+  whether the metadata-route sitemap is being treated as fully static in Next 16 (docs:
+  "`sitemap.js` is … cached by default unless it uses a Request-time API or dynamic config") —
+  possible fixes are an on-demand `revalidatePath('/sitemap.xml')` from the blog-publish flow /
+  Sanity webhook, or a Cache-Control'd dynamic route. Not changed unattended because it can't be
+  verified without a prod deploy.
+- Last run's fix `9ca67fa` (`/spots` index in sitemap) is on `origin/dev` but **not on master**
+  (master = `8c9dfad`, 2026-09-13), so `/spots` is still absent from the live sitemap. Expected —
+  it ships with the next dev→master promotion.
+- `<lastmod>` values: still the pinned constants; spot pages 2026-06-08 and climatology
+  2025-01-01 ×682 each are getting old but are honest "last meaningful change" dates.
+
+**4. Meta fundamentals — PASS.** title, meta description, canonical, `og:title/description/image/
+site_name`, `twitter:card` on all 6 pages. Climatology `og:image` still the generic `/api/og`
+(open item 2 below, unchanged).
+
+**5. First ~150 words — PASS with notes.** Homepage, `/faq`, `/blog`, post and `/spots` openings all
+state plainly what the page is. Climatology opener unchanged (data label, no summary sentence —
+open item 2).
+
+**6. robots.txt — PASS.** Unchanged: `Allow: /` + `/api/`, `/sign-in`, `/sign-up`, `/studio/`,
+`/debug` disallows, sitemap referenced, no bot-specific blocks.
+
+**7. Search presence — IMPROVED (informational).** Brand query "groundswell.surf surf forecast" now
+returns the homepage (`Groundswell — Surf Reports Worldwide`) and the search engine's summary quotes
+the homepage lede almost verbatim ("live conditions and a 10-day wave forecast for any surf spot on
+earth, plus 4+ years of swell history") — evidence the 09-02 lede rewrite is being extracted as
+intended. Category query "what is swell period surf forecast": not present (expected at this age).
+
+**Open items needing a human judgment call (nothing edited):**
+1. **NEW — sitemap ISR not revalidating on prod** (details in §3). Highest priority of the three:
+   every new blog post is invisible to sitemap-driven crawlers until the next deploy.
+2. **Spot-count claims (carried over, now worse).** Homepage says "**608** spots live", `/spots`
+   meta description + `llms.txt` say "**220+**", `/spots` OG subtitle says "**500+**", `/spots`
+   page + `ItemList.numberOfItems` say **994**, and `llms.txt` "Data sources" says "~6,900". Four
+   different numbers. Derive from data where possible, put through `t()` in all 5 locales, then
+   update `llms.txt` to match.
+3. **`/climatology/[slug]` opening text + per-spot OG card** (carried over, unchanged).
+
+**Fixed and committed locally:** nothing — clean pass apart from the open items above.
+
+**Housekeeping:** the untracked `/.aiv_*.html` / `.aiv_*.xml` scratch files from earlier runs are
+still in the repo root (safe to `rm .aiv_*`); this run wrote none.
+
+---
+
+## 2026-09-21 — Fourth run (scheduled, unattended)
+
+**Pages checked:** `/`, `/faq`, `/blog`, one recent post (`/blog/eleven-best-beach-breaks-in-the-world`),
+`/spots`, `/climatology/pipeline`, plus `/regions` and `/about` (both new since the last scheduled
+run). Raw HTML fetched via `curl -A ClaudeBot`; counts done with `grep -o … | wc -l`.
+
+**1. Raw-HTML crawlability — PASS.** FAQ answer text present (swell period ×52, offshore ×42,
+lowercase "groundswell" ×62), blog article body present (Hossegor ×17, "beach break" ×71), spot names on
+`/spots` (Uluwatu, Pipeline, Cloudbreak, Mavericks), climatology data on `/climatology/pipeline`
+(ERA5 ×8, "significant wave height" ×7), all 59 regions on `/regions`.
+
+**2. JSON-LD — PASS.** Right schema per page type: `FAQPage` ×20 Q/A + `SpeakableSpecification` +
+`BreadcrumbList` on `/faq` (`.faq-question`/`.faq-answer` exist on real elements); `Blog` +
+`BlogPosting` on `/blog`; `BlogPosting`+`Person`+`Place` ×10+`BreadcrumbList` on the post;
+`ItemList`+`SportsActivityLocation`+`GeoCoordinates` on `/spots`; `Place`+`Dataset`+
+`BreadcrumbList` on the climatology page; `ItemList` (59) on `/regions`; `AboutPage`+`Person`+
+`BreadcrumbList` on `/about`; `WebSite`+`Organization`+`SoftwareApplication` sitewide.
+
+**3. sitemap.xml + llms.txt sync — 2 FIXED.** Sitemap now 1,457 URLs (was 745), regenerated today.
+- **`/spots` (the directory index) was missing from `sitemap.xml`** — only its `/spots/{slug}`
+  children were listed, although the page is live, canonical, and in `llms.txt`. Added a
+  `spotsIndex` entry in `app/sitemap.ts` (weekly, priority 0.8, lastmod 2026-09-02 = the page's
+  last real change per git).
+- **`/about` (shipped 09-02) was missing from `llms.txt` Key pages.** Added.
+- Observation, not acted on: `eleven-best-waves-for-longboarders` (RSS pubDate 2026-09-20 08:15Z)
+  is on `/blog` and in the RSS feed but **not** in the sitemap (12 posts vs 13), even though the
+  sitemap was regenerated 2026-09-21 06:31Z. `ALL_SLUGS_WITH_DATE_QUERY` has the same filters as
+  the blog-index query, so this looks like stale-while-revalidate on the 1 h `getAllSlugsWithDate`
+  data-cache entry on a low-traffic site — should self-heal. **Re-check next run;** if still
+  missing, look at the fetch cache/tag strategy in `app/lib/sanity.ts`.
+- `<lastmod>` values are pinned constants by design (`STATIC_LAST_MODIFIED` etc.), still plausible.
+  `REGIONS_LAST_MODIFIED` (2026-08-26) and spot pages (2026-06-08) are getting old — bump when
+  those routes get meaningful changes.
+
+**4. Meta fundamentals — PASS.** title, meta description, canonical, `og:title/description/image/
+site_name`, `twitter:card` present on all 8 pages. `/regions` og:image (fixed 08-31) is live. Minor:
+`/climatology/[slug]` `og:image` is the generic `/api/og` with no title/subtitle (all other page
+types have a page-specific card) — see open item 2.
+
+**5. First ~150 words — PASS with notes.** Homepage lede ("Groundswell is a surf-forecast service:
+live conditions and a 10-day wave forecast … 4+ years of swell history") and `/regions` intro
+("… Nearly 60 regions — North Shore Oahu, the Mentawais, the Basque Country … world surf atlas")
+are both now specific. **Previous open item 2 (thin `/regions` intro) is resolved**; previous open
+item 1 (hardcoded `/regions/[slug]` meta description) is out of scope this run — not re-verified.
+
+**6. robots.txt — PASS.** Unchanged: `Allow: /` + `/api/`, `/sign-in`, `/sign-up`, `/studio/`,
+`/debug` disallows, sitemap referenced, no bot-specific blocks.
+
+**7. Search presence — not re-checked this run** (no web-search tool available in this unattended
+run). No change assumed from the last logged baseline (zero for brand + answered category queries).
+
+**Open items needing a human judgment call (nothing edited — all are in-app translated copy):**
+1. **Spot-count claims disagree with each other and with the data.** `/spots` meta description +
+   `llms.txt` say "220+", the `/spots` OG card subtitle says "500+", and the page's JSON-LD
+   `ItemList.numberOfItems` is **994**. Pick one honest number (probably derive it from
+   `getAllSpots().length` instead of hardcoding) and put it through `t()` in all 5 locales; then
+   update `llms.txt` to match. (`llms.txt` deliberately left at "220+" so it matches the live page
+   until the app copy changes.)
+2. **`/climatology/[slug]` opening text and OG card.** Visible text after the `<h1>` is a tiny data
+   label ("3-year monthly avg · offshore significant wave height · 2022–2024") followed by a
+   related-blog-card excerpt (for Pipeline: about *left-handers in general*), so there's no plain
+   "what this page is / best season at {spot}" sentence in the first ~150 words, and its `og:image`
+   has no per-spot title. A one-line localized summary + a per-spot `/api/og` URL would help.
+
+**Fixed and committed locally** (branch `dev`, awaiting review + push):
+- `seo: add /spots index to sitemap and /about to llms.txt`
+
+**Housekeeping:** untracked `/.aiv_*.html` / `.aiv_*.xml` scratch files from earlier unattended
+runs are still in the repo root (safe to `rm .aiv_*`). This run wrote no scratch files.
+
+---
+
 ## 2026-09-02 — Third run (interactive) — full SEO + AI-visibility audit, then P0–P3 execution
 
 Ran as the GoodStockPress-pattern audit (two design-crafted checklist artifacts: SEO 🌊

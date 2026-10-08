@@ -7,7 +7,7 @@
 // breaks we actually plot *is* "the surf area", and it needs no GeoJSON.
 
 import { getSurfRegions, getRegionSpots, type SurfRegion } from './surf-regions'
-import { slugify } from './surf-spots'
+import { getSpotSlug } from './surf-spots'
 import type { Continent } from './continents'
 
 /** [lat, lon]. Treated as planar — fine at region scale, no region here spans ±180°. */
@@ -148,7 +148,7 @@ export function getWorldSpots(): WorldSpot[] {
   const out: WorldSpot[] = []
   for (const region of getSurfRegions()) {
     for (const spot of getRegionSpots(region)) {
-      const slug = slugify(spot.name)
+      const slug = getSpotSlug(spot)
       if (seen.has(slug)) continue
       seen.add(slug)
       out.push({ slug, name: spot.name, lat: spot.lat, lon: spot.lon, regionSlug: region.slug })
