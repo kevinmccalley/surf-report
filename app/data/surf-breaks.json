@@ -14038,5 +14038,54 @@
       "surfline"
     ],
     "verifiedOn": "2026-10-07"
+  },
+  {
+    "name": "Pango Point",
+    "aliases": [
+      "Pango"
+    ],
+    "country": "Efate, Vanuatu",
+    "lat": -17.78438,
+    "lon": 168.28397,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Breakas",
+    "aliases": [],
+    "country": "Efate, Vanuatu",
+    "lat": -17.77833,
+    "lon": 168.29592,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Lenakel",
+    "aliases": [
+      "Lenakil"
+    ],
+    "country": "Tanna, Vanuatu",
+    "lat": -19.53658,
+    "lon": 169.26447,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
   }
 ]
