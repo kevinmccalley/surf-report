@@ -14257,5 +14257,138 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "San Vito lo Capo",
+    "aliases": [
+      "San Vito"
+    ],
+    "country": "Sicily, Italy",
+    "lat": 38.17788,
+    "lon": 12.73762,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Cornino",
+    "aliases": [],
+    "country": "Sicily, Italy",
+    "lat": 38.09015,
+    "lon": 12.65618,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Magaggiari",
+    "aliases": [
+      "Maggagiari",
+      "Cinisi"
+    ],
+    "country": "Sicily, Italy",
+    "lat": 38.16065,
+    "lon": 13.08438,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Torre Muzza",
+    "aliases": [
+      "Torre Muzzard",
+      "Wizard"
+    ],
+    "country": "Sicily, Italy",
+    "lat": 38.18072,
+    "lon": 13.16168,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Isola delle Femmine",
+    "aliases": [
+      "La Baia"
+    ],
+    "country": "Sicily, Italy",
+    "lat": 38.19373,
+    "lon": 13.24298,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Backdoor",
+    "aliases": [],
+    "country": "Sicily, Italy",
+    "lat": 37.3332,
+    "lon": 13.39382,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Playa di Catania",
+    "aliases": [
+      "Playa",
+      "La Playa"
+    ],
+    "country": "Sicily, Italy",
+    "lat": 37.46943,
+    "lon": 15.08543,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Morghella",
+    "aliases": [],
+    "country": "Sicily, Italy",
+    "lat": 36.70063,
+    "lon": 15.12452,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
   }
 ]
