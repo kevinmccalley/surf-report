@@ -14094,5 +14094,164 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Varazze",
+    "aliases": [],
+    "country": "Liguria, Italy",
+    "lat": 44.35827,
+    "lon": 8.57763,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Recco",
+    "aliases": [],
+    "country": "Liguria, Italy",
+    "lat": 44.35995,
+    "lon": 9.1412,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Bogliasco",
+    "aliases": [],
+    "country": "Liguria, Italy",
+    "lat": 44.37738,
+    "lon": 9.06922,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Levanto",
+    "aliases": [],
+    "country": "Liguria, Italy",
+    "lat": 44.17028,
+    "lon": 9.60757,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Chiavari",
+    "aliases": [
+      "Entella"
+    ],
+    "country": "Liguria, Italy",
+    "lat": 44.30997,
+    "lon": 9.3313,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Tre Ponti",
+    "aliases": [
+      "Sanremo"
+    ],
+    "country": "Liguria, Italy",
+    "lat": 43.82218,
+    "lon": 7.81387,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Lillatro",
+    "aliases": [],
+    "country": "Tuscany, Italy",
+    "lat": 43.3798,
+    "lon": 10.43493,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Forte dei Marmi",
+    "aliases": [
+      "Pontile"
+    ],
+    "country": "Tuscany, Italy",
+    "lat": 43.95707,
+    "lon": 10.16533,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Santa Marinella",
+    "aliases": [
+      "Porto di Santa Marinella",
+      "Porto"
+    ],
+    "country": "Lazio, Italy",
+    "lat": 42.0365,
+    "lon": 11.87547,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Banzai",
+    "aliases": [],
+    "country": "Lazio, Italy",
+    "lat": 42.02837,
+    "lon": 11.83935,
+    "type": "point",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-08"
   }
 ]
