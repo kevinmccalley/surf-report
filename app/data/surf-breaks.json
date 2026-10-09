@@ -15175,12 +15175,13 @@
     "lon": -4.11485,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-10-09"
+    "verifiedOn": "2026-10-10"
   },
   {
     "name": "Boiler Reef",
@@ -15259,12 +15260,13 @@
     "lon": -4.8054,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-10-09"
+    "verifiedOn": "2026-10-10"
   },
   {
     "name": "Marloes",
@@ -15323,11 +15325,12 @@
     "lon": -4.47235,
     "type": "rivermouth",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-10-09"
+    "verifiedOn": "2026-10-10"
   }
 ]
