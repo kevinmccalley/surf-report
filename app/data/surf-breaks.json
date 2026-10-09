@@ -14585,5 +14585,363 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Widemouth Bay",
+    "aliases": [
+      "Widemouth"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.79093,
+    "lon": -4.56002,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Crooklets",
+    "aliases": [
+      "Bude Crooklets",
+      "Crooklets Beach"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.83578,
+    "lon": -4.5552,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Crackington Haven",
+    "aliases": [],
+    "country": "Cornwall, UK",
+    "lat": 50.74162,
+    "lon": -4.63392,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Trebarwith Strand",
+    "aliases": [
+      "Trebarwith"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.64578,
+    "lon": -4.76468,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Harlyn Bay",
+    "aliases": [
+      "Harlyn"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.53875,
+    "lon": -4.99758,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Treyarnon",
+    "aliases": [
+      "Treyarnon Bay"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.52603,
+    "lon": -5.02315,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Mawgan Porth",
+    "aliases": [],
+    "country": "Cornwall, UK",
+    "lat": 50.46558,
+    "lon": -5.032,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Porth Beach",
+    "aliases": [
+      "Porth"
+    ],
+    "country": "Newquay, Cornwall, UK",
+    "lat": 50.42535,
+    "lon": -5.06255,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Lusty Glaze",
+    "aliases": [],
+    "country": "Newquay, Cornwall, UK",
+    "lat": 50.42202,
+    "lon": -5.06398,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Tolcarne",
+    "aliases": [
+      "Tolcarne Beach",
+      "Tolcarne Wedge"
+    ],
+    "country": "Newquay, Cornwall, UK",
+    "lat": 50.41815,
+    "lon": -5.07382,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Great Western",
+    "aliases": [
+      "Great Western Beach"
+    ],
+    "country": "Newquay, Cornwall, UK",
+    "lat": 50.41588,
+    "lon": -5.07672,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Towan",
+    "aliases": [
+      "Towan Beach"
+    ],
+    "country": "Newquay, Cornwall, UK",
+    "lat": 50.41595,
+    "lon": -5.08473,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Crantock",
+    "aliases": [
+      "Crantock Beach"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.40852,
+    "lon": -5.12495,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "St Agnes",
+    "aliases": [
+      "Trevaunance Cove"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.32125,
+    "lon": -5.20108,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Chapel Porth",
+    "aliases": [],
+    "country": "Cornwall, UK",
+    "lat": 50.30052,
+    "lon": -5.23533,
+    "type": "beach",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Porthtowan",
+    "aliases": [],
+    "country": "Cornwall, UK",
+    "lat": 50.28497,
+    "lon": -5.2469,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Portreath",
+    "aliases": [],
+    "country": "Cornwall, UK",
+    "lat": 50.26125,
+    "lon": -5.28923,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Hayle Rivermouth",
+    "aliases": [
+      "Hayle"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.2007,
+    "lon": -5.42787,
+    "type": "rivermouth",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Carbis Bay",
+    "aliases": [],
+    "country": "Cornwall, UK",
+    "lat": 50.19877,
+    "lon": -5.4612,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Porthmeor",
+    "aliases": [
+      "Porthmeor Beach"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.21587,
+    "lon": -5.4827,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Porthcurno",
+    "aliases": [],
+    "country": "Cornwall, UK",
+    "lat": 50.04282,
+    "lon": -5.65007,
+    "type": "beach",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Kennack Sands",
+    "aliases": [],
+    "country": "Cornwall, UK",
+    "lat": 50.00502,
+    "lon": -5.1615,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
   }
 ]
