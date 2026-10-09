@@ -14500,5 +14500,67 @@
       "surfline"
     ],
     "verifiedOn": "2026-10-08"
+  },
+  {
+    "name": "Boca Barranca",
+    "aliases": [],
+    "country": "Puntarenas, Costa Rica",
+    "lat": 9.95922,
+    "lon": -84.7403,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Playa Escondida",
+    "aliases": [],
+    "country": "Puntarenas, Costa Rica",
+    "lat": 9.6605,
+    "lon": -84.67428,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Roca Loca",
+    "aliases": [],
+    "country": "Puntarenas, Costa Rica",
+    "lat": 9.5895,
+    "lon": -84.62528,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Matapalo",
+    "aliases": [
+      "Cabo Matapalo"
+    ],
+    "country": "Puntarenas, Costa Rica",
+    "lat": 8.38483,
+    "lon": -83.27988,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
   }
 ]
