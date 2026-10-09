@@ -10994,9 +10994,7 @@
   },
   {
     "name": "Rhossili Bay",
-    "aliases": [
-      "Llangennith"
-    ],
+    "aliases": [],
     "country": "Gower, Wales",
     "lat": 51.569046,
     "lon": -4.293213,
@@ -15091,6 +15089,239 @@
     "lat": 50.35417,
     "lon": -4.27837,
     "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Llangennith",
+    "aliases": [
+      "Llangenith"
+    ],
+    "country": "Gower, Wales",
+    "lat": 51.59222,
+    "lon": -4.29668,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Langland Bay",
+    "aliases": [
+      "Langland"
+    ],
+    "country": "Gower, Wales",
+    "lat": 51.56792,
+    "lon": -4.01177,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Langland Crab Island",
+    "aliases": [
+      "Crab Island Langland"
+    ],
+    "country": "Gower, Wales",
+    "lat": 51.56398,
+    "lon": -4.00472,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Caswell Bay",
+    "aliases": [
+      "Caswell"
+    ],
+    "country": "Gower, Wales",
+    "lat": 51.56677,
+    "lon": -4.03233,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Three Cliffs Bay",
+    "aliases": [
+      "Three Cliffs"
+    ],
+    "country": "Gower, Wales",
+    "lat": 51.56747,
+    "lon": -4.11485,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Boiler Reef",
+    "aliases": [
+      "Boilers Reef"
+    ],
+    "country": "Gower, Wales",
+    "lat": 51.53762,
+    "lon": -4.21182,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Aberavon",
+    "aliases": [
+      "Aberavon Beach"
+    ],
+    "country": "Port Talbot, Wales",
+    "lat": 51.58533,
+    "lon": -3.81097,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Ogmore-by-Sea",
+    "aliases": [
+      "Ogmore",
+      "Ogmore Beach"
+    ],
+    "country": "Vale of Glamorgan, Wales",
+    "lat": 51.46738,
+    "lon": -3.64173,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Southerndown",
+    "aliases": [
+      "Dunraven Bay"
+    ],
+    "country": "Vale of Glamorgan, Wales",
+    "lat": 51.44595,
+    "lon": -3.60577,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Manorbier",
+    "aliases": [],
+    "country": "Pembrokeshire, Wales",
+    "lat": 51.64285,
+    "lon": -4.8054,
+    "type": "reef",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Marloes",
+    "aliases": [
+      "Marloes Sands"
+    ],
+    "country": "Pembrokeshire, Wales",
+    "lat": 51.72053,
+    "lon": -5.21558,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Broad Haven",
+    "aliases": [
+      "Broadhaven"
+    ],
+    "country": "Pembrokeshire, Wales",
+    "lat": 51.78122,
+    "lon": -5.10522,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Newgale",
+    "aliases": [],
+    "country": "Pembrokeshire, Wales",
+    "lat": 51.85057,
+    "lon": -5.12348,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Llangrannog",
+    "aliases": [],
+    "country": "Ceredigion, Wales",
+    "lat": 52.16103,
+    "lon": -4.47235,
+    "type": "rivermouth",
     "direction": "both",
     "confidence": "provisional",
     "sources": [
