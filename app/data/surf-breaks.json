@@ -14564,5 +14564,22 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Playa Cocles",
+    "aliases": [
+      "Cocles"
+    ],
+    "country": "Puerto Viejo, Costa Rica",
+    "lat": 9.65158,
+    "lon": -82.73795,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
   }
 ]
