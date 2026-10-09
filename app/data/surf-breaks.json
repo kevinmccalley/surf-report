@@ -241,12 +241,13 @@
     "lon": -117.5944,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "San Onofre",
@@ -2668,12 +2669,13 @@
     "lon": 99.2447,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf.com (1°51.125'S 99°14.684'E, approx)",
-      "surf-forecast.com/breaks/Bankvaults (1.85°S 99.24°E)"
+      "surf-forecast.com/breaks/Bankvaults (1.85°S 99.24°E)",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "HT's",
@@ -2686,12 +2688,13 @@
     "lon": 99.8596,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf.com (2°22.538'S 99°51.573'E, approx)",
-      "surf-forecast.com/breaks/Lances-Right (2.40°S 99.86°E)"
+      "surf-forecast.com/breaks/Lances-Right (2.40°S 99.86°E)",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-27"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "E-Bay",
@@ -8072,12 +8075,13 @@
     "lon": -73.81205,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-03"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "Narragansett Town Beach",
@@ -8415,12 +8419,13 @@
     "lon": 114.9757,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "Huzzas",
@@ -8563,12 +8568,13 @@
     "lon": 114.1454,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "Tombstones",
@@ -8675,12 +8681,13 @@
     "lon": 73.65508,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "Ninjas",
@@ -8690,12 +8697,13 @@
     "lon": 73.61295,
     "type": "reef",
     "direction": "right",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-04"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "Jails",
@@ -10448,12 +10456,13 @@
     "lon": 73.452517,
     "type": "reef",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-12"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "Antiques",
@@ -15065,10 +15074,11 @@
     "lon": -3.95277,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-10-09"
   },
