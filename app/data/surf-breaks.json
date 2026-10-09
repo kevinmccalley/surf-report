@@ -14951,5 +14951,142 @@
       "surfline"
     ],
     "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Westward Ho!",
+    "aliases": [
+      "Westward Ho"
+    ],
+    "country": "North Devon, UK",
+    "lat": 51.04582,
+    "lon": -4.2318,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Combesgate",
+    "aliases": [
+      "Combesgate Beach",
+      "Coombesgate"
+    ],
+    "country": "North Devon, UK",
+    "lat": 51.17762,
+    "lon": -4.21687,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Down End Point",
+    "aliases": [
+      "Downend Point",
+      "Down End"
+    ],
+    "country": "North Devon, UK",
+    "lat": 51.12507,
+    "lon": -4.2457,
+    "type": "point",
+    "direction": "right",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Bucks Mills",
+    "aliases": [
+      "Buck's Mills"
+    ],
+    "country": "North Devon, UK",
+    "lat": 50.98965,
+    "lon": -4.34638,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Porlock Weir",
+    "aliases": [],
+    "country": "Somerset, UK",
+    "lat": 51.21982,
+    "lon": -3.62632,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Challaborough",
+    "aliases": [
+      "Challaborough Bay"
+    ],
+    "country": "South Devon, UK",
+    "lat": 50.28847,
+    "lon": -3.89877,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Mothecombe",
+    "aliases": [
+      "Mothecombe Beach",
+      "Meadowsfoot"
+    ],
+    "country": "South Devon, UK",
+    "lat": 50.30927,
+    "lon": -3.95277,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
+  },
+  {
+    "name": "Whitsand Bay",
+    "aliases": [
+      "Whitsands"
+    ],
+    "country": "Cornwall, UK",
+    "lat": 50.35417,
+    "lon": -4.27837,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-09"
   }
 ]
