@@ -6076,12 +6076,13 @@
     "lon": -86.0493,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-08-31"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "Playa Santana",
@@ -6970,12 +6971,13 @@
     "lon": -124.123367,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "The Groins",
@@ -9362,12 +9364,13 @@
     "lon": -81.141433,
     "type": "reef",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "El Ñuro",
@@ -9407,12 +9410,13 @@
     "lon": -79.124917,
     "type": "point",
     "direction": "left",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-10"
+    "verifiedOn": "2026-10-09"
   },
   {
     "name": "Pico Alto",
