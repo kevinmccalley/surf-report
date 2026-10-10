@@ -7327,17 +7327,17 @@
     "name": "Bantham",
     "aliases": [],
     "country": "South Devon, UK",
-    "lat": 50.2795,
-    "lon": -3.8805,
+    "lat": 50.27828,
+    "lon": -3.88515,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
-      "wikipedia",
-      "editorial-placement",
-      "osm-water-audit"
+      "wannasurf",
+      "osm-water-audit",
+      "surfline"
     ],
-    "verifiedOn": "2026-09-02"
+    "verifiedOn": "2026-10-10"
   },
   {
     "name": "Polzeath",
@@ -15497,10 +15497,11 @@
     "lon": -0.16065,
     "type": "beach",
     "direction": "both",
-    "confidence": "provisional",
+    "confidence": "verified",
     "sources": [
       "wannasurf",
-      "osm-water-audit"
+      "osm-water-audit",
+      "surfline"
     ],
     "verifiedOn": "2026-10-10"
   }
