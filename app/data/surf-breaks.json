@@ -15332,5 +15332,176 @@
       "surfline"
     ],
     "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Blyth Beach",
+    "aliases": [
+      "Blyth",
+      "South Beach Blyth"
+    ],
+    "country": "Northumberland, UK",
+    "lat": 55.1103,
+    "lon": -1.49732,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Tynemouth Longsands",
+    "aliases": [
+      "Longsands",
+      "Tynemouth"
+    ],
+    "country": "Tyne and Wear, UK",
+    "lat": 55.02595,
+    "lon": -1.42582,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Seaburn",
+    "aliases": [
+      "Seaburn Beach"
+    ],
+    "country": "Tyne and Wear, UK",
+    "lat": 54.93765,
+    "lon": -1.36642,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Saltburn",
+    "aliases": [
+      "Saltburn-by-the-Sea",
+      "Saltburn Pier"
+    ],
+    "country": "North Yorkshire, UK",
+    "lat": 54.58595,
+    "lon": -0.9695,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Staithes",
+    "aliases": [
+      "Staithes Cove"
+    ],
+    "country": "North Yorkshire, UK",
+    "lat": 54.56102,
+    "lon": -0.78535,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Whitby",
+    "aliases": [
+      "Whitby Beach"
+    ],
+    "country": "North Yorkshire, UK",
+    "lat": 54.49108,
+    "lon": -0.616,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Scarborough North Bay",
+    "aliases": [
+      "North Bay Scarborough"
+    ],
+    "country": "North Yorkshire, UK",
+    "lat": 54.29038,
+    "lon": -0.40117,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Scarborough South Bay",
+    "aliases": [
+      "South Bay Scarborough"
+    ],
+    "country": "North Yorkshire, UK",
+    "lat": 54.2793,
+    "lon": -0.39768,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Cayton Bay",
+    "aliases": [
+      "Cayton"
+    ],
+    "country": "North Yorkshire, UK",
+    "lat": 54.24443,
+    "lon": -0.35588,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Hornsea",
+    "aliases": [],
+    "country": "East Yorkshire, UK",
+    "lat": 53.91337,
+    "lon": -0.16065,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
   }
 ]
