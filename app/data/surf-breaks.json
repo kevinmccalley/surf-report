@@ -15745,5 +15745,214 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Sandwood Bay",
+    "aliases": [
+      "Sandwood"
+    ],
+    "country": "Sutherland, Scotland",
+    "lat": 58.54263,
+    "lon": -5.0574,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Sango Bay",
+    "aliases": [
+      "Sango Sands",
+      "Durness Sango"
+    ],
+    "country": "Sutherland, Scotland",
+    "lat": 58.56753,
+    "lon": -4.73448,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Farr Bay",
+    "aliases": [
+      "Farr Beach",
+      "Bettyhill"
+    ],
+    "country": "Sutherland, Scotland",
+    "lat": 58.53381,
+    "lon": -4.21402,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Armadale Bay",
+    "aliases": [
+      "Armadale Sutherland"
+    ],
+    "country": "Sutherland, Scotland",
+    "lat": 58.55106,
+    "lon": -4.07373,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Melvich",
+    "aliases": [
+      "Melvich Bay"
+    ],
+    "country": "Sutherland, Scotland",
+    "lat": 58.56139,
+    "lon": -3.91111,
+    "type": "rivermouth",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Sandside Bay",
+    "aliases": [
+      "Sandside",
+      "Reay"
+    ],
+    "country": "Caithness, Scotland",
+    "lat": 58.56861,
+    "lon": -3.79083,
+    "type": "reef",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Sewer Pipe",
+    "aliases": [
+      "Sewer Pipe Thurso"
+    ],
+    "country": "Thurso, Scotland",
+    "lat": 58.6005,
+    "lon": -3.5159,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Murkle Point",
+    "aliases": [
+      "The Spur",
+      "Murkle"
+    ],
+    "country": "Caithness, Scotland",
+    "lat": 58.6079,
+    "lon": -3.4277,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Dunnet Bay",
+    "aliases": [
+      "Dunnet"
+    ],
+    "country": "Caithness, Scotland",
+    "lat": 58.615,
+    "lon": -3.3501,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Gills Bay",
+    "aliases": [
+      "Gills"
+    ],
+    "country": "Caithness, Scotland",
+    "lat": 58.65028,
+    "lon": -3.17056,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Skirza",
+    "aliases": [
+      "Skirza Harbour"
+    ],
+    "country": "Caithness, Scotland",
+    "lat": 58.59556,
+    "lon": -3.05444,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Keiss",
+    "aliases": [
+      "Keiss Beach",
+      "Sinclair's Bay"
+    ],
+    "country": "Caithness, Scotland",
+    "lat": 58.5252,
+    "lon": -3.1231,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
   }
 ]
