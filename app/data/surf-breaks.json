@@ -15954,5 +15954,216 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Eoropie",
+    "aliases": [
+      "Europie",
+      "Eoropaidh"
+    ],
+    "country": "Isle of Lewis, Scotland",
+    "lat": 58.49889,
+    "lon": -6.27417,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Port of Ness",
+    "aliases": [
+      "Port Nis",
+      "Ness Beach"
+    ],
+    "country": "Isle of Lewis, Scotland",
+    "lat": 58.4907,
+    "lon": -6.2257,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Dalbeg",
+    "aliases": [
+      "Dalbeg Bay",
+      "Dail Beag"
+    ],
+    "country": "Isle of Lewis, Scotland",
+    "lat": 58.3147,
+    "lon": -6.7386,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Cliff Beach",
+    "aliases": [
+      "Cliff Lewis",
+      "Traigh na Clibhe"
+    ],
+    "country": "Isle of Lewis, Scotland",
+    "lat": 58.2227,
+    "lon": -6.9685,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Mangersta",
+    "aliases": [
+      "Mangurstadh",
+      "Mangersta Beach"
+    ],
+    "country": "Isle of Lewis, Scotland",
+    "lat": 58.1643,
+    "lon": -7.0914,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Scarista",
+    "aliases": [
+      "Scarasta",
+      "Scarista Beach"
+    ],
+    "country": "Isle of Harris, Scotland",
+    "lat": 57.8265,
+    "lon": -7.0625,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Hosta",
+    "aliases": [
+      "Hosta Beach",
+      "Traigh Stir"
+    ],
+    "country": "North Uist, Scotland",
+    "lat": 57.6277,
+    "lon": -7.5047,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Balevullin",
+    "aliases": [
+      "Balevullin Bay"
+    ],
+    "country": "Tiree, Scotland",
+    "lat": 56.5234,
+    "lon": -6.956,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "The Hough",
+    "aliases": [
+      "Hough Bay"
+    ],
+    "country": "Tiree, Scotland",
+    "lat": 56.5108,
+    "lon": -6.9817,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "The Maze",
+    "aliases": [
+      "The Maze Tiree"
+    ],
+    "country": "Tiree, Scotland",
+    "lat": 56.497,
+    "lon": -6.9835,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Port Bharrapol",
+    "aliases": [
+      "Barrapol"
+    ],
+    "country": "Tiree, Scotland",
+    "lat": 56.468,
+    "lon": -6.9752,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Balephuil",
+    "aliases": [
+      "Balephuil Bay"
+    ],
+    "country": "Tiree, Scotland",
+    "lat": 56.4572,
+    "lon": -6.954,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
   }
 ]
