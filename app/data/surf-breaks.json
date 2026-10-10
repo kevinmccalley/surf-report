@@ -15504,5 +15504,244 @@
       "surfline"
     ],
     "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Watersplash",
+    "aliases": [
+      "St Ouen's Bay",
+      "St Ouens"
+    ],
+    "country": "Jersey, Channel Islands",
+    "lat": 49.20456,
+    "lon": -2.22336,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Secrets",
+    "aliases": [
+      "Secrets Jersey"
+    ],
+    "country": "Jersey, Channel Islands",
+    "lat": 49.232,
+    "lon": -2.239,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Les Brayes",
+    "aliases": [
+      "Le Braye"
+    ],
+    "country": "Jersey, Channel Islands",
+    "lat": 49.198,
+    "lon": -2.227,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Stinkies",
+    "aliases": [
+      "Stinky Bay"
+    ],
+    "country": "Jersey, Channel Islands",
+    "lat": 49.241,
+    "lon": -2.251,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Plemont",
+    "aliases": [
+      "Plémont",
+      "Greve au Lanchon"
+    ],
+    "country": "Jersey, Channel Islands",
+    "lat": 49.258,
+    "lon": -2.23,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Greve de Lecq",
+    "aliases": [
+      "Grève de Lecq"
+    ],
+    "country": "Jersey, Channel Islands",
+    "lat": 49.248,
+    "lon": -2.202,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "St Brelade's Bay",
+    "aliases": [
+      "St Brelade",
+      "St. Brelades"
+    ],
+    "country": "Jersey, Channel Islands",
+    "lat": 49.184,
+    "lon": -2.196,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Petit Port",
+    "aliases": [
+      "Petite Port"
+    ],
+    "country": "Jersey, Channel Islands",
+    "lat": 49.184,
+    "lon": -2.239,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "La Mare",
+    "aliases": [
+      "La Mare Jersey"
+    ],
+    "country": "Jersey, Channel Islands",
+    "lat": 49.16933,
+    "lon": -2.08497,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Vazon Bay",
+    "aliases": [
+      "Vazon",
+      "Centres"
+    ],
+    "country": "Guernsey, Channel Islands",
+    "lat": 49.46762,
+    "lon": -2.61625,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "wannasurf",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Perelle Bay",
+    "aliases": [
+      "Perelle"
+    ],
+    "country": "Guernsey, Channel Islands",
+    "lat": 49.462,
+    "lon": -2.656,
+    "type": "reef",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Portinfer",
+    "aliases": [],
+    "country": "Guernsey, Channel Islands",
+    "lat": 49.49109,
+    "lon": -2.57617,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "L'Ancresse Bay",
+    "aliases": [
+      "Lancresse",
+      "L'Ancresse"
+    ],
+    "country": "Guernsey, Channel Islands",
+    "lat": 49.504,
+    "lon": -2.53,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Fort Le Marchant",
+    "aliases": [],
+    "country": "Guernsey, Channel Islands",
+    "lat": 49.5079,
+    "lon": -2.5164,
+    "type": "point",
+    "direction": "left",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-10"
   }
 ]
