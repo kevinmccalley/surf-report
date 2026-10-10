@@ -2173,16 +2173,16 @@
       "Shit Pipe"
     ],
     "country": "Thurso, Scotland",
-    "lat": 58.5968,
-    "lon": -3.5148,
+    "lat": 58.60243,
+    "lon": -3.50807,
     "type": null,
     "direction": null,
     "confidence": "provisional",
     "sources": [
-      "ai-placement",
+      "wannasurf",
       "osm-water-audit"
     ],
-    "verifiedOn": "2026-08-26"
+    "verifiedOn": "2026-10-10"
   },
   {
     "name": "Bundoran",
