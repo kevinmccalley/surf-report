@@ -16165,5 +16165,144 @@
       "osm-water-audit"
     ],
     "verifiedOn": "2026-10-10"
+  },
+  {
+    "name": "Saligo Bay",
+    "aliases": [
+      "Saligo"
+    ],
+    "country": "Islay, Scotland",
+    "lat": 55.8115,
+    "lon": -6.4609,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-11"
+  },
+  {
+    "name": "Lossit Bay",
+    "aliases": [
+      "Lossit"
+    ],
+    "country": "Islay, Scotland",
+    "lat": 55.7139,
+    "lon": -6.4966,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-11"
+  },
+  {
+    "name": "Laggan Bay",
+    "aliases": [
+      "Big Strand",
+      "Laggan Islay"
+    ],
+    "country": "Islay, Scotland",
+    "lat": 55.6901,
+    "lon": -6.2852,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-11"
+  },
+  {
+    "name": "Ardnave Bay",
+    "aliases": [
+      "Ardnave"
+    ],
+    "country": "Islay, Scotland",
+    "lat": 55.8849,
+    "lon": -6.3182,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-11"
+  },
+  {
+    "name": "Kiloran Bay",
+    "aliases": [
+      "Kiloran"
+    ],
+    "country": "Colonsay, Scotland",
+    "lat": 56.10461,
+    "lon": -6.18183,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-11"
+  },
+  {
+    "name": "Machrihanish",
+    "aliases": [
+      "Machrihanish Bay"
+    ],
+    "country": "Kintyre, Scotland",
+    "lat": 55.431,
+    "lon": -5.733,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-11"
+  },
+  {
+    "name": "Westport",
+    "aliases": [
+      "Westport Beach",
+      "Westport Kintyre"
+    ],
+    "country": "Kintyre, Scotland",
+    "lat": 55.4729,
+    "lon": -5.7136,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-11"
+  },
+  {
+    "name": "Dunaverty",
+    "aliases": [
+      "Dunaverty Bay",
+      "Southend Kintyre"
+    ],
+    "country": "Kintyre, Scotland",
+    "lat": 55.3075,
+    "lon": -5.6815,
+    "type": "beach",
+    "direction": "both",
+    "confidence": "provisional",
+    "sources": [
+      "surfline",
+      "osm-water-audit"
+    ],
+    "verifiedOn": "2026-10-11"
   }
 ]
